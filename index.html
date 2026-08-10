@@ -1,16 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Poly-Glot Prompt Studio</title>
-<style>body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;max-width:700px;margin:60px auto;padding:0 20px;color:#333}h1{color:#5b2d8e}a{color:#5b2d8e}</style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poly-Glot AI | Automatic Code Documentation for Every Language</title>
+<meta name="description" content="Poly-Glot AI automatically adds professional documentation comments to your pull requests. Supports 12+ languages including JavaScript, Python, Go, Rust, Java, and more. Available as a GitHub App, VS Code Extension, CLI, and MCP Server.">
+<meta name="keywords" content="code documentation, AI documentation, JSDoc, PyDoc, Javadoc, GoDoc, Rustdoc, GitHub App, VS Code Extension, documentation automation, code review, pull request, OpenAI, Anthropic, developer tools">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --surface: #111827;
+    --card: #1a2035;
+    --border: rgba(127,200,255,0.12);
+    --accent: #7fc8ff;
+    --accent2: #4d65ff;
+    --text: #e5f0ff;
+    --text2: rgba(229,240,255,0.7);
+    --text3: rgba(229,240,255,0.45);
+    --green: #22c55e;
+    --orange: #f59e0b;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',-apple-system,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+
+  /* NAV */
+  nav { display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; padding:20px 24px; }
+  nav .logo { font-size:22px; font-weight:800; letter-spacing:-0.5px; }
+  nav .logo span { color:var(--accent); }
+  nav .links { display:flex; gap:24px; align-items:center; }
+  nav .links a { font-size:14px; font-weight:500; color:var(--text2); }
+  nav .links a:hover { color:var(--accent); text-decoration:none; }
+  .cta-btn { background:var(--accent2); color:#fff !important; padding:8px 20px; border-radius:6px; font-weight:600; font-size:14px; }
+  .cta-btn:hover { background:#3a4fe6; text-decoration:none !important; }
+
+  /* HERO */
+  .hero { text-align:center; padding:80px 24px 60px; max-width:800px; margin:0 auto; }
+  .hero h1 { font-size:48px; font-weight:900; letter-spacing:-1.5px; line-height:1.15; margin-bottom:16px; }
+  .hero h1 span { color:var(--accent); }
+  .hero p { font-size:18px; color:var(--text2); max-width:600px; margin:0 auto 24px; line-height:1.7; }
+  .hero-langs { font-size:14px; color:var(--text3); margin-bottom:30px; }
+  .hero-btns { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+  .hero-btns a { padding:12px 28px; border-radius:8px; font-weight:700; font-size:15px; }
+  .btn-primary { background:var(--accent2); color:#fff !important; }
+  .btn-primary:hover { background:#3a4fe6; }
+  .btn-secondary { border:1px solid var(--border); color:var(--text) !important; }
+  .btn-secondary:hover { border-color:var(--accent); color:var(--accent) !important; }
+
+  /* SECTION */
+  .section { max-width:1100px; margin:0 auto; padding:60px 24px; }
+  .section-label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:3px; color:var(--accent); margin-bottom:8px; text-align:center; }
+  .section h2 { font-size:32px; font-weight:800; text-align:center; margin-bottom:40px; letter-spacing:-0.5px; }
+
+  /* HOW IT WORKS */
+  .steps { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+  .step { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:20px; text-align:center; }
+  .step .icon { font-size:28px; margin-bottom:8px; }
+  .step h3 { font-size:14px; font-weight:700; margin-bottom:4px; }
+  .step p { font-size:13px; color:var(--text2); }
+
+  /* LANGUAGES */
+  .lang-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .lang-card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px 16px; display:flex; align-items:center; gap:10px; }
+  .lang-card .lang-name { font-size:14px; font-weight:600; }
+  .lang-card .lang-fmt { font-size:12px; color:var(--text3); }
+
+  /* CODE EXAMPLES */
+  .code-examples { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .code-block { background:var(--card); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+  .code-block .code-header { padding:10px 16px; font-size:13px; font-weight:700; color:var(--accent); border-bottom:1px solid var(--border); }
+  .code-block pre { padding:16px; font-size:13px; line-height:1.6; overflow-x:auto; font-family:'SF Mono','Fira Code',monospace; color:var(--text2); }
+  .code-block .comment { color:var(--green); }
+  .code-block .keyword { color:var(--accent); }
+  .code-block .string { color:var(--orange); }
+
+  /* PLATFORMS */
+  .platforms { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+  .platform { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:20px; text-align:center; }
+  .platform .plat-icon { font-size:28px; margin-bottom:8px; }
+  .platform h3 { font-size:14px; font-weight:700; margin-bottom:4px; }
+  .platform p { font-size:12px; color:var(--text2); margin-bottom:10px; }
+  .platform a { font-size:13px; font-weight:600; }
+
+  /* FEATURES */
+  .features { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .feature { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:22px; }
+  .feature .feat-icon { font-size:24px; margin-bottom:8px; }
+  .feature h3 { font-size:15px; font-weight:700; margin-bottom:6px; }
+  .feature p { font-size:13px; color:var(--text2); line-height:1.5; }
+
+  /* PRICING */
+  .pricing { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .price-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:24px; text-align:center; }
+  .price-card.popular { border-color:var(--accent); }
+  .price-card h3 { font-size:18px; font-weight:700; margin-bottom:4px; }
+  .price-card .price { font-size:28px; font-weight:800; color:var(--accent); margin-bottom:8px; }
+  .price-card .price span { font-size:14px; font-weight:400; color:var(--text3); }
+  .price-card ul { list-style:none; text-align:left; margin:12px 0; }
+  .price-card li { font-size:13px; color:var(--text2); padding:4px 0; padding-left:18px; position:relative; }
+  .price-card li::before { content:"✓"; position:absolute; left:0; color:var(--green); font-weight:700; }
+  .price-card .price-cta { display:inline-block; margin-top:12px; padding:8px 20px; border-radius:6px; font-size:13px; font-weight:600; }
+
+  /* PRIVACY */
+  .privacy-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .priv-item { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:18px; text-align:center; }
+  .priv-item .priv-icon { font-size:24px; margin-bottom:6px; }
+  .priv-item h3 { font-size:13px; font-weight:700; margin-bottom:4px; }
+  .priv-item p { font-size:12px; color:var(--text2); }
+
+  /* CTA */
+  .final-cta { text-align:center; padding:60px 24px; }
+  .final-cta h2 { font-size:36px; font-weight:800; margin-bottom:12px; }
+  .final-cta p { font-size:16px; color:var(--text2); margin-bottom:24px; }
+
+  /* FOOTER */
+  footer { text-align:center; padding:30px 24px; border-top:1px solid var(--border); font-size:13px; color:var(--text3); }
+
+  @media (max-width:768px) {
+    .hero h1 { font-size:32px; }
+    .steps, .lang-grid, .platforms, .features, .pricing, .privacy-grid { grid-template-columns:1fr 1fr; }
+    .code-examples { grid-template-columns:1fr; }
+  }
+  @media (max-width:480px) {
+    .steps, .lang-grid, .platforms, .features, .pricing, .privacy-grid { grid-template-columns:1fr; }
+  }
+</style>
 </head>
 <body>
-<h1>Poly-Glot Prompt Studio</h1>
-<p>AI prompt templates for iOS and macOS. Works offline. No account needed.</p>
-<ul>
-  <li><a href="/privacy">Privacy Policy</a></li>
-  <li><a href="/terms">Terms of Use</a></li>
-  <li><a href="mailto:hwmoses2@icloud.com">Support</a></li>
-</ul>
+
+<nav>
+  <div class="logo">🤖 <span>Poly-Glot</span> AI</div>
+  <div class="links">
+    <a href="#how-it-works">How It Works</a>
+    <a href="#languages">Languages</a>
+    <a href="#platforms">Platforms</a>
+    <a href="#pricing">Pricing</a>
+    <a href="https://github.com/hmoses/poly-glot-github-app">GitHub</a>
+    <a href="https://github.com/marketplace/poly-glot-ai" class="cta-btn">Install Free</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Add <span>documentation</span> to any codebase in seconds</h1>
+  <p>Poly-Glot AI automatically reviews your pull requests and generates professional documentation comments. Just install and open a PR.</p>
+  <div class="hero-langs">JSDoc · PyDoc · Javadoc · Doxygen · KDoc · GoDoc · Rustdoc · and more</div>
+  <div class="hero-btns">
+    <a href="https://github.com/marketplace/poly-glot-ai" class="btn-primary">Install from GitHub Marketplace</a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=poly-glot-ai.poly-glot" class="btn-secondary">VS Code Extension</a>
+    <a href="https://github.com/hmoses/poly-glot-github-app" class="btn-secondary">View Source</a>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section" id="how-it-works">
+  <div class="section-label">How It Works</div>
+  <h2>Five steps. Zero config required.</h2>
+  <div class="steps">
+    <div class="step"><div class="icon">🔍</div><h3>1. Scan</h3><p>Scans changed files for missing documentation</p></div>
+    <div class="step"><div class="icon">📊</div><h3>2. Analyze</h3><p>Measures documentation coverage per file</p></div>
+    <div class="step"><div class="icon">🤖</div><h3>3. Generate</h3><p>Creates doc comments using OpenAI or Anthropic</p></div>
+    <div class="step"><div class="icon">💬</div><h3>4. Suggest</h3><p>Posts inline review suggestions on your PR</p></div>
+    <div class="step"><div class="icon">✅</div><h3>5. Report</h3><p>Reports a Check Run with coverage metrics</p></div>
+  </div>
+</div>
+
+<!-- LANGUAGES -->
+<div class="section" id="languages">
+  <div class="section-label">Supported Languages</div>
+  <h2>12+ languages, one tool</h2>
+  <div class="lang-grid">
+    <div class="lang-card"><div><div class="lang-name">JavaScript</div><div class="lang-fmt">JSDoc</div></div></div>
+    <div class="lang-card"><div><div class="lang-name">TypeScript</div><div class="lang-fmt">TSDoc</div></div></div>
+    <div class="lang-card"><div><div class="lang-name">Python</div><div class="lang-fmt">PyDoc</div></div></div>
+    <div class="lang-card"><div><div class="lang-name">Java</div><div class="lang-fmt">Javadoc</div></div></div>
+    <div class="lang-card"><div><div class="lang-name">Kotlin</div><div class="lang-fmt">KDoc</div></div></div>
+    <div class="lang-card"><div><div class="lang-name">Go</div><div class="lang-fmt">GoDoc</div></div></div>
+    <div class="lang-card"><div><div class="lang-name">Rust</div><div class="lang-fmt">Rustdoc</div></div></div>
+    <div class="lang-card"><div><div class="lang-name">C / C++</div><div class="lang-fmt">Doxygen</div></div></div>
+    <div class="lang-card"><div><div class="lang-name">C#</div><div class="lang-fmt">XML Doc</div></div></div>
+    <div class="lang-card"><div><div class="lang-name">Swift</div><div class="lang-fmt">Swift Markup</div></div></div>
+    <div class="lang-card"><div><div class="lang-name">PHP</div><div class="lang-fmt">PHPDoc</div></div></div>
+    <div class="lang-card"><div><div class="lang-name">Ruby</div><div class="lang-fmt">YARD</div></div></div>
+  </div>
+</div>
+
+<!-- CODE EXAMPLES -->
+<div class="section">
+  <div class="section-label">Comment Modes</div>
+  <h2>Doc mode, Why mode, or both</h2>
+  <div class="code-examples">
+    <div class="code-block">
+      <div class="code-header">📖 Doc Mode</div>
+<pre><span class="comment">/**
+ * Authenticate a user with email and password.
+ * @param {string} email - The user's email address
+ * @param {string} password - The user's password
+ * @returns {Promise&lt;AuthResult&gt;} Auth result with token
+ * @throws {AuthenticationError} If credentials invalid
+ */</span>
+<span class="keyword">async function</span> authenticateUser(email, password) { ... }</pre>
+    </div>
+    <div class="code-block">
+      <div class="code-header">🧠 Why Mode</div>
+<pre><span class="comment">// Why: Rate-limit auth attempts per IP to prevent
+// credential stuffing. 5 attempts/min was chosen
+// based on OWASP guidelines. Uses sliding window
+// instead of fixed to prevent burst attacks at
+// window edges.</span>
+<span class="keyword">if</span> (<span class="keyword">await</span> isRateLimited(ip, <span class="string">5</span>, <span class="string">60</span>)) { ... }</pre>
+    </div>
+  </div>
+</div>
+
+<!-- PLATFORMS -->
+<div class="section" id="platforms">
+  <div class="section-label">Ecosystem</div>
+  <h2>Available everywhere you write code</h2>
+  <div class="platforms">
+    <div class="platform"><div class="plat-icon">🤖</div><h3>GitHub App</h3><p>Auto-reviews PRs</p><a href="https://github.com/marketplace/poly-glot-ai">Install</a></div>
+    <div class="platform"><div class="plat-icon">💻</div><h3>VS Code</h3><p>In-editor docs</p><a href="https://marketplace.visualstudio.com/items?itemName=poly-glot-ai.poly-glot">Install</a></div>
+    <div class="platform"><div class="plat-icon">🖥️</div><h3>CLI</h3><p>Terminal workflow</p><a href="https://github.com/hmoses/poly-glot-github-app">npx poly-glot-ai-cli</a></div>
+    <div class="platform"><div class="plat-icon">🔌</div><h3>MCP Server</h3><p>Agent integration</p><a href="https://github.com/hmoses/poly-glot-github-app">Learn more</a></div>
+    <div class="platform"><div class="plat-icon">🐳</div><h3>Self-Host</h3><p>Docker or Node.js</p><a href="https://github.com/hmoses/poly-glot-github-app#-self-hosting">Guide</a></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="section">
+  <div class="section-label">Features</div>
+  <h2>Built for real developer workflows</h2>
+  <div class="features">
+    <div class="feature"><div class="feat-icon">⚡</div><h3>Zero Config</h3><p>Install and go. Optionally customize with a .polyglot.yml file in your repo root.</p></div>
+    <div class="feature"><div class="feat-icon">🎯</div><h3>Coverage Thresholds</h3><p>Only suggest docs for files below your chosen coverage threshold (0.0 to 1.0).</p></div>
+    <div class="feature"><div class="feat-icon">🔀</div><h3>Multi-Provider</h3><p>Choose between OpenAI and Anthropic. Use your own API key or the shared pool.</p></div>
+    <div class="feature"><div class="feat-icon">📝</div><h3>Inline Suggestions</h3><p>Doc comments appear as GitHub review suggestions you can accept with one click.</p></div>
+    <div class="feature"><div class="feat-icon">📊</div><h3>Check Runs</h3><p>Coverage metrics reported as GitHub Check Runs on every PR.</p></div>
+    <div class="feature"><div class="feat-icon">🔧</div><h3>Open Source</h3><p>MIT licensed. Audit every line. Self-host on your own infrastructure.</p></div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="section" id="pricing" id="pg-pricing-section">
+  <div class="section-label">Pricing</div>
+  <h2>Start free. Scale as you grow.</h2>
+  <div class="pricing">
+    <div class="price-card">
+      <h3>Free</h3>
+      <div class="price">$0<span>/mo</span></div>
+      <ul>
+        <li>3 repos</li>
+        <li>50 PRs/month</li>
+        <li>Doc comment mode</li>
+        <li>1 seat</li>
+        <li>Community support</li>
+      </ul>
+      <a href="https://github.com/marketplace/poly-glot-ai" class="price-cta btn-secondary">Get Started</a>
+    </div>
+    <div class="price-card popular">
+      <h3>Pro</h3>
+      <div class="price">$19<span>/mo</span></div>
+      <ul>
+        <li>Unlimited repos</li>
+        <li>Unlimited PRs</li>
+        <li>Doc + Why + Both modes</li>
+        <li>200 MCP calls/mo</li>
+        <li>Email support</li>
+      </ul>
+      <a href="https://github.com/marketplace/poly-glot-ai" class="price-cta btn-primary">Start Pro</a>
+    </div>
+    <div class="price-card">
+      <h3>Team</h3>
+      <div class="price">$49<span>/mo</span></div>
+      <ul>
+        <li>Everything in Pro</li>
+        <li>5 seats</li>
+        <li>1,000 MCP calls/mo</li>
+        <li>Shared API key pool</li>
+        <li>Team dashboard</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="https://github.com/marketplace/poly-glot-ai" class="price-cta btn-secondary">Start Team</a>
+    </div>
+    <div class="price-card">
+      <h3>Enterprise</h3>
+      <div class="price">Custom</div>
+      <ul>
+        <li>Everything in Team</li>
+        <li>Unlimited seats</li>
+        <li>Unlimited MCP calls</li>
+        <li>SSO / private deploy</li>
+        <li>Dedicated SLA</li>
+      </ul>
+      <a href="mailto:hwmoses2@icloud.com" class="price-cta btn-secondary">Contact Us</a>
+    </div>
+  </div>
+</div>
+
+<!-- PRIVACY -->
+<div class="section">
+  <div class="section-label">Privacy & Security</div>
+  <h2>Your code stays yours</h2>
+  <div class="privacy-grid">
+    <div class="priv-item"><div class="priv-icon">🔒</div><h3>Code Stays Private</h3><p>Reads PR diffs only for analysis</p></div>
+    <div class="priv-item"><div class="priv-icon">🔑</div><h3>Your API Key</h3><p>Uses your own OpenAI or Anthropic key</p></div>
+    <div class="priv-item"><div class="priv-icon">🗑️</div><h3>No Data Retention</h3><p>Code processed in memory, never stored</p></div>
+    <div class="priv-item"><div class="priv-icon">👁️</div><h3>Open Source</h3><p>Audit every line of this app</p></div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>Add documentation to any codebase in seconds</h2>
+  <p>Install Poly-Glot AI and never write a boilerplate doc comment again.</p>
+  <div class="hero-btns">
+    <a href="https://github.com/marketplace/poly-glot-ai" class="btn-primary">Install from GitHub Marketplace</a>
+    <a href="https://github.com/hmoses/poly-glot-github-app" class="btn-secondary">View Source on GitHub</a>
+  </div>
+</div>
+
+<footer>
+  <p>Poly-Glot AI · Built by <a href="https://github.com/hmoses">Harold Moses</a> · <a href="https://github.com/hmoses/poly-glot-github-app">GitHub</a> · MIT License</p>
+</footer>
+
 </body>
 </html>
