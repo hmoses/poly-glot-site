@@ -338,22 +338,6 @@ a:hover { opacity: 0.85; }
   border-left: 2px solid rgba(125,211,252,0.15);
   padding-left: 12px;
 }
-.demo-field {
-  margin-bottom: 10px;
-}
-.demo-field-label {
-  font-family: 'Fira Code', monospace;
-  font-size: 0.6rem; text-transform: uppercase;
-  letter-spacing: 0.12em; margin-bottom: 3px;
-}
-.demo-panel.strong .demo-field-label { color: var(--green); }
-.demo-field-value {
-  font-size: 0.85rem; color: var(--text-muted);
-  background: rgba(125,211,252,0.03);
-  border: 1px solid rgba(125,211,252,0.06);
-  border-radius: var(--radius-xs);
-  padding: 8px 12px; min-height: 20px;
-}
 .demo-response-label {
   font-family: 'Fira Code', monospace;
   font-size: 0.65rem; text-transform: uppercase;
@@ -372,7 +356,10 @@ a:hover { opacity: 0.85; }
   vertical-align: text-bottom;
 }
 @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
-.demo-panel { transition: opacity 0.5s ease; }
+.demo-panel { transition: opacity 0.5s ease; display: flex; flex-direction: column; }
+.demo-panel-video { padding: 0 !important; flex: 1; display: flex; align-items: stretch; }
+.demo-panel-video video { object-fit: cover; min-height: 100%; }
+.demo-panel.weak { align-self: start; }
 .demo-controls { text-align: center; margin-top: 24px; }
 .demo-replay-btn {
   display: inline-flex; align-items: center; gap: 8px;
@@ -780,35 +767,12 @@ a:hover { opacity: 0.85; }
       </div>
 
       <!-- STRONG SIDE -->
-      <div class="demo-panel strong" id="panelStrong" style="opacity:0.4">
+      <div class="demo-panel strong" id="panelStrong">
         <div class="demo-panel-header">
           <span>&#10004;&#65039;</span> With Poly-Glot
         </div>
-        <div class="demo-panel-body" id="strongBody">
-          <div id="strongFields">
-            <div class="demo-field">
-              <div class="demo-field-label">Role</div>
-              <div class="demo-field-value" id="fieldRole"></div>
-            </div>
-            <div class="demo-field">
-              <div class="demo-field-label">Details</div>
-              <div class="demo-field-value" id="fieldDetails"></div>
-            </div>
-            <div class="demo-field">
-              <div class="demo-field-label">Constraints</div>
-              <div class="demo-field-value" id="fieldConstraints"></div>
-            </div>
-            <div class="demo-field">
-              <div class="demo-field-label">Output</div>
-              <div class="demo-field-value" id="fieldOutput"></div>
-            </div>
-            <div class="demo-response-label">AI Response</div>
-            <div class="demo-response-text" id="strongResponse"></div>
-          </div>
-          <!-- SEND ANIMATION inside the strong panel -->
-          <div id="demoSendWrap" style="display:none; margin-top:16px; border-radius:8px; overflow:hidden; border:1px solid rgba(16,185,129,0.15);">
-            <video id="sendVideo" src="assets/video/send-demo.mp4" playsinline muted preload="auto" style="width:100%; display:block; border-radius:8px;"></video>
-          </div>
+        <div class="demo-panel-body demo-panel-video">
+          <video id="aiMenuVideo" src="assets/video/ai-menu-demo.mp4" playsinline muted loop preload="auto" style="width:100%; display:block; border-radius:0 0 11px 11px;"></video>
         </div>
       </div>
     </div>
@@ -1123,20 +1087,10 @@ const DEMO_DATA = {
   weak: {
     prompt: "What should I make for dinner?",
     response: "You could try pasta, stir fry, or a salad."
-  },
-  strong: {
-    fields: {
-      role: "Family meal planner",
-      details: "Chicken, rice, broccoli, soy sauce, garlic",
-      constraints: "2 adults, 2 kids (picky eaters), 30 min max",
-      output: "Recipe with steps, portions, kid-friendly twist"
-    },
-    response: "\ud83c\udf57 Honey-Garlic Chicken Rice Bowls\n\nServes 4 (2 adult + 2 kid portions)\nTime: 25 minutes\n\n1. Dice chicken into bite-size cubes. Season with soy sauce & minced garlic.\n2. Stir-fry chicken 6 min on medium-high. Set aside.\n3. Steam broccoli florets 4 min. For picky kids: cut tiny & call them \"trees.\"\n4. Cook rice per package. Fluff with fork.\n5. Bowl it up: rice base, chicken on one side, broccoli trees on the other.\n\n\ud83e\udde1 Kid-friendly twist: Let kids build their own bowls. Serve sauce on the side for dipping!"
   }
 };
 
 const TYPE_SPEED = 28;
-const FIELD_SPEED = 22;
 const RESPONSE_SPEED = 12;
 
 let demoRunning = false;
@@ -1147,19 +1101,9 @@ function clearDemo() {
   demoTimeouts = [];
   document.getElementById('weakPrompt').innerHTML = '';
   document.getElementById('weakResponse').innerHTML = '';
-  document.getElementById('fieldRole').innerHTML = '';
-  document.getElementById('fieldDetails').innerHTML = '';
-  document.getElementById('fieldConstraints').innerHTML = '';
-  document.getElementById('fieldOutput').innerHTML = '';
-  document.getElementById('strongResponse').innerHTML = '';
-  // Reset panel states
-  document.getElementById('panelWeak').style.opacity = '1';
-  document.getElementById('panelStrong').style.opacity = '0.4';
-  // Hide send video
-  document.getElementById('demoSendWrap').style.display = 'none';
-  var sv = document.getElementById('sendVideo');
-  sv.pause();
-  sv.currentTime = 0;
+  var vid = document.getElementById('aiMenuVideo');
+  vid.pause();
+  vid.currentTime = 0;
 }
 
 function typeText(elementId, text, speed, callback) {
@@ -1200,51 +1144,15 @@ async function runDemo() {
   demoRunning = true;
   clearDemo();
 
-  /* ========== PHASE 1: WEAK SIDE PLAYS FULLY ========== */
-  // Weak panel bright, strong panel dimmed
-  document.getElementById('panelWeak').style.opacity = '1';
-  document.getElementById('panelStrong').style.opacity = '0.4';
-
-  // Type weak prompt
+  /* ========== LEFT: Weak prompt types fully ========== */
   await new Promise(resolve => typeText('weakPrompt', DEMO_DATA.weak.prompt, TYPE_SPEED, resolve));
   await demoDelay(800);
-
-  // Type weak response
   await new Promise(resolve => typeText('weakResponse', DEMO_DATA.weak.response, RESPONSE_SPEED, resolve));
-  await demoDelay(1200);
 
-  /* ========== PHASE 2: STRONG SIDE PLAYS FULLY ========== */
-  // Dim weak panel, brighten strong panel
-  document.getElementById('panelWeak').style.opacity = '0.4';
-  document.getElementById('panelStrong').style.opacity = '1';
-
-  await demoDelay(400);
-
-  // Type all 4 fields
-  await new Promise(resolve => typeText('fieldRole', DEMO_DATA.strong.fields.role, FIELD_SPEED, resolve));
-  await demoDelay(200);
-  await new Promise(resolve => typeText('fieldDetails', DEMO_DATA.strong.fields.details, FIELD_SPEED, resolve));
-  await demoDelay(200);
-  await new Promise(resolve => typeText('fieldConstraints', DEMO_DATA.strong.fields.constraints, FIELD_SPEED, resolve));
-  await demoDelay(200);
-  await new Promise(resolve => typeText('fieldOutput', DEMO_DATA.strong.fields.output, FIELD_SPEED, resolve));
-  await demoDelay(800);
-
-  // Type strong response
-  await new Promise(resolve => typeText('strongResponse', DEMO_DATA.strong.response, RESPONSE_SPEED, resolve));
-  await demoDelay(600);
-
-  // Both panels full brightness for comparison
-  document.getElementById('panelWeak').style.opacity = '1';
-  document.getElementById('panelStrong').style.opacity = '1';
-  await demoDelay(1500);
-
-  /* ========== PHASE 3: SEND ANIMATION ========== */
-  var sendWrap = document.getElementById('demoSendWrap');
-  var sendVid = document.getElementById('sendVideo');
-  sendWrap.style.display = 'block';
-  sendVid.currentTime = 0;
-  sendVid.play();
+  /* ========== RIGHT: AI menu video plays (loops) ========== */
+  var vid = document.getElementById('aiMenuVideo');
+  vid.currentTime = 0;
+  vid.play();
 
   demoRunning = false;
 }
