@@ -247,6 +247,82 @@ a:hover { opacity: 0.85; }
   border: 1px solid rgba(125,211,252,0.1);
   box-shadow: 0 8px 40px rgba(0,0,0,0.4);
 }
+/* ===== iPhone Mockup ===== */
+.iphone-frame {
+  position: relative; display: inline-block;
+  width: 100%; max-width: 320px; margin: 0 auto;
+  background: #1c1c1e; border-radius: 44px;
+  padding: 14px;
+  border: 3px solid #3a3a3c;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05), inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+.iphone-notch {
+  position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 30px; background: #1c1c1e; border-radius: 0 0 18px 18px; z-index: 10;
+}
+.iphone-screen {
+  background: #0a0b14; border-radius: 32px; overflow: hidden;
+  position: relative;
+}
+.iphone-status-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 24px 6px; font-size: 0.65rem; font-weight: 700; color: #fff;
+}
+.iphone-status-bar .time { font-size: 0.72rem; }
+.iphone-status-bar .icons { display: flex; gap: 4px; font-size: 0.6rem; }
+.iphone-app-header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px 6px; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.iphone-app-header .app-icon-sm { width: 24px; height: 24px; border-radius: 6px; }
+.iphone-app-header .app-title { font-size: 0.72rem; font-weight: 700; color: #fff; }
+.iphone-app-header .app-domain { font-size: 0.58rem; color: #8e8e93; margin-left: auto; }
+.iphone-trial-banner {
+  background: linear-gradient(135deg, #6b21a8, #7c3aed);
+  padding: 8px 12px; text-align: center;
+  font-size: 0.58rem; color: #fff; font-weight: 600;
+}
+.iphone-tabs {
+  display: flex; justify-content: center; gap: 20px;
+  padding: 8px 0 6px; border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.6rem; color: #8e8e93;
+}
+.iphone-tabs .active-tab { color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 4px; }
+.iphone-search {
+  margin: 8px 12px; padding: 7px 12px;
+  background: rgba(255,255,255,0.06); border-radius: 8px;
+  font-size: 0.6rem; color: #8e8e93;
+}
+.iphone-categories {
+  display: flex; gap: 6px; padding: 6px 12px; overflow: hidden;
+}
+.iphone-cat-pill {
+  padding: 4px 10px; border-radius: 12px; font-size: 0.52rem; font-weight: 600;
+  white-space: nowrap; color: #fff;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
+}
+.iphone-cat-pill.active { background: var(--accent); color: #0a0b14; border-color: var(--accent); }
+.iphone-template-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  padding: 8px 12px 16px;
+}
+.iphone-tpl-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; padding: 10px;
+}
+.iphone-tpl-card .tpl-ai { font-size: 0.48rem; color: var(--accent); font-weight: 700; letter-spacing: 0.05em; margin-bottom: 3px; }
+.iphone-tpl-card .tpl-name { font-size: 0.62rem; font-weight: 700; color: #fff; margin-bottom: 3px; line-height: 1.3; }
+.iphone-tpl-card .tpl-desc { font-size: 0.48rem; color: #8e8e93; line-height: 1.3; margin-bottom: 6px; }
+.iphone-tpl-card .tpl-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 4px;
+  font-size: 0.45rem; font-weight: 800; text-transform: uppercase;
+}
+.tpl-badge.pro { background: var(--amber); color: #0a0b14; }
+.tpl-badge.free { background: var(--green); color: #0a0b14; }
+.iphone-home-bar {
+  width: 40%; height: 4px; background: #fff; border-radius: 2px;
+  margin: 6px auto 8px; opacity: 0.3;
+}
 .showcase-card .mac-preview { text-align: center; margin-top: 24px; }
 .showcase-card .mac-preview img {
   width: 100%; border-radius: 10px;
@@ -662,7 +738,85 @@ a:hover { opacity: 0.85; }
           📱 Coming Soon to the App Store
         </div>
         <div class="phone-preview">
-          <img src="assets/img/phone-features.png" alt="Prompt Studio on iPhone" loading="lazy">
+          <div class="iphone-frame">
+            <div class="iphone-notch"></div>
+            <div class="iphone-screen">
+              <div class="iphone-status-bar">
+                <span class="time">9:41</span>
+                <span class="icons">&#9679;&#9679;&#9679; &#128267;</span>
+              </div>
+              <div class="iphone-app-header">
+                <img src="assets/img/icon-128.png" alt="" class="app-icon-sm">
+                <span class="app-title">Prompt Studio</span>
+                <span class="app-domain">EN</span>
+              </div>
+              <div class="iphone-trial-banner">25 featured templates free for 3 days. Tap Send to start your trial.</div>
+              <div class="iphone-tabs">
+                <span class="active-tab">&#128218; Templates</span>
+                <span>&#9432; About</span>
+                <span>&#128337; History</span>
+              </div>
+              <div class="iphone-search">&#128269; Search templates...</div>
+              <div class="iphone-categories">
+                <span class="iphone-cat-pill active">All</span>
+                <span class="iphone-cat-pill">Money</span>
+                <span class="iphone-cat-pill">Featured</span>
+                <span class="iphone-cat-pill">Business</span>
+                <span class="iphone-cat-pill">Career</span>
+              </div>
+              <div class="iphone-template-grid">
+                <div class="iphone-tpl-card">
+                  <div class="tpl-ai">AI</div>
+                  <div class="tpl-name">Side Hustle Finder</div>
+                  <div class="tpl-desc">Discover personalized side income ideas based on your skills</div>
+                  <span class="tpl-badge pro">PRO</span>
+                </div>
+                <div class="iphone-tpl-card">
+                  <div class="tpl-ai">AI</div>
+                  <div class="tpl-name">Passive Income Blueprint</div>
+                  <div class="tpl-desc">Build a passive income strategy tailored to your situation</div>
+                  <span class="tpl-badge pro">PRO</span>
+                </div>
+                <div class="iphone-tpl-card">
+                  <div class="tpl-ai">AI</div>
+                  <div class="tpl-name">Freelance Rate Calculator</div>
+                  <div class="tpl-desc">Calculate your ideal freelance rate and pricing strategy</div>
+                  <span class="tpl-badge pro">PRO</span>
+                </div>
+                <div class="iphone-tpl-card">
+                  <div class="tpl-ai">AI</div>
+                  <div class="tpl-name">Savings Challenge Generator</div>
+                  <div class="tpl-desc">Create a custom money-saving challenge plan</div>
+                  <span class="tpl-badge pro">PRO</span>
+                </div>
+                <div class="iphone-tpl-card">
+                  <div class="tpl-ai">AI</div>
+                  <div class="tpl-name">Negotiate Any Bill</div>
+                  <div class="tpl-desc">Scripts to negotiate and lower your recurring bills</div>
+                  <span class="tpl-badge pro">PRO</span>
+                </div>
+                <div class="iphone-tpl-card">
+                  <div class="tpl-ai">AI</div>
+                  <div class="tpl-name">Etsy Shop Launcher</div>
+                  <div class="tpl-desc">Step-by-step plan to launch and grow an Etsy shop</div>
+                  <span class="tpl-badge pro">PRO</span>
+                </div>
+                <div class="iphone-tpl-card">
+                  <div class="tpl-ai">AI</div>
+                  <div class="tpl-name">YouTube Channel Planner</div>
+                  <div class="tpl-desc">Plan and launch a profitable YouTube channel</div>
+                  <span class="tpl-badge pro">PRO</span>
+                </div>
+                <div class="iphone-tpl-card">
+                  <div class="tpl-ai">AI</div>
+                  <div class="tpl-name">Rental Income Analyzer</div>
+                  <div class="tpl-desc">Analyze potential rental property returns</div>
+                  <span class="tpl-badge pro">PRO</span>
+                </div>
+              </div>
+              <div class="iphone-home-bar"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -842,20 +996,20 @@ a:hover { opacity: 0.85; }
             <label class="app-field-label">OUTPUT</label>
             <div class="app-field-input" id="fieldOutput"></div>
           </div>
-          <div class="demo-subheader" style="margin-top:20px; color:var(--green);">AI RESPONDS:</div>
-          <div class="demo-response-text" id="strongResponse"></div>
-          <!-- SEND TO AI BAR -->
+          <!-- SEND TO AI BAR (appears after fields, before response) -->
           <div class="send-to-ai-bar" id="sendBar" style="display:none">
             <div class="send-bar-label">&#10024; Send to AI</div>
             <div class="send-bar-pills">
-              <span class="ai-pill"><span class="ai-dot" style="background:#10b981"></span>ChatGPT</span>
-              <span class="ai-pill"><span class="ai-dot" style="background:#f5a623"></span>Claude</span>
-              <span class="ai-pill"><span class="ai-dot" style="background:#4285f4"></span>Gemini</span>
-              <span class="ai-pill"><span class="ai-dot" style="background:#f7d046"></span>Grok</span>
-              <span class="ai-pill"><span class="ai-dot" style="background:#f87171"></span>Copilot</span>
-              <span class="ai-pill"><span class="ai-dot" style="background:#8b5cf6"></span>Perplexity</span>
+              <span class="ai-pill" id="pillChatGPT"><span class="ai-dot" style="background:#10b981"></span>ChatGPT</span>
+              <span class="ai-pill" id="pillClaude"><span class="ai-dot" style="background:#f5a623"></span>Claude</span>
+              <span class="ai-pill" id="pillGemini"><span class="ai-dot" style="background:#4285f4"></span>Gemini</span>
+              <span class="ai-pill" id="pillGrok"><span class="ai-dot" style="background:#f7d046"></span>Grok</span>
+              <span class="ai-pill" id="pillCopilot"><span class="ai-dot" style="background:#f87171"></span>Copilot</span>
+              <span class="ai-pill" id="pillPerplexity"><span class="ai-dot" style="background:#8b5cf6"></span>Perplexity</span>
             </div>
           </div>
+          <div class="demo-subheader" id="aiRespondLabel" style="margin-top:20px; color:var(--green); display:none;">AI RESPONDS:</div>
+          <div class="demo-response-text" id="strongResponse"></div>
         </div>
       </div>
     </div>
@@ -1201,6 +1355,12 @@ function clearDemo() {
   document.getElementById('panelStrong').style.opacity = '0.4';
   // Remove typing highlights
   document.querySelectorAll('.app-field-input').forEach(el => el.classList.remove('typing'));
+  // Reset AI respond label
+  const aiLabel = document.getElementById('aiRespondLabel');
+  if (aiLabel) aiLabel.style.display = 'none';
+  // Reset ChatGPT pill highlight
+  const pill = document.getElementById('pillChatGPT');
+  if (pill) { pill.style.background = ''; pill.style.borderColor = ''; pill.style.boxShadow = ''; }
 }
 
 function typeText(elementId, text, speed, callback) {
@@ -1270,14 +1430,24 @@ async function runDemo() {
   await typeField('fieldConstraints', DEMO_DATA.strong.constraints, 18);
   await demoDelay(300);
   await typeField('fieldOutput', DEMO_DATA.strong.output, 18);
-  await demoDelay(600);
-
-  // AI response types out
-  await new Promise(resolve => typeText('strongResponse', DEMO_DATA.strong.response, RESPONSE_SPEED, resolve));
-  await demoDelay(400);
+  await demoDelay(500);
 
   /* ========== PHASE 3: Send to AI bar appears ========== */
   document.getElementById('sendBar').style.display = 'block';
+  await demoDelay(800);
+
+  // Highlight ChatGPT pill (user "picks" it)
+  const chatgptPill = document.getElementById('pillChatGPT');
+  chatgptPill.style.background = 'rgba(16,185,129,0.25)';
+  chatgptPill.style.borderColor = '#10b981';
+  chatgptPill.style.boxShadow = '0 0 12px rgba(16,185,129,0.3)';
+  await demoDelay(600);
+
+  /* ========== PHASE 4: AI response types out ========== */
+  document.getElementById('aiRespondLabel').style.display = 'block';
+  await demoDelay(300);
+  await new Promise(resolve => typeText('strongResponse', DEMO_DATA.strong.response, RESPONSE_SPEED, resolve));
+  await demoDelay(400);
 
   // Both panels bright
   document.getElementById('panelWeak').style.opacity = '1';
