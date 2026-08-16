@@ -3,666 +3,534 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Poly-Glot AI — Automatic Code Documentation for Every Language</title>
+<title>Poly-Glot AI — Prompt Studio for iOS &amp; macOS</title>
+<meta name="description" content="Build, save &amp; share AI prompts. 1,000+ templates for ChatGPT, Claude, Gemini, Grok &amp; more. Voice input, scan, import. Available on iPhone, iPad &amp; Mac.">
+<meta name="keywords" content="AI prompt builder, ChatGPT templates, Claude prompts, Gemini, Grok, Perplexity, Copilot, AI writing, prompt engineering, iOS app, macOS app">
+<meta property="og:title" content="Poly-Glot AI — Prompt Studio">
+<meta property="og:description" content="Build, save &amp; share AI prompts. 1,000+ templates. Available on iPhone, iPad &amp; Mac.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://poly-glot.ai">
+<meta property="og:image" content="https://poly-glot.ai/assets/img/feature-graphic.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="apple-itunes-app" content="app-id=6762054909">
+<link rel="icon" type="image/png" href="assets/img/icon-128.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* ===== RESET & TOKENS ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #0f1117;
-  --bg-alt: #1a1d27;
-  --bg-surface: #161b27;
-  --bg-surface2: #1e2433;
-  --bg-nav: #0d0e1a;
-  --text: #e2e8f0;
-  --text-muted: #8892a4;
-  --text-faint: #5a6478;
+  --bg: #0a0b14;
+  --bg-alt: #12142a;
+  --bg-surface: #141730;
+  --bg-surface2: #1a1e3a;
+  --bg-nav: #08091a;
+  --text: #e8ecf4;
+  --text-muted: #8892b0;
+  --text-faint: #525e78;
   --accent: #7dd3fc;
   --accent-rgb: 125,211,252;
   --purple: #a78bfa;
+  --purple-rgb: 167,139,250;
   --green: #10b981;
-  --red: #ef4444;
-  --amber: #f59e0b;
-  --divider: 1px solid rgba(125,211,252,0.1);
+  --green-rgb: 16,185,129;
+  --amber: #fbbf24;
+  --red: #f87171;
+  --gradient-primary: linear-gradient(135deg, #7dd3fc 0%, #a78bfa 50%, #c084fc 100%);
+  --gradient-hero: linear-gradient(160deg, #0a0b14 0%, #141730 40%, #1a1040 100%);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-xs: 6px;
+  --shadow-card: 0 4px 32px rgba(0,0,0,0.3), 0 0 1px rgba(125,211,252,0.1);
+  --shadow-glow: 0 0 60px rgba(125,211,252,0.08);
 }
 html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); font-size: 0.95rem; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-::-webkit-scrollbar { width: 5px; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: rgba(125,211,252,0.2); border-radius: 3px; }
-.container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
-.section { padding: 60px 0; }
-.section-divider { width: 100%; height: 1px; background: rgba(125,211,252,0.1); }
-.eyebrow {
-  display: inline-block;
-  background: rgba(125,211,252,0.08);
-  border: 1px solid rgba(125,211,252,0.2);
-  color: var(--accent);
-  font-size: 0.63rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 3px 10px;
-  border-radius: 4px;
-  margin-bottom: 14px;
-  font-family: 'Fira Code', monospace;
-}
-.section-h2 {
-  font-size: 1.85rem;
-  font-weight: 700;
-  color: var(--text);
-  border-left: 4px solid var(--accent);
-  padding-left: 14px;
-  margin-bottom: 8px;
-  line-height: 1.2;
-}
-.section-sub { font-size: 0.92rem; color: var(--text-faint); padding-left: 18px; margin-bottom: 36px; }
+img { max-width: 100%; height: auto; }
+a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+a:hover { opacity: 0.85; }
+.container { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
 
-/* ===== TOP NAV BAR ===== */
-.topbar {
-  background: var(--bg-nav);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  position: sticky;
-  top: 0;
-  z-index: 200;
+/* ===== NAV ===== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(8,9,26,0.85);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(125,211,252,0.08);
 }
-.topbar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 52px;
-  gap: 16px;
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px; max-width: 1140px; margin: 0 auto; padding: 0 28px;
 }
-.topbar-brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--text);
-  white-space: nowrap;
-  text-decoration: none;
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-brand img { width: 36px; height: 36px; border-radius: 8px; }
+.nav-brand span { font-family: 'Fira Code', monospace; font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-links a { color: var(--text-muted); font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); opacity: 1; }
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 18px; background: var(--gradient-primary);
+  color: #0a0b14; font-weight: 700; font-size: 0.82rem;
+  border-radius: 6px; border: none; cursor: pointer; text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
-.topbar-brand .parrot { font-size: 1rem; }
-.topbar-brand .slash-comment { color: var(--accent); opacity: 0.7; font-size: 0.78rem; margin: 0 2px; }
-.topbar-center {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.live-pill {
-  background: rgba(16,185,129,0.12);
-  border: 1px solid rgba(16,185,129,0.3);
-  color: var(--green);
-  font-size: 0.68rem;
-  font-family: 'Fira Code', monospace;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 20px;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-}
-.live-dot { display: inline-block; width: 6px; height: 6px; background: var(--green); border-radius: 50%; margin-right: 5px; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
-.topbar-right { display: flex; align-items: center; gap: 10px; }
-.user-chip {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(125,211,252,0.06);
-  border: 1px solid rgba(125,211,252,0.15);
-  border-radius: 4px;
-  padding: 4px 10px;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  cursor: pointer;
-}
-.user-chip .pro-dot { background: rgba(167,139,250,0.2); border: 1px solid rgba(167,139,250,0.4); color: var(--purple); font-size: 0.58rem; font-weight: 700; padding: 1px 6px; border-radius: 3px; font-family: 'Fira Code', monospace; letter-spacing: 0.06em; }
-.user-chip .chevron { color: var(--text-faint); font-size: 0.65rem; }
-.topbar-nav { display: flex; align-items: center; gap: 22px; list-style: none; }
-.topbar-nav a { color: var(--text-muted); text-decoration: none; font-size: 0.83rem; transition: color 0.15s; }
-.topbar-nav a:hover { color: var(--text); }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(125,211,252,0.3); opacity: 1; }
+.nav-mobile-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
 
 /* ===== HERO ===== */
-.hero { padding: 64px 0 56px; background: var(--bg); }
-.hero-inner { max-width: 720px; }
-.hero-version-pill {
-  display: inline-block;
-  background: rgba(125,211,252,0.06);
-  border: 1px solid rgba(125,211,252,0.18);
-  color: var(--accent);
-  font-size: 0.7rem;
-  padding: 3px 12px;
-  border-radius: 4px;
-  margin-bottom: 22px;
+.hero {
+  padding: 140px 0 80px;
+  background: var(--gradient-hero);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(167,139,250,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -100px; left: -100px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(125,211,252,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25);
+  padding: 6px 14px; border-radius: 30px; margin-bottom: 24px;
+  font-size: 0.75rem; font-weight: 600; color: var(--green);
   font-family: 'Fira Code', monospace;
 }
-.hero-h1 { font-size: 2.8rem; font-weight: 700; color: var(--text); line-height: 1.12; margin-bottom: 18px; letter-spacing: -0.02em; }
-.hero-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 560px; margin-bottom: 30px; }
-.btn-primary-grad {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 11px 24px;
-  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-  color: #0f1117;
-  font-weight: 700;
-  font-size: 0.92rem;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: opacity 0.15s;
-  font-family: 'Inter', sans-serif;
-  margin-bottom: 20px;
+.hero-badge .dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+.hero h1 {
+  font-size: 3.4rem; font-weight: 800; line-height: 1.08;
+  letter-spacing: -0.03em; margin-bottom: 20px;
 }
-.btn-primary-grad:hover { opacity: 0.88; }
-.hero-signup-box {
-  background: var(--bg-surface);
-  border: 1px solid rgba(125,211,252,0.12);
-  border-radius: 6px;
-  padding: 18px 20px;
-  max-width: 460px;
-  margin-bottom: 20px;
+.hero h1 .gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.hero-signup-label { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 10px; }
-.hero-signup-label strong { color: var(--accent); }
-.hero-signup-row { display: flex; gap: 8px; }
-.hero-email-input {
-  flex: 1;
-  background: var(--bg-alt);
-  border: 1px solid rgba(125,211,252,0.15);
-  border-radius: 4px;
-  padding: 8px 12px;
-  color: var(--text);
-  font-size: 0.85rem;
-  font-family: 'Inter', sans-serif;
-  outline: none;
-  transition: border-color 0.15s;
+.hero-sub { font-size: 1.15rem; color: var(--text-muted); line-height: 1.65; max-width: 480px; margin-bottom: 32px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; background: var(--gradient-primary);
+  color: #0a0b14; font-weight: 700; font-size: 0.95rem;
+  border-radius: var(--radius-sm); border: none; cursor: pointer;
+  text-decoration: none; transition: transform 0.15s, box-shadow 0.15s;
 }
-.hero-email-input:focus { border-color: rgba(125,211,252,0.4); }
-.hero-email-input::placeholder { color: var(--text-faint); }
-.btn-earlybird {
-  padding: 8px 16px;
-  background: var(--accent);
-  color: #0f1117;
-  font-weight: 700;
-  font-size: 0.82rem;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  font-family: 'Inter', sans-serif;
-  white-space: nowrap;
-  transition: opacity 0.15s;
-}
-.btn-earlybird:hover { opacity: 0.88; }
-.hero-signup-note { font-size: 0.72rem; color: var(--text-faint); margin-top: 8px; }
-.hero-signup-success {
-  display: none;
-  align-items: center;
-  gap: 8px;
-  color: var(--green);
-  font-size: 0.88rem;
-  font-weight: 500;
-  padding: 8px 0;
-}
-.trust-row { font-size: 0.78rem; color: var(--text-muted); display: flex; gap: 16px; flex-wrap: wrap; }
-.trust-row span { display: flex; align-items: center; gap: 4px; }
-.trust-check { color: var(--green); font-size: 0.72rem; }
-
-/* ===== TRUST BAR ===== */
-.trust-bar { background: var(--bg-nav); border-top: var(--divider); border-bottom: var(--divider); padding: 20px 0; }
-.trust-bar-inner { display: grid; grid-template-columns: repeat(3,1fr); }
-.trust-bar-item { display: flex; align-items: flex-start; gap: 12px; padding: 0 28px; border-right: 1px solid rgba(125,211,252,0.08); }
-.trust-bar-item:last-child { border-right: none; }
-.trust-bar-icon { font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
-.trust-bar-label { font-family: 'Fira Code', monospace; font-size: 0.76rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-.trust-bar-sub { font-size: 0.76rem; color: var(--text-muted); line-height: 1.5; }
-
-/* ===== WHY COMMENTS CALLOUT ===== */
-.why-callout { background: var(--bg-surface); border-left: 3px solid var(--purple); border-radius: 6px; padding: 24px; margin-bottom: 40px; }
-.why-callout-header { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.5; }
-.why-callout-header .ab { color: var(--accent); }
-.why-callout-sub { font-size: 0.84rem; color: var(--text-muted); margin-bottom: 18px; line-height: 1.6; }
-.why-code-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-.why-panel { border-radius: 4px; padding: 12px 14px; font-family: 'Fira Code', monospace; font-size: 0.73rem; line-height: 1.7; }
-.why-panel-bad { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15); }
-.why-panel-good { background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15); }
-.why-panel-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; display: block; }
-.why-panel-bad .why-panel-label { color: var(--red); }
-.why-panel-good .why-panel-label { color: var(--green); }
-.cm-bad { color: var(--text-faint); font-style: italic; display: block; }
-.cm-good { color: var(--green); font-style: italic; display: block; }
-.why-callout-footer { font-size: 0.76rem; color: var(--text-faint); padding-top: 12px; border-top: 1px solid rgba(125,211,252,0.06); line-height: 1.6; }
-
-/* ===== HOW IT WORKS ===== */
-.steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
-.step-card { background: var(--bg-surface); border: 1px solid rgba(125,211,252,0.08); border-left: 2px solid rgba(125,211,252,0.2); border-radius: 6px; padding: 18px 16px; transition: background 0.15s; }
-.step-card:hover { background: rgba(125,211,252,0.03); }
-.step-num { font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--accent); font-weight: 600; margin-bottom: 8px; display: block; }
-.step-title { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 5px; }
-.step-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
-
-/* ===== CODE PASTE DEMO ===== */
-.demo-section { background: var(--bg-alt); border-top: var(--divider); border-bottom: var(--divider); }
-.demo-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
-.demo-controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.demo-select {
-  background: var(--bg-surface);
-  border: 1px solid rgba(125,211,252,0.15);
-  border-radius: 4px;
-  padding: 6px 10px;
-  color: var(--text);
-  font-size: 0.78rem;
-  font-family: 'Fira Code', monospace;
-  outline: none;
-  cursor: pointer;
-  transition: border-color 0.15s;
-}
-.demo-select:focus { border-color: rgba(125,211,252,0.4); }
-.demo-select option { background: var(--bg-surface2); }
-.demo-key-row { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
-.demo-key-label { font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--text-faint); white-space: nowrap; }
-.key-input-wrap { position: relative; flex: 1; min-width: 200px; max-width: 340px; }
-.demo-key-input {
-  width: 100%;
-  background: var(--bg-surface);
-  border: 1px solid rgba(125,211,252,0.15);
-  border-radius: 4px;
-  padding: 7px 32px 7px 10px;
-  color: var(--text);
-  font-size: 0.78rem;
-  font-family: 'Fira Code', monospace;
-  outline: none;
-  transition: border-color 0.15s;
-}
-.demo-key-input:focus { border-color: rgba(125,211,252,0.4); }
-.demo-key-input::placeholder { color: var(--text-faint); }
-.key-eye { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-faint); cursor: pointer; font-size: 0.8rem; padding: 2px; }
-.key-eye:hover { color: var(--text-muted); }
-.btn-save-key { padding: 7px 14px; background: var(--bg-surface); border: 1px solid rgba(125,211,252,0.2); color: var(--accent); font-size: 0.75rem; font-family: 'Fira Code', monospace; border-radius: 4px; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
-.btn-save-key:hover { background: rgba(125,211,252,0.08); }
-.key-saved-note { font-size: 0.72rem; color: var(--green); font-family: 'Fira Code', monospace; display: none; align-items: center; gap: 4px; }
-.demo-panels { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 0; align-items: stretch; }
-.demo-panel { background: var(--bg-surface); border: 1px solid rgba(125,211,252,0.1); border-radius: 6px; overflow: hidden; }
-.demo-panel-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--bg-nav); border-bottom: 1px solid rgba(125,211,252,0.08); }
-.demo-panel-title { font-family: 'Fira Code', monospace; font-size: 0.68rem; color: var(--text-muted); font-weight: 600; letter-spacing: 0.05em; }
-.demo-panel-actions { display: flex; gap: 6px; }
-.demo-panel-btn { background: var(--bg-surface); border: 1px solid rgba(125,211,252,0.12); color: var(--text-faint); font-size: 0.68rem; padding: 3px 8px; border-radius: 3px; cursor: pointer; font-family: 'Fira Code', monospace; transition: color 0.15s, border-color 0.15s; }
-.demo-panel-btn:hover { color: var(--accent); border-color: rgba(125,211,252,0.3); }
-.sample-chips { display: flex; gap: 6px; flex-wrap: wrap; padding: 8px 14px; border-bottom: 1px solid rgba(125,211,252,0.06); }
-.sample-chip { background: rgba(125,211,252,0.06); border: 1px solid rgba(125,211,252,0.15); color: var(--accent); font-size: 0.66rem; font-family: 'Fira Code', monospace; padding: 2px 8px; border-radius: 3px; cursor: pointer; transition: background 0.15s; }
-.sample-chip:hover { background: rgba(125,211,252,0.12); }
-.demo-textarea {
-  width: 100%;
-  min-height: 220px;
-  background: transparent;
-  border: none;
-  padding: 14px 16px;
-  color: var(--text);
-  font-family: 'Fira Code', monospace;
-  font-size: 0.76rem;
-  line-height: 1.7;
-  resize: vertical;
-  outline: none;
-}
-.demo-textarea::placeholder { color: var(--text-faint); }
-.demo-output {
-  width: 100%;
-  min-height: 220px;
-  background: transparent;
-  border: none;
-  padding: 14px 16px;
-  color: var(--green);
-  font-family: 'Fira Code', monospace;
-  font-size: 0.76rem;
-  line-height: 1.7;
-  resize: none;
-  outline: none;
-  white-space: pre-wrap;
-}
-.demo-arrow-col { display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.4rem; opacity: 0.4; }
-.rag-score-bar { padding: 12px 14px; background: var(--bg-nav); border-top: 1px solid rgba(125,211,252,0.08); display: none; }
-.rag-score-label { font-family: 'Fira Code', monospace; font-size: 0.68rem; color: var(--text-faint); margin-bottom: 6px; display: flex; justify-content: space-between; }
-.rag-bar-track { height: 5px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
-.rag-bar-fill { height: 100%; background: linear-gradient(90deg, var(--green), var(--accent)); border-radius: 3px; width: 0%; transition: width 1s ease; }
-.demo-score-num { color: var(--green); font-weight: 700; }
-.demo-generate-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; }
-.btn-generate {
-  padding: 10px 28px;
-  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-  color: #0f1117;
-  font-weight: 700;
-  font-size: 0.9rem;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-family: 'Inter', sans-serif;
-  transition: opacity 0.15s;
-  display: flex; align-items: center; gap: 6px;
-}
-.btn-generate:hover { opacity: 0.88; }
-.btn-generate:disabled { opacity: 0.5; cursor: not-allowed; }
-.demo-status { font-size: 0.78rem; color: var(--text-faint); font-family: 'Fira Code', monospace; }
-
-/* ===== CLI DEMO ===== */
-.cli-demo-trigger { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-.btn-cli-demo {
-  padding: 9px 20px;
-  background: var(--bg-surface);
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(125,211,252,0.3); opacity: 1; }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; background: rgba(125,211,252,0.06);
   border: 1px solid rgba(125,211,252,0.2);
-  color: var(--accent);
-  font-size: 0.85rem;
-  font-weight: 600;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: 'Inter', sans-serif;
-  transition: background 0.15s;
-  display: flex; align-items: center; gap: 8px;
+  color: var(--accent); font-weight: 600; font-size: 0.95rem;
+  border-radius: var(--radius-sm); cursor: pointer;
+  text-decoration: none; transition: background 0.2s, border-color 0.2s;
 }
-.btn-cli-demo:hover { background: rgba(125,211,252,0.06); }
-.terminal-card { background: #0d1117; border-radius: 6px; border: 1px solid rgba(125,211,252,0.1); overflow: hidden; margin-bottom: 20px; }
-.terminal-bar { background: #161b27; padding: 10px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(125,211,252,0.08); }
-.terminal-title { font-size: 0.7rem; color: var(--text-faint); font-family: 'Fira Code', monospace; margin-left: 8px; }
-.terminal-body { padding: 18px 22px; font-family: 'Fira Code', monospace; font-size: 0.78rem; line-height: 1.9; color: var(--text-muted); min-height: 120px; }
-.t-prompt { color: var(--accent); }
-.t-cmd { color: var(--text); }
-.t-out { color: var(--text-muted); }
-.t-ok { color: var(--green); }
-.t-cmt { color: var(--text-faint); }
-.cli-demo-wrap { display: none; }
-.cli-demo-wrap.visible { display: block; }
-.cli-actions { display: flex; gap: 8px; margin-top: 12px; }
-.btn-cli-action { padding: 6px 14px; background: var(--bg-surface); border: 1px solid rgba(125,211,252,0.15); color: var(--text-muted); font-size: 0.78rem; border-radius: 4px; cursor: pointer; font-family: 'Inter', sans-serif; transition: color 0.15s; }
-.btn-cli-action:hover { color: var(--accent); }
+.btn-secondary:hover { background: rgba(125,211,252,0.12); border-color: rgba(125,211,252,0.35); opacity: 1; }
+.btn-coming-soon {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; background: rgba(251,191,36,0.08);
+  border: 1px solid rgba(251,191,36,0.25);
+  color: var(--amber); font-weight: 600; font-size: 0.95rem;
+  border-radius: var(--radius-sm); cursor: default;
+  text-decoration: none;
+}
+.trust-row { display: flex; gap: 24px; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--text-muted); }
+.trust-item .check { color: var(--green); font-weight: 700; }
+.hero-visual { position: relative; }
+.hero-screenshot {
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid rgba(125,211,252,0.12);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+.hero-screenshot img { display: block; width: 100%; border-radius: 16px; }
+.hero-phone {
+  position: absolute; bottom: -30px; right: -40px;
+  width: 160px; border-radius: 20px;
+  border: 2px solid rgba(167,139,250,0.3);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  transform: rotate(3deg);
+}
 
-/* CLI FLAGS ACCORDION */
-.cli-flags-accordion { background: var(--bg-surface); border: 1px solid rgba(125,211,252,0.1); border-radius: 6px; overflow: hidden; margin-top: 20px; }
-.cli-flags-toggle { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; cursor: pointer; user-select: none; }
-.cli-flags-toggle-label { font-size: 0.85rem; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 8px; }
-.cli-flags-toggle-arrow { color: var(--accent); font-size: 0.9rem; transition: transform 0.2s; }
-.cli-flags-toggle-arrow.open { transform: rotate(90deg); }
-.cli-flags-body { display: none; padding: 0 18px 16px; border-top: 1px solid rgba(125,211,252,0.06); }
-.cli-flags-body.open { display: block; }
-.flag-chips { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 14px; }
-.flag-chip { background: var(--bg-alt); border: 1px solid rgba(125,211,252,0.15); color: var(--accent); font-family: 'Fira Code', monospace; font-size: 0.75rem; padding: 4px 12px; border-radius: 4px; }
-.flag-chip-desc { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+/* ===== PLATFORM PILLS ===== */
+.platforms {
+  padding: 40px 0 60px;
+  background: var(--bg);
+  border-top: 1px solid rgba(125,211,252,0.06);
+}
+.platforms-inner { text-align: center; }
+.platforms-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-faint); margin-bottom: 20px; font-family: 'Fira Code', monospace; }
+.platform-pills { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.platform-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 22px; background: var(--bg-surface);
+  border: 1px solid rgba(125,211,252,0.1); border-radius: 50px;
+  font-size: 0.88rem; color: var(--text-muted); font-weight: 500;
+  transition: border-color 0.2s, color 0.2s;
+}
+.platform-pill:hover { border-color: rgba(125,211,252,0.3); color: var(--text); }
+.platform-pill .emoji { font-size: 1.1rem; }
+.platform-pill .live-dot { display: inline-block; width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
 
-/* ===== RAG & GEO ===== */
-.rag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.rag-card { background: var(--bg-surface); border: 1px solid rgba(125,211,252,0.08); border-left: 2px solid rgba(125,211,252,0.2); border-radius: 6px; padding: 18px 16px; }
-.rag-card-title { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-.rag-card-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
-.rag-bottom-bar { background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); border-radius: 6px; padding: 12px 18px; margin-top: 28px; font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
+/* ===== SECTION SHARED ===== */
+.section { padding: 80px 0; }
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.2);
+  color: var(--purple); font-size: 0.68rem; text-transform: uppercase;
+  letter-spacing: 0.12em; padding: 5px 14px; border-radius: 4px;
+  margin-bottom: 16px; font-family: 'Fira Code', monospace;
+}
+.section-title {
+  font-size: 2.4rem; font-weight: 800; color: var(--text);
+  line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 12px;
+}
+.section-sub { font-size: 1rem; color: var(--text-faint); max-width: 600px; margin-bottom: 48px; line-height: 1.7; }
+.section-divider { width: 100%; height: 1px; background: rgba(125,211,252,0.06); }
 
-/* ===== LEGACY CODEBASE ===== */
-.legacy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.legacy-card { background: var(--bg-surface); border: 1px solid rgba(125,211,252,0.08); border-left: 2px solid rgba(125,211,252,0.15); border-radius: 6px; padding: 18px 16px; transition: background 0.15s; }
-.legacy-card:hover { background: rgba(125,211,252,0.02); }
-.legacy-card-title { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 5px; }
-.legacy-card-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
-.pro-tip-callout { background: rgba(245,158,11,0.06); border-left: 3px solid var(--amber); border-radius: 6px; padding: 16px 20px; margin-top: 28px; font-size: 0.84rem; color: var(--text-muted); line-height: 1.7; }
-.pro-tip-callout strong { color: var(--text); }
+/* ===== APP SHOWCASE (iOS + macOS) ===== */
+.showcase { background: var(--bg-alt); }
+.showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.showcase-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(125,211,252,0.08);
+  border-radius: var(--radius); padding: 36px; overflow: hidden;
+  transition: border-color 0.3s, transform 0.2s;
+}
+.showcase-card:hover { border-color: rgba(125,211,252,0.2); transform: translateY(-4px); }
+.showcase-card .platform-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--accent); font-family: 'Fira Code', monospace;
+  margin-bottom: 16px;
+}
+.showcase-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
+.showcase-card p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 20px; line-height: 1.6; }
+.showcase-card .badge-row { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+.showcase-card .badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 10px; background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.2);
+  border-radius: 4px; font-size: 0.72rem; color: var(--green);
+  font-family: 'Fira Code', monospace;
+}
+.showcase-card .store-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; background: var(--bg-surface2);
+  border: 1px solid rgba(125,211,252,0.15); border-radius: var(--radius-sm);
+  color: var(--text); font-weight: 600; font-size: 0.9rem;
+  text-decoration: none; transition: background 0.2s, border-color 0.2s;
+}
+.showcase-card .store-btn:hover { background: rgba(125,211,252,0.08); border-color: rgba(125,211,252,0.3); opacity: 1; }
+.showcase-card .coming-soon-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; background: rgba(251,191,36,0.06);
+  border: 1px solid rgba(251,191,36,0.2); border-radius: var(--radius-sm);
+  color: var(--amber); font-weight: 600; font-size: 0.9rem;
+  cursor: default;
+}
+.showcase-card .phone-preview { text-align: center; margin-top: 24px; }
+.showcase-card .phone-preview img {
+  max-height: 380px; border-radius: 16px;
+  border: 1px solid rgba(125,211,252,0.1);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+.showcase-card .mac-preview { text-align: center; margin-top: 24px; }
+.showcase-card .mac-preview img {
+  width: 100%; border-radius: 10px;
+  border: 1px solid rgba(125,211,252,0.1);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+
+/* ===== INPUT METHODS ===== */
+.input-methods { background: var(--bg); }
+.input-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.input-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(125,211,252,0.08);
+  border-radius: var(--radius); padding: 28px 20px;
+  text-align: center; transition: border-color 0.3s, transform 0.2s;
+}
+.input-card:hover { border-color: rgba(167,139,250,0.25); transform: translateY(-3px); }
+.input-card .input-icon { font-size: 2.2rem; margin-bottom: 14px; display: block; }
+.input-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.input-card p { color: var(--text-muted); font-size: 0.82rem; line-height: 1.5; }
 
 /* ===== FEATURES ===== */
-.features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-.feature-item { display: flex; gap: 10px; padding: 13px 14px; border-bottom: 1px solid rgba(125,211,252,0.06); border-right: 1px solid rgba(125,211,252,0.06); transition: background 0.15s; }
-.feature-item:nth-child(even) { border-right: none; }
-.feature-item:nth-last-child(-n+2) { border-bottom: none; }
-.feature-item:hover { background: rgba(125,211,252,0.02); }
-.feature-arrow { color: var(--accent); font-size: 0.82rem; margin-top: 2px; flex-shrink: 0; font-weight: 700; }
-.feature-title { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-.feature-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feature-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(125,211,252,0.08);
+  border-radius: var(--radius); padding: 28px;
+  transition: border-color 0.3s, transform 0.2s;
+}
+.feature-card:hover { border-color: rgba(167,139,250,0.25); transform: translateY(-3px); }
+.feature-card .icon-wrap {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin-bottom: 18px;
+}
+.feature-card .icon-wrap.blue { background: rgba(125,211,252,0.1); }
+.feature-card .icon-wrap.purple { background: rgba(167,139,250,0.1); }
+.feature-card .icon-wrap.green { background: rgba(16,185,129,0.1); }
+.feature-card .icon-wrap.amber { background: rgba(251,191,36,0.1); }
+.feature-card .icon-wrap.red { background: rgba(248,113,113,0.1); }
+.feature-card .icon-wrap.teal { background: rgba(45,212,191,0.1); }
+.feature-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+.feature-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; }
 
-/* ===== ASSISTANT ===== */
-.assistant-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: start; }
-.assistant-list { list-style: none; }
-.assistant-list-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid rgba(125,211,252,0.06); }
-.assistant-list-item:last-child { border-bottom: none; }
-.a-arrow { color: var(--accent); font-size: 0.82rem; margin-top: 2px; flex-shrink: 0; font-weight: 700; }
-.a-title { font-size: 0.86rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-.a-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
-.chat-mockup { background: #0d1117; border: 1px solid rgba(125,211,252,0.1); border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 10px; font-size: 0.76rem; }
-.chat-header { display: flex; align-items: center; gap: 8px; padding-bottom: 10px; border-bottom: 1px solid rgba(125,211,252,0.08); }
-.chat-header-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; }
-.chat-header-title { font-family: 'Fira Code', monospace; font-size: 0.68rem; color: var(--text-faint); }
-.chat-bubble-user { background: rgba(125,211,252,0.08); border-radius: 8px 8px 2px 8px; padding: 9px 13px; max-width: 86%; align-self: flex-end; color: var(--text); line-height: 1.55; }
-.chat-bubble-assistant { background: var(--bg-surface2); border-left: 2px solid var(--accent); border-radius: 0 8px 8px 2px; padding: 9px 13px; max-width: 92%; align-self: flex-start; color: var(--text-muted); line-height: 1.6; }
-.chat-code { font-family: 'Fira Code', monospace; font-size: 0.68rem; background: rgba(0,0,0,0.35); border-radius: 3px; padding: 9px 11px; margin-top: 7px; display: block; color: var(--green); line-height: 1.7; white-space: pre; }
-.chat-issue { color: var(--red); font-weight: 600; }
-.chat-fix { font-family: 'Fira Code', monospace; font-size: 0.68rem; background: rgba(0,0,0,0.3); padding: 1px 5px; border-radius: 3px; color: var(--accent); }
+/* ===== AI MODELS ===== */
+.models { background: var(--bg-alt); }
+.model-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.model-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(125,211,252,0.06);
+  border-radius: var(--radius-sm); padding: 20px;
+  text-align: center; transition: border-color 0.2s, transform 0.2s;
+}
+.model-card:hover { border-color: rgba(125,211,252,0.2); transform: translateY(-2px); }
+.model-card .model-emoji { font-size: 2rem; margin-bottom: 10px; display: block; }
+.model-card .model-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+.model-card .model-desc { font-size: 0.78rem; color: var(--text-faint); }
 
-/* ===== VSCODE ===== */
-.vscode-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: start; }
-.vscode-list { list-style: none; }
-.vscode-list-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid rgba(125,211,252,0.06); }
-.vscode-list-item:last-child { border-bottom: none; }
-.kbd { background: var(--bg-surface2); border: 1px solid rgba(125,211,252,0.2); color: var(--accent); font-family: 'Fira Code', monospace; font-size: 0.68rem; padding: 2px 7px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
-.vscode-item-text { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
-.vscode-item-text strong { color: var(--text); font-weight: 600; }
-.vscode-editor { background: #1e1e1e; border-radius: 6px; border: 1px solid rgba(125,211,252,0.1); overflow: hidden; font-family: 'Fira Code', monospace; font-size: 0.7rem; box-shadow: 0 10px 36px rgba(0,0,0,0.45); }
-.vscode-title-bar { background: #2d2d2d; padding: 7px 12px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #1a1a1a; }
-.vscode-tab { font-size: 0.7rem; color: #ccc; background: #1e1e1e; padding: 3px 13px; border-top: 1px solid #7dd3fc; margin-left: 8px; }
-.vscode-body { display: flex; }
-.vscode-gutter { padding: 12px 8px; color: #5a6478; text-align: right; background: #1e1e1e; user-select: none; border-right: 1px solid #2d2d2d; line-height: 1.8; font-size: 0.68rem; }
-.vscode-code-area { padding: 12px 14px; line-height: 1.8; flex: 1; }
-.inline-suggest { background: rgba(125,211,252,0.08); border-left: 2px solid var(--accent); padding: 1px 7px; color: var(--green); font-style: italic; display: block; margin: 1px 0; }
-.code-line { display: block; }
-.kw { color: #7dd3fc; }
-.fn { color: #c4b5fd; }
-.str { color: #86efac; }
-.cm { color: #5a6478; font-style: italic; }
-.cm-added { color: var(--green); font-style: italic; }
-.num { color: #fca5a5; }
-.param { color: #fde68a; }
-
-/* ===== COPILOT ===== */
-.copilot-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 24px; }
+/* ===== INTERACTIVE DEMO (Pure JS Typewriter) ===== */
+.demo-section { background: var(--bg); }
+.demo-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 960px; margin: 0 auto; }
+.demo-panel {
+  background: var(--bg-surface);
+  border: 1px solid rgba(125,211,252,0.08);
+  border-radius: var(--radius); overflow: hidden;
+  transition: border-color 0.3s;
+}
+.demo-panel.weak { border-color: rgba(248,113,113,0.2); }
+.demo-panel.strong { border-color: rgba(16,185,129,0.2); }
+.demo-panel-header {
+  padding: 14px 20px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  display: flex; align-items: center; gap: 8px;
+}
+.demo-panel.weak .demo-panel-header { background: rgba(248,113,113,0.06); color: var(--red); border-bottom: 1px solid rgba(248,113,113,0.12); }
+.demo-panel.strong .demo-panel-header { background: rgba(16,185,129,0.06); color: var(--green); border-bottom: 1px solid rgba(16,185,129,0.12); }
+.demo-panel-body { padding: 20px; min-height: 260px; }
+.demo-prompt-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.65rem; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--text-faint);
+  margin-bottom: 6px;
+}
+.demo-prompt-text {
+  font-size: 0.95rem; color: var(--text);
+  margin-bottom: 16px; min-height: 24px;
+  border-left: 2px solid rgba(125,211,252,0.15);
+  padding-left: 12px;
+}
+.demo-field {
+  margin-bottom: 10px;
+}
+.demo-field-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.6rem; text-transform: uppercase;
+  letter-spacing: 0.12em; margin-bottom: 3px;
+}
+.demo-panel.strong .demo-field-label { color: var(--green); }
+.demo-field-value {
+  font-size: 0.85rem; color: var(--text-muted);
+  background: rgba(125,211,252,0.03);
+  border: 1px solid rgba(125,211,252,0.06);
+  border-radius: var(--radius-xs);
+  padding: 8px 12px; min-height: 20px;
+}
+.demo-response-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.65rem; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--text-faint);
+  margin-top: 16px; margin-bottom: 6px;
+  padding-top: 14px; border-top: 1px solid rgba(125,211,252,0.06);
+}
+.demo-response-text {
+  font-size: 0.88rem; color: var(--text-muted);
+  line-height: 1.6; min-height: 40px;
+}
+.demo-cursor {
+  display: inline-block; width: 2px; height: 1em;
+  background: var(--accent); margin-left: 2px;
+  animation: blink 0.8s step-end infinite;
+  vertical-align: text-bottom;
+}
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+.demo-panel { transition: opacity 0.5s ease; }
+.demo-controls { text-align: center; margin-top: 24px; }
+.demo-replay-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 24px; background: rgba(167,139,250,0.08);
+  border: 1px solid rgba(167,139,250,0.2);
+  border-radius: var(--radius-sm); color: var(--purple);
+  font-weight: 600; font-size: 0.85rem; cursor: pointer;
+  font-family: 'Fira Code', monospace;
+  transition: background 0.2s, border-color 0.2s;
+}
+.demo-replay-btn:hover { background: rgba(167,139,250,0.15); border-color: rgba(167,139,250,0.35); }
 
 /* ===== PRICING ===== */
-.pricing-top-banner { background: rgba(125,211,252,0.05); border: 1px solid rgba(125,211,252,0.15); border-radius: 6px; padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.pricing-banner-text { font-size: 0.86rem; color: var(--text-muted); line-height: 1.5; }
-.pricing-banner-text strong { color: var(--text); }
-.pricing-toggle { display: flex; align-items: center; border: 1px solid rgba(125,211,252,0.15); border-radius: 4px; overflow: hidden; margin-bottom: 22px; width: fit-content; }
-.pricing-toggle-btn { padding: 6px 18px; font-size: 0.8rem; font-weight: 600; cursor: pointer; border: none; font-family: 'Inter', sans-serif; transition: background 0.15s, color 0.15s; }
-.pricing-toggle-btn.active { background: var(--accent); color: #0f1117; }
-.pricing-toggle-btn:not(.active) { background: var(--bg-surface); color: var(--text-muted); }
-.pricing-toggle-btn:not(.active):hover { color: var(--text); }
-.pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-bottom: 16px; }
-.pricing-card { background: var(--bg-surface); border: 1px solid rgba(125,211,252,0.1); border-radius: 8px; padding: 26px 22px; transition: background 0.15s; }
-.pricing-card:hover { background: rgba(125,211,252,0.02); }
-.pricing-card.featured { border-color: var(--accent); }
-.pricing-eyebrow { font-size: 0.58rem; font-family: 'Fira Code', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 7px; }
-.pricing-tier { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
-.tier-name { font-size: 0.85rem; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; }
-.pro-badge { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.3); color: var(--purple); font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 7px; border-radius: 3px; font-family: 'Fira Code', monospace; }
-.pricing-price { font-size: 2rem; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 4px; }
-.pricing-price span { font-size: 0.88rem; color: var(--text-faint); font-weight: 400; }
-.pricing-desc { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 18px; }
-.pricing-divider { height: 1px; background: rgba(125,211,252,0.08); margin-bottom: 14px; }
-.pricing-features { list-style: none; }
-.pricing-features li { display: flex; align-items: flex-start; gap: 7px; font-size: 0.8rem; color: var(--text-muted); padding: 4px 0; }
-.pricing-features li .ck { color: var(--green); font-size: 0.76rem; flex-shrink: 0; margin-top: 2px; }
-.pricing-features li .x { color: var(--text-faint); font-size: 0.76rem; flex-shrink: 0; margin-top: 2px; }
-.pricing-note { font-size: 0.72rem; color: var(--text-faint); margin-top: 7px; }
-.pricing-cta { margin-top: 18px; width: 100%; padding: 8px; font-size: 0.84rem; font-weight: 600; border-radius: 4px; cursor: pointer; font-family: 'Inter', sans-serif; transition: opacity 0.15s, background 0.15s; }
-.cta-outline { background: transparent; border: 1px solid rgba(125,211,252,0.25); color: var(--text-muted); }
-.cta-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(125,211,252,0.04); }
-.cta-accent { background: var(--accent); border: none; color: #0f1117; }
-.cta-accent:hover { opacity: 0.88; }
-.pricing-seats-note { font-size: 0.8rem; color: var(--text-faint); }
-.pricing-seats-note a { color: var(--accent); text-decoration: none; }
-.pricing-seats-note a:hover { text-decoration: underline; }
+.pricing { background: var(--bg-alt); }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+.pricing-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(125,211,252,0.08);
+  border-radius: var(--radius); padding: 32px; text-align: center;
+  transition: border-color 0.3s, transform 0.2s;
+}
+.pricing-card.featured { border-color: rgba(167,139,250,0.4); position: relative; }
+.pricing-card.featured::before {
+  content: 'MOST POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--gradient-primary); color: #0a0b14; font-size: 0.65rem; font-weight: 700;
+  padding: 4px 14px; border-radius: 20px; letter-spacing: 0.08em;
+  font-family: 'Fira Code', monospace;
+}
+.pricing-card:hover { transform: translateY(-4px); }
+.pricing-tier { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); font-family: 'Fira Code', monospace; margin-bottom: 8px; }
+.pricing-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; }
+.pricing-price { font-size: 2.8rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.03em; }
+.pricing-price span { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
+.pricing-desc { font-size: 0.82rem; color: var(--text-faint); margin-bottom: 20px; }
+.pricing-divider { height: 1px; background: rgba(125,211,252,0.08); margin-bottom: 20px; }
+.pricing-features { list-style: none; text-align: left; margin-bottom: 24px; }
+.pricing-features li { padding: 6px 0; font-size: 0.88rem; color: var(--text-muted); display: flex; align-items: start; gap: 8px; }
+.pricing-features .ck { color: var(--green); font-weight: 700; flex-shrink: 0; }
+.pricing-cta {
+  display: block; width: 100%; padding: 12px; border-radius: var(--radius-sm);
+  font-weight: 700; font-size: 0.9rem; border: none; cursor: pointer;
+  text-decoration: none; text-align: center; transition: transform 0.15s, opacity 0.15s;
+}
+.pricing-cta:hover { transform: translateY(-1px); }
+.cta-accent { background: var(--gradient-primary); color: #0a0b14; }
+.cta-outline { background: transparent; border: 1px solid rgba(125,211,252,0.2); color: var(--accent); }
+.cta-outline:hover { background: rgba(125,211,252,0.06); opacity: 1; }
 
-/* ===== ENTERPRISE ===== */
-.enterprise-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
-.enterprise-pill { background: var(--bg-surface); border: 1px solid rgba(125,211,252,0.12); border-radius: 4px; padding: 6px 16px; font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
-.enterprise-form { max-width: 660px; display: flex; flex-direction: column; gap: 13px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
-.form-group { display: flex; flex-direction: column; gap: 5px; }
-.form-label { font-size: 0.7rem; font-family: 'Fira Code', monospace; color: var(--text-faint); letter-spacing: 0.04em; text-transform: uppercase; }
-.form-input, .form-select, .form-textarea { background: var(--bg-surface); border: 1px solid rgba(125,211,252,0.15); border-radius: 4px; padding: 8px 11px; color: var(--text); font-size: 0.86rem; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.15s; }
-.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: rgba(125,211,252,0.4); }
-.form-input::placeholder, .form-textarea::placeholder { color: var(--text-faint); }
-.form-select { appearance: none; -webkit-appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a6478'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 11px center; padding-right: 28px; }
-.form-select option { background: var(--bg-surface2); color: var(--text); }
-.form-textarea { resize: vertical; min-height: 76px; line-height: 1.6; }
-.form-promo { font-family: 'Fira Code', monospace; font-size: 0.8rem; }
-.btn-form-submit { width: 100%; padding: 10px; background: var(--accent); border: none; border-radius: 4px; color: #0f1117; font-weight: 700; font-size: 0.88rem; cursor: pointer; font-family: 'Inter', sans-serif; transition: opacity 0.15s; }
-.btn-form-submit:hover { opacity: 0.88; }
+/* ===== TEMPLATES ===== */
+.templates-preview { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 32px; }
+.template-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(125,211,252,0.06);
+  border-radius: var(--radius-sm); padding: 20px;
+  transition: border-color 0.2s; cursor: default;
+}
+.template-card:hover { border-color: rgba(167,139,250,0.2); }
+.template-card .cat { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--purple); font-family: 'Fira Code', monospace; margin-bottom: 6px; }
+.template-card h5 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
+.template-card p { font-size: 0.82rem; color: var(--text-faint); line-height: 1.5; }
 
 /* ===== FAQ ===== */
-.faq-list { max-width: 760px; }
-.faq-item { border-bottom: 1px solid rgba(125,211,252,0.06); }
-.faq-question { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--text); gap: 18px; user-select: none; transition: color 0.15s; }
-.faq-question:hover { color: var(--accent); }
-.faq-toggle { color: var(--accent); font-size: 1.1rem; font-weight: 400; flex-shrink: 0; width: 18px; text-align: center; line-height: 1; }
-.faq-answer { font-size: 0.86rem; color: var(--text-muted); line-height: 1.75; padding: 0 0 16px 12px; border-left: 2px solid rgba(125,211,252,0.12); display: none; }
-.faq-answer.open { display: block; }
+.faq-list { max-width: 700px; }
+.faq-item { border-bottom: 1px solid rgba(125,211,252,0.08); }
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 0; cursor: pointer; font-weight: 600; font-size: 1rem;
+  color: var(--text); transition: color 0.2s;
+}
+.faq-q:hover { color: var(--accent); }
+.faq-q .toggle { font-size: 1.3rem; color: var(--text-faint); transition: transform 0.3s; font-weight: 300; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s; padding: 0 0; }
+.faq-a.open { max-height: 300px; padding: 0 0 20px; }
+.faq-a p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; }
+
+/* ===== FINAL CTA ===== */
+.final-cta {
+  padding: 100px 0; text-align: center;
+  background: var(--gradient-hero); position: relative;
+}
+.final-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(167,139,250,0.06) 0%, transparent 70%);
+}
+.final-cta .container { position: relative; z-index: 1; }
+.final-cta h2 { font-size: 2.6rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+.final-cta p { font-size: 1.05rem; color: var(--text-muted); max-width: 500px; margin: 0 auto 36px; }
 
 /* ===== FOOTER ===== */
-.footer { background: var(--bg-nav); border-top: var(--divider); padding: 28px 0 22px; }
-.footer-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(125,211,252,0.06); }
-.footer-link-chip { background: var(--bg-surface); border: 1px solid rgba(125,211,252,0.12); color: var(--text-muted); font-size: 0.76rem; padding: 5px 13px; border-radius: 4px; text-decoration: none; transition: color 0.15s, border-color 0.15s; }
-.footer-link-chip:hover { color: var(--accent); border-color: rgba(125,211,252,0.3); }
-.footer-badges { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(125,211,252,0.06); }
-.badge-ph { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #ef4444; font-size: 0.7rem; font-family: 'Fira Code', monospace; padding: 5px 12px; border-radius: 4px; line-height: 1.4; text-align: center; }
-.badge-hot { background: var(--bg-surface); border: 1px solid rgba(125,211,252,0.1); color: var(--text-muted); font-size: 0.7rem; font-family: 'Fira Code', monospace; padding: 5px 12px; border-radius: 4px; line-height: 1.4; text-align: center; }
-.footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
-.footer-brand { font-size: 0.78rem; color: var(--text-faint); font-family: 'Fira Code', monospace; }
-.footer-links { display: flex; gap: 22px; list-style: none; }
-.footer-links a { font-size: 0.78rem; color: var(--text-faint); text-decoration: none; transition: color 0.15s; }
-.footer-links a:hover { color: var(--text-muted); }
-
-/* ===== DOTS ===== */
-.chrome-dots { display: flex; gap: 5px; }
-.dot { width: 10px; height: 10px; border-radius: 50%; }
-.dot-red { background: #ef4444; opacity: 0.7; }
-.dot-yellow { background: #f59e0b; opacity: 0.7; }
-.dot-green { background: #10b981; opacity: 0.7; }
-
-/* ===== FLOATING CHAT WIDGET ===== */
-.chat-widget-btn {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 52px;
-  height: 52px;
-  background: var(--purple);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  cursor: pointer;
-  z-index: 500;
-  box-shadow: 0 4px 20px rgba(167,139,250,0.4);
-  border: none;
-  transition: transform 0.2s, box-shadow 0.2s;
+.footer {
+  background: var(--bg-nav); border-top: 1px solid rgba(125,211,252,0.06);
+  padding: 48px 0 32px;
 }
-.chat-widget-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(167,139,250,0.55); }
-.chat-widget-window {
-  position: fixed;
-  bottom: 86px;
-  right: 24px;
-  width: 340px;
-  max-height: 480px;
-  background: #0d1117;
-  border: 1px solid rgba(167,139,250,0.25);
-  border-radius: 10px;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.6);
-  z-index: 499;
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-}
-.chat-widget-window.open { display: flex; }
-.chat-widget-header { background: rgba(167,139,250,0.1); border-bottom: 1px solid rgba(167,139,250,0.15); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
-.chat-widget-title { font-family: 'Fira Code', monospace; font-size: 0.76rem; color: var(--text); font-weight: 600; display: flex; align-items: center; gap: 7px; }
-.chat-widget-title-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; }
-.chat-widget-close { background: none; border: none; color: var(--text-faint); cursor: pointer; font-size: 1rem; line-height: 1; transition: color 0.15s; }
-.chat-widget-close:hover { color: var(--text-muted); }
-.chat-widget-messages { flex: 1; overflow-y: auto; padding: 14px 14px 8px; display: flex; flex-direction: column; gap: 10px; font-size: 0.78rem; }
-.chat-widget-messages::-webkit-scrollbar { width: 4px; }
-.chat-widget-messages::-webkit-scrollbar-track { background: transparent; }
-.chat-widget-messages::-webkit-scrollbar-thumb { background: rgba(167,139,250,0.2); border-radius: 2px; }
-.cw-bubble-bot { background: var(--bg-surface2); border-left: 2px solid var(--purple); border-radius: 0 8px 8px 2px; padding: 9px 12px; max-width: 90%; color: var(--text-muted); line-height: 1.6; }
-.cw-bubble-user { background: rgba(125,211,252,0.08); border-radius: 8px 8px 2px 8px; padding: 9px 12px; max-width: 86%; align-self: flex-end; color: var(--text); line-height: 1.55; }
-.chat-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-.chat-chip { background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.25); color: var(--purple); font-size: 0.7rem; padding: 3px 9px; border-radius: 12px; cursor: pointer; transition: background 0.15s; font-family: 'Fira Code', monospace; }
-.chat-chip:hover { background: rgba(167,139,250,0.2); }
-.chat-widget-input-row { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid rgba(167,139,250,0.12); }
-.chat-widget-input { flex: 1; background: var(--bg-surface); border: 1px solid rgba(167,139,250,0.2); border-radius: 4px; padding: 7px 10px; color: var(--text); font-size: 0.78rem; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.15s; }
-.chat-widget-input:focus { border-color: rgba(167,139,250,0.45); }
-.chat-widget-input::placeholder { color: var(--text-faint); }
-.chat-widget-send { padding: 7px 12px; background: var(--purple); border: none; border-radius: 4px; color: #fff; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: opacity 0.15s; font-family: 'Inter', sans-serif; }
-.chat-widget-send:hover { opacity: 0.85; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.footer-brand img { width: 32px; height: 32px; border-radius: 8px; }
+.footer-brand span { font-family: 'Fira Code', monospace; font-weight: 700; font-size: 0.95rem; }
+.footer-tagline { font-size: 0.85rem; color: var(--text-faint); max-width: 280px; line-height: 1.6; }
+.footer h5 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-faint); margin-bottom: 14px; font-family: 'Fira Code', monospace; }
+.footer ul { list-style: none; }
+.footer ul li { margin-bottom: 8px; }
+.footer ul a { color: var(--text-muted); font-size: 0.88rem; }
+.footer ul a:hover { color: var(--text); }
+.footer-bottom { border-top: 1px solid rgba(125,211,252,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 0.78rem; color: var(--text-faint); }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a { font-size: 0.78rem; color: var(--text-faint); }
+.footer-legal a:hover { color: var(--text-muted); }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 960px) {
-  .topbar-center { display: none; }
-  .hero-h1 { font-size: 2.2rem; }
-  .steps-grid { grid-template-columns: 1fr 1fr; }
-  .trust-bar-inner { grid-template-columns: 1fr; gap: 14px; }
-  .trust-bar-item { border-right: none; border-bottom: 1px solid rgba(125,211,252,0.08); padding: 0 0 14px; }
-  .trust-bar-item:last-child { border-bottom: none; padding-bottom: 0; }
-  .why-code-panels { grid-template-columns: 1fr; }
-  .rag-grid { grid-template-columns: 1fr; }
-  .legacy-grid { grid-template-columns: 1fr; }
-  .features-grid { grid-template-columns: 1fr; }
-  .feature-item { border-right: none; }
-  .feature-item:nth-last-child(-n+2) { border-bottom: 1px solid rgba(125,211,252,0.06); }
-  .feature-item:last-child { border-bottom: none; }
-  .assistant-inner { grid-template-columns: 1fr; }
-  .vscode-inner { grid-template-columns: 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
-  .copilot-grid { grid-template-columns: 1fr 1fr; }
-  .demo-panels { grid-template-columns: 1fr; }
-  .demo-arrow-col { display: none; }
-  .form-row { grid-template-columns: 1fr; }
-  .chat-widget-window { width: 300px; }
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero h1 { font-size: 2.6rem; }
+  .hero-sub { margin: 0 auto 32px; }
+  .hero-actions { justify-content: center; }
+  .trust-row { justify-content: center; }
+  .hero-visual { max-width: 600px; margin: 0 auto; }
+  .hero-phone { display: none; }
+  .showcase-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr 1fr; }
+  .input-grid { grid-template-columns: repeat(3, 1fr); }
+  .demo-compare { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 380px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px) {
-  .container { padding: 0 18px; }
-  .hero-h1 { font-size: 1.9rem; }
-  .topbar-brand .slash-comment, .topbar-brand span:not(.parrot) { font-size: 0.78rem; }
-  .steps-grid { grid-template-columns: 1fr; }
-  .copilot-grid { grid-template-columns: 1fr; }
-  .topbar-nav { display: none; }
-  .footer-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .footer-links { display: none; }
-  .chat-widget-window { right: 10px; width: calc(100vw - 20px); }
-  .chat-widget-btn { right: 16px; bottom: 16px; }
+  .hero { padding: 120px 0 60px; }
+  .hero h1 { font-size: 2rem; }
+  .features-grid { grid-template-columns: 1fr; }
+  .input-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+  .nav-mobile-toggle { display: block; }
+  .section-title { font-size: 1.8rem; }
+  .footer-grid { grid-template-columns: 1fr; }
 }
 </style>
-  
-  
 </head>
 <body>
 
-<!-- ===== TOP NAV BAR ===== -->
-<nav class="topbar">
-  <div class="container">
-    <div class="topbar-inner">
-      <a href="https://github.com/marketplace/poly-glot-ai" class="topbar-brand">
-        <span class="parrot">🦜</span>
-        <span class="slash-comment">/* */</span>
-        <span>Poly-Glot AI · Code Comment Library</span>
-      </a>
-      <div class="topbar-center">
-        <div class="live-pill"><span class="live-dot"></span>Poly-Glot AI is Live! SUBSCRIPTIONS OPEN</div>
-      </div>
-      <div class="topbar-right">
-        <ul class="topbar-nav">
-          <li><a href="https://github.com/hmoses/poly-glot-github-app#-self-hosting">CLI</a></li>
-          <li><a href="https://marketplace.visualstudio.com/items?itemName=poly-glot-ai.poly-glot">VS Code</a></li>
-          <li><a href="#pg-pricing-section">Pricing</a></li>
-        </ul>
-        <div class="user-chip">
-          <span>hwmoses2@icloud...</span>
-          <span class="pro-dot">PRO</span>
-          <span class="chevron">▾</span>
-        </div>
-      </div>
-    </div>
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <img src="assets/img/icon-128.png" alt="Poly-Glot AI">
+      <span>Poly-Glot AI</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#apps">Apps</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#templates">Templates</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="https://apps.apple.com/us/app/poly-glot-ai-prompt-studio/id6762222589?mt=12" class="nav-cta">
+       Download for Mac
+    </a>
+    <button class="nav-mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show-mobile')" aria-label="Menu">&#9776;</button>
   </div>
 </nav>
 
@@ -670,29 +538,43 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 <section class="hero">
   <div class="container">
     <div class="hero-inner">
-      <div class="hero-version-pill">v1.5.2 — Now with VS Code Extension</div>
-      <h1 class="hero-h1">Add documentation to any<br>codebase — in seconds.</h1>
-      <p class="hero-sub">12 languages. JSDoc, PyDoc, Javadoc, Doxygen and more. Bring your API key — your code never touches our servers.</p>
-      <button class="btn-primary-grad">Generate Comments →</button>
-
-      <div class="hero-signup-box">
-        <div class="hero-signup-label">🎁 Get <strong>3 months free</strong> on any paid plan — limited spots</div>
-        <div class="hero-signup-row">
-          <input class="hero-email-input" type="email" placeholder="you@example.com" id="heroEmail">
-          <button class="btn-earlybird" onclick="handleHeroSignup()">Get 3 Months Free</button>
+      <div class="hero-content">
+        <div class="hero-badge"><span class="dot"></span> Live on the Mac App Store</div>
+        <h1>Build better prompts.<br><span class="gradient-text">Get better answers.</span></h1>
+        <p class="hero-sub">Prompt Studio is the AI prompt builder for people who use ChatGPT, Claude, Gemini, Grok, and more every day. 1,000+ templates. 35+ languages for input, output, and UI localization. Type, paste, scan, import, or dictate. Works on iPhone, iPad, and Mac.</p>
+        <div class="hero-actions">
+          <a href="https://apps.apple.com/us/app/poly-glot-ai-prompt-studio/id6762222589?mt=12" class="btn-primary">
+            &#63743; Download for Mac
+          </a>
+          <span class="btn-coming-soon">
+            📱 iPhone &amp; iPad &mdash; Coming Soon
+          </span>
         </div>
-        <div class="hero-signup-note">Enter your email to unlock — no credit card required.</div>
-        <div class="hero-signup-success" id="heroSuccess">
-          🎉 Check your email! Your <strong style="color:var(--accent);font-family:'Fira Code',monospace">EARLYBIRD3</strong> code is on its way.
+        <div class="trust-row">
+          <span class="trust-item"><span class="check">&#10003;</span> 100% On-Device</span>
+          <span class="trust-item"><span class="check">&#10003;</span> No Data Collection</span>
+          <span class="trust-item"><span class="check">&#10003;</span> 3-Day Free Trial</span>
         </div>
       </div>
+      <div class="hero-visual">
+        <div class="hero-screenshot">
+          <img src="assets/img/mac-hero.jpg" alt="Prompt Studio on macOS">
+        </div>
+        <img src="assets/img/phone-hero.png" alt="Prompt Studio on iPhone" class="hero-phone">
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="trust-row">
-        <span><span class="trust-check">✓</span> Privacy-First</span>
-        <span style="color:var(--text-faint)">·</span>
-        <span><span class="trust-check">✓</span> 12 Languages</span>
-        <span style="color:var(--text-faint)">·</span>
-        <span><span class="trust-check">✓</span> Freemium — Start Free</span>
+<!-- ===== PLATFORMS ===== -->
+<section class="platforms">
+  <div class="container">
+    <div class="platforms-inner">
+      <div class="platforms-label">Available on Apple platforms</div>
+      <div class="platform-pills">
+        <div class="platform-pill"><span class="emoji">📱</span> iPhone <span class="live-dot"></span></div>
+        <div class="platform-pill"><span class="emoji">📱</span> iPad <span class="live-dot"></span></div>
+        <div class="platform-pill"><span class="emoji">💻</span> macOS <span class="live-dot"></span></div>
       </div>
     </div>
   </div>
@@ -700,271 +582,47 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 
 <div class="section-divider"></div>
 
-<!-- ===== TRUST BAR ===== -->
-<div class="trust-bar">
+<!-- ===== APP SHOWCASE ===== -->
+<section class="section showcase" id="apps">
   <div class="container">
-    <div class="trust-bar-inner">
-      <div class="trust-bar-item">
-        <div class="trust-bar-icon">🔒</div>
-        <div>
-          <div class="trust-bar-label">Your code stays local</div>
-          <div class="trust-bar-sub">Code never touches Poly-Glot servers — ever</div>
+    <div class="section-eyebrow">&#128242; Native Apps</div>
+    <h2 class="section-title">One prompt builder.<br>Every Apple device.</h2>
+    <p class="section-sub">Prompt Studio runs natively on iPhone, iPad, and Mac. Same templates, same power, wherever you work.</p>
+
+    <div class="showcase-grid">
+      <!-- macOS Card (LIVE) -->
+      <div class="showcase-card">
+        <div class="platform-tag">💻 macOS &mdash; v2.2</div>
+        <h3>Prompt Studio for Mac</h3>
+        <p>Full desktop power. Native macOS app with keyboard shortcuts, large template browser, and seamless copy-paste into Claude, ChatGPT, and more.</p>
+        <div class="badge-row">
+          <span class="badge">&#10003; Native macOS</span>
+          <span class="badge">&#10003; Keyboard Shortcuts</span>
+          <span class="badge">&#10003; Instant Copy</span>
+        </div>
+        <a href="https://apps.apple.com/us/app/poly-glot-ai-prompt-studio/id6762222589?mt=12" class="store-btn">
+          &#63743; Download on the Mac App Store
+        </a>
+        <div class="mac-preview">
+          <img src="assets/img/mac-features.jpg" alt="Prompt Studio on macOS" loading="lazy">
         </div>
       </div>
-      <div class="trust-bar-item">
-        <div class="trust-bar-icon">🔑</div>
-        <div>
-          <div class="trust-bar-label">Your API key, your calls</div>
-          <div class="trust-bar-sub">Direct browser → OpenAI/Anthropic. No middleman.</div>
+
+      <!-- iOS Card (COMING SOON) -->
+      <div class="showcase-card">
+        <div class="platform-tag">📱 iOS &amp; iPadOS &mdash; v1.5</div>
+        <h3>Prompt Studio for iPhone &amp; iPad</h3>
+        <p>Build prompts on the go. Voice input, 1,000+ templates organized by category, and one-tap copy to paste into any AI chat.</p>
+        <div class="badge-row">
+          <span class="badge">&#10003; Voice Input</span>
+          <span class="badge">&#10003; 1,000+ Templates</span>
+          <span class="badge">&#10003; On-Device</span>
         </div>
-      </div>
-      <div class="trust-bar-item">
-        <div class="trust-bar-icon">🧠</div>
-        <div>
-          <div class="trust-bar-label">Zero data retention</div>
-          <div class="trust-bar-sub">Nothing stored, nothing logged, nothing shared</div>
+        <div class="coming-soon-btn">
+          📱 Coming Soon to the App Store
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="section-divider"></div>
-
-<!-- ===== WHY COMMENTS CALLOUT ===== -->
-<section class="section">
-  <div class="container">
-    <div class="eyebrow">WHY IT MATTERS</div>
-    <h2 class="section-h2">Comments that actually help AI</h2>
-    <p class="section-sub">Most comments tell AI what code does. Poly-Glot writes comments that explain why — the gold signal for smarter AI.</p>
-
-    <div class="why-callout">
-      <div class="why-callout-header">
-        💬 Unlike other AI tools, Poly-Glot adds <span class="ab">WHY</span> comments — not just WHAT. That's what actually makes AI smarter.
-      </div>
-      <div class="why-callout-sub">
-        Copilot, ChatGPT, and Cursor tell you what your code does. Poly-Glot explains <em>why</em> it was written that way — the trade-offs, decisions, and intent behind every line.
-      </div>
-      <div class="why-code-panels">
-        <div class="why-panel why-panel-bad">
-          <span class="why-panel-label">❌ What comment (useless to AI)</span>
-          <span class="cm-bad">// Loop through users</span>
-          <span class="code-line"><span class="kw">for</span> (<span class="kw">const</span> <span class="param">u</span> <span class="kw">of</span> users) {<span class="cm">...</span>}</span>
-        </div>
-        <div class="why-panel why-panel-good">
-          <span class="why-panel-label">✅ Why comment (AI gold)</span>
-          <span class="cm-good">// Skip inactive users early —</span>
-          <span class="cm-good">// reduces downstream DB calls ~60%</span>
-          <span class="code-line"><span class="kw">for</span> (<span class="kw">const</span> <span class="param">u</span> <span class="kw">of</span> users) {<span class="cm">...</span>}</span>
-        </div>
-      </div>
-      <div class="why-callout-footer">
-        Why comments give AI coding assistants intent, trade-offs, and context — the exact signal needed for better autocomplete, smarter PR reviews, and accurate RAG retrieval.
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ===== HOW IT WORKS ===== -->
-<section class="section">
-  <div class="container">
-    <div class="eyebrow">HOW IT WORKS</div>
-    <h2 class="section-h2">Four steps to documented code</h2>
-    <p class="section-sub">Works with any codebase. No setup required beyond an API key.</p>
-
-    <div class="steps-grid">
-      <div class="step-card">
-        <span class="step-num">01</span>
-        <div class="step-title">Add API Key</div>
-        <div class="step-desc">Add your OpenAI or Anthropic API key. Stored locally — never sent to our servers.</div>
-      </div>
-      <div class="step-card">
-        <span class="step-num">02</span>
-        <div class="step-title">Install CLI / Paste Code</div>
-        <div class="step-desc">Install the CLI, paste code into the web UI, or upload a file. Supports all 12 languages.</div>
-      </div>
-      <div class="step-card">
-        <span class="step-num">03</span>
-        <div class="step-title">Click "Generate Comments"</div>
-        <div class="step-desc">Pick Doc, Why, or Both mode. Choose your doc format and preferred model.</div>
-      </div>
-      <div class="step-card">
-        <span class="step-num">04</span>
-        <div class="step-title">Get Standardized Docs</div>
-        <div class="step-desc">Comments stream in real time. Copy, export, or push straight to your editor.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ===== CODE PASTE + OUTPUT DEMO ===== -->
-<section class="section demo-section">
-  <div class="container">
-    <div class="eyebrow">⚡ LIVE DEMO</div>
-    <h2 class="section-h2">See It In Action</h2>
-    <p class="section-sub">Paste code, hit Generate — watch AI comments appear in real time.</p>
-
-    <!-- Controls row -->
-    <div class="demo-header">
-      <div class="demo-controls">
-        <select class="demo-select" id="langSelect">
-          <option value="js">JavaScript</option>
-          <option value="ts">TypeScript</option>
-          <option value="py">Python</option>
-          <option value="java">Java</option>
-          <option value="go">Go</option>
-          <option value="rust">Rust</option>
-        </select>
-        <select class="demo-select" id="styleSelect">
-          <option value="jsdoc">JSDoc</option>
-          <option value="why">WHY Comments</option>
-          <option value="both">Both</option>
-        </select>
-        <select class="demo-select" id="providerSelect">
-          <option value="openai">OpenAI</option>
-          <option value="anthropic">Anthropic</option>
-        </select>
-        <select class="demo-select" id="modelSelect">
-          <option value="gpt4o">GPT-4o</option>
-          <option value="claude35">Claude 3.5 Sonnet</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- API Key row -->
-    <div class="demo-key-row">
-      <span class="demo-key-label">API KEY:</span>
-      <div class="key-input-wrap">
-        <input class="demo-key-input" type="password" id="apiKeyInput" placeholder="sk-••••••••••••••••  or  sk-ant-••••••">
-        <button class="key-eye" onclick="toggleKeyVisibility()" title="Toggle visibility">👁</button>
-      </div>
-      <button class="btn-save-key" onclick="saveKey()">Save Key</button>
-      <span class="key-saved-note" id="keySavedNote">🔑 Key saved · Stored locally, never sent to us.</span>
-    </div>
-
-    <!-- Panels -->
-    <div class="demo-panels">
-      <div class="demo-panel">
-        <div class="demo-panel-header">
-          <span class="demo-panel-title">YOUR CODE</span>
-          <div class="demo-panel-actions">
-            <button class="demo-panel-btn" onclick="clearInput()">Clear</button>
-            <button class="demo-panel-btn" onclick="loadSample('upload')">↑ Upload</button>
-          </div>
-        </div>
-        <div class="sample-chips">
-          <span class="sample-chip" onclick="loadSample('age')">calculateAge</span>
-          <span class="sample-chip" onclick="loadSample('auth')">authService</span>
-          <span class="sample-chip" onclick="loadSample('parser')">dataParser</span>
-        </div>
-        <textarea class="demo-textarea" id="codeInput" placeholder="Paste your code here...">function calculateAge(birthDate) {
-  const today = new Date();
-  const birth = new Date(birthDate);
-  if (isNaN(birth.getTime())) {
-    throw new Error('Invalid birth date format');
-  }
-  let age = today.getFullYear() - birth.getFullYear();
-  const m = today.getMonth() - birth.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
-  return age;
-}</textarea>
-      </div>
-
-      <div class="demo-arrow-col">→</div>
-
-      <div class="demo-panel">
-        <div class="demo-panel-header">
-          <span class="demo-panel-title">COMMENTED CODE</span>
-          <div class="demo-panel-actions">
-            <button class="demo-panel-btn" onclick="copyOutput()">Copy</button>
-            <button class="demo-panel-btn" onclick="downloadOutput()">↓ Download</button>
-          </div>
-        </div>
-        <div id="ragScoreBar" class="rag-score-bar">
-          <div class="rag-score-label">
-            <span>RAG &amp; GEO Score</span>
-            <span class="demo-score-num" id="ragScoreNum">0%</span>
-          </div>
-          <div class="rag-bar-track">
-            <div class="rag-bar-fill" id="ragBarFill"></div>
-          </div>
-        </div>
-        <textarea class="demo-output" id="codeOutput" readonly placeholder="Generated output will appear here..."></textarea>
-      </div>
-    </div>
-
-    <div class="demo-generate-row">
-      <button class="btn-generate" id="generateBtn" onclick="generateComments()">
-        ⚡ Generate Comments
-      </button>
-      <span class="demo-status" id="demoStatus"></span>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ===== CLI DEMO ===== -->
-<section class="section">
-  <div class="container">
-    <div class="eyebrow">CLI TOOL</div>
-    <h2 class="section-h2">Automate documentation at scale</h2>
-    <p class="section-sub">Batch-comment entire directories, integrate into CI/CD, preview changes before writing.</p>
-
-    <div class="cli-demo-trigger">
-      <button class="btn-cli-demo" id="cliDemoBtn" onclick="runCliDemo()">
-        🖥 See How It Works — Run CLI Demo
-      </button>
-      <span class="demo-status" id="cliStatus"></span>
-    </div>
-
-    <div class="cli-demo-wrap" id="cliDemoWrap">
-      <div class="terminal-card">
-        <div class="terminal-bar">
-          <div class="chrome-dots">
-            <div class="dot dot-red"></div>
-            <div class="dot dot-yellow"></div>
-            <div class="dot dot-green"></div>
-          </div>
-          <span class="terminal-title">bash — poly-glot-cli</span>
-        </div>
-        <div class="terminal-body" id="cliTerminal"></div>
-      </div>
-      <div class="cli-actions">
-        <button class="btn-cli-action" onclick="runCliDemo()">↺ Replay</button>
-        <button class="btn-cli-action" onclick="closeCliDemo()">✕ Close</button>
-      </div>
-    </div>
-
-    <!-- CLI FLAGS ACCORDION -->
-    <div class="cli-flags-accordion">
-      <div class="cli-flags-toggle" onclick="toggleCliFlags(this)">
-        <span class="cli-flags-toggle-label">📋 CLI Flags Reference</span>
-        <span class="cli-flags-toggle-arrow">▶</span>
-      </div>
-      <div class="cli-flags-body" id="cliFlagsBody">
-        <div class="flag-chips">
-          <span class="flag-chip">--lang=ts</span>
-          <span class="flag-chip">--model=gpt-4o</span>
-          <span class="flag-chip">--provider=anthropic</span>
-          <span class="flag-chip">--dry-run</span>
-          <span class="flag-chip">--diff</span>
-          <span class="flag-chip">--backup</span>
-          <span class="flag-chip">--dir</span>
-          <span class="flag-chip">--format=jsdoc</span>
-          <span class="flag-chip">--overwrite</span>
-        </div>
-        <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-          <div><span style="color:var(--accent);font-family:'Fira Code',monospace;font-size:0.74rem">--dry-run</span><div class="flag-chip-desc">Preview changes without writing files</div></div>
-          <div><span style="color:var(--accent);font-family:'Fira Code',monospace;font-size:0.74rem">--diff</span><div class="flag-chip-desc">Output a patch file for review</div></div>
-          <div><span style="color:var(--accent);font-family:'Fira Code',monospace;font-size:0.74rem">--backup</span><div class="flag-chip-desc">Create .bak copies before modifying</div></div>
-          <div><span style="color:var(--accent);font-family:'Fira Code',monospace;font-size:0.74rem">--lang</span><div class="flag-chip-desc">Restrict to a single language</div></div>
-          <div><span style="color:var(--accent);font-family:'Fira Code',monospace;font-size:0.74rem">--format</span><div class="flag-chip-desc">Output format: jsdoc, pydoc, doxygen…</div></div>
-          <div><span style="color:var(--accent);font-family:'Fira Code',monospace;font-size:0.74rem">--model</span><div class="flag-chip-desc">AI model override (gpt-4o, claude-3-5…)</div></div>
+        <div class="phone-preview">
+          <img src="assets/img/phone-features.png" alt="Prompt Studio on iPhone" loading="lazy">
         </div>
       </div>
     </div>
@@ -973,79 +631,39 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 
 <div class="section-divider"></div>
 
-<!-- ===== RAG & GEO ===== -->
-<section class="section">
+<!-- ===== INPUT METHODS ===== -->
+<section class="section input-methods" id="input">
   <div class="container">
-    <div class="eyebrow">RAG & GEO</div>
-    <h2 class="section-h2">Why Comments Matter for AI</h2>
-    <p class="section-sub">Comments are no longer just for humans — they're instructions for your AI coding assistant.</p>
+    <div class="section-eyebrow">&#9997;&#65039; Input Methods</div>
+    <h2 class="section-title">Five ways to build prompts</h2>
+    <p class="section-sub">Type it, paste it, scan it, import it, or say it. Prompt Studio meets you wherever your ideas start.</p>
 
-    <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.75;margin-bottom:16px;padding-left:18px;">AI coding assistants like Copilot, ChatGPT, and Claude actively read and interpret your code comments to understand developer intent, context, and business logic. Well-written comments are no longer just for humans — they are instructions for AI.</p>
-    <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.75;margin-bottom:28px;padding-left:18px;">Standardized comments help AI assistants identify bugs 4× faster, generate more accurate code, and produce better PR summaries — making Poly-Glot a direct multiplier on your team's AI-assisted productivity.</p>
-
-    <div class="rag-grid">
-      <div class="rag-card">
-        <div class="rag-card-title">💬 Contextual Understanding</div>
-        <div class="rag-card-desc">AI uses comments to understand the 'why' behind your code — enabling far more accurate suggestions and completions.</div>
+    <div class="input-grid">
+      <div class="input-card">
+        <span class="input-icon">&#9000;&#65039;</span>
+        <h4>Type</h4>
+        <p>Write prompts from scratch with structured fields that guide you to better results.</p>
       </div>
-      <div class="rag-card">
-        <div class="rag-card-title">⚡ Code Generation</div>
-        <div class="rag-card-desc">Clear comments let AI generate corresponding implementation code — turning your intent directly into working code.</div>
+      <div class="input-card">
+        <span class="input-icon">&#128203;</span>
+        <h4>Paste</h4>
+        <p>Paste existing text and let Prompt Studio structure it into an optimized prompt.</p>
       </div>
-      <div class="rag-card">
-        <div class="rag-card-title">🔧 Refactoring & Debugging</div>
-        <div class="rag-card-desc">Comments help AI spot bugs, edge cases, and suggest targeted improvements with much higher accuracy.</div>
+      <div class="input-card">
+        <span class="input-icon">&#128196;</span>
+        <h4>Import</h4>
+        <p>Import documents, notes, or files directly into your prompt workspace.</p>
       </div>
-      <div class="rag-card">
-        <div class="rag-card-title">📄 Documentation & PR Summaries</div>
-        <div class="rag-card-desc">AI uses comments to auto-generate accurate docs, PR summaries, and onboarding guides.</div>
+      <div class="input-card">
+        <span class="input-icon">&#128247;</span>
+        <h4>Scan</h4>
+        <p>Scan printed text, screenshots, or handwritten notes with your camera.</p>
       </div>
-    </div>
-
-    <div class="rag-bottom-bar">
-      💡 <strong style="color:var(--text)">The bottom line:</strong> Clean, standardized comments are the highest-leverage investment in your AI-assisted workflow. Poly-Glot makes it effortless.
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ===== LEGACY CODEBASE ===== -->
-<section class="section">
-  <div class="container">
-    <div class="eyebrow">LEGACY CODEBASES</div>
-    <h2 class="section-h2">🏗️ Standardize Legacy Codebases & Minimize Tech Debt</h2>
-    <p class="section-sub">Turn your most haunted codebase into a well-documented, AI-readable asset — without a rewrite.</p>
-
-    <div class="legacy-grid">
-      <div class="legacy-card">
-        <div class="legacy-card-title">📋 Enforce a Unified Comment Standard</div>
-        <div class="legacy-card-desc">Replace a patchwork of comment styles with one consistent format across every file, team, and language.</div>
+      <div class="input-card">
+        <span class="input-icon">&#127908;</span>
+        <h4>Dictate</h4>
+        <p>Speak your prompt with on-device speech recognition. Hands-free prompt building.</p>
       </div>
-      <div class="legacy-card">
-        <div class="legacy-card-title">🧭 Surface Hidden Business Logic</div>
-        <div class="legacy-card-desc">Poly-Glot's WHY mode uncovers undocumented decisions baked into legacy code that only one person understood.</div>
-      </div>
-      <div class="legacy-card">
-        <div class="legacy-card-title">⚠️ Reduce Onboarding & Bug-Risk Debt</div>
-        <div class="legacy-card-desc">New engineers ramp up 60% faster when every function has clear intent comments. Fewer surprises, fewer regressions.</div>
-      </div>
-      <div class="legacy-card">
-        <div class="legacy-card-title">🤖 Make Legacy Code AI-Ready</div>
-        <div class="legacy-card-desc">Legacy code with no comments is invisible to AI tools. Add structured comments and unlock the full power of Copilot, Cursor, and ChatGPT.</div>
-      </div>
-      <div class="legacy-card">
-        <div class="legacy-card-title">🔁 Integrate Into Your CI/CD Pipeline</div>
-        <div class="legacy-card-desc">Run Poly-Glot as a CI step to automatically comment new functions on every PR — keeping docs current by default.</div>
-      </div>
-      <div class="legacy-card">
-        <div class="legacy-card-title">📉 Measurable Debt Reduction</div>
-        <div class="legacy-card-desc">Track documentation coverage over time with the team dashboard. Set targets and measure real progress against tech debt.</div>
-      </div>
-    </div>
-
-    <div class="pro-tip-callout">
-      💡 <strong>Pro tip for teams —</strong> Start with your highest-churn files first — use the <code style="font-family:'Fira Code',monospace;color:var(--accent);background:rgba(125,211,252,0.08);padding:1px 6px;border-radius:3px">--diff</code> flag to review every AI comment before it lands. No surprises, full control.
     </div>
   </div>
 </section>
@@ -1053,68 +671,42 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 <div class="section-divider"></div>
 
 <!-- ===== FEATURES ===== -->
-<section class="section">
+<section class="section" id="features">
   <div class="container">
-    <div class="eyebrow">FEATURES</div>
-    <h2 class="section-h2">Built for developers, not just docs</h2>
-    <p class="section-sub">Everything you need. Nothing you don't.</p>
+    <div class="section-eyebrow">&#9889; Features</div>
+    <h2 class="section-title">Everything you need to write better prompts</h2>
+    <p class="section-sub">Stop writing prompts from scratch. Prompt Studio gives you the structure, templates, and tools to get better results from any AI model.</p>
 
     <div class="features-grid">
-      <div class="feature-item">
-        <span class="feature-arrow">→</span>
-        <div>
-          <div class="feature-title">📚 12 Languages Supported</div>
-          <div class="feature-desc">JS, TS, Python, Java, C++, C#, Go, Rust, Ruby, PHP, Swift, Kotlin — all with native doc formats.</div>
-        </div>
+      <div class="feature-card">
+        <div class="icon-wrap blue">&#128221;</div>
+        <h4>1,000+ Prompt Templates</h4>
+        <p>Curated templates for writing, coding, marketing, education, business, and more. Organized by category, ready to use.</p>
       </div>
-      <div class="feature-item">
-        <span class="feature-arrow">→</span>
-        <div>
-          <div class="feature-title">🔒 100% In-Browser Privacy</div>
-          <div class="feature-desc">Your code is processed directly via your API key. Zero server storage or logging.</div>
-        </div>
+      <div class="feature-card">
+        <div class="icon-wrap purple">&#127908;</div>
+        <h4>Voice Input</h4>
+        <p>Speak your prompt instead of typing. On-device speech recognition turns your voice into structured, copy-ready prompts.</p>
       </div>
-      <div class="feature-item">
-        <span class="feature-arrow">→</span>
-        <div>
-          <div class="feature-title">⚡ Real-Time Streaming Output</div>
-          <div class="feature-desc">Comments appear token-by-token as the model generates them, just like ChatGPT.</div>
-        </div>
+      <div class="feature-card">
+        <div class="icon-wrap green">&#128203;</div>
+        <h4>One-Tap Copy</h4>
+        <p>Build your prompt, tap copy, paste it into ChatGPT, Claude, Gemini, or any AI. No accounts, no APIs, no friction.</p>
       </div>
-      <div class="feature-item">
-        <span class="feature-arrow">→</span>
-        <div>
-          <div class="feature-title">📋 Template Library Built-In</div>
-          <div class="feature-desc">Pre-configured prompts for JSDoc, PyDoc, Javadoc, Doxygen, and more.</div>
-        </div>
+      <div class="feature-card">
+        <div class="icon-wrap amber">&#128274;</div>
+        <h4>100% Private</h4>
+        <p>Everything runs on your device. No data collection, no tracking, no servers. Your prompts never leave your phone or Mac.</p>
       </div>
-      <div class="feature-item">
-        <span class="feature-arrow">→</span>
-        <div>
-          <div class="feature-title">💻 VS Code Extension</div>
-          <div class="feature-desc">Generate comments inline without leaving your editor. One keyboard shortcut away.</div>
-        </div>
+      <div class="feature-card">
+        <div class="icon-wrap red">&#128736;&#65039;</div>
+        <h4>Build Your Own Templates</h4>
+        <p>Fork any template or create from scratch. Customize fields, labels, and structure to match your exact workflow.</p>
       </div>
-      <div class="feature-item">
-        <span class="feature-arrow">→</span>
-        <div>
-          <div class="feature-title">⌨️ CLI for Batch Processing</div>
-          <div class="feature-desc">Document entire directories with a single command. Supports dry-run and diff modes.</div>
-        </div>
-      </div>
-      <div class="feature-item">
-        <span class="feature-arrow">→</span>
-        <div>
-          <div class="feature-title">🤖 OpenAI & Anthropic Support</div>
-          <div class="feature-desc">Works with GPT-4o, Claude 3.5 Sonnet, and other leading models out of the box.</div>
-        </div>
-      </div>
-      <div class="feature-item">
-        <span class="feature-arrow">→</span>
-        <div>
-          <div class="feature-title">🔁 CI/CD Pipeline Integration</div>
-          <div class="feature-desc">Hook into GitHub Actions or any CI system to automatically document PRs on merge.</div>
-        </div>
+      <div class="feature-card">
+        <div class="icon-wrap teal">&#127757;</div>
+        <h4>38 Languages</h4>
+        <p>Localized in 38 languages. Build prompts in English, Spanish, Japanese, Arabic, Hindi, and dozens more.</p>
       </div>
     </div>
   </div>
@@ -1122,80 +714,43 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 
 <div class="section-divider"></div>
 
-<!-- ===== ASSISTANT ===== -->
-<section class="section">
+<!-- ===== AI MODELS ===== -->
+<section class="section models" id="models">
   <div class="container">
-    <div class="eyebrow">✦ POLY-GLOT ASSISTANT</div>
-    <h2 class="section-h2">Ask anything about your code</h2>
-    <p class="section-sub">Context-aware AI chat built into the tool. Explain functions, find bugs, suggest refactors, write tests — it already knows your code.</p>
+    <div class="section-eyebrow">&#129302; Compatible With</div>
+    <h2 class="section-title">Works with every AI model</h2>
+    <p class="section-sub">Prompt Studio is model-agnostic. Build prompts once, use them anywhere.</p>
 
-    <div class="assistant-inner">
-      <div>
-        <ul class="assistant-list">
-          <li class="assistant-list-item">
-            <span class="a-arrow">→</span>
-            <div>
-              <div class="a-title">Explain this function</div>
-              <div class="a-desc">Paste code, get a plain-English breakdown with context and logic flow.</div>
-            </div>
-          </li>
-          <li class="assistant-list-item">
-            <span class="a-arrow">→</span>
-            <div>
-              <div class="a-title">Find bugs</div>
-              <div class="a-desc">Audit for edge cases, null dereferences, and error handling gaps.</div>
-            </div>
-          </li>
-          <li class="assistant-list-item">
-            <span class="a-arrow">→</span>
-            <div>
-              <div class="a-title">Suggest refactors</div>
-              <div class="a-desc">Concrete, actionable improvement suggestions with before/after diffs.</div>
-            </div>
-          </li>
-          <li class="assistant-list-item">
-            <span class="a-arrow">→</span>
-            <div>
-              <div class="a-title">Write tests</div>
-              <div class="a-desc">Generate unit tests directly from function signatures and doc comments.</div>
-            </div>
-          </li>
-          <li class="assistant-list-item">
-            <span class="a-arrow">→</span>
-            <div>
-              <div class="a-title">Context-aware</div>
-              <div class="a-desc">Understands your full file, not just one snippet in isolation.</div>
-            </div>
-          </li>
-          <li class="assistant-list-item">
-            <span class="a-arrow">→</span>
-            <div>
-              <div class="a-title">OpenAI & Anthropic</div>
-              <div class="a-desc">Works with GPT-4o, Claude 3.5 Sonnet, or any model you prefer.</div>
-            </div>
-          </li>
-        </ul>
+    <div class="model-grid">
+      <div class="model-card">
+        <span class="model-emoji">&#128172;</span>
+        <div class="model-name">ChatGPT</div>
+        <div class="model-desc">OpenAI</div>
       </div>
-
-      <div class="chat-mockup">
-        <div class="chat-header">
-          <div class="chat-header-dot"></div>
-          <span class="chat-header-title">poly-glot assistant — calculatePrice.ts</span>
-        </div>
-        <div class="chat-bubble-user">Can you explain what this function does and flag any potential issues?</div>
-        <div class="chat-bubble-assistant">
-          This function calculates total price including tax. <span class="chat-issue">Issue:</span> <code class="chat-fix">taxRate</code> is never validated — passing <code class="chat-fix">undefined</code> silently returns <code class="chat-fix">NaN</code>. Add a guard:<br><br>
-          <code class="chat-fix" style="display:inline-block;padding:4px 8px;font-size:0.68rem">if (!taxRate || isNaN(taxRate)) throw new Error('Invalid tax rate')</code>
-        </div>
-        <div class="chat-bubble-user">Can you write a JSDoc comment for it?</div>
-        <div class="chat-bubble-assistant">
-          Sure — here's the JSDoc:
-          <code class="chat-code">/**
- * @param {Array} items
- * @param {number} taxRate
- * @returns {Object} { subtotal, tax, total }
- */</code>
-        </div>
+      <div class="model-card">
+        <span class="model-emoji">&#129504;</span>
+        <div class="model-name">Claude</div>
+        <div class="model-desc">Anthropic</div>
+      </div>
+      <div class="model-card">
+        <span class="model-emoji">&#10024;</span>
+        <div class="model-name">Gemini</div>
+        <div class="model-desc">Google</div>
+      </div>
+      <div class="model-card">
+        <span class="model-emoji">&#9889;</span>
+        <div class="model-name">Grok</div>
+        <div class="model-desc">xAI</div>
+      </div>
+      <div class="model-card">
+        <span class="model-emoji">&#128269;</span>
+        <div class="model-name">Perplexity</div>
+        <div class="model-desc">Perplexity AI</div>
+      </div>
+      <div class="model-card">
+        <span class="model-emoji">&#129309;</span>
+        <div class="model-name">Copilot</div>
+        <div class="model-desc">Microsoft</div>
       </div>
     </div>
   </div>
@@ -1203,307 +758,248 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 
 <div class="section-divider"></div>
 
-<!-- ===== VS CODE ===== -->
-<section class="section">
+<!-- ===== INTERACTIVE DEMO (Pure JavaScript Typewriter) ===== -->
+<section class="section demo-section" id="demo">
   <div class="container">
-    <div class="eyebrow">VS CODE</div>
-    <h2 class="section-h2">Comment code without leaving your editor</h2>
-    <p class="section-sub">Install once, document forever. Works with your existing workflow.</p>
+    <div class="section-eyebrow">&#127916; See The Difference</div>
+    <h2 class="section-title">Without Poly-Glot vs. With Poly-Glot</h2>
+    <p class="section-sub">Same question. Dramatically different results. Watch how structured prompts unlock better AI answers.</p>
 
-    <div class="vscode-inner">
-      <div>
-        <ul class="vscode-list">
-          <li class="vscode-list-item">
-            <span class="kbd">Cmd+Shift+/</span>
-            <div class="vscode-item-text"><strong>Generate comment for selection</strong> — highlight any function or block and trigger instant JSDoc/PyDoc generation.</div>
-          </li>
-          <li class="vscode-list-item">
-            <span class="kbd">Cmd+Shift+W</span>
-            <div class="vscode-item-text"><strong>Explain code (Why mode)</strong> — inserts an inline explanation of what the selected code does and why.</div>
-          </li>
-          <li class="vscode-list-item">
-            <span class="kbd">Cmd+Shift+D</span>
-            <div class="vscode-item-text"><strong>Document entire file</strong> — scans all undocumented functions in the active file and comments them all at once.</div>
-          </li>
-          <li class="vscode-list-item">
-            <span class="kbd">Cmd+Shift+T</span>
-            <div class="vscode-item-text"><strong>Open template picker</strong> — choose your output format: JSDoc, TSDoc, Doxygen, plain English, etc.</div>
-          </li>
-          <li class="vscode-list-item">
-            <span class="kbd">Cmd+Shift+K</span>
-            <div class="vscode-item-text"><strong>Set/change API key</strong> — update your key any time from the command palette.</div>
-          </li>
-        </ul>
-      </div>
-      <div class="vscode-editor">
-        <div class="vscode-title-bar">
-          <div class="chrome-dots">
-            <div class="dot dot-red"></div>
-            <div class="dot dot-yellow"></div>
-            <div class="dot dot-green"></div>
-          </div>
-          <div class="vscode-tab">authService.ts</div>
+    <div class="demo-compare">
+      <!-- WEAK SIDE -->
+      <div class="demo-panel weak" id="panelWeak">
+        <div class="demo-panel-header">
+          <span>&#10060;</span> Without Poly-Glot
         </div>
-        <div class="vscode-body">
-          <div class="vscode-gutter">
-            <div>12</div><div>13</div><div>14</div><div>15</div>
-            <div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
+        <div class="demo-panel-body">
+          <div class="demo-prompt-label">Prompt</div>
+          <div class="demo-prompt-text" id="weakPrompt"></div>
+          <div class="demo-response-label">AI Response</div>
+          <div class="demo-response-text" id="weakResponse"></div>
+        </div>
+      </div>
+
+      <!-- STRONG SIDE -->
+      <div class="demo-panel strong" id="panelStrong" style="opacity:0.4">
+        <div class="demo-panel-header">
+          <span>&#10004;&#65039;</span> With Poly-Glot
+        </div>
+        <div class="demo-panel-body" id="strongBody">
+          <div id="strongFields">
+            <div class="demo-field">
+              <div class="demo-field-label">Role</div>
+              <div class="demo-field-value" id="fieldRole"></div>
+            </div>
+            <div class="demo-field">
+              <div class="demo-field-label">Details</div>
+              <div class="demo-field-value" id="fieldDetails"></div>
+            </div>
+            <div class="demo-field">
+              <div class="demo-field-label">Constraints</div>
+              <div class="demo-field-value" id="fieldConstraints"></div>
+            </div>
+            <div class="demo-field">
+              <div class="demo-field-label">Output</div>
+              <div class="demo-field-value" id="fieldOutput"></div>
+            </div>
+            <div class="demo-response-label">AI Response</div>
+            <div class="demo-response-text" id="strongResponse"></div>
           </div>
-          <div class="vscode-code-area">
-            <span class="code-line"><span class="kw">export async function</span> <span class="fn">loginUser</span>(</span>
-            <span class="inline-suggest">/** ⚡ Generating comment… */</span>
-            <span class="code-line cm-added">/**</span>
-            <span class="code-line cm-added"> * Authenticates a user with email/pass.</span>
-            <span class="code-line cm-added"> * @param {string} email — user email</span>
-            <span class="code-line cm-added"> * @param {string} password — plain text</span>
-            <span class="code-line cm-added"> * @returns {Promise&lt;Session&gt;}</span>
-            <span class="code-line cm-added"> */</span>
-            <span class="code-line">  <span class="param">email</span>: <span class="kw">string</span>,</span>
+          <!-- SEND ANIMATION inside the strong panel -->
+          <div id="demoSendWrap" style="display:none; margin-top:16px; border-radius:8px; overflow:hidden; border:1px solid rgba(16,185,129,0.15);">
+            <video id="sendVideo" src="assets/video/send-demo.mp4" playsinline muted preload="auto" style="width:100%; display:block; border-radius:8px;"></video>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="demo-controls">
+      <button class="demo-replay-btn" onclick="demoReplay()">&#8634; Replay Demo</button>
     </div>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
-<!-- ===== COPILOT ===== -->
-<section class="section">
+<!-- ===== TEMPLATES ===== -->
+<section class="section" id="templates">
   <div class="container">
-    <div class="eyebrow">GITHUB COPILOT</div>
-    <h2 class="section-h2">Use Poly-Glot from Copilot Chat</h2>
-    <p class="section-sub">Type <code style="font-family:'Fira Code',monospace;color:var(--accent)">@poly-glot</code> in Copilot Chat for comment generation, template lookup, and Pro plan access.</p>
+    <div class="section-eyebrow">&#128218; Template Library</div>
+    <h2 class="section-title">1,000+ templates. Every category.</h2>
+    <p class="section-sub">From marketing copy to code reviews, from lesson plans to legal drafts. Find the right prompt in seconds.</p>
 
-    <div class="copilot-grid">
-      <div class="step-card">
-        <span class="step-num">@poly-glot comment</span>
-        <div class="step-title">Generate Comments</div>
-        <div class="step-desc">JSDoc, PyDoc, Javadoc for selected code — right inside Copilot Chat.</div>
+    <div class="templates-preview">
+      <div class="template-card">
+        <div class="cat">&#128176; Money</div>
+        <h5>Side Hustle Finder</h5>
+        <p>Discover personalized side income ideas based on your skills, schedule, and goals. Get a step-by-step launch plan in 60 seconds.</p>
       </div>
-      <div class="step-card">
-        <span class="step-num">@poly-glot why</span>
-        <div class="step-title">Why Comments</div>
-        <div class="step-desc">Explains logic, trade-offs, and intent inline without leaving your editor.</div>
+      <div class="template-card">
+        <div class="cat">&#128188; Career</div>
+        <h5>Resume Bullet Writer</h5>
+        <p>Turn boring job descriptions into powerful, metric-driven resume bullets that get interviews. Paste your role, get 5 polished lines.</p>
       </div>
-      <div class="step-card">
-        <span class="step-num">@poly-glot plans</span>
-        <div class="step-title">View Plans</div>
-        <div class="step-desc">Free vs Pro comparison + use <strong style="color:var(--accent)">EARLYBIRD3</strong> for 3 months free.</div>
+      <div class="template-card">
+        <div class="cat">&#128200; Marketing</div>
+        <h5>Viral Post Generator</h5>
+        <p>Create scroll-stopping social media posts for LinkedIn, X, Instagram, or TikTok. Pick your platform, drop your topic, go viral.</p>
+      </div>
+      <div class="template-card">
+        <div class="cat">&#9878;&#65039; Legal</div>
+        <h5>Contract Red Flag Scanner</h5>
+        <p>Paste any contract and get a plain-English breakdown of risky clauses, hidden fees, and what to negotiate before you sign.</p>
+      </div>
+      <div class="template-card">
+        <div class="cat">&#128187; Coding</div>
+        <h5>Debug My Code</h5>
+        <p>Paste broken code, get the fix with explanation. Works with Python, JavaScript, Swift, SQL, and 20+ languages. Save hours of Stack Overflow.</p>
+      </div>
+      <div class="template-card">
+        <div class="cat">&#127891; Study</div>
+        <h5>Exam Prep Coach</h5>
+        <p>Turn any topic into flashcards, practice questions, and a study schedule. Perfect for students, certifications, and interviews.</p>
+      </div>
+      <div class="template-card">
+        <div class="cat">&#9993;&#65039; Email</div>
+        <h5>Cold Email That Gets Replies</h5>
+        <p>Write personalized outreach emails that actually get opened. Sales, networking, job hunting, or partnerships. 3 variants per send.</p>
+      </div>
+      <div class="template-card">
+        <div class="cat">&#127968; Real Estate</div>
+        <h5>Property Listing Writer</h5>
+        <p>Turn basic property details into a compelling listing description that sells. MLS-ready format with emotional hooks and SEO keywords.</p>
+      </div>
+      <div class="template-card">
+        <div class="cat">&#129330; Negotiation</div>
+        <h5>Salary Negotiation Script</h5>
+        <p>Get a word-for-word script to negotiate your offer. Based on your role, market data, and leverage points. Used by 10,000+ job seekers.</p>
       </div>
     </div>
-    <button class="btn-primary-grad">Open in Copilot Chat →</button>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
 <!-- ===== PRICING ===== -->
-<section class="section" id="pricing">
+<section class="section pricing" id="pricing">
   <div class="container">
-    <div class="eyebrow">PRICING</div>
-    <h2 class="section-h2">Start free. Scale when you're ready.</h2>
-    <p class="section-sub">You bring the API key — we provide the tooling. No lock-in, ever.</p>
-
-    <div class="pricing-top-banner">
-      <div class="pricing-banner-text">
-        🎁 <strong>Early bird offer</strong> — Use code <strong style="color:var(--accent);font-family:'Fira Code',monospace">EARLYBIRD3</strong> for 50% off your first 3 months — expires Apr 30.
-      </div>
-      <button class="btn-primary-grad">Get Started Free →</button>
-    </div>
-
-    <div class="pricing-toggle">
-      <button class="pricing-toggle-btn active" onclick="setPricingToggle(this,'monthly')">Monthly</button>
-      <button class="pricing-toggle-btn" onclick="setPricingToggle(this,'yearly')">Yearly <span style="color:var(--green);font-size:0.7rem;margin-left:4px">Save 14%</span></button>
-    </div>
+    <div class="section-eyebrow">&#128176; Pricing</div>
+    <h2 class="section-title">Start free. Upgrade when ready.</h2>
+    <p class="section-sub">Try 25 featured templates free for 3 days. Unlock everything with Pro.</p>
 
     <div class="pricing-grid">
-      <!-- FREE -->
       <div class="pricing-card">
-        <div class="pricing-eyebrow">FREE FOREVER</div>
-        <div class="pricing-tier"><div class="tier-name">Free</div></div>
+        <div class="pricing-tier">Free</div>
+        <div class="pricing-name">Trial</div>
         <div class="pricing-price">$0</div>
-        <div class="pricing-desc">Perfect for exploring. No credit card required.</div>
+        <div class="pricing-desc">3-day free trial</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li><span class="ck">✓</span> 50 files / month</li>
-          <li><span class="ck">✓</span> 3 languages</li>
-          <li><span class="ck">✓</span> Web UI access</li>
-          <li><span class="ck">✓</span> JSDoc, PyDoc, Javadoc</li>
-          <li><span class="ck">✓</span> BYOK (bring your own key)</li>
-          <li><span class="ck">✓</span> CLI (3 languages)</li>
-          <li><span class="x">—</span> <span style="color:var(--text-faint)">Why comments</span></li>
-          <li><span class="x">—</span> <span style="color:var(--text-faint)">Confidence scoring</span></li>
+          <li><span class="ck">&#10003;</span> 25 Featured Templates</li>
+          <li><span class="ck">&#10003;</span> Voice Input</li>
+          <li><span class="ck">&#10003;</span> One-Tap Copy</li>
+          <li><span class="ck">&#10003;</span> 100% On-Device</li>
         </ul>
-        <button class="pricing-cta cta-outline">Get Started Free</button>
+        <a href="https://apps.apple.com/us/app/poly-glot-ai-prompt-studio/id6762222589?mt=12" class="pricing-cta cta-outline">Start Free Trial</a>
       </div>
 
-      <!-- PRO -->
       <div class="pricing-card featured">
-        <div class="pricing-eyebrow">MOST POPULAR</div>
-        <div class="pricing-tier">
-          <div class="tier-name">Pro</div>
-          <span class="pro-badge">PRO</span>
-        </div>
-        <div class="pricing-price" id="pro-price">$9<span>/mo</span></div>
-        <div class="pricing-desc">For individual developers who ship fast.</div>
+        <div class="pricing-tier">Pro Monthly</div>
+        <div class="pricing-name">Pro</div>
+        <div class="pricing-price">$9.99<span>/mo</span></div>
+        <div class="pricing-desc">Full access. Cancel anytime.</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li><span class="ck">✓</span> Unlimited files</li>
-          <li><span class="ck">✓</span> All 12 languages</li>
-          <li><span class="ck">✓</span> CLI + VS Code extension</li>
-          <li><span class="ck">✓</span> Why + Both modes</li>
-          <li><span class="ck">✓</span> Full template library</li>
-          <li><span class="ck">✓</span> CI/CD integration</li>
-          <li><span class="ck">✓</span> Email support</li>
-          <li><span class="ck">✓</span> Changelog access</li>
+          <li><span class="ck">&#10003;</span> All 1,000+ Templates</li>
+          <li><span class="ck">&#10003;</span> Voice Input</li>
+          <li><span class="ck">&#10003;</span> One-Tap Copy</li>
+          <li><span class="ck">&#10003;</span> Build Your Own Templates</li>
+          <li><span class="ck">&#10003;</span> Priority Updates</li>
+          <li><span class="ck">&#10003;</span> All Future Templates</li>
         </ul>
-        <div class="pricing-note">+ 3 more features on roadmap</div>
-        <button class="pricing-cta cta-accent">Start Pro Trial</button>
+        <a href="https://apps.apple.com/us/app/poly-glot-ai-prompt-studio/id6762222589?mt=12" class="pricing-cta cta-accent">Get Pro</a>
       </div>
 
-      <!-- TEAM -->
       <div class="pricing-card">
-        <div class="pricing-eyebrow">FOR TEAMS</div>
-        <div class="pricing-tier"><div class="tier-name">Team</div></div>
-        <div class="pricing-price" id="team-price">$29<span>/mo</span></div>
-        <div class="pricing-desc">For engineering teams. Up to 5 seats.</div>
+        <div class="pricing-tier">Pro Yearly</div>
+        <div class="pricing-name">Pro Annual</div>
+        <div class="pricing-price">$79.99<span>/yr</span></div>
+        <div class="pricing-desc">Save 33% vs monthly</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li><span class="ck">✓</span> Everything in Pro</li>
-          <li><span class="ck">✓</span> Up to 5 seats</li>
-          <li><span class="ck">✓</span> Batch directory processing</li>
-          <li><span class="ck">✓</span> Priority support</li>
-          <li><span class="ck">✓</span> Team usage dashboard</li>
-          <li><span class="ck">✓</span> Shared template library</li>
-          <li><span class="ck">✓</span> Onboarding call</li>
-          <li><span class="ck">✓</span> Dedicated Slack channel</li>
+          <li><span class="ck">&#10003;</span> Everything in Pro</li>
+          <li><span class="ck">&#10003;</span> Best Value</li>
+          <li><span class="ck">&#10003;</span> $6.67/mo effective</li>
+          <li><span class="ck">&#10003;</span> All Future Updates</li>
         </ul>
-        <div class="pricing-note">+ 5 more features on roadmap</div>
-        <!-- Team CTA — id used by JS to update href on yearly toggle -->
-        <a id="teamCtaBtn"
-           href="https://buy.stripe.com/aFa28teFm8by5s2eAc14409?prefilled_promo_code=EARLYBIRD3"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="pricing-cta cta-outline"
-           style="display:block;text-align:center;text-decoration:none;">
-          Start Team Trial
-        </a>
+        <a href="https://apps.apple.com/us/app/poly-glot-ai-prompt-studio/id6762222589?mt=12" class="pricing-cta cta-outline">Get Annual</a>
       </div>
     </div>
-
-    <div class="pricing-seats-note">
-      Need more than 5 seats, SSO, or a private deployment? <a href="mailto:hwmoses2@icloud.com">Let's talk →</a>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ===== ENTERPRISE ===== -->
-<section class="section" id="enterprise">
-  <div class="container">
-    <div class="eyebrow">ENTERPRISE</div>
-    <h2 class="section-h2" style="color:var(--accent)">Enterprise</h2>
-    <p class="section-sub">Custom pricing for large teams. SSO, compliance, private deployment, and dedicated onboarding.</p>
-
-    <div class="enterprise-pills">
-      <div class="enterprise-pill">🔐 SSO &amp; SAML</div>
-      <div class="enterprise-pill">📊 Usage Analytics</div>
-      <div class="enterprise-pill">⚡ Private Deployment</div>
-      <div class="enterprise-pill">🛡️ SLA &amp; Dedicated Support</div>
-    </div>
-
-    <form class="enterprise-form" onsubmit="return false;">
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Name *</label>
-          <input class="form-input" type="text" placeholder="Jane Smith" autocomplete="name">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Work Email *</label>
-          <input class="form-input" type="email" placeholder="jane@company.com" autocomplete="email">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Company Name *</label>
-          <input class="form-input" type="text" placeholder="Acme Corp">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Team Size</label>
-          <select class="form-select">
-            <option value="" disabled selected>Select team size</option>
-            <option>1–10</option><option>11–50</option><option>51–200</option><option>200+</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">What are you looking for? (optional)</label>
-        <textarea class="form-textarea" placeholder="Tell us about your use case, integration needs, or any questions..."></textarea>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Promo Code (optional)</label>
-        <input class="form-input form-promo" type="text" placeholder="EARLYBIRD3">
-      </div>
-      <button class="btn-form-submit" type="submit">Request a Demo →</button>
-    </form>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
 <!-- ===== FAQ ===== -->
-<section class="section">
+<section class="section" id="faq">
   <div class="container">
-    <div class="eyebrow">FAQ</div>
-    <h2 class="section-h2">Common questions</h2>
-    <p class="section-sub">Everything we get asked, answered honestly.</p>
+    <div class="section-eyebrow">&#10067; FAQ</div>
+    <h2 class="section-title">Common questions</h2>
+    <p class="section-sub">Everything you need to know about Prompt Studio.</p>
 
     <div class="faq-list">
       <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Is my code actually private? How does "never touches your servers" work?</span>
-          <span class="faq-toggle">−</span>
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What is Prompt Studio?
+          <span class="toggle">+</span>
         </div>
-        <div class="faq-answer open">
-          Your code is sent directly from your browser to OpenAI or Anthropic using the API key you provide. The request never routes through our infrastructure — we have no backend that proxies or logs your code. You can verify this by inspecting network requests in your browser's DevTools.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Which AI models does Poly-Glot support?</span>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-answer">
-          Currently we support OpenAI models (GPT-4o, GPT-4o-mini, GPT-3.5-turbo) and Anthropic models (Claude 3.5 Sonnet, Claude 3 Haiku). We recommend GPT-4o or Claude 3.5 Sonnet for best comment quality.
+        <div class="faq-a">
+          <p>Prompt Studio is a native iOS and macOS app that helps you write better prompts for AI models like ChatGPT, Claude, Gemini, and Grok. It comes with 1,000+ curated templates, voice input, and one-tap copy. No API keys needed &mdash; everything runs on your device.</p>
         </div>
       </div>
       <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>What's the difference between "Doc", "Why", and "Both" modes?</span>
-          <span class="faq-toggle">+</span>
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Is my data private?
+          <span class="toggle">+</span>
         </div>
-        <div class="faq-answer">
-          <strong style="color:var(--text)">Doc mode</strong> generates formal documentation comments (JSDoc, PyDoc, etc.). <strong style="color:var(--text)">Why mode</strong> inserts plain-language inline comments explaining the logic and reasoning. <strong style="color:var(--text)">Both mode</strong> combines the two for maximum coverage.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Can I use Poly-Glot in my CI/CD pipeline?</span>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-answer">
-          Yes — set your API key as <code style="background:var(--bg-surface2);padding:1px 6px;border-radius:3px;color:var(--accent);font-family:'Fira Code',monospace;font-size:0.82rem">POLY_GLOT_KEY</code> environment variable and use the <code style="background:var(--bg-surface2);padding:1px 6px;border-radius:3px;color:var(--accent);font-family:'Fira Code',monospace;font-size:0.82rem">--diff</code> flag to output a patch file. A GitHub Actions example is in the CLI documentation.
+        <div class="faq-a">
+          <p>Yes. Prompt Studio runs 100% on your device. We do not collect, store, or transmit any personal data, prompts, or usage information. No analytics, no tracking, no servers.</p>
         </div>
       </div>
       <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>What happens to existing comments when I run the generator?</span>
-          <span class="faq-toggle">+</span>
+        <div class="faq-q" onclick="toggleFaq(this)">
+          How does the free trial work?
+          <span class="toggle">+</span>
         </div>
-        <div class="faq-answer">
-          By default, Poly-Glot skips functions that already have documentation comments. Use <code style="background:var(--bg-surface2);padding:1px 6px;border-radius:3px;color:var(--accent);font-family:'Fira Code',monospace;font-size:0.82rem">--overwrite</code> to regenerate. We always recommend running <code style="background:var(--bg-surface2);padding:1px 6px;border-radius:3px;color:var(--accent);font-family:'Fira Code',monospace;font-size:0.82rem">--dry-run</code> first, and <code style="background:var(--bg-surface2);padding:1px 6px;border-radius:3px;color:var(--accent);font-family:'Fira Code',monospace;font-size:0.82rem">--backup</code> creates <code style="background:var(--bg-surface2);padding:1px 6px;border-radius:3px;color:var(--accent);font-family:'Fira Code',monospace;font-size:0.82rem">.bak</code> copies before modifying files.
+        <div class="faq-a">
+          <p>New users get a 3-day free trial that includes access to 25 featured templates. The trial starts when you first use a template. After 3 days, you can upgrade to Pro to unlock all 1,000+ templates. The trial is tied to your Apple ID.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Does it work with ChatGPT, Claude, and other AI models?
+          <span class="toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Yes. Prompt Studio is model-agnostic. You build your prompt in the app, copy it, and paste it into any AI chat &mdash; ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, and more. No API integration required.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          How many input methods are supported?
+          <span class="toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Five: Type your prompt from scratch, paste existing text, import documents or files, scan printed or handwritten text with your camera, or dictate using on-device speech recognition. All methods produce structured, copy-ready prompts.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Can I cancel my subscription?
+          <span class="toggle">+</span>
+        </div>
+        <div class="faq-a">
+          <p>Yes. All subscriptions are managed through Apple and can be cancelled anytime from your Apple ID settings. No questions asked.</p>
         </div>
       </div>
     </div>
@@ -1512,386 +1008,269 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 
 <div class="section-divider"></div>
 
+<!-- ===== FINAL CTA ===== -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Stop guessing.<br>Start prompting.</h2>
+    <p>Download Prompt Studio and get better answers from every AI model you use.</p>
+    <div class="hero-actions" style="justify-content:center">
+      <a href="https://apps.apple.com/us/app/poly-glot-ai-prompt-studio/id6762222589?mt=12" class="btn-primary">
+        &#63743; Download for Mac
+      </a>
+      <span class="btn-coming-soon">
+        📱 iPhone &amp; iPad &mdash; Coming Soon
+      </span>
+    </div>
+  </div>
+</section>
+
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="container">
-    <div class="footer-top">
-      <a href="https://marketplace.visualstudio.com/items?itemName=poly-glot-ai.poly-glot" class="footer-link-chip">💻 VS Code Extension</a>
-      <a href="https://github.com/hmoses/poly-glot-github-app#-self-hosting" class="footer-link-chip">⌨️ CLI on npm ↗</a>
-      <a href="https://github.com/marketplace/poly-glot-ai" class="footer-link-chip">🤖 Copilot Chat ↗</a>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/img/icon-128.png" alt="Poly-Glot AI">
+          <span>Poly-Glot AI</span>
+        </div>
+        <p class="footer-tagline">Build, save, and share AI prompts. 1,000+ templates for every AI model. Available on iPhone, iPad, and Mac.</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#templates">Templates</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Download</h5>
+        <ul>
+          <li><a href="https://apps.apple.com/us/app/poly-glot-ai-prompt-studio/id6762222589?mt=12">macOS</a></li>
+          <li><span style="color:var(--text-faint);font-size:0.88rem">iPhone &amp; iPad &mdash; Coming Soon</span></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="support.html">Support</a></li>
+          <li><a href="mailto:hwmoses2@icloud.com">Contact</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-badges">
-      <div class="badge-ph">LEAVE A REVIEW ON<br><strong>Product Hunt ★</strong></div>
-      <div class="badge-hot">FEATURED ON<br><strong>Product Hot 🔥</strong></div>
-    </div>
-    <div class="footer-inner">
-      <span class="footer-brand">🦜 Poly-Glot AI — Code Documentation · Built with 🪿 Goose · © 2026 Harold Moses · poly-glot.ai</span>
-      <ul class="footer-links">
-        <li><a href="https://github.com/marketplace/poly-glot-ai">Templates</a></li>
-        <li><a href="https://github.com/hmoses/poly-glot-github-app#-what-it-does">CLI Docs</a></li>
-        <li><a href="https://marketplace.visualstudio.com/items?itemName=poly-glot-ai.poly-glot">VS Code</a></li>
-        <li><a href="#pg-pricing-section">Pricing</a></li>
-        <li><a href="https://github.com/hmoses/poly-glot-github-app">GitHub</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Poly-Glot AI. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </div>
     </div>
   </div>
 </footer>
 
-<!-- ===== FLOATING CHAT WIDGET ===== -->
-<button class="chat-widget-btn" onclick="toggleChatWidget()" title="Poly-Glot Assistant">✦</button>
-<div class="chat-widget-window" id="chatWidgetWindow">
-  <div class="chat-widget-header">
-    <div class="chat-widget-title">
-      <span class="chat-widget-title-dot"></span>
-      Poly-Glot Assistant
-    </div>
-    <button class="chat-widget-close" onclick="toggleChatWidget()">✕</button>
-  </div>
-  <div class="chat-widget-messages" id="chatWidgetMessages">
-    <div class="cw-bubble-bot">
-      👋 Hi! I'm the Poly-Glot Assistant. I can help you generate comments, explain code, find bugs, or answer questions about your codebase.<br><br>
-      <div class="chat-chips">
-        <span class="chat-chip" onclick="chatChipClick('Generate JSDoc for my function')">Generate JSDoc</span>
-        <span class="chat-chip" onclick="chatChipClick('Explain this code')">Explain code</span>
-        <span class="chat-chip" onclick="chatChipClick('Find bugs in my code')">Find bugs</span>
-        <span class="chat-chip" onclick="chatChipClick('Write unit tests')">Write tests</span>
-      </div>
-    </div>
-  </div>
-  <div class="chat-widget-input-row">
-    <input class="chat-widget-input" type="text" id="chatWidgetInput" placeholder="Ask anything about your code…" onkeydown="if(event.key==='Enter')sendChatMessage()">
-    <button class="chat-widget-send" onclick="sendChatMessage()">Send</button>
-  </div>
-</div>
-
 <script>
-// ===== HERO SIGNUP =====
-function handleHeroSignup() {
-  const email = document.getElementById('heroEmail').value.trim();
-  if (!email || !email.includes('@')) {
-    document.getElementById('heroEmail').style.borderColor = 'rgba(239,68,68,0.5)';
-    return;
-  }
-  document.getElementById('heroEmail').style.borderColor = '';
-  document.querySelector('.hero-signup-row').style.display = 'none';
-  document.querySelector('.hero-signup-note').style.display = 'none';
-  const success = document.getElementById('heroSuccess');
-  success.style.display = 'flex';
-}
-
-// ===== FAQ =====
-function toggleFaq(questionEl) {
-  const item = questionEl.parentElement;
-  const answer = item.querySelector('.faq-answer');
-  const toggle = questionEl.querySelector('.faq-toggle');
+/* ===== FAQ TOGGLE ===== */
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const answer = item.querySelector('.faq-a');
+  const toggle = el.querySelector('.toggle');
   const isOpen = answer.classList.contains('open');
-  document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-  document.querySelectorAll('.faq-toggle').forEach(t => t.textContent = '+');
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-q .toggle').forEach(t => t.textContent = '+');
   if (!isOpen) {
     answer.classList.add('open');
-    toggle.textContent = '−';
+    toggle.textContent = '\u2212';
   }
 }
 
-// ===== PRICING TOGGLE =====
-// Stripe URLs
-var TEAM_MONTHLY_URL = 'https://buy.stripe.com/aFa28teFm8by5s2eAc14409?prefilled_promo_code=EARLYBIRD3';
-var TEAM_YEARLY_URL  = 'https://buy.stripe.com/aFa28teFm8by5s2eAc14409?prefilled_promo_code=EARLYBIRD3';
-
-function setPricingToggle(btn, mode) {
-  document.querySelectorAll('.pricing-toggle-btn').forEach(function(b) { b.classList.remove('active'); });
-  btn.classList.add('active');
-
-  var proEl   = document.getElementById('pro-price');
-  var teamEl  = document.getElementById('team-price');
-  var teamCta = document.getElementById('teamCtaBtn');
-
-  if (mode === 'yearly') {
-    proEl.innerHTML  = '$7<span>/mo</span> <span style="font-size:0.68rem;color:var(--green)">billed yearly</span>';
-    teamEl.innerHTML = '$21<span>/mo</span> <span style="font-size:0.68rem;color:var(--green)">billed $249/year</span>';
-    teamCta.href = TEAM_YEARLY_URL;
-    teamCta.textContent = 'Start Team Trial';
-  } else {
-    proEl.innerHTML  = '$9<span>/mo</span>';
-    teamEl.innerHTML = '$29<span>/mo</span> <span style="font-size:0.78rem;color:var(--text-faint)">Billed monthly</span>';
-    teamCta.href = TEAM_MONTHLY_URL;
-    teamCta.textContent = 'Start Team Trial';
-  }
-}
-
-// ===== KEY TOGGLE =====
-function toggleKeyVisibility() {
-  var inp = document.getElementById('apiKeyInput');
-  inp.type = inp.type === 'password' ? 'text' : 'password';
-}
-
-function saveKey() {
-  var note = document.getElementById('keySavedNote');
-  note.style.display = 'flex';
-}
-
-// ===== DEMO: SAMPLE CODE =====
-var samples = {
-  age: 'function calculateAge(birthDate) {\n  const today = new Date();\n  const birth = new Date(birthDate);\n  if (isNaN(birth.getTime())) {\n    throw new Error(\'Invalid birth date format\');\n  }\n  let age = today.getFullYear() - birth.getFullYear();\n  const m = today.getMonth() - birth.getMonth();\n  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;\n  return age;\n}',
-  auth: 'async function loginUser(email, password) {\n  const user = await db.users.findOne({ email });\n  if (!user) throw new AuthError(\'User not found\');\n  const valid = await bcrypt.compare(password, user.passwordHash);\n  if (!valid) throw new AuthError(\'Invalid credentials\');\n  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: \'7d\' });\n  return { token, user: sanitizeUser(user) };\n}',
-  parser: 'function parseCSV(raw, delimiter = \',\') {\n  const lines = raw.trim().split(\'\\n\');\n  const headers = lines[0].split(delimiter).map(h => h.trim());\n  return lines.slice(1).map(line => {\n    const vals = line.split(delimiter);\n    return headers.reduce((obj, h, i) => {\n      obj[h] = vals[i] ? vals[i].trim() : null;\n      return obj;\n    }, {});\n  });\n}'
-};
-
-function loadSample(key) {
-  if (key === 'upload') {
-    document.getElementById('codeInput').focus();
-    return;
-  }
-  document.getElementById('codeInput').value = samples[key] || '';
-  document.getElementById('codeOutput').value = '';
-  document.getElementById('ragScoreBar').style.display = 'none';
-  document.getElementById('ragBarFill').style.width = '0%';
-  document.getElementById('ragScoreNum').textContent = '0%';
-}
-
-function clearInput() {
-  document.getElementById('codeInput').value = '';
-  document.getElementById('codeOutput').value = '';
-  document.getElementById('ragScoreBar').style.display = 'none';
-}
-
-function copyOutput() {
-  var out = document.getElementById('codeOutput').value;
-  if (!out) return;
-  navigator.clipboard.writeText(out).catch(function() {});
-}
-
-function downloadOutput() {
-  var out = document.getElementById('codeOutput').value;
-  if (!out) return;
-  var blob = new Blob([out], { type: 'text/plain' });
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement('a');
-  a.href = url; a.download = 'commented-code.js';
-  a.click(); URL.revokeObjectURL(url);
-}
-
-// ===== GENERATE COMMENTS (functional mockup) =====
-function generateComments() {
-  var code = document.getElementById('codeInput').value.trim();
-  if (!code) {
-    document.getElementById('demoStatus').textContent = '⚠ Paste some code first.';
-    return;
-  }
-  var style = document.getElementById('styleSelect').value;
-  var lang  = document.getElementById('langSelect').value;
-  var btn   = document.getElementById('generateBtn');
-  btn.disabled = true;
-  document.getElementById('demoStatus').textContent = '⚡ Generating…';
-  document.getElementById('codeOutput').value = '';
-  document.getElementById('ragScoreBar').style.display = 'none';
-
-  var commented = buildCommentedCode(code, style, lang);
-
-  var i = 0;
-  var total = commented.length;
-  function stream() {
-    if (i < total) {
-      document.getElementById('codeOutput').value = commented.slice(0, i + 1);
-      i += Math.floor(Math.random() * 6) + 2;
-      setTimeout(stream, 12);
-    } else {
-      document.getElementById('codeOutput').value = commented;
-      document.getElementById('demoStatus').textContent = '✓ Done';
-      btn.disabled = false;
-      document.getElementById('ragScoreBar').style.display = 'block';
-      setTimeout(function() {
-        document.getElementById('ragBarFill').style.width = '87%';
-        document.getElementById('ragScoreNum').textContent = '87%';
-      }, 100);
+/* ===== SMOOTH NAV SCROLL ===== */
+document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      const y = target.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
-  }
-  setTimeout(stream, 300);
-}
-
-function buildCommentedCode(code, style, lang) {
-  var lines = code.split('\n');
-  var out = [];
-
-  if (style === 'jsdoc' || style === 'both') {
-    var i = 0;
-    while (i < lines.length) {
-      var line = lines[i];
-      var fnMatch = line.match(/(?:async\s+)?function\s+(\w+)\s*\(([^)]*)\)/) ||
-                    line.match(/(?:const|let|var)\s+(\w+)\s*=\s*(?:async\s+)?\(?([^)]*)\)?\s*=>/) ||
-                    line.match(/(?:async\s+)?(\w+)\s*\(([^)]*)\)\s*\{/);
-      if (fnMatch) {
-        var fname = fnMatch[1];
-        var rawParams = fnMatch[2] ? fnMatch[2].split(',').map(function(p) { return p.trim().split('=')[0].trim(); }).filter(Boolean) : [];
-        var params = rawParams.map(function(p) { return p.replace(/[^a-zA-Z0-9_]/g, ''); });
-
-        if (lang === 'py') {
-          out.push('def ' + fname + '(' + params.join(', ') + '):');
-          out.push('    """');
-          out.push('    ' + fname.replace(/([A-Z])/g, ' $1').trim() + ' function.');
-          params.forEach(function(p) { out.push('    :param ' + p + ': description'); });
-          out.push('    :return: result');
-          out.push('    """');
-          i++;
-          continue;
-        }
-        out.push('/**');
-        out.push(' * ' + fname.replace(/([A-Z])/g, ' $1').trim() + ' — generated by Poly-Glot AI');
-        params.forEach(function(p) { if (p) out.push(' * @param {*} ' + p); });
-        out.push(' * @returns {*}');
-        out.push(' */');
-      }
-      if (style === 'both' && line.trim() !== '' && !line.trim().startsWith('//') && !line.trim().startsWith('*')) {
-        var isLogic = line.match(/if\s*\(|for\s*\(|while\s*\(|return\s|throw\s/);
-        if (isLogic) {
-          var indent = line.match(/^(\s*)/)[1];
-          var hint = line.trim().startsWith('if')     ? '// Guard: early return if condition not met' :
-                     line.trim().startsWith('for') || line.trim().startsWith('while') ? '// Iterate: process each item sequentially' :
-                     line.trim().startsWith('return') ? '// Return computed result to caller' :
-                     line.trim().startsWith('throw')  ? '// Fail fast with descriptive error' : null;
-          if (hint) out.push(indent + hint);
-        }
-      }
-      out.push(line);
-      i++;
-    }
-  } else if (style === 'why') {
-    lines.forEach(function(line) {
-      if (line.trim() !== '' && !line.trim().startsWith('//') && !line.trim().startsWith('*')) {
-        var indent = line.match(/^(\s*)/)[1];
-        if (line.trim().startsWith('if'))          out.push(indent + '// Why: validate inputs early to avoid downstream errors');
-        else if (line.trim().startsWith('throw'))  out.push(indent + '// Why: fail fast — caller must handle invalid state explicitly');
-        else if (line.trim().startsWith('return')) out.push(indent + '// Why: return final computed value after all adjustments');
-        else if (line.trim().match(/const|let|var/)) out.push(indent + '// Why: capture intermediate value for readability');
-      }
-      out.push(line);
-    });
-  }
-
-  return out.length ? out.join('\n') : '// No functions detected — showing raw input with inline annotations\n' + code;
-}
-
-// ===== CLI DEMO (animated) =====
-var cliLines = [
-  { text: 'npm install -g poly-glot-ai-cli', cls: 't-cmd', pre: '<span class="t-prompt">$ </span>' },
-  { text: 'added 47 packages in 2.3s', cls: 't-out', delay: 600 },
-  { text: '', cls: 't-blank', delay: 200 },
-  { text: 'poly-glot config --key sk-••••••••••••••••', cls: 't-cmd', pre: '<span class="t-prompt">$ </span>', delay: 400 },
-  { text: '✓ API key saved to ~/.poly-glot/config.json', cls: 't-ok', delay: 500 },
-  { text: '', cls: 't-blank', delay: 200 },
-  { text: 'poly-glot comment ./src --dir --dry-run', cls: 't-cmd', pre: '<span class="t-prompt">$ </span>', delay: 400 },
-  { text: '✓ Scanning 12 files...', cls: 't-ok', delay: 500 },
-  { text: '✓ calculateAge.js       — 3 functions documented', cls: 't-ok', delay: 400 },
-  { text: '✓ authService.ts        — 7 functions documented', cls: 't-ok', delay: 350 },
-  { text: '✓ dataParser.py         — 5 functions documented', cls: 't-ok', delay: 350 },
-  { text: '✓ apiRouter.go          — 4 functions documented', cls: 't-ok', delay: 350 },
-  { text: '  → utils/index.ts      — skipped (already documented)', cls: 't-cmt', delay: 300 },
-  { text: '  → config.js           — skipped (no functions found)', cls: 't-cmt', delay: 300 },
-  { text: '', cls: 't-blank', delay: 200 },
-  { text: 'Summary: 19 functions documented across 4 files.', cls: 't-out', delay: 400 },
-  { text: 'Dry-run mode — no files written. Run without --dry-run to apply.', cls: 't-out', delay: 300 }
-];
-
-var cliDemoTimeouts = [];
-
-function runCliDemo() {
-  cliDemoTimeouts.forEach(clearTimeout);
-  cliDemoTimeouts = [];
-  var wrap     = document.getElementById('cliDemoWrap');
-  var terminal = document.getElementById('cliTerminal');
-  var status   = document.getElementById('cliStatus');
-  wrap.classList.add('visible');
-  terminal.innerHTML = '';
-  status.textContent = '▶ Running…';
-
-  var totalDelay = 0;
-  cliLines.forEach(function(line, idx) {
-    var d = idx === 0 ? 100 : (line.delay || 300);
-    totalDelay += d;
-    (function(l, delay) {
-      var t = setTimeout(function() {
-        if (l.cls === 't-blank') {
-          terminal.innerHTML += '<br>';
-        } else {
-          var pre = l.pre || '';
-          terminal.innerHTML += '<div><span class="' + l.cls + '">' + pre + escapeHtml(l.text) + '</span></div>';
-        }
-        terminal.scrollTop = terminal.scrollHeight;
-      }, delay);
-      cliDemoTimeouts.push(t);
-    })(line, totalDelay);
   });
+});
 
-  var doneT = setTimeout(function() {
-    status.textContent = '✓ Complete';
-  }, totalDelay + 200);
-  cliDemoTimeouts.push(doneT);
-}
+/* ===== MOBILE NAV ===== */
+const mobileStyle = document.createElement('style');
+mobileStyle.textContent = `
+  @media (max-width: 640px) {
+    .nav-links.show-mobile {
+      display: flex !important; flex-direction: column;
+      position: absolute; top: 64px; left: 0; right: 0;
+      background: rgba(8,9,26,0.98); backdrop-filter: blur(20px);
+      padding: 20px 28px; gap: 16px;
+      border-bottom: 1px solid rgba(125,211,252,0.1);
+    }
+  }
+`;
+document.head.appendChild(mobileStyle);
 
-function closeCliDemo() {
-  cliDemoTimeouts.forEach(clearTimeout);
-  document.getElementById('cliDemoWrap').classList.remove('visible');
-  document.getElementById('cliStatus').textContent = '';
-}
+/* ===================================================================
+   PURE JAVASCRIPT TYPEWRITER DEMO
+   Order: Weak plays fully → Strong plays fully → Send animation
+   =================================================================== */
 
-function escapeHtml(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-// ===== CLI FLAGS ACCORDION =====
-function toggleCliFlags(toggleEl) {
-  var body  = document.getElementById('cliFlagsBody');
-  var arrow = toggleEl.querySelector('.cli-flags-toggle-arrow');
-  body.classList.toggle('open');
-  arrow.classList.toggle('open');
-}
-
-// ===== FLOATING CHAT WIDGET =====
-function toggleChatWidget() {
-  document.getElementById('chatWidgetWindow').classList.toggle('open');
-}
-
-var botReplies = {
-  'generate jsdoc for my function': 'Sure! Paste your function in the demo section above and select "JSDoc" mode — I\'ll generate a complete JSDoc block with @param, @returns, and @throws tags.',
-  'explain this code': 'I can explain any code snippet! Paste it in the demo panel or describe what you\'re working with and I\'ll break it down.',
-  'find bugs in my code': 'I\'ll scan for null dereferences, unvalidated inputs, missing error handling, and off-by-one errors. Paste your code in the demo section to get started.',
-  'write unit tests': 'I can generate Jest, Mocha, or PyTest unit tests from your function signatures and JSDoc comments. Paste the code to begin.',
-  'default': 'Great question! Try using the live demo above to generate comments for your code, or ask me about specific features like WHY comments, CLI flags, or CI/CD integration.'
+const DEMO_DATA = {
+  weak: {
+    prompt: "What should I make for dinner?",
+    response: "You could try pasta, stir fry, or a salad."
+  },
+  strong: {
+    fields: {
+      role: "Family meal planner",
+      details: "Chicken, rice, broccoli, soy sauce, garlic",
+      constraints: "2 adults, 2 kids (picky eaters), 30 min max",
+      output: "Recipe with steps, portions, kid-friendly twist"
+    },
+    response: "\ud83c\udf57 Honey-Garlic Chicken Rice Bowls\n\nServes 4 (2 adult + 2 kid portions)\nTime: 25 minutes\n\n1. Dice chicken into bite-size cubes. Season with soy sauce & minced garlic.\n2. Stir-fry chicken 6 min on medium-high. Set aside.\n3. Steam broccoli florets 4 min. For picky kids: cut tiny & call them \"trees.\"\n4. Cook rice per package. Fluff with fork.\n5. Bowl it up: rice base, chicken on one side, broccoli trees on the other.\n\n\ud83e\udde1 Kid-friendly twist: Let kids build their own bowls. Serve sauce on the side for dipping!"
+  }
 };
 
-function chatChipClick(text) {
-  var input = document.getElementById('chatWidgetInput');
-  input.value = text;
-  sendChatMessage();
+const TYPE_SPEED = 28;
+const FIELD_SPEED = 22;
+const RESPONSE_SPEED = 12;
+
+let demoRunning = false;
+let demoTimeouts = [];
+
+function clearDemo() {
+  demoTimeouts.forEach(t => clearTimeout(t));
+  demoTimeouts = [];
+  document.getElementById('weakPrompt').innerHTML = '';
+  document.getElementById('weakResponse').innerHTML = '';
+  document.getElementById('fieldRole').innerHTML = '';
+  document.getElementById('fieldDetails').innerHTML = '';
+  document.getElementById('fieldConstraints').innerHTML = '';
+  document.getElementById('fieldOutput').innerHTML = '';
+  document.getElementById('strongResponse').innerHTML = '';
+  // Reset panel states
+  document.getElementById('panelWeak').style.opacity = '1';
+  document.getElementById('panelStrong').style.opacity = '0.4';
+  // Hide send video
+  document.getElementById('demoSendWrap').style.display = 'none';
+  var sv = document.getElementById('sendVideo');
+  sv.pause();
+  sv.currentTime = 0;
 }
 
-function sendChatMessage() {
-  var input = document.getElementById('chatWidgetInput');
-  var text  = input.value.trim();
-  if (!text) return;
-  input.value = '';
-  var messages = document.getElementById('chatWidgetMessages');
+function typeText(elementId, text, speed, callback) {
+  const el = document.getElementById(elementId);
+  let i = 0;
+  el.innerHTML = '<span class="demo-cursor"></span>';
 
-  var userBubble = document.createElement('div');
-  userBubble.className = 'cw-bubble-user';
-  userBubble.textContent = text;
-  messages.appendChild(userBubble);
-
-  setTimeout(function() {
-    var key   = text.toLowerCase();
-    var reply = botReplies['default'];
-    for (var k in botReplies) {
-      if (k !== 'default' && key.includes(k.split(' ')[0])) { reply = botReplies[k]; break; }
+  function typeChar() {
+    if (i < text.length) {
+      const char = text[i] === '\n' ? '<br>' : text[i];
+      const cursor = el.querySelector('.demo-cursor');
+      if (cursor) {
+        cursor.insertAdjacentHTML('beforebegin', char);
+      } else {
+        el.innerHTML += char;
+      }
+      i++;
+      const tid = setTimeout(typeChar, speed + Math.random() * speed * 0.4);
+      demoTimeouts.push(tid);
+    } else {
+      const cursor = el.querySelector('.demo-cursor');
+      if (cursor) cursor.remove();
+      if (callback) callback();
     }
-    var botBubble = document.createElement('div');
-    botBubble.className = 'cw-bubble-bot';
-    botBubble.textContent = reply;
-    messages.appendChild(botBubble);
-    messages.scrollTop = messages.scrollHeight;
-  }, 600);
+  }
+  typeChar();
+}
 
-  messages.scrollTop = messages.scrollHeight;
+function demoDelay(ms) {
+  return new Promise(resolve => {
+    const tid = setTimeout(resolve, ms);
+    demoTimeouts.push(tid);
+  });
+}
+
+async function runDemo() {
+  if (demoRunning) return;
+  demoRunning = true;
+  clearDemo();
+
+  /* ========== PHASE 1: WEAK SIDE PLAYS FULLY ========== */
+  // Weak panel bright, strong panel dimmed
+  document.getElementById('panelWeak').style.opacity = '1';
+  document.getElementById('panelStrong').style.opacity = '0.4';
+
+  // Type weak prompt
+  await new Promise(resolve => typeText('weakPrompt', DEMO_DATA.weak.prompt, TYPE_SPEED, resolve));
+  await demoDelay(800);
+
+  // Type weak response
+  await new Promise(resolve => typeText('weakResponse', DEMO_DATA.weak.response, RESPONSE_SPEED, resolve));
+  await demoDelay(1200);
+
+  /* ========== PHASE 2: STRONG SIDE PLAYS FULLY ========== */
+  // Dim weak panel, brighten strong panel
+  document.getElementById('panelWeak').style.opacity = '0.4';
+  document.getElementById('panelStrong').style.opacity = '1';
+
+  await demoDelay(400);
+
+  // Type all 4 fields
+  await new Promise(resolve => typeText('fieldRole', DEMO_DATA.strong.fields.role, FIELD_SPEED, resolve));
+  await demoDelay(200);
+  await new Promise(resolve => typeText('fieldDetails', DEMO_DATA.strong.fields.details, FIELD_SPEED, resolve));
+  await demoDelay(200);
+  await new Promise(resolve => typeText('fieldConstraints', DEMO_DATA.strong.fields.constraints, FIELD_SPEED, resolve));
+  await demoDelay(200);
+  await new Promise(resolve => typeText('fieldOutput', DEMO_DATA.strong.fields.output, FIELD_SPEED, resolve));
+  await demoDelay(800);
+
+  // Type strong response
+  await new Promise(resolve => typeText('strongResponse', DEMO_DATA.strong.response, RESPONSE_SPEED, resolve));
+  await demoDelay(600);
+
+  // Both panels full brightness for comparison
+  document.getElementById('panelWeak').style.opacity = '1';
+  document.getElementById('panelStrong').style.opacity = '1';
+  await demoDelay(1500);
+
+  /* ========== PHASE 3: SEND ANIMATION ========== */
+  var sendWrap = document.getElementById('demoSendWrap');
+  var sendVid = document.getElementById('sendVideo');
+  sendWrap.style.display = 'block';
+  sendVid.currentTime = 0;
+  sendVid.play();
+
+  demoRunning = false;
+}
+
+function demoReplay() {
+  demoRunning = false;
+  clearDemo();
+  setTimeout(runDemo, 200);
+}
+
+/* ===== AUTO-START DEMO ON SCROLL ===== */
+let demoStarted = false;
+const demoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !demoStarted) {
+      demoStarted = true;
+      setTimeout(runDemo, 400);
+    }
+  });
+}, { threshold: 0.2 });
+
+const demoEl = document.getElementById('demo');
+if (demoEl) {
+  demoObserver.observe(demoEl);
 }
 </script>
+
 </body>
 </html>
