@@ -357,9 +357,28 @@ a:hover { opacity: 0.85; }
 }
 @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 .demo-panel { transition: opacity 0.5s ease; display: flex; flex-direction: column; }
-.demo-panel-video { padding: 0 !important; flex: 1; display: flex; align-items: stretch; }
-.demo-panel-video video { object-fit: cover; min-height: 100%; }
 .demo-panel.weak { align-self: start; }
+.send-to-ai-bar {
+  margin-top: 20px; padding: 16px;
+  background: rgba(20,23,48,0.9);
+  border: 1px solid rgba(125,211,252,0.12);
+  border-radius: var(--radius-sm);
+}
+.send-bar-label {
+  font-size: 0.82rem; font-weight: 600; color: var(--text);
+  margin-bottom: 10px;
+}
+.send-bar-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.ai-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 0.78rem; font-weight: 600; color: var(--text);
+  background: rgba(125,211,252,0.06);
+  border: 1px solid rgba(125,211,252,0.12);
+  cursor: pointer; transition: all 0.2s;
+}
+.ai-pill:hover { background: rgba(125,211,252,0.15); border-color: rgba(125,211,252,0.3); }
+.ai-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 .demo-controls { text-align: center; margin-top: 24px; }
 .demo-replay-btn {
   display: inline-flex; align-items: center; gap: 8px;
@@ -767,12 +786,27 @@ a:hover { opacity: 0.85; }
       </div>
 
       <!-- STRONG SIDE -->
-      <div class="demo-panel strong" id="panelStrong">
+      <div class="demo-panel strong" id="panelStrong" style="opacity:0.4">
         <div class="demo-panel-header">
           <span>&#10004;&#65039;</span> With Poly-Glot
         </div>
-        <div class="demo-panel-body demo-panel-video">
-          <video id="aiMenuVideo" src="assets/video/ai-menu-demo.mp4" playsinline muted loop preload="auto" style="width:100%; display:block; border-radius:0 0 11px 11px;"></video>
+        <div class="demo-panel-body">
+          <div class="demo-prompt-label">Template: Meal Planner</div>
+          <div class="demo-prompt-text" id="strongPrompt"></div>
+          <div class="demo-response-label">AI Response</div>
+          <div class="demo-response-text" id="strongResponse"></div>
+          <!-- SEND TO AI BAR -->
+          <div class="send-to-ai-bar" id="sendBar" style="display:none">
+            <div class="send-bar-label">&#10024; Send to AI</div>
+            <div class="send-bar-pills">
+              <span class="ai-pill chatgpt"><span class="ai-dot" style="background:#10b981"></span>ChatGPT</span>
+              <span class="ai-pill claude"><span class="ai-dot" style="background:#f5a623"></span>Claude</span>
+              <span class="ai-pill gemini"><span class="ai-dot" style="background:#4285f4"></span>Gemini</span>
+              <span class="ai-pill grok"><span class="ai-dot" style="background:#f7d046"></span>Grok</span>
+              <span class="ai-pill copilot"><span class="ai-dot" style="background:#f87171"></span>Copilot</span>
+              <span class="ai-pill perplexity"><span class="ai-dot" style="background:#8b5cf6"></span>Perplexity</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1087,6 +1121,10 @@ const DEMO_DATA = {
   weak: {
     prompt: "What should I make for dinner?",
     response: "You could try pasta, stir fry, or a salad."
+  },
+  strong: {
+    prompt: "Act as a family meal planner. I have chicken, rice, broccoli, soy sauce, and garlic. Plan a dinner for 2 adults and 2 kids (picky eaters). Must take under 30 minutes. Give me a recipe with steps, portions, and a kid-friendly twist.",
+    response: "\ud83c\udf57 Honey-Garlic Chicken Rice Bowls\n\nServes 4 (2 adult + 2 kid portions)\nTime: 25 minutes\n\n1. Dice chicken into bite-size cubes. Season with soy sauce & minced garlic.\n2. Stir-fry chicken 6 min on medium-high. Set aside.\n3. Steam broccoli florets 4 min. For picky kids: cut tiny & call them \"trees.\"\n4. Cook rice per package. Fluff with fork.\n5. Bowl it up: rice base, chicken on one side, broccoli trees on the other.\n\n\ud83e\udde1 Kid-friendly twist: Let kids build their own bowls. Serve sauce on the side for dipping!"
   }
 };
 
@@ -1101,9 +1139,11 @@ function clearDemo() {
   demoTimeouts = [];
   document.getElementById('weakPrompt').innerHTML = '';
   document.getElementById('weakResponse').innerHTML = '';
-  var vid = document.getElementById('aiMenuVideo');
-  vid.pause();
-  vid.currentTime = 0;
+  document.getElementById('strongPrompt').innerHTML = '';
+  document.getElementById('strongResponse').innerHTML = '';
+  document.getElementById('sendBar').style.display = 'none';
+  document.getElementById('panelWeak').style.opacity = '1';
+  document.getElementById('panelStrong').style.opacity = '0.4';
 }
 
 function typeText(elementId, text, speed, callback) {
@@ -1144,15 +1184,31 @@ async function runDemo() {
   demoRunning = true;
   clearDemo();
 
-  /* ========== LEFT: Weak prompt types fully ========== */
+  /* ========== PHASE 1: WEAK plays fully ========== */
+  document.getElementById('panelWeak').style.opacity = '1';
+  document.getElementById('panelStrong').style.opacity = '0.4';
+
   await new Promise(resolve => typeText('weakPrompt', DEMO_DATA.weak.prompt, TYPE_SPEED, resolve));
   await demoDelay(800);
   await new Promise(resolve => typeText('weakResponse', DEMO_DATA.weak.response, RESPONSE_SPEED, resolve));
+  await demoDelay(1200);
 
-  /* ========== RIGHT: AI menu video plays (loops) ========== */
-  var vid = document.getElementById('aiMenuVideo');
-  vid.currentTime = 0;
-  vid.play();
+  /* ========== PHASE 2: STRONG plays fully ========== */
+  document.getElementById('panelWeak').style.opacity = '0.4';
+  document.getElementById('panelStrong').style.opacity = '1';
+  await demoDelay(400);
+
+  await new Promise(resolve => typeText('strongPrompt', DEMO_DATA.strong.prompt, 18, resolve));
+  await demoDelay(600);
+  await new Promise(resolve => typeText('strongResponse', DEMO_DATA.strong.response, RESPONSE_SPEED, resolve));
+  await demoDelay(400);
+
+  /* ========== PHASE 3: Send to AI bar appears ========== */
+  document.getElementById('sendBar').style.display = 'block';
+
+  // Both panels bright
+  document.getElementById('panelWeak').style.opacity = '1';
+  document.getElementById('panelStrong').style.opacity = '1';
 
   demoRunning = false;
 }
