@@ -5,92 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prompt Studio — Shared Prompt</title>
     <meta property="og:title" content="Prompt Studio — Shared Prompt">
-    <meta property="og:description" content="Check out this prompt template shared from Prompt Studio by Poly-Glot. Download the app to use it on iOS and Mac.">
+    <meta property="og:description" content="Check out this prompt template shared from Prompt Studio by Poly-Glot. Download the app to use it on Mac.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://raw.githubusercontent.com/hmoses/poly-glot-site/main/assets/img/icon-128.png">
-    <meta name="description" content="A prompt template shared from Prompt Studio by Poly-Glot. Download on iOS and Mac.">
-    <link rel="icon" href="https://raw.githubusercontent.com/hmoses/poly-glot-site/main/assets/img/icon-128.png" type="image/png">
+    <meta property="og:url" content="https://hmoses.github.io/poly-glot-site/share.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Prompt Studio — Shared Prompt">
+    <meta name="twitter:description" content="Check out this prompt template shared from Prompt Studio by Poly-Glot.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/hmoses/poly-glot-site/main/assets/img/icon-128.png">
     <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: #0d1117;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #0f0f1a;
+            color: #e5e7eb;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 24px 16px;
-            line-height: 1.6;
+            padding: 24px;
         }
 
         .card {
-            background-color: #161b22;
+            background: #1a1a2e;
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 20px;
-            padding: 48px 40px;
-            max-width: 640px;
+            padding: 40px 32px;
+            max-width: 560px;
             width: 100%;
             text-align: center;
-            box-shadow:
-                0 0 0 1px rgba(124, 58, 237, 0.15),
-                0 8px 32px rgba(0, 0, 0, 0.4),
-                0 0 80px -20px rgba(124, 58, 237, 0.15);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
         }
 
         .logo {
-            width: 96px;
-            height: 96px;
-            border-radius: 22px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 4px 16px rgba(124, 58, 237, 0.3));
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
+            margin-bottom: 16px;
         }
 
         .app-title {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
         }
 
         .template-name {
             font-size: 16px;
-            color: #8b949e;
-            margin-bottom: 32px;
-        }
-
-        .template-name strong {
-            color: #c9d1d9;
-            font-weight: 600;
+            color: #a5b4fc;
+            margin-bottom: 20px;
         }
 
         .lang-badge {
             display: inline-block;
-            background: rgba(124, 58, 237, 0.2);
-            color: #a78bfa;
+            background: rgba(99,102,241,0.2);
+            color: #a5b4fc;
             font-size: 12px;
             font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 12px;
+            padding: 2px 8px;
+            border-radius: 6px;
             margin-left: 8px;
             vertical-align: middle;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .prompt-container {
             position: relative;
-            background-color: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            padding: 24px;
-            padding-top: 20px;
-            margin-bottom: 36px;
+            background: #12121e;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            padding: 20px;
+            margin: 20px 0;
             text-align: left;
         }
 
@@ -98,56 +84,47 @@
             font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #8b949e;
-            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            color: #6b7280;
+            margin-bottom: 10px;
         }
 
         .prompt-text {
-            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', Menlo, Consolas, monospace;
             font-size: 14px;
             line-height: 1.7;
-            color: #e6edf3;
+            color: #d1d5db;
             white-space: pre-wrap;
             word-break: break-word;
-            max-height: 320px;
+            max-height: 400px;
             overflow-y: auto;
-        }
-
-        .prompt-text::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .prompt-text::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .prompt-text::-webkit-scrollbar-thumb {
-            background: #30363d;
-            border-radius: 3px;
         }
 
         .copy-btn {
             position: absolute;
-            top: 14px;
-            right: 14px;
-            background: #21262d;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            color: #8b949e;
-            cursor: pointer;
-            padding: 6px 10px;
-            font-size: 13px;
+            top: 12px;
+            right: 12px;
             display: flex;
             align-items: center;
-            gap: 5px;
-            transition: all 0.2s ease;
+            gap: 6px;
+            background: rgba(99,102,241,0.15);
+            color: #a5b4fc;
+            border: 1px solid rgba(99,102,241,0.3);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
         .copy-btn:hover {
-            background: #30363d;
-            color: #e6edf3;
-            border-color: #484f58;
+            background: rgba(99,102,241,0.3);
+        }
+
+        .copy-btn.copied {
+            background: rgba(34,197,94,0.15);
+            color: #4ade80;
+            border-color: rgba(34,197,94,0.3);
         }
 
         .copy-btn svg {
@@ -155,33 +132,28 @@
             height: 14px;
         }
 
-        .copy-btn.copied {
-            color: #3fb950;
-            border-color: #238636;
-        }
-
         .divider {
             height: 1px;
-            background: linear-gradient(to right, transparent, #30363d, transparent);
-            margin-bottom: 32px;
+            background: rgba(255,255,255,0.06);
+            margin: 24px 0;
         }
 
         .cta-title {
             font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 6px;
+            font-weight: 700;
+            margin-bottom: 4px;
         }
 
         .cta-subtitle {
-            font-size: 14px;
-            color: #8b949e;
-            margin-bottom: 24px;
+            font-size: 13px;
+            color: #9ca3af;
+            margin-bottom: 16px;
         }
 
         .buttons {
             display: flex;
-            gap: 12px;
             justify-content: center;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -191,35 +163,10 @@
             gap: 8px;
             padding: 12px 24px;
             border-radius: 12px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #7c3aed, #6d28d9);
-            color: #ffffff;
-            box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 24px rgba(124, 58, 237, 0.45);
-        }
-
-        .btn-secondary {
-            background: #21262d;
-            color: #e6edf3;
-            border: 1px solid #30363d;
-        }
-
-        .btn-secondary:hover {
-            background: #30363d;
-            border-color: #484f58;
-            transform: translateY(-1px);
+            transition: all 0.2s;
         }
 
         .btn svg {
@@ -227,89 +174,129 @@
             height: 18px;
         }
 
+        .btn-primary {
+            background: #6366f1;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #4f46e5;
+        }
+
+        .error-msg {
+            color: #f87171;
+            font-size: 14px;
+            margin: 16px 0;
+        }
+
+        .hero-tagline {
+            color: #9ca3af;
+            font-size: 15px;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
         .footer {
             margin-top: 32px;
-            font-size: 13px;
-            color: #484f58;
+            font-size: 12px;
+            color: #6b7280;
         }
 
         .footer a {
-            color: #8b949e;
+            color: #a5b4fc;
             text-decoration: none;
-            transition: color 0.2s;
         }
 
         .footer a:hover {
-            color: #a78bfa;
+            text-decoration: underline;
         }
 
-        /* Generic landing (no hash) */
-        .hero-tagline {
-            font-size: 18px;
-            color: #8b949e;
-            margin-bottom: 32px;
-            max-width: 420px;
-            margin-left: auto;
-            margin-right: auto;
+        /* RTL support for Arabic and Hebrew */
+        [dir="rtl"] .prompt-text {
+            direction: rtl;
+            text-align: right;
         }
 
-        /* Error state */
-        .error-msg {
-            color: #f85149;
-            font-size: 14px;
-            margin-bottom: 24px;
+        [dir="rtl"] .prompt-label {
+            text-align: right;
         }
 
-        /* Responsive */
-        @media (max-width: 520px) {
-            .card {
-                padding: 32px 20px;
-                border-radius: 16px;
-            }
+        [dir="rtl"] .copy-btn {
+            right: auto;
+            left: 12px;
+        }
 
-            .logo {
-                width: 72px;
-                height: 72px;
-                border-radius: 18px;
-            }
-
-            .app-title {
-                font-size: 24px;
-            }
-
-            .prompt-text {
-                font-size: 13px;
-                max-height: 260px;
-            }
-
-            .buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                justify-content: center;
-            }
+        @media (max-width: 480px) {
+            .card { padding: 28px 20px; }
+            .buttons { flex-direction: column; }
+            .btn { justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <div class="card" id="card">
-        <!-- Content injected by JS -->
-    </div>
+    <div class="card" id="card"></div>
 
     <div class="footer">
-        Made with <strong>Prompt Studio</strong> by <a href="https://poly-glot.ai">Poly-Glot</a>
+        <span id="footerText">Made with <strong>Prompt Studio</strong> by <a href="https://poly-glot-prompt.ai">Poly-Glot</a></span>
     </div>
 
     <script>
-        const IOS_URL = 'https://apps.apple.com/app/id6762054909';
         const MAC_URL = 'https://apps.apple.com/app/id6762222589';
         const LOGO_URL = 'https://raw.githubusercontent.com/hmoses/poly-glot-site/main/assets/img/icon-128.png';
 
         const clipboardSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
         const checkSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
-        const iosSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>`;
         const macSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`;
+
+        // ─── Localization for all 38 languages ───
+        const L = {
+            EN: { copy:"Copy", copied:"Copied!", getApp:"Get Prompt Studio", subtitle:"Create, organize, and share AI prompts on Mac.", promptLabel:"Prompt Template", errorMsg:"Could not decode the shared prompt. The link may be invalid or corrupted.", download:"Download for Mac", landing:"Create, organize, and share powerful AI prompt templates — on your Mac.", footer:"Made with {app} by {brand}" },
+            ES: { copy:"Copiar", copied:"¡Copiado!", getApp:"Obtener Prompt Studio", subtitle:"Crea, organiza y comparte prompts de IA en Mac.", promptLabel:"Plantilla de prompt", errorMsg:"No se pudo decodificar el prompt compartido. El enlace puede ser inválido o estar dañado.", download:"Descargar para Mac", landing:"Crea, organiza y comparte plantillas de prompts de IA potentes — en tu Mac.", footer:"Hecho con {app} por {brand}" },
+            FR: { copy:"Copier", copied:"Copié !", getApp:"Obtenir Prompt Studio", subtitle:"Créez, organisez et partagez des prompts IA sur Mac.", promptLabel:"Modèle de prompt", errorMsg:"Impossible de décoder le prompt partagé. Le lien est peut-être invalide ou corrompu.", download:"Télécharger pour Mac", landing:"Créez, organisez et partagez des modèles de prompts IA puissants — sur votre Mac.", footer:"Créé avec {app} par {brand}" },
+            DE: { copy:"Kopieren", copied:"Kopiert!", getApp:"Prompt Studio laden", subtitle:"Erstelle, organisiere und teile KI-Prompts auf dem Mac.", promptLabel:"Prompt-Vorlage", errorMsg:"Der geteilte Prompt konnte nicht dekodiert werden. Der Link ist möglicherweise ungültig.", download:"Für Mac laden", landing:"Erstelle, organisiere und teile leistungsstarke KI-Prompt-Vorlagen — auf deinem Mac.", footer:"Erstellt mit {app} von {brand}" },
+            IT: { copy:"Copia", copied:"Copiato!", getApp:"Scarica Prompt Studio", subtitle:"Crea, organizza e condividi prompt AI su Mac.", promptLabel:"Modello di prompt", errorMsg:"Impossibile decodificare il prompt condiviso. Il link potrebbe essere non valido o corrotto.", download:"Scarica per Mac", landing:"Crea, organizza e condividi potenti modelli di prompt AI — sul tuo Mac.", footer:"Creato con {app} da {brand}" },
+            PT: { copy:"Copiar", copied:"Copiado!", getApp:"Baixar Prompt Studio", subtitle:"Crie, organize e compartilhe prompts de IA no Mac.", promptLabel:"Modelo de prompt", errorMsg:"Não foi possível decodificar o prompt compartilhado. O link pode ser inválido ou corrompido.", download:"Baixar para Mac", landing:"Crie, organize e compartilhe modelos poderosos de prompts de IA — no seu Mac.", footer:"Feito com {app} por {brand}" },
+            NL: { copy:"Kopiëren", copied:"Gekopieerd!", getApp:"Download Prompt Studio", subtitle:"Maak, organiseer en deel AI-prompts op Mac.", promptLabel:"Promptsjabloon", errorMsg:"Kan de gedeelde prompt niet decoderen. De link is mogelijk ongeldig of beschadigd.", download:"Download voor Mac", landing:"Maak, organiseer en deel krachtige AI-promptsjablonen — op je Mac.", footer:"Gemaakt met {app} door {brand}" },
+            RU: { copy:"Копировать", copied:"Скопировано!", getApp:"Скачать Prompt Studio", subtitle:"Создавайте, организуйте и делитесь ИИ-промптами на Mac.", promptLabel:"Шаблон промпта", errorMsg:"Не удалось декодировать общий промпт. Ссылка может быть недействительной.", download:"Скачать для Mac", landing:"Создавайте, организуйте и делитесь мощными шаблонами ИИ-промптов — на вашем Mac.", footer:"Сделано в {app} от {brand}" },
+            ZH: { copy:"复制", copied:"已复制！", getApp:"获取 Prompt Studio", subtitle:"在 Mac 上创建、整理和分享 AI 提示词。", promptLabel:"提示词模板", errorMsg:"无法解码共享的提示词。链接可能无效或损坏。", download:"下载 Mac 版", landing:"在你的 Mac 上创建、整理和分享强大的 AI 提示词模板。", footer:"由 {brand} 用 {app} 制作" },
+            ZH_TW: { copy:"複製", copied:"已複製！", getApp:"取得 Prompt Studio", subtitle:"在 Mac 上建立、整理和分享 AI 提示詞。", promptLabel:"提示詞範本", errorMsg:"無法解碼分享的提示詞。連結可能無效或損毀。", download:"下載 Mac 版", landing:"在你的 Mac 上建立、整理和分享強大的 AI 提示詞範本。", footer:"由 {brand} 用 {app} 製作" },
+            JA: { copy:"コピー", copied:"コピー完了！", getApp:"Prompt Studio を入手", subtitle:"Mac で AI プロンプトを作成、整理、共有。", promptLabel:"プロンプトテンプレート", errorMsg:"共有プロンプトをデコードできませんでした。リンクが無効または破損している可能性があります。", download:"Mac 版をダウンロード", landing:"Mac で強力な AI プロンプトテンプレートを作成、整理、共有しましょう。", footer:"{brand} の {app} で作成" },
+            KO: { copy:"복사", copied:"복사 완료!", getApp:"Prompt Studio 받기", subtitle:"Mac에서 AI 프롬프트를 만들고, 정리하고, 공유하세요.", promptLabel:"프롬프트 템플릿", errorMsg:"공유된 프롬프트를 디코딩할 수 없습니다. 링크가 유효하지 않거나 손상되었을 수 있습니다.", download:"Mac용 다운로드", landing:"Mac에서 강력한 AI 프롬프트 템플릿을 만들고, 정리하고, 공유하세요.", footer:"{brand}의 {app}으로 제작" },
+            AR: { copy:"نسخ", copied:"تم النسخ!", getApp:"احصل على Prompt Studio", subtitle:"أنشئ ونظّم وشارك أوامر الذكاء الاصطناعي على Mac.", promptLabel:"قالب الأمر", errorMsg:"تعذّر فك تشفير الأمر المشترك. قد يكون الرابط غير صالح أو تالفًا.", download:"تنزيل لـ Mac", landing:"أنشئ ونظّم وشارك قوالب أوامر ذكاء اصطناعي قوية — على جهاز Mac الخاص بك.", footer:"صُنع بواسطة {app} من {brand}" },
+            HI: { copy:"कॉपी", copied:"कॉपी हुआ!", getApp:"Prompt Studio प्राप्त करें", subtitle:"Mac पर AI प्रॉम्प्ट बनाएं, व्यवस्थित करें और साझा करें।", promptLabel:"प्रॉम्प्ट टेम्पलेट", errorMsg:"साझा किए गए प्रॉम्प्ट को डिकोड नहीं किया जा सका। लिंक अमान्य या दूषित हो सकता है।", download:"Mac के लिए डाउनलोड करें", landing:"Mac पर शक्तिशाली AI प्रॉम्प्ट टेम्पलेट बनाएं, व्यवस्थित करें और साझा करें।", footer:"{brand} द्वारा {app} से बनाया गया" },
+            BN: { copy:"কপি", copied:"কপি হয়েছে!", getApp:"Prompt Studio পান", subtitle:"Mac-এ AI প্রম্পট তৈরি, সংগঠিত এবং শেয়ার করুন।", promptLabel:"প্রম্পট টেমপ্লেট", errorMsg:"শেয়ার করা প্রম্পটটি ডিকোড করা যায়নি। লিঙ্কটি অবৈধ বা দূষিত হতে পারে।", download:"Mac এর জন্য ডাউনলোড", landing:"আপনার Mac-এ শক্তিশালী AI প্রম্পট টেমপ্লেট তৈরি, সংগঠিত এবং শেয়ার করুন।", footer:"{brand} এর {app} দিয়ে তৈরি" },
+            TR: { copy:"Kopyala", copied:"Kopyalandı!", getApp:"Prompt Studio'yu İndir", subtitle:"Mac'te AI komutları oluşturun, düzenleyin ve paylaşın.", promptLabel:"Komut Şablonu", errorMsg:"Paylaşılan komut çözümlenemedi. Bağlantı geçersiz veya bozuk olabilir.", download:"Mac için İndir", landing:"Mac'inizde güçlü AI komut şablonları oluşturun, düzenleyin ve paylaşın.", footer:"{brand} tarafından {app} ile yapılmıştır" },
+            PL: { copy:"Kopiuj", copied:"Skopiowano!", getApp:"Pobierz Prompt Studio", subtitle:"Twórz, organizuj i udostępniaj prompty AI na Macu.", promptLabel:"Szablon promptu", errorMsg:"Nie udało się zdekodować udostępnionego promptu. Link może być nieprawidłowy lub uszkodzony.", download:"Pobierz na Mac", landing:"Twórz, organizuj i udostępniaj potężne szablony promptów AI — na swoim Macu.", footer:"Stworzone w {app} przez {brand}" },
+            SV: { copy:"Kopiera", copied:"Kopierad!", getApp:"Hämta Prompt Studio", subtitle:"Skapa, organisera och dela AI-prompter på Mac.", promptLabel:"Promptmall", errorMsg:"Kunde inte avkoda den delade prompten. Länken kan vara ogiltig eller skadad.", download:"Ladda ner för Mac", landing:"Skapa, organisera och dela kraftfulla AI-promptmallar — på din Mac.", footer:"Skapad med {app} av {brand}" },
+            NO: { copy:"Kopier", copied:"Kopiert!", getApp:"Last ned Prompt Studio", subtitle:"Lag, organiser og del AI-prompts på Mac.", promptLabel:"Promptmal", errorMsg:"Kunne ikke dekode den delte prompten. Lenken kan være ugyldig eller skadet.", download:"Last ned for Mac", landing:"Lag, organiser og del kraftige AI-promptmaler — på din Mac.", footer:"Laget med {app} av {brand}" },
+            DA: { copy:"Kopiér", copied:"Kopieret!", getApp:"Hent Prompt Studio", subtitle:"Opret, organiser og del AI-prompts på Mac.", promptLabel:"Promptskabelon", errorMsg:"Kunne ikke afkode den delte prompt. Linket kan være ugyldigt eller beskadiget.", download:"Download til Mac", landing:"Opret, organiser og del kraftfulde AI-promptskabeloner — på din Mac.", footer:"Lavet med {app} af {brand}" },
+            FI: { copy:"Kopioi", copied:"Kopioitu!", getApp:"Lataa Prompt Studio", subtitle:"Luo, järjestä ja jaa tekoälyprompteja Macilla.", promptLabel:"Promptmalli", errorMsg:"Jaettua promptia ei voitu purkaa. Linkki voi olla virheellinen tai vioittunut.", download:"Lataa Macille", landing:"Luo, järjestä ja jaa tehokkaita tekoälypromptimalleja — Macillasi.", footer:"Tehty {app}:lla, tekijä {brand}" },
+            EL: { copy:"Αντιγραφή", copied:"Αντιγράφηκε!", getApp:"Αποκτήστε το Prompt Studio", subtitle:"Δημιουργήστε, οργανώστε και μοιραστείτε AI prompts στο Mac.", promptLabel:"Πρότυπο prompt", errorMsg:"Δεν ήταν δυνατή η αποκωδικοποίηση του κοινόχρηστου prompt. Ο σύνδεσμος μπορεί να είναι μη έγκυρος.", download:"Λήψη για Mac", landing:"Δημιουργήστε, οργανώστε και μοιραστείτε ισχυρά πρότυπα AI prompt — στο Mac σας.", footer:"Δημιουργήθηκε με {app} από {brand}" },
+            HE: { copy:"העתק", copied:"הועתק!", getApp:"הורד את Prompt Studio", subtitle:"צור, ארגן ושתף פרומפטים ל-AI ב-Mac.", promptLabel:"תבנית פרומפט", errorMsg:"לא ניתן לפענח את הפרומפט המשותף. הקישור עשוי להיות לא תקין או פגום.", download:"הורד ל-Mac", landing:"צור, ארגן ושתף תבניות פרומפט AI עוצמתיות — ב-Mac שלך.", footer:"נוצר עם {app} על ידי {brand}" },
+            ID: { copy:"Salin", copied:"Disalin!", getApp:"Dapatkan Prompt Studio", subtitle:"Buat, atur, dan bagikan prompt AI di Mac.", promptLabel:"Templat Prompt", errorMsg:"Tidak dapat mendekode prompt yang dibagikan. Tautan mungkin tidak valid atau rusak.", download:"Unduh untuk Mac", landing:"Buat, atur, dan bagikan templat prompt AI yang kuat — di Mac Anda.", footer:"Dibuat dengan {app} oleh {brand}" },
+            MS: { copy:"Salin", copied:"Disalin!", getApp:"Dapatkan Prompt Studio", subtitle:"Cipta, susun dan kongsi prompt AI di Mac.", promptLabel:"Templat Prompt", errorMsg:"Tidak dapat menyahkod prompt yang dikongsi. Pautan mungkin tidak sah atau rosak.", download:"Muat turun untuk Mac", landing:"Cipta, susun dan kongsi templat prompt AI yang berkuasa — di Mac anda.", footer:"Dibuat dengan {app} oleh {brand}" },
+            TH: { copy:"คัดลอก", copied:"คัดลอกแล้ว!", getApp:"รับ Prompt Studio", subtitle:"สร้าง จัดระเบียบ และแชร์พรอมต์ AI บน Mac", promptLabel:"เทมเพลตพรอมต์", errorMsg:"ไม่สามารถถอดรหัสพรอมต์ที่แชร์ได้ ลิงก์อาจไม่ถูกต้องหรือเสียหาย", download:"ดาวน์โหลดสำหรับ Mac", landing:"สร้าง จัดระเบียบ และแชร์เทมเพลตพรอมต์ AI ที่ทรงพลัง — บน Mac ของคุณ", footer:"สร้างด้วย {app} โดย {brand}" },
+            VI: { copy:"Sao chép", copied:"Đã sao chép!", getApp:"Tải Prompt Studio", subtitle:"Tạo, sắp xếp và chia sẻ prompt AI trên Mac.", promptLabel:"Mẫu prompt", errorMsg:"Không thể giải mã prompt được chia sẻ. Liên kết có thể không hợp lệ hoặc bị hỏng.", download:"Tải cho Mac", landing:"Tạo, sắp xếp và chia sẻ các mẫu prompt AI mạnh mẽ — trên Mac của bạn.", footer:"Được tạo bằng {app} bởi {brand}" },
+            UK: { copy:"Копіювати", copied:"Скопійовано!", getApp:"Завантажити Prompt Studio", subtitle:"Створюйте, організовуйте та діліться ШІ-промптами на Mac.", promptLabel:"Шаблон промпту", errorMsg:"Не вдалося декодувати спільний промпт. Посилання може бути недійсним або пошкодженим.", download:"Завантажити для Mac", landing:"Створюйте, організовуйте та діліться потужними шаблонами ШІ-промптів — на вашому Mac.", footer:"Створено в {app} від {brand}" },
+            CS: { copy:"Kopírovat", copied:"Zkopírováno!", getApp:"Stáhnout Prompt Studio", subtitle:"Vytvářejte, organizujte a sdílejte AI prompty na Macu.", promptLabel:"Šablona promptu", errorMsg:"Sdílený prompt se nepodařilo dekódovat. Odkaz může být neplatný nebo poškozený.", download:"Stáhnout pro Mac", landing:"Vytvářejte, organizujte a sdílejte výkonné šablony AI promptů — na vašem Macu.", footer:"Vytvořeno v {app} od {brand}" },
+            RO: { copy:"Copiază", copied:"Copiat!", getApp:"Descarcă Prompt Studio", subtitle:"Creează, organizează și partajează prompturi AI pe Mac.", promptLabel:"Șablon de prompt", errorMsg:"Nu s-a putut decoda promptul partajat. Linkul poate fi invalid sau corupt.", download:"Descarcă pentru Mac", landing:"Creează, organizează și partajează șabloane puternice de prompturi AI — pe Mac-ul tău.", footer:"Creat cu {app} de {brand}" },
+            HU: { copy:"Másolás", copied:"Másolva!", getApp:"Prompt Studio letöltése", subtitle:"Hozzon létre, rendszerezzen és osszon meg AI-promptokat Macen.", promptLabel:"Prompt sablon", errorMsg:"A megosztott prompt nem dekódolható. A link érvénytelen vagy sérült lehet.", download:"Letöltés Macre", landing:"Hozzon létre, rendszerezzen és osszon meg hatékony AI-prompt sablonokat — Macjén.", footer:"Készítette: {app}, {brand}" },
+            SK: { copy:"Kopírovať", copied:"Skopírované!", getApp:"Stiahnuť Prompt Studio", subtitle:"Vytvárajte, organizujte a zdieľajte AI prompty na Macu.", promptLabel:"Šablóna promptu", errorMsg:"Zdieľaný prompt sa nepodarilo dekódovať. Odkaz môže byť neplatný alebo poškodený.", download:"Stiahnuť pre Mac", landing:"Vytvárajte, organizujte a zdieľajte výkonné šablóny AI promptov — na vašom Macu.", footer:"Vytvorené v {app} od {brand}" },
+            HR: { copy:"Kopiraj", copied:"Kopirano!", getApp:"Preuzmi Prompt Studio", subtitle:"Stvarajte, organizirajte i dijelite AI promptove na Macu.", promptLabel:"Predložak prompta", errorMsg:"Dijeljeni prompt se ne može dekodirati. Poveznica je možda nevažeća ili oštećena.", download:"Preuzmi za Mac", landing:"Stvarajte, organizirajte i dijelite moćne predloške AI promptova — na vašem Macu.", footer:"Napravljeno u {app} od {brand}" },
+            CA: { copy:"Copia", copied:"Copiat!", getApp:"Descarrega Prompt Studio", subtitle:"Crea, organitza i comparteix prompts d'IA al Mac.", promptLabel:"Plantilla de prompt", errorMsg:"No s'ha pogut descodificar el prompt compartit. L'enllaç pot ser no vàlid o estar danyat.", download:"Descarrega per a Mac", landing:"Crea, organitza i comparteix plantilles de prompts d'IA potents — al teu Mac.", footer:"Fet amb {app} per {brand}" },
+            AF: { copy:"Kopieer", copied:"Gekopieer!", getApp:"Kry Prompt Studio", subtitle:"Skep, organiseer en deel AI-aanwysings op Mac.", promptLabel:"Aanwysingsjabloon", errorMsg:"Kon nie die gedeelde aanwysing dekodeer nie. Die skakel is dalk ongeldig of beskadig.", download:"Laai af vir Mac", landing:"Skep, organiseer en deel kragtige AI-aanwysingsjablone — op jou Mac.", footer:"Gemaak met {app} deur {brand}" },
+            SW: { copy:"Nakili", copied:"Imenakiliwa!", getApp:"Pata Prompt Studio", subtitle:"Unda, panga na ushiriki maagizo ya AI kwenye Mac.", promptLabel:"Kiolezo cha Agizo", errorMsg:"Haikuweza kusimbua agizo lililoshirikiwa. Kiungo kinaweza kuwa batili au kimeharibika.", download:"Pakua kwa Mac", landing:"Unda, panga na ushiriki violezo vya maagizo ya AI vyenye nguvu — kwenye Mac yako.", footer:"Imetengenezwa na {app} na {brand}" },
+            HA: { copy:"Kwafi", copied:"An kwafi!", getApp:"Sami Prompt Studio", subtitle:"Ƙirƙiri, tsara kuma raba umarnin AI akan Mac.", promptLabel:"Tsarin Umarni", errorMsg:"Ba a iya warware umarnin da aka raba ba. Hanyar haɗin na iya zama mara inganci ko lalacewa.", download:"Zazzage don Mac", landing:"Ƙirƙiri, tsara kuma raba samfuran umarnin AI masu ƙarfi — akan Mac ɗinka.", footer:"An yi shi da {app} ta {brand}" },
+            AM: { copy:"ቅዳ", copied:"ተቀድቷል!", getApp:"Prompt Studio ያግኙ", subtitle:"በ Mac ላይ AI መመሪያዎችን ይፍጠሩ፣ ያደራጁ እና ያጋሩ።", promptLabel:"የመመሪያ ቅርፅ", errorMsg:"የተጋራውን መመሪያ ለመፍታት አልተቻለም። ማገናኛው ልክ ያልሆነ ወይም የተበላሸ ሊሆን ይችላል።", download:"ለ Mac ያውርዱ", landing:"በ Mac ላይ ኃይለኛ AI የመመሪያ ቅርፆችን ይፍጠሩ፣ ያደራጁ እና ያጋሩ።", footer:"በ {brand} {app} ተሰርቷል" }
+        };
+
+        // RTL languages
+        const RTL_LANGS = ['AR', 'HE'];
+
+        function getLang(langCode) {
+            const code = (langCode || 'EN').toUpperCase().replace('-','_');
+            return L[code] || L['EN'];
+        }
 
         function escapeHTML(str) {
             const div = document.createElement('div');
@@ -317,32 +304,29 @@
             return div.innerHTML;
         }
 
-        function renderDownloadButtons() {
+        function renderDownloadButtons(t) {
             return `
                 <div class="divider"></div>
-                <div class="cta-title">Get Prompt Studio</div>
-                <div class="cta-subtitle">Create, organize, and share AI prompts on iOS and Mac.</div>
+                <div class="cta-title">${t.getApp}</div>
+                <div class="cta-subtitle">${t.subtitle}</div>
                 <div class="buttons">
-                    <a href="${IOS_URL}" class="btn btn-primary" target="_blank" rel="noopener">
-                        ${iosSVG} Download for iOS
-                    </a>
-                    <a href="${MAC_URL}" class="btn btn-secondary" target="_blank" rel="noopener">
-                        ${macSVG} Download for Mac
+                    <a href="${MAC_URL}" class="btn btn-primary" target="_blank" rel="noopener">
+                        ${macSVG} ${t.download}
                     </a>
                 </div>
             `;
         }
 
-        function renderGenericLanding() {
+        function renderGenericLanding(t) {
             return `
                 <img src="${LOGO_URL}" alt="Prompt Studio" class="logo">
                 <div class="app-title">Prompt Studio</div>
-                <p class="hero-tagline">Create, organize, and share powerful AI prompt templates — on your iPhone, iPad, and Mac.</p>
-                ${renderDownloadButtons()}
+                <p class="hero-tagline">${t.landing}</p>
+                ${renderDownloadButtons(t)}
             `;
         }
 
-        function renderSharedPrompt(data) {
+        function renderSharedPrompt(data, t) {
             const name = escapeHTML(data.name || 'Untitled Prompt');
             const prompt = escapeHTML(data.prompt || '');
             const lang = data.lang ? escapeHTML(data.lang) : null;
@@ -357,43 +341,35 @@
                 <div class="template-name"><strong>${name}</strong>${langBadge}</div>
 
                 <div class="prompt-container">
-                    <div class="prompt-label">Prompt Template</div>
-                    <button class="copy-btn" id="copyBtn" aria-label="Copy prompt">
+                    <div class="prompt-label">${t.promptLabel}</div>
+                    <button class="copy-btn" id="copyBtn" aria-label="${t.copy}">
                         ${clipboardSVG}
-                        <span id="copyLabel">Copy</span>
+                        <span id="copyLabel">${t.copy}</span>
                     </button>
                     <div class="prompt-text" id="promptText">${prompt}</div>
                 </div>
 
-                ${renderDownloadButtons()}
+                ${renderDownloadButtons(t)}
             `;
         }
 
-        function renderError() {
+        function renderError(t) {
             return `
                 <img src="${LOGO_URL}" alt="Prompt Studio" class="logo">
                 <div class="app-title">Prompt Studio</div>
-                <div class="error-msg">Could not decode the shared prompt. The link may be invalid or corrupted.</div>
-                ${renderDownloadButtons()}
+                <div class="error-msg">${t.errorMsg}</div>
+                ${renderDownloadButtons(t)}
             `;
         }
 
-        function initCopyButton(rawPrompt) {
+        function initCopyButton(rawPrompt, t) {
             const btn = document.getElementById('copyBtn');
             if (!btn) return;
 
             btn.addEventListener('click', async () => {
                 try {
                     await navigator.clipboard.writeText(rawPrompt);
-                    btn.classList.add('copied');
-                    document.getElementById('copyLabel').textContent = 'Copied!';
-                    btn.innerHTML = `${checkSVG}<span id="copyLabel">Copied!</span>`;
-                    setTimeout(() => {
-                        btn.classList.remove('copied');
-                        btn.innerHTML = `${clipboardSVG}<span id="copyLabel">Copy</span>`;
-                    }, 2000);
                 } catch {
-                    // Fallback for older browsers
                     const ta = document.createElement('textarea');
                     ta.value = rawPrompt;
                     ta.style.position = 'fixed';
@@ -402,38 +378,85 @@
                     ta.select();
                     document.execCommand('copy');
                     document.body.removeChild(ta);
-                    btn.classList.add('copied');
-                    btn.innerHTML = `${checkSVG}<span id="copyLabel">Copied!</span>`;
-                    setTimeout(() => {
-                        btn.classList.remove('copied');
-                        btn.innerHTML = `${clipboardSVG}<span id="copyLabel">Copy</span>`;
-                    }, 2000);
                 }
+                btn.classList.add('copied');
+                btn.innerHTML = `${checkSVG}<span id="copyLabel">${t.copied}</span>`;
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = `${clipboardSVG}<span id="copyLabel">${t.copy}</span>`;
+                }, 2000);
             });
+        }
+
+        function updateFooter(t) {
+            const el = document.getElementById('footerText');
+            if (el) {
+                const text = t.footer
+                    .replace('{app}', '<strong>Prompt Studio</strong>')
+                    .replace('{brand}', '<a href="https://poly-glot-prompt.ai">Poly-Glot</a>');
+                el.innerHTML = text;
+            }
         }
 
         function init() {
             const card = document.getElementById('card');
             const hash = window.location.hash.slice(1);
 
+            // Default to English
+            let detectedLang = 'EN';
+            let t = getLang('EN');
+
             if (!hash) {
-                card.innerHTML = renderGenericLanding();
+                // Try to detect browser language
+                const browserLang = (navigator.language || 'en').toUpperCase().replace('-','_');
+                if (L[browserLang]) detectedLang = browserLang;
+                else if (L[browserLang.split('_')[0]]) detectedLang = browserLang.split('_')[0];
+                t = getLang(detectedLang);
+
+                if (RTL_LANGS.includes(detectedLang)) {
+                    document.documentElement.setAttribute('dir', 'rtl');
+                    document.documentElement.lang = detectedLang.toLowerCase();
+                }
+
+                card.innerHTML = renderGenericLanding(t);
+                updateFooter(t);
                 return;
             }
 
             try {
-                const decoded = atob(hash);
+                // Robust base64 decode: handle URL-safe base64 and Unicode
+                let b64 = hash;
+                // Fix URL-safe base64 chars
+                b64 = b64.replace(/-/g, '+').replace(/_/g, '/');
+                // Fix padding
+                while (b64.length % 4 !== 0) b64 += '=';
+
+                const decoded = decodeURIComponent(escape(atob(b64)));
                 const data = JSON.parse(decoded);
 
+                // Detect language from shared data
+                if (data.lang) {
+                    detectedLang = data.lang.toUpperCase().replace('-','_');
+                }
+                t = getLang(detectedLang);
+
+                // Set RTL if needed
+                if (RTL_LANGS.includes(detectedLang)) {
+                    document.documentElement.setAttribute('dir', 'rtl');
+                    document.documentElement.lang = detectedLang.toLowerCase();
+                }
+
                 if (!data.prompt) {
-                    card.innerHTML = renderError();
+                    card.innerHTML = renderError(t);
+                    updateFooter(t);
                     return;
                 }
 
-                card.innerHTML = renderSharedPrompt(data);
-                initCopyButton(data.prompt);
+                card.innerHTML = renderSharedPrompt(data, t);
+                initCopyButton(data.prompt, t);
+                updateFooter(t);
 
-                // Update OG tags dynamically (limited browser support, but good practice)
+                // Update OG tags dynamically
                 const ogTitle = document.querySelector('meta[property="og:title"]');
                 const ogDesc = document.querySelector('meta[property="og:description"]');
                 if (ogTitle) ogTitle.content = `${data.name || 'Shared Prompt'} — Prompt Studio`;
@@ -441,7 +464,8 @@
 
             } catch (e) {
                 console.error('Failed to decode shared prompt:', e);
-                card.innerHTML = renderError();
+                card.innerHTML = renderError(t);
+                updateFooter(t);
             }
         }
 
