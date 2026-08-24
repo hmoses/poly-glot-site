@@ -15,7 +15,7 @@
 <meta property="og:image:height" content="627">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/hmoses/poly-glot-site/main/assets/img/linkedin-banner.png">
-<meta name="apple-itunes-app" content="app-id=6762054909">
+<meta name="apple-itunes-app" content="app-id=6804499285">
 <link rel="icon" type="image/png" href="assets/img/icon-128.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,6 +47,11 @@
   --radius-xs: 6px;
   --shadow-card: 0 4px 32px rgba(0,0,0,0.3), 0 0 1px rgba(125,211,252,0.1);
   --shadow-glow: 0 0 60px rgba(125,211,252,0.08);
+  --border: rgba(255,255,255,0.08);
+  --surface: #1a1e3a;
+  --surface2: #232847;
+  --card: #141730;
+  --accent2: #7dd3fc;
 }
 html { scroll-behavior: smooth; }
 body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
@@ -77,12 +82,11 @@ a:hover { opacity: 0.85; }
 .nav-links a:hover { color: var(--text); opacity: 1; }
 .nav-cta {
   display: inline-flex; align-items: center; gap: 6px;
-  padding: 8px 18px; background: var(--gradient-primary);
-  color: #0a0b14; font-weight: 700; font-size: 0.82rem;
-  border-radius: 6px; border: none; cursor: pointer; text-decoration: none;
-  transition: transform 0.15s, box-shadow 0.15s;
+  padding: 8px 18px; background: rgba(251,191,36,0.08);
+  border: 1px solid rgba(251,191,36,0.25);
+  color: var(--amber); font-weight: 700; font-size: 0.82rem;
+  border-radius: 6px; cursor: default;
 }
-.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(125,211,252,0.3); opacity: 1; }
 .nav-mobile-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
 
 /* ===== HERO ===== */
@@ -106,12 +110,12 @@ a:hover { opacity: 0.85; }
 .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25);
+  background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.25);
   padding: 6px 14px; border-radius: 30px; margin-bottom: 24px;
-  font-size: 0.75rem; font-weight: 600; color: var(--green);
+  font-size: 0.75rem; font-weight: 600; color: var(--amber);
   font-family: 'Fira Code', monospace;
 }
-.hero-badge .dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+.hero-badge .dot { width: 7px; height: 7px; background: var(--amber); border-radius: 50%; animation: pulse 2s infinite; }
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
 .hero h1 {
   font-size: 3.4rem; font-weight: 800; line-height: 1.08;
@@ -124,31 +128,14 @@ a:hover { opacity: 0.85; }
 }
 .hero-sub { font-size: 1.15rem; color: var(--text-muted); line-height: 1.65; max-width: 480px; margin-bottom: 32px; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 28px; background: var(--gradient-primary);
-  color: #0a0b14; font-weight: 700; font-size: 0.95rem;
-  border-radius: var(--radius-sm); border: none; cursor: pointer;
-  text-decoration: none; transition: transform 0.15s, box-shadow 0.15s;
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(125,211,252,0.3); opacity: 1; }
-.btn-secondary {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 28px; background: rgba(125,211,252,0.06);
-  border: 1px solid rgba(125,211,252,0.2);
-  color: var(--accent); font-weight: 600; font-size: 0.95rem;
-  border-radius: var(--radius-sm); cursor: pointer;
-  text-decoration: none; transition: background 0.2s, border-color 0.2s;
-}
-.btn-secondary:hover { background: rgba(125,211,252,0.12); border-color: rgba(125,211,252,0.35); opacity: 1; }
 .btn-coming-soon {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 14px 28px; background: rgba(251,191,36,0.08);
   border: 1px solid rgba(251,191,36,0.25);
-  color: var(--amber); font-weight: 600; font-size: 0.95rem;
+  color: var(--amber); font-weight: 700; font-size: 0.95rem;
   border-radius: var(--radius-sm); cursor: default;
-  text-decoration: none;
 }
+.btn-coming-soon .pulse-dot { width: 8px; height: 8px; background: var(--amber); border-radius: 50%; animation: pulse 2s infinite; }
 .trust-row { display: flex; gap: 24px; flex-wrap: wrap; }
 .trust-item { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--text-muted); }
 .trust-item .check { color: var(--green); font-weight: 700; }
@@ -181,11 +168,9 @@ a:hover { opacity: 0.85; }
   padding: 12px 22px; background: var(--bg-surface);
   border: 1px solid rgba(125,211,252,0.1); border-radius: 50px;
   font-size: 0.88rem; color: var(--text-muted); font-weight: 500;
-  transition: border-color 0.2s, color 0.2s;
 }
-.platform-pill:hover { border-color: rgba(125,211,252,0.3); color: var(--text); }
 .platform-pill .emoji { font-size: 1.1rem; }
-.platform-pill .live-dot { display: inline-block; width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+.coming-dot { display: inline-block; width: 6px; height: 6px; background: var(--amber); border-radius: 50%; animation: pulse 2s infinite; }
 
 /* ===== SECTION SHARED ===== */
 .section { padding: 80px 0; }
@@ -202,6 +187,38 @@ a:hover { opacity: 0.85; }
 }
 .section-sub { font-size: 1rem; color: var(--text-faint); max-width: 600px; margin-bottom: 48px; line-height: 1.7; }
 .section-divider { width: 100%; height: 1px; background: rgba(125,211,252,0.06); }
+
+/* ===== SCREENSHOT GALLERY ===== */
+.screenshot-gallery { background: var(--bg-alt); }
+.gallery-tabs { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+.gallery-tab {
+  padding: 10px 24px; border-radius: 8px; font-size: 0.88rem; font-weight: 600;
+  cursor: pointer; border: 1px solid rgba(125,211,252,0.12);
+  background: var(--bg-surface); color: var(--text-muted);
+  transition: all 0.2s;
+}
+.gallery-tab.active { background: rgba(125,211,252,0.1); border-color: var(--accent); color: var(--accent); }
+.gallery-tab:hover { border-color: rgba(125,211,252,0.3); }
+.gallery-grid {
+  display: grid; gap: 24px;
+}
+.gallery-grid.mac-grid { grid-template-columns: 1fr; }
+.gallery-grid.phone-grid { grid-template-columns: repeat(4, 1fr); }
+.gallery-grid.ipad-grid { grid-template-columns: repeat(4, 1fr); }
+.gallery-item {
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid rgba(125,211,252,0.08);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s, border-color 0.3s;
+}
+.gallery-item:hover { transform: translateY(-4px); border-color: rgba(125,211,252,0.25); }
+.gallery-item img { display: block; width: 100%; border-radius: var(--radius); }
+.gallery-label {
+  text-align: center; margin-top: 10px; font-size: 0.78rem;
+  color: var(--text-faint); font-weight: 500;
+}
+.gallery-panel { display: none; }
+.gallery-panel.active { display: block; }
 
 /* ===== APP SHOWCASE (iOS + macOS) ===== */
 .showcase { background: var(--bg-alt); }
@@ -229,14 +246,6 @@ a:hover { opacity: 0.85; }
   border-radius: 4px; font-size: 0.72rem; color: var(--green);
   font-family: 'Fira Code', monospace;
 }
-.showcase-card .store-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 12px 24px; background: var(--bg-surface2);
-  border: 1px solid rgba(125,211,252,0.15); border-radius: var(--radius-sm);
-  color: var(--text); font-weight: 600; font-size: 0.9rem;
-  text-decoration: none; transition: background 0.2s, border-color 0.2s;
-}
-.showcase-card .store-btn:hover { background: rgba(125,211,252,0.08); border-color: rgba(125,211,252,0.3); opacity: 1; }
 .showcase-card .coming-soon-btn {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 12px 24px; background: rgba(251,191,36,0.06);
@@ -244,149 +253,16 @@ a:hover { opacity: 0.85; }
   color: var(--amber); font-weight: 600; font-size: 0.9rem;
   cursor: default;
 }
-/* ===== iPhone Mockup — Exact App Match ===== */
-.showcase-card .phone-preview { text-align: center; margin-top: 24px; }
-.iphone-frame {
-  position: relative; display: block;
-  width: 100%; max-width: 420px; margin: 0 auto;
-  background: #000; border-radius: 52px;
-  padding: 12px;
-  border: 3px solid #3a3a3c;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 0 rgba(255,255,255,0.06);
-}
-.iphone-notch {
-  position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
-  width: 130px; height: 34px; background: #000; border-radius: 0 0 22px 22px; z-index: 10;
-}
-.iphone-screen {
-  background: #0d0f1a; border-radius: 42px; overflow: hidden;
-}
-/* Status Bar */
-.iphone-status-bar {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 16px 30px 6px; color: #fff;
-}
-.iphone-status-bar .time { font-size: 0.88rem; font-weight: 700; }
-.status-icons { display: flex; align-items: center; gap: 6px; }
-.signal-bars { display: flex; gap: 1.5px; align-items: flex-end; }
-.signal-bar { width: 3px; background: #fff; border-radius: 1px; }
-.wifi-icon { font-size: 0.8rem; color: #fff; }
-.battery { display: flex; align-items: center; gap: 2px; }
-.battery-body { width: 22px; height: 11px; border: 1.5px solid #fff; border-radius: 3px; position: relative; }
-.battery-fill { position: absolute; top: 1.5px; left: 1.5px; right: 1.5px; bottom: 1.5px; background: #30d158; border-radius: 1px; }
-.battery-tip { width: 2px; height: 5px; background: #fff; border-radius: 0 1px 1px 0; opacity: 0.4; }
-/* App Header */
-.iphone-app-header {
-  display: flex; align-items: center; gap: 10px;
-  padding: 8px 20px 6px;
-}
-.iphone-app-header .app-icon-sm { width: 32px; height: 32px; border-radius: 8px; }
-.app-title-group { display: flex; flex-direction: column; }
-.iphone-app-header .app-title { font-size: 0.95rem; font-weight: 800; color: #fff; line-height: 1.2; }
-.iphone-app-header .app-domain { font-size: 0.52rem; color: rgba(255,255,255,0.3); }
-.header-pills { display: flex; gap: 5px; margin-left: 4px; }
-.header-pill {
-  width: 24px; height: 24px; border-radius: 6px;
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.55rem; color: rgba(255,255,255,0.4);
-}
-.lang-pill {
-  margin-left: auto;
-  padding: 4px 10px; border-radius: 5px;
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-  font-size: 0.62rem; font-weight: 700; color: #fff;
-}
-/* Trial Banner */
-.iphone-trial-banner {
-  background: linear-gradient(135deg, #6b21a8 0%, #7c3aed 50%, #8b5cf6 100%);
-  padding: 12px 16px; display: flex; align-items: flex-start; gap: 10px;
-  margin: 4px 14px 0; border-radius: 12px;
-}
-.banner-icon {
-  width: 30px; height: 30px; background: rgba(255,255,255,0.15);
-  border-radius: 8px; display: flex; align-items: center; justify-content: center;
-  font-size: 0.8rem; flex-shrink: 0;
-}
-.banner-text { font-size: 0.65rem; color: #fff; line-height: 1.45; flex: 1; }
-.banner-text strong { font-weight: 800; }
-/* Tabs */
-.iphone-tabs {
-  display: flex; justify-content: center; gap: 32px;
-  padding: 14px 0 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.3);
-}
-.iphone-tabs span { display: flex; align-items: center; gap: 5px; padding-bottom: 8px; cursor: default; }
-.iphone-tabs .active-tab { color: #7dd3fc; font-weight: 700; border-bottom: 2px solid #7dd3fc; }
-.tab-icon { font-size: 0.65rem; }
-/* Search */
-.iphone-search {
-  margin: 12px 18px 8px; padding: 11px 16px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  font-size: 0.72rem; color: rgba(255,255,255,0.25);
-  display: flex; align-items: center; gap: 8px;
-}
-.search-icon { font-size: 0.72rem; opacity: 0.4; }
-/* Category Pills */
-.iphone-categories {
-  display: flex; gap: 8px; padding: 8px 18px 10px; overflow: hidden;
-}
-.iphone-cat-pill {
-  padding: 6px 16px; border-radius: 18px; font-size: 0.62rem; font-weight: 700;
-  white-space: nowrap; color: rgba(255,255,255,0.4);
-  background: transparent; border: 1.5px solid rgba(255,255,255,0.12);
-  flex-shrink: 0;
-}
-.iphone-cat-pill.active {
-  background: #30d158; color: #fff; border-color: #30d158;
-}
-/* Template Grid */
-.iphone-template-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-  padding: 6px 18px 16px;
-}
-.iphone-tpl-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px; padding: 14px 12px 12px;
-  display: flex; flex-direction: column;
-  text-align: left;
-}
-.iphone-tpl-card .tpl-ai {
-  font-size: 0.52rem; color: #7dd3fc; font-weight: 800;
-  letter-spacing: 0.06em; margin-bottom: 4px;
-}
-.iphone-tpl-card .tpl-name {
-  font-size: 0.78rem; font-weight: 800; color: #fff;
-  margin-bottom: 4px; line-height: 1.25;
-}
-.iphone-tpl-card .tpl-desc {
-  font-size: 0.56rem; color: rgba(255,255,255,0.4);
-  line-height: 1.4; margin-bottom: 10px; flex: 1;
-}
-.iphone-tpl-card .tpl-badge {
-  display: block; width: 100%; text-align: center;
-  padding: 6px 0; border-radius: 7px;
-  font-size: 0.56rem; font-weight: 900; text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-.tpl-badge.pro {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-  color: #fff;
-}
-.tpl-badge.free { background: var(--green); color: #fff; }
-/* Home Bar */
-.iphone-home-bar {
-  width: 36%; height: 5px; background: #fff; border-radius: 3px;
-  margin: 8px auto 12px; opacity: 0.2;
-}
 .showcase-card .mac-preview { text-align: center; margin-top: 24px; }
 .showcase-card .mac-preview img {
   width: 100%; border-radius: 10px;
   border: 1px solid rgba(125,211,252,0.1);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+.showcase-card .phone-preview { text-align: center; margin-top: 24px; }
+.showcase-card .phone-preview img {
+  width: 100%; max-width: 300px; border-radius: 20px;
+  border: 2px solid rgba(167,139,250,0.2);
   box-shadow: 0 8px 40px rgba(0,0,0,0.4);
 }
 
@@ -441,16 +317,77 @@ a:hover { opacity: 0.85; }
 .model-card .model-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
 .model-card .model-desc { font-size: 0.78rem; color: var(--text-faint); }
 
-/* ===== INTERACTIVE DEMO (Pure JS Typewriter) ===== */
+/* ===== INTERACTIVE IN-APP DEMO ===== */
 .demo-section { background: var(--bg); }
+.demo-device-frame {
+  max-width: 380px; margin: 0 auto;
+  background: #0d0f1a; border-radius: 32px;
+  border: 3px solid #3a3a3c;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.06);
+  overflow: hidden; position: relative;
+}
+.demo-app-header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 14px 16px 8px; background: #0d0f1a;
+}
+.demo-app-header img { width: 28px; height: 28px; border-radius: 7px; }
+.demo-app-header .app-name { font-size: 0.85rem; font-weight: 800; color: #fff; }
+.demo-app-header .lang-badge {
+  margin-left: auto; padding: 3px 8px; border-radius: 4px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  font-size: 0.6rem; font-weight: 700; color: #fff;
+}
+.demo-app-tabs {
+  display: flex; gap: 24px; padding: 8px 16px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.68rem; font-weight: 600; color: rgba(255,255,255,0.3);
+}
+.demo-app-tabs .active-tab { color: #7dd3fc; border-bottom: 2px solid #7dd3fc; padding-bottom: 6px; }
+.demo-content { padding: 14px; min-height: 340px; position: relative; overflow: hidden; }
+.demo-content #demoTextarea {
+  background: var(--surface2); border: 2px solid #7c3aed; border-radius: 10px;
+  padding: 10px 12px; min-height: 48px; font-size: 12px; color: #fff;
+  line-height: 1.5; white-space: pre-wrap; word-break: break-word;
+  box-shadow: 0 0 8px rgba(124,58,237,0.4);
+}
+.demo-content #demoSendBtn {
+  margin-top: 10px; padding: 10px;
+  background: linear-gradient(135deg,#7c3aed,#2563eb);
+  color: #fff; border: none; border-radius: 10px;
+  font-size: 13px; font-weight: 700; text-align: center;
+  opacity: 0.4; transition: opacity 0.3s, transform 0.15s;
+}
+.demo-content .demoAI {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; border-radius: 8px;
+  border: 1.5px solid var(--border); background: var(--surface2);
+  transition: border-color 0.2s, background 0.2s;
+}
+.demo-home-bar {
+  width: 36%; height: 5px; background: #fff; border-radius: 3px;
+  margin: 8px auto 12px; opacity: 0.2;
+}
+.demo-controls { text-align: center; margin-top: 24px; }
+.demo-replay-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 24px; background: rgba(167,139,250,0.08);
+  border: 1px solid rgba(167,139,250,0.2);
+  border-radius: var(--radius-sm); color: var(--purple);
+  font-weight: 600; font-size: 0.85rem; cursor: pointer;
+  font-family: 'Fira Code', monospace;
+  transition: background 0.2s, border-color 0.2s;
+}
+.demo-replay-btn:hover { background: rgba(167,139,250,0.15); border-color: rgba(167,139,250,0.35); }
+
+/* ===== INTERACTIVE DEMO (Comparison) ===== */
 .demo-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 960px; margin: 0 auto; }
 .demo-panel {
   background: var(--bg-surface);
   border: 1px solid rgba(125,211,252,0.08);
   border-radius: var(--radius); overflow: hidden;
-  transition: border-color 0.3s;
+  transition: opacity 0.5s ease; display: flex; flex-direction: column;
 }
-.demo-panel.weak { border-color: rgba(248,113,113,0.2); }
+.demo-panel.weak { border-color: rgba(248,113,113,0.2); align-self: start; }
 .demo-panel.strong { border-color: rgba(16,185,129,0.2); }
 .demo-panel-header {
   padding: 14px 20px;
@@ -492,18 +429,39 @@ a:hover { opacity: 0.85; }
   vertical-align: text-bottom;
 }
 @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
-.demo-panel { transition: opacity 0.5s ease; display: flex; flex-direction: column; }
-.demo-panel.weak { align-self: start; }
+.demo-subheader {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.65rem; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--accent);
+  font-weight: 700; margin-bottom: 14px;
+}
+.app-field { margin-bottom: 12px; }
+.app-field-label {
+  display: block; font-family: 'Fira Code', monospace;
+  font-size: 0.62rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--text-muted); margin-bottom: 5px;
+}
+.app-field-input {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-xs);
+  padding: 10px 14px; font-size: 0.88rem;
+  color: var(--text); line-height: 1.5; min-height: 38px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.app-field-input.typing {
+  border-color: rgba(125,211,252,0.4);
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 12px rgba(125,211,252,0.08);
+}
 .send-to-ai-bar {
   margin-top: 20px; padding: 16px;
   background: rgba(20,23,48,0.9);
   border: 1px solid rgba(125,211,252,0.12);
   border-radius: var(--radius-sm);
 }
-.send-bar-label {
-  font-size: 0.82rem; font-weight: 600; color: var(--text);
-  margin-bottom: 10px;
-}
+.send-bar-label { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
 .send-bar-pills { display: flex; gap: 8px; flex-wrap: wrap; }
 .ai-pill {
   display: inline-flex; align-items: center; gap: 5px;
@@ -515,51 +473,19 @@ a:hover { opacity: 0.85; }
 }
 .ai-pill:hover { background: rgba(125,211,252,0.15); border-color: rgba(125,211,252,0.3); }
 .ai-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-/* ===== APP FIELD STYLES (Poly-Glot form UI) ===== */
-.demo-subheader {
-  font-family: 'Fira Code', monospace;
-  font-size: 0.65rem; text-transform: uppercase;
-  letter-spacing: 0.12em; color: var(--accent);
-  font-weight: 700; margin-bottom: 14px;
+
+/* ===== TEMPLATES ===== */
+.templates-preview { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 32px; }
+.template-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(125,211,252,0.06);
+  border-radius: var(--radius-sm); padding: 20px;
+  transition: border-color 0.2s; cursor: default;
 }
-.app-field {
-  margin-bottom: 12px;
-}
-.app-field-label {
-  display: block;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.62rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.12em;
-  color: var(--text-muted);
-  margin-bottom: 5px;
-}
-.app-field-input {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: var(--radius-xs);
-  padding: 10px 14px;
-  font-size: 0.88rem;
-  color: var(--text);
-  line-height: 1.5;
-  min-height: 38px;
-  transition: border-color 0.3s, background 0.3s;
-}
-.app-field-input.typing {
-  border-color: rgba(125,211,252,0.4);
-  background: rgba(255,255,255,0.1);
-  box-shadow: 0 0 12px rgba(125,211,252,0.08);
-}
-.demo-controls { text-align: center; margin-top: 24px; }
-.demo-replay-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 10px 24px; background: rgba(167,139,250,0.08);
-  border: 1px solid rgba(167,139,250,0.2);
-  border-radius: var(--radius-sm); color: var(--purple);
-  font-weight: 600; font-size: 0.85rem; cursor: pointer;
-  font-family: 'Fira Code', monospace;
-  transition: background 0.2s, border-color 0.2s;
-}
-.demo-replay-btn:hover { background: rgba(167,139,250,0.15); border-color: rgba(167,139,250,0.35); }
+.template-card:hover { border-color: rgba(167,139,250,0.2); }
+.template-card .cat { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--purple); font-family: 'Fira Code', monospace; margin-bottom: 6px; }
+.template-card h5 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
+.template-card p { font-size: 0.82rem; color: var(--text-faint); line-height: 1.5; }
 
 /* ===== PRICING ===== */
 .pricing { background: var(--bg-alt); }
@@ -589,26 +515,11 @@ a:hover { opacity: 0.85; }
 .pricing-features .ck { color: var(--green); font-weight: 700; flex-shrink: 0; }
 .pricing-cta {
   display: block; width: 100%; padding: 12px; border-radius: var(--radius-sm);
-  font-weight: 700; font-size: 0.9rem; border: none; cursor: pointer;
-  text-decoration: none; text-align: center; transition: transform 0.15s, opacity 0.15s;
+  font-weight: 700; font-size: 0.9rem; border: none; cursor: default;
+  text-decoration: none; text-align: center;
+  background: rgba(251,191,36,0.08); color: var(--amber);
+  border: 1px solid rgba(251,191,36,0.2);
 }
-.pricing-cta:hover { transform: translateY(-1px); }
-.cta-accent { background: var(--gradient-primary); color: #0a0b14; }
-.cta-outline { background: transparent; border: 1px solid rgba(125,211,252,0.2); color: var(--accent); }
-.cta-outline:hover { background: rgba(125,211,252,0.06); opacity: 1; }
-
-/* ===== TEMPLATES ===== */
-.templates-preview { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 32px; }
-.template-card {
-  background: var(--bg-surface);
-  border: 1px solid rgba(125,211,252,0.06);
-  border-radius: var(--radius-sm); padding: 20px;
-  transition: border-color 0.2s; cursor: default;
-}
-.template-card:hover { border-color: rgba(167,139,250,0.2); }
-.template-card .cat { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--purple); font-family: 'Fira Code', monospace; margin-bottom: 6px; }
-.template-card h5 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
-.template-card p { font-size: 0.82rem; color: var(--text-faint); line-height: 1.5; }
 
 /* ===== FAQ ===== */
 .faq-list { max-width: 700px; }
@@ -673,6 +584,8 @@ a:hover { opacity: 0.85; }
   .demo-compare { grid-template-columns: 1fr; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 380px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid.phone-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid.ipad-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
   .hero { padding: 120px 0 60px; }
@@ -683,6 +596,8 @@ a:hover { opacity: 0.85; }
   .nav-mobile-toggle { display: block; }
   .section-title { font-size: 1.8rem; }
   .footer-grid { grid-template-columns: 1fr; }
+  .gallery-grid.phone-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid.ipad-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
@@ -693,19 +608,20 @@ a:hover { opacity: 0.85; }
   <div class="nav-inner">
     <a href="#" class="nav-brand">
       <img src="assets/img/icon-128.png" alt="Poly-Glot AI">
-      <span>Poly-Glot AI</span>
+      <span>Poly-Glot AI Workspace</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#apps">Apps</a></li>
+      <li><a href="#screenshots">Screenshots</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#demo">Demo</a></li>
       <li><a href="#templates">Templates</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a href="https://apps.apple.com/us/app/id6762222589?mt=12" class="nav-cta">
-       Download for Mac
-    </a>
+    <span class="nav-cta">
+      <span class="pulse-dot" style="width:6px;height:6px;background:#fbbf24;border-radius:50%;animation:pulse 2s infinite"></span>
+      Coming Soon
+    </span>
     <button class="nav-mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show-mobile')" aria-label="Menu">&#9776;</button>
   </div>
 </nav>
@@ -715,16 +631,18 @@ a:hover { opacity: 0.85; }
   <div class="container">
     <div class="hero-inner">
       <div class="hero-content">
-        <div class="hero-badge"><span class="dot"></span> Live on the App Store</div>
+        <div class="hero-badge"><span class="dot"></span> Coming Soon to the App Store</div>
         <h1>Every Language. One Prompt.<br><span class="gradient-text">Every AI — Compare the Results.</span></h1>
         <p class="hero-sub">One prompt. Use multiple AIs. Ask Poly-Glot what you need — type or speak naturally, in your language. Choose your AI models, compare the answers, pick the best one. 1,000+ templates. 38 languages. Works on iPhone, iPad, and Mac.</p>
         <div class="hero-actions">
-          <a href="https://apps.apple.com/us/app/id6762222589?mt=12" class="btn-primary">
-            &#63743; Download for Mac
-          </a>
-          <a href="https://apps.apple.com/us/app/id6762054909" class="btn-secondary">
-            📱 Download for iPhone &amp; iPad
-          </a>
+          <span class="btn-coming-soon">
+            <span class="pulse-dot"></span>
+            &#63743; Mac — Coming Soon
+          </span>
+          <span class="btn-coming-soon">
+            <span class="pulse-dot"></span>
+            📱 iPhone &amp; iPad — Coming Soon
+          </span>
         </div>
         <div class="trust-row">
           <span class="trust-item"><span class="check">&#10003;</span> 100% On-Device</span>
@@ -734,9 +652,9 @@ a:hover { opacity: 0.85; }
       </div>
       <div class="hero-visual">
         <div class="hero-screenshot">
-          <img src="assets/img/mac-hero.jpg" alt="Poly-Glot AI Workspace on macOS">
+          <img src="assets/img/screenshots/mac-1-askanyai.png" alt="Poly-Glot AI Workspace on macOS">
         </div>
-        <img src="assets/img/phone-hero.png" alt="Poly-Glot AI Workspace on iPhone" class="hero-phone">
+        <img src="assets/img/screenshots/iphone-1-askanyai.png" alt="Poly-Glot AI Workspace on iPhone" class="hero-phone">
       </div>
     </div>
   </div>
@@ -746,11 +664,90 @@ a:hover { opacity: 0.85; }
 <section class="platforms">
   <div class="container">
     <div class="platforms-inner">
-      <div class="platforms-label">Available on Apple platforms</div>
+      <div class="platforms-label">Coming soon on Apple platforms</div>
       <div class="platform-pills">
-        <div class="platform-pill"><span class="emoji">📱</span> iPhone <span class="live-dot"></span></div>
-        <div class="platform-pill"><span class="emoji">📱</span> iPad <span class="live-dot"></span></div>
-        <div class="platform-pill"><span class="emoji">💻</span> macOS <span class="live-dot"></span></div>
+        <div class="platform-pill"><span class="emoji">📱</span> iPhone <span class="coming-dot"></span></div>
+        <div class="platform-pill"><span class="emoji">📱</span> iPad <span class="coming-dot"></span></div>
+        <div class="platform-pill"><span class="emoji">💻</span> macOS <span class="coming-dot"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===== SCREENSHOT GALLERY ===== -->
+<section class="section screenshot-gallery" id="screenshots">
+  <div class="container">
+    <div class="section-eyebrow">📸 Screenshots</div>
+    <h2 class="section-title">See the app in action</h2>
+    <p class="section-sub">Real screenshots from Poly-Glot AI Workspace across all Apple devices.</p>
+
+    <div class="gallery-tabs">
+      <div class="gallery-tab active" onclick="switchGallery('mac')">💻 Mac</div>
+      <div class="gallery-tab" onclick="switchGallery('iphone')">📱 iPhone</div>
+      <div class="gallery-tab" onclick="switchGallery('ipad')">📱 iPad</div>
+    </div>
+
+    <!-- Mac Screenshots -->
+    <div class="gallery-panel active" id="gallery-mac">
+      <div class="gallery-grid mac-grid">
+        <div class="gallery-item">
+          <img src="assets/img/screenshots/mac-1-askanyai.png" alt="Ask Any AI on Mac" loading="lazy">
+          <div class="gallery-label">Ask Any AI — Type or speak, choose your AI</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/img/screenshots/mac-3-howtouse.png" alt="How to Use on Mac" loading="lazy">
+          <div class="gallery-label">How to Use — Interactive demo & guide</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/img/screenshots/mac-4-history.png" alt="History on Mac" loading="lazy">
+          <div class="gallery-label">History — All your prompts saved locally</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- iPhone Screenshots -->
+    <div class="gallery-panel" id="gallery-iphone">
+      <div class="gallery-grid phone-grid">
+        <div class="gallery-item">
+          <img src="assets/img/screenshots/iphone-1-askanyai.png" alt="Ask Any AI on iPhone" loading="lazy">
+          <div class="gallery-label">Ask Any AI</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/img/screenshots/iphone-2-templates.png" alt="Templates on iPhone" loading="lazy">
+          <div class="gallery-label">1,000+ Templates</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/img/screenshots/iphone-3-howtouse.png" alt="How to Use on iPhone" loading="lazy">
+          <div class="gallery-label">How to Use</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/img/screenshots/iphone-4-history.png" alt="History on iPhone" loading="lazy">
+          <div class="gallery-label">History</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- iPad Screenshots -->
+    <div class="gallery-panel" id="gallery-ipad">
+      <div class="gallery-grid ipad-grid">
+        <div class="gallery-item">
+          <img src="assets/img/screenshots/ipad-1-askanyai.png" alt="Ask Any AI on iPad" loading="lazy">
+          <div class="gallery-label">Ask Any AI</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/img/screenshots/ipad-2-templates.png" alt="Templates on iPad" loading="lazy">
+          <div class="gallery-label">1,000+ Templates</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/img/screenshots/ipad-3-howtouse.png" alt="How to Use on iPad" loading="lazy">
+          <div class="gallery-label">How to Use</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/img/screenshots/ipad-4-history.png" alt="History on iPad" loading="lazy">
+          <div class="gallery-label">History</div>
+        </div>
       </div>
     </div>
   </div>
@@ -766,9 +763,9 @@ a:hover { opacity: 0.85; }
     <p class="section-sub">Poly-Glot AI Workspace runs natively on iPhone, iPad, and Mac. Same templates, same power, wherever you work.</p>
 
     <div class="showcase-grid">
-      <!-- macOS Card (LIVE) -->
+      <!-- macOS Card -->
       <div class="showcase-card">
-        <div class="platform-tag">💻 macOS &mdash; v2.2</div>
+        <div class="platform-tag">💻 macOS — v1.0</div>
         <h3>Poly-Glot AI Workspace for Mac</h3>
         <p>Full desktop power. Native macOS app with keyboard shortcuts, large template browser, compare mode, and seamless send to Claude, ChatGPT, Gemini, and more.</p>
         <div class="badge-row">
@@ -776,17 +773,17 @@ a:hover { opacity: 0.85; }
           <span class="badge">&#10003; Keyboard Shortcuts</span>
           <span class="badge">&#10003; Instant Copy</span>
         </div>
-        <a href="https://apps.apple.com/us/app/id6762222589?mt=12" class="store-btn">
-          &#63743; Download on the Mac App Store
-        </a>
+        <span class="coming-soon-btn">
+          <span class="coming-dot"></span> &#63743; Coming Soon on Mac App Store
+        </span>
         <div class="mac-preview">
-          <img src="assets/img/mac-features.jpg" alt="Poly-Glot AI Workspace on macOS" loading="lazy">
+          <img src="assets/img/screenshots/mac-1-askanyai.png" alt="Poly-Glot AI Workspace on macOS" loading="lazy">
         </div>
       </div>
 
-      <!-- iOS Card (COMING SOON) -->
+      <!-- iOS Card -->
       <div class="showcase-card">
-        <div class="platform-tag">📱 iOS &amp; iPadOS &mdash; v1.8</div>
+        <div class="platform-tag">📱 iOS &amp; iPadOS — v1.0</div>
         <h3>Poly-Glot AI Workspace for iPhone &amp; iPad</h3>
         <p>Ask any AI on the go. Voice input in 38 languages, 1,000+ templates, compare mode, and one-tap send to any AI.</p>
         <div class="badge-row">
@@ -794,132 +791,11 @@ a:hover { opacity: 0.85; }
           <span class="badge">&#10003; 1,000+ Templates</span>
           <span class="badge">&#10003; On-Device</span>
         </div>
-        <a href="https://apps.apple.com/us/app/id6762054909" class="store-btn">
-          📱 Download on the App Store
-        </a>
+        <span class="coming-soon-btn">
+          <span class="coming-dot"></span> 📱 Coming Soon on App Store
+        </span>
         <div class="phone-preview">
-          <div class="iphone-frame">
-            <div class="iphone-notch"></div>
-            <div class="iphone-screen">
-              <!-- Status Bar -->
-              <div class="iphone-status-bar">
-                <span class="time">9:41</span>
-                <span class="status-icons">
-                  <span class="signal-bars">
-                    <span class="signal-bar" style="height:4px"></span>
-                    <span class="signal-bar" style="height:6px"></span>
-                    <span class="signal-bar" style="height:8px"></span>
-                    <span class="signal-bar" style="height:10px"></span>
-                  </span>
-                  <span class="wifi-icon">&#9681;</span>
-                  <span class="battery">
-                    <span class="battery-body"><span class="battery-fill"></span></span>
-                    <span class="battery-tip"></span>
-                  </span>
-                </span>
-              </div>
-              <!-- App Header -->
-              <div class="iphone-app-header">
-                <img src="assets/img/icon-128.png" alt="" class="app-icon-sm">
-                <div class="app-title-group">
-                  <span class="app-title">Poly-Glot.AI Workspace</span>
-                  <span class="app-domain">poly-glot.ai</span>
-                </div>
-                <span class="header-pills">
-                  <span class="header-pill">&#9633;</span>
-                  <span class="header-pill">&#9633;</span>
-                </span>
-                <span class="lang-pill">EN</span>
-              </div>
-              <!-- Trial Banner -->
-              <div class="iphone-trial-banner">
-                <span class="banner-icon">&#128274;</span>
-                <span class="banner-text"><strong>25 featured templates free for 3 days.</strong> Tap Send on any template to start your trial.</span>
-              </div>
-              <!-- Tabs -->
-              <div class="iphone-tabs">
-                <span class="active-tab"><span class="tab-icon">&#9638;</span> Templates</span>
-                <span><span class="tab-icon">&#9432;</span> About</span>
-                <span><span class="tab-icon">&#9201;</span> History</span>
-              </div>
-              <!-- Search -->
-              <div class="iphone-search">
-                <span class="search-icon">&#128269;</span> Search templates...
-              </div>
-              <!-- Categories -->
-              <div class="iphone-categories">
-                <span class="iphone-cat-pill active">All</span>
-                <span class="iphone-cat-pill">&#128176; Money</span>
-                <span class="iphone-cat-pill">&#11088; Featured</span>
-                <span class="iphone-cat-pill">Busin...</span>
-              </div>
-              <!-- Template Grid -->
-              <div class="iphone-template-grid">
-                <div class="iphone-tpl-card">
-                  <div class="tpl-ai">AI</div>
-                  <div class="tpl-name">Side Hustle Finder</div>
-                  <div class="tpl-desc">Discover personalized side income ideas based on your skills</div>
-                  <span class="tpl-badge pro">PRO</span>
-                </div>
-                <div class="iphone-tpl-card">
-                  <div class="tpl-ai">AI</div>
-                  <div class="tpl-name">Passive Income Blueprint</div>
-                  <div class="tpl-desc">Build a passive income strategy tailored to your situation</div>
-                  <span class="tpl-badge pro">PRO</span>
-                </div>
-                <div class="iphone-tpl-card">
-                  <div class="tpl-ai">AI</div>
-                  <div class="tpl-name">Freelance Rate Calculator</div>
-                  <div class="tpl-desc">Calculate your ideal freelance rate and pricing strategy</div>
-                  <span class="tpl-badge pro">PRO</span>
-                </div>
-                <div class="iphone-tpl-card">
-                  <div class="tpl-ai">AI</div>
-                  <div class="tpl-name">Savings Challenge Generator</div>
-                  <div class="tpl-desc">Create a custom money-saving challenge plan</div>
-                  <span class="tpl-badge pro">PRO</span>
-                </div>
-                <div class="iphone-tpl-card">
-                  <div class="tpl-ai">AI</div>
-                  <div class="tpl-name">Negotiate Any Bill</div>
-                  <div class="tpl-desc">Scripts to negotiate and lower your recurring bills</div>
-                  <span class="tpl-badge pro">PRO</span>
-                </div>
-                <div class="iphone-tpl-card">
-                  <div class="tpl-ai">AI</div>
-                  <div class="tpl-name">Etsy Shop Launcher</div>
-                  <div class="tpl-desc">Step-by-step plan to launch and grow an Etsy shop</div>
-                  <span class="tpl-badge pro">PRO</span>
-                </div>
-                <div class="iphone-tpl-card">
-                  <div class="tpl-ai">AI</div>
-                  <div class="tpl-name">YouTube Channel Planner</div>
-                  <div class="tpl-desc">Plan and launch a profitable YouTube channel</div>
-                  <span class="tpl-badge pro">PRO</span>
-                </div>
-                <div class="iphone-tpl-card">
-                  <div class="tpl-ai">AI</div>
-                  <div class="tpl-name">Rental Income Analyzer</div>
-                  <div class="tpl-desc">Analyze potential rental property returns</div>
-                  <span class="tpl-badge pro">PRO</span>
-                </div>
-                <div class="iphone-tpl-card">
-                  <div class="tpl-ai">AI</div>
-                  <div class="tpl-name">Online Course Creator</div>
-                  <div class="tpl-desc">Plan and structure an online course to sell</div>
-                  <span class="tpl-badge pro">PRO</span>
-                </div>
-                <div class="iphone-tpl-card">
-                  <div class="tpl-ai">AI</div>
-                  <div class="tpl-name">Coupon &amp; Cashback Maximizer</div>
-                  <div class="tpl-desc">Maximize savings with coupons, cashback, and rewards</div>
-                  <span class="tpl-badge pro">PRO</span>
-                </div>
-              </div>
-              <!-- Home Bar -->
-              <div class="iphone-home-bar"></div>
-            </div>
-          </div>
+          <img src="assets/img/screenshots/iphone-2-templates.png" alt="Poly-Glot AI Workspace on iPhone" loading="lazy">
         </div>
       </div>
     </div>
@@ -934,7 +810,6 @@ a:hover { opacity: 0.85; }
     <div class="section-eyebrow">&#9997;&#65039; Input Methods</div>
     <h2 class="section-title">Five ways to build prompts</h2>
     <p class="section-sub">Type it, paste it, scan it, import it, or say it — in any of 38 languages. Poly-Glot meets you wherever your ideas start.</p>
-
     <div class="input-grid">
       <div class="input-card">
         <span class="input-icon">&#9000;&#65039;</span>
@@ -973,7 +848,6 @@ a:hover { opacity: 0.85; }
     <div class="section-eyebrow">&#9889; Features</div>
     <h2 class="section-title">Everything you need to write better prompts</h2>
     <p class="section-sub">Why choose or pay for one AI? Ask Poly-Glot. Choose your models. Compare the answers. Pick the best one.</p>
-
     <div class="features-grid">
       <div class="feature-card">
         <div class="icon-wrap blue">&#128221;</div>
@@ -1017,7 +891,6 @@ a:hover { opacity: 0.85; }
     <div class="section-eyebrow">&#129302; Compatible With</div>
     <h2 class="section-title">Works with every AI model</h2>
     <p class="section-sub">Poly-Glot works with every AI. Ask multiple models the same question and compare their answers.</p>
-
     <div class="model-grid">
       <div class="model-card">
         <span class="model-emoji">&#128172;</span>
@@ -1055,19 +928,113 @@ a:hover { opacity: 0.85; }
 
 <div class="section-divider"></div>
 
-<!-- ===== INTERACTIVE DEMO (Pure JavaScript Typewriter) ===== -->
+<!-- ===== IN-APP DEMO (Replica of actual app animation) ===== -->
 <section class="section demo-section" id="demo">
+  <div class="container">
+    <div class="section-eyebrow">&#127916; Live App Demo</div>
+    <h2 class="section-title" style="text-align:center">See Poly-Glot AI Workspace in action</h2>
+    <p class="section-sub" style="text-align:center;margin:0 auto 48px">This is the actual app experience. Type a prompt, pick your AIs, compare the results.</p>
+
+    <!-- Phone-style device frame with actual app demo -->
+    <div class="demo-device-frame">
+      <!-- App Header -->
+      <div class="demo-app-header">
+        <img src="assets/img/icon-128.png" alt="">
+        <span class="app-name">Poly-Glot AI Workspace</span>
+        <span class="lang-badge">🇺🇸 EN</span>
+      </div>
+      <!-- Tabs -->
+      <div class="demo-app-tabs">
+        <span class="active-tab">✏️ Ask Any AI</span>
+        <span>📋 Templates</span>
+        <span>ℹ️ How to Use</span>
+        <span>🕐 History</span>
+      </div>
+      <!-- Demo Content -->
+      <div class="demo-content">
+        <!-- Phase 1: Ask Any AI textarea + Send -->
+        <div id="demoP1" style="opacity:1;transition:opacity 0.4s">
+          <div style="font-size:11px;font-weight:700;color:var(--accent2);margin-bottom:6px">✏️ Ask Any AI</div>
+          <div id="demoTextarea"></div>
+          <div id="demoSendBtn">Send to AI</div>
+        </div>
+        <!-- Phase 2: AI Menu with Compare Mode -->
+        <div id="demoP2" style="position:absolute;bottom:0;left:0;right:0;background:var(--surface);border-radius:16px 16px 0 0;padding:14px;transform:translateY(100%);transition:transform 0.35s ease-out;border-top:1px solid var(--border)">
+          <div style="width:32px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 10px"></div>
+          <div style="text-align:center;font-size:13px;font-weight:700;margin-bottom:10px">Choose AI</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--surface2);border-radius:10px;margin-bottom:10px;border:1px solid var(--border)">
+            <span style="font-size:12px;font-weight:600">🔀 Compare Mode</span>
+            <div id="demoCmpToggle" style="width:40px;height:22px;border-radius:11px;background:#7c3aed;transition:background 0.25s;position:relative;cursor:default">
+              <div id="demoCmpKnob" style="width:18px;height:18px;border-radius:50%;background:#fff;position:absolute;top:2px;left:20px;transition:left 0.25s;box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
+            </div>
+          </div>
+          <div id="demoAIBtns" style="display:flex;flex-direction:column;gap:6px">
+            <div class="demoAI" data-ai="chatgpt" style="border-color:#10a37f;background:rgba(16,163,127,0.1)">
+              <div style="width:28px;height:28px;border-radius:7px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-weight:700;color:#fff">GPT</div>
+              <div style="flex:1"><div style="font-size:12px;font-weight:600">ChatGPT</div><div style="font-size:9px;color:var(--text-muted)">Prompt auto-filled</div></div>
+              <div class="demoCheck" style="width:20px;height:20px;border-radius:50%;border:2px solid #10a37f;background:#10a37f;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px">✓</div>
+            </div>
+            <div class="demoAI" data-ai="claude" style="border-color:#d97706;background:rgba(217,119,6,0.1)">
+              <div style="width:28px;height:28px;border-radius:7px;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-weight:700;color:#fff">CLD</div>
+              <div style="flex:1"><div style="font-size:12px;font-weight:600">Claude</div><div style="font-size:9px;color:var(--text-muted)">Prompt auto-filled</div></div>
+              <div class="demoCheck" style="width:20px;height:20px;border-radius:50%;border:2px solid #d97706;background:#d97706;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px">✓</div>
+            </div>
+            <div class="demoAI" data-ai="gemini">
+              <div style="width:28px;height:28px;border-radius:7px;background:#4285f4;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-weight:700;color:#fff">GEM</div>
+              <div style="flex:1"><div style="font-size:12px;font-weight:600">Gemini</div><div style="font-size:9px;color:var(--text-muted)">Paste prompt</div></div>
+              <div class="demoCheck" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px"></div>
+            </div>
+            <div class="demoAI" data-ai="perplexity">
+              <div style="width:28px;height:28px;border-radius:7px;background:#20b2aa;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-weight:700;color:#fff">PPX</div>
+              <div style="flex:1"><div style="font-size:12px;font-weight:600">Perplexity</div><div style="font-size:9px;color:var(--text-muted)">Prompt auto-filled</div></div>
+              <div class="demoCheck" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px"></div>
+            </div>
+          </div>
+          <div id="demoSendAll" style="margin-top:10px;padding:10px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border-radius:10px;font-size:13px;font-weight:700;text-align:center">Send to Selected (<span id="demoCmpCount">2</span>)</div>
+        </div>
+        <!-- Phase 3: Dual AI Response Cards -->
+        <div id="demoP3" style="padding:0;opacity:0;transition:opacity 0.4s;display:none">
+          <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:8px">🔀 Compare Mode — 2 AI responses</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="background:rgba(16,163,127,0.08);border:1px solid rgba(16,163,127,0.25);border-radius:10px;padding:10px 12px">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+                <div style="width:20px;height:20px;border-radius:5px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">GPT</div>
+                <span style="font-size:11px;font-weight:700;color:#10a37f">ChatGPT</span>
+              </div>
+              <div id="demoResp1" style="font-size:11px;color:var(--text-muted);line-height:1.5"></div>
+            </div>
+            <div style="background:rgba(217,119,6,0.08);border:1px solid rgba(217,119,6,0.25);border-radius:10px;padding:10px 12px">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+                <div style="width:20px;height:20px;border-radius:5px;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">CLD</div>
+                <span style="font-size:11px;font-weight:700;color:#d97706">Claude</span>
+              </div>
+              <div id="demoResp2" style="font-size:11px;color:var(--text-muted);line-height:1.5"></div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:10px;font-size:11px;color:var(--accent);font-weight:600">⬆ Compare and pick the best answer</div>
+        </div>
+      </div>
+      <div class="demo-home-bar"></div>
+    </div>
+
+    <div class="demo-controls">
+      <button class="demo-replay-btn" onclick="demoReplay()">&#8634; Replay Demo</button>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===== COMPARISON: Without vs With ===== -->
+<section class="section demo-section" id="compare">
   <div class="container">
     <div class="section-eyebrow">&#127916; See The Difference</div>
     <h2 class="section-title">Without Poly-Glot vs. With Poly-Glot</h2>
     <p class="section-sub">Same question. Dramatically different results. Watch how structured prompts unlock better AI answers.</p>
 
     <div class="demo-compare">
-      <!-- WEAK SIDE -->
       <div class="demo-panel weak" id="panelWeak">
-        <div class="demo-panel-header">
-          <span>&#10060;</span> Without Poly-Glot
-        </div>
+        <div class="demo-panel-header"><span>&#10060;</span> Without Poly-Glot</div>
         <div class="demo-panel-body">
           <div class="demo-prompt-label">Prompt</div>
           <div class="demo-prompt-text" id="weakPrompt"></div>
@@ -1075,31 +1042,14 @@ a:hover { opacity: 0.85; }
           <div class="demo-response-text" id="weakResponse"></div>
         </div>
       </div>
-
-      <!-- STRONG SIDE -->
       <div class="demo-panel strong" id="panelStrong" style="opacity:0.4">
-        <div class="demo-panel-header">
-          <span>&#10004;&#65039;</span> With Poly-Glot
-        </div>
+        <div class="demo-panel-header"><span>&#10004;&#65039;</span> With Poly-Glot</div>
         <div class="demo-panel-body">
           <div class="demo-subheader">POLY-GLOT BUILDS:</div>
-          <div class="app-field">
-            <label class="app-field-label">ROLE</label>
-            <div class="app-field-input" id="fieldRole"></div>
-          </div>
-          <div class="app-field">
-            <label class="app-field-label">DETAILS</label>
-            <div class="app-field-input" id="fieldDetails"></div>
-          </div>
-          <div class="app-field">
-            <label class="app-field-label">CONSTRAINTS</label>
-            <div class="app-field-input" id="fieldConstraints"></div>
-          </div>
-          <div class="app-field">
-            <label class="app-field-label">OUTPUT</label>
-            <div class="app-field-input" id="fieldOutput"></div>
-          </div>
-          <!-- SEND TO AI BAR (appears after fields, before response) -->
+          <div class="app-field"><label class="app-field-label">ROLE</label><div class="app-field-input" id="fieldRole"></div></div>
+          <div class="app-field"><label class="app-field-label">DETAILS</label><div class="app-field-input" id="fieldDetails"></div></div>
+          <div class="app-field"><label class="app-field-label">CONSTRAINTS</label><div class="app-field-input" id="fieldConstraints"></div></div>
+          <div class="app-field"><label class="app-field-label">OUTPUT</label><div class="app-field-input" id="fieldOutput"></div></div>
           <div class="send-to-ai-bar" id="sendBar" style="display:none">
             <div class="send-bar-label">&#10024; Send to AI</div>
             <div class="send-bar-pills">
@@ -1118,7 +1068,7 @@ a:hover { opacity: 0.85; }
     </div>
 
     <div class="demo-controls">
-      <button class="demo-replay-btn" onclick="demoReplay()">&#8634; Replay Demo</button>
+      <button class="demo-replay-btn" onclick="compareReplay()">&#8634; Replay Comparison</button>
     </div>
   </div>
 </section>
@@ -1131,53 +1081,16 @@ a:hover { opacity: 0.85; }
     <div class="section-eyebrow">&#128218; Template Library</div>
     <h2 class="section-title">1,000+ templates. Every category.</h2>
     <p class="section-sub">From marketing copy to code reviews, from lesson plans to legal drafts. Find the right prompt in seconds.</p>
-
     <div class="templates-preview">
-      <div class="template-card">
-        <div class="cat">&#128176; Money</div>
-        <h5>Side Hustle Finder</h5>
-        <p>Discover personalized side income ideas based on your skills, schedule, and goals. Get a step-by-step launch plan in 60 seconds.</p>
-      </div>
-      <div class="template-card">
-        <div class="cat">&#128188; Career</div>
-        <h5>Resume Bullet Writer</h5>
-        <p>Turn boring job descriptions into powerful, metric-driven resume bullets that get interviews. Paste your role, get 5 polished lines.</p>
-      </div>
-      <div class="template-card">
-        <div class="cat">&#128200; Marketing</div>
-        <h5>Viral Post Generator</h5>
-        <p>Create scroll-stopping social media posts for LinkedIn, X, Instagram, or TikTok. Pick your platform, drop your topic, go viral.</p>
-      </div>
-      <div class="template-card">
-        <div class="cat">&#9878;&#65039; Legal</div>
-        <h5>Contract Red Flag Scanner</h5>
-        <p>Paste any contract and get a plain-English breakdown of risky clauses, hidden fees, and what to negotiate before you sign.</p>
-      </div>
-      <div class="template-card">
-        <div class="cat">&#128187; Coding</div>
-        <h5>Debug My Code</h5>
-        <p>Paste broken code, get the fix with explanation. Works with Python, JavaScript, Swift, SQL, and 20+ languages. Save hours of Stack Overflow.</p>
-      </div>
-      <div class="template-card">
-        <div class="cat">&#127891; Study</div>
-        <h5>Exam Prep Coach</h5>
-        <p>Turn any topic into flashcards, practice questions, and a study schedule. Perfect for students, certifications, and interviews.</p>
-      </div>
-      <div class="template-card">
-        <div class="cat">&#9993;&#65039; Email</div>
-        <h5>Cold Email That Gets Replies</h5>
-        <p>Write personalized outreach emails that actually get opened. Sales, networking, job hunting, or partnerships. 3 variants per send.</p>
-      </div>
-      <div class="template-card">
-        <div class="cat">&#127968; Real Estate</div>
-        <h5>Property Listing Writer</h5>
-        <p>Turn basic property details into a compelling listing description that sells. MLS-ready format with emotional hooks and SEO keywords.</p>
-      </div>
-      <div class="template-card">
-        <div class="cat">&#129330; Negotiation</div>
-        <h5>Salary Negotiation Script</h5>
-        <p>Get a word-for-word script to negotiate your offer. Based on your role, market data, and leverage points. Used by 10,000+ job seekers.</p>
-      </div>
+      <div class="template-card"><div class="cat">&#128176; Money</div><h5>Side Hustle Finder</h5><p>Discover personalized side income ideas based on your skills, schedule, and goals. Get a step-by-step launch plan in 60 seconds.</p></div>
+      <div class="template-card"><div class="cat">&#128188; Career</div><h5>Resume Bullet Writer</h5><p>Turn boring job descriptions into powerful, metric-driven resume bullets that get interviews.</p></div>
+      <div class="template-card"><div class="cat">&#128200; Marketing</div><h5>Viral Post Generator</h5><p>Create scroll-stopping social media posts for LinkedIn, X, Instagram, or TikTok.</p></div>
+      <div class="template-card"><div class="cat">&#9878;&#65039; Legal</div><h5>Contract Red Flag Scanner</h5><p>Paste any contract and get a plain-English breakdown of risky clauses and hidden fees.</p></div>
+      <div class="template-card"><div class="cat">&#128187; Coding</div><h5>Debug My Code</h5><p>Paste broken code, get the fix with explanation. Works with Python, JavaScript, Swift, SQL, and 20+ languages.</p></div>
+      <div class="template-card"><div class="cat">&#127891; Study</div><h5>Exam Prep Coach</h5><p>Turn any topic into flashcards, practice questions, and a study schedule.</p></div>
+      <div class="template-card"><div class="cat">&#9993;&#65039; Email</div><h5>Cold Email That Gets Replies</h5><p>Write personalized outreach emails that actually get opened. Sales, networking, job hunting.</p></div>
+      <div class="template-card"><div class="cat">&#127968; Real Estate</div><h5>Property Listing Writer</h5><p>Turn basic property details into a compelling listing description that sells.</p></div>
+      <div class="template-card"><div class="cat">&#129330; Negotiation</div><h5>Salary Negotiation Script</h5><p>Get a word-for-word script to negotiate your offer based on your role and market data.</p></div>
     </div>
   </div>
 </section>
@@ -1190,7 +1103,6 @@ a:hover { opacity: 0.85; }
     <div class="section-eyebrow">&#128176; Pricing</div>
     <h2 class="section-title">Start free. Upgrade when ready.</h2>
     <p class="section-sub">Try 25 featured templates free for 3 days. Unlock everything with Pro.</p>
-
     <div class="pricing-grid">
       <div class="pricing-card">
         <div class="pricing-tier">Free</div>
@@ -1204,9 +1116,8 @@ a:hover { opacity: 0.85; }
           <li><span class="ck">&#10003;</span> One-Tap Copy</li>
           <li><span class="ck">&#10003;</span> 100% On-Device</li>
         </ul>
-        <a href="https://apps.apple.com/us/app/id6762222589?mt=12" class="pricing-cta cta-outline">Start Free Trial</a>
+        <span class="pricing-cta">Coming Soon</span>
       </div>
-
       <div class="pricing-card featured">
         <div class="pricing-tier">Pro Monthly</div>
         <div class="pricing-name">Pro</div>
@@ -1221,9 +1132,8 @@ a:hover { opacity: 0.85; }
           <li><span class="ck">&#10003;</span> Priority Updates</li>
           <li><span class="ck">&#10003;</span> All Future Templates</li>
         </ul>
-        <a href="https://apps.apple.com/us/app/id6762222589?mt=12" class="pricing-cta cta-accent">Get Pro</a>
+        <span class="pricing-cta">Coming Soon</span>
       </div>
-
       <div class="pricing-card">
         <div class="pricing-tier">Pro Yearly</div>
         <div class="pricing-name">Pro Annual</div>
@@ -1236,7 +1146,7 @@ a:hover { opacity: 0.85; }
           <li><span class="ck">&#10003;</span> $6.67/mo effective</li>
           <li><span class="ck">&#10003;</span> All Future Updates</li>
         </ul>
-        <a href="https://apps.apple.com/us/app/id6762222589?mt=12" class="pricing-cta cta-outline">Get Annual</a>
+        <span class="pricing-cta">Coming Soon</span>
       </div>
     </div>
   </div>
@@ -1249,62 +1159,31 @@ a:hover { opacity: 0.85; }
   <div class="container">
     <div class="section-eyebrow">&#10067; FAQ</div>
     <h2 class="section-title">Common questions</h2>
-    <p class="section-sub">Everything you need to know about Poly-Glot.</p>
-
+    <p class="section-sub">Everything you need to know about Poly-Glot AI Workspace.</p>
     <div class="faq-list">
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          What is Poly-Glot AI Workspace?
-          <span class="toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <p>Poly-Glot AI Workspace is a native iOS and macOS app that lets you ask any AI — ChatGPT, Claude, Gemini, Grok, and more — from one place. Type or speak in any of 38 languages, use 1,000+ ready-to-use templates, compare answers from multiple AIs side by side, and pick the best one. No API keys needed &mdash; everything runs on your device.</p>
-        </div>
+        <div class="faq-q" onclick="toggleFaq(this)">What is Poly-Glot AI Workspace?<span class="toggle">+</span></div>
+        <div class="faq-a"><p>Poly-Glot AI Workspace is a native iOS and macOS app that lets you ask any AI — ChatGPT, Claude, Gemini, Grok, and more — from one place. Type or speak in any of 38 languages, use 1,000+ ready-to-use templates, compare answers from multiple AIs side by side, and pick the best one. No API keys needed — everything runs on your device.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          Is my data private?
-          <span class="toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <p>Yes. Poly-Glot runs 100% on your device. We do not collect, store, or transmit any personal data, prompts, or usage information. No analytics, no tracking, no servers.</p>
-        </div>
+        <div class="faq-q" onclick="toggleFaq(this)">Is my data private?<span class="toggle">+</span></div>
+        <div class="faq-a"><p>Yes. Poly-Glot runs 100% on your device. We do not collect, store, or transmit any personal data, prompts, or usage information. No analytics, no tracking, no servers.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          How does the free trial work?
-          <span class="toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <p>New users get a 3-day free trial that includes access to 25 featured templates. The trial starts when you first use a template. After 3 days, you can upgrade to Pro to unlock all 1,000+ templates. The trial is tied to your Apple ID.</p>
-        </div>
+        <div class="faq-q" onclick="toggleFaq(this)">How does the free trial work?<span class="toggle">+</span></div>
+        <div class="faq-a"><p>New users get a 3-day free trial that includes access to 25 featured templates. The trial starts when you first use a template. After 3 days, you can upgrade to Pro to unlock all 1,000+ templates.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          Does it work with ChatGPT, Claude, and other AI models?
-          <span class="toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <p>Yes. Poly-Glot works with every major AI. Send your prompt directly to ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, and more. Use Compare Mode to ask multiple AIs at once and see which gives the best answer.</p>
-        </div>
+        <div class="faq-q" onclick="toggleFaq(this)">Does it work with ChatGPT, Claude, and other AI models?<span class="toggle">+</span></div>
+        <div class="faq-a"><p>Yes. Poly-Glot works with every major AI. Send your prompt directly to ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, and more. Use Compare Mode to ask multiple AIs at once and see which gives the best answer.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          How many input methods are supported?
-          <span class="toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <p>Five: Type your prompt from scratch, paste existing text, import documents or files, scan printed or handwritten text with your camera, or dictate using on-device speech recognition. All methods produce structured, copy-ready prompts.</p>
-        </div>
+        <div class="faq-q" onclick="toggleFaq(this)">When will it be available?<span class="toggle">+</span></div>
+        <div class="faq-a"><p>Poly-Glot AI Workspace is currently in review with Apple. It will be available on the App Store for iPhone, iPad, and Mac very soon. Check back here for updates!</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          Can I cancel my subscription?
-          <span class="toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <p>Yes. All subscriptions are managed through Apple and can be cancelled anytime from your Apple ID settings. No questions asked.</p>
-        </div>
+        <div class="faq-q" onclick="toggleFaq(this)">Can I cancel my subscription?<span class="toggle">+</span></div>
+        <div class="faq-a"><p>Yes. All subscriptions are managed through Apple and can be cancelled anytime from your Apple ID settings. No questions asked.</p></div>
       </div>
     </div>
   </div>
@@ -1316,14 +1195,16 @@ a:hover { opacity: 0.85; }
 <section class="final-cta">
   <div class="container">
     <h2>Why choose one AI?<br>Ask Poly-Glot.</h2>
-    <p>One prompt. Multiple AIs. Compare the results. Download Poly-Glot AI Workspace now.</p>
+    <p>One prompt. Multiple AIs. Compare the results. Coming soon to the App Store.</p>
     <div class="hero-actions" style="justify-content:center">
-      <a href="https://apps.apple.com/us/app/id6762222589?mt=12" class="btn-primary">
-        &#63743; Download for Mac
-      </a>
-      <a href="https://apps.apple.com/us/app/id6762054909" class="btn-secondary">
-        📱 Download for iPhone &amp; iPad
-      </a>
+      <span class="btn-coming-soon">
+        <span class="pulse-dot"></span>
+        &#63743; Mac — Coming Soon
+      </span>
+      <span class="btn-coming-soon">
+        <span class="pulse-dot"></span>
+        📱 iPhone &amp; iPad — Coming Soon
+      </span>
     </div>
   </div>
 </section>
@@ -1335,9 +1216,9 @@ a:hover { opacity: 0.85; }
       <div>
         <div class="footer-brand">
           <img src="assets/img/icon-128.png" alt="Poly-Glot AI">
-          <span>Poly-Glot AI</span>
+          <span>Poly-Glot AI Workspace</span>
         </div>
-        <p class="footer-tagline">Every Language. One Prompt. Every AI — Compare the Results. 1,000+ templates. 38 languages. Available on iPhone, iPad, and Mac.</p>
+        <p class="footer-tagline">Every Language. One Prompt. Every AI — Compare the Results. 1,000+ templates. 38 languages. Coming soon on iPhone, iPad, and Mac.</p>
       </div>
       <div>
         <h5>Product</h5>
@@ -1349,10 +1230,10 @@ a:hover { opacity: 0.85; }
         </ul>
       </div>
       <div>
-        <h5>Download</h5>
+        <h5>Platform</h5>
         <ul>
-          <li><a href="https://apps.apple.com/us/app/id6762222589?mt=12">macOS</a></li>
-          <li><a href="https://apps.apple.com/us/app/id6762054909">iPhone &amp; iPad</a></li>
+          <li><span style="color:var(--amber);font-size:0.88rem">💻 macOS — Coming Soon</span></li>
+          <li><span style="color:var(--amber);font-size:0.88rem">📱 iOS — Coming Soon</span></li>
         </ul>
       </div>
       <div>
@@ -1385,10 +1266,15 @@ function toggleFaq(el) {
   const isOpen = answer.classList.contains('open');
   document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
   document.querySelectorAll('.faq-q .toggle').forEach(t => t.textContent = '+');
-  if (!isOpen) {
-    answer.classList.add('open');
-    toggle.textContent = '\u2212';
-  }
+  if (!isOpen) { answer.classList.add('open'); toggle.textContent = '\u2212'; }
+}
+
+/* ===== GALLERY TABS ===== */
+function switchGallery(platform) {
+  document.querySelectorAll('.gallery-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.gallery-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('gallery-' + platform).classList.add('active');
+  event.target.classList.add('active');
 }
 
 /* ===== SMOOTH NAV SCROLL ===== */
@@ -1419,10 +1305,138 @@ mobileStyle.textContent = `
 document.head.appendChild(mobileStyle);
 
 /* ===================================================================
-   PURE JAVASCRIPT TYPEWRITER DEMO
-   Order: Weak plays fully → Strong plays fully → Send animation
+   IN-APP DEMO — Replica of actual Poly-Glot app animation
+   Flow: Type prompt → Send → AI menu slides up → Compare Mode →
+         Select ChatGPT + Claude → Send to Selected → Show responses
    =================================================================== */
 
+var _demoTimers = [], _demoRunning = false;
+
+function _demoStop() {
+  _demoRunning = false;
+  _demoTimers.forEach(t => { clearInterval(t); clearTimeout(t); });
+  _demoTimers = [];
+}
+
+function demoReplay() {
+  _demoStop();
+  setTimeout(_demoStart, 200);
+}
+
+function _demoStart() {
+  _demoStop(); _demoRunning = true;
+  var p1 = document.getElementById('demoP1');
+  var p2 = document.getElementById('demoP2');
+  var p3 = document.getElementById('demoP3');
+  var ta = document.getElementById('demoTextarea');
+  var sb = document.getElementById('demoSendBtn');
+  var r1 = document.getElementById('demoResp1');
+  var r2 = document.getElementById('demoResp2');
+  var sendAll = document.getElementById('demoSendAll');
+  var cmpCnt = document.getElementById('demoCmpCount');
+  if (!p1 || !ta) return;
+
+  // Reset
+  p1.style.opacity = '1'; p1.style.display = 'block';
+  p2.style.transform = 'translateY(100%)';
+  p3.style.display = 'none'; p3.style.opacity = '0';
+  ta.textContent = ''; sb.style.opacity = '0.4';
+  if (r1) r1.textContent = '';
+  if (r2) r2.textContent = '';
+  cmpCnt.textContent = '0';
+  sendAll.style.opacity = '0.5';
+
+  // Reset AI buttons
+  document.querySelectorAll('.demoAI').forEach(function(btn) {
+    var ai = btn.getAttribute('data-ai');
+    var chk = btn.querySelector('.demoCheck');
+    if (ai === 'chatgpt') { btn.style.borderColor = 'var(--border)'; btn.style.background = 'var(--surface2)'; chk.textContent = ''; chk.style.background = 'transparent'; chk.style.borderColor = 'var(--border)'; chk.style.color = ''; }
+    if (ai === 'claude') { btn.style.borderColor = 'var(--border)'; btn.style.background = 'var(--surface2)'; chk.textContent = ''; chk.style.background = 'transparent'; chk.style.borderColor = 'var(--border)'; chk.style.color = ''; }
+  });
+
+  var prompt = "Write a polite email to my landlord asking to fix the heater. It's been broken for 2 weeks.";
+  var resp1 = "Subject: Heater Repair Request\n\nDear [Landlord],\n\nI hope this finds you well. I'm writing to follow up on the heater issue in my unit. It stopped working approximately two weeks ago, and with temperatures dropping, it's becoming quite uncomfortable.\n\nCould we schedule a repair at your earliest convenience? I'm available most evenings and all weekend.\n\nThank you for your attention to this.\n\nBest regards";
+  var resp2 = "Subject: Urgent — Heating System Down (2 Weeks)\n\nHi [Landlord name],\n\nI wanted to reach out about the heating system in unit [#]. It's been non-functional since [date — 2 weeks ago], and the indoor temperature has been consistently below comfortable levels.\n\nI understand repairs take time, but as this affects habitability, I'd appreciate if we could arrange a technician visit within the next few days.\n\nI'm happy to coordinate access. Please let me know what works.\n\nWarm regards";
+
+  // Phase 1: Type prompt
+  var i = 0;
+  var t0 = setTimeout(function() {
+    var iv = setInterval(function() {
+      if (!_demoRunning) { clearInterval(iv); return; }
+      if (i < prompt.length) { ta.textContent += prompt[i]; i++; }
+      else {
+        clearInterval(iv); sb.style.opacity = '1';
+        var t1 = setTimeout(function() {
+          if (!_demoRunning) return;
+          sb.style.transform = 'scale(0.96)';
+          var t1b = setTimeout(function() { sb.style.transform = 'scale(1)';
+            // Phase 2: Slide up AI menu
+            var t2 = setTimeout(function() {
+              if (!_demoRunning) return;
+              p2.style.transform = 'translateY(0)';
+              // Select ChatGPT
+              var t4 = setTimeout(function() {
+                if (!_demoRunning) return;
+                var gpt = document.querySelector('.demoAI[data-ai=chatgpt]');
+                var gptC = gpt.querySelector('.demoCheck');
+                gpt.style.borderColor = '#10a37f'; gpt.style.background = 'rgba(16,163,127,0.1)';
+                gptC.textContent = '✓'; gptC.style.background = '#10a37f'; gptC.style.borderColor = '#10a37f'; gptC.style.color = '#fff';
+                cmpCnt.textContent = '1'; sendAll.style.opacity = '0.7';
+                // Select Claude
+                var t5 = setTimeout(function() {
+                  if (!_demoRunning) return;
+                  var cld = document.querySelector('.demoAI[data-ai=claude]');
+                  var cldC = cld.querySelector('.demoCheck');
+                  cld.style.borderColor = '#d97706'; cld.style.background = 'rgba(217,119,6,0.1)';
+                  cldC.textContent = '✓'; cldC.style.background = '#d97706'; cldC.style.borderColor = '#d97706'; cldC.style.color = '#fff';
+                  cmpCnt.textContent = '2'; sendAll.style.opacity = '1';
+                  // Tap Send
+                  var t6 = setTimeout(function() {
+                    if (!_demoRunning) return;
+                    sendAll.style.transform = 'scale(0.96)';
+                    var t6b = setTimeout(function() { sendAll.style.transform = 'scale(1)';
+                      // Phase 3: Show responses
+                      var t7 = setTimeout(function() {
+                        if (!_demoRunning) return;
+                        p2.style.transform = 'translateY(100%)';
+                        p1.style.opacity = '0';
+                        p3.style.display = 'block';
+                        var t7b = setTimeout(function() { p3.style.opacity = '1';
+                          // Type response 1
+                          var j = 0;
+                          var iv1 = setInterval(function() {
+                            if (!_demoRunning) { clearInterval(iv1); return; }
+                            if (j < resp1.length) { r1.textContent += resp1[j]; j++; }
+                            else { clearInterval(iv1);
+                              // Type response 2
+                              var k = 0;
+                              var iv2 = setInterval(function() {
+                                if (!_demoRunning) { clearInterval(iv2); return; }
+                                if (k < resp2.length) { r2.textContent += resp2[k]; k++; }
+                                else { clearInterval(iv2);
+                                  var t8 = setTimeout(function() { if (_demoRunning) _demoStart(); }, 4000);
+                                  _demoTimers.push(t8);
+                                }
+                              }, 12); _demoTimers.push(iv2);
+                            }
+                          }, 12); _demoTimers.push(iv1);
+                        }, 100); _demoTimers.push(t7b);
+                      }, 400); _demoTimers.push(t7);
+                    }, 150); _demoTimers.push(t6b);
+                  }, 800); _demoTimers.push(t6);
+                }, 600); _demoTimers.push(t5);
+              }, 600); _demoTimers.push(t4);
+            }, 400); _demoTimers.push(t2);
+          }, 150); _demoTimers.push(t1b);
+        }, 500); _demoTimers.push(t1);
+      }
+    }, 30); _demoTimers.push(iv);
+  }, 600); _demoTimers.push(t0);
+}
+
+/* ===================================================================
+   COMPARISON DEMO — Without vs With Poly-Glot (Typewriter)
+   =================================================================== */
 const DEMO_DATA = {
   weak: {
     prompt: "What should I make for dinner?",
@@ -1439,13 +1453,12 @@ const DEMO_DATA = {
 
 const TYPE_SPEED = 28;
 const RESPONSE_SPEED = 12;
+let compareRunning = false;
+let compareTimeouts = [];
 
-let demoRunning = false;
-let demoTimeouts = [];
-
-function clearDemo() {
-  demoTimeouts.forEach(t => clearTimeout(t));
-  demoTimeouts = [];
+function clearCompare() {
+  compareTimeouts.forEach(t => clearTimeout(t));
+  compareTimeouts = [];
   document.getElementById('weakPrompt').innerHTML = '';
   document.getElementById('weakResponse').innerHTML = '';
   document.getElementById('fieldRole').innerHTML = '';
@@ -1456,13 +1469,10 @@ function clearDemo() {
   document.getElementById('sendBar').style.display = 'none';
   document.getElementById('panelWeak').style.opacity = '1';
   document.getElementById('panelStrong').style.opacity = '0.4';
-  // Remove typing highlights
   document.querySelectorAll('.app-field-input').forEach(el => el.classList.remove('typing'));
-  // Reset AI respond label
-  const aiLabel = document.getElementById('aiRespondLabel');
+  var aiLabel = document.getElementById('aiRespondLabel');
   if (aiLabel) aiLabel.style.display = 'none';
-  // Reset ChatGPT pill highlight
-  const pill = document.getElementById('pillChatGPT');
+  var pill = document.getElementById('pillChatGPT');
   if (pill) { pill.style.background = ''; pill.style.borderColor = ''; pill.style.boxShadow = ''; }
 }
 
@@ -1470,19 +1480,15 @@ function typeText(elementId, text, speed, callback) {
   const el = document.getElementById(elementId);
   let i = 0;
   el.innerHTML = '<span class="demo-cursor"></span>';
-
   function typeChar() {
     if (i < text.length) {
       const char = text[i] === '\n' ? '<br>' : text[i];
       const cursor = el.querySelector('.demo-cursor');
-      if (cursor) {
-        cursor.insertAdjacentHTML('beforebegin', char);
-      } else {
-        el.innerHTML += char;
-      }
+      if (cursor) cursor.insertAdjacentHTML('beforebegin', char);
+      else el.innerHTML += char;
       i++;
       const tid = setTimeout(typeChar, speed + Math.random() * speed * 0.4);
-      demoTimeouts.push(tid);
+      compareTimeouts.push(tid);
     } else {
       const cursor = el.querySelector('.demo-cursor');
       if (cursor) cursor.remove();
@@ -1492,13 +1498,7 @@ function typeText(elementId, text, speed, callback) {
   typeChar();
 }
 
-function demoDelay(ms) {
-  return new Promise(resolve => {
-    const tid = setTimeout(resolve, ms);
-    demoTimeouts.push(tid);
-  });
-}
-
+function cmpDelay(ms) { return new Promise(resolve => { const tid = setTimeout(resolve, ms); compareTimeouts.push(tid); }); }
 async function typeField(fieldId, text, speed) {
   const el = document.getElementById(fieldId);
   el.classList.add('typing');
@@ -1506,80 +1506,73 @@ async function typeField(fieldId, text, speed) {
   el.classList.remove('typing');
 }
 
-async function runDemo() {
-  if (demoRunning) return;
-  demoRunning = true;
-  clearDemo();
-
-  /* ========== PHASE 1: WEAK plays fully ========== */
+async function runCompare() {
+  if (compareRunning) return;
+  compareRunning = true;
+  clearCompare();
   document.getElementById('panelWeak').style.opacity = '1';
   document.getElementById('panelStrong').style.opacity = '0.4';
-
   await new Promise(resolve => typeText('weakPrompt', DEMO_DATA.weak.prompt, TYPE_SPEED, resolve));
-  await demoDelay(800);
+  await cmpDelay(800);
   await new Promise(resolve => typeText('weakResponse', DEMO_DATA.weak.response, RESPONSE_SPEED, resolve));
-  await demoDelay(1200);
-
-  /* ========== PHASE 2: STRONG — fill each form field ========== */
+  await cmpDelay(1200);
   document.getElementById('panelWeak').style.opacity = '0.4';
   document.getElementById('panelStrong').style.opacity = '1';
-  await demoDelay(400);
-
-  // Type into each field one by one
+  await cmpDelay(400);
   await typeField('fieldRole', DEMO_DATA.strong.role, 22);
-  await demoDelay(300);
+  await cmpDelay(300);
   await typeField('fieldDetails', DEMO_DATA.strong.details, 18);
-  await demoDelay(300);
+  await cmpDelay(300);
   await typeField('fieldConstraints', DEMO_DATA.strong.constraints, 18);
-  await demoDelay(300);
+  await cmpDelay(300);
   await typeField('fieldOutput', DEMO_DATA.strong.output, 18);
-  await demoDelay(500);
-
-  /* ========== PHASE 3: Send to AI bar appears ========== */
+  await cmpDelay(500);
   document.getElementById('sendBar').style.display = 'block';
-  await demoDelay(800);
-
-  // Highlight ChatGPT pill (user "picks" it)
+  await cmpDelay(800);
   const chatgptPill = document.getElementById('pillChatGPT');
   chatgptPill.style.background = 'rgba(16,185,129,0.25)';
   chatgptPill.style.borderColor = '#10b981';
   chatgptPill.style.boxShadow = '0 0 12px rgba(16,185,129,0.3)';
-  await demoDelay(600);
-
-  /* ========== PHASE 4: AI response types out ========== */
+  await cmpDelay(600);
   document.getElementById('aiRespondLabel').style.display = 'block';
-  await demoDelay(300);
+  await cmpDelay(300);
   await new Promise(resolve => typeText('strongResponse', DEMO_DATA.strong.response, RESPONSE_SPEED, resolve));
-  await demoDelay(400);
-
-  // Both panels bright
+  await cmpDelay(400);
   document.getElementById('panelWeak').style.opacity = '1';
   document.getElementById('panelStrong').style.opacity = '1';
-
-  demoRunning = false;
+  compareRunning = false;
 }
 
-function demoReplay() {
-  demoRunning = false;
-  clearDemo();
-  setTimeout(runDemo, 200);
+function compareReplay() {
+  compareRunning = false;
+  clearCompare();
+  setTimeout(runCompare, 200);
 }
 
-/* ===== AUTO-START DEMO ON SCROLL ===== */
+/* ===== AUTO-START DEMOS ON SCROLL ===== */
 let demoStarted = false;
 const demoObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !demoStarted) {
       demoStarted = true;
-      setTimeout(runDemo, 400);
+      setTimeout(_demoStart, 400);
     }
   });
 }, { threshold: 0.2 });
-
 const demoEl = document.getElementById('demo');
-if (demoEl) {
-  demoObserver.observe(demoEl);
-}
+if (demoEl) demoObserver.observe(demoEl);
+
+let compareStarted = false;
+const compareObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !compareStarted) {
+      compareStarted = true;
+      setTimeout(runCompare, 400);
+    }
+  });
+}, { threshold: 0.2 });
+const compareEl = document.getElementById('compare');
+if (compareEl) compareObserver.observe(compareEl);
 </script>
 
 </body>
