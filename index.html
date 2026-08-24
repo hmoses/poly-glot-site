@@ -320,7 +320,7 @@ a:hover { opacity: 0.85; }
 /* ===== INTERACTIVE IN-APP DEMO ===== */
 .demo-section { background: var(--bg); }
 .demo-device-frame {
-  max-width: 380px; margin: 0 auto;
+  max-width: 420px; margin: 0 auto;
   background: #0d0f1a; border-radius: 32px;
   border: 3px solid #3a3a3c;
   box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.06);
@@ -940,21 +940,6 @@ a:hover { opacity: 0.85; }
         <div class="model-name">Mistral (Vibe)</div>
         <div class="model-desc">Mistral AI</div>
       </div>
-      <div class="model-card">
-        <div class="model-dot" style="background:#06b6d4"></div>
-        <div class="model-name">DeepSeek</div>
-        <div class="model-desc">DeepSeek AI</div>
-      </div>
-      <div class="model-card">
-        <div class="model-dot" style="background:#64748b"></div>
-        <div class="model-name">Meta AI</div>
-        <div class="model-desc">Meta</div>
-      </div>
-      <div class="model-card">
-        <div class="model-dot" style="background:#a78bfa"></div>
-        <div class="model-name">+ More</div>
-        <div class="model-desc">Any AI that accepts text</div>
-      </div>
     </div>
   </div>
 </section>
@@ -1062,19 +1047,20 @@ a:hover { opacity: 0.85; }
 <section class="section" id="why" style="background:var(--bg-alt)">
   <div class="container">
     <div class="section-eyebrow">&#129504; The Problem</div>
-    <h2 class="section-title">Why one AI isn&#8217;t enough</h2>
-    <p class="section-sub" style="max-width:700px">Every AI thinks differently. ChatGPT writes one way, Claude another. Gemini reasons differently than Grok. The best answer depends on the question &mdash; so why limit yourself to one? Poly-Glot lets you ask them all and compare.</p>
+    <h2 class="section-title">Why one AI isn't enough</h2>
+    <p style="color:var(--text-muted);font-size:1.05rem;line-height:1.7;max-width:700px;margin-bottom:40px">Every AI thinks differently. ChatGPT writes one way, Claude another. Gemini reasons differently than Grok. The best answer depends on the question — so why limit yourself to one? Poly-Glot lets you ask them all and compare.</p>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:860px">
-      <!-- Without -->
-      <div style="background:var(--bg-surface);border:1px solid rgba(248,113,113,0.2);border-radius:var(--radius);padding:28px">
-        <div style="font-family:'Fira Code',monospace;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--red);margin-bottom:16px;display:flex;align-items:center;gap:8px">&#10060; Using one AI</div>
-        <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.7">You ask ChatGPT, get one answer, and hope it&#8217;s right. No second opinion. No comparison. No way to know if another AI would have given you something better.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:900px">
+      <!-- Using one AI -->
+      <div style="background:var(--bg-surface);border:1px solid rgba(248,113,113,0.2);border-radius:12px;padding:32px">
+        <div style="font-family:'Fira Code',monospace;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--red);margin-bottom:16px;display:flex;align-items:center;gap:8px">&#10060; Using one AI</div>
+        <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.7">You ask ChatGPT, get one answer, and hope it's right. No second opinion. No comparison. No way to know if another AI would have given you something better.</p>
       </div>
-      <!-- With Poly-Glot -->
-      <div style="background:var(--bg-surface);border:1px solid rgba(16,185,129,0.25);border-radius:var(--radius);padding:28px">
-        <div style="font-family:'Fira Code',monospace;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--green);margin-bottom:16px;display:flex;align-items:center;gap:8px">&#10004;&#65039; Using Poly-Glot with Compare Mode</div>
-        <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.7">Type your question once, tap &#128256; Compare Mode, select ChatGPT + Claude + Gemini, and get 3 different perspectives in seconds. Pick the best answer. That&#8217;s the paradigm shift.</p>
+
+      <!-- Using Poly-Glot -->
+      <div style="background:var(--bg-surface);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:32px">
+        <div style="font-family:'Fira Code',monospace;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--green);margin-bottom:16px;display:flex;align-items:center;gap:8px">&#10004;&#65039; Using Poly-Glot with Compare Mode</div>
+        <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.7">Type your question once, tap &#128256; Compare Mode, select ChatGPT + Claude + Gemini, and get 3 different perspectives in seconds. Pick the best answer. That's the paradigm shift.</p>
       </div>
     </div>
   </div>
