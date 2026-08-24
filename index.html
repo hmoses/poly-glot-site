@@ -582,6 +582,7 @@ a:hover { opacity: 0.85; }
   .features-grid { grid-template-columns: 1fr 1fr; }
   .input-grid { grid-template-columns: repeat(3, 1fr); }
   .demo-compare { grid-template-columns: 1fr; }
+  #why .container > div[style*='grid'] { grid-template-columns: 1fr !important; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 380px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .gallery-grid.phone-grid { grid-template-columns: repeat(2, 1fr); }
@@ -682,8 +683,8 @@ a:hover { opacity: 0.85; }
 <section class="section screenshot-gallery" id="screenshots">
   <div class="container">
     <div class="section-eyebrow">📸 Screenshots</div>
-    <h2 class="section-title">See the app in action</h2>
-    <p class="section-sub">Real screenshots from Poly-Glot AI Workspace across all Apple devices.</p>
+    <h2 class="section-title">Real screenshots. Real app.</h2>
+    <p class="section-sub">Poly-Glot AI Workspace on iPhone, iPad, and Mac — coming soon to the App Store.</p>
 
     <div class="gallery-tabs">
       <div class="gallery-tab active" onclick="switchGallery('mac')">💻 Mac</div>
@@ -934,6 +935,26 @@ a:hover { opacity: 0.85; }
         <div class="model-name">Groq</div>
         <div class="model-desc">Groq Inc</div>
       </div>
+      <div class="model-card">
+        <div class="model-dot" style="background:#c084fc"></div>
+        <div class="model-name">Mistral (Vibe)</div>
+        <div class="model-desc">Mistral AI</div>
+      </div>
+      <div class="model-card">
+        <div class="model-dot" style="background:#06b6d4"></div>
+        <div class="model-name">DeepSeek</div>
+        <div class="model-desc">DeepSeek AI</div>
+      </div>
+      <div class="model-card">
+        <div class="model-dot" style="background:#64748b"></div>
+        <div class="model-name">Meta AI</div>
+        <div class="model-desc">Meta</div>
+      </div>
+      <div class="model-card">
+        <div class="model-dot" style="background:#a78bfa"></div>
+        <div class="model-name">+ More</div>
+        <div class="model-desc">Any AI that accepts text</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1037,50 +1058,24 @@ a:hover { opacity: 0.85; }
 
 <div class="section-divider"></div>
 
-<!-- ===== COMPARISON: Without vs With ===== -->
-<section class="section demo-section" id="compare">
+<!-- ===== WHY ONE AI ISN'T ENOUGH ===== -->
+<section class="section" id="why" style="background:var(--bg-alt)">
   <div class="container">
-    <div class="section-eyebrow">&#127916; See The Difference</div>
-    <h2 class="section-title">Without Poly-Glot vs. With Poly-Glot</h2>
-    <p class="section-sub">Same question. Dramatically different results. Watch how structured prompts unlock better AI answers.</p>
+    <div class="section-eyebrow">&#129504; The Problem</div>
+    <h2 class="section-title">Why one AI isn&#8217;t enough</h2>
+    <p class="section-sub" style="max-width:700px">Every AI thinks differently. ChatGPT writes one way, Claude another. Gemini reasons differently than Grok. The best answer depends on the question &mdash; so why limit yourself to one? Poly-Glot lets you ask them all and compare.</p>
 
-    <div class="demo-compare">
-      <div class="demo-panel weak" id="panelWeak">
-        <div class="demo-panel-header"><span>&#10060;</span> Without Poly-Glot</div>
-        <div class="demo-panel-body">
-          <div class="demo-prompt-label">Prompt</div>
-          <div class="demo-prompt-text" id="weakPrompt"></div>
-          <div class="demo-response-label">AI Response</div>
-          <div class="demo-response-text" id="weakResponse"></div>
-        </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:860px">
+      <!-- Without -->
+      <div style="background:var(--bg-surface);border:1px solid rgba(248,113,113,0.2);border-radius:var(--radius);padding:28px">
+        <div style="font-family:'Fira Code',monospace;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--red);margin-bottom:16px;display:flex;align-items:center;gap:8px">&#10060; Using one AI</div>
+        <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.7">You ask ChatGPT, get one answer, and hope it&#8217;s right. No second opinion. No comparison. No way to know if another AI would have given you something better.</p>
       </div>
-      <div class="demo-panel strong" id="panelStrong" style="opacity:0.4">
-        <div class="demo-panel-header"><span>&#10004;&#65039;</span> With Poly-Glot</div>
-        <div class="demo-panel-body">
-          <div class="demo-subheader">POLY-GLOT BUILDS:</div>
-          <div class="app-field"><label class="app-field-label">ROLE</label><div class="app-field-input" id="fieldRole"></div></div>
-          <div class="app-field"><label class="app-field-label">DETAILS</label><div class="app-field-input" id="fieldDetails"></div></div>
-          <div class="app-field"><label class="app-field-label">CONSTRAINTS</label><div class="app-field-input" id="fieldConstraints"></div></div>
-          <div class="app-field"><label class="app-field-label">OUTPUT</label><div class="app-field-input" id="fieldOutput"></div></div>
-          <div class="send-to-ai-bar" id="sendBar" style="display:none">
-            <div class="send-bar-label">&#10024; Send to AI</div>
-            <div class="send-bar-pills">
-              <span class="ai-pill" id="pillChatGPT"><span class="ai-dot" style="background:#10b981"></span>ChatGPT</span>
-              <span class="ai-pill" id="pillClaude"><span class="ai-dot" style="background:#f5a623"></span>Claude</span>
-              <span class="ai-pill" id="pillGemini"><span class="ai-dot" style="background:#4285f4"></span>Gemini</span>
-              <span class="ai-pill" id="pillGrok"><span class="ai-dot" style="background:#f7d046"></span>Grok</span>
-              <span class="ai-pill" id="pillCopilot"><span class="ai-dot" style="background:#f87171"></span>Copilot</span>
-              <span class="ai-pill" id="pillPerplexity"><span class="ai-dot" style="background:#8b5cf6"></span>Perplexity</span>
-            </div>
-          </div>
-          <div class="demo-subheader" id="aiRespondLabel" style="margin-top:20px; color:var(--green); display:none;">AI RESPONDS:</div>
-          <div class="demo-response-text" id="strongResponse"></div>
-        </div>
+      <!-- With Poly-Glot -->
+      <div style="background:var(--bg-surface);border:1px solid rgba(16,185,129,0.25);border-radius:var(--radius);padding:28px">
+        <div style="font-family:'Fira Code',monospace;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--green);margin-bottom:16px;display:flex;align-items:center;gap:8px">&#10004;&#65039; Using Poly-Glot with Compare Mode</div>
+        <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.7">Type your question once, tap &#128256; Compare Mode, select ChatGPT + Claude + Gemini, and get 3 different perspectives in seconds. Pick the best answer. That&#8217;s the paradigm shift.</p>
       </div>
-    </div>
-
-    <div class="demo-controls">
-      <button class="demo-replay-btn" onclick="compareReplay()">&#8634; Replay Comparison</button>
     </div>
   </div>
 </section>
@@ -1454,145 +1449,6 @@ function _demoStart() {
   }, 600); _demoTimers.push(t0);
 }
 
-/* ===================================================================
-   COMPARISON DEMO — Without vs With Poly-Glot (Typewriter)
-   =================================================================== */
-const DEMO_DATA = {
-  weak: {
-    prompt: "What should I make for dinner?",
-    response: "You could try pasta, stir fry, or a salad. There are many options depending on what ingredients you have."
-  },
-  strong: {
-    role: "Family meal planner",
-    details: "I have chicken, rice, broccoli, soy sauce, and garlic. Planning dinner for 2 adults and 2 kids (picky eaters).",
-    constraints: "Must take under 30 minutes. Kid-friendly. No nuts.",
-    output: "Recipe with steps, portions, and a kid-friendly twist.",
-    response: "\ud83c\udf57 Honey-Garlic Chicken Rice Bowls\n\nServes 4 (2 adult + 2 kid portions)\nTime: 25 minutes\n\n1. Dice chicken into bite-size cubes. Season with soy sauce & minced garlic.\n2. Stir-fry chicken 6 min on medium-high. Set aside.\n3. Steam broccoli florets 4 min. For kids: cut tiny & call them \"trees.\"\n4. Cook rice per package. Fluff with fork.\n5. Bowl it up: rice base, chicken on one side, broccoli trees on the other.\n\n\ud83e\udde1 Kid twist: Let kids build their own bowls. Sauce on the side for dipping!"
-  }
-};
-
-const TYPE_SPEED = 28;
-const RESPONSE_SPEED = 12;
-let compareRunning = false;
-let compareTimeouts = [];
-
-function clearCompare() {
-  compareTimeouts.forEach(t => clearTimeout(t));
-  compareTimeouts = [];
-  document.getElementById('weakPrompt').innerHTML = '';
-  document.getElementById('weakResponse').innerHTML = '';
-  document.getElementById('fieldRole').innerHTML = '';
-  document.getElementById('fieldDetails').innerHTML = '';
-  document.getElementById('fieldConstraints').innerHTML = '';
-  document.getElementById('fieldOutput').innerHTML = '';
-  document.getElementById('strongResponse').innerHTML = '';
-  document.getElementById('sendBar').style.display = 'none';
-  document.getElementById('panelWeak').style.opacity = '1';
-  document.getElementById('panelStrong').style.opacity = '0.4';
-  document.querySelectorAll('.app-field-input').forEach(el => el.classList.remove('typing'));
-  var aiLabel = document.getElementById('aiRespondLabel');
-  if (aiLabel) aiLabel.style.display = 'none';
-  var pill = document.getElementById('pillChatGPT');
-  if (pill) { pill.style.background = ''; pill.style.borderColor = ''; pill.style.boxShadow = ''; }
-}
-
-function typeText(elementId, text, speed, callback) {
-  const el = document.getElementById(elementId);
-  let i = 0;
-  el.innerHTML = '<span class="demo-cursor"></span>';
-  function typeChar() {
-    if (i < text.length) {
-      const char = text[i] === '\n' ? '<br>' : text[i];
-      const cursor = el.querySelector('.demo-cursor');
-      if (cursor) cursor.insertAdjacentHTML('beforebegin', char);
-      else el.innerHTML += char;
-      i++;
-      const tid = setTimeout(typeChar, speed + Math.random() * speed * 0.4);
-      compareTimeouts.push(tid);
-    } else {
-      const cursor = el.querySelector('.demo-cursor');
-      if (cursor) cursor.remove();
-      if (callback) callback();
-    }
-  }
-  typeChar();
-}
-
-function cmpDelay(ms) { return new Promise(resolve => { const tid = setTimeout(resolve, ms); compareTimeouts.push(tid); }); }
-async function typeField(fieldId, text, speed) {
-  const el = document.getElementById(fieldId);
-  el.classList.add('typing');
-  await new Promise(resolve => typeText(fieldId, text, speed, resolve));
-  el.classList.remove('typing');
-}
-
-async function runCompare() {
-  if (compareRunning) return;
-  compareRunning = true;
-  clearCompare();
-  document.getElementById('panelWeak').style.opacity = '1';
-  document.getElementById('panelStrong').style.opacity = '0.4';
-  await new Promise(resolve => typeText('weakPrompt', DEMO_DATA.weak.prompt, TYPE_SPEED, resolve));
-  await cmpDelay(800);
-  await new Promise(resolve => typeText('weakResponse', DEMO_DATA.weak.response, RESPONSE_SPEED, resolve));
-  await cmpDelay(1200);
-  document.getElementById('panelWeak').style.opacity = '0.4';
-  document.getElementById('panelStrong').style.opacity = '1';
-  await cmpDelay(400);
-  await typeField('fieldRole', DEMO_DATA.strong.role, 22);
-  await cmpDelay(300);
-  await typeField('fieldDetails', DEMO_DATA.strong.details, 18);
-  await cmpDelay(300);
-  await typeField('fieldConstraints', DEMO_DATA.strong.constraints, 18);
-  await cmpDelay(300);
-  await typeField('fieldOutput', DEMO_DATA.strong.output, 18);
-  await cmpDelay(500);
-  document.getElementById('sendBar').style.display = 'block';
-  await cmpDelay(800);
-  const chatgptPill = document.getElementById('pillChatGPT');
-  chatgptPill.style.background = 'rgba(16,185,129,0.25)';
-  chatgptPill.style.borderColor = '#10b981';
-  chatgptPill.style.boxShadow = '0 0 12px rgba(16,185,129,0.3)';
-  await cmpDelay(600);
-  document.getElementById('aiRespondLabel').style.display = 'block';
-  await cmpDelay(300);
-  await new Promise(resolve => typeText('strongResponse', DEMO_DATA.strong.response, RESPONSE_SPEED, resolve));
-  await cmpDelay(400);
-  document.getElementById('panelWeak').style.opacity = '1';
-  document.getElementById('panelStrong').style.opacity = '1';
-  compareRunning = false;
-}
-
-function compareReplay() {
-  compareRunning = false;
-  clearCompare();
-  setTimeout(runCompare, 200);
-}
-
-/* ===== AUTO-START DEMOS ON SCROLL ===== */
-let demoStarted = false;
-const demoObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !demoStarted) {
-      demoStarted = true;
-      setTimeout(_demoStart, 400);
-    }
-  });
-}, { threshold: 0.2 });
-const demoEl = document.getElementById('demo');
-if (demoEl) demoObserver.observe(demoEl);
-
-let compareStarted = false;
-const compareObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !compareStarted) {
-      compareStarted = true;
-      setTimeout(runCompare, 400);
-    }
-  });
-}, { threshold: 0.2 });
-const compareEl = document.getElementById('compare');
-if (compareEl) compareObserver.observe(compareEl);
 </script>
 
 </body>
