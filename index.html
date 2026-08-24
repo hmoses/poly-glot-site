@@ -967,9 +967,17 @@ a:hover { opacity: 0.85; }
           <!-- Status bar -->
           <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 28px 4px;color:#fff;font-size:0.78rem;font-weight:700;flex-shrink:0">
             <span>9:41</span>
-            <span style="display:flex;gap:4px;align-items:center">
-              <span style="font-size:0.65rem">&#9679;&#9679;&#9679;&#9679;</span>
-              <span style="font-size:0.72rem">&#9681;</span>
+            <span style="display:flex;gap:3px;align-items:flex-end">
+              <!-- Signal bars -->
+              <span style="display:inline-flex;gap:1.5px;align-items:flex-end;margin-right:2px">
+                <span style="width:3px;height:4px;background:#fff;border-radius:0.5px"></span>
+                <span style="width:3px;height:6px;background:#fff;border-radius:0.5px"></span>
+                <span style="width:3px;height:9px;background:#fff;border-radius:0.5px"></span>
+                <span style="width:3px;height:12px;background:#fff;border-radius:0.5px"></span>
+              </span>
+              <!-- WiFi icon -->
+              <svg width="13" height="10" viewBox="0 0 16 12" fill="white" style="margin-right:2px"><path d="M8 10.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-3.5-3a5.25 5.25 0 017 0 .75.75 0 01-1 1.12 3.75 3.75 0 00-5 0 .75.75 0 01-1-1.12zm-3-3a9 9 0 0113 0 .75.75 0 01-1.06 1.06 7.5 7.5 0 00-10.88 0A.75.75 0 011.5 4.5z"/></svg>
+              <!-- Battery -->
               <span style="display:inline-block;width:20px;height:10px;border:1.5px solid #fff;border-radius:3px;position:relative"><span style="position:absolute;top:1.5px;left:1.5px;right:1.5px;bottom:1.5px;background:#30d158;border-radius:1px"></span></span>
             </span>
           </div>
@@ -1013,52 +1021,61 @@ a:hover { opacity: 0.85; }
               </div>
             </div>
           </div>
-          <!-- AI Menu overlay (slides up during demo) -->
-          <div id="demoP2" style="position:absolute;bottom:0;left:0;right:0;background:#1a1e3a;border-radius:16px 16px 0 0;padding:12px;transform:translateY(100%);transition:transform 0.35s ease-out;border-top:1px solid rgba(255,255,255,0.08);z-index:20">
-            <div style="width:32px;height:4px;background:rgba(255,255,255,0.15);border-radius:2px;margin:0 auto 8px"></div>
-            <div style="text-align:center;font-size:0.72rem;font-weight:700;margin-bottom:8px;color:#fff">Choose AI</div>
-            <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:#232847;border-radius:10px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.08)">
-              <span style="font-size:0.66rem;font-weight:600;color:#fff">&#128256; Compare Mode</span>
-              <div id="demoCmpToggle" style="width:34px;height:18px;border-radius:9px;background:#7c3aed;position:relative">
-                <div id="demoCmpKnob" style="width:14px;height:14px;border-radius:50%;background:#fff;position:absolute;top:2px;left:18px;box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
+          <!-- Browser overlay (slides up over app during demo) -->
+          <div id="demoBrowser" style="position:absolute;top:0;left:0;right:0;bottom:0;background:#1a1a2e;z-index:25;transform:translateY(100%);transition:transform 0.4s ease-out;display:flex;flex-direction:column;border-radius:36px;overflow:hidden">
+            <!-- Safari-style browser top bar -->
+            <div style="padding:38px 14px 0;flex-shrink:0">
+              <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:rgba(255,255,255,0.06);border-radius:10px;border:1px solid rgba(255,255,255,0.1)">
+                <div id="demoBrowserClose" style="width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(255,255,255,0.6);font-weight:700;cursor:pointer">✕</div>
+                <div id="demoBrowserUrl" style="flex:1;text-align:center;font-size:0.56rem;color:rgba(255,255,255,0.4);font-weight:500">chat.openai.com</div>
+                <div style="width:20px"></div>
               </div>
             </div>
-            <div id="demoAIBtns" style="display:flex;flex-direction:column;gap:4px">
-              <div class="demoAI" data-ai="chatgpt" style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.08);background:#232847">
-                <div style="width:22px;height:22px;border-radius:5px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff">GPT</div>
-                <div style="flex:1"><div style="font-size:0.66rem;font-weight:600;color:#fff">ChatGPT</div></div>
-                <div class="demoCheck" style="width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:9px"></div>
+            <!-- Browser content -->
+            <div style="flex:1;padding:12px 14px;overflow-y:auto">
+              <!-- AI header in browser -->
+              <div id="demoBrowserAIHeader" style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+                <div id="demoBrowserAIIcon" style="width:28px;height:28px;border-radius:8px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff">GPT</div>
+                <div>
+                  <div id="demoBrowserAIName" style="font-size:0.72rem;font-weight:700;color:#fff">ChatGPT</div>
+                  <div id="demoBrowserAISub" style="font-size:0.48rem;color:rgba(255,255,255,0.3)">chat.openai.com</div>
+                </div>
               </div>
-              <div class="demoAI" data-ai="claude" style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.08);background:#232847">
-                <div style="width:22px;height:22px;border-radius:5px;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff">CLD</div>
-                <div style="flex:1"><div style="font-size:0.66rem;font-weight:600;color:#fff">Claude</div></div>
-                <div class="demoCheck" style="width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:9px"></div>
+              <!-- User prompt bubble -->
+              <div style="background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:10px;padding:10px 12px;margin-bottom:10px">
+                <div style="font-size:0.52rem;font-weight:600;color:#7c3aed;margin-bottom:3px">You</div>
+                <div id="demoBrowserPrompt" style="font-size:0.6rem;color:rgba(255,255,255,0.7);line-height:1.4">Write a polite email to my landlord asking to fix the heater before winter.</div>
               </div>
-              <div class="demoAI" data-ai="gemini" style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.08);background:#232847">
-                <div style="width:22px;height:22px;border-radius:5px;background:#4285f4;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff">GEM</div>
-                <div style="flex:1"><div style="font-size:0.66rem;font-weight:600;color:#fff">Gemini</div></div>
-                <div class="demoCheck" style="width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:9px"></div>
+              <!-- AI response bubble -->
+              <div id="demoBrowserRespWrap" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:10px 12px">
+                <div id="demoBrowserRespLabel" style="font-size:0.52rem;font-weight:600;color:#10a37f;margin-bottom:3px">ChatGPT</div>
+                <div id="demoBrowserResp" style="font-size:0.58rem;color:rgba(255,255,255,0.55);line-height:1.5;white-space:pre-wrap"></div>
               </div>
             </div>
-            <div id="demoSendAll" style="margin-top:6px;padding:8px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border-radius:10px;font-size:0.66rem;font-weight:700;text-align:center;opacity:0.5">Send to Selected (<span id="demoCmpCount">0</span>)</div>
+            <!-- Browser bottom bar -->
+            <div style="padding:6px 0 10px;flex-shrink:0;text-align:center">
+              <div style="width:36%;height:5px;background:#fff;border-radius:3px;margin:0 auto;opacity:0.2"></div>
+            </div>
           </div>
-          <!-- Phase 3: Compare responses -->
-          <div id="demoP3" style="position:absolute;top:0;left:0;right:0;bottom:0;background:#0d0f1a;padding:55px 16px 16px;opacity:0;transition:opacity 0.4s;display:none;z-index:15;overflow-y:auto">
-            <div style="font-size:0.68rem;font-weight:700;color:#7dd3fc;margin-bottom:8px">&#128256; Compare Mode — 2 AI responses</div>
+          <!-- Phase 3: Compare responses (back in app) -->
+          <div id="demoP3" style="position:absolute;top:0;left:0;right:0;bottom:0;background:#0d0f1a;padding:55px 16px 16px;opacity:0;transition:opacity 0.4s;display:none;z-index:15;overflow-y:auto;border-radius:36px">
+            <!-- Back in app header -->
+            <div style="font-size:0.56rem;color:rgba(255,255,255,0.3);margin-bottom:6px;text-align:center">&#10003; Back in Poly-Glot</div>
+            <div style="font-size:0.68rem;font-weight:700;color:#7dd3fc;margin-bottom:8px">&#128256; Compare — 2 AI responses</div>
             <div style="display:flex;flex-direction:column;gap:6px">
               <div style="background:rgba(16,163,127,0.08);border:1px solid rgba(16,163,127,0.25);border-radius:10px;padding:10px 12px">
                 <div style="display:flex;align-items:center;gap:5px;margin-bottom:4px">
                   <div style="width:16px;height:16px;border-radius:4px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:#fff">GPT</div>
                   <span style="font-size:0.62rem;font-weight:700;color:#10a37f">ChatGPT</span>
                 </div>
-                <div id="demoResp1" style="font-size:0.62rem;color:rgba(255,255,255,0.5);line-height:1.5"></div>
+                <div id="demoResp1" style="font-size:0.58rem;color:rgba(255,255,255,0.5);line-height:1.5"></div>
               </div>
               <div style="background:rgba(217,119,6,0.08);border:1px solid rgba(217,119,6,0.25);border-radius:10px;padding:10px 12px">
                 <div style="display:flex;align-items:center;gap:5px;margin-bottom:4px">
                   <div style="width:16px;height:16px;border-radius:4px;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:#fff">CLD</div>
                   <span style="font-size:0.62rem;font-weight:700;color:#d97706">Claude</span>
                 </div>
-                <div id="demoResp2" style="font-size:0.62rem;color:rgba(255,255,255,0.5);line-height:1.5"></div>
+                <div id="demoResp2" style="font-size:0.58rem;color:rgba(255,255,255,0.5);line-height:1.5"></div>
               </div>
             </div>
             <div style="text-align:center;margin-top:8px;font-size:0.62rem;color:#7dd3fc;font-weight:600">&#11014; Compare and pick the best answer</div>
@@ -1360,102 +1377,150 @@ function demoReplay() {
   setTimeout(_demoStart, 200);
 }
 
+/* Helper: typewrite text into an element */
+function _demoType(el, text, speed, cb) {
+  var i = 0;
+  var iv = setInterval(function() {
+    if (!_demoRunning) { clearInterval(iv); return; }
+    if (i < text.length) { el.textContent += text[i]; i++; }
+    else { clearInterval(iv); if (cb) cb(); }
+  }, speed);
+  _demoTimers.push(iv);
+}
+
+/* Helper: delay */
+function _demoDelay(ms, cb) {
+  var t = setTimeout(function() { if (_demoRunning) cb(); }, ms);
+  _demoTimers.push(t);
+}
+
+/* Configure the browser overlay for a specific AI */
+function _demoBrowserSetup(aiName, aiShort, aiColor, aiUrl) {
+  var br = document.getElementById('demoBrowser');
+  document.getElementById('demoBrowserUrl').textContent = aiUrl;
+  document.getElementById('demoBrowserAIIcon').textContent = aiShort;
+  document.getElementById('demoBrowserAIIcon').style.background = aiColor;
+  document.getElementById('demoBrowserAIName').textContent = aiName;
+  document.getElementById('demoBrowserAISub').textContent = aiUrl;
+  document.getElementById('demoBrowserRespLabel').textContent = aiName;
+  document.getElementById('demoBrowserRespLabel').style.color = aiColor;
+  document.getElementById('demoBrowserResp').textContent = '';
+}
+
 function _demoStart() {
   _demoStop(); _demoRunning = true;
-  var p2 = document.getElementById('demoP2');
+  var br = document.getElementById('demoBrowser');
   var p3 = document.getElementById('demoP3');
   var ta = document.getElementById('demoTextarea');
   var sb = document.getElementById('demoSendBtn');
   var r1 = document.getElementById('demoResp1');
   var r2 = document.getElementById('demoResp2');
-  var sendAll = document.getElementById('demoSendAll');
-  var cmpCnt = document.getElementById('demoCmpCount');
+  var brResp = document.getElementById('demoBrowserResp');
   if (!ta) return;
 
-  // Reset
-  p2.style.transform = 'translateY(100%)';
+  /* Reset everything */
+  br.style.transform = 'translateY(100%)';
   p3.style.display = 'none'; p3.style.opacity = '0';
   ta.textContent = ''; sb.style.opacity = '0.4';
   if (r1) r1.textContent = '';
   if (r2) r2.textContent = '';
-  cmpCnt.textContent = '0';
-  sendAll.style.opacity = '0.5';
-
-  document.querySelectorAll('.demoAI').forEach(function(btn) {
-    btn.style.borderColor = 'rgba(255,255,255,0.08)'; btn.style.background = '#232847';
-    var chk = btn.querySelector('.demoCheck');
-    if(chk){chk.textContent='';chk.style.background='transparent';chk.style.borderColor='rgba(255,255,255,0.15)';chk.style.color='';}
-  });
 
   var prompt = "Write a polite email to my landlord asking to fix the heater before winter.";
-  var resp1 = "Subject: Heating Repair Request\nDear [Landlord],\nI hope this finds you well. I'm writing to request a repair for the heating system.\nThank you.\nBest regards";
-  var resp2 = "Hi [Landlord],\nI wanted to reach out about the heater — it hasn't been working well.\nAppreciate your help!\nWarm regards";
+  var gptResp = "Subject: Heating Repair Request\n\nDear [Landlord],\n\nI hope this message finds you well. As winter approaches, I wanted to bring to your attention that the heater in my unit hasn't been functioning properly.\n\nWould it be possible to have it inspected and repaired before the cold weather sets in?\n\nThank you for your time.\nBest regards";
+  var claudeResp = "Hi [Landlord],\n\nI hope you're doing well! I wanted to reach out about the heater in my apartment — it hasn't been working reliably lately.\n\nWith winter coming up, I'd really appreciate it if we could get it looked at soon.\n\nHappy to coordinate a time that works for you.\n\nAppreciate your help!\nWarm regards";
 
-  var i = 0;
-  var t0 = setTimeout(function() {
-    var iv = setInterval(function() {
-      if (!_demoRunning) { clearInterval(iv); return; }
-      if (i < prompt.length) { ta.textContent += prompt[i]; i++; }
-      else {
-        clearInterval(iv); sb.style.opacity = '1';
-        var t1 = setTimeout(function() {
-          if (!_demoRunning) return;
-          sb.style.transform = 'scale(0.96)';
-          var t1b = setTimeout(function() { sb.style.transform = 'scale(1)';
-            var t2 = setTimeout(function() {
-              if (!_demoRunning) return;
-              p2.style.transform = 'translateY(0)';
-              var t4 = setTimeout(function() {
-                if (!_demoRunning) return;
-                var gpt = document.querySelector('.demoAI[data-ai=chatgpt]');
-                var gptC = gpt.querySelector('.demoCheck');
-                gpt.style.borderColor = '#10a37f'; gpt.style.background = 'rgba(16,163,127,0.1)';
-                gptC.textContent = '\u2713'; gptC.style.background = '#10a37f'; gptC.style.borderColor = '#10a37f'; gptC.style.color = '#fff';
-                cmpCnt.textContent = '1'; sendAll.style.opacity = '0.7';
-                var t5 = setTimeout(function() {
-                  if (!_demoRunning) return;
-                  var cld = document.querySelector('.demoAI[data-ai=claude]');
-                  var cldC = cld.querySelector('.demoCheck');
-                  cld.style.borderColor = '#d97706'; cld.style.background = 'rgba(217,119,6,0.1)';
-                  cldC.textContent = '\u2713'; cldC.style.background = '#d97706'; cldC.style.borderColor = '#d97706'; cldC.style.color = '#fff';
-                  cmpCnt.textContent = '2'; sendAll.style.opacity = '1';
-                  var t6 = setTimeout(function() {
-                    if (!_demoRunning) return;
-                    sendAll.style.transform = 'scale(0.96)';
-                    var t6b = setTimeout(function() { sendAll.style.transform = 'scale(1)';
-                      var t7 = setTimeout(function() {
-                        if (!_demoRunning) return;
-                        p2.style.transform = 'translateY(100%)';
-                        p3.style.display = 'block';
-                        var t7b = setTimeout(function() { p3.style.opacity = '1';
-                          var j = 0; var r1t = resp1.replace(/\\n/g, '\n');
-                          var iv1 = setInterval(function() {
-                            if (!_demoRunning) { clearInterval(iv1); return; }
-                            if (j < r1t.length) { r1.textContent += r1t[j]; j++; }
-                            else { clearInterval(iv1);
-                              var k = 0; var r2t = resp2.replace(/\\n/g, '\n');
-                              var iv2 = setInterval(function() {
-                                if (!_demoRunning) { clearInterval(iv2); return; }
-                                if (k < r2t.length) { r2.textContent += r2t[k]; k++; }
-                                else { clearInterval(iv2);
-                                  var t8 = setTimeout(function() { if (_demoRunning) _demoStart(); }, 4000);
-                                  _demoTimers.push(t8);
-                                }
-                              }, 12); _demoTimers.push(iv2);
-                            }
-                          }, 12); _demoTimers.push(iv1);
-                        }, 100); _demoTimers.push(t7b);
-                      }, 400); _demoTimers.push(t7);
-                    }, 150); _demoTimers.push(t6b);
-                  }, 800); _demoTimers.push(t6);
-                }, 600); _demoTimers.push(t5);
-              }, 600); _demoTimers.push(t4);
-            }, 400); _demoTimers.push(t2);
-          }, 150); _demoTimers.push(t1b);
-        }, 500); _demoTimers.push(t1);
-      }
-    }, 30); _demoTimers.push(iv);
-  }, 600); _demoTimers.push(t0);
+  /* PHASE 1: Type the prompt */
+  _demoDelay(600, function() {
+    _demoType(ta, prompt, 28, function() {
+      sb.style.opacity = '1';
+
+      /* PHASE 2: Tap Send → browser opens with ChatGPT */
+      _demoDelay(500, function() {
+        sb.style.transform = 'scale(0.96)';
+        _demoDelay(150, function() {
+          sb.style.transform = 'scale(1)';
+
+          /* Open browser with ChatGPT */
+          _demoDelay(300, function() {
+            _demoBrowserSetup('ChatGPT', 'GPT', '#10a37f', 'chat.openai.com');
+            br.style.transform = 'translateY(0)';
+
+            /* Type ChatGPT response */
+            _demoDelay(600, function() {
+              _demoType(brResp, gptResp, 14, function() {
+
+                /* PHASE 3: Tap X → close browser → back to app */
+                _demoDelay(1200, function() {
+                  /* Flash the X button */
+                  var xBtn = document.getElementById('demoBrowserClose');
+                  xBtn.style.background = 'rgba(255,255,255,0.25)';
+                  _demoDelay(200, function() {
+                    xBtn.style.background = 'rgba(255,255,255,0.1)';
+                    br.style.transform = 'translateY(100%)';
+
+                    /* Back in app — show "Sending to next AI..." */
+                    _demoDelay(500, function() {
+                      sb.textContent = 'Sending to Claude...';
+                      sb.style.opacity = '0.7';
+
+                      /* PHASE 4: Send again → browser opens with Claude */
+                      _demoDelay(800, function() {
+                        sb.style.transform = 'scale(0.96)';
+                        _demoDelay(150, function() {
+                          sb.style.transform = 'scale(1)';
+                          sb.textContent = 'Send to AI';
+                          sb.style.opacity = '0.4';
+
+                          /* Open browser with Claude */
+                          _demoDelay(300, function() {
+                            _demoBrowserSetup('Claude', 'CLD', '#d97706', 'claude.ai');
+                            br.style.transform = 'translateY(0)';
+
+                            /* Type Claude response */
+                            _demoDelay(600, function() {
+                              _demoType(brResp, claudeResp, 14, function() {
+
+                                /* PHASE 5: Tap X → close browser → back to app → show compare */
+                                _demoDelay(1200, function() {
+                                  xBtn.style.background = 'rgba(255,255,255,0.25)';
+                                  _demoDelay(200, function() {
+                                    xBtn.style.background = 'rgba(255,255,255,0.1)';
+                                    br.style.transform = 'translateY(100%)';
+
+                                    /* PHASE 6: Show compare view */
+                                    _demoDelay(500, function() {
+                                      p3.style.display = 'block';
+                                      _demoDelay(50, function() {
+                                        p3.style.opacity = '1';
+                                        /* Fill both responses instantly (already typed in browser) */
+                                        r1.textContent = gptResp;
+                                        _demoDelay(400, function() {
+                                          r2.textContent = claudeResp;
+
+                                          /* Loop after pause */
+                                          _demoDelay(5000, function() {
+                                            if (_demoRunning) _demoStart();
+                                          });
+                                        });
+                                      });
+                                    });
+                                  });
+                                });
+                              });
+                            });
+                          });
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
 }
 
 </script>
