@@ -305,16 +305,16 @@ a:hover { opacity: 0.85; }
 
 /* ===== AI MODELS ===== */
 .models { background: var(--bg-alt); }
-.model-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.model-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .model-card {
   background: var(--bg-surface);
   border: 1px solid rgba(125,211,252,0.06);
-  border-radius: var(--radius-sm); padding: 20px;
+  border-radius: var(--radius-sm); padding: 24px 16px;
   text-align: center; transition: border-color 0.2s, transform 0.2s;
 }
 .model-card:hover { border-color: rgba(125,211,252,0.2); transform: translateY(-2px); }
-.model-card .model-emoji { font-size: 2rem; margin-bottom: 10px; display: block; }
-.model-card .model-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+.model-card .model-dot { width: 12px; height: 12px; border-radius: 50%; margin: 0 auto 10px; }
+.model-card .model-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
 .model-card .model-desc { font-size: 0.78rem; color: var(--text-faint); }
 
 /* ===== INTERACTIVE IN-APP DEMO ===== */
@@ -586,6 +586,7 @@ a:hover { opacity: 0.85; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .gallery-grid.phone-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid.ipad-grid { grid-template-columns: repeat(2, 1fr); }
+  .model-grid { grid-template-columns: repeat(4, 1fr); }
 }
 @media (max-width: 640px) {
   .hero { padding: 120px 0 60px; }
@@ -598,6 +599,7 @@ a:hover { opacity: 0.85; }
   .footer-grid { grid-template-columns: 1fr; }
   .gallery-grid.phone-grid { grid-template-columns: 1fr 1fr; }
   .gallery-grid.ipad-grid { grid-template-columns: 1fr 1fr; }
+  .model-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
@@ -893,34 +895,44 @@ a:hover { opacity: 0.85; }
     <p class="section-sub">Poly-Glot works with every AI. Ask multiple models the same question and compare their answers.</p>
     <div class="model-grid">
       <div class="model-card">
-        <span class="model-emoji">&#128172;</span>
+        <div class="model-dot" style="background:#10a37f"></div>
         <div class="model-name">ChatGPT</div>
         <div class="model-desc">OpenAI</div>
       </div>
       <div class="model-card">
-        <span class="model-emoji">&#129504;</span>
+        <div class="model-dot" style="background:#d97706"></div>
         <div class="model-name">Claude</div>
         <div class="model-desc">Anthropic</div>
       </div>
       <div class="model-card">
-        <span class="model-emoji">&#10024;</span>
+        <div class="model-dot" style="background:#4285f4"></div>
         <div class="model-name">Gemini</div>
         <div class="model-desc">Google</div>
       </div>
       <div class="model-card">
-        <span class="model-emoji">&#9889;</span>
+        <div class="model-dot" style="background:#f7d046"></div>
         <div class="model-name">Grok</div>
         <div class="model-desc">xAI</div>
       </div>
       <div class="model-card">
-        <span class="model-emoji">&#128269;</span>
+        <div class="model-dot" style="background:#20b2aa"></div>
         <div class="model-name">Perplexity</div>
         <div class="model-desc">Perplexity AI</div>
       </div>
       <div class="model-card">
-        <span class="model-emoji">&#129309;</span>
+        <div class="model-dot" style="background:#f87171"></div>
         <div class="model-name">Copilot</div>
         <div class="model-desc">Microsoft</div>
+      </div>
+      <div class="model-card">
+        <div class="model-dot" style="background:#ff7000"></div>
+        <div class="model-name">Mistral</div>
+        <div class="model-desc">Mistral AI</div>
+      </div>
+      <div class="model-card">
+        <div class="model-dot" style="background:#8b5cf6"></div>
+        <div class="model-name">Groq</div>
+        <div class="model-desc">Groq Inc</div>
       </div>
     </div>
   </div>
@@ -1163,27 +1175,35 @@ a:hover { opacity: 0.85; }
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">What is Poly-Glot AI Workspace?<span class="toggle">+</span></div>
-        <div class="faq-a"><p>Poly-Glot AI Workspace is a native iOS and macOS app that lets you ask any AI — ChatGPT, Claude, Gemini, Grok, and more — from one place. Type or speak in any of 38 languages, use 1,000+ ready-to-use templates, compare answers from multiple AIs side by side, and pick the best one. No API keys needed — everything runs on your device.</p></div>
+        <div class="faq-a"><p>Poly-Glot AI Workspace is a native app for iPhone, iPad, and Mac that lets you ask any AI — ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, and more — all from one place. Type or speak in any of 38 languages, use 1,000+ ready-to-use templates, and compare answers from multiple AIs side by side. No API keys needed — everything runs on your device.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">When will Poly-Glot AI Workspace be available?<span class="toggle">+</span></div>
+        <div class="faq-a"><p>Poly-Glot AI Workspace is currently in review with Apple and will be available on the App Store for iPhone, iPad, and Mac very soon. Check back here for updates!</p></div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Is my data private?<span class="toggle">+</span></div>
-        <div class="faq-a"><p>Yes. Poly-Glot runs 100% on your device. We do not collect, store, or transmit any personal data, prompts, or usage information. No analytics, no tracking, no servers.</p></div>
+        <div class="faq-a"><p>Yes. Poly-Glot AI Workspace runs 100% on your device. We do not collect, store, or transmit any personal data, prompts, or usage information. No analytics, no tracking, no servers. Your prompts never leave your device.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is Compare Mode?<span class="toggle">+</span></div>
+        <div class="faq-a"><p>Compare Mode lets you send the same prompt to multiple AI models at once — like ChatGPT and Claude — and see both responses side by side. Pick the best answer instead of guessing which AI to use. Compare Mode is free for all users.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Which AI models does it support?<span class="toggle">+</span></div>
+        <div class="faq-a"><p>Poly-Glot AI Workspace works with ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, Groq, and more. Your prompt is automatically copied to your clipboard and the AI opens instantly — some even auto-fill your prompt.</p></div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">How does the free trial work?<span class="toggle">+</span></div>
-        <div class="faq-a"><p>New users get a 3-day free trial that includes access to 25 featured templates. The trial starts when you first use a template. After 3 days, you can upgrade to Pro to unlock all 1,000+ templates.</p></div>
+        <div class="faq-a"><p>New users get a 3-day free trial with access to 25 featured templates. After 3 days, upgrade to Pro ($9.99/mo or $79.99/yr) to unlock all 1,000+ templates, custom template building, and all future content.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Does it work with ChatGPT, Claude, and other AI models?<span class="toggle">+</span></div>
-        <div class="faq-a"><p>Yes. Poly-Glot works with every major AI. Send your prompt directly to ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, and more. Use Compare Mode to ask multiple AIs at once and see which gives the best answer.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">When will it be available?<span class="toggle">+</span></div>
-        <div class="faq-a"><p>Poly-Glot AI Workspace is currently in review with Apple. It will be available on the App Store for iPhone, iPad, and Mac very soon. Check back here for updates!</p></div>
+        <div class="faq-q" onclick="toggleFaq(this)">How many input methods are supported?<span class="toggle">+</span></div>
+        <div class="faq-a"><p>Five: Type your prompt from scratch, paste existing text, import documents or files, scan printed or handwritten text with your camera, or dictate using on-device speech recognition in 38 languages.</p></div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Can I cancel my subscription?<span class="toggle">+</span></div>
-        <div class="faq-a"><p>Yes. All subscriptions are managed through Apple and can be cancelled anytime from your Apple ID settings. No questions asked.</p></div>
+        <div class="faq-a"><p>Yes. All subscriptions are managed through Apple and can be cancelled anytime from your Apple ID settings. No questions asked, no hoops to jump through.</p></div>
       </div>
     </div>
   </div>
@@ -1354,9 +1374,9 @@ function _demoStart() {
     if (ai === 'claude') { btn.style.borderColor = 'var(--border)'; btn.style.background = 'var(--surface2)'; chk.textContent = ''; chk.style.background = 'transparent'; chk.style.borderColor = 'var(--border)'; chk.style.color = ''; }
   });
 
-  var prompt = "Write a polite email to my landlord asking to fix the heater. It's been broken for 2 weeks.";
-  var resp1 = "Subject: Heater Repair Request\n\nDear [Landlord],\n\nI hope this finds you well. I'm writing to follow up on the heater issue in my unit. It stopped working approximately two weeks ago, and with temperatures dropping, it's becoming quite uncomfortable.\n\nCould we schedule a repair at your earliest convenience? I'm available most evenings and all weekend.\n\nThank you for your attention to this.\n\nBest regards";
-  var resp2 = "Subject: Urgent — Heating System Down (2 Weeks)\n\nHi [Landlord name],\n\nI wanted to reach out about the heating system in unit [#]. It's been non-functional since [date — 2 weeks ago], and the indoor temperature has been consistently below comfortable levels.\n\nI understand repairs take time, but as this affects habitability, I'd appreciate if we could arrange a technician visit within the next few days.\n\nI'm happy to coordinate access. Please let me know what works.\n\nWarm regards";
+  var prompt = "Write a polite email to my landlord asking to fix the heater before winter.";
+  var resp1 = "Subject: Heating Repair Request\nDear [Landlord],\nI hope this finds you well. I'm writing to request a repair for the heating system.\nThank you.\nBest regards";
+  var resp2 = "Hi [Landlord],\nI wanted to reach out about the heater — it hasn't been working well.\nAppreciate your help!\nWarm regards";
 
   // Phase 1: Type prompt
   var i = 0;
