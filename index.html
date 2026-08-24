@@ -952,7 +952,7 @@ a:hover { opacity: 0.85; }
   <div class="container">
     <div class="section-eyebrow">&#127916; Live App Demo</div>
     <h2 class="section-title" style="text-align:center">See Poly-Glot AI Workspace in action</h2>
-    <p class="section-sub" style="text-align:center;margin:0 auto 48px">Type your prompt, choose your AIs, and tap Send. Each AI opens in its own browser tab, responds, and you return to the app to send the next — then compare every answer side by side.</p>
+    <p class="section-sub" style="text-align:center;margin:0 auto 48px">Type your prompt, choose your AIs, and tap Send. Each AI opens in its own browser tab, responds, and you return to the app to send the next.</p>
 
     <!-- Full iPhone mockup with FIXED dimensions — never truncates -->
     <div style="width:320px;margin:0 auto;position:relative">
@@ -1057,29 +1057,7 @@ a:hover { opacity: 0.85; }
               <div style="width:36%;height:5px;background:#fff;border-radius:3px;margin:0 auto;opacity:0.2"></div>
             </div>
           </div>
-          <!-- Phase 3: Compare responses (back in app) -->
-          <div id="demoP3" style="position:absolute;top:0;left:0;right:0;bottom:0;background:#0d0f1a;padding:55px 16px 16px;opacity:0;transition:opacity 0.4s;display:none;z-index:15;overflow-y:auto;border-radius:36px">
-            <!-- Back in app header -->
-            <div style="font-size:0.56rem;color:rgba(255,255,255,0.3);margin-bottom:6px;text-align:center">&#10003; Back in Poly-Glot</div>
-            <div style="font-size:0.68rem;font-weight:700;color:#7dd3fc;margin-bottom:8px">&#128256; Compare — 2 AI responses</div>
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <div style="background:rgba(16,163,127,0.08);border:1px solid rgba(16,163,127,0.25);border-radius:10px;padding:10px 12px">
-                <div style="display:flex;align-items:center;gap:5px;margin-bottom:4px">
-                  <div style="width:16px;height:16px;border-radius:4px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:#fff">GPT</div>
-                  <span style="font-size:0.62rem;font-weight:700;color:#10a37f">ChatGPT</span>
-                </div>
-                <div id="demoResp1" style="font-size:0.58rem;color:rgba(255,255,255,0.5);line-height:1.5"></div>
-              </div>
-              <div style="background:rgba(217,119,6,0.08);border:1px solid rgba(217,119,6,0.25);border-radius:10px;padding:10px 12px">
-                <div style="display:flex;align-items:center;gap:5px;margin-bottom:4px">
-                  <div style="width:16px;height:16px;border-radius:4px;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:#fff">CLD</div>
-                  <span style="font-size:0.62rem;font-weight:700;color:#d97706">Claude</span>
-                </div>
-                <div id="demoResp2" style="font-size:0.58rem;color:rgba(255,255,255,0.5);line-height:1.5"></div>
-              </div>
-            </div>
-            <div style="text-align:center;margin-top:8px;font-size:0.62rem;color:#7dd3fc;font-weight:600">&#11014; Compare and pick the best answer</div>
-          </div>
+          <!-- (No compare overlay — demo ends after closing second browser) -->
           <!-- Home bar (pinned to bottom) -->
           <div style="padding:6px 0 10px;flex-shrink:0;text-align:center">
             <div style="width:36%;height:5px;background:#fff;border-radius:3px;margin:0 auto;opacity:0.2"></div>
@@ -1410,20 +1388,14 @@ function _demoBrowserSetup(aiName, aiShort, aiColor, aiUrl) {
 function _demoStart() {
   _demoStop(); _demoRunning = true;
   var br = document.getElementById('demoBrowser');
-  var p3 = document.getElementById('demoP3');
   var ta = document.getElementById('demoTextarea');
   var sb = document.getElementById('demoSendBtn');
-  var r1 = document.getElementById('demoResp1');
-  var r2 = document.getElementById('demoResp2');
   var brResp = document.getElementById('demoBrowserResp');
   if (!ta) return;
 
   /* Reset everything */
   br.style.transform = 'translateY(100%)';
-  p3.style.display = 'none'; p3.style.opacity = '0';
   ta.textContent = ''; sb.style.opacity = '0.4';
-  if (r1) r1.textContent = '';
-  if (r2) r2.textContent = '';
 
   var prompt = "Write a polite email to my landlord asking to fix the heater before winter.";
   var gptResp = "Subject: Heating Repair Request\n\nDear [Landlord],\n\nI hope this message finds you well. As winter approaches, I wanted to bring to your attention that the heater in my unit hasn't been functioning properly.\n\nWould it be possible to have it inspected and repaired before the cold weather sets in?\n\nThank you for your time.\nBest regards";
@@ -1480,29 +1452,16 @@ function _demoStart() {
                             _demoDelay(600, function() {
                               _demoType(brResp, claudeResp, 14, function() {
 
-                                /* PHASE 5: Tap X → close browser → back to app → show compare */
+                                /* PHASE 5: Tap X → close browser → back to app → loop */
                                 _demoDelay(1200, function() {
                                   xBtn.style.background = 'rgba(255,255,255,0.25)';
                                   _demoDelay(200, function() {
                                     xBtn.style.background = 'rgba(255,255,255,0.1)';
                                     br.style.transform = 'translateY(100%)';
 
-                                    /* PHASE 6: Show compare view */
-                                    _demoDelay(500, function() {
-                                      p3.style.display = 'block';
-                                      _demoDelay(50, function() {
-                                        p3.style.opacity = '1';
-                                        /* Fill both responses instantly (already typed in browser) */
-                                        r1.textContent = gptResp;
-                                        _demoDelay(400, function() {
-                                          r2.textContent = claudeResp;
-
-                                          /* Loop after pause */
-                                          _demoDelay(5000, function() {
-                                            if (_demoRunning) _demoStart();
-                                          });
-                                        });
-                                      });
+                                    /* Back in app — pause then restart */
+                                    _demoDelay(2000, function() {
+                                      if (_demoRunning) _demoStart();
                                     });
                                   });
                                 });
