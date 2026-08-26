@@ -725,7 +725,72 @@ a:hover { opacity: 0.85; }
           <div style="position:relative;min-height:200px">
             <img id="macScreen-askanyai" src="assets/img/screenshots/mac-1-askanyai.png" alt="Ask Any AI on Mac" style="display:block;width:100%;transition:opacity 0.3s" loading="lazy">
             <img id="macScreen-templates" src="assets/img/screenshots/mac-2-templates.png" alt="Templates on Mac" style="display:none;width:100%;transition:opacity 0.3s" loading="lazy">
-            <video id="macScreen-howtouse" src="assets/video/mac-howtouse-demo.mp4" autoplay loop muted playsinline style="display:none;width:100%;transition:opacity 0.3s"></video>
+            <!-- Interactive Demo (from latest AI Workspace app code) -->
+            <div id="macScreen-howtouse" style="display:none;width:100%;transition:opacity 0.3s;background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;position:relative;overflow:hidden;min-height:420px">
+              <!-- PHASE 1: Ask Any AI textarea + Send -->
+              <div id="siteDemo-P1" style="padding:18px;opacity:1;transition:opacity 0.4s">
+                <div id="siteDemo-Textarea" style="background:#1c2128;border:1.5px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;min-height:54px;font-size:13px;color:#e6edf3;line-height:1.5;white-space:pre-wrap;word-break:break-word"></div>
+                <div id="siteDemo-SendBtn" style="margin-top:12px;padding:12px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;text-align:center;opacity:0.4;transition:opacity 0.3s,transform 0.15s">Send to AI</div>
+              </div>
+              <!-- PHASE 2: AI Menu with Compare Mode -->
+              <div id="siteDemo-P2" style="position:absolute;bottom:0;left:0;right:0;background:#161b22;border-radius:16px 16px 0 0;padding:16px;transform:translateY(100%);transition:transform 0.35s ease-out;border-top:1px solid rgba(255,255,255,.08)">
+                <div style="width:32px;height:4px;background:rgba(255,255,255,.08);border-radius:2px;margin:0 auto 12px"></div>
+                <div style="text-align:center;font-size:14px;font-weight:700;margin-bottom:12px;color:#e6edf3">Choose AI</div>
+                <!-- Compare toggle -->
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#1c2128;border-radius:10px;margin-bottom:12px;border:1px solid rgba(255,255,255,.08)">
+                  <span style="font-size:13px;font-weight:600;color:#e6edf3">🔀 Compare Mode</span>
+                  <div id="siteDemo-CmpToggle" style="width:40px;height:22px;border-radius:11px;background:rgba(255,255,255,.08);transition:background 0.25s;position:relative;cursor:default">
+                    <div id="siteDemo-CmpKnob" style="width:18px;height:18px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px;transition:left 0.25s;box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
+                  </div>
+                </div>
+                <!-- AI Buttons -->
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <div class="siteDemo-AI" data-ai="chatgpt" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
+                    <div style="width:30px;height:30px;border-radius:7px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">GPT</div>
+                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">ChatGPT</div><div style="font-size:10px;color:#8b949e">Prompt auto-filled</div></div>
+                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
+                  </div>
+                  <div class="siteDemo-AI" data-ai="claude" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
+                    <div style="width:30px;height:30px;border-radius:7px;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">CLD</div>
+                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">Claude</div><div style="font-size:10px;color:#8b949e">Paste prompt</div></div>
+                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
+                  </div>
+                  <div class="siteDemo-AI" data-ai="gemini" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
+                    <div style="width:30px;height:30px;border-radius:7px;background:#4285f4;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">GEM</div>
+                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">Gemini</div><div style="font-size:10px;color:#8b949e">Paste prompt</div></div>
+                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
+                  </div>
+                  <div class="siteDemo-AI" data-ai="perplexity" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
+                    <div style="width:30px;height:30px;border-radius:7px;background:#20b2aa;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">PPX</div>
+                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">Perplexity</div><div style="font-size:10px;color:#8b949e">Prompt auto-filled</div></div>
+                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
+                  </div>
+                </div>
+                <!-- Send to Selected button -->
+                <div id="siteDemo-SendAll" style="margin-top:12px;padding:12px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border-radius:10px;font-size:14px;font-weight:700;text-align:center;opacity:0.4;transition:opacity 0.3s,transform 0.15s">Send to Selected (<span id="siteDemo-CmpCount">0</span>)</div>
+              </div>
+              <!-- PHASE 3: Dual AI Response Cards -->
+              <div id="siteDemo-P3" style="padding:18px;opacity:0;transition:opacity 0.4s;display:none">
+                <div style="font-size:12px;font-weight:700;color:#7dd3fc;margin-bottom:10px">🔀 Compare Mode — 2 AI responses</div>
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <div style="background:rgba(16,163,127,0.08);border:1px solid rgba(16,163,127,0.25);border-radius:10px;padding:12px 14px">
+                    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+                      <div style="width:22px;height:22px;border-radius:5px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">GPT</div>
+                      <span style="font-size:12px;font-weight:700;color:#10a37f">ChatGPT</span>
+                    </div>
+                    <div id="siteDemo-Resp1" style="font-size:12px;color:#8b949e;line-height:1.5;white-space:pre-wrap"></div>
+                  </div>
+                  <div style="background:rgba(217,119,6,0.08);border:1px solid rgba(217,119,6,0.25);border-radius:10px;padding:12px 14px">
+                    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+                      <div style="width:22px;height:22px;border-radius:5px;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">CLD</div>
+                      <span style="font-size:12px;font-weight:700;color:#d97706">Claude</span>
+                    </div>
+                    <div id="siteDemo-Resp2" style="font-size:12px;color:#8b949e;line-height:1.5;white-space:pre-wrap"></div>
+                  </div>
+                </div>
+                <div style="text-align:center;margin-top:12px;font-size:12px;color:#7dd3fc;font-weight:600">⬆ Compare and pick the best answer</div>
+              </div>
+            </div>
             <img id="macScreen-history" src="assets/img/screenshots/mac-5-history.png" alt="History on Mac" style="display:none;width:100%;transition:opacity 0.3s" loading="lazy">
           </div>
         </div>
@@ -1389,21 +1454,154 @@ function switchMacTab(tab) {
       tabEl.style.color = '#7dd3fc';
       tabEl.style.borderBottom = '2px solid #7dd3fc';
       screenEl.style.display = 'block';
-      // Auto-play video if it's a video element
-      if (screenEl.tagName === 'VIDEO') { screenEl.currentTime = 0; screenEl.play(); }
+      if (t === 'howtouse') { _siteDemoStart(); }
     } else {
       tabEl.style.color = 'rgba(255,255,255,0.35)';
       tabEl.style.borderBottom = '2px solid transparent';
       screenEl.style.display = 'none';
-      // Pause video when switching away
-      if (screenEl.tagName === 'VIDEO') { screenEl.pause(); }
+      if (t === 'howtouse') { _siteDemoStop(); }
     }
   });
   var label = document.getElementById('macTabLabel');
   if (label) label.textContent = _macTabLabels[tab] || '';
-  // Hide hint after first click
   var hint = document.getElementById('macTabHint');
   if (hint) hint.style.display = 'none';
+}
+
+/* ===== INTERACTIVE DEMO ANIMATION (from latest AI Workspace app) ===== */
+var _siteDemoTimers = [], _siteDemoRunning = false;
+function _siteDemoStop() {
+  _siteDemoRunning = false;
+  for (var i = 0; i < _siteDemoTimers.length; i++) {
+    clearInterval(_siteDemoTimers[i]);
+    clearTimeout(_siteDemoTimers[i]);
+  }
+  _siteDemoTimers = [];
+}
+function _siteDemoStart() {
+  _siteDemoStop();
+  _siteDemoRunning = true;
+  var p1 = document.getElementById('siteDemo-P1');
+  var p2 = document.getElementById('siteDemo-P2');
+  var p3 = document.getElementById('siteDemo-P3');
+  var ta = document.getElementById('siteDemo-Textarea');
+  var sb = document.getElementById('siteDemo-SendBtn');
+  var tog = document.getElementById('siteDemo-CmpToggle');
+  var knob = document.getElementById('siteDemo-CmpKnob');
+  var r1 = document.getElementById('siteDemo-Resp1');
+  var r2 = document.getElementById('siteDemo-Resp2');
+  var sendAll = document.getElementById('siteDemo-SendAll');
+  var cmpCnt = document.getElementById('siteDemo-CmpCount');
+  if (!p1 || !p2 || !p3) return;
+  /* Reset state */
+  p1.style.opacity = '1'; p3.style.display = 'none'; p3.style.opacity = '0';
+  p2.style.transform = 'translateY(100%)';
+  ta.textContent = ''; sb.style.opacity = '0.4'; sb.style.transform = 'scale(1)';
+  tog.style.background = 'rgba(255,255,255,.08)'; knob.style.left = '2px';
+  sendAll.style.opacity = '0.4'; cmpCnt.textContent = '0';
+  document.querySelectorAll('.siteDemo-AI').forEach(function(b) {
+    b.style.borderColor = 'rgba(255,255,255,.08)'; b.style.background = '#1c2128';
+  });
+  document.querySelectorAll('.siteDemo-Check').forEach(function(c) {
+    c.textContent = ''; c.style.background = 'transparent'; c.style.borderColor = 'rgba(255,255,255,.08)';
+  });
+  if (r1) r1.textContent = '';
+  if (r2) r2.textContent = '';
+  var prompt = 'Write a polite email to my landlord asking to fix the heater before winter.';
+  var resp1Text = 'Subject: Heating Repair Request\nDear [Landlord],\nI hope this finds you well. I\'m writing to request a repair for the heating system.\nThank you.\nBest regards';
+  var resp2Text = 'Hi [Landlord],\nI wanted to reach out about the heater — it hasn\'t been working well.\nAppreciate your help!\nWarm regards';
+  /* Phase 1: Type prompt */
+  var ci = 0;
+  var t0 = setTimeout(function() {
+    var iv = setInterval(function() {
+      if (!_siteDemoRunning) { clearInterval(iv); return; }
+      if (ci < prompt.length) {
+        ta.textContent += prompt[ci]; ci++;
+        ta.style.borderColor = '#7c3aed';
+      } else {
+        clearInterval(iv);
+        ta.style.borderColor = 'rgba(255,255,255,.08)';
+        sb.style.opacity = '1';
+        /* Phase 1b: Flash send button */
+        var t1 = setTimeout(function() {
+          if (!_siteDemoRunning) return;
+          sb.style.transform = 'scale(0.96)';
+          var t1b = setTimeout(function() {
+            sb.style.transform = 'scale(1)';
+            /* Phase 2: Slide up AI menu */
+            var t2 = setTimeout(function() {
+              if (!_siteDemoRunning) return;
+              p2.style.transform = 'translateY(0)';
+              /* Phase 2b: Toggle Compare Mode ON */
+              var t3 = setTimeout(function() {
+                if (!_siteDemoRunning) return;
+                tog.style.background = '#7c3aed'; knob.style.left = '20px';
+                /* Phase 2c: Select ChatGPT */
+                var t4 = setTimeout(function() {
+                  if (!_siteDemoRunning) return;
+                  var gpt = document.querySelector('.siteDemo-AI[data-ai=chatgpt]');
+                  var gptC = gpt.querySelector('.siteDemo-Check');
+                  gpt.style.borderColor = '#10a37f'; gpt.style.background = 'rgba(16,163,127,0.1)';
+                  gptC.textContent = '✓'; gptC.style.background = '#10a37f';
+                  gptC.style.borderColor = '#10a37f'; gptC.style.color = '#fff';
+                  cmpCnt.textContent = '1'; sendAll.style.opacity = '0.7';
+                  /* Phase 2d: Select Claude */
+                  var t5 = setTimeout(function() {
+                    if (!_siteDemoRunning) return;
+                    var cld = document.querySelector('.siteDemo-AI[data-ai=claude]');
+                    var cldC = cld.querySelector('.siteDemo-Check');
+                    cld.style.borderColor = '#d97706'; cld.style.background = 'rgba(217,119,6,0.1)';
+                    cldC.textContent = '✓'; cldC.style.background = '#d97706';
+                    cldC.style.borderColor = '#d97706'; cldC.style.color = '#fff';
+                    cmpCnt.textContent = '2'; sendAll.style.opacity = '1';
+                    /* Phase 2e: Tap Send to Selected */
+                    var t6 = setTimeout(function() {
+                      if (!_siteDemoRunning) return;
+                      sendAll.style.transform = 'scale(0.96)';
+                      var t6b = setTimeout(function() {
+                        sendAll.style.transform = 'scale(1)';
+                        /* Phase 3: Show responses */
+                        var t7 = setTimeout(function() {
+                          if (!_siteDemoRunning) return;
+                          p2.style.transform = 'translateY(100%)';
+                          p1.style.opacity = '0';
+                          p3.style.display = 'block';
+                          var t7b = setTimeout(function() {
+                            p3.style.opacity = '1';
+                            /* Type response 1 */
+                            var j = 0;
+                            var iv1 = setInterval(function() {
+                              if (!_siteDemoRunning) { clearInterval(iv1); return; }
+                              if (j < resp1Text.length) { r1.textContent += resp1Text[j]; j++; }
+                              else {
+                                clearInterval(iv1);
+                                /* Type response 2 */
+                                var k = 0;
+                                var iv2 = setInterval(function() {
+                                  if (!_siteDemoRunning) { clearInterval(iv2); return; }
+                                  if (k < resp2Text.length) { r2.textContent += resp2Text[k]; k++; }
+                                  else {
+                                    clearInterval(iv2);
+                                    /* Hold, then loop */
+                                    var t8 = setTimeout(function() { if (_siteDemoRunning) _siteDemoStart(); }, 4000);
+                                    _siteDemoTimers.push(t8);
+                                  }
+                                }, 12); _siteDemoTimers.push(iv2);
+                              }
+                            }, 12); _siteDemoTimers.push(iv1);
+                          }, 100); _siteDemoTimers.push(t7b);
+                        }, 400); _siteDemoTimers.push(t7);
+                      }, 150); _siteDemoTimers.push(t6b);
+                    }, 800); _siteDemoTimers.push(t6);
+                  }, 600); _siteDemoTimers.push(t5);
+                }, 600); _siteDemoTimers.push(t4);
+              }, 700); _siteDemoTimers.push(t3);
+            }, 400); _siteDemoTimers.push(t2);
+          }, 150); _siteDemoTimers.push(t1b);
+        }, 500); _siteDemoTimers.push(t1);
+      }
+    }, 30); _siteDemoTimers.push(iv);
+  }, 600); _siteDemoTimers.push(t0);
 }
 
 /* ===== SMOOTH NAV SCROLL ===== */
