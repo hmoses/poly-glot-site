@@ -1155,7 +1155,7 @@ a:hover { opacity: 0.85; }
             </div>
           </div>
           <!-- Language picker dropdown (native iOS style, drops from badge) -->
-          <div id="langPicker" style="position:absolute;top:56px;right:12px;width:145px;background:#2c2c3a;border-radius:12px;padding:6px 0;opacity:0;transform:scale(0.9) translateY(-8px);transform-origin:top right;transition:opacity 0.2s ease,transform 0.2s ease;z-index:30;box-shadow:0 12px 40px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.08);pointer-events:none;max-height:400px;overflow-y:auto">
+          <div id="langPicker" style="position:absolute;top:56px;right:12px;width:160px;background:#2a2a3e;border-radius:14px;padding:8px 0;opacity:0;transform:scale(0.95) translateY(-6px);transform-origin:top right;transition:opacity 0.2s ease,transform 0.2s ease;z-index:30;box-shadow:0 16px 48px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.1);pointer-events:none;max-height:420px;overflow-y:auto">
             <div id="langPickerList" style="display:flex;flex-direction:column;gap:0">
             </div>
           </div>
@@ -2172,11 +2172,29 @@ function _demoStart() {
   if (pickerList) {
     langs.forEach(function(L, i) {
       var row = document.createElement('div');
-      row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:7px 14px;cursor:default;transition:background 0.15s';
-      row.innerHTML = '<span style="font-size:0.75rem">' + L.flag + '</span><span style="font-size:0.58rem;font-weight:600;color:#fff;flex:1">' + L.code + '</span>';
-      if (i === 0) row.innerHTML += '<span style="color:#10b981;font-size:0.55rem;font-weight:700">\u2713</span>';
+      row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:9px 16px;cursor:default;transition:background 0.15s';
+      row.innerHTML = '<span style="width:14px;font-size:0.55rem;color:#10b981;font-weight:700" class="lp-check"></span><span style="font-size:0.85rem">' + L.flag + '</span><span style="font-size:0.65rem;font-weight:600;color:#fff">' + L.code + '</span>';
+      if (i === 0) row.querySelector('.lp-check').textContent = '\u2713';
       row.dataset.idx = i;
       pickerList.appendChild(row);
+    });
+    // Add extra display-only languages to match real app (38 languages)
+    var extraLangs = [
+      {flag:'\u{1f1ee}\u{1f1f9}',code:'IT'},{flag:'\u{1f1f3}\u{1f1f1}',code:'NL'},
+      {flag:'\u{1f1f7}\u{1f1fa}',code:'RU'},{flag:'\u{1f1e7}\u{1f1e9}',code:'BN'},
+      {flag:'\u{1f1f9}\u{1f1f7}',code:'TR'},{flag:'\u{1f1f5}\u{1f1f1}',code:'PL'},
+      {flag:'\u{1f1f8}\u{1f1ea}',code:'SV'},{flag:'\u{1f1f3}\u{1f1f4}',code:'NO'},
+      {flag:'\u{1f1e9}\u{1f1f0}',code:'DA'},{flag:'\u{1f1eb}\u{1f1ee}',code:'FI'},
+      {flag:'\u{1f1ec}\u{1f1f7}',code:'EL'},{flag:'\u{1f1ee}\u{1f1f1}',code:'HE'},
+      {flag:'\u{1f1ee}\u{1f1e9}',code:'ID'},{flag:'\u{1f1f2}\u{1f1fe}',code:'MS'},
+      {flag:'\u{1f1f9}\u{1f1ed}',code:'TH'},{flag:'\u{1f1fb}\u{1f1f3}',code:'VI'},
+      {flag:'\u{1f1fa}\u{1f1e6}',code:'UK'},{flag:'\u{1f1e8}\u{1f1ff}',code:'CS'}
+    ];
+    extraLangs.forEach(function(eL) {
+      var erow = document.createElement('div');
+      erow.style.cssText = 'display:flex;align-items:center;gap:10px;padding:9px 16px;cursor:default';
+      erow.innerHTML = '<span style="width:14px;font-size:0.55rem;color:#10b981;font-weight:700" class="lp-check"></span><span style="font-size:0.85rem">' + eL.flag + '</span><span style="font-size:0.65rem;font-weight:600;color:#fff">' + eL.code + '</span>';
+      pickerList.appendChild(erow);
     });
   }
 
@@ -2207,14 +2225,8 @@ function _demoStart() {
     if (pickerList) {
       var rows = pickerList.children;
       for (var r = 0; r < rows.length; r++) {
-        var check = rows[r].querySelector('span[style*="color:#10b981"]');
-        if (check) check.remove();
-        if (r == idx) {
-          var cm = document.createElement('span');
-          cm.style.cssText = 'color:#10b981;font-size:0.55rem;font-weight:700';
-          cm.textContent = '\u2713';
-          rows[r].appendChild(cm);
-        }
+        var chk = rows[r].querySelector('.lp-check');
+        if (chk) chk.textContent = (r == idx) ? '\u2713' : '';
       }
     }
   }
