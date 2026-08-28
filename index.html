@@ -618,6 +618,50 @@ a:hover { opacity: 0.85; }
   .gallery-grid.ipad-grid { grid-template-columns: 1fr 1fr; }
   .model-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.7rem; }
+  .hero-sub { font-size: 0.95rem; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .btn-coming-soon, .hero-actions a { width: 100%; text-align: center; justify-content: center; }
+  .section-title { font-size: 1.5rem; }
+  .section-sub { font-size: 0.9rem; }
+  .model-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .model-card { padding: 14px 8px; }
+  .model-card .model-name { font-size: 0.82rem; }
+  .model-card .model-desc { font-size: 0.68rem; }
+  .gallery-grid.phone-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .gallery-grid.ipad-grid { grid-template-columns: 1fr; gap: 14px; }
+  .gallery-grid.mac-grid { gap: 10px; }
+  .gallery-tab { padding: 8px 14px; font-size: 0.78rem; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
+  .features-grid { grid-template-columns: 1fr; gap: 16px; }
+  .input-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .showcase-grid { gap: 24px; }
+  .templates-preview { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .trust-row { flex-direction: column; gap: 8px; align-items: center; }
+  .demo-compare { grid-template-columns: 1fr; gap: 20px; }
+  .platform-pills { gap: 8px; }
+  .platform-pill { padding: 10px 14px; font-size: 0.78rem; }
+  .container { padding: 0 16px; }
+  .nav-brand span { font-size: 0.85rem; }
+  .nav-brand img { width: 28px; height: 28px; }
+}
+
+/* Fix HTML mocks on small screens */
+@media (max-width: 768px) {
+  .hero-phone-mock { display: none; }
+  .gallery-grid.ipad-grid .gallery-item div[style*="background:#0d0f1a"] { font-size: 80%; }
+  .gallery-grid.phone-grid .gallery-item div[style*="background:#0d0f1a"] { font-size: 80%; }
+  #macScreen-askanyai { font-size: 85%; }
+  #macScreen-howtouse { min-height: 300px !important; }
+}
+
+/* Ensure all inline HTML mocks scale properly */
+.gallery-item div[style*="background:#0d0f1a"] { max-width: 100%; overflow: hidden; }
+.hero-screenshot > div { max-width: 100%; overflow: hidden; }
 </style>
 </head>
 <body>
