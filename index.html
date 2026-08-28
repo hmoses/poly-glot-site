@@ -1101,7 +1101,7 @@ a:hover { opacity: 0.85; }
         <div style="position:relative;z-index:10;display:flex;justify-content:center;padding-top:4px;margin-bottom:-26px">
           <div style="width:100px;height:28px;background:#000;border-radius:20px"></div>
         </div>
-        <div style="border-radius:36px;overflow:hidden;background:#0d0f1a;height:640px;position:relative;display:flex;flex-direction:column">
+        <div id="langPhone" style="border-radius:36px;overflow:hidden;background:#0d0f1a;height:640px;position:relative;display:flex;flex-direction:column">
           <!-- Status bar -->
           <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 28px 4px;color:#fff;font-size:0.78rem;font-weight:700;flex-shrink:0">
             <span>9:41</span>
@@ -1111,86 +1111,64 @@ a:hover { opacity: 0.85; }
               <span style="display:inline-block;width:20px;height:10px;border:1.5px solid #fff;border-radius:3px;position:relative"><span style="position:absolute;top:1.5px;left:1.5px;right:1.5px;bottom:1.5px;background:#30d158;border-radius:1px"></span></span>
             </span>
           </div>
-          <!-- App Header with language badge -->
+          <!-- App Header with tappable language badge -->
           <div style="display:flex;align-items:center;gap:8px;padding:6px 16px 6px;flex-shrink:0">
             <img src="assets/img/icon-128.png" alt="" style="width:26px;height:26px;border-radius:6px">
             <div>
               <div style="font-size:0.78rem;font-weight:800;color:#fff">Poly-Glot AI Workspace</div>
               <div style="font-size:0.44rem;color:rgba(255,255,255,0.3)">poly-glot.ai</div>
             </div>
-            <span id="langBadge" style="margin-left:auto;padding:3px 7px;border-radius:4px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);font-size:0.55rem;font-weight:700;color:#fff;transition:all 0.3s">🇺🇸 EN</span>
+            <span id="langBadge" style="margin-left:auto;padding:3px 7px;border-radius:4px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);font-size:0.55rem;font-weight:700;color:#fff;transition:all 0.3s">&#127482;&#127480; EN</span>
           </div>
-          <!-- Tabs — matches real app: Ask Any AI | Templates (active/amber) | How to Use | History -->
+          <!-- Tabs -->
           <div style="display:flex;gap:0;padding:0 12px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.52rem;font-weight:600;color:rgba(255,255,255,0.3);flex-shrink:0">
-            <span style="padding:8px 8px 10px;display:flex;align-items:center;gap:3px">✏️ <span id="langTabAsk">Ask Any AI</span></span>
-            <span style="padding:8px 8px 10px;display:flex;align-items:center;gap:3px;color:#f59e0b;border-bottom:2px solid #f59e0b">📋 <span id="langTabTemplates">Templates</span></span>
-            <span style="padding:8px 8px 10px;display:flex;align-items:center;gap:3px">ℹ️ <span id="langTabHow">How to Use</span></span>
-            <span style="padding:8px 8px 10px;display:flex;align-items:center;gap:3px">🕐 <span id="langTabHistory">History</span></span>
+            <span style="padding:8px 8px 10px;display:flex;align-items:center;gap:3px">&#9999;&#65039; <span id="langTabAsk">Ask Any AI</span></span>
+            <span style="padding:8px 8px 10px;display:flex;align-items:center;gap:3px;color:#f59e0b;border-bottom:2px solid #f59e0b">&#128203; <span id="langTabTemplates">Templates</span></span>
+            <span style="padding:8px 8px 10px;display:flex;align-items:center;gap:3px">&#8505;&#65039; <span id="langTabHow">How to Use</span></span>
+            <span style="padding:8px 8px 10px;display:flex;align-items:center;gap:3px">&#128336; <span id="langTabHistory">History</span></span>
           </div>
           <!-- Templates content -->
-          <div style="padding:10px 12px;flex:1;display:flex;flex-direction:column;overflow:hidden">
+          <div id="langContent" style="padding:10px 12px;flex:1;display:flex;flex-direction:column;overflow:hidden;transition:opacity 0.3s">
             <!-- Search bar -->
             <div style="background:#1c2128;border:1.5px solid rgba(255,255,255,.08);border-radius:20px;padding:8px 14px;margin-bottom:8px;display:flex;align-items:center;gap:8px">
-              <span style="color:rgba(255,255,255,0.3);font-size:0.65rem">🔍</span>
+              <span style="color:rgba(255,255,255,0.3);font-size:0.65rem">&#128269;</span>
               <span id="langSearch" style="color:rgba(255,255,255,0.25);font-size:0.58rem">Search templates...</span>
             </div>
-            <!-- Category pills — All (green), Free, Money, Business, Coding -->
+            <!-- Category pills -->
             <div style="display:flex;gap:5px;margin-bottom:10px;overflow-x:auto">
               <span id="langCatAll" style="padding:5px 12px;border-radius:16px;background:#10b981;color:#fff;font-size:0.5rem;font-weight:700;white-space:nowrap">All</span>
-              <span style="padding:5px 12px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:0.5rem;font-weight:600;white-space:nowrap">⭐ <span id="langCatFreeText">Free</span></span>
-              <span style="padding:5px 12px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:0.5rem;font-weight:600;white-space:nowrap">💰 <span id="langCatMoney">Money</span></span>
-              <span style="padding:5px 12px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:0.5rem;font-weight:600;white-space:nowrap">💼 <span id="langCatBusiness">Business</span></span>
-              <span style="padding:5px 12px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:0.5rem;font-weight:600;white-space:nowrap">💻 <span id="langCatCode">Coding</span></span>
+              <span style="padding:5px 12px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:0.5rem;font-weight:600;white-space:nowrap">&#11088; <span id="langCatFreeText">Free</span></span>
+              <span style="padding:5px 12px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:0.5rem;font-weight:600;white-space:nowrap">&#128176; <span id="langCatMoney">Money</span></span>
+              <span style="padding:5px 12px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:0.5rem;font-weight:600;white-space:nowrap">&#128188; <span id="langCatBusiness">Business</span></span>
+              <span style="padding:5px 12px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:0.5rem;font-weight:600;white-space:nowrap">&#128187; <span id="langCatCode">Coding</span></span>
             </div>
-            <!-- 2-column template grid matching real app -->
+            <!-- 2-column template grid -->
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;overflow:hidden">
-              <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column">
-                <span style="font-size:0.42rem;font-weight:700;color:#60a5fa;margin-bottom:2px">AI</span>
-                <span id="langTpl1Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">Side Hustle Finder</span>
-                <span id="langTpl1Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Discover personalized side hustle ideas based on your skills</span>
-                <div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000" id="langPro1">PRO</div>
-              </div>
-              <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column">
-                <span style="font-size:0.42rem;font-weight:700;color:#f59e0b;margin-bottom:2px">AI</span>
-                <span id="langTpl2Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">Passive Income Blueprint</span>
-                <span id="langTpl2Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Build a passive income strategy tailored to your situation</span>
-                <div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000" id="langPro2">PRO</div>
-              </div>
-              <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column">
-                <span style="font-size:0.42rem;font-weight:700;color:#60a5fa;margin-bottom:2px">AI</span>
-                <span id="langTpl3Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">Freelance Rate Calculator</span>
-                <span id="langTpl3Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Calculate your ideal freelance rate and pricing strategy</span>
-                <div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000" id="langFree1">PRO</div>
-              </div>
-              <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column">
-                <span style="font-size:0.42rem;font-weight:700;color:#f59e0b;margin-bottom:2px">AI</span>
-                <span id="langTpl4Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">Savings Challenge</span>
-                <span id="langTpl4Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Create a custom money-saving challenge plan</span>
-                <div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000" id="langFree2">PRO</div>
-              </div>
-              <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column">
-                <span style="font-size:0.42rem;font-weight:700;color:#60a5fa;margin-bottom:2px">AI</span>
-                <span id="langTpl5Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">Negotiate Any Bill</span>
-                <span id="langTpl5Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Scripts to negotiate and lower your recurring bills</span>
-                <div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000" id="langFree3">PRO</div>
-              </div>
-              <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column">
-                <span style="font-size:0.42rem;font-weight:700;color:#f59e0b;margin-bottom:2px">AI</span>
-                <span id="langTpl6Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">Etsy Shop Launcher</span>
-                <span id="langTpl6Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Step-by-step plan to launch and grow an Etsy shop</span>
-                <div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000" id="langPro3">PRO</div>
-              </div>
+              <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column"><span style="font-size:0.42rem;font-weight:700;color:#60a5fa;margin-bottom:2px">AI</span><span id="langTpl1Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">Side Hustle Finder</span><span id="langTpl1Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Discover personalized side hustle ideas based on your skills</span><div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000" id="langPro1">PRO</div></div>
+              <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column"><span style="font-size:0.42rem;font-weight:700;color:#f59e0b;margin-bottom:2px">AI</span><span id="langTpl2Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">Passive Income Blueprint</span><span id="langTpl2Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Build a passive income strategy tailored to your situation</span><div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000" id="langPro2">PRO</div></div>
+              <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column"><span style="font-size:0.42rem;font-weight:700;color:#60a5fa;margin-bottom:2px">AI</span><span id="langTpl3Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">Freelance Rate Calculator</span><span id="langTpl3Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Calculate your ideal freelance rate and pricing</span><div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000" id="langFree1">PRO</div></div>
+              <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column"><span style="font-size:0.42rem;font-weight:700;color:#f59e0b;margin-bottom:2px">AI</span><span id="langTpl4Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">Savings Challenge</span><span id="langTpl4Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Create a custom money-saving challenge plan</span><div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000" id="langFree2">PRO</div></div>
+              <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column"><span style="font-size:0.42rem;font-weight:700;color:#60a5fa;margin-bottom:2px">AI</span><span id="langTpl5Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">Negotiate Any Bill</span><span id="langTpl5Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Scripts to negotiate and lower your bills</span><div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000" id="langFree3">PRO</div></div>
+              <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column"><span style="font-size:0.42rem;font-weight:700;color:#f59e0b;margin-bottom:2px">AI</span><span id="langTpl6Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">Etsy Shop Launcher</span><span id="langTpl6Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Step-by-step plan to launch an Etsy shop</span><div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000" id="langPro3">PRO</div></div>
+              <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column"><span style="font-size:0.42rem;font-weight:700;color:#60a5fa;margin-bottom:2px">AI</span><span id="langTpl7Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">YouTube Channel Planner</span><span id="langTpl7Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Plan and launch a profitable YouTube channel</span><div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000">PRO</div></div>
+              <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column"><span style="font-size:0.42rem;font-weight:700;color:#f59e0b;margin-bottom:2px">AI</span><span id="langTpl8Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">Rental Income Analyzer</span><span id="langTpl8Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Analyze potential rental property returns</span><div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000">PRO</div></div>
+            </div>
+          </div>
+          <!-- Language picker overlay (hidden by default) -->
+          <div id="langPicker" style="position:absolute;bottom:0;left:0;right:0;background:#161b22;border-radius:16px 16px 0 0;padding:14px 16px;transform:translateY(100%);transition:transform 0.35s ease-out;z-index:30;border-top:1px solid rgba(255,255,255,0.08);max-height:70%;overflow-y:auto">
+            <div style="text-align:center;margin-bottom:10px;font-size:0.65rem;font-weight:700;color:#fff">&#127760; App Language</div>
+            <div id="langPickerList" style="display:flex;flex-direction:column;gap:4px">
             </div>
           </div>
           <!-- Home bar -->
-          <div style="padding:6px 0 10px;flex-shrink:0;text-align:center">
+          <div style="padding:6px 0 10px;flex-shrink:0;text-align:center;position:relative;z-index:31">
             <div style="width:36%;height:5px;background:#fff;border-radius:3px;margin:0 auto;opacity:0.2"></div>
           </div>
         </div>
       </div>
       <!-- Language indicator -->
       <div style="text-align:center;margin-top:16px">
-        <span id="langCurrentLabel" style="font-size:0.85rem;color:#7dd3fc;font-weight:600">🌍 Switching languages automatically…</span>
+        <span id="langCurrentLabel" style="font-size:0.85rem;color:#7dd3fc;font-weight:600">&#127760; Tap the language badge to switch...</span>
       </div>
     </div>
 
