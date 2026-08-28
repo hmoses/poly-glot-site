@@ -139,17 +139,17 @@ a:hover { opacity: 0.85; }
 .trust-row { display: flex; gap: 24px; flex-wrap: wrap; }
 .trust-item { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--text-muted); }
 .trust-item .check { color: var(--green); font-weight: 700; }
-.hero-visual { position: relative; overflow: visible; }
+.hero-visual { position: relative; padding-bottom: 60px; padding-right: 40px; }
 .hero-screenshot {
   border-radius: 16px; overflow: hidden;
   border: 1px solid rgba(125,211,252,0.12);
   box-shadow: var(--shadow-card), var(--shadow-glow);
-  max-width: 100%;
+  width: 100%;
 }
 .hero-screenshot img { display: block; width: 100%; border-radius: 16px; }
 .hero-phone-mock {
-  position: absolute; bottom: -30px; right: -30px;
-  width: 140px; border-radius: 22px;
+  position: absolute; bottom: 0; right: 0;
+  width: 130px; border-radius: 22px;
   background: #000; padding: 6px;
   border: 2px solid rgba(167,139,250,0.3);
   box-shadow: 0 8px 40px rgba(0,0,0,0.5);
@@ -160,11 +160,6 @@ a:hover { opacity: 0.85; }
   border-radius: 18px; overflow: hidden; background: #0d1117;
 }
 .hero-phone {
-  position: absolute; bottom: -30px; right: -40px;
-  width: 160px; border-radius: 20px;
-  border: 2px solid rgba(167,139,250,0.3);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-  transform: rotate(3deg);
   display: none;
 }
 
