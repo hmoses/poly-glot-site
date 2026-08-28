@@ -1159,6 +1159,40 @@ a:hover { opacity: 0.85; }
               </div>
             </div>
           </div>
+          <!-- AI Menu overlay (slides up) -->
+          <div id="demoAIMenu" style="position:absolute;bottom:0;left:0;right:0;background:#161b22;border-radius:16px 16px 0 0;padding:12px 14px;transform:translateY(100%);transition:transform 0.35s ease-out;z-index:20;border-top:1px solid rgba(255,255,255,0.08)">
+            <div style="width:32px;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;margin:0 auto 8px"></div>
+            <div style="text-align:center;font-size:0.62rem;font-weight:700;margin-bottom:8px;color:#fff">Choose AI</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:#1c2128;border-radius:8px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.08)">
+              <span style="font-size:0.56rem;font-weight:600;color:#fff">🔀 Compare Mode</span>
+              <div id="demoCmpToggle" style="width:36px;height:20px;border-radius:10px;background:rgba(255,255,255,0.08);transition:background 0.25s;position:relative">
+                <div id="demoCmpKnob" style="width:16px;height:16px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px;transition:left 0.25s;box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:#1c2128">
+                <div style="width:24px;height:24px;border-radius:6px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:0.5rem;font-weight:700;color:#fff">GPT</div>
+                <div style="flex:1;font-size:0.56rem;font-weight:600;color:#fff">ChatGPT</div>
+                <div id="demoChk-chatgpt" style="width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:0.5rem;transition:all 0.2s"></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:#1c2128">
+                <div style="width:24px;height:24px;border-radius:6px;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:0.5rem;font-weight:700;color:#fff">CLD</div>
+                <div style="flex:1;font-size:0.56rem;font-weight:600;color:#fff">Claude</div>
+                <div id="demoChk-claude" style="width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:0.5rem;transition:all 0.2s"></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:#1c2128">
+                <div style="width:24px;height:24px;border-radius:6px;background:#4285f4;display:flex;align-items:center;justify-content:center;font-size:0.5rem;font-weight:700;color:#fff">GEM</div>
+                <div style="flex:1;font-size:0.56rem;font-weight:600;color:#fff">Gemini</div>
+                <div style="width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:0.5rem"></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:#1c2128">
+                <div style="width:24px;height:24px;border-radius:6px;background:#20b2aa;display:flex;align-items:center;justify-content:center;font-size:0.5rem;font-weight:700;color:#fff">PPX</div>
+                <div style="flex:1;font-size:0.56rem;font-weight:600;color:#fff">Perplexity</div>
+                <div style="width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:0.5rem"></div>
+              </div>
+            </div>
+            <div id="demoSendAll" style="margin-top:8px;padding:9px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border-radius:10px;font-size:0.62rem;font-weight:700;text-align:center;opacity:0.4;transition:opacity 0.3s,transform 0.15s">Send to Selected (<span id="demoCmpCount">0</span>)</div>
+          </div>
           <!-- Browser overlay (slides up over app during demo) -->
           <div id="demoBrowser" style="position:absolute;top:0;left:0;right:0;bottom:0;background:#1a1a2e;z-index:25;transform:translateY(100%);transition:transform 0.4s ease-out;display:flex;flex-direction:column;border-radius:36px;overflow:hidden">
             <!-- Safari-style browser top bar -->
@@ -1742,6 +1776,21 @@ function demoReplay() {
   setTimeout(_demoStart, 200);
 }
 
+/* Auto-start demo when scrolled into view */
+(function() {
+  var demoSection = document.getElementById('demo');
+  if (!demoSection) return;
+  var started = false;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting && !_demoRunning) {
+        _demoStart();
+      }
+    });
+  }, { threshold: 0.3 });
+  obs.observe(demoSection);
+})();
+
 /* Helper: typewrite text into an element */
 function _demoType(el, text, speed, cb) {
   var i = 0;
@@ -1793,11 +1842,62 @@ function _demoStart() {
     _demoType(ta, prompt, 28, function() {
       sb.style.opacity = '1';
 
-      /* PHASE 2: Tap Send → browser opens with ChatGPT */
+      /* PHASE 2: Tap Send → AI Menu slides up */
       _demoDelay(500, function() {
         sb.style.transform = 'scale(0.96)';
         _demoDelay(150, function() {
           sb.style.transform = 'scale(1)';
+
+          /* Show AI menu */
+          var aiMenu = document.getElementById('demoAIMenu');
+          _demoDelay(300, function() {
+            aiMenu.style.transform = 'translateY(0)';
+
+            /* Toggle Compare Mode ON */
+            _demoDelay(800, function() {
+              var toggle = document.getElementById('demoCmpToggle');
+              var knob = document.getElementById('demoCmpKnob');
+              toggle.style.background = '#7c3aed';
+              knob.style.left = '20px';
+
+              /* Select ChatGPT */
+              _demoDelay(500, function() {
+                var chk1 = document.getElementById('demoChk-chatgpt');
+                chk1.textContent = '✓';
+                chk1.style.background = '#10a37f';
+                chk1.style.borderColor = '#10a37f';
+                chk1.style.color = '#fff';
+
+                /* Select Claude */
+                _demoDelay(400, function() {
+                  var chk2 = document.getElementById('demoChk-claude');
+                  chk2.textContent = '✓';
+                  chk2.style.background = '#d97706';
+                  chk2.style.borderColor = '#d97706';
+                  chk2.style.color = '#fff';
+                  document.getElementById('demoCmpCount').textContent = '2';
+                  document.getElementById('demoSendAll').style.opacity = '1';
+
+                  /* Tap Send to Selected */
+                  _demoDelay(600, function() {
+                    var sendAll = document.getElementById('demoSendAll');
+                    sendAll.style.transform = 'scale(0.96)';
+                    _demoDelay(150, function() {
+                      sendAll.style.transform = 'scale(1)';
+                      aiMenu.style.transform = 'translateY(100%)';
+
+                      /* Reset AI menu for next loop */
+                      _demoDelay(300, function() {
+                        chk1.textContent = '';
+                        chk1.style.background = 'transparent';
+                        chk1.style.borderColor = 'rgba(255,255,255,0.08)';
+                        chk2.textContent = '';
+                        chk2.style.background = 'transparent';
+                        chk2.style.borderColor = 'rgba(255,255,255,0.08)';
+                        toggle.style.background = 'rgba(255,255,255,0.08)';
+                        knob.style.left = '2px';
+                        document.getElementById('demoCmpCount').textContent = '0';
+                        document.getElementById('demoSendAll').style.opacity = '0.4';
 
           /* Open browser with ChatGPT */
           _demoDelay(300, function() {
@@ -1850,6 +1950,7 @@ function _demoStart() {
                                     _demoDelay(2000, function() {
                                       if (_demoRunning) _demoStart();
                                     });
+                                      }); }); }); }); }); });
                                   });
                                 });
                               });
