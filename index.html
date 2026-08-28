@@ -1154,10 +1154,9 @@ a:hover { opacity: 0.85; }
               <div style="background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 10px 0;display:flex;flex-direction:column"><span style="font-size:0.42rem;font-weight:700;color:#f59e0b;margin-bottom:2px">AI</span><span id="langTpl8Title" style="font-size:0.55rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3">Rental Income Analyzer</span><span id="langTpl8Desc" style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:6px;flex:1">Analyze potential rental property returns</span><div style="background:#f59e0b;border-radius:0 0 12px 12px;margin:0 -10px;padding:4px 10px;font-size:0.42rem;font-weight:700;color:#000">PRO</div></div>
             </div>
           </div>
-          <!-- Language picker overlay (hidden by default) -->
-          <div id="langPicker" style="position:absolute;bottom:0;left:0;right:0;background:#161b22;border-radius:16px 16px 0 0;padding:14px 16px;transform:translateY(100%);transition:transform 0.35s ease-out;z-index:30;border-top:1px solid rgba(255,255,255,0.08);max-height:70%;overflow-y:auto">
-            <div style="text-align:center;margin-bottom:10px;font-size:0.65rem;font-weight:700;color:#fff">&#127760; App Language</div>
-            <div id="langPickerList" style="display:flex;flex-direction:column;gap:4px">
+          <!-- Language picker dropdown (native iOS style, drops from badge) -->
+          <div id="langPicker" style="position:absolute;top:56px;right:12px;width:145px;background:#2c2c3a;border-radius:12px;padding:6px 0;opacity:0;transform:scale(0.9) translateY(-8px);transform-origin:top right;transition:opacity 0.2s ease,transform 0.2s ease;z-index:30;box-shadow:0 12px 40px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.08);pointer-events:none;max-height:400px;overflow-y:auto">
+            <div id="langPickerList" style="display:flex;flex-direction:column;gap:0">
             </div>
           </div>
           <!-- Home bar -->
@@ -2173,9 +2172,9 @@ function _demoStart() {
   if (pickerList) {
     langs.forEach(function(L, i) {
       var row = document.createElement('div');
-      row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;cursor:default;transition:background 0.2s';
-      row.innerHTML = '<span style="font-size:0.8rem">' + L.flag + '</span><span style="font-size:0.6rem;font-weight:600;color:#fff">' + L.code + '</span><span style="font-size:0.55rem;color:rgba(255,255,255,0.4)">' + L.label + '</span>';
-      if (i === 0) row.innerHTML += '<span style="margin-left:auto;color:#10b981;font-size:0.6rem">\u2713</span>';
+      row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:7px 14px;cursor:default;transition:background 0.15s';
+      row.innerHTML = '<span style="font-size:0.75rem">' + L.flag + '</span><span style="font-size:0.58rem;font-weight:600;color:#fff;flex:1">' + L.code + '</span>';
+      if (i === 0) row.innerHTML += '<span style="color:#10b981;font-size:0.55rem;font-weight:700">\u2713</span>';
       row.dataset.idx = i;
       pickerList.appendChild(row);
     });
@@ -2208,11 +2207,11 @@ function _demoStart() {
     if (pickerList) {
       var rows = pickerList.children;
       for (var r = 0; r < rows.length; r++) {
-        var check = rows[r].querySelector('span[style*="margin-left:auto"]');
+        var check = rows[r].querySelector('span[style*="color:#10b981"]');
         if (check) check.remove();
         if (r == idx) {
           var cm = document.createElement('span');
-          cm.style.cssText = 'margin-left:auto;color:#10b981;font-size:0.6rem';
+          cm.style.cssText = 'color:#10b981;font-size:0.55rem;font-weight:700';
           cm.textContent = '\u2713';
           rows[r].appendChild(cm);
         }
@@ -2221,10 +2220,10 @@ function _demoStart() {
   }
 
   function showPicker() {
-    if (picker) { picker.style.transform = 'translateY(0)'; pickerOpen = true; }
+    if (picker) { picker.style.opacity='1'; picker.style.transform='scale(1) translateY(0)'; picker.style.pointerEvents='auto'; pickerOpen = true; }
   }
   function hidePicker() {
-    if (picker) { picker.style.transform = 'translateY(100%)'; pickerOpen = false; }
+    if (picker) { picker.style.opacity='0'; picker.style.transform='scale(0.9) translateY(-8px)'; picker.style.pointerEvents='none'; pickerOpen = false; }
   }
 
   function switchWithPicker() {
@@ -2239,7 +2238,7 @@ function _demoStart() {
       setTimeout(function() {
         idx = (idx + 1) % langs.length;
         var rows = pickerList ? pickerList.children : [];
-        if (rows[idx]) { rows[idx].style.background = 'rgba(245,158,11,0.15)'; }
+        if (rows[idx]) { rows[idx].style.background = 'rgba(255,255,255,0.08)'; }
 
         // Step 4: select it and close
         setTimeout(function() {
