@@ -1092,8 +1092,113 @@ a:hover { opacity: 0.85; }
     <h2 class="section-title" style="text-align:center">See Poly-Glot AI Workspace in action</h2>
     <p class="section-sub" style="text-align:center;margin:0 auto 48px">Type your prompt, choose your AIs, and tap Send. Each AI opens in its own browser tab, responds, and you return to the app to send the next.</p>
 
-    <!-- Full iPhone mockup with FIXED dimensions — never truncates -->
-    <div style="width:320px;margin:0 auto;position:relative">
+    <div style="display:flex;gap:40px;justify-content:center;align-items:flex-start;flex-wrap:wrap">
+
+    <!-- ===== LANGUAGE TOGGLE DEMO ===== -->
+    <div style="width:320px;position:relative">
+      <h3 style="text-align:center;font-size:1.1rem;font-weight:700;color:#7dd3fc;margin-bottom:18px">🌍 Fully Localized UI</h3>
+      <div style="background:#000;border-radius:44px;padding:10px;border:3px solid #3a3a3c;box-shadow:0 30px 80px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.06)">
+        <div style="position:relative;z-index:10;display:flex;justify-content:center;padding-top:4px;margin-bottom:-26px">
+          <div style="width:100px;height:28px;background:#000;border-radius:20px"></div>
+        </div>
+        <div style="border-radius:36px;overflow:hidden;background:#0d0f1a;height:640px;position:relative;display:flex;flex-direction:column">
+          <!-- Status bar -->
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 28px 4px;color:#fff;font-size:0.78rem;font-weight:700;flex-shrink:0">
+            <span>9:41</span>
+            <span style="display:flex;gap:3px;align-items:flex-end">
+              <span style="display:inline-flex;gap:1.5px;align-items:flex-end;margin-right:2px"><span style="width:3px;height:4px;background:#fff;border-radius:0.5px"></span><span style="width:3px;height:6px;background:#fff;border-radius:0.5px"></span><span style="width:3px;height:9px;background:#fff;border-radius:0.5px"></span><span style="width:3px;height:12px;background:#fff;border-radius:0.5px"></span></span>
+              <svg width="13" height="10" viewBox="0 0 16 12" fill="white" style="margin-right:2px"><path d="M8 10.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-3.5-3a5.25 5.25 0 017 0 .75.75 0 01-1 1.12 3.75 3.75 0 00-5 0 .75.75 0 01-1-1.12zm-3-3a9 9 0 0113 0 .75.75 0 01-1.06 1.06 7.5 7.5 0 00-10.88 0A.75.75 0 011.5 4.5z"/></svg>
+              <span style="display:inline-block;width:20px;height:10px;border:1.5px solid #fff;border-radius:3px;position:relative"><span style="position:absolute;top:1.5px;left:1.5px;right:1.5px;bottom:1.5px;background:#30d158;border-radius:1px"></span></span>
+            </span>
+          </div>
+          <!-- App Header with language badge -->
+          <div style="display:flex;align-items:center;gap:8px;padding:6px 16px 6px;flex-shrink:0">
+            <img src="assets/img/icon-128.png" alt="" style="width:26px;height:26px;border-radius:6px">
+            <div>
+              <div style="font-size:0.78rem;font-weight:800;color:#fff">Poly-Glot AI Workspace</div>
+              <div style="font-size:0.44rem;color:rgba(255,255,255,0.3)">poly-glot.ai</div>
+            </div>
+            <span id="langBadge" style="margin-left:auto;padding:3px 7px;border-radius:4px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);font-size:0.55rem;font-weight:700;color:#fff;transition:all 0.3s">🇺🇸 EN</span>
+          </div>
+          <!-- Tabs -->
+          <div style="display:flex;gap:16px;padding:8px 16px 10px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.6rem;font-weight:600;color:rgba(255,255,255,0.3);flex-shrink:0">
+            <span id="langTab1">✏️ <span id="langTabAsk">Ask Any AI</span></span>
+            <span style="color:#7dd3fc;border-bottom:2px solid #7dd3fc;padding-bottom:6px">📋 <span id="langTabTemplates">Templates</span></span>
+            <span>ℹ️ <span id="langTabHow">How to Use</span></span>
+            <span>🕐 <span id="langTabHistory">History</span></span>
+          </div>
+          <!-- Templates content -->
+          <div style="padding:12px 16px;flex:1;display:flex;flex-direction:column;overflow:hidden">
+            <!-- Search bar -->
+            <div style="background:#1c2128;border:1.5px solid rgba(255,255,255,.08);border-radius:10px;padding:9px 12px;margin-bottom:10px;display:flex;align-items:center;gap:8px">
+              <span style="color:rgba(255,255,255,0.3);font-size:0.7rem">🔍</span>
+              <span id="langSearch" style="color:rgba(255,255,255,0.25);font-size:0.65rem">Search templates…</span>
+            </div>
+            <!-- Category pills -->
+            <div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap">
+              <span id="langCatAll" style="padding:4px 10px;border-radius:14px;background:#7c3aed;color:#fff;font-size:0.55rem;font-weight:600">All</span>
+              <span style="padding:4px 10px;border-radius:14px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);font-size:0.55rem;font-weight:600">✍️ <span id="langCatWriting">Writing</span></span>
+              <span style="padding:4px 10px;border-radius:14px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);font-size:0.55rem;font-weight:600">💼 <span id="langCatBusiness">Business</span></span>
+              <span style="padding:4px 10px;border-radius:14px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);font-size:0.55rem;font-weight:600">💻 <span id="langCatCode">Code</span></span>
+            </div>
+            <!-- Template cards -->
+            <div style="display:flex;flex-direction:column;gap:8px;overflow:hidden">
+              <div style="background:#1c2128;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:10px 12px">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+                  <span id="langTpl1Title" style="font-size:0.7rem;font-weight:700;color:#fff">Email Writer</span>
+                  <span style="font-size:0.5rem;padding:2px 6px;border-radius:6px;background:rgba(16,185,129,0.1);color:#10b981;font-weight:600" id="langFree1">FREE</span>
+                </div>
+                <span id="langTpl1Desc" style="font-size:0.52rem;color:rgba(255,255,255,0.35);line-height:1.4">Write professional emails for any occasion with the right tone.</span>
+              </div>
+              <div style="background:#1c2128;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:10px 12px">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+                  <span id="langTpl2Title" style="font-size:0.7rem;font-weight:700;color:#fff">Business Proposal</span>
+                  <span style="font-size:0.5rem;padding:2px 6px;border-radius:6px;background:rgba(124,58,237,0.15);color:#a78bfa;font-weight:600" id="langPro1">PRO</span>
+                </div>
+                <span id="langTpl2Desc" style="font-size:0.52rem;color:rgba(255,255,255,0.35);line-height:1.4">Create a compelling business proposal with executive summary and financials.</span>
+              </div>
+              <div style="background:#1c2128;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:10px 12px">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+                  <span id="langTpl3Title" style="font-size:0.7rem;font-weight:700;color:#fff">Debug My Code</span>
+                  <span style="font-size:0.5rem;padding:2px 6px;border-radius:6px;background:rgba(16,185,129,0.1);color:#10b981;font-weight:600" id="langFree2">FREE</span>
+                </div>
+                <span id="langTpl3Desc" style="font-size:0.52rem;color:rgba(255,255,255,0.35);line-height:1.4">Paste broken code, get the fix with explanation.</span>
+              </div>
+              <div style="background:#1c2128;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:10px 12px">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+                  <span id="langTpl4Title" style="font-size:0.7rem;font-weight:700;color:#fff">Recipe Finder</span>
+                  <span style="font-size:0.5rem;padding:2px 6px;border-radius:6px;background:rgba(16,185,129,0.1);color:#10b981;font-weight:600" id="langFree3">FREE</span>
+                </div>
+                <span id="langTpl4Desc" style="font-size:0.52rem;color:rgba(255,255,255,0.35);line-height:1.4">Find the perfect recipe from ingredients you have on hand.</span>
+              </div>
+              <div style="background:#1c2128;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:10px 12px">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+                  <span id="langTpl5Title" style="font-size:0.7rem;font-weight:700;color:#fff">Travel Planner</span>
+                  <span style="font-size:0.5rem;padding:2px 6px;border-radius:6px;background:rgba(124,58,237,0.15);color:#a78bfa;font-weight:600" id="langPro2">PRO</span>
+                </div>
+                <span id="langTpl5Desc" style="font-size:0.52rem;color:rgba(255,255,255,0.35);line-height:1.4">Plan your perfect trip with flights, hotels, and activities.</span>
+              </div>
+            </div>
+            <!-- Tip bar -->
+            <div style="margin-top:10px;padding:8px 10px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.15);border-radius:8px">
+              <span id="langTip" style="font-size:0.5rem;color:rgba(255,255,255,0.4);line-height:1.4">💡 <b>Tip:</b> Type ⌨️ · paste 📋 · import 📄 · scan 📷 · dictate 🎤</span>
+            </div>
+          </div>
+          <!-- Home bar -->
+          <div style="padding:6px 0 10px;flex-shrink:0;text-align:center">
+            <div style="width:36%;height:5px;background:#fff;border-radius:3px;margin:0 auto;opacity:0.2"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Language indicator -->
+      <div style="text-align:center;margin-top:16px">
+        <span id="langCurrentLabel" style="font-size:0.85rem;color:#7dd3fc;font-weight:600">🌍 Switching languages automatically…</span>
+      </div>
+    </div>
+
+    <!-- ===== ORIGINAL ASK ANY AI DEMO ===== -->
+    <div style="width:320px;position:relative">
+      <h3 style="text-align:center;font-size:1.1rem;font-weight:700;color:#a78bfa;margin-bottom:18px">⚡ Ask Any AI + Compare</h3>
       <!-- iPhone outer shell -->
       <div style="background:#000;border-radius:44px;padding:10px;border:3px solid #3a3a3c;box-shadow:0 30px 80px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.06)">
         <!-- Dynamic Island -->
@@ -1237,6 +1342,8 @@ a:hover { opacity: 0.85; }
         </div>
       </div>
     </div>
+
+    </div><!-- end flex wrapper -->
 
     <div class="demo-controls">
       <button class="demo-replay-btn" onclick="demoReplay()">&#8634; Replay Demo</button>
@@ -1969,6 +2076,141 @@ function _demoStart() {
     });
   });
 }
+
+// ===== LANGUAGE TOGGLE DEMO =====
+(function(){
+  var langs = [
+    { badge:"🇺🇸 EN", label:"English", tabAsk:"Ask Any AI", tabTemplates:"Templates", tabHow:"How to Use", tabHistory:"History",
+      search:"Search templates…", catAll:"All", catWriting:"Writing", catBusiness:"Business", catCode:"Code",
+      tpl1:"Email Writer", tpl1d:"Write professional emails for any occasion with the right tone.",
+      tpl2:"Business Proposal", tpl2d:"Create a compelling business proposal with executive summary.",
+      tpl3:"Debug My Code", tpl3d:"Paste broken code, get the fix with explanation.",
+      tpl4:"Recipe Finder", tpl4d:"Find the perfect recipe from ingredients you have.",
+      tpl5:"Travel Planner", tpl5d:"Plan your perfect trip with flights, hotels, and activities.",
+      tip:"💡 <b>Tip:</b> Type ⌨️ · paste 📋 · import 📄 · scan 📷 · dictate 🎤",
+      free:"FREE", pro:"PRO" },
+    { badge:"🇪🇸 ES", label:"Español", tabAsk:"Pregunta a IA", tabTemplates:"Plantillas", tabHow:"Cómo Usar", tabHistory:"Historial",
+      search:"Buscar plantillas…", catAll:"Todos", catWriting:"Escritura", catBusiness:"Negocios", catCode:"Código",
+      tpl1:"Redactor de Emails", tpl1d:"Escribe correos profesionales para cualquier ocasión con el tono adecuado.",
+      tpl2:"Propuesta de Negocio", tpl2d:"Crea una propuesta de negocio convincente con resumen ejecutivo.",
+      tpl3:"Depura Mi Código", tpl3d:"Pega código con errores, obtén la solución con explicación.",
+      tpl4:"Buscador de Recetas", tpl4d:"Encuentra la receta perfecta con los ingredientes que tienes.",
+      tpl5:"Planificador de Viajes", tpl5d:"Planifica tu viaje perfecto con vuelos, hoteles y actividades.",
+      tip:"💡 <b>Consejo:</b> Escribe ⌨️ · pega 📋 · importa 📄 · escanea 📷 · dicta 🎤",
+      free:"GRATIS", pro:"PRO" },
+    { badge:"🇫🇷 FR", label:"Français", tabAsk:"Demandez à l'IA", tabTemplates:"Modèles", tabHow:"Mode d'emploi", tabHistory:"Historique",
+      search:"Rechercher des modèles…", catAll:"Tous", catWriting:"Écriture", catBusiness:"Business", catCode:"Code",
+      tpl1:"Rédacteur d'Emails", tpl1d:"Rédigez des emails professionnels pour toute occasion avec le bon ton.",
+      tpl2:"Proposition Commerciale", tpl2d:"Créez une proposition commerciale convaincante avec un résumé.",
+      tpl3:"Déboguer Mon Code", tpl3d:"Collez le code cassé, obtenez le correctif avec explication.",
+      tpl4:"Chercheur de Recettes", tpl4d:"Trouvez la recette parfaite avec les ingrédients disponibles.",
+      tpl5:"Planificateur de Voyage", tpl5d:"Planifiez votre voyage parfait avec vols, hôtels et activités.",
+      tip:"💡 <b>Conseil :</b> Tapez ⌨️ · collez 📋 · importez 📄 · scannez 📷 · dictez 🎤",
+      free:"GRATUIT", pro:"PRO" },
+    { badge:"🇯🇵 JA", label:"日本語", tabAsk:"AIに質問", tabTemplates:"テンプレート", tabHow:"使い方", tabHistory:"履歴",
+      search:"テンプレートを検索…", catAll:"すべて", catWriting:"文章", catBusiness:"ビジネス", catCode:"コード",
+      tpl1:"メール作成", tpl1d:"あらゆる場面にふさわしいトーンでプロフェッショナルなメールを作成。",
+      tpl2:"事業提案書", tpl2d:"エグゼクティブサマリー付きの説得力のある事業提案書を作成。",
+      tpl3:"コードデバッグ", tpl3d:"壊れたコードを貼り付け、説明付きの修正を取得。",
+      tpl4:"レシピ検索", tpl4d:"手持ちの食材から最適なレシピを見つけます。",
+      tpl5:"旅行プランナー", tpl5d:"フライト、ホテル、アクティビティで完璧な旅行を計画。",
+      tip:"💡 <b>ヒント：</b>入力 ⌨️ · 貼り付け 📋 · 読込 📄 · スキャン 📷 · 音声 🎤",
+      free:"無料", pro:"PRO" },
+    { badge:"🇸🇦 AR", label:"العربية", tabAsk:"اسأل أي ذكاء", tabTemplates:"القوالب", tabHow:"كيفية الاستخدام", tabHistory:"السجل",
+      search:"ابحث في القوالب…", catAll:"الكل", catWriting:"كتابة", catBusiness:"أعمال", catCode:"برمجة",
+      tpl1:"كاتب البريد", tpl1d:"اكتب رسائل بريد احترافية لأي مناسبة بالنبرة المناسبة.",
+      tpl2:"اقتراح تجاري", tpl2d:"أنشئ اقتراحًا تجاريًا مقنعًا مع ملخص تنفيذي.",
+      tpl3:"إصلاح الكود", tpl3d:"الصق الكود المعطل واحصل على الإصلاح مع الشرح.",
+      tpl4:"الباحث عن وصفات", tpl4d:"اعثر على الوصفة المثالية من المكونات المتوفرة لديك.",
+      tpl5:"مخطط السفر", tpl5d:"خطط لرحلتك المثالية مع الرحلات والفنادق والأنشطة.",
+      tip:"💡 <b>نصيحة:</b> اكتب ⌨️ · الصق 📋 · استورد 📄 · امسح 📷 · أملِ 🎤",
+      free:"مجاني", pro:"PRO" },
+    { badge:"🇰🇷 KO", label:"한국어", tabAsk:"AI에게 질문", tabTemplates:"템플릿", tabHow:"사용 방법", tabHistory:"기록",
+      search:"템플릿 검색…", catAll:"전체", catWriting:"글쓰기", catBusiness:"비즈니스", catCode:"코드",
+      tpl1:"이메일 작성기", tpl1d:"적절한 톤으로 모든 상황에 맞는 전문 이메일을 작성합니다.",
+      tpl2:"사업 제안서", tpl2d:"경영 요약이 포함된 설득력 있는 사업 제안서를 작성합니다.",
+      tpl3:"코드 디버그", tpl3d:"오류 코드를 붙여넣고 설명과 함께 수정을 받으세요.",
+      tpl4:"레시피 파인더", tpl4d:"가지고 있는 재료로 완벽한 레시피를 찾아보세요.",
+      tpl5:"여행 플래너", tpl5d:"항공편, 호텔, 액티비티로 완벽한 여행을 계획하세요.",
+      tip:"💡 <b>팁:</b> 입력 ⌨️ · 붙여넣기 📋 · 가져오기 📄 · 스캔 📷 · 받아쓰기 🎤",
+      free:"무료", pro:"PRO" },
+    { badge:"🇨🇳 ZH", label:"中文", tabAsk:"问任何AI", tabTemplates:"模板", tabHow:"使用方法", tabHistory:"历史",
+      search:"搜索模板…", catAll:"全部", catWriting:"写作", catBusiness:"商务", catCode:"代码",
+      tpl1:"邮件撰写", tpl1d:"以合适的语气为任何场合撰写专业邮件。",
+      tpl2:"商业提案", tpl2d:"创建一份具有执行摘要的有说服力的商业提案。",
+      tpl3:"调试代码", tpl3d:"粘贴有错误的代码，获取带说明的修复方案。",
+      tpl4:"食谱搜索", tpl4d:"根据手头的食材找到完美食谱。",
+      tpl5:"旅行规划", tpl5d:"规划完美旅行，包括航班、酒店和活动。",
+      tip:"💡 <b>提示：</b>输入 ⌨️ · 粘贴 📋 · 导入 📄 · 扫描 📷 · 语音 🎤",
+      free:"免费", pro:"PRO" },
+    { badge:"🇮🇳 HI", label:"हिन्दी", tabAsk:"किसी AI से पूछें", tabTemplates:"टेम्पलेट्स", tabHow:"कैसे उपयोग करें", tabHistory:"इतिहास",
+      search:"टेम्पलेट खोजें…", catAll:"सभी", catWriting:"लेखन", catBusiness:"व्यापार", catCode:"कोड",
+      tpl1:"ईमेल लेखक", tpl1d:"किसी भी अवसर के लिए सही टोन के साथ पेशेवर ईमेल लिखें।",
+      tpl2:"व्यापार प्रस्ताव", tpl2d:"कार्यकारी सारांश के साथ एक प्रभावशाली व्यापार प्रस्ताव बनाएं।",
+      tpl3:"कोड डीबग", tpl3d:"टूटा हुआ कोड पेस्ट करें, व्याख्या के साथ फिक्स प्राप्त करें।",
+      tpl4:"रेसिपी खोजक", tpl4d:"उपलब्ध सामग्री से सही रेसिपी खोजें।",
+      tpl5:"यात्रा योजनाकार", tpl5d:"उड़ानों, होटलों और गतिविधियों के साथ अपनी यात्रा की योजना बनाएं।",
+      tip:"💡 <b>सुझाव:</b> टाइप ⌨️ · पेस्ट 📋 · इम्पोर्ट 📄 · स्कैन 📷 · डिक्टेट 🎤",
+      free:"मुफ़्त", pro:"PRO" },
+    { badge:"🇩🇪 DE", label:"Deutsch", tabAsk:"Frag jede KI", tabTemplates:"Vorlagen", tabHow:"Anleitung", tabHistory:"Verlauf",
+      search:"Vorlagen durchsuchen…", catAll:"Alle", catWriting:"Schreiben", catBusiness:"Business", catCode:"Code",
+      tpl1:"E-Mail-Verfasser", tpl1d:"Schreiben Sie professionelle E-Mails für jeden Anlass im richtigen Ton.",
+      tpl2:"Geschäftsvorschlag", tpl2d:"Erstellen Sie einen überzeugenden Geschäftsvorschlag mit Zusammenfassung.",
+      tpl3:"Code Debuggen", tpl3d:"Fehlerhaften Code einfügen und die Lösung mit Erklärung erhalten.",
+      tpl4:"Rezeptfinder", tpl4d:"Finden Sie das perfekte Rezept mit vorhandenen Zutaten.",
+      tpl5:"Reiseplaner", tpl5d:"Planen Sie Ihre perfekte Reise mit Flügen, Hotels und Aktivitäten.",
+      tip:"💡 <b>Tipp:</b> Tippe ⌨️ · füge ein 📋 · importiere 📄 · scanne 📷 · diktiere 🎤",
+      free:"KOSTENLOS", pro:"PRO" },
+    { badge:"🇧🇷 PT", label:"Português", tabAsk:"Pergunte à IA", tabTemplates:"Modelos", tabHow:"Como Usar", tabHistory:"Histórico",
+      search:"Pesquisar modelos…", catAll:"Todos", catWriting:"Escrita", catBusiness:"Negócios", catCode:"Código",
+      tpl1:"Redator de E-mails", tpl1d:"Escreva e-mails profissionais para qualquer ocasião com o tom certo.",
+      tpl2:"Proposta de Negócios", tpl2d:"Crie uma proposta de negócios convincente com resumo executivo.",
+      tpl3:"Depurar Código", tpl3d:"Cole o código com erro e obtenha a correção com explicação.",
+      tpl4:"Buscador de Receitas", tpl4d:"Encontre a receita perfeita com os ingredientes que você tem.",
+      tpl5:"Planejador de Viagem", tpl5d:"Planeje sua viagem perfeita com voos, hotéis e atividades.",
+      tip:"💡 <b>Dica:</b> Digite ⌨️ · cole 📋 · importe 📄 · escaneie 📷 · dite 🎤",
+      free:"GRÁTIS", pro:"PRO" }
+  ];
+  var idx = 0;
+  function switchLang() {
+    var L = langs[idx];
+    var fade = document.querySelectorAll('#langBadge,#langTabAsk,#langTabTemplates,#langTabHow,#langTabHistory,#langSearch,#langCatAll,#langCatWriting,#langCatBusiness,#langCatCode,#langTpl1Title,#langTpl1Desc,#langTpl2Title,#langTpl2Desc,#langTpl3Title,#langTpl3Desc,#langTpl4Title,#langTpl4Desc,#langTpl5Title,#langTpl5Desc,#langTip,#langFree1,#langFree2,#langFree3,#langPro1,#langPro2,#langCurrentLabel');
+    fade.forEach(function(el){ el.style.transition='opacity 0.3s'; el.style.opacity='0'; });
+    setTimeout(function(){
+      document.getElementById('langBadge').textContent = L.badge;
+      document.getElementById('langTabAsk').textContent = L.tabAsk;
+      document.getElementById('langTabTemplates').textContent = L.tabTemplates;
+      document.getElementById('langTabHow').textContent = L.tabHow;
+      document.getElementById('langTabHistory').textContent = L.tabHistory;
+      document.getElementById('langSearch').textContent = L.search;
+      document.getElementById('langCatAll').textContent = L.catAll;
+      document.getElementById('langCatWriting').textContent = L.catWriting;
+      document.getElementById('langCatBusiness').textContent = L.catBusiness;
+      document.getElementById('langCatCode').textContent = L.catCode;
+      document.getElementById('langTpl1Title').textContent = L.tpl1;
+      document.getElementById('langTpl1Desc').textContent = L.tpl1d;
+      document.getElementById('langTpl2Title').textContent = L.tpl2;
+      document.getElementById('langTpl2Desc').textContent = L.tpl2d;
+      document.getElementById('langTpl3Title').textContent = L.tpl3;
+      document.getElementById('langTpl3Desc').textContent = L.tpl3d;
+      document.getElementById('langTpl4Title').textContent = L.tpl4;
+      document.getElementById('langTpl4Desc').textContent = L.tpl4d;
+      document.getElementById('langTpl5Title').textContent = L.tpl5;
+      document.getElementById('langTpl5Desc').textContent = L.tpl5d;
+      document.getElementById('langTip').innerHTML = L.tip;
+      document.getElementById('langFree1').textContent = L.free;
+      document.getElementById('langFree2').textContent = L.free;
+      document.getElementById('langFree3').textContent = L.free;
+      document.getElementById('langPro1').textContent = L.pro;
+      document.getElementById('langPro2').textContent = L.pro;
+      document.getElementById('langCurrentLabel').textContent = '🌍 ' + L.label + ' — ' + L.badge;
+      fade.forEach(function(el){ el.style.opacity='1'; });
+    }, 350);
+    idx = (idx + 1) % langs.length;
+  }
+  switchLang();
+  setInterval(switchLang, 2500);
+})();
 
 </script>
 
