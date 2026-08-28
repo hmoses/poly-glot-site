@@ -639,7 +639,7 @@ a:hover { opacity: 0.85; }
       <div class="hero-content">
         <div class="hero-badge"><span class="dot"></span> Available Now on Mac App Store</div>
         <h1>Every Language. One Prompt.<br><span class="gradient-text">Every AI — Compare the Results.</span></h1>
-        <p class="hero-sub">One prompt. Use multiple AIs. Ask Poly-Glot what you need — type or speak naturally, in your language. Choose your AI models, compare the answers, pick the best one. 1,000+ templates. Fully localized UI in 38 languages. Works on iPhone, iPad, and Mac.</p>
+        <p class="hero-sub">One prompt. Use multiple AIs. Ask Poly-Glot what you need. Type or speak naturally, in your language. Choose your AI models, compare the answers, pick the best one. 1,000+ templates. Fully localized UI in 38 languages. Works on iPhone, iPad, and Mac.</p>
         <div class="hero-actions">
           <a class="btn-coming-soon" href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12" style="text-decoration:none;color:inherit">
             <span class="pulse-dot" style="background:#10b981"></span>
@@ -2056,124 +2056,217 @@ function _demoStart() {
 // ===== LANGUAGE TOGGLE DEMO =====
 (function(){
   var langs = [
-    { badge:"\u{1f1fa}\u{1f1f8} EN", label:"English", tabAsk:"Ask Any AI", tabTemplates:"Templates", tabHow:"How to Use", tabHistory:"History",
+    { badge:"\u{1f1fa}\u{1f1f8} EN", flag:"\u{1f1fa}\u{1f1f8}", code:"EN", label:"English", tabAsk:"Ask Any AI", tabTemplates:"Templates", tabHow:"How to Use", tabHistory:"History",
       search:"Search templates...", catAll:"All", catFree:"Free", catMoney:"Money", catBusiness:"Business", catCode:"Coding",
       tpl1:"Side Hustle Finder", tpl1d:"Discover personalized side hustle ideas based on your skills",
       tpl2:"Passive Income Blueprint", tpl2d:"Build a passive income strategy tailored to your situation",
-      tpl3:"Freelance Rate Calculator", tpl3d:"Calculate your ideal freelance rate and pricing strategy",
+      tpl3:"Freelance Rate Calculator", tpl3d:"Calculate your ideal freelance rate and pricing",
       tpl4:"Savings Challenge", tpl4d:"Create a custom money-saving challenge plan",
-      tpl5:"Negotiate Any Bill", tpl5d:"Scripts to negotiate and lower your recurring bills",
-      tpl6:"Etsy Shop Launcher", tpl6d:"Step-by-step plan to launch and grow an Etsy shop",
+      tpl5:"Negotiate Any Bill", tpl5d:"Scripts to negotiate and lower your bills",
+      tpl6:"Etsy Shop Launcher", tpl6d:"Step-by-step plan to launch an Etsy shop",
+      tpl7:"YouTube Channel Planner", tpl7d:"Plan and launch a profitable YouTube channel",
+      tpl8:"Rental Income Analyzer", tpl8d:"Analyze potential rental property returns",
       pro:"PRO" },
-    { badge:"\u{1f1ea}\u{1f1f8} ES", label:"Español", tabAsk:"Pregunta a IA", tabTemplates:"Plantillas", tabHow:"Cómo Usar", tabHistory:"Historial",
-      search:"Buscar plantillas...", catAll:"Todos", catFree:"Gratis", catMoney:"Dinero", catBusiness:"Negocios", catCode:"Código",
-      tpl1:"Buscador de Ingresos Extra", tpl1d:"Descubre ideas de ingresos extra personalizadas según tus habilidades",
-      tpl2:"Plan de Ingresos Pasivos", tpl2d:"Crea una estrategia de ingresos pasivos adaptada a tu situación",
-      tpl3:"Calculadora de Tarifas", tpl3d:"Calcula tu tarifa freelance ideal y estrategia de precios",
-      tpl4:"Reto de Ahorro", tpl4d:"Crea un plan de reto de ahorro personalizado",
-      tpl5:"Negociar Facturas", tpl5d:"Scripts para negociar y reducir tus facturas recurrentes",
-      tpl6:"Lanzar Tienda Etsy", tpl6d:"Plan paso a paso para lanzar y hacer crecer una tienda Etsy",
+    { badge:"\u{1f1ea}\u{1f1f8} ES", flag:"\u{1f1ea}\u{1f1f8}", code:"ES", label:"Espa\u00f1ol", tabAsk:"Pregunta a IA", tabTemplates:"Plantillas", tabHow:"C\u00f3mo Usar", tabHistory:"Historial",
+      search:"Buscar plantillas...", catAll:"Todos", catFree:"Gratis", catMoney:"Dinero", catBusiness:"Negocios", catCode:"C\u00f3digo",
+      tpl1:"Buscador de Ingresos Extra", tpl1d:"Ideas de ingresos extra seg\u00fan tus habilidades",
+      tpl2:"Plan de Ingresos Pasivos", tpl2d:"Estrategia de ingresos pasivos para tu situaci\u00f3n",
+      tpl3:"Calculadora de Tarifas", tpl3d:"Calcula tu tarifa freelance ideal",
+      tpl4:"Reto de Ahorro", tpl4d:"Plan de reto de ahorro personalizado",
+      tpl5:"Negociar Facturas", tpl5d:"Scripts para reducir tus facturas",
+      tpl6:"Lanzar Tienda Etsy", tpl6d:"Plan paso a paso para lanzar una tienda Etsy",
+      tpl7:"Planificador de YouTube", tpl7d:"Planifica y lanza un canal de YouTube rentable",
+      tpl8:"Analizador de Alquiler", tpl8d:"Analiza el retorno de propiedades de alquiler",
       pro:"PRO" },
-    { badge:"\u{1f1eb}\u{1f1f7} FR", label:"Français", tabAsk:"Demandez à l'IA", tabTemplates:"Modèles", tabHow:"Mode d'emploi", tabHistory:"Historique",
-      search:"Rechercher des modèles...", catAll:"Tous", catFree:"Gratuit", catMoney:"Argent", catBusiness:"Business", catCode:"Code",
-      tpl1:"Trouveur d'Activités", tpl1d:"Découvrez des idées d'activités secondaires selon vos compétences",
-      tpl2:"Plan de Revenus Passifs", tpl2d:"Construisez une stratégie de revenus passifs adaptée à votre situation",
-      tpl3:"Calculateur de Tarifs", tpl3d:"Calculez votre tarif freelance idéal et stratégie de prix",
-      tpl4:"Défi Épargne", tpl4d:"Créez un plan de défi épargne personnalisé",
-      tpl5:"Négocier Vos Factures", tpl5d:"Scripts pour négocier et réduire vos factures récurrentes",
-      tpl6:"Lancer Boutique Etsy", tpl6d:"Plan étape par étape pour lancer et développer une boutique Etsy",
+    { badge:"\u{1f1eb}\u{1f1f7} FR", flag:"\u{1f1eb}\u{1f1f7}", code:"FR", label:"Fran\u00e7ais", tabAsk:"Demandez \u00e0 l'IA", tabTemplates:"Mod\u00e8les", tabHow:"Mode d'emploi", tabHistory:"Historique",
+      search:"Rechercher...", catAll:"Tous", catFree:"Gratuit", catMoney:"Argent", catBusiness:"Business", catCode:"Code",
+      tpl1:"Trouveur d'Activit\u00e9s", tpl1d:"Id\u00e9es d'activit\u00e9s selon vos comp\u00e9tences",
+      tpl2:"Plan Revenus Passifs", tpl2d:"Strat\u00e9gie de revenus passifs adapt\u00e9e",
+      tpl3:"Calculateur de Tarifs", tpl3d:"Calculez votre tarif freelance id\u00e9al",
+      tpl4:"D\u00e9fi \u00c9pargne", tpl4d:"Plan de d\u00e9fi \u00e9pargne personnalis\u00e9",
+      tpl5:"N\u00e9gocier Factures", tpl5d:"Scripts pour r\u00e9duire vos factures",
+      tpl6:"Lancer Boutique Etsy", tpl6d:"Plan pour lancer une boutique Etsy",
+      tpl7:"Planificateur YouTube", tpl7d:"Planifiez et lancez une cha\u00eene YouTube",
+      tpl8:"Analyseur de Loyers", tpl8d:"Analysez le rendement locatif potentiel",
       pro:"PRO" },
-    { badge:"\u{1f1ef}\u{1f1f5} JA", label:"日本語", tabAsk:"AIに質問", tabTemplates:"テンプレート", tabHow:"使い方", tabHistory:"履歴",
-      search:"テンプレートを検索...", catAll:"すべて", catFree:"無料", catMoney:"お金", catBusiness:"ビジネス", catCode:"コード",
-      tpl1:"副業ファインダー", tpl1d:"あなたのスキルに基づいたパーソナライズされた副業アイデアを発見",
-      tpl2:"不労所得プラン", tpl2d:"あなたの状況に合わせた不労所得戦略を構築",
-      tpl3:"フリーランス料金計算", tpl3d:"理想的なフリーランス料金と価格戦略を計算",
-      tpl4:"貯蓄チャレンジ", tpl4d:"カスタム貯蓄チャレンジプランを作成",
-      tpl5:"請求書交渉", tpl5d:"定期的な請求書を交渉して削減するスクリプト",
-      tpl6:"Etsyショップ開設", tpl6d:"Etsyショップを立ち上げて成長させるステップバイステップ計画",
+    { badge:"\u{1f1ef}\u{1f1f5} JA", flag:"\u{1f1ef}\u{1f1f5}", code:"JA", label:"\u65e5\u672c\u8a9e", tabAsk:"AI\u306b\u8cea\u554f", tabTemplates:"\u30c6\u30f3\u30d7\u30ec\u30fc\u30c8", tabHow:"\u4f7f\u3044\u65b9", tabHistory:"\u5c65\u6b74",
+      search:"\u30c6\u30f3\u30d7\u30ec\u30fc\u30c8\u3092\u691c\u7d22...", catAll:"\u3059\u3079\u3066", catFree:"\u7121\u6599", catMoney:"\u304a\u91d1", catBusiness:"\u30d3\u30b8\u30cd\u30b9", catCode:"\u30b3\u30fc\u30c9",
+      tpl1:"\u526f\u696d\u30d5\u30a1\u30a4\u30f3\u30c0\u30fc", tpl1d:"\u30b9\u30ad\u30eb\u306b\u57fa\u3065\u304f\u526f\u696d\u30a2\u30a4\u30c7\u30a2",
+      tpl2:"\u4e0d\u52b4\u6240\u5f97\u30d7\u30e9\u30f3", tpl2d:"\u4e0d\u52b4\u6240\u5f97\u6226\u7565\u3092\u69cb\u7bc9",
+      tpl3:"\u30d5\u30ea\u30fc\u30e9\u30f3\u30b9\u6599\u91d1\u8a08\u7b97", tpl3d:"\u7406\u60f3\u7684\u306a\u30d5\u30ea\u30fc\u30e9\u30f3\u30b9\u6599\u91d1\u3092\u8a08\u7b97",
+      tpl4:"\u8caf\u84c4\u30c1\u30e3\u30ec\u30f3\u30b8", tpl4d:"\u30ab\u30b9\u30bf\u30e0\u8caf\u84c4\u30c1\u30e3\u30ec\u30f3\u30b8\u30d7\u30e9\u30f3",
+      tpl5:"\u8acb\u6c42\u66f8\u4ea4\u6e09", tpl5d:"\u8acb\u6c42\u66f8\u3092\u4ea4\u6e09\u3057\u3066\u524a\u6e1b",
+      tpl6:"Etsy\u30b7\u30e7\u30c3\u30d7\u958b\u8a2d", tpl6d:"Etsy\u30b7\u30e7\u30c3\u30d7\u3092\u7acb\u3061\u4e0a\u3052\u308b\u8a08\u753b",
+      tpl7:"YouTube\u30c1\u30e3\u30f3\u30cd\u30eb\u8a08\u753b", tpl7d:"\u53ce\u76ca\u6027\u306e\u9ad8\u3044YouTube\u30c1\u30e3\u30f3\u30cd\u30eb\u3092\u8a08\u753b",
+      tpl8:"\u8cc3\u8cb8\u53ce\u5165\u5206\u6790", tpl8d:"\u8cc3\u8cb8\u7269\u4ef6\u306e\u6f5c\u5728\u7684\u53ce\u76ca\u3092\u5206\u6790",
       pro:"PRO" },
-    { badge:"\u{1f1f8}\u{1f1e6} AR", label:"العربية", tabAsk:"اسأل أي ذكاء", tabTemplates:"القوالب", tabHow:"كيفية الاستخدام", tabHistory:"السجل",
-      search:"ابحث في القوالب...", catAll:"الكل", catFree:"مجاني", catMoney:"المال", catBusiness:"أعمال", catCode:"برمجة",
-      tpl1:"باحث الدخل الإضافي", tpl1d:"اكتشف أفكار دخل إضافي مخصصة بناءً على مهاراتك",
-      tpl2:"خطة الدخل السلبي", tpl2d:"ابنِ استراتيجية دخل سلبي مصممة لوضعك",
-      tpl3:"حاسبة الأسعار", tpl3d:"احسب سعرك المثالي كمستقل واستراتيجية التسعير",
-      tpl4:"تحدي الادخار", tpl4d:"أنشئ خطة تحدي ادخار مخصصة",
-      tpl5:"تفاوض على الفواتير", tpl5d:"نصوص للتفاوض وخفض فواتيرك المتكررة",
-      tpl6:"إطلاق متجر إتسي", tpl6d:"خطة خطوة بخطوة لإطلاق وتنمية متجر إتسي",
+    { badge:"\u{1f1f0}\u{1f1f7} KO", flag:"\u{1f1f0}\u{1f1f7}", code:"KO", label:"\ud55c\uad6d\uc5b4", tabAsk:"AI\uc5d0\uac8c \uc9c8\ubb38", tabTemplates:"\ud15c\ud50c\ub9bf", tabHow:"\uc0ac\uc6a9 \ubc29\ubc95", tabHistory:"\uae30\ub85d",
+      search:"\ud15c\ud50c\ub9bf \uac80\uc0c9...", catAll:"\uc804\uccb4", catFree:"\ubb34\ub8cc", catMoney:"\ub3c8", catBusiness:"\ube44\uc988\ub2c8\uc2a4", catCode:"\ucf54\ub4dc",
+      tpl1:"\ubd80\uc5c5 \ucc3e\uae30", tpl1d:"\uae30\uc220 \uae30\ubc18 \ub9de\ucda4\ud615 \ubd80\uc5c5 \uc544\uc774\ub514\uc5b4",
+      tpl2:"\uc218\ub3d9 \uc18c\ub4dd \uc124\uacc4\ub3c4", tpl2d:"\uc0c1\ud669\uc5d0 \ub9de\ub294 \uc218\ub3d9 \uc18c\ub4dd \uc804\ub7b5",
+      tpl3:"\ud504\ub9ac\ub79c\uc11c \uc694\uae08 \uacc4\uc0b0\uae30", tpl3d:"\uc774\uc0c1\uc801\uc778 \ud504\ub9ac\ub79c\uc11c \uc694\uae08 \uacc4\uc0b0",
+      tpl4:"\uc800\ucd95 \ucc4c\ub9b0\uc9c0", tpl4d:"\ub9de\ucda4\ud615 \uc800\ucd95 \ucc4c\ub9b0\uc9c0 \uacc4\ud68d",
+      tpl5:"\uc694\uae08 \ud611\uc0c1", tpl5d:"\uc815\uae30 \uccad\uad6c\uc11c \ud611\uc0c1 \uc2a4\ud06c\ub9bd\ud2b8",
+      tpl6:"Etsy \uc0f5 \ub7f0\ucc98", tpl6d:"Etsy \uc0f5 \uc2dc\uc791 \ub2e8\uacc4\ubcc4 \uacc4\ud68d",
+      tpl7:"YouTube \ucc44\ub110 \ud50c\ub798\ub108", tpl7d:"\uc218\uc775\uc131 \ub192\uc740 YouTube \ucc44\ub110 \uacc4\ud68d",
+      tpl8:"\uc784\ub300 \uc218\uc775 \ubd84\uc11d\uae30", tpl8d:"\uc784\ub300 \ubd80\ub3d9\uc0b0 \uc218\uc775 \ubd84\uc11d",
       pro:"PRO" },
-    { badge:"\u{1f1f0}\u{1f1f7} KO", label:"한국어", tabAsk:"AI에게 질문", tabTemplates:"템플릿", tabHow:"사용 방법", tabHistory:"기록",
-      search:"템플릿 검색...", catAll:"전체", catFree:"무료", catMoney:"돈", catBusiness:"비즈니스", catCode:"코드",
-      tpl1:"부업 찾기", tpl1d:"당신의 기술에 기반한 맞춤형 부업 아이디어를 발견하세요",
-      tpl2:"수동 소득 설계도", tpl2d:"당신의 상황에 맞는 수동 소득 전략을 구축하세요",
-      tpl3:"프리랜서 요금 계산기", tpl3d:"이상적인 프리랜서 요금과 가격 전략을 계산하세요",
-      tpl4:"저축 챌린지", tpl4d:"맞춤형 저축 챌린지 계획을 만드세요",
-      tpl5:"요금 협상하기", tpl5d:"정기 청구서를 협상하고 줄이는 스크립트",
-      tpl6:"Etsy 샵 런처", tpl6d:"Etsy 샵을 시작하고 성장시키는 단계별 계획",
+    { badge:"\u{1f1e8}\u{1f1f3} ZH", flag:"\u{1f1e8}\u{1f1f3}", code:"\u7e41\u4e2d", label:"\u4e2d\u6587", tabAsk:"\u95ee\u4efb\u4f55AI", tabTemplates:"\u6a21\u677f", tabHow:"\u4f7f\u7528\u65b9\u6cd5", tabHistory:"\u5386\u53f2",
+      search:"\u641c\u7d22\u6a21\u677f...", catAll:"\u5168\u90e8", catFree:"\u514d\u8d39", catMoney:"\u7406\u8d22", catBusiness:"\u5546\u52a1", catCode:"\u4ee3\u7801",
+      tpl1:"\u526f\u4e1a\u53d1\u73b0\u5668", tpl1d:"\u6839\u636e\u6280\u80fd\u53d1\u73b0\u526f\u4e1a\u521b\u610f",
+      tpl2:"\u88ab\u52a8\u6536\u5165\u84dd\u56fe", tpl2d:"\u5efa\u7acb\u88ab\u52a8\u6536\u5165\u7b56\u7565",
+      tpl3:"\u81ea\u7531\u804c\u4e1a\u8d39\u7387\u8ba1\u7b97\u5668", tpl3d:"\u8ba1\u7b97\u7406\u60f3\u7684\u81ea\u7531\u804c\u4e1a\u8d39\u7387",
+      tpl4:"\u50a8\u84c4\u6311\u6218", tpl4d:"\u521b\u5efa\u81ea\u5b9a\u4e49\u7701\u94b1\u6311\u6218\u8ba1\u5212",
+      tpl5:"\u8c08\u5224\u8d26\u5355", tpl5d:"\u8c08\u5224\u5e76\u964d\u4f4e\u7ecf\u5e38\u6027\u8d26\u5355",
+      tpl6:"Etsy\u5e97\u94fa\u542f\u52a8\u5668", tpl6d:"\u542f\u52a8Etsy\u5e97\u94fa\u7684\u5206\u6b65\u8ba1\u5212",
+      tpl7:"YouTube\u9891\u9053\u89c4\u5212\u5668", tpl7d:"\u89c4\u5212\u6709\u5229\u53ef\u56fe\u7684YouTube\u9891\u9053",
+      tpl8:"\u79df\u91d1\u6536\u5165\u5206\u6790\u5668", tpl8d:"\u5206\u6790\u6f5c\u5728\u79df\u8d41\u7269\u4e1a\u6536\u76ca",
       pro:"PRO" },
-    { badge:"\u{1f1e8}\u{1f1f3} ZH", label:"中文", tabAsk:"问任何AI", tabTemplates:"模板", tabHow:"使用方法", tabHistory:"历史",
-      search:"搜索模板...", catAll:"全部", catFree:"免费", catMoney:"理财", catBusiness:"商务", catCode:"代码",
-      tpl1:"副业发现器", tpl1d:"根据你的技能发现个性化的副业创意",
-      tpl2:"被动收入蓝图", tpl2d:"建立适合你情况的被动收入策略",
-      tpl3:"自由职业费率计算器", tpl3d:"计算你理想的自由职业费率和定价策略",
-      tpl4:"储蓄挑战", tpl4d:"创建自定义省钱挑战计划",
-      tpl5:"谈判账单", tpl5d:"谈判并降低你的经常性账单的脚本",
-      tpl6:"Etsy店铺启动器", tpl6d:"启动和发展Etsy店铺的分步计划",
-      pro:"PRO" },
-    { badge:"\u{1f1ee}\u{1f1f3} HI", label:"हिन्दी", tabAsk:"किसी AI से पूछें", tabTemplates:"टेम्पलेट्स", tabHow:"कैसे उपयोग करें", tabHistory:"इतिहास",
-      search:"टेम्पलेट खोजें...", catAll:"सभी", catFree:"मुफ़्त", catMoney:"पैसा", catBusiness:"व्यापार", catCode:"कोड",
-      tpl1:"साइड हसल खोजक", tpl1d:"अपने कौशल के आधार पर व्यक्तिगत साइड हसल विचार खोजें",
-      tpl2:"पैसिव इनकम ब्लूप्रिंट", tpl2d:"अपनी स्थिति के अनुसार पैसिव इनकम रणनीति बनाएं",
-      tpl3:"फ्रीलांस दर कैलकुलेटर", tpl3d:"अपनी आदर्श फ्रीलांस दर और मूल्य निर्धारण रणनीति की गणना करें",
-      tpl4:"बचत चुनौती", tpl4d:"कस्टम पैसे बचाने की चुनौती योजना बनाएं",
-      tpl5:"बिल पर बातचीत", tpl5d:"अपने आवर्ती बिलों पर बातचीत करने और कम करने के स्क्रिप्ट",
-      tpl6:"Etsy शॉप लॉन्चर", tpl6d:"Etsy शॉप शुरू करने और बढ़ाने की चरण-दर-चरण योजना",
-      pro:"PRO" },
-    { badge:"\u{1f1e9}\u{1f1ea} DE", label:"Deutsch", tabAsk:"Frag jede KI", tabTemplates:"Vorlagen", tabHow:"Anleitung", tabHistory:"Verlauf",
+    { badge:"\u{1f1e9}\u{1f1ea} DE", flag:"\u{1f1e9}\u{1f1ea}", code:"DE", label:"Deutsch", tabAsk:"Frag jede KI", tabTemplates:"Vorlagen", tabHow:"Anleitung", tabHistory:"Verlauf",
       search:"Vorlagen durchsuchen...", catAll:"Alle", catFree:"Kostenlos", catMoney:"Geld", catBusiness:"Business", catCode:"Code",
-      tpl1:"Nebenjob-Finder", tpl1d:"Entdecken Sie personalisierte Nebenjob-Ideen basierend auf Ihren Fähigkeiten",
-      tpl2:"Passives Einkommen Plan", tpl2d:"Erstellen Sie eine passive Einkommensstrategie für Ihre Situation",
-      tpl3:"Freelancer-Kalkulator", tpl3d:"Berechnen Sie Ihren idealen Freelancer-Tarif und Preisstrategie",
-      tpl4:"Spar-Challenge", tpl4d:"Erstellen Sie einen individuellen Spar-Challenge-Plan",
-      tpl5:"Rechnungen Verhandeln", tpl5d:"Skripte zum Verhandeln und Senken Ihrer wiederkehrenden Rechnungen",
-      tpl6:"Etsy-Shop Starten", tpl6d:"Schritt-für-Schritt-Plan zum Starten und Wachsen eines Etsy-Shops",
+      tpl1:"Nebenjob-Finder", tpl1d:"Personalisierte Nebenjob-Ideen",
+      tpl2:"Passives Einkommen", tpl2d:"Passive Einkommensstrategie erstellen",
+      tpl3:"Freelancer-Kalkulator", tpl3d:"Idealen Freelancer-Tarif berechnen",
+      tpl4:"Spar-Challenge", tpl4d:"Individuellen Spar-Challenge-Plan erstellen",
+      tpl5:"Rechnungen Verhandeln", tpl5d:"Wiederkehrende Rechnungen senken",
+      tpl6:"Etsy-Shop Starten", tpl6d:"Schritt-f\u00fcr-Schritt Etsy-Shop Plan",
+      tpl7:"YouTube-Kanal Planer", tpl7d:"Profitablen YouTube-Kanal planen",
+      tpl8:"Mieteinnahmen-Analyse", tpl8d:"Potenzielle Mietrenditen analysieren",
       pro:"PRO" },
-    { badge:"\u{1f1e7}\u{1f1f7} PT", label:"Português", tabAsk:"Pergunte à IA", tabTemplates:"Modelos", tabHow:"Como Usar", tabHistory:"Histórico",
-      search:"Pesquisar modelos...", catAll:"Todos", catFree:"Grátis", catMoney:"Dinheiro", catBusiness:"Negócios", catCode:"Código",
-      tpl1:"Buscador de Renda Extra", tpl1d:"Descubra ideias de renda extra personalizadas com base em suas habilidades",
-      tpl2:"Plano de Renda Passiva", tpl2d:"Construa uma estratégia de renda passiva adaptada à sua situação",
-      tpl3:"Calculadora de Taxas", tpl3d:"Calcule sua taxa freelancer ideal e estratégia de preços",
-      tpl4:"Desafio de Economia", tpl4d:"Crie um plano de desafio de economia personalizado",
-      tpl5:"Negociar Contas", tpl5d:"Scripts para negociar e reduzir suas contas recorrentes",
-      tpl6:"Lançar Loja Etsy", tpl6d:"Plano passo a passo para lançar e crescer uma loja Etsy",
+    { badge:"\u{1f1e7}\u{1f1f7} PT", flag:"\u{1f1e7}\u{1f1f7}", code:"PT", label:"Portugu\u00eas", tabAsk:"Pergunte \u00e0 IA", tabTemplates:"Modelos", tabHow:"Como Usar", tabHistory:"Hist\u00f3rico",
+      search:"Pesquisar modelos...", catAll:"Todos", catFree:"Gr\u00e1tis", catMoney:"Dinheiro", catBusiness:"Neg\u00f3cios", catCode:"C\u00f3digo",
+      tpl1:"Buscador de Renda Extra", tpl1d:"Ideias de renda extra personalizadas",
+      tpl2:"Plano de Renda Passiva", tpl2d:"Estrat\u00e9gia de renda passiva adaptada",
+      tpl3:"Calculadora de Taxas", tpl3d:"Calcule sua taxa freelancer ideal",
+      tpl4:"Desafio de Economia", tpl4d:"Plano de desafio de economia personalizado",
+      tpl5:"Negociar Contas", tpl5d:"Scripts para reduzir contas recorrentes",
+      tpl6:"Lan\u00e7ar Loja Etsy", tpl6d:"Plano passo a passo para loja Etsy",
+      tpl7:"Planejador YouTube", tpl7d:"Planeje um canal YouTube lucrativo",
+      tpl8:"Analisador de Alugu\u00e9is", tpl8d:"Analise retornos de im\u00f3veis para alugar",
+      pro:"PRO" },
+    { badge:"\u{1f1f8}\u{1f1e6} AR", flag:"\u{1f1f8}\u{1f1e6}", code:"AR", label:"\u0627\u0644\u0639\u0631\u0628\u064a\u0629", tabAsk:"\u0627\u0633\u0623\u0644 \u0623\u064a \u0630\u0643\u0627\u0621", tabTemplates:"\u0627\u0644\u0642\u0648\u0627\u0644\u0628", tabHow:"\u0643\u064a\u0641\u064a\u0629 \u0627\u0644\u0627\u0633\u062a\u062e\u062f\u0627\u0645", tabHistory:"\u0627\u0644\u0633\u062c\u0644",
+      search:"\u0627\u0628\u062d\u062b \u0641\u064a \u0627\u0644\u0642\u0648\u0627\u0644\u0628...", catAll:"\u0627\u0644\u0643\u0644", catFree:"\u0645\u062c\u0627\u0646\u064a", catMoney:"\u0627\u0644\u0645\u0627\u0644", catBusiness:"\u0623\u0639\u0645\u0627\u0644", catCode:"\u0628\u0631\u0645\u062c\u0629",
+      tpl1:"\u0628\u0627\u062d\u062b \u0627\u0644\u062f\u062e\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a", tpl1d:"\u0623\u0641\u0643\u0627\u0631 \u062f\u062e\u0644 \u0625\u0636\u0627\u0641\u064a \u0645\u062e\u0635\u0635\u0629",
+      tpl2:"\u062e\u0637\u0629 \u0627\u0644\u062f\u062e\u0644 \u0627\u0644\u0633\u0644\u0628\u064a", tpl2d:"\u0627\u0633\u062a\u0631\u0627\u062a\u064a\u062c\u064a\u0629 \u062f\u062e\u0644 \u0633\u0644\u0628\u064a \u0645\u0635\u0645\u0645\u0629",
+      tpl3:"\u062d\u0627\u0633\u0628\u0629 \u0627\u0644\u0623\u0633\u0639\u0627\u0631", tpl3d:"\u0627\u062d\u0633\u0628 \u0633\u0639\u0631\u0643 \u0627\u0644\u0645\u062b\u0627\u0644\u064a \u0643\u0645\u0633\u062a\u0642\u0644",
+      tpl4:"\u062a\u062d\u062f\u064a \u0627\u0644\u0627\u062f\u062e\u0627\u0631", tpl4d:"\u062e\u0637\u0629 \u062a\u062d\u062f\u064a \u0627\u062f\u062e\u0627\u0631 \u0645\u062e\u0635\u0635\u0629",
+      tpl5:"\u062a\u0641\u0627\u0648\u0636 \u0627\u0644\u0641\u0648\u0627\u062a\u064a\u0631", tpl5d:"\u0646\u0635\u0648\u0635 \u0644\u062e\u0641\u0636 \u0641\u0648\u0627\u062a\u064a\u0631\u0643",
+      tpl6:"\u0625\u0637\u0644\u0627\u0642 \u0645\u062a\u062c\u0631 \u0625\u062a\u0633\u064a", tpl6d:"\u062e\u0637\u0629 \u0644\u0625\u0637\u0644\u0627\u0642 \u0645\u062a\u062c\u0631 \u0625\u062a\u0633\u064a",
+      tpl7:"\u0645\u062e\u0637\u0637 \u0642\u0646\u0627\u0629 YouTube", tpl7d:"\u062e\u0637\u0637 \u0642\u0646\u0627\u0629 YouTube \u0645\u0631\u0628\u062d\u0629",
+      tpl8:"\u0645\u062d\u0644\u0644 \u062f\u062e\u0644 \u0627\u0644\u0625\u064a\u062c\u0627\u0631", tpl8d:"\u062d\u0644\u0644 \u0639\u0648\u0627\u0626\u062f \u0627\u0644\u0625\u064a\u062c\u0627\u0631 \u0627\u0644\u0645\u062d\u062a\u0645\u0644\u0629",
+      pro:"PRO" },
+    { badge:"\u{1f1ee}\u{1f1f3} HI", flag:"\u{1f1ee}\u{1f1f3}", code:"HI", label:"\u0939\u093f\u0928\u094d\u0926\u0940", tabAsk:"AI \u0938\u0947 \u092a\u0942\u091b\u0947\u0902", tabTemplates:"\u091f\u0947\u092e\u094d\u092a\u0932\u0947\u091f\u094d\u0938", tabHow:"\u0915\u0948\u0938\u0947 \u0909\u092a\u092f\u094b\u0917 \u0915\u0930\u0947\u0902", tabHistory:"\u0907\u0924\u093f\u0939\u0627\u0938",
+      search:"\u091f\u0947\u092e\u094d\u092a\u0932\u0947\u091f \u0916\u094b\u091c\u0947\u0902...", catAll:"\u0938\u092d\u0940", catFree:"\u092e\u0941\u092b\u093c\u094d\u0924", catMoney:"\u092a\u0948\u0938\u093e", catBusiness:"\u0935\u094d\u092f\u093e\u092a\u093e\u0930", catCode:"\u0915\u094b\u0921",
+      tpl1:"\u0938\u093e\u0907\u0921 \u0939\u0938\u0932 \u0916\u094b\u091c\u0915", tpl1d:"\u0915\u094c\u0936\u0932 \u0915\u0947 \u0906\u0927\u093e\u0930 \u092a\u0930 \u0935\u094d\u092f\u0915\u094d\u0924\u093f\u0917\u0924 \u0935\u093f\u091a\u093e\u0930",
+      tpl2:"\u092a\u0948\u0938\u093f\u0935 \u0907\u0928\u0915\u092e \u092c\u094d\u0932\u0942\u092a\u094d\u0930\u093f\u0902\u091f", tpl2d:"\u0906\u092a\u0915\u0940 \u0938\u094d\u0925\u093f\u0924\u093f \u0915\u0947 \u0932\u093f\u090f \u0930\u0923\u0928\u0940\u0924\u093f",
+      tpl3:"\u092b\u094d\u0930\u0940\u0932\u093e\u0902\u0938 \u0926\u0930 \u0915\u0948\u0932\u0915\u0941\u0932\u0947\u091f\u0930", tpl3d:"\u0906\u0926\u0930\u094d\u0936 \u092b\u094d\u0930\u0940\u0932\u093e\u0902\u0938 \u0926\u0930 \u0917\u0923\u0928\u093e",
+      tpl4:"\u092c\u091a\u0924 \u091a\u0941\u0928\u094c\u0924\u0940", tpl4d:"\u0915\u0938\u094d\u091f\u092e \u092c\u091a\u0924 \u091a\u0941\u0928\u094c\u0924\u0940 \u092f\u094b\u091c\u0928\u093e",
+      tpl5:"\u092c\u093f\u0932 \u092a\u0930 \u092c\u093e\u0924\u091a\u0940\u0924", tpl5d:"\u0906\u0935\u0930\u094d\u0924\u0940 \u092c\u093f\u0932\u094b\u0902 \u092a\u0930 \u092c\u093e\u0924\u091a\u0940\u0924 \u0938\u094d\u0915\u094d\u0930\u093f\u092a\u094d\u091f",
+      tpl6:"Etsy \u0936\u0949\u092a \u0932\u0949\u0928\u094d\u091a\u0930", tpl6d:"Etsy \u0936\u0949\u092a \u0936\u0941\u0930\u0942 \u0915\u0930\u0928\u0947 \u0915\u0940 \u092f\u094b\u091c\u0928\u093e",
+      tpl7:"YouTube \u091a\u0948\u0928\u0932 \u092a\u094d\u0932\u093e\u0928\u0930", tpl7d:"\u0932\u093e\u092d\u0926\u093e\u092f\u0915 YouTube \u091a\u0948\u0928\u0932 \u092f\u094b\u091c\u0928\u093e",
+      tpl8:"\u0915\u093f\u0930\u093e\u092f\u093e \u0906\u092f \u0935\u093f\u0936\u094d\u0932\u0947\u0937\u0915", tpl8d:"\u0915\u093f\u0930\u093e\u092f\u093e \u0938\u0902\u092a\u0924\u094d\u0924\u093f \u0930\u093f\u091f\u0930\u094d\u0928 \u0935\u093f\u0936\u094d\u0932\u0947\u0937\u0923",
       pro:"PRO" }
   ];
-  var idx = 0;
-  function switchLang() {
-    var L = langs[idx];
-    var ids = ['langBadge','langTabAsk','langTabTemplates','langTabHow','langTabHistory','langSearch','langCatAll','langCatFreeText','langCatMoney','langCatBusiness','langCatCode','langTpl1Title','langTpl1Desc','langTpl2Title','langTpl2Desc','langTpl3Title','langTpl3Desc','langTpl4Title','langTpl4Desc','langTpl5Title','langTpl5Desc','langTpl6Title','langTpl6Desc','langPro1','langPro2','langPro3','langFree1','langFree2','langFree3','langCurrentLabel'];
-    var els = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
-    els.forEach(function(el){ el.style.transition='opacity 0.3s'; el.style.opacity='0'; });
-    setTimeout(function(){
-      var s = function(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; };
-      s('langBadge',L.badge); s('langTabAsk',L.tabAsk); s('langTabTemplates',L.tabTemplates);
-      s('langTabHow',L.tabHow); s('langTabHistory',L.tabHistory); s('langSearch',L.search);
-      s('langCatAll',L.catAll); s('langCatFreeText',L.catFree); s('langCatMoney',L.catMoney);
-      s('langCatBusiness',L.catBusiness); s('langCatCode',L.catCode);
-      s('langTpl1Title',L.tpl1); s('langTpl1Desc',L.tpl1d);
-      s('langTpl2Title',L.tpl2); s('langTpl2Desc',L.tpl2d);
-      s('langTpl3Title',L.tpl3); s('langTpl3Desc',L.tpl3d);
-      s('langTpl4Title',L.tpl4); s('langTpl4Desc',L.tpl4d);
-      s('langTpl5Title',L.tpl5); s('langTpl5Desc',L.tpl5d);
-      s('langTpl6Title',L.tpl6); s('langTpl6Desc',L.tpl6d);
-      s('langPro1',L.pro); s('langPro2',L.pro); s('langPro3',L.pro);
-      s('langFree1',L.pro); s('langFree2',L.pro); s('langFree3',L.pro);
-      s('langCurrentLabel','\u{1f30d} ' + L.label + ' \u2014 ' + L.badge);
-      els.forEach(function(el){ el.style.opacity='1'; });
-    }, 350);
-    idx = (idx + 1) % langs.length;
+
+  // Build language picker list
+  var pickerList = document.getElementById('langPickerList');
+  if (pickerList) {
+    langs.forEach(function(L, i) {
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;cursor:default;transition:background 0.2s';
+      row.innerHTML = '<span style="font-size:0.8rem">' + L.flag + '</span><span style="font-size:0.6rem;font-weight:600;color:#fff">' + L.code + '</span><span style="font-size:0.55rem;color:rgba(255,255,255,0.4)">' + L.label + '</span>';
+      if (i === 0) row.innerHTML += '<span style="margin-left:auto;color:#10b981;font-size:0.6rem">\u2713</span>';
+      row.dataset.idx = i;
+      pickerList.appendChild(row);
+    });
   }
-  switchLang();
-  setInterval(switchLang, 2500);
+
+  var idx = 0;
+  var pickerOpen = false;
+  var autoTimer = null;
+  var picker = document.getElementById('langPicker');
+  var badge = document.getElementById('langBadge');
+
+  function applyLang(L) {
+    var s = function(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; };
+    s('langBadge',L.badge); s('langTabAsk',L.tabAsk); s('langTabTemplates',L.tabTemplates);
+    s('langTabHow',L.tabHow); s('langTabHistory',L.tabHistory); s('langSearch',L.search);
+    s('langCatAll',L.catAll); s('langCatFreeText',L.catFree); s('langCatMoney',L.catMoney);
+    s('langCatBusiness',L.catBusiness); s('langCatCode',L.catCode);
+    s('langTpl1Title',L.tpl1); s('langTpl1Desc',L.tpl1d);
+    s('langTpl2Title',L.tpl2); s('langTpl2Desc',L.tpl2d);
+    s('langTpl3Title',L.tpl3); s('langTpl3Desc',L.tpl3d);
+    s('langTpl4Title',L.tpl4); s('langTpl4Desc',L.tpl4d);
+    s('langTpl5Title',L.tpl5); s('langTpl5Desc',L.tpl5d);
+    s('langTpl6Title',L.tpl6); s('langTpl6Desc',L.tpl6d);
+    s('langTpl7Title',L.tpl7); s('langTpl7Desc',L.tpl7d);
+    s('langTpl8Title',L.tpl8); s('langTpl8Desc',L.tpl8d);
+    s('langPro1',L.pro); s('langPro2',L.pro); s('langPro3',L.pro);
+    s('langFree1',L.pro); s('langFree2',L.pro); s('langFree3',L.pro);
+    s('langCurrentLabel','\u{1f30d} ' + L.label + ' \u2014 ' + L.badge);
+    // Update checkmarks in picker
+    if (pickerList) {
+      var rows = pickerList.children;
+      for (var r = 0; r < rows.length; r++) {
+        var check = rows[r].querySelector('span[style*="margin-left:auto"]');
+        if (check) check.remove();
+        if (r == idx) {
+          var cm = document.createElement('span');
+          cm.style.cssText = 'margin-left:auto;color:#10b981;font-size:0.6rem';
+          cm.textContent = '\u2713';
+          rows[r].appendChild(cm);
+        }
+      }
+    }
+  }
+
+  function showPicker() {
+    if (picker) { picker.style.transform = 'translateY(0)'; pickerOpen = true; }
+  }
+  function hidePicker() {
+    if (picker) { picker.style.transform = 'translateY(100%)'; pickerOpen = false; }
+  }
+
+  function switchWithPicker() {
+    // Step 1: highlight badge
+    if (badge) { badge.style.background = 'rgba(245,158,11,0.3)'; badge.style.borderColor = '#f59e0b'; }
+
+    // Step 2: open picker after brief delay
+    setTimeout(function() {
+      showPicker();
+
+      // Step 3: highlight the next language row
+      setTimeout(function() {
+        idx = (idx + 1) % langs.length;
+        var rows = pickerList ? pickerList.children : [];
+        if (rows[idx]) { rows[idx].style.background = 'rgba(245,158,11,0.15)'; }
+
+        // Step 4: select it and close
+        setTimeout(function() {
+          if (rows[idx]) { rows[idx].style.background = ''; }
+          var content = document.getElementById('langContent');
+          if (content) content.style.opacity = '0';
+
+          setTimeout(function() {
+            applyLang(langs[idx]);
+            hidePicker();
+            if (badge) { badge.style.background = 'rgba(255,255,255,0.08)'; badge.style.borderColor = 'rgba(255,255,255,0.15)'; }
+            setTimeout(function() {
+              if (content) content.style.opacity = '1';
+            }, 300);
+          }, 400);
+        }, 600);
+      }, 500);
+    }, 400);
+  }
+
+  // Initial state
+  applyLang(langs[0]);
+
+  // Start auto-cycling with picker animation
+  setTimeout(function() {
+    autoTimer = setInterval(switchWithPicker, 4000);
+  }, 2000);
 })();
 
 </script>
