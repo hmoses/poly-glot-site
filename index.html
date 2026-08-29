@@ -680,7 +680,7 @@ a:hover { opacity: 0.85; }
       <li><a href="#demo">Demo</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="/connect.html" style="color:#7dd3fc;font-weight:600;">🔌 Connect</a></li>
+      <li><a href="#connect" style="color:#7dd3fc;font-weight:600;">🔌 Connect</a></li>
     </ul>
     <span class="nav-cta">
       <span class="pulse-dot" style="width:6px;height:6px;background:#10b981;border-radius:50%;animation:pulse 2s infinite"></span>
@@ -1831,6 +1831,124 @@ a:hover { opacity: 0.85; }
 
 <div class="section-divider"></div>
 
+<!-- ===== CONNECT (MCP) ===== -->
+<section class="section" id="connect" style="background:var(--bg-alt)">
+  <div class="container">
+    <div class="section-eyebrow">🔌 MCP Integration</div>
+    <h2 class="section-title">Connect to Claude & ChatGPT</h2>
+    <p class="section-sub">Access 1,000+ prompt templates directly inside your AI assistant — no app download required.</p>
+
+    <!-- What is MCP -->
+    <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin-bottom:32px;">
+      <h4 style="margin-bottom:8px;">What is MCP?</h4>
+      <p style="color:var(--text-muted);font-size:0.95rem;">MCP (Model Context Protocol) lets AI assistants connect to external tools. When you connect Poly-Glot, your AI can search templates, build prompts, and compare answers across providers — all from within your chat.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-bottom:32px;">
+
+      <!-- Claude Card -->
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:28px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#d97706;color:#fff;font-weight:700;font-size:14px;">C</span>
+          <h4 style="margin:0;">Claude</h4>
+          <span style="display:inline-block;padding:2px 10px;border-radius:20px;font-size:0.7rem;font-weight:600;text-transform:uppercase;background:rgba(16,185,129,0.15);color:#10b981;">Live Now</span>
+        </div>
+        <ol style="color:var(--text-muted);font-size:0.9rem;padding-left:20px;line-height:2;">
+          <li>Open <strong style="color:var(--text);">Claude Settings → MCP Connectors</strong></li>
+          <li>Click <strong style="color:var(--text);">Add Connector</strong></li>
+          <li>Paste the URL below</li>
+          <li>Name it <strong style="color:var(--text);">"Poly-Glot"</strong> → Done!</li>
+        </ol>
+        <div style="position:relative;background:#0d0f1a;border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-top:12px;font-family:'Fira Code',monospace;font-size:0.78rem;color:#7dd3fc;word-break:break-all;line-height:1.5;">
+          https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp
+          <button onclick="navigator.clipboard.writeText('https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp').then(()=>{this.textContent='Copied!';this.style.color='#10b981';setTimeout(()=>{this.textContent='Copy';this.style.color=''},2000)})" style="position:absolute;top:8px;right:8px;background:rgba(125,211,252,0.15);color:#7dd3fc;border:none;border-radius:6px;padding:3px 10px;font-size:0.7rem;font-family:'Inter',sans-serif;cursor:pointer;">Copy</button>
+        </div>
+      </div>
+
+      <!-- ChatGPT Card -->
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:28px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#10a37f;color:#fff;font-weight:700;font-size:14px;">G</span>
+          <h4 style="margin:0;">ChatGPT</h4>
+          <span style="display:inline-block;padding:2px 10px;border-radius:20px;font-size:0.7rem;font-weight:600;text-transform:uppercase;background:rgba(251,191,36,0.15);color:#fbbf24;">Coming Soon</span>
+        </div>
+        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.7;margin-bottom:16px;">OpenAI's MCP Apps marketplace is opening soon. Poly-Glot will be available on day one.</p>
+        <ol style="color:var(--text-muted);font-size:0.9rem;padding-left:20px;line-height:2;">
+          <li>Search <strong style="color:var(--text);">"Poly-Glot"</strong> in the ChatGPT app store</li>
+          <li>Click <strong style="color:var(--text);">Connect</strong> — one click setup</li>
+          <li>Start prompting with 1,000+ templates</li>
+        </ol>
+        <div style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.15);border-radius:8px;padding:12px 16px;margin-top:12px;font-size:0.85rem;color:var(--text-muted);">
+          💡 Bookmark this page — we'll update it when ChatGPT MCP goes live.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tools Grid -->
+    <h4 style="margin-bottom:16px;">7 Tools Available</h4>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:24px;">
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">search_templates</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">Search 1,000+ templates</p>
+      </div>
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">get_template</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">View template details</p>
+      </div>
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">build_prompt</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">Fill & generate prompts</p>
+      </div>
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">prepare_compare</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">Compare across 2–7 AIs</p>
+      </div>
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">get_language_options</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">38 supported languages</p>
+      </div>
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">get_subscription_status</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">Check your plan</p>
+      </div>
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">open_workspace</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">Launch full workspace</p>
+      </div>
+    </div>
+
+    <!-- Example conversation -->
+    <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:24px 28px;">
+      <h4 style="margin-bottom:16px;">💬 Example Conversation</h4>
+      <div style="margin-bottom:16px;">
+        <p style="color:var(--text-muted);font-size:0.75rem;margin-bottom:2px;">YOU</p>
+        <p style="font-size:0.95rem;font-weight:500;">"Search Poly-Glot for LinkedIn templates and build me one about AI productivity"</p>
+      </div>
+      <div style="margin-bottom:16px;">
+        <p style="color:#fbbf24;font-size:0.75rem;margin-bottom:2px;">CLAUDE → search_templates → get_template → build_prompt</p>
+        <div style="background:rgba(251,191,36,0.06);border-radius:8px;padding:14px;color:var(--text-muted);font-size:0.9rem;line-height:1.6;">
+          I found the <strong style="color:var(--text)">LinkedIn Post Writer</strong> template. Here's your prompt:<br><br>
+          <em>"Write a LinkedIn post about AI productivity tools. Professional but conversational tone. Include a CTA to comment with their favorite AI tool. Under 200 words."</em>
+        </div>
+      </div>
+      <div>
+        <p style="color:var(--text-muted);font-size:0.75rem;margin-bottom:2px;">YOU</p>
+        <p style="font-size:0.95rem;font-weight:500;">"Now compare that across ChatGPT, Claude, and Gemini"</p>
+      </div>
+      <div style="margin-top:8px;">
+        <p style="color:#fbbf24;font-size:0.75rem;margin-bottom:2px;">CLAUDE → prepare_compare</p>
+        <div style="background:rgba(251,191,36,0.06);border-radius:8px;padding:14px;color:var(--text-muted);font-size:0.9rem;">
+          Done! I've opened the Poly-Glot workspace with your prompt staged for <strong style="color:var(--text)">ChatGPT</strong>, <strong style="color:var(--text)">Claude</strong>, and <strong style="color:var(--text)">Gemini</strong>. Click each tab to compare side by side.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
 <!-- ===== FINAL CTA ===== -->
 <section class="final-cta">
   <div class="container">
@@ -1874,7 +1992,7 @@ a:hover { opacity: 0.85; }
         <ul>
           <li><span style="color:var(--amber);font-size:0.88rem">💻 macOS — Available Now</span></li>
           <li><span style="color:var(--amber);font-size:0.88rem">📱 iOS — Coming Soon</span></li>
-          <li><a href="/connect.html" style="color:#7dd3fc">🔌 Connect to Claude / ChatGPT</a></li>
+          <li><a href="#connect" style="color:#7dd3fc">🔌 Connect to Claude / ChatGPT</a></li>
         </ul>
       </div>
       <div>
