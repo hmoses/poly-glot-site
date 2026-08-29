@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect Poly-Glot to Claude & ChatGPT — MCP Setup Guide</title>
+<meta name="description" content="Connect Poly-Glot AI Workspace to Claude and ChatGPT using MCP. Access 1,000+ prompt templates directly in your AI assistant.">
+<link rel="icon" type="image/png" href="assets/img/icon-128.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0b14;
+  --bg-alt: #12142a;
+  --bg-surface: #141730;
+  --text: #e8ecf4;
+  --text-muted: #8892b0;
+  --accent: #7dd3fc;
+  --purple: #a78bfa;
+  --green: #10b981;
+  --amber: #fbbf24;
+  --gradient-primary: linear-gradient(135deg, #7dd3fc 0%, #a78bfa 50%, #c084fc 100%);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --border: rgba(255,255,255,0.08);
+}
+body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+/* Nav */
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(8,9,26,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 0; }
+.nav .container { display: flex; align-items: center; gap: 12px; }
+.nav img { width: 36px; height: 36px; border-radius: 8px; }
+.nav-title { font-weight: 700; font-size: 1.1rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.nav-back { margin-left: auto; font-size: 0.9rem; color: var(--text-muted); }
+
+/* Hero */
+.hero { text-align: center; padding: 80px 0 48px; }
+.hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 16px; }
+.hero h1 span { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero p { color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: 0 auto; }
+
+/* Section */
+.section { padding: 48px 0; }
+.section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+.section-sub { color: var(--text-muted); margin-bottom: 32px; }
+
+/* Cards */
+.guide-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; margin-bottom: 32px; }
+.guide-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 16px; }
+
+/* Steps */
+.steps { counter-reset: step; }
+.step { display: flex; gap: 16px; margin-bottom: 24px; align-items: flex-start; }
+.step::before { counter-increment: step; content: counter(step); display: flex; align-items: center; justify-content: center; min-width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--purple)); color: var(--bg); font-weight: 700; font-size: 0.9rem; flex-shrink: 0; margin-top: 2px; }
+.step-content { flex: 1; }
+.step-content strong { display: block; margin-bottom: 4px; }
+.step-content p { color: var(--text-muted); margin: 0; }
+
+/* Code block */
+.code-block { position: relative; background: #0d0f1a; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 20px; margin: 12px 0; font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--accent); overflow-x: auto; word-break: break-all; line-height: 1.5; }
+.code-block .copy-btn { position: absolute; top: 8px; right: 8px; background: rgba(125,211,252,0.15); color: var(--accent); border: none; border-radius: 6px; padding: 4px 12px; font-size: 0.75rem; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.2s; }
+.code-block .copy-btn:hover { background: rgba(125,211,252,0.3); }
+.code-block .copy-btn.copied { background: rgba(16,185,129,0.2); color: var(--green); }
+
+/* Badge */
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-live { background: rgba(16,185,129,0.15); color: var(--green); }
+.badge-soon { background: rgba(251,191,36,0.15); color: var(--amber); }
+
+/* Tools table */
+.tools-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+.tools-table th, .tools-table td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+.tools-table th { color: var(--text-muted); font-weight: 500; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.tools-table td:first-child { font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--accent); }
+
+/* Info box */
+.info-box { background: rgba(125,211,252,0.06); border: 1px solid rgba(125,211,252,0.15); border-radius: var(--radius-sm); padding: 16px 20px; margin: 16px 0; font-size: 0.9rem; }
+.info-box strong { color: var(--accent); }
+
+/* Screenshot placeholder */
+.screenshot { background: var(--bg-alt); border: 1px dashed var(--border); border-radius: var(--radius-sm); padding: 48px 24px; text-align: center; color: var(--text-muted); font-size: 0.9rem; margin: 16px 0; }
+
+/* Footer */
+.footer { text-align: center; padding: 48px 0; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 48px; }
+
+@media (max-width: 600px) {
+  .guide-card { padding: 20px; }
+  .step { gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <img src="assets/img/icon-128.png" alt="Poly-Glot" onerror="this.style.display='none'">
+    <span class="nav-title">Poly-Glot AI Workspace</span>
+    <a href="/" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <h1>Connect Poly-Glot to <span>Claude & ChatGPT</span></h1>
+    <p>Access 1,000+ prompt templates, 38 languages, and Compare Mode directly inside your favorite AI assistant — no app download required.</p>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- ===== WHAT IS MCP ===== -->
+<section class="section">
+  <h2 class="section-title">🔌 What is MCP?</h2>
+  <p class="section-sub">MCP (Model Context Protocol) lets AI assistants like Claude and ChatGPT connect to external tools. When you connect Poly-Glot via MCP, your AI can search templates, build prompts, and compare answers across providers — all from within your chat.</p>
+</section>
+
+<!-- ===== CONNECT TO CLAUDE ===== -->
+<section class="section">
+  <h2 class="section-title">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#d97706"/><text x="12" y="16" text-anchor="middle" font-size="12" font-weight="bold" fill="white">C</text></svg>
+    Connect to Claude
+    <span class="badge badge-live">Live Now</span>
+  </h2>
+  <p class="section-sub">Works with Claude.ai (Free, Pro, Team, and Enterprise plans).</p>
+
+  <div class="guide-card">
+    <h3>Desktop App (Recommended)</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-content">
+          <strong>Open Claude Desktop Settings</strong>
+          <p>Click your profile icon → Settings → MCP Connectors (or Features → MCP).</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <strong>Add a new MCP connector</strong>
+          <p>Click "Add MCP Connector" or "Add" and paste this URL:</p>
+          <div class="code-block">
+            https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <strong>Name it "Poly-Glot"</strong>
+          <p>Give the connector a name so you can identify it later.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <strong>Start using it!</strong>
+          <p>In any Claude conversation, you'll see Poly-Glot's tools available. Try asking:<br>
+          <em>"Search Poly-Glot for email templates"</em> or <em>"Build me a LinkedIn post prompt"</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="guide-card">
+    <h3>Claude.ai (Web)</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-content">
+          <strong>Go to claude.ai/settings</strong>
+          <p>Navigate to Settings → Connectors or MCP section.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <strong>Add connector with the same URL</strong>
+          <div class="code-block">
+            https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <strong>Approve tool access when prompted</strong>
+          <p>Claude will ask to use Poly-Glot tools on first use. Click "Allow".</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONNECT TO CHATGPT ===== -->
+<section class="section">
+  <h2 class="section-title">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#10a37f"/><text x="12" y="16" text-anchor="middle" font-size="12" font-weight="bold" fill="white">G</text></svg>
+    Connect to ChatGPT
+    <span class="badge badge-soon">Coming Soon</span>
+  </h2>
+  <p class="section-sub">OpenAI's MCP Apps marketplace is opening soon. We'll be there on day one.</p>
+
+  <div class="guide-card">
+    <h3>What to expect</h3>
+    <p style="color: var(--text-muted); margin-bottom: 16px;">When the ChatGPT MCP Apps store launches, you'll be able to:</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-content">
+          <strong>Find "Poly-Glot AI Workspace" in the ChatGPT app store</strong>
+          <p>Search for "Poly-Glot" or browse the Productivity category.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <strong>Click "Connect" — one click setup</strong>
+          <p>No URL to copy. No configuration needed.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <strong>Start prompting with 1,000+ templates</strong>
+          <p>All tools work identically to the Claude integration.</p>
+        </div>
+      </div>
+    </div>
+    <div class="info-box">
+      <strong>💡 Want to be notified?</strong> Bookmark this page — we'll update it the moment ChatGPT MCP Apps goes live.
+    </div>
+  </div>
+</section>
+
+<!-- ===== AVAILABLE TOOLS ===== -->
+<section class="section">
+  <h2 class="section-title">🛠️ Available Tools</h2>
+  <p class="section-sub">Once connected, your AI assistant can use these 7 tools:</p>
+
+  <div class="guide-card" style="padding: 16px;">
+    <table class="tools-table">
+      <thead>
+        <tr><th>Tool</th><th>What it does</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>search_templates</td><td>Search 1,000+ templates by keyword, category, or use case</td></tr>
+        <tr><td>get_template</td><td>Get full template details with all variables</td></tr>
+        <tr><td>build_prompt</td><td>Fill in a template and get a ready-to-use prompt</td></tr>
+        <tr><td>prepare_compare</td><td>Stage a prompt across 2–7 AI providers for comparison</td></tr>
+        <tr><td>get_language_options</td><td>List all 38 supported languages</td></tr>
+        <tr><td>get_subscription_status</td><td>Check your current plan and entitlements</td></tr>
+        <tr><td>open_workspace</td><td>Launch the full Poly-Glot workspace interface</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== EXAMPLE ===== -->
+<section class="section">
+  <h2 class="section-title">💬 Example Conversation</h2>
+  <p class="section-sub">Here's what it looks like in Claude:</p>
+
+  <div class="guide-card">
+    <div style="margin-bottom: 20px;">
+      <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 4px;">YOU</p>
+      <p style="font-weight: 500;">"Search Poly-Glot for LinkedIn templates and build me one about AI productivity"</p>
+    </div>
+    <div style="margin-bottom: 20px;">
+      <p style="color: var(--amber); font-size: 0.8rem; margin-bottom: 4px;">CLAUDE (uses search_templates → get_template → build_prompt)</p>
+      <div style="background: rgba(251,191,36,0.06); border-radius: 8px; padding: 16px; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+        I found the <strong style="color:var(--text);">LinkedIn Post Writer</strong> template. Here's your prompt:<br><br>
+        <em>"Write a LinkedIn post about AI productivity tools that are changing how teams work. Use a professional but conversational tone. Goal: thought leadership. Include a call-to-action to comment with their favorite AI tool. Keep it under 200 words."</em>
+      </div>
+    </div>
+    <div>
+      <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 4px;">YOU</p>
+      <p style="font-weight: 500;">"Now compare that prompt across ChatGPT, Claude, and Gemini"</p>
+    </div>
+    <div style="margin-top: 12px;">
+      <p style="color: var(--amber); font-size: 0.8rem; margin-bottom: 4px;">CLAUDE (uses prepare_compare)</p>
+      <div style="background: rgba(251,191,36,0.06); border-radius: 8px; padding: 16px; color: var(--text-muted); font-size: 0.9rem;">
+        Done! I've opened the Poly-Glot workspace with your prompt staged for <strong style="color:var(--text);">ChatGPT</strong>, <strong style="color:var(--text);">Claude</strong>, and <strong style="color:var(--text);">Gemini</strong>. Click each tab to compare responses side by side.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LANGUAGES ===== -->
+<section class="section">
+  <h2 class="section-title">🌍 38 Languages Supported</h2>
+  <p class="section-sub">Set your UI language, input language, and output language independently. Every template works in every language.</p>
+  <div class="guide-card">
+    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 2;">
+      English · Español · Français · Deutsch · Italiano · Português · 日本語 · 한국어 · 中文(简体) · 中文(繁體) · العربية · हिन्दी · Türkçe · Русский · Polski · Nederlands · Svenska · Dansk · Norsk · Suomi · Čeština · Magyar · Română · Українська · Ελληνικά · עברית · ไทย · Tiếng Việt · Bahasa Indonesia · Bahasa Melayu · Filipino · Català · Hrvatski · Slovenčina · Български · Lietuvių · Latviešu · Eesti
+    </p>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section">
+  <h2 class="section-title">❓ FAQ</h2>
+
+  <div class="guide-card">
+    <h3>Is it free?</h3>
+    <p style="color: var(--text-muted);">Yes — 25 featured templates are free forever. Pro unlocks all 1,000+ templates for $9.99/month or $79.99/year (save 33%). Includes a 3-day free trial.</p>
+  </div>
+
+  <div class="guide-card">
+    <h3>Do I need the iOS/macOS app?</h3>
+    <p style="color: var(--text-muted);">No. MCP works independently — connect directly from Claude or ChatGPT. The app is optional for browsing templates visually and managing your subscription.</p>
+  </div>
+
+  <div class="guide-card">
+    <h3>Is my data private?</h3>
+    <p style="color: var(--text-muted);">Yes. Poly-Glot doesn't store your prompts or conversations. Template data flows directly between you and your AI assistant. See our <a href="/privacy.html">Privacy Policy</a>.</p>
+  </div>
+
+  <div class="guide-card">
+    <h3>What AI providers work with Compare Mode?</h3>
+    <p style="color: var(--text-muted);">Compare across any 2–7 providers: ChatGPT, Claude, Gemini, Grok, Groq, Copilot, and Perplexity.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Poly-Glot AI Workspace · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/support.html">Support</a></p>
+    <p style="margin-top: 8px;">MCP Endpoint: <code style="color: var(--accent); font-family: 'Fira Code', monospace; font-size: 0.8rem;">https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp</code></p>
+  </div>
+</footer>
+
+<script>
+function copyCode(btn) {
+  const block = btn.parentElement;
+  const text = block.textContent.replace('Copy','').replace('Copied!','').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>
