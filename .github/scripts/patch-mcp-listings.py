@@ -1,0 +1,68 @@
+from pathlib import Path
+
+path = Path("index.html")
+html = path.read_text(encoding="utf-8")
+
+if 'id="mcp-listings"' in html:
+    print("MCP listings already present")
+    raise SystemExit(0)
+
+anchor = '    <p class="section-sub">Access 1,000+ prompt templates directly inside your AI assistant — no app download required.</p>'
+if anchor not in html:
+    raise SystemExit("Connect-section anchor not found")
+
+listings = '''
+
+    <!-- Live MCP Listings -->
+    <div id="mcp-listings" style="margin-bottom:40px;">
+      <div style="display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px;">
+        <div>
+          <div style="font-family:'Fira Code',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:#a78bfa;margin-bottom:6px;">🌐 MCP Ecosystem</div>
+          <h3 style="font-size:1.45rem;font-weight:800;margin:0 0 6px;">Find Poly-Glot across the MCP ecosystem</h3>
+          <p style="color:var(--text-muted);font-size:0.92rem;max-width:720px;line-height:1.7;margin:0;">The same production MCP server is published across leading discovery surfaces. Registry metadata and release parity are maintained through an automated CI/CD and MCP auto-sync pipeline.</p>
+        </div>
+        <a href="https://github.com/hmoses/poly-glot-ai-workspace" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;padding:10px 16px;border-radius:8px;background:rgba(125,211,252,0.08);border:1px solid rgba(125,211,252,0.2);color:#7dd3fc;font-size:0.82rem;font-weight:700;">View MCP Source →</a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;">
+        <a href="https://registry.modelcontextprotocol.io/?q=poly-glot-ai-workspace" target="_blank" rel="noopener" style="display:block;background:var(--bg-surface);border:1px solid rgba(125,211,252,0.10);border-radius:12px;padding:20px;text-decoration:none;">
+          <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;"><span style="font-weight:800;color:var(--text);">Official MCP Registry</span><span style="padding:3px 9px;border-radius:20px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);color:#10b981;font-size:.65rem;font-weight:700;">LIVE</span></div>
+          <div style="font-family:'Fira Code',monospace;font-size:.69rem;color:#7dd3fc;margin-bottom:8px;word-break:break-word;">io.github.hmoses/poly-glot-ai-workspace</div>
+          <div style="font-size:.82rem;color:var(--text-muted);line-height:1.55;">Canonical registry entry for the production MCP server and versioned releases.</div>
+          <div style="margin-top:14px;color:#7dd3fc;font-size:.78rem;font-weight:700;">Open listing →</div>
+        </a>
+
+        <a href="https://mcp.so/servers/poly-glot-ai-workspace" target="_blank" rel="noopener" style="display:block;background:var(--bg-surface);border:1px solid rgba(125,211,252,0.10);border-radius:12px;padding:20px;text-decoration:none;">
+          <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;"><span style="font-weight:800;color:var(--text);">MCP.so</span><span style="padding:3px 9px;border-radius:20px;background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.25);color:#a78bfa;font-size:.65rem;font-weight:700;">VERIFIED + FEATURED</span></div>
+          <div style="font-size:.82rem;color:var(--text-muted);line-height:1.55;">Public directory listing exposing Poly-Glot's seven MCP tools and server details.</div>
+          <div style="margin-top:14px;color:#7dd3fc;font-size:.78rem;font-weight:700;">Open listing →</div>
+        </a>
+
+        <a href="https://glama.ai/mcp/servers/hmoses/poly-glot-ai-workspace" target="_blank" rel="noopener" style="display:block;background:var(--bg-surface);border:1px solid rgba(125,211,252,0.10);border-radius:12px;padding:20px;text-decoration:none;">
+          <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;"><span style="font-weight:800;color:var(--text);">Glama</span><span style="padding:3px 9px;border-radius:20px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);color:#10b981;font-size:.65rem;font-weight:700;">LIVE</span></div>
+          <div style="font-size:.82rem;color:var(--text-muted);line-height:1.55;">MCP directory presence for discovery, inspection, and ecosystem visibility.</div>
+          <div style="margin-top:14px;color:#7dd3fc;font-size:.78rem;font-weight:700;">Open listing →</div>
+        </a>
+
+        <a href="https://huggingface.co/spaces/HWM2/poly-glot-ai-workspace" target="_blank" rel="noopener" style="display:block;background:var(--bg-surface);border:1px solid rgba(125,211,252,0.10);border-radius:12px;padding:20px;text-decoration:none;">
+          <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;"><span style="font-weight:800;color:var(--text);">Hugging Face</span><span style="padding:3px 9px;border-radius:20px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);color:#10b981;font-size:.65rem;font-weight:700;">LIVE</span></div>
+          <div style="font-size:.82rem;color:var(--text-muted);line-height:1.55;">Public Space providing an additional discovery and demo surface for Poly-Glot AI Workspace.</div>
+          <div style="margin-top:14px;color:#7dd3fc;font-size:.78rem;font-weight:700;">Open Space →</div>
+        </a>
+
+        <a href="https://github.com/punkpeye/awesome-mcp-servers/pull/13166" target="_blank" rel="noopener" style="display:block;background:var(--bg-surface);border:1px solid rgba(125,211,252,0.10);border-radius:12px;padding:20px;text-decoration:none;">
+          <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;"><span style="font-weight:800;color:var(--text);">Awesome MCP Servers</span><span style="padding:3px 9px;border-radius:20px;background:rgba(251,191,36,.10);border:1px solid rgba(251,191,36,.22);color:#fbbf24;font-size:.65rem;font-weight:700;">PR #13166</span></div>
+          <div style="font-size:.82rem;color:var(--text-muted);line-height:1.55;">Community directory submission for inclusion in the Awesome MCP Servers catalog.</div>
+          <div style="margin-top:14px;color:#7dd3fc;font-size:.78rem;font-weight:700;">View submission →</div>
+        </a>
+      </div>
+    </div>
+'''
+
+html = html.replace(anchor, anchor + listings, 1)
+footer_anchor = '<li><a href="#connect" style="color:#7dd3fc">🔌 Connect to Claude / ChatGPT</a></li>'
+if footer_anchor in html and 'href="#mcp-listings"' not in html:
+    html = html.replace(footer_anchor, footer_anchor + '\n          <li><a href="#mcp-listings" style="color:#a78bfa">🌐 MCP Listings</a></li>', 1)
+
+path.write_text(html, encoding="utf-8")
+print("Patched index.html with MCP listings")
