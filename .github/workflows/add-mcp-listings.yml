@@ -1,5 +1,6 @@
 name: Add MCP listings to product site
 
+# One-time updater: this push intentionally triggers the workflow after it already exists on main.
 on:
   push:
     branches: [main]
