@@ -433,7 +433,8 @@ heroBadge:"\u5df2\u5728 Mac\u3001iPhone\u3001iPad \u4e0a\u63d0\u4f9b",heroH1a:"\
 heroSub:"\u544a\u8a34 Poly-Glot \u4f60\u9700\u8981\u4ec0\u9ebc\u3002\u7528\u4f60\u7684\u8a9e\u8a00\u8f38\u5165\u6216\u8aaa\u8a71\u3002\u9078\u64c7AI\uff0c\u6bd4\u8f03\u7b54\u6848\u300237\u7a2e\u8a9e\u8a00\uff0c1,000+\u6a23\u677f\u3002",
 trustA:"100%\u672c\u6a5f\u904b\u884c",trustB:"\u4e0d\u6536\u96c6\u8cc7\u6599",trustC:"3\u5929\u514d\u8cbb\u8a66\u7528",
 chatT:"Poly-Glot AI\u52a9\u624b",chatPH:"\u8f38\u5165\u554f\u984c\u2026",
-chatWel:"\u4f60\u597d\uff01\uD83E\uDD9C Poly-Glot AI\u52a9\u624b\u3002\u95dc\u65bc\u529f\u80fd\u3001\u50f9\u683c\u3001AI\u3001\u8a9e\u8a00\u96a8\u6642\u63d0\u554f\uff01"
+chatWel:"\u4f60\u597d\uff01\uD83E\uDD9C Poly-Glot AI\u52a9\u624b\u3002\u95dc\u65bc\u529f\u80fd\u3001\u50f9\u683c\u3001AI\u3001\u8a9e\u8a00\u96a8\u6642\u63d0\u554f\uff01",
+cs1:"什麼是Poly-Glot?",cs2:"多少錢?",cs3:"哪些AI?",cs4:"範本?",cs5:"隱私?",cs6:"裝置?",cs7:"如何使用?",cs8:"免費試用",cs9:"比較模式",cs10:"MCP設定",cs11:"語言?",cs12:"下載"
 };
 
 // ===== ITALIAN =====
@@ -441,13 +442,51 @@ T.IT={
 navSS:"Screenshot",navFeat:"Funzioni",navPrice1:"Prezzi",navDemo:"Demo",navPrice2:"Prezzi",navFAQ:"FAQ",navConnect:"\uD83D\uDD0C Connetti",navCTA:"Disponibile",
 heroBadge:"Disponibile su Mac, iPhone e iPad",heroH1a:"Tutte le lingue. Un prompt.",heroH1b:"Tutte le IA \u2014 Confronta i risultati.",
 heroSub:"Di' a Poly-Glot cosa ti serve. Scrivi o parla nella tua lingua. Scegli la tua IA, confronta, scegli la migliore. 1.000+ modelli in 37 lingue.",
+heroMac:"\uF8FF Mac \u2014 Scarica ora",heroIOS:"\uD83D\uDCF1 iPhone e iPad \u2014 Scarica ora",
 trustA:"100% sul dispositivo",trustB:"Nessuna raccolta dati",trustC:"Prova gratuita 3 giorni",
-featEye:"\u26A1 Funzioni",featH:"Tutto per prompt migliori",
-f1:"1.000+ modelli",f2:"Input vocale",f3:"Copia con un tocco",f4:"100% privato",f5:"37 lingue",
-prEye:"\uD83D\uDCB0 Prezzi",prH:"Inizia gratis.",
-prTier1:"Gratuito",prName1:"Prova",prCTA1:"Scarica gratis",prTier2:"Pro Mensile",prName2:"Pro",prCTA2:"Scarica gratis",prTier3:"Pro Annuale",prName3:"Pro Annuale",prCTA3:"Scarica gratis",
+platLabel:"Disponibile su piattaforme Apple",platAvail:"Disponibile",
+ssEye:"\uD83D\uDCF8 Screenshot",ssH:"Guarda tu stesso.",ssSub:"Poly-Glot funziona nativamente su Mac, iPhone e iPad.",
+naEye:"\uD83D\uDCF2 App native",naH:"Uno spazio di lavoro IA. Ogni dispositivo Apple.",naSub:"Poly-Glot funziona nativamente su Mac, iPhone e iPad. Stessi modelli, stessa potenza.",
+imEye:"\u270D\uFE0F Metodi di input",imH:"Cinque modi per creare prompt",imSub:"Digita, incolla, importa o detta \u2014 in 37 lingue.",
+featEye:"\u26A1 Funzioni",featH:"Tutto per prompt migliori",featSub:"Perch\u00e9 pagare per una sola IA? Scegli. Confronta. Scegli la migliore.",
+f1:"1.000+ modelli",f1p:"Modelli per scrittura, codice, marketing, istruzione e altro.",
+f2:"Input vocale",f2p:"Parla invece di digitare. Riconoscimento vocale sul dispositivo.",
+f3:"Copia con un tocco",f3p:"Crea il tuo prompt, copia, incolla in qualsiasi IA.",
+f4:"100% privato",f4p:"Tutto sul tuo dispositivo. Nessun dato raccolto.",
+f5:"37 lingue",f5p:"Tutta l'interfaccia tradotta in 37 lingue.",
+modEye:"\uD83E\uDD16 Compatibile con",modH:"Funziona con 9 app IA",modSub:"Poly-Glot funziona con tutte le IA. Confronta le risposte.",
+demoEye:"\uD83C\uDFA4 Demo dal vivo",demoH:"Guarda Poly-Glot in azione",demoSub:"Digita il tuo prompt, scegli le IA, tocca Invia.",
+probEye:"\uD83E\uDDE0 Il problema",probH:"Perch\u00e9 una sola IA non basta",probSub:"Ogni IA pensa diversamente. Poly-Glot ti permette di interrogarle tutte e confrontare.",
+probBadH:"\u274C Usare una sola IA",probBadP:"Chiedi a ChatGPT e speri che la risposta sia giusta.",
+probGoodH:"\u2714\uFE0F Usare Poly-Glot con Modalit\u00e0 Confronto",probGoodP:"Digita una volta, attiva la modalit\u00e0, ottieni 3 prospettive in pochi secondi.",
+saveEye:"\uD83D\uDCB0 Perch\u00e9 1 sola IA?",saveH:"\uD83D\uDD00 Confronta 9 IA",saveSub:"Confronta tutte le IA. 37 lingue. Prova gratuita. Pro a $9.99/mese.",
+saveCompare:"\uD83D\uDD00 Modalit\u00e0 Confronto \u00b7 9 IA \u00b7 37 lingue.",saveTrial:"Prova gratuita 3 giorni \u00b7 Annulla quando vuoi",
+saveTrA:"100% sul dispositivo",saveTrB:"Nessuna raccolta dati",saveTrC:"37 lingue",
+tplEye:"\uD83D\uDCDA Modelli",tplH:"1.000+ modelli. Tutte le categorie.",tplSub:"Dal marketing al codice. Trova il prompt giusto in secondi.",
+prEye:"\uD83D\uDCB0 Prezzi",prH:"Inizia gratis.",prSub:"Prova gratuita 3 giorni. Tutto sbloccato. Pro per accesso illimitato.",
+prTier1:"Gratuito",prName1:"Prova",prDesc1:"Prova gratuita 3 giorni \u00b7 poi 1 invio/giorno",prCTA1:"Scarica gratis",
+prTier2:"Pro Mensile",prName2:"Pro",prDesc2:"Accesso completo. Annulla quando vuoi.",prCTA2:"Scarica gratis",
+prTier3:"Pro Annuale",prName3:"Pro Annuale",prDesc3:"Risparmia 33%",prCTA3:"Scarica gratis",
+pf1a:"25 modelli in evidenza",pf1b:"1 invio gratuito/giorno",pf1c:"Tutte le 9 IA",pf1d:"Input vocale",
+pf2a:"1.000+ modelli",pf2b:"Invii illimitati",pf2c:"\uD83D\uDD00 Modalit\u00e0 Confronto",pf2d:"Supporto prioritario",
+pf3a:"Tutto in Pro",pf3b:"Miglior valore",pf3c:"$6.67/mese effettivo",pf3d:"Tutti gli aggiornamenti",
+fqEye:"\u2753 FAQ",fqH:"Domande frequenti",fqSub:"Tutto ci\u00f2 che devi sapere su Poly-Glot.",
+fq1q:"Cos'\u00e8 Poly-Glot AI Workspace?",fq1a:"Un'app nativa per Mac, iPhone e iPad per usare qualsiasi IA. 37 lingue, 1.000+ modelli, Modalit\u00e0 Confronto.",
+fq2q:"Dove \u00e8 disponibile?",fq2a:"Su App Store per Mac, iPhone e iPad. Anche via MCP.",
+fq3q:"I miei dati sono privati?",fq3a:"S\u00ec. 100% sul dispositivo. Nessuna raccolta dati.",
+fq4q:"Cos'\u00e8 la Modalit\u00e0 Confronto?",fq4a:"Invia lo stesso prompt a pi\u00f9 IA e confronta le risposte.",
+fq5q:"Quali modelli IA?",fq5a:"ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, DuckDuckGo AI.",
+fq6q:"Come funziona la prova?",fq6a:"3 giorni gratis con tutto. Poi 1 invio/giorno. Pro da $9.99/mese.",
+fq7q:"Quanti metodi di input?",fq7a:"Cinque: digitare, incollare, importare, scansionare, dettare.",
+fq8q:"Posso annullare?",fq8a:"S\u00ec. Annulla dalle impostazioni Apple ID.",
+mcpEye:"\uD83D\uDD0C Integrazione MCP",mcpH:"Connettiti a Claude e ChatGPT",mcpSub:"Accedi a 1.000+ modelli nel tuo assistente IA.",
+ftTag:"Tutte le lingue. Un prompt. Tutte le IA. 1.000+ modelli. 37 lingue.",
+ftProd:"Prodotto",ftPlat:"Piattaforma",ftComp:"Azienda",ftFeat:"Funzioni",ftTpl:"Modelli",ftPrice:"Prezzi",ftFAQ:"FAQ",
+ftPriv:"Informativa sulla privacy",ftTerms:"Condizioni d'uso",ftSupp:"Supporto",ftContact:"Contatto",
+ftCopy:"\u00a9 2025 Poly-Glot AI. Tutti i diritti riservati.",ftPrivL:"Privacy",ftTermsL:"Condizioni",ftSuppL:"Supporto",
 chatT:"Assistente Poly-Glot",chatSub:"Chiedi del prodotto",chatPH:"Fai una domanda\u2026",
-chatWel:"Ciao! \uD83E\uDD9C Assistente Poly-Glot AI. Chiedimi di funzioni, prezzi, IA o lingue!"
+chatWel:"Ciao! \uD83E\uDD9C Assistente Poly-Glot AI. Chiedimi di funzioni, prezzi, IA o lingue!",
+cs1:"Cos'\u00e8 Poly-Glot?",cs2:"Quanto costa?",cs3:"Quali IA?",cs4:"Modelli?",cs5:"Privato?",cs6:"Dispositivi?",cs7:"Come funziona?",cs8:"Prova gratuita",cs9:"Modalit\u00e0 Confronto",cs10:"Config MCP",cs11:"Lingue?",cs12:"Scarica"
 };
 
 // ===== PORTUGUESE =====
@@ -461,41 +500,53 @@ f1:"1.000+ modelos",f2:"Entrada de voz",f3:"Copiar com um toque",f4:"100% privad
 prEye:"\uD83D\uDCB0 Pre\u00e7os",prH:"Comece gr\u00e1tis.",
 prTier1:"Gr\u00e1tis",prName1:"Teste",prCTA1:"Baixar gr\u00e1tis",prTier2:"Pro Mensal",prName2:"Pro",prCTA2:"Baixar gr\u00e1tis",prTier3:"Pro Anual",prName3:"Pro Anual",prCTA3:"Baixar gr\u00e1tis",
 chatT:"Assistente Poly-Glot",chatSub:"Pergunte sobre o produto",chatPH:"Fa\u00e7a uma pergunta\u2026",
-chatWel:"Ol\u00e1! \uD83E\uDD9C Assistente Poly-Glot AI. Pergunte sobre recursos, pre\u00e7os, IAs ou idiomas!"
+chatWel:"Ol\u00e1! \uD83E\uDD9C Assistente Poly-Glot AI. Pergunte sobre recursos, pre\u00e7os, IAs ou idiomas!",
+cs1:"O que é Poly-Glot?",cs2:"Quanto custa?",cs3:"Quais IAs?",cs4:"Modelos?",cs5:"Privado?",cs6:"Dispositivos?",cs7:"Como funciona?",cs8:"Teste grátis",cs9:"Modo Comparação",cs10:"Config MCP",cs11:"Idiomas?",cs12:"Baixar"
 };
 
 // ===== DUTCH =====
-T.NL={heroBadge:"Beschikbaar op Mac, iPhone en iPad",heroH1a:"Alle talen. E\u00e9n prompt.",heroH1b:"Alle AI's \u2014 Vergelijk.",trustA:"100% op het apparaat",trustB:"Geen data verzameld",trustC:"3 dagen gratis",chatT:"Poly-Glot AI Assistent",chatPH:"Stel een vraag\u2026",chatWel:"Hallo! \uD83E\uDD9C Poly-Glot AI Assistent. Vraag over functies, prijzen of talen!"};
+T.NL={heroBadge:"Beschikbaar op Mac, iPhone en iPad",heroH1a:"Alle talen. E\u00e9n prompt.",heroH1b:"Alle AI's \u2014 Vergelijk.",trustA:"100% op het apparaat",trustB:"Geen data verzameld",trustC:"3 dagen gratis",chatT:"Poly-Glot AI Assistent",chatPH:"Stel een vraag\u2026",chatWel:"Hallo! \uD83E\uDD9C Poly-Glot AI Assistent. Vraag over functies, prijzen of talen!",
+cs1:"Wat is Poly-Glot?",cs2:"Hoeveel kost het?",cs3:"Welke AI's?",cs4:"Sjablonen?",cs5:"Privacy?",cs6:"Apparaten?",cs7:"Hoe werkt het?",cs8:"Gratis proberen",cs9:"Vergelijkmodus",cs10:"MCP instellen",cs11:"Talen?",cs12:"Downloaden"};
 
 // ===== RUSSIAN =====
-T.RU={heroBadge:"\u0414\u043e\u0441\u0442\u0443\u043f\u043d\u043e \u043d\u0430 Mac, iPhone, iPad",heroH1a:"\u0412\u0441\u0435 \u044f\u0437\u044b\u043a\u0438. \u041e\u0434\u0438\u043d \u043f\u0440\u043e\u043c\u043f\u0442.",heroH1b:"\u0412\u0441\u0435 \u0418\u0418 \u2014 \u0421\u0440\u0430\u0432\u043d\u0438.",trustA:"100% \u043d\u0430 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435",trustB:"\u0411\u0435\u0437 \u0441\u0431\u043e\u0440\u0430 \u0434\u0430\u043d\u043d\u044b\u0445",trustC:"3 \u0434\u043d\u044f \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u043e",chatT:"\u041f\u043e\u043c\u043e\u0449\u043d\u0438\u043a Poly-Glot",chatPH:"\u0417\u0430\u0434\u0430\u0439\u0442\u0435 \u0432\u043e\u043f\u0440\u043e\u0441\u2026",chatWel:"\u041f\u0440\u0438\u0432\u0435\u0442! \uD83E\uDD9C \u041f\u043e\u043c\u043e\u0449\u043d\u0438\u043a Poly-Glot AI. \u0421\u043f\u0440\u043e\u0441\u0438\u0442\u0435 \u043e \u0444\u0443\u043d\u043a\u0446\u0438\u044f\u0445, \u0446\u0435\u043d\u0430\u0445, \u0418\u0418 \u0438\u043b\u0438 \u044f\u0437\u044b\u043a\u0430\u0445!"};
+T.RU={heroBadge:"\u0414\u043e\u0441\u0442\u0443\u043f\u043d\u043e \u043d\u0430 Mac, iPhone, iPad",heroH1a:"\u0412\u0441\u0435 \u044f\u0437\u044b\u043a\u0438. \u041e\u0434\u0438\u043d \u043f\u0440\u043e\u043c\u043f\u0442.",heroH1b:"\u0412\u0441\u0435 \u0418\u0418 \u2014 \u0421\u0440\u0430\u0432\u043d\u0438.",trustA:"100% \u043d\u0430 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435",trustB:"\u0411\u0435\u0437 \u0441\u0431\u043e\u0440\u0430 \u0434\u0430\u043d\u043d\u044b\u0445",trustC:"3 \u0434\u043d\u044f \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u043e",chatT:"\u041f\u043e\u043c\u043e\u0449\u043d\u0438\u043a Poly-Glot",chatPH:"\u0417\u0430\u0434\u0430\u0439\u0442\u0435 \u0432\u043e\u043f\u0440\u043e\u0441\u2026",chatWel:"\u041f\u0440\u0438\u0432\u0435\u0442! \uD83E\uDD9C \u041f\u043e\u043c\u043e\u0449\u043d\u0438\u043a Poly-Glot AI. \u0421\u043f\u0440\u043e\u0441\u0438\u0442\u0435 \u043e \u0444\u0443\u043d\u043a\u0446\u0438\u044f\u0445, \u0446\u0435\u043d\u0430\u0445, \u0418\u0418 \u0438\u043b\u0438 \u044f\u0437\u044b\u043a\u0430\u0445!",
+cs1:"Что такое Poly-Glot?",cs2:"Сколько стоит?",cs3:"Какие ИИ?",cs4:"Шаблоны?",cs5:"Приватность?",cs6:"Устройства?",cs7:"Как работает?",cs8:"Бесплатно",cs9:"Режим сравнения",cs10:"Настройка MCP",cs11:"Языки?",cs12:"Скачать"};
 
 // ===== ARABIC =====
-T.AR={heroBadge:"\u0645\u062a\u0648\u0641\u0631 \u0639\u0644\u0649 Mac \u0648 iPhone \u0648 iPad",heroH1a:"\u0643\u0644 \u0627\u0644\u0644\u063a\u0627\u062a. \u0623\u0645\u0631 \u0648\u0627\u062d\u062f.",heroH1b:"\u0643\u0644 \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a \u2014 \u0642\u0627\u0631\u0646.",trustA:"100% \u0639\u0644\u0649 \u0627\u0644\u062c\u0647\u0627\u0632",trustB:"\u0628\u062f\u0648\u0646 \u062c\u0645\u0639 \u0628\u064a\u0627\u0646\u0627\u062a",trustC:"3 \u0623\u064a\u0627\u0645 \u0645\u062c\u0627\u0646\u064b\u0627",chatT:"\u0645\u0633\u0627\u0639\u062f Poly-Glot",chatPH:"\u0627\u0637\u0631\u062d \u0633\u0624\u0627\u0644\u0627\u064b\u2026",chatWel:"\u0645\u0631\u062d\u0628\u0627\u064b! \uD83E\uDD9C \u0645\u0633\u0627\u0639\u062f Poly-Glot. \u0627\u0633\u0623\u0644 \u0639\u0646 \u0627\u0644\u0645\u064a\u0632\u0627\u062a \u0648\u0627\u0644\u0623\u0633\u0639\u0627\u0631!"};
+T.AR={heroBadge:"\u0645\u062a\u0648\u0641\u0631 \u0639\u0644\u0649 Mac \u0648 iPhone \u0648 iPad",heroH1a:"\u0643\u0644 \u0627\u0644\u0644\u063a\u0627\u062a. \u0623\u0645\u0631 \u0648\u0627\u062d\u062f.",heroH1b:"\u0643\u0644 \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a \u2014 \u0642\u0627\u0631\u0646.",trustA:"100% \u0639\u0644\u0649 \u0627\u0644\u062c\u0647\u0627\u0632",trustB:"\u0628\u062f\u0648\u0646 \u062c\u0645\u0639 \u0628\u064a\u0627\u0646\u0627\u062a",trustC:"3 \u0623\u064a\u0627\u0645 \u0645\u062c\u0627\u0646\u064b\u0627",chatT:"\u0645\u0633\u0627\u0639\u062f Poly-Glot",chatPH:"\u0627\u0637\u0631\u062d \u0633\u0624\u0627\u0644\u0627\u064b\u2026",chatWel:"\u0645\u0631\u062d\u0628\u0627\u064b! \uD83E\uDD9C \u0645\u0633\u0627\u0639\u062f Poly-Glot. \u0627\u0633\u0623\u0644 \u0639\u0646 \u0627\u0644\u0645\u064a\u0632\u0627\u062a \u0648\u0627\u0644\u0623\u0633\u0639\u0627\u0631!",
+cs1:"ما هو Poly-Glot؟",cs2:"كم السعر؟",cs3:"أي ذكاء اصطناعي؟",cs4:"قوالب؟",cs5:"خصوصية؟",cs6:"أجهزة؟",cs7:"كيف يعمل؟",cs8:"تجربة مجانية",cs9:"وضع المقارنة",cs10:"إعداد MCP",cs11:"اللغات؟",cs12:"تحميل"};
 
 // ===== HINDI =====
-T.HI={heroBadge:"Mac, iPhone, iPad \u092a\u0930 \u0909\u092a\u0932\u092c\u094d\u0927",heroH1a:"\u0938\u092d\u0940 \u092d\u093e\u0937\u093e\u090f\u0902\u0964 \u090f\u0915 \u092a\u094d\u0930\u0949\u092e\u094d\u092a\u094d\u091f\u0964",heroH1b:"\u0938\u092d\u0940 AI \u2014 \u092a\u0930\u093f\u0923\u093e\u092e \u0924\u0941\u0932\u0928\u093e\u0964",trustA:"100% \u0921\u093f\u0935\u093e\u0907\u0938 \u092a\u0930",trustB:"\u0915\u094b\u0908 \u0921\u0947\u091f\u093e \u0938\u0902\u0917\u094d\u0930\u0939 \u0928\u0939\u0940\u0902",trustC:"3 \u0926\u093f\u0928 \u092e\u0941\u092b\u094d\u0924",chatT:"Poly-Glot AI \u0938\u0939\u093e\u092f\u0915",chatPH:"\u092a\u094d\u0930\u0936\u094d\u0928 \u092a\u0942\u091b\u0947\u0902\u2026",chatWel:"\u0928\u092e\u0938\u094d\u0924\u0947! \uD83E\uDD9C Poly-Glot AI \u0938\u0939\u093e\u092f\u0915\u0964 \u0935\u093f\u0936\u0947\u0937\u0924\u093e\u0913\u0902, \u092e\u0942\u0932\u094d\u092f, AI, \u092d\u093e\u0937\u093e\u0913\u0902 \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u092a\u0942\u091b\u0947\u0902!"};
+T.HI={heroBadge:"Mac, iPhone, iPad \u092a\u0930 \u0909\u092a\u0932\u092c\u094d\u0927",heroH1a:"\u0938\u092d\u0940 \u092d\u093e\u0937\u093e\u090f\u0902\u0964 \u090f\u0915 \u092a\u094d\u0930\u0949\u092e\u094d\u092a\u094d\u091f\u0964",heroH1b:"\u0938\u092d\u0940 AI \u2014 \u092a\u0930\u093f\u0923\u093e\u092e \u0924\u0941\u0932\u0928\u093e\u0964",trustA:"100% \u0921\u093f\u0935\u093e\u0907\u0938 \u092a\u0930",trustB:"\u0915\u094b\u0908 \u0921\u0947\u091f\u093e \u0938\u0902\u0917\u094d\u0930\u0939 \u0928\u0939\u0940\u0902",trustC:"3 \u0926\u093f\u0928 \u092e\u0941\u092b\u094d\u0924",chatT:"Poly-Glot AI \u0938\u0939\u093e\u092f\u0915",chatPH:"\u092a\u094d\u0930\u0936\u094d\u0928 \u092a\u0942\u091b\u0947\u0902\u2026",chatWel:"\u0928\u092e\u0938\u094d\u0924\u0947! \uD83E\uDD9C Poly-Glot AI \u0938\u0939\u093e\u092f\u0915\u0964 \u0935\u093f\u0936\u0947\u0937\u0924\u093e\u0913\u0902, \u092e\u0942\u0932\u094d\u092f, AI, \u092d\u093e\u0937\u093e\u0913\u0902 \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u092a\u0942\u091b\u0947\u0902!",
+cs1:"Poly-Glot क्या है?",cs2:"कितना है?",cs3:"कौन से AI?",cs4:"टेम्पलेट?",cs5:"गोपनीयता?",cs6:"डिवाइस?",cs7:"कैसे काम करता है?",cs8:"मुफ्त परीक्षण",cs9:"तुलना मोड",cs10:"MCP सेटअप",cs11:"भाषाएं?",cs12:"डाउनलोड"};
 
 // ===== TURKISH =====
-T.TR={heroBadge:"Mac, iPhone ve iPad'de mevcut",heroH1a:"T\u00fcm diller. Bir prompt.",heroH1b:"T\u00fcm AI \u2014 Kar\u015f\u0131la\u015ft\u0131r.",trustA:"100% cihazda",trustB:"Veri toplama yok",trustC:"3 g\u00fcn \u00fccretsiz",chatT:"Poly-Glot AI Asistan",chatPH:"Soru sorun\u2026",chatWel:"Merhaba! \uD83E\uDD9C Poly-Glot AI Asistan. \u00d6zellikler, fiyatlar, AI veya diller hakk\u0131nda sorun!"};
+T.TR={heroBadge:"Mac, iPhone ve iPad'de mevcut",heroH1a:"T\u00fcm diller. Bir prompt.",heroH1b:"T\u00fcm AI \u2014 Kar\u015f\u0131la\u015ft\u0131r.",trustA:"100% cihazda",trustB:"Veri toplama yok",trustC:"3 g\u00fcn \u00fccretsiz",chatT:"Poly-Glot AI Asistan",chatPH:"Soru sorun\u2026",chatWel:"Merhaba! \uD83E\uDD9C Poly-Glot AI Asistan. \u00d6zellikler, fiyatlar, AI veya diller hakk\u0131nda sorun!",
+cs1:"Poly-Glot nedir?",cs2:"Ne kadar?",cs3:"Hangi AI'lar?",cs4:"Şablonlar?",cs5:"Gizlilik?",cs6:"Cihazlar?",cs7:"Nasıl çalışır?",cs8:"Ücretsiz dene",cs9:"Karşılaştırma modu",cs10:"MCP kurulumu",cs11:"Diller?",cs12:"İndir"};
 
 // ===== POLISH =====
-T.PL={heroBadge:"Dost\u0119pne na Mac, iPhone i iPad",heroH1a:"Wszystkie j\u0119zyki. Jeden prompt.",heroH1b:"Wszystkie AI \u2014 Por\u00f3wnaj.",trustA:"100% na urz\u0105dzeniu",trustB:"Bez zbierania danych",trustC:"3 dni za darmo",chatT:"Asystent Poly-Glot AI",chatPH:"Zadaj pytanie\u2026",chatWel:"Cze\u015b\u0107! \uD83E\uDD9C Asystent Poly-Glot AI. Pytaj o funkcje, ceny, AI lub j\u0119zyki!"};
+T.PL={heroBadge:"Dost\u0119pne na Mac, iPhone i iPad",heroH1a:"Wszystkie j\u0119zyki. Jeden prompt.",heroH1b:"Wszystkie AI \u2014 Por\u00f3wnaj.",trustA:"100% na urz\u0105dzeniu",trustB:"Bez zbierania danych",trustC:"3 dni za darmo",chatT:"Asystent Poly-Glot AI",chatPH:"Zadaj pytanie\u2026",chatWel:"Cze\u015b\u0107! \uD83E\uDD9C Asystent Poly-Glot AI. Pytaj o funkcje, ceny, AI lub j\u0119zyki!",
+cs1:"Czym jest Poly-Glot?",cs2:"Ile kosztuje?",cs3:"Jakie AI?",cs4:"Szablony?",cs5:"Prywatność?",cs6:"Urządzenia?",cs7:"Jak działa?",cs8:"Darmowy okres",cs9:"Tryb porównania",cs10:"Konfiguracja MCP",cs11:"Języki?",cs12:"Pobierz"};
 
 // ===== BENGALI =====
-T.BN={heroBadge:"Mac, iPhone, iPad-\u098f \u0989\u09aa\u09b2\u09ac\u09cd\u09a7",heroH1a:"\u09b8\u09ac \u09ad\u09be\u09b7\u09be\u0964 \u098f\u0995\u099f\u09bf \u09aa\u09cd\u09b0\u09ae\u09cd\u09aa\u099f\u0964",heroH1b:"\u09b8\u09ac AI \u2014 \u09ab\u09b2\u09be\u09ab\u09b2 \u09a4\u09c1\u09b2\u09a8\u09be \u0995\u09b0\u09c1\u09a8\u0964",trustA:"100% \u09a1\u09bf\u09ad\u09be\u0987\u09b8\u09c7",trustB:"\u09a1\u09c7\u099f\u09be \u09b8\u0982\u0997\u09cd\u09b0\u09b9 \u09a8\u09c7\u0987",trustC:"3 \u09a6\u09bf\u09a8 \u09ab\u09cd\u09b0\u09bf",chatT:"Poly-Glot AI \u09b8\u09b9\u09be\u09af\u09bc\u0995",chatPH:"\u09aa\u09cd\u09b0\u09b6\u09cd\u09a8 \u0995\u09b0\u09c1\u09a8\u2026",chatWel:"\u09b9\u09cd\u09af\u09be\u09b2\u09cb! \uD83E\uDD9C Poly-Glot AI \u09b8\u09b9\u09be\u09af\u09bc\u0995\u0964"};
+T.BN={heroBadge:"Mac, iPhone, iPad-\u098f \u0989\u09aa\u09b2\u09ac\u09cd\u09a7",heroH1a:"\u09b8\u09ac \u09ad\u09be\u09b7\u09be\u0964 \u098f\u0995\u099f\u09bf \u09aa\u09cd\u09b0\u09ae\u09cd\u09aa\u099f\u0964",heroH1b:"\u09b8\u09ac AI \u2014 \u09ab\u09b2\u09be\u09ab\u09b2 \u09a4\u09c1\u09b2\u09a8\u09be \u0995\u09b0\u09c1\u09a8\u0964",trustA:"100% \u09a1\u09bf\u09ad\u09be\u0987\u09b8\u09c7",trustB:"\u09a1\u09c7\u099f\u09be \u09b8\u0982\u0997\u09cd\u09b0\u09b9 \u09a8\u09c7\u0987",trustC:"3 \u09a6\u09bf\u09a8 \u09ab\u09cd\u09b0\u09bf",chatT:"Poly-Glot AI \u09b8\u09b9\u09be\u09af\u09bc\u0995",chatPH:"\u09aa\u09cd\u09b0\u09b6\u09cd\u09a8 \u0995\u09b0\u09c1\u09a8\u2026",chatWel:"\u09b9\u09cd\u09af\u09be\u09b2\u09cb! \uD83E\uDD9C Poly-Glot AI \u09b8\u09b9\u09be\u09af\u09bc\u0995\u0964",
+cs1:"Poly-Glot কী?",cs2:"দাম কত?",cs3:"কোন AI?",cs4:"টেমপ্লেট?",cs5:"গোপনীয়তা?",cs6:"ডিভাইস?",cs7:"কিভাবে কাজ করে?",cs8:"বিনামূল্যে ট্রায়াল",cs9:"তুলনা মোড",cs10:"MCP সেটআপ",cs11:"ভাষা?",cs12:"ডাউনলোড"};
 
 // ===== AFRIKAANS =====
-T.AF={heroBadge:"Beskikbaar op Mac, iPhone en iPad",heroH1a:"Alle tale. Een prompt.",heroH1b:"Alle KI \u2014 Vergelyk resultate.",trustA:"100% op toestel",trustB:"Geen data-insameling",trustC:"3 dae gratis",chatT:"Poly-Glot KI-assistent",chatPH:"Vra 'n vraag\u2026",chatWel:"Hallo! \uD83E\uDD9C Poly-Glot KI-assistent. Vra oor funksies, pryse, KI of tale!"};
+T.AF={heroBadge:"Beskikbaar op Mac, iPhone en iPad",heroH1a:"Alle tale. Een prompt.",heroH1b:"Alle KI \u2014 Vergelyk resultate.",trustA:"100% op toestel",trustB:"Geen data-insameling",trustC:"3 dae gratis",chatT:"Poly-Glot KI-assistent",chatPH:"Vra 'n vraag\u2026",chatWel:"Hallo! \uD83E\uDD9C Poly-Glot KI-assistent. Vra oor funksies, pryse, KI of tale!",
+cs1:"Wat is Poly-Glot?",cs2:"Hoeveel kos dit?",cs3:"Watter KI's?",cs4:"Sjablone?",cs5:"Privaatheid?",cs6:"Toestelle?",cs7:"Hoe werk dit?",cs8:"Gratis proeftydperk",cs9:"Vergelykmodus",cs10:"MCP-opstelling",cs11:"Tale?",cs12:"Aflaai"};
 
 // ===== SWAHILI =====
-T.SW={heroBadge:"Inapatikana kwenye Mac, iPhone na iPad",heroH1a:"Lugha zote. Prompt moja.",heroH1b:"AI zote \u2014 Linganisha matokeo.",trustA:"100% kwenye kifaa",trustB:"Hakuna ukusanyaji data",trustC:"Siku 3 bure",chatT:"Msaidizi wa Poly-Glot AI",chatPH:"Uliza swali\u2026",chatWel:"Habari! \uD83E\uDD9C Msaidizi wa Poly-Glot AI. Uliza kuhusu vipengele, bei, AI au lugha!"};
+T.SW={heroBadge:"Inapatikana kwenye Mac, iPhone na iPad",heroH1a:"Lugha zote. Prompt moja.",heroH1b:"AI zote \u2014 Linganisha matokeo.",trustA:"100% kwenye kifaa",trustB:"Hakuna ukusanyaji data",trustC:"Siku 3 bure",chatT:"Msaidizi wa Poly-Glot AI",chatPH:"Uliza swali\u2026",chatWel:"Habari! \uD83E\uDD9C Msaidizi wa Poly-Glot AI. Uliza kuhusu vipengele, bei, AI au lugha!",
+cs1:"Poly-Glot ni nini?",cs2:"Bei gani?",cs3:"AI gani?",cs4:"Violezo?",cs5:"Faragha?",cs6:"Vifaa?",cs7:"Inafanyaje kazi?",cs8:"Jaribio bure",cs9:"Hali ya kulinganisha",cs10:"Mpangilio wa MCP",cs11:"Lugha?",cs12:"Pakua"};
 
 // ===== HAUSA =====
-T.HA={heroBadge:"Akwai a Mac, iPhone da iPad",heroH1a:"Duk harsuna. Prompt \u0257aya.",heroH1b:"Duk AI \u2014 Kwatanta sakamako.",trustA:"100% a na'ura",trustB:"Babu tattara bayanai",trustC:"Kwanaki 3 kyauta",chatT:"Mai taimako Poly-Glot AI",chatPH:"Yi tambaya\u2026",chatWel:"Sannu! \uD83E\uDD9C Mai taimako na Poly-Glot AI."};
+T.HA={heroBadge:"Akwai a Mac, iPhone da iPad",heroH1a:"Duk harsuna. Prompt \u0257aya.",heroH1b:"Duk AI \u2014 Kwatanta sakamako.",trustA:"100% a na'ura",trustB:"Babu tattara bayanai",trustC:"Kwanaki 3 kyauta",chatT:"Mai taimako Poly-Glot AI",chatPH:"Yi tambaya\u2026",chatWel:"Sannu! \uD83E\uDD9C Mai taimako na Poly-Glot AI.",
+cs1:"Mene ne Poly-Glot?",cs2:"Nawa ne?",cs3:"Wane AI?",cs4:"Samfuran?",cs5:"Sirri?",cs6:"Na'urori?",cs7:"Yaya yake aiki?",cs8:"Gwaji kyauta",cs9:"Yanayin kwatantawa",cs10:"Saitin MCP",cs11:"Harsuna?",cs12:"Sauke"};
 
 // ===== AMHARIC =====
-T.AM={heroBadge:"Mac\u1363 iPhone\u1363 iPad \u120B\u12ED \u12ED\u1308\u129B\u120D",heroH1a:"\u1201\u1209\u121D \u1240\u1295\u1306\u127D\u1362 \u12A0\u1295\u12F5 prompt.",heroH1b:"\u1201\u1209\u121D AI \u2014 \u12CD\u1324\u1276\u127D\u1295 \u12A0\u1295\u133B\u1355\u122D.",trustA:"100% \u1260\u1218\u1233\u122A\u12EB \u120B\u12ED",trustB:"\u12E8\u1218\u1228\u1303 \u1235\u1265\u1235\u1265 \u12E8\u1208\u121D",trustC:"3 \u1240\u1295 \u1290\u133D",chatT:"Poly-Glot AI \u1228\u12F3\u1275",chatPH:"\u1325\u12EB\u1244 \u12ED\u1325\u12E8\u1241\u2026",chatWel:"\u1230\u120B\u121D! \uD83E\uDD9C Poly-Glot AI \u1228\u12F3\u1275\u1362"};
+T.AM={heroBadge:"Mac\u1363 iPhone\u1363 iPad \u120B\u12ED \u12ED\u1308\u129B\u120D",heroH1a:"\u1201\u1209\u121D \u1240\u1295\u1306\u127D\u1362 \u12A0\u1295\u12F5 prompt.",heroH1b:"\u1201\u1209\u121D AI \u2014 \u12CD\u1324\u1276\u127D\u1295 \u12A0\u1295\u133B\u1355\u122D.",trustA:"100% \u1260\u1218\u1233\u122A\u12EB \u120B\u12ED",trustB:"\u12E8\u1218\u1228\u1303 \u1235\u1265\u1235\u1265 \u12E8\u1208\u121D",trustC:"3 \u1240\u1295 \u1290\u133D",chatT:"Poly-Glot AI \u1228\u12F3\u1275",chatPH:"\u1325\u12EB\u1244 \u12ED\u1325\u12E8\u1241\u2026",chatWel:"\u1230\u120B\u121D! \uD83E\uDD9C Poly-Glot AI \u1228\u12F3\u1275\u1362",
+cs1:"Poly-Glot ምንድነው?",cs2:"ዋጋው ስንት ነው?",cs3:"የትኞቹ AI?",cs4:"ቅጦች?",cs5:"ግላዊነት?",cs6:"መሳሪያዎች?",cs7:"እንዴት ይሰራል?",cs8:"ነጻ ሙከራ",cs9:"ማወዳደሪያ ሁነታ",cs10:"MCP ማዋቀር",cs11:"ቋንቋዎች?",cs12:"አውርድ"};
 
 // ===== GETTER =====
 function gt(k,lang){return(T[lang]&&T[lang][k])||T.EN[k]||'';}
@@ -560,6 +611,17 @@ if(t2)t2.textContent=gt('chatSub',lang);
 var inp=document.getElementById('pgChat-input');
 if(inp)inp.placeholder=gt('chatPH',lang);
 window._pgChatLang=lang;
+// Re-render welcome message + suggestion buttons if chat is showing welcome state
+if(typeof window.pgChat!=='undefined'&&typeof window.pgChat.renderWelcome==='function'){
+// Only re-render if no user messages yet (welcome state)
+var msgs=document.getElementById('pgChat-messages');
+if(msgs){
+var userMsgs=msgs.querySelectorAll('.pgChat-msg.user');
+if(!userMsgs||userMsgs.length===0){
+window.pgChat.renderWelcome();
+}
+}
+}
 }
 
 // ===== TAG NAV (only elements without data-i18n in HTML) =====
