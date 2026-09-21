@@ -110,6 +110,7 @@ sc2Pick:"\u2713 Pick the one that sounds like you.",
 sc2PickSub:"One prompt. Every AI. You decide.",
 // Input Methods
 imEye:"\u270D\uFE0F Input Methods",imH:"Five ways to build prompts",imSub:"Type it, paste it, import it, or dictate it \u2014 in any of 37 languages. The entire app is fully localized, so Poly-Glot meets you wherever your ideas start.",
+im1:"Type",im1p:"Write prompts from scratch with structured fields that guide you to better results.",im2:"Paste",im2p:"Paste existing text and let Poly-Glot AI Workspace structure it into an optimized prompt.",im3:"Import",im3p:"Import documents, notes, or files directly into your prompt workspace.",im4:"Scan",im4p:"Scan printed text, screenshots, or handwritten notes with your camera.",im5:"Dictate",im5p:"Speak your prompt with on-device speech recognition. Hands-free prompt building.",
 // Features
 featEye:"\u26A1 Features",featH:"Everything you need to write better prompts",featSub:"Why choose or pay for one AI? Ask Poly-Glot. Choose your models. Compare the answers. Pick the best one.",
 f1:"1,000+ Prompt Templates",f1p:"Curated templates for writing, coding, marketing, education, business, and more. Organized by category, ready to use.",
@@ -196,6 +197,7 @@ sc2Tag:"\uD83D\uDD00 Modo Comparar",sc2H:"\u00bfQu\u00e9 respuesta elegir\u00eda
 sc2Prompt:"Escribe un correo amable a mi casero pidi\u00e9ndole que arregle la calefacci\u00f3n antes del invierno.",
 sc2Pick:"\u2713 Elige la que suene como t\u00fa.",sc2PickSub:"Un prompt. Todas las IA. T\u00fa decides.",
 imEye:"\u270D\uFE0F M\u00e9todos de entrada",imH:"Cinco formas de crear prompts",imSub:"Escr\u00edbelo, p\u00e9galo, imp\u00f3rtalo o d\u00edctalo \u2014 en 37 idiomas. Toda la app est\u00e1 localizada.",
+im1:"Escribir",im1p:"Escribe prompts desde cero con campos estructurados que te gu\u00edan.",im2:"Pegar",im2p:"Pega texto existente y Poly-Glot lo estructura en un prompt optimizado.",im3:"Importar",im3p:"Importa documentos, notas o archivos directamente.",im4:"Escanear",im4p:"Escanea texto impreso, capturas o notas escritas a mano.",im5:"Dictar",im5p:"Habla tu prompt con reconocimiento de voz en el dispositivo.",
 featEye:"\u26A1 Funciones",featH:"Todo para escribir mejores prompts",featSub:"\u00bfPor qu\u00e9 pagar por una sola IA? Elige tus modelos. Compara. Elige la mejor.",
 f1:"1.000+ plantillas",f1p:"Plantillas para escritura, c\u00f3digo, marketing, educaci\u00f3n y m\u00e1s.",
 f2:"Entrada de voz",f2p:"Habla en lugar de escribir. Reconocimiento de voz en el dispositivo.",
@@ -257,6 +259,7 @@ sc1Row:"1 abonnement IA",sc1Compare:"\uD83D\uDD00 Mode Comparaison \u00b7 9 IA \
 sc2Tag:"\uD83D\uDD00 Mode Comparaison",sc2H:"Quelle r\u00e9ponse choisiriez-vous ?",sc2P:"Envoyez le m\u00eame prompt \u00e0 plusieurs IA et comparez. Choisissez la meilleure.",
 sc2Pick:"\u2713 Choisissez celle qui vous ressemble.",sc2PickSub:"Un prompt. Toutes les IA. Vous d\u00e9cidez.",
 imEye:"\u270D\uFE0F M\u00e9thodes de saisie",imH:"Cinq fa\u00e7ons de cr\u00e9er des prompts",imSub:"Tapez, collez, importez ou dictez \u2014 en 37 langues.",
+im1:"Saisir",im1p:"\u00c9crivez des prompts avec des champs structur\u00e9s.",im2:"Coller",im2p:"Collez du texte et Poly-Glot le structure en prompt optimis\u00e9.",im3:"Importer",im3p:"Importez documents, notes ou fichiers directement.",im4:"Scanner",im4p:"Scannez texte imprim\u00e9, captures ou notes manuscrites.",im5:"Dicter",im5p:"Parlez votre prompt avec la reconnaissance vocale.",
 featEye:"\u26A1 Fonctions",featH:"Tout pour de meilleurs prompts",featSub:"Pourquoi payer pour une seule IA ? Choisissez. Comparez. Choisissez la meilleure.",
 f1:"1 000+ mod\u00e8les",f1p:"Mod\u00e8les pour \u00e9criture, code, marketing, \u00e9ducation et plus.",
 f2:"Saisie vocale",f2p:"Parlez au lieu de taper. Reconnaissance vocale sur l'appareil.",
@@ -300,6 +303,8 @@ trustA:"100% auf dem Ger\u00e4t",trustB:"Keine Datenerfassung",trustC:"3 Tage ko
 platLabel:"Auf Apple-Plattformen verf\u00fcgbar",platAvail:"Verf\u00fcgbar",
 ssEye:"\uD83D\uDCF8 Screenshots",ssH:"\u00dcberzeuge dich selbst.",ssSub:"Poly-Glot l\u00e4uft nativ auf Mac, iPhone und iPad.",
 naEye:"\uD83D\uDCF2 Native Apps",naH:"Ein KI-Arbeitsbereich. Jedes Apple-Ger\u00e4t.",naSub:"Poly-Glot l\u00e4uft nativ auf Mac, iPhone und iPad. Gleiche Vorlagen, gleiche Leistung.",
+imEye:"\u270D\uFE0F Eingabemethoden",imH:"F\u00fcnf Wege, Prompts zu erstellen",imSub:"Tippen, einf\u00fcgen, importieren oder diktieren \u2014 in 37 Sprachen.",
+im1:"Tippen",im1p:"Schreibe Prompts mit strukturierten Feldern.",im2:"Einf\u00fcgen",im2p:"F\u00fcge Text ein und Poly-Glot strukturiert ihn.",im3:"Importieren",im3p:"Importiere Dokumente, Notizen oder Dateien.",im4:"Scannen",im4p:"Scanne gedruckten Text, Screenshots oder Notizen.",im5:"Diktieren",im5p:"Sprich deinen Prompt mit Spracherkennung.",
 featEye:"\u26A1 Funktionen",featH:"Alles f\u00fcr bessere Prompts",featSub:"Warum f\u00fcr eine KI bezahlen? W\u00e4hle deine Modelle. Vergleiche. W\u00e4hle die beste.",
 f1:"1.000+ Vorlagen",f1p:"Vorlagen f\u00fcr Schreiben, Code, Marketing, Bildung und mehr.",
 f2:"Spracheingabe",f2p:"Sprich statt zu tippen. Spracherkennung auf dem Ger\u00e4t.",
@@ -341,6 +346,7 @@ sc1Row:"AI 1\u4EF6\u306E\u30B5\u30D6\u30B9\u30AF\u30EA\u30D7\u30B7\u30E7\u30F3",
 sc2Tag:"\uD83D\uDD00 \u6BD4\u8F03\u30E2\u30FC\u30C9",sc2H:"\u3069\u306E\u56DE\u7B54\u3092\u9078\u3073\u307E\u3059\u304B\uFF1F",sc2P:"\u8907\u6570\u306EAI\u306B\u540C\u3058\u30D7\u30ED\u30F3\u30D7\u30C8\u3092\u9001\u4FE1\u3057\u3001\u56DE\u7B54\u3092\u6BD4\u8F03\u3002\u6700\u9069\u3092\u9078\u629E\u3002",
 sc2Pick:"\u2713 \u81EA\u5206\u3089\u3057\u3044\u56DE\u7B54\u3092\u9078\u3073\u307E\u3057\u3087\u3046\u3002",sc2PickSub:"\u4E00\u3064\u306E\u30D7\u30ED\u30F3\u30D7\u30C8\u3002\u3059\u3079\u3066\u306EAI\u3002\u3042\u306A\u305F\u304C\u6C7A\u3081\u308B\u3002",
 imEye:"\u270D\uFE0F \u5165\u529B\u65B9\u6CD5",imH:"5\u3064\u306E\u30D7\u30ED\u30F3\u30D7\u30C8\u4F5C\u6210\u65B9\u6CD5",imSub:"\u5165\u529B\u3001\u8CBC\u308A\u4ED8\u3051\u3001\u30A4\u30F3\u30DD\u30FC\u30C8\u3001\u97F3\u58F0\u5165\u529B \u2014 37\u8A00\u8A9E\u5BFE\u5FDC\u3002",
+im1:"\u5165\u529B",im1p:"\u69CB\u9020\u5316\u30D5\u30A3\u30FC\u30EB\u30C9\u3067\u30D7\u30ED\u30F3\u30D7\u30C8\u3092\u4F5C\u6210\u3002",im2:"\u8CBC\u308A\u4ED8\u3051",im2p:"\u30C6\u30AD\u30B9\u30C8\u3092\u8CBC\u308A\u4ED8\u3051\u3066\u6700\u9069\u5316\u3002",im3:"\u30A4\u30F3\u30DD\u30FC\u30C8",im3p:"\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\u3084\u30D5\u30A1\u30A4\u30EB\u3092\u76F4\u63A5\u53D6\u308A\u8FBC\u307F\u3002",im4:"\u30B9\u30AD\u30E3\u30F3",im4p:"\u5370\u5237\u30C6\u30AD\u30B9\u30C8\u3084\u624B\u66F8\u304D\u30E1\u30E2\u3092\u30B9\u30AD\u30E3\u30F3\u3002",im5:"\u97F3\u58F0\u5165\u529B",im5p:"\u30C7\u30D0\u30A4\u30B9\u4E0A\u306E\u97F3\u58F0\u8A8D\u8B58\u3067\u30D7\u30ED\u30F3\u30D7\u30C8\u3092\u8A71\u3059\u3002",
 featEye:"\u26A1 \u6A5F\u80FD",featH:"\u3088\u308A\u826F\u3044\u30D7\u30ED\u30F3\u30D7\u30C8\u306B\u5FC5\u8981\u306A\u3059\u3079\u3066",featSub:"\u306A\u305C1\u3064\u306EAI\u306B\u6255\u3046\uFF1F\u30E2\u30C7\u30EB\u3092\u9078\u3073\u3001\u6BD4\u8F03\u3057\u3001\u6700\u9069\u3092\u9078\u629E\u3002",
 f1:"1,000\u4EE5\u4E0A\u306E\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8",f1p:"\u57F7\u7B46\u3001\u30B3\u30FC\u30C9\u3001\u30DE\u30FC\u30B1\u30C6\u30A3\u30F3\u30B0\u3001\u6559\u80B2\u306A\u3069\u306E\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\u3002",
 f2:"\u97F3\u58F0\u5165\u529B",f2p:"\u30BF\u30A4\u30D4\u30F3\u30B0\u306E\u4EE3\u308F\u308A\u306B\u8A71\u3059\u3002\u30AA\u30F3\u30C7\u30D0\u30A4\u30B9\u97F3\u58F0\u8A8D\u8B58\u3002",
@@ -391,6 +397,8 @@ heroBadge:"Mac, iPhone, iPad \uc0ac\uc6a9 \uac00\ub2a5",heroH1a:"\ubaa8\ub4e0 \u
 heroSub:"Poly-Glot\uc5d0\uac8c \ud544\uc694\ud55c \uac83\uc744 \ub9d0\ud558\uc138\uc694. \uc790\uc2e0\uc758 \uc5b8\uc5b4\ub85c \uc785\ub825\ud558\uac70\ub098 \ub9d0\ud558\uc138\uc694. AI\ub97c \uc120\ud0dd\ud558\uace0 \ub2f5\ubcc0\uc744 \ube44\uad50\ud558\uc138\uc694. 37\uac1c \uc5b8\uc5b4, 1,000\uac1c \uc774\uc0c1\uc758 \ud15c\ud50c\ub9bf.",
 heroMac:"\uF8FF Mac \u2014 \ub2e4\uc6b4\ub85c\ub4dc",heroIOS:"\uD83D\uDCF1 iPhone & iPad \u2014 \ub2e4\uc6b4\ub85c\ub4dc",
 trustA:"100% \uc628\ub514\ubc14\uc774\uc2a4",trustB:"\ub370\uc774\ud130 \uc218\uc9d1 \uc5c6\uc74c",trustC:"3\uc77c \ubb34\ub8cc \uccb4\ud5d8",
+imEye:"\u270D\uFE0F \uc785\ub825 \ubc29\ubc95",imH:"\ud504\ub86c\ud504\ud2b8\ub97c \ub9cc\ub4dc\ub294 5\uac00\uc9c0 \ubc29\ubc95",imSub:"\uc785\ub825, \ubd99\uc5ec\ub123\uae30, \uac00\uc838\uc624\uae30, \ub610\ub294 \ubc1b\uc544\uc4f0\uae30 \u2014 37\uac1c \uc5b8\uc5b4.",
+im1:"\uc785\ub825",im1p:"\uad6c\uc870\ud654\ub41c \ud544\ub4dc\ub85c \ud504\ub86c\ud504\ud2b8 \uc791\uc131.",im2:"\ubd99\uc5ec\ub123\uae30",im2p:"\ud14d\uc2a4\ud2b8\ub97c \ubd99\uc5ec\ub123\uc5b4 \ucd5c\uc801\ud654.",im3:"\uac00\uc838\uc624\uae30",im3p:"\ubb38\uc11c, \ub178\ud2b8, \ud30c\uc77c\uc744 \ubc14\ub85c \uac00\uc838\uc624\uae30.",im4:"\uc2a4\uce94",im4p:"\uc778\uc1c4\ubb3c, \uc2a4\ud06c\ub9b0\uc0f7, \uc190\uae00\uc528 \uc2a4\uce94.",im5:"\ubc1b\uc544\uc4f0\uae30",im5p:"\uc74c\uc131 \uc778\uc2dd\uc73c\ub85c \ud504\ub86c\ud504\ud2b8\ub97c \ub9d0\ud558\uc138\uc694.",
 featEye:"\u26A1 \uae30\ub2a5",featH:"\ub354 \ub098\uc740 \ud504\ub86c\ud504\ud2b8\ub97c \uc704\ud55c \ubaa8\ub4e0 \uac83",
 f1:"1,000+ \ud15c\ud50c\ub9bf",f2:"\uc74c\uc131 \uc785\ub825",f3:"\uc6d0\ud0ed \ubcf5\uc0ac",f4:"100% \ube44\uacf5\uac1c",f5:"37\uac1c \uc5b8\uc5b4",
 modEye:"\uD83E\uDD16 \ud638\ud658",modH:"9\uac1c AI \uc571\uacfc \ud638\ud658",
@@ -412,6 +420,8 @@ heroBadge:"\u5df2\u5728 Mac\u3001iPhone\u3001iPad \u4e0a\u63d0\u4f9b",heroH1a:"\
 heroSub:"\u544a\u8bc9 Poly-Glot \u4f60\u9700\u8981\u4ec0\u4e48\u3002\u7528\u4f60\u7684\u8bed\u8a00\u8f93\u5165\u6216\u8bf4\u8bdd\u3002\u9009\u62e9AI\uff0c\u6bd4\u8f83\u7b54\u6848\u3002\u652f\u631037\u79cd\u8bed\u8a00\uff0c1,000+\u6a21\u677f\u3002",
 heroMac:"\uF8FF Mac \u2014 \u4e0b\u8f7d",heroIOS:"\uD83D\uDCF1 iPhone & iPad \u2014 \u4e0b\u8f7d",
 trustA:"100%\u672c\u5730\u8fd0\u884c",trustB:"\u4e0d\u6536\u96c6\u6570\u636e",trustC:"3\u5929\u514d\u8d39\u8bd5\u7528",
+imEye:"\u270D\uFE0F \u8f93\u5165\u65b9\u5f0f",imH:"\u4e94\u79cd\u521b\u5efa\u63d0\u793a\u8bcd\u7684\u65b9\u5f0f",imSub:"\u8f93\u5165\u3001\u7c98\u8d34\u3001\u5bfc\u5165\u6216\u542c\u5199 \u2014 37\u79cd\u8bed\u8a00\u3002",
+im1:"\u8f93\u5165",im1p:"\u7528\u7ed3\u6784\u5316\u5b57\u6bb5\u4ece\u5934\u7f16\u5199\u63d0\u793a\u8bcd\u3002",im2:"\u7c98\u8d34",im2p:"\u7c98\u8d34\u6587\u672c\u5e76\u4f18\u5316\u4e3a\u63d0\u793a\u8bcd\u3002",im3:"\u5bfc\u5165",im3p:"\u76f4\u63a5\u5bfc\u5165\u6587\u6863\u3001\u7b14\u8bb0\u6216\u6587\u4ef6\u3002",im4:"\u626b\u63cf",im4p:"\u626b\u63cf\u5370\u5237\u6587\u672c\u3001\u622a\u56fe\u6216\u624b\u5199\u7b14\u8bb0\u3002",im5:"\u542c\u5199",im5p:"\u7528\u8bbe\u5907\u8bed\u97f3\u8bc6\u522b\u8bf4\u51fa\u63d0\u793a\u8bcd\u3002",
 featEye:"\u26A1 \u529f\u80fd",featH:"\u5199\u51fa\u66f4\u597d\u63d0\u793a\u8bcd\u6240\u9700\u7684\u4e00\u5207",
 f1:"1,000+\u6a21\u677f",f2:"\u8bed\u97f3\u8f93\u5165",f3:"\u4e00\u952e\u590d\u5236",f4:"100%\u79c1\u5bc6",f5:"37\u79cd\u8bed\u8a00",
 modEye:"\uD83E\uDD16 \u517c\u5bb9",modH:"\u652f\u63019\u4e2aAI\u5e94\u7528",
@@ -448,6 +458,7 @@ platLabel:"Disponibile su piattaforme Apple",platAvail:"Disponibile",
 ssEye:"\uD83D\uDCF8 Screenshot",ssH:"Guarda tu stesso.",ssSub:"Poly-Glot funziona nativamente su Mac, iPhone e iPad.",
 naEye:"\uD83D\uDCF2 App native",naH:"Uno spazio di lavoro IA. Ogni dispositivo Apple.",naSub:"Poly-Glot funziona nativamente su Mac, iPhone e iPad. Stessi modelli, stessa potenza.",
 imEye:"\u270D\uFE0F Metodi di input",imH:"Cinque modi per creare prompt",imSub:"Digita, incolla, importa o detta \u2014 in 37 lingue.",
+im1:"Digita",im1p:"Scrivi prompt da zero con campi strutturati.",im2:"Incolla",im2p:"Incolla testo e Poly-Glot lo struttura in un prompt.",im3:"Importa",im3p:"Importa documenti, note o file direttamente.",im4:"Scansiona",im4p:"Scansiona testo stampato, screenshot o note scritte a mano.",im5:"Dettatura",im5p:"Parla il tuo prompt con il riconoscimento vocale.",
 featEye:"\u26A1 Funzioni",featH:"Tutto per prompt migliori",featSub:"Perch\u00e9 pagare per una sola IA? Scegli. Confronta. Scegli la migliore.",
 f1:"1.000+ modelli",f1p:"Modelli per scrittura, codice, marketing, istruzione e altro.",
 f2:"Input vocale",f2p:"Parla invece di digitare. Riconoscimento vocale sul dispositivo.",
@@ -495,6 +506,8 @@ navSS:"Capturas",navFeat:"Recursos",navPrice1:"Pre\u00e7os",navDemo:"Demo",navPr
 heroBadge:"Dispon\u00edvel no Mac, iPhone e iPad",heroH1a:"Todos os idiomas. Um prompt.",heroH1b:"Todas as IAs \u2014 Compare os resultados.",
 heroSub:"Diga ao Poly-Glot o que voc\u00ea precisa. Digite ou fale no seu idioma. Escolha sua IA, compare, escolha a melhor. 1.000+ modelos em 37 idiomas.",
 trustA:"100% no dispositivo",trustB:"Sem coleta de dados",trustC:"Teste gr\u00e1tis 3 dias",
+imEye:"\u270D\uFE0F M\u00e9todos de entrada",imH:"Cinco formas de criar prompts",imSub:"Digite, cole, importe ou dite \u2014 em 37 idiomas.",
+im1:"Digitar",im1p:"Escreva prompts com campos estruturados.",im2:"Colar",im2p:"Cole texto e o Poly-Glot otimiza.",im3:"Importar",im3p:"Importe documentos, notas ou arquivos.",im4:"Escanear",im4p:"Escaneie texto impresso, capturas ou notas.",im5:"Ditar",im5p:"Fale seu prompt com reconhecimento de voz.",
 featEye:"\u26A1 Recursos",featH:"Tudo para prompts melhores",
 f1:"1.000+ modelos",f2:"Entrada de voz",f3:"Copiar com um toque",f4:"100% privado",f5:"37 idiomas",
 prEye:"\uD83D\uDCB0 Pre\u00e7os",prH:"Comece gr\u00e1tis.",
@@ -557,7 +570,7 @@ var curLang='EN';
 // ===== BUILD PICKER =====
 function buildPicker(){
 var wrap=document.createElement('div');wrap.id='pgGlobalLangPicker';
-wrap.innerHTML='<div id="pgGlobalLangBtn" title="Change language"><span id="pgGlobalFlag">\u{1F1FA}\u{1F1F8}</span><span id="pgGlobalCode">EN</span></div><div id="pgGlobalLangDD"></div>';
+wrap.innerHTML='<div id="pgGlobalLangBtn" title="Change language"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="pgGlobalFlag">\u{1F1FA}\u{1F1F8}</span><span id="pgGlobalCode">EN</span></div><div id="pgGlobalLangDD"></div>';
 document.body.appendChild(wrap);
 var dd=document.getElementById('pgGlobalLangDD');
 LANGS.forEach(function(L){
@@ -637,18 +650,19 @@ if(navCTA&&!navCTA.getAttribute('data-i18n'))navCTA.setAttribute('data-i18n','na
 // ===== CSS =====
 var css=document.createElement('style');
 css.textContent='#pgGlobalLangPicker{position:fixed;bottom:24px;left:24px;z-index:99998}'
-+'#pgGlobalLangBtn{display:flex;align-items:center;gap:6px;padding:8px 14px;background:linear-gradient(135deg,#141730,#1a1e3a);border:1px solid rgba(125,211,252,0.15);border-radius:30px;cursor:pointer;color:#e8ecf4;font-family:"Fira Code",monospace;font-size:0.78rem;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:transform 0.15s,box-shadow 0.15s}'
-+'#pgGlobalLangBtn:hover{transform:scale(1.05);box-shadow:0 6px 28px rgba(0,0,0,0.5)}'
-+'#pgGlobalFlag{font-size:1.1rem}#pgGlobalCode{color:#7dd3fc}'
-+'#pgGlobalLangDD{display:none;position:absolute;bottom:44px;left:0;width:240px;max-height:400px;overflow-y:auto;background:#141730;border:1px solid rgba(125,211,252,0.15);border-radius:14px;padding:6px;box-shadow:0 12px 48px rgba(0,0,0,0.7);scrollbar-width:thin;scrollbar-color:rgba(125,211,252,0.15) transparent}'
++'#pgGlobalLangBtn{display:flex;align-items:center;gap:6px;padding:6px 12px;background:var(--bg-surface,#161b22);border:1px solid var(--border,rgba(255,255,255,0.08));border-radius:8px;cursor:pointer;color:var(--text-muted,rgba(255,255,255,0.6));font-family:inherit;font-size:0.78rem;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:transform 0.15s,box-shadow 0.15s,border-color 0.15s;white-space:nowrap}'
++'#pgGlobalLangBtn:hover{transform:scale(1.05);box-shadow:0 6px 28px rgba(0,0,0,0.5);border-color:rgba(125,211,252,0.25)}'
++'#pgGlobalLangBtn svg{color:var(--text-muted,rgba(255,255,255,0.5))}'
++'#pgGlobalFlag{font-size:1rem}#pgGlobalCode{color:#7dd3fc;font-family:"Fira Code",monospace;font-weight:700}'
++'#pgGlobalLangDD{display:none;position:absolute;bottom:44px;left:0;width:260px;max-height:420px;overflow-y:auto;background:var(--bg-surface,#161b22);border:1px solid var(--border,rgba(255,255,255,0.08));border-radius:12px;padding:6px;box-shadow:0 12px 48px rgba(0,0,0,0.7);scrollbar-width:thin;scrollbar-color:rgba(125,211,252,0.15) transparent}'
 +'#pgGlobalLangDD::-webkit-scrollbar{width:4px}#pgGlobalLangDD::-webkit-scrollbar-thumb{background:rgba(125,211,252,0.15);border-radius:2px}'
 +'#pgGlobalLangDD.open{display:block}'
-+'.pgGlob-row{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;cursor:pointer;font-size:0.8rem;color:#e8ecf4;transition:background 0.12s;border:1px solid transparent}'
++'.pgGlob-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:0.82rem;color:#e8ecf4;transition:background 0.12s;border:1px solid transparent}'
 +'.pgGlob-row:hover{background:rgba(125,211,252,0.08)}'
-+'.pgGlob-row.active{background:rgba(124,58,237,0.2);border-color:rgba(124,58,237,0.3)}'
-+'.pgGlob-row .gf{font-size:1.1rem;width:22px;text-align:center}'
-+'.pgGlob-row .gc{font-size:0.65rem;font-weight:700;color:#7dd3fc;font-family:"Fira Code",monospace;width:28px}'
-+'.pgGlob-row .gn{flex:1;font-size:0.78rem}'
++'.pgGlob-row.active{background:rgba(124,58,237,0.15);border-color:rgba(124,58,237,0.3)}'
++'.pgGlob-row .gf{font-size:1.1rem;width:24px;text-align:center}'
++'.pgGlob-row .gc{font-size:0.65rem;font-weight:700;color:#7dd3fc;font-family:"Fira Code",monospace;width:30px}'
++'.pgGlob-row .gn{flex:1;font-size:0.8rem}'
 +'@media(max-width:480px){#pgGlobalLangPicker{bottom:16px;left:8px}}';
 document.head.appendChild(css);
 
