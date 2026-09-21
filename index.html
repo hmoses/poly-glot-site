@@ -2644,7 +2644,7 @@ function _demoStart() {
 
 </script>
 
-<!-- ===== POLY-GLOT MCP CHAT WIDGET v2 ===== -->
+<!-- ===== POLY-GLOT MCP CHAT WIDGET v3 — LOCALIZED ===== -->
 <div id="pgChat-bubble" onclick="pgChat.toggle()" title="Ask Poly-Glot AI anything">
   <img src="assets/img/icon-128.png" alt="Poly-Glot" id="pgChat-logo">
   <span id="pgChat-pulse"></span>
@@ -2659,11 +2659,15 @@ function _demoStart() {
       </div>
     </div>
     <div style="display:flex;gap:6px;align-items:center">
+      <button id="pgChat-lang-btn" onclick="var dd=document.getElementById('pgGlobalLangDD');if(dd)dd.classList.toggle('open')" aria-label="Change language" title="Change language">
+        <span id="pgChat-lang-flag" style="font-size:0.9rem;line-height:1">🌐</span>
+      </button>
       <button id="pgChat-clear" onclick="pgChat.clear()" aria-label="Clear chat" title="Clear chat &amp; start over">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
       </button>
       <button id="pgChat-close" onclick="pgChat.toggle()" aria-label="Close chat">&times;</button>
     </div>
+
   </div>
   <div id="pgChat-messages"></div>
   <div id="pgChat-input-area">
@@ -2717,13 +2721,15 @@ function _demoStart() {
   border-bottom: 1px solid rgba(125,211,252,0.08); flex-shrink: 0;
 }
 #pgChat-header-left { display: flex; align-items: center; gap: 10px; }
-#pgChat-close, #pgChat-clear {
+#pgChat-close, #pgChat-clear, #pgChat-lang-btn {
   background: rgba(255,255,255,0.08); border: none; color: #fff;
   width: 28px; height: 28px; border-radius: 50%; font-size: 1.1rem;
   cursor: pointer; display: flex; align-items: center; justify-content: center;
   transition: background 0.15s;
 }
-#pgChat-close:hover, #pgChat-clear:hover { background: rgba(255,255,255,0.18); }
+#pgChat-close:hover, #pgChat-clear:hover, #pgChat-lang-btn:hover { background: rgba(255,255,255,0.18); }
+
+
 
 /* Messages */
 #pgChat-messages {
@@ -3011,22 +3017,29 @@ function _demoStart() {
   // =============================================
   // WELCOME + SUGGESTIONS
   // =============================================
-  var welcomeMsg = "Hey there! 🦜 I'm the Poly-Glot AI Assistant. Ask me anything about Poly-Glot AI Workspace — features, pricing, supported AIs, languages, templates, MCP, or how to get started!";
+  function getWelcomeMsg() {
+    if (window._pgI18n) return window._pgI18n.gt('chatWel', window._pgI18n.curLang());
+    return "Hey there! 🦜 I'm the Poly-Glot AI Assistant. Ask me anything about Poly-Glot AI Workspace — features, pricing, supported AIs, languages, templates, MCP, or how to get started!";
+  }
 
-  var suggestionsHTML = '<div class="pgChat-suggestions">'
-    + '<button onclick="pgChat.ask(this.textContent)">What is Poly-Glot?</button>'
-    + '<button onclick="pgChat.ask(this.textContent)">How much does it cost?</button>'
-    + '<button onclick="pgChat.ask(this.textContent)">Which AIs does it support?</button>'
-    + '<button onclick="pgChat.ask(this.textContent)">How many templates?</button>'
-    + '<button onclick="pgChat.ask(this.textContent)">Is my data private?</button>'
-    + '<button onclick="pgChat.ask(this.textContent)">What devices work?</button>'
-    + '<button onclick="pgChat.ask(this.textContent)">How does it work?</button>'
-    + '<button onclick="pgChat.ask(this.textContent)">Free trial details</button>'
-    + '<button onclick="pgChat.ask(this.textContent)">Compare Mode?</button>'
-    + '<button onclick="pgChat.ask(this.textContent)">MCP setup guide</button>'
-    + '<button onclick="pgChat.ask(this.textContent)">What languages?</button>'
-    + '<button onclick="pgChat.ask(this.textContent)">How to download?</button>'
-    + '</div>';
+  function getSuggestionsHTML() {
+    var lang = (window._pgI18n) ? window._pgI18n.curLang() : 'EN';
+    var g = function(k) { return (window._pgI18n) ? window._pgI18n.gt(k, lang) : k; };
+    return '<div class="pgChat-suggestions">'
+      + '<button onclick="pgChat.ask(this.textContent)">' + g('cs1') + '</button>'
+      + '<button onclick="pgChat.ask(this.textContent)">' + g('cs2') + '</button>'
+      + '<button onclick="pgChat.ask(this.textContent)">' + g('cs3') + '</button>'
+      + '<button onclick="pgChat.ask(this.textContent)">' + g('cs4') + '</button>'
+      + '<button onclick="pgChat.ask(this.textContent)">' + g('cs5') + '</button>'
+      + '<button onclick="pgChat.ask(this.textContent)">' + g('cs6') + '</button>'
+      + '<button onclick="pgChat.ask(this.textContent)">' + g('cs7') + '</button>'
+      + '<button onclick="pgChat.ask(this.textContent)">' + g('cs8') + '</button>'
+      + '<button onclick="pgChat.ask(this.textContent)">' + g('cs9') + '</button>'
+      + '<button onclick="pgChat.ask(this.textContent)">' + g('cs10') + '</button>'
+      + '<button onclick="pgChat.ask(this.textContent)">' + g('cs11') + '</button>'
+      + '<button onclick="pgChat.ask(this.textContent)">' + g('cs12') + '</button>'
+      + '</div>';
+  }
 
   function renderWelcome() {
     var msgs = document.getElementById('pgChat-messages');
@@ -3034,10 +3047,10 @@ function _demoStart() {
     msgs.innerHTML = '';
     var botDiv = document.createElement('div');
     botDiv.className = 'pgChat-msg bot';
-    botDiv.innerHTML = '<div class="pgChat-avatar"><img src="assets/img/icon-128.png" alt=""></div><div class="pgChat-text">' + renderMd(welcomeMsg) + '</div>';
+    botDiv.innerHTML = '<div class="pgChat-avatar"><img src="assets/img/icon-128.png" alt=""></div><div class="pgChat-text">' + renderMd(getWelcomeMsg()) + '</div>';
     msgs.appendChild(botDiv);
     var sugDiv = document.createElement('div');
-    sugDiv.innerHTML = suggestionsHTML;
+    sugDiv.innerHTML = getSuggestionsHTML();
     msgs.appendChild(sugDiv);
   }
 
@@ -3161,7 +3174,10 @@ function _demoStart() {
   }
 })();
 </script>
-<!-- ===== END MCP CHAT WIDGET v2 ===== -->
+<!-- ===== END MCP CHAT WIDGET v3 ===== -->
+
+<!-- Global i18n — 37 languages, same flags as the app -->
+<script src="assets/js/i18n.js"></script>
 
 </body>
 </html>
