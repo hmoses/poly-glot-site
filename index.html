@@ -2644,7 +2644,7 @@ function _demoStart() {
 
 </script>
 
-<!-- ===== POLY-GLOT MCP CHAT WIDGET ===== -->
+<!-- ===== POLY-GLOT MCP CHAT WIDGET v2 ===== -->
 <div id="pgChat-bubble" onclick="pgChat.toggle()" title="Ask Poly-Glot AI anything">
   <img src="assets/img/icon-128.png" alt="Poly-Glot" id="pgChat-logo">
   <span id="pgChat-pulse"></span>
@@ -2658,25 +2658,17 @@ function _demoStart() {
         <div style="font-size:0.65rem;color:rgba(255,255,255,0.45)">Ask me anything about the product</div>
       </div>
     </div>
-    <button id="pgChat-close" onclick="pgChat.toggle()" aria-label="Close chat">&times;</button>
-  </div>
-  <div id="pgChat-messages">
-    <div class="pgChat-msg bot">
-      <div class="pgChat-avatar"><img src="assets/img/icon-128.png" alt=""></div>
-      <div class="pgChat-text">Hey there! 🦜 I'm the Poly-Glot AI Assistant. Ask me anything about Poly-Glot AI Workspace — features, pricing, supported AIs, languages, templates, or how to get started!</div>
-    </div>
-    <div id="pgChat-suggestions">
-      <button onclick="pgChat.ask(this.textContent)">What is Poly-Glot?</button>
-      <button onclick="pgChat.ask(this.textContent)">How much does it cost?</button>
-      <button onclick="pgChat.ask(this.textContent)">Which AIs does it support?</button>
-      <button onclick="pgChat.ask(this.textContent)">How many templates?</button>
-      <button onclick="pgChat.ask(this.textContent)">Is my data private?</button>
-      <button onclick="pgChat.ask(this.textContent)">What devices does it work on?</button>
+    <div style="display:flex;gap:6px;align-items:center">
+      <button id="pgChat-clear" onclick="pgChat.clear()" aria-label="Clear chat" title="Clear chat &amp; start over">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+      </button>
+      <button id="pgChat-close" onclick="pgChat.toggle()" aria-label="Close chat">&times;</button>
     </div>
   </div>
+  <div id="pgChat-messages"></div>
   <div id="pgChat-input-area">
-    <input id="pgChat-input" type="text" placeholder="Ask a question..." autocomplete="off" onkeydown="if(event.key==='Enter')pgChat.send()">
-    <button id="pgChat-send" onclick="pgChat.send()">
+    <input id="pgChat-input" type="text" placeholder="Ask a question..." autocomplete="off" maxlength="500">
+    <button id="pgChat-send" onclick="pgChat.send()" aria-label="Send message">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
     </button>
   </div>
@@ -2697,13 +2689,9 @@ function _demoStart() {
 #pgChat-pulse {
   position: absolute; width: 100%; height: 100%; border-radius: 50%;
   border: 3px solid rgba(124,58,237,0.6);
-  animation: pgPulse 2s infinite;
-  pointer-events: none;
+  animation: pgPulse 2s infinite; pointer-events: none;
 }
-@keyframes pgPulse {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.6); opacity: 0; }
-}
+@keyframes pgPulse { 0%{transform:scale(1);opacity:1} 100%{transform:scale(1.6);opacity:0} }
 
 /* ===== CHAT WINDOW ===== */
 #pgChat-window {
@@ -2719,27 +2707,23 @@ function _demoStart() {
   animation: pgSlideUp 0.3s ease;
 }
 #pgChat-window.open { display: flex; }
-@keyframes pgSlideUp {
-  from { opacity: 0; transform: translateY(20px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
+@keyframes pgSlideUp { from{opacity:0;transform:translateY(20px) scale(0.95)} to{opacity:1;transform:translateY(0) scale(1)} }
 
 /* Header */
 #pgChat-header {
   display: flex; align-items: center; justify-content: space-between;
   padding: 14px 16px;
   background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(37,99,235,0.2));
-  border-bottom: 1px solid rgba(125,211,252,0.08);
-  flex-shrink: 0;
+  border-bottom: 1px solid rgba(125,211,252,0.08); flex-shrink: 0;
 }
 #pgChat-header-left { display: flex; align-items: center; gap: 10px; }
-#pgChat-close {
+#pgChat-close, #pgChat-clear {
   background: rgba(255,255,255,0.08); border: none; color: #fff;
   width: 28px; height: 28px; border-radius: 50%; font-size: 1.1rem;
   cursor: pointer; display: flex; align-items: center; justify-content: center;
   transition: background 0.15s;
 }
-#pgChat-close:hover { background: rgba(255,255,255,0.15); }
+#pgChat-close:hover, #pgChat-clear:hover { background: rgba(255,255,255,0.18); }
 
 /* Messages */
 #pgChat-messages {
@@ -2756,53 +2740,27 @@ function _demoStart() {
 .pgChat-avatar { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; overflow: hidden; }
 .pgChat-avatar img { width: 100%; height: 100%; }
 .pgChat-msg.user .pgChat-avatar { background: linear-gradient(135deg, #7c3aed, #2563eb); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; }
-.pgChat-text {
-  padding: 10px 14px; border-radius: 16px;
-  font-size: 0.85rem; line-height: 1.55; color: #e8ecf4;
-}
-.pgChat-msg.bot .pgChat-text {
-  background: #141730;
-  border: 1px solid rgba(125,211,252,0.08);
-  border-top-left-radius: 4px;
-}
-.pgChat-msg.user .pgChat-text {
-  background: linear-gradient(135deg, #7c3aed, #2563eb);
-  color: #fff;
-  border-top-right-radius: 4px;
-}
-@keyframes pgFadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.pgChat-text { padding: 10px 14px; border-radius: 16px; font-size: 0.85rem; line-height: 1.55; color: #e8ecf4; word-break: break-word; overflow-wrap: break-word; }
+.pgChat-msg.bot .pgChat-text { background: #141730; border: 1px solid rgba(125,211,252,0.08); border-top-left-radius: 4px; }
+.pgChat-msg.user .pgChat-text { background: linear-gradient(135deg, #7c3aed, #2563eb); color: #fff; border-top-right-radius: 4px; }
+@keyframes pgFadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 
-/* Typing indicator */
+/* Typing */
 .pgChat-typing { display: flex; gap: 4px; padding: 12px 14px; }
-.pgChat-typing span {
-  width: 7px; height: 7px; border-radius: 50%; background: #7dd3fc;
-  animation: pgBounce 1.2s infinite;
-}
+.pgChat-typing span { width: 7px; height: 7px; border-radius: 50%; background: #7dd3fc; animation: pgBounce 1.2s infinite; }
 .pgChat-typing span:nth-child(2) { animation-delay: 0.2s; }
 .pgChat-typing span:nth-child(3) { animation-delay: 0.4s; }
-@keyframes pgBounce {
-  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-  40% { transform: scale(1); opacity: 1; }
-}
+@keyframes pgBounce { 0%,80%,100%{transform:scale(0.6);opacity:0.4} 40%{transform:scale(1);opacity:1} }
 
 /* Suggestions */
-#pgChat-suggestions {
-  display: flex; flex-wrap: wrap; gap: 6px; padding: 4px 0;
-}
-#pgChat-suggestions button {
-  background: rgba(125,211,252,0.08);
-  border: 1px solid rgba(125,211,252,0.15);
+.pgChat-suggestions { display: flex; flex-wrap: wrap; gap: 6px; padding: 4px 0; }
+.pgChat-suggestions button {
+  background: rgba(125,211,252,0.08); border: 1px solid rgba(125,211,252,0.15);
   color: #7dd3fc; font-size: 0.72rem; padding: 6px 12px;
   border-radius: 20px; cursor: pointer; font-family: inherit;
   transition: background 0.15s, border-color 0.15s;
 }
-#pgChat-suggestions button:hover {
-  background: rgba(125,211,252,0.15);
-  border-color: rgba(125,211,252,0.3);
-}
+.pgChat-suggestions button:hover { background: rgba(125,211,252,0.15); border-color: rgba(125,211,252,0.3); }
 
 /* Input */
 #pgChat-input-area {
@@ -2823,18 +2781,13 @@ function _demoStart() {
   background: linear-gradient(135deg, #7c3aed, #2563eb);
   border: none; color: #fff; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  transition: transform 0.15s, box-shadow 0.15s;
-  flex-shrink: 0;
+  transition: transform 0.15s, box-shadow 0.15s; flex-shrink: 0;
 }
 #pgChat-send:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(124,58,237,0.4); }
 
 /* Mobile */
 @media (max-width: 480px) {
-  #pgChat-window {
-    width: calc(100vw - 16px); right: 8px; bottom: 8px;
-    max-height: calc(100vh - 80px); height: calc(100vh - 80px);
-    border-radius: 16px;
-  }
+  #pgChat-window { width: calc(100vw - 16px); right: 8px; bottom: 8px; max-height: calc(100vh - 80px); height: calc(100vh - 80px); border-radius: 16px; }
   #pgChat-bubble { bottom: 16px; right: 16px; width: 56px; height: 56px; }
   #pgChat-logo { width: 34px; height: 34px; }
 }
@@ -2842,139 +2795,331 @@ function _demoStart() {
 
 <script>
 (function(){
-  // ===== POLY-GLOT MCP KNOWLEDGE BASE =====
+  "use strict";
+
+  // =============================================
+  // SECURITY: Sanitize all user input — strip HTML/script tags
+  // =============================================
+  function sanitize(str) {
+    if (typeof str !== 'string') return '';
+    // Truncate to max length
+    str = str.slice(0, 500);
+    // Create a text node to auto-escape HTML entities
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
+  // SECURITY: Rate limiter — max 2 messages per second
+  var _lastSend = 0;
+  var _sendCount = 0;
+  var _sendWindow = 0;
+  function rateLimited() {
+    var now = Date.now();
+    // Reset window every 10 seconds
+    if (now - _sendWindow > 10000) { _sendCount = 0; _sendWindow = now; }
+    _sendCount++;
+    // Block if more than 15 messages in 10 seconds
+    if (_sendCount > 15) return true;
+    // Block if less than 400ms since last send
+    if (now - _lastSend < 400) return true;
+    _lastSend = now;
+    return false;
+  }
+
+  // SECURITY: Validate URLs in markdown rendering — only allow safe protocols
+  function isSafeUrl(url) {
+    try {
+      var u = new URL(url, window.location.origin);
+      return u.protocol === 'https:' || u.protocol === 'http:';
+    } catch(e) { return false; }
+  }
+
+  // =============================================
+  // MEGA KNOWLEDGE BASE — ALL PRODUCT INFO
+  // =============================================
   var KB = {
-    "what is poly-glot": "**Poly-Glot AI Workspace** is a native app for iPhone, iPad, and Mac that lets you ask any AI — ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat & DuckDuckGo AI — all from one place.\n\n🦜 The entire UI is fully localized in **38 languages**. Type or speak naturally, use **1,000+ ready-to-use templates**, and compare answers from multiple AIs side by side.\n\nNo API keys needed — everything runs 100% on your device.",
 
-    "how much": "**Pricing is simple:**\n\n🆓 **Free Trial** — $0 for 3 days\n• 25 Featured Templates\n• Voice Input\n• One-Tap Copy\n• 100% On-Device\n\n💜 **Pro Monthly** — $9.99/mo\n• All 1,000+ Templates\n• Voice Input & One-Tap Copy\n• Priority Updates\n• All Future Templates\n\n💚 **Pro Annual** — $79.99/yr (Save 33%)\n• Everything in Pro\n• Best Value at $6.67/mo effective\n• All Future Updates\n\n3-day free trial included · Cancel anytime via Apple ID settings.",
+    "what is poly-glot": "**Poly-Glot AI Workspace** is a prompt-building and AI-routing app for iPhone, iPad, and Mac.\n\nYou type or speak a question — or choose from **1,000+ expert prompt templates** — then send it to any of **9 AI apps**: ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, or DuckDuckGo AI.\n\n🦜 The entire UI is fully localized in **37 languages**. Type or speak naturally, use templates, and compare answers from multiple AIs side by side.\n\n**Key facts:**\n- No API keys needed\n- 100% on-device privacy\n- 3-day free trial\n- $9.99/mo or $79.99/yr\n- Available on iPhone, iPad, and Mac\n- Android coming soon",
 
-    "which ai": "Poly-Glot works with **9 AI apps**:\n\n🟢 **ChatGPT** (OpenAI)\n🟠 **Claude** (Anthropic)\n🔵 **Gemini** (Google)\n🟡 **Grok** (xAI)\n🔵 **Perplexity** (Perplexity AI)\n🔴 **Copilot** (Microsoft)\n🟠 **Mistral** (Mistral AI)\n🟡 **HuggingChat** (Hugging Face)\n🔴 **DuckDuckGo AI** (DuckDuckGo)\n\nYour prompt is automatically copied to your clipboard and the AI opens instantly — some even auto-fill your prompt!",
+    "how much": "**Pricing:**\n\n🆓 **3-Day Free Trial** — $0\nFull access to everything:\n- All 1,000+ templates\n- Ask Any AI\n- Compare Mode\n- Voice Input, Scan, Import\n- 37 output languages\n- Prompt History and Favorites\n\n**After trial expires, free users get:**\n- 1 free prompt per day via Ask Any AI (single AI only)\n- 1 free template send per day (single AI only)\n- No Compare Mode\n\n💜 **Pro Monthly** — $9.99/mo\n- Unlimited sends to any AI\n- All 1,000+ templates\n- Compare Mode\n- All input methods\n- All future templates\n\n💚 **Pro Annual** — $79.99/yr (Save 33%)\n- Everything in Pro\n- $6.67/mo effective\n- Best value\n\nCancel anytime via Apple ID settings. No commitment.",
 
-    "template": "Poly-Glot AI Workspace includes **1,000+ prompt templates** organized in **40+ categories** including:\n\n💰 Money · 💼 Career · 📈 Marketing · ⚖️ Legal · 💻 Coding · 🎓 Study · ✉️ Email · 🏠 Real Estate · 🤝 Negotiation · and many more.\n\nExamples: Side Hustle Finder, Resume Bullet Writer, Viral Post Generator, Contract Red Flag Scanner, Debug My Code, Exam Prep Coach, Cold Email That Gets Replies, Salary Negotiation Script, and hundreds more.\n\nFree trial gives you 25 featured templates. Pro unlocks all 1,000+ plus all future templates.",
+    "which ai": "Poly-Glot works with **9 AI apps**:\n\n**Auto-fill (prompt appears automatically):**\n🟢 **ChatGPT** (OpenAI) — prompt auto-filled\n🔵 **Perplexity** (Perplexity AI) — prompt auto-filled\n🟡 **Grok** (xAI) — prompt auto-filled\n\n**Clipboard copy (paste to send):**\n🟠 **Claude** (Anthropic) — paste your prompt\n🔵 **Gemini** (Google) — paste your prompt\n🔴 **Copilot** (Microsoft) — paste your prompt\n🟠 **Mistral** (Mistral AI) — paste your prompt\n🟡 **HuggingChat** (Hugging Face) — paste your prompt\n🔴 **DuckDuckGo AI** (DuckDuckGo) — paste your prompt\n\nYour prompt is automatically copied to your clipboard and the AI opens instantly!",
 
-    "device": "Poly-Glot AI Workspace runs natively on **all Apple devices**:\n\n🖥️ **Mac** — Available now on the Mac App Store\n📱 **iPhone** — Available on the App Store\n📱 **iPad** — Available on the App Store\n🤖 **Android** — Coming soon!\n\nSame templates, same power, wherever you work.",
+    "template": "Poly-Glot includes **1,000+ prompt templates** in **40+ categories**:\n\n💰 **Money** — Side Hustle Finder, Passive Income Blueprint, Savings Challenge, Negotiate Any Bill, Freelance Rate Calculator\n💼 **Career** — Resume Bullet Writer, Salary Negotiation Script, Interview Prep Coach\n📈 **Marketing** — Viral Post Generator, LinkedIn Post Writer, Content Calendar\n⚖️ **Legal** — Contract Red Flag Scanner, Legal Letter Drafter\n💻 **Coding** — Debug My Code (Python, JavaScript, Swift, SQL, 20+ languages)\n🎓 **Study** — Exam Prep Coach, Flashcard Generator\n✉️ **Email** — Cold Email That Gets Replies, Professional Email Writer\n🏠 **Real Estate** — Property Listing Writer, Rental Income Analyzer\n🤝 **Negotiation** — Salary Scripts, Deal Negotiator\n🏥 **Medical** — Symptom Checker, Health Research\n💵 **Financial** — Budget Planner, Investment Analyzer\n🎬 **Content** — YouTube Channel Planner, Etsy Shop Launcher\n\n...and many more! New templates added regularly.\n\nDuring trial: full access to all templates.\nAfter trial: free users get 1 free template send/day.\nPro: unlimited access to everything.",
 
-    "private": "**Yes, 100% private.** 🔒\n\nPoly-Glot AI Workspace runs entirely on your device. We do **not** collect, store, or transmit any personal data, prompts, or usage information.\n\n• No analytics\n• No tracking\n• No servers\n• Your prompts never leave your device\n\nYour privacy is absolute.",
+    "template categories": "**All 40+ template categories include:**\n\n💰 Money · 💼 Career · 📈 Marketing · ⚖️ Legal · 💻 Coding · 🎓 Study · ✉️ Email · 🏠 Real Estate · 🤝 Negotiation · 🏥 Medical · 💵 Financial · 🎬 Content Creation · 📱 Social Media · 🎨 Creative Writing · 📊 Business · 🔬 Research · 🏋️ Health & Fitness · 🍳 Food & Cooking · 🧳 Travel · 🎮 Gaming · 📚 Education · 🔧 DIY & Home · 🚗 Automotive · 🐾 Pets · 👨‍👩‍👧 Parenting · 💅 Beauty & Fashion · 🎵 Music · 📸 Photography · 🧘 Mental Health · 🌱 Sustainability · and more\n\nEvery template works in all 37 languages!",
 
-    "compare": "**Compare Mode** lets you send the same prompt to multiple AI models at once — like ChatGPT and Claude — and see both responses side by side.\n\n🔀 Pick the best answer instead of guessing which AI to use. Compare Mode is **free for all users**.\n\nJust type your prompt, select multiple AIs, tap Send, and compare the results!",
+    "device": "Poly-Glot AI Workspace runs natively on **all Apple devices**:\n\n🖥️ **Mac** — Available now on the Mac App Store\n📱 **iPhone** — Available on the App Store\n📱 **iPad** — Available on the App Store\n🤖 **Android** — Coming soon!\n\nSame templates, same power, wherever you work. Universal purchase — buy once, use on all your Apple devices.",
 
-    "voice": "Poly-Glot supports **5 input methods**:\n\n⌨️ **Type** — Write your prompt from scratch\n📋 **Paste** — Paste existing text\n📄 **Import** — Import documents or files\n📷 **Scan** — Scan printed or handwritten text with your camera\n🎤 **Dictate** — Speak your prompt with on-device speech recognition\n\nThe entire UI is localized in 38 languages, so you can dictate in your native language!",
+    "private": "**Yes, 100% private.** 🔒\n\nPoly-Glot AI Workspace runs entirely on your device.\n\n- We do **not** collect, store, or transmit any personal information\n- The app operates **entirely on-device**\n- No user data, prompts, or usage information is sent to any server\n- No analytics, no tracking, no third-party services\n- No advertising\n- Your prompts **never** leave your device\n- All payment processing is handled exclusively by Apple\n- We do not receive or store any payment information\n- Does not knowingly collect information from children under 13\n\n**Privacy Policy**: [View Full Policy](https://hmoses.github.io/poly-glot-site/privacy.html)\n\nYour data is yours. Period.",
 
-    "language": "The entire UI is **fully localized in 38 languages** — not just prompts, but every button, label, menu, and template:\n\n🇺🇸 English · 🇪🇸 Spanish · 🇯🇵 Japanese · 🇸🇦 Arabic · 🇮🇳 Hindi · 🇫🇷 French · 🇩🇪 German · 🇨🇳 Chinese · 🇰🇷 Korean · 🇧🇷 Portuguese · 🇷🇺 Russian · 🇮🇹 Italian · 🇳🇱 Dutch · 🇵🇱 Polish · 🇹🇷 Turkish · 🇹🇭 Thai · 🇻🇳 Vietnamese · 🇺🇦 Ukrainian · and 20 more!\n\nThe whole app speaks your language.",
+    "compare": "**Compare Mode** lets you send the same prompt to **2-9 AI providers** simultaneously!\n\n🔀 **How it works:**\n1. Type or speak your prompt\n2. Toggle Compare Mode ON\n3. Select which AIs to compare (ChatGPT, Claude, Gemini, Grok, etc.)\n4. Tap Send\n5. Each AI opens with your prompt\n6. Compare responses side by side\n\n**During trial:** Compare Mode included free\n**After trial:** Compare Mode requires Pro subscription\n**Pro users:** Unlimited Compare Mode\n\nStop guessing which AI is best — see for yourself!",
 
-    "cancel": "Yes! All subscriptions are managed through Apple and can be **cancelled anytime** from your Apple ID settings.\n\nNo questions asked, no hoops to jump through. Go to Settings → Apple ID → Subscriptions on your device.",
+    "voice": "Poly-Glot supports **5 input methods**:\n\n⌨️ **Type** — Write your prompt from scratch\n📋 **Paste** — Paste existing text\n📄 **Import** — Import documents or files\n📷 **Scan** — Scan printed or handwritten text with your camera (iOS)\n🎤 **Dictate** — Speak your prompt with on-device speech recognition\n\n**Platform differences:**\n- **iOS (iPhone/iPad):** Type, Paste, Import, Photo Scan, Dictate\n- **macOS (Mac):** Type, Paste, Import, Dictate\n\nAll input methods work in all 37 languages!",
 
-    "download": "You can download Poly-Glot AI Workspace from the **Apple App Store**:\n\n🖥️ **Mac**: [Download on Mac App Store](https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12)\n📱 **iPhone/iPad**: [Download on App Store](https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285)\n\nThe 3-day free trial starts automatically!",
+    "language": "**Two independent language settings:**\n\n🌐 **App Language** (37 languages)\nChanges the entire Poly-Glot interface — menus, buttons, template names, everything:\n\nEnglish · Espanol · Francais · Deutsch · Italiano · Portugues · Japanese · Korean · Chinese (Simplified) · Chinese (Traditional) · Arabic · Hindi · Turkish · Russian · Polish · Dutch · Swedish · Danish · Norwegian · Finnish · Czech · Hungarian · Romanian · Ukrainian · Greek · Hebrew · Thai · Vietnamese · Indonesian · Malay · Filipino · Catalan · Croatian · Slovak · Bulgarian · Lithuanian · Latvian · Estonian\n\n🌍 **AI Output Language**\nTells the AI which language to respond in. You can write in English and have the AI respond in Japanese — or any combination!\n\nEvery template works in every language.",
 
-    "mcp": "Poly-Glot AI Workspace supports **MCP (Model Context Protocol)** — an open standard for connecting AI assistants to external tools and data sources.\n\nWith MCP server support, Poly-Glot can integrate with developer workflows, enabling advanced automation and prompt management across your tools.",
+    "cancel": "**Yes — cancel anytime!**\n\nAll subscriptions are managed through Apple:\n\n📱 **On iPhone/iPad:** Settings → [Your Name] → Subscriptions → Poly-Glot AI Workspace → Cancel\n🖥️ **On Mac:** App Store → Account → Subscriptions → Manage → Cancel\n\n- Cancel at least 24 hours before billing period ends\n- No questions asked\n- No hoops to jump through\n- After cancellation, you keep access until the end of your current billing period\n- You can always re-subscribe later",
 
-    "trial": "New users get a **3-day free trial** with access to:\n\n✅ 25 Featured Templates\n✅ Voice Input\n✅ One-Tap Copy\n✅ 100% On-Device Privacy\n✅ Compare Mode\n\nAfter 3 days, upgrade to Pro ($9.99/mo or $79.99/yr) to unlock all 1,000+ templates and all future content. Cancel anytime!",
+    "download": "**Download Poly-Glot AI Workspace:**\n\n📱 **iPhone & iPad**: [Download on App Store](https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285)\n🖥️ **Mac**: [Download on Mac App Store](https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12)\n\nThe 3-day free trial starts when you first tap Send.\n\n🤖 **Android**: Coming soon!\n\n**App Store ID:** 6804499285",
 
-    "api": "Poly-Glot does **not** require any API keys! 🎉\n\nIt works by opening the AI apps' free tiers directly. Your prompt is automatically copied to your clipboard and the selected AI opens instantly. Some AIs even auto-fill your prompt.\n\nThis means you don't need to pay for ChatGPT Plus, Claude Pro, Gemini Advanced, or Copilot Pro separately. One app, all the top AIs, using their free tiers.",
+    "mcp": "**MCP (Model Context Protocol)** lets AI assistants like Claude and ChatGPT connect directly to Poly-Glot's template library.\n\n🔌 **MCP Endpoint:**\nhttps://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp\n\n**Available MCP Tools:**\n- **search_templates** — Search 1,000+ templates by keyword, category, or use case\n- **get_template** — Get full template details with all variables\n- **build_prompt** — Fill in a template and get a ready-to-use prompt\n- **prepare_compare** — Stage a prompt across 2-9 AI providers for comparison\n- **get_language_options** — List all 35 supported languages\n- **get_subscription_status** — Check your current plan\n- **open_workspace** — Launch the full Poly-Glot workspace\n\n**Works with:** Claude Desktop, Claude.ai, ChatGPT (when MCP support goes live)\n\n**Setup guide:** [Connect to Claude & ChatGPT](https://hmoses.github.io/poly-glot-site/connect.html)",
 
-    "support": "For help with Poly-Glot AI Workspace, you can:\n\n📧 **Email**: hwmoses2@icloud.com\n🌐 **Website**: https://poly-glot.ai\n📋 **Support page**: https://hmoses.github.io/poly-glot-site/support.html\n\nWe're happy to help!",
+    "mcp setup": "**How to connect Poly-Glot via MCP:**\n\n**Claude Desktop (Recommended):**\n1. Click profile icon → Settings → MCP Connectors\n2. Click 'Add MCP Connector'\n3. Paste: https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp\n4. Name it 'Poly-Glot'\n5. Start using it!\n\n**Claude.ai (Web):**\n1. Go to claude.ai/settings\n2. Navigate to Connectors or MCP section\n3. Add connector with the same URL\n4. Approve tool access when prompted\n\n**ChatGPT:** MCP support coming soon!\n\n**Try saying:** 'Search Poly-Glot for email templates' or 'Build me a LinkedIn post prompt'\n\n**Full guide:** [Connect Page](https://hmoses.github.io/poly-glot-site/connect.html)",
 
-    "who made": "Poly-Glot AI Workspace is created by **Harold Moses II**, a technical writer and developer with 10+ years of experience at companies like PlayStation, Airbnb, Block/Square/CashApp, and NVIDIA.\n\nThe entire product ecosystem — web app, iOS app, macOS app, MCP server, and more — is built and maintained as an indie project.",
+    "trial": "**3-Day Free Trial — Full Access!**\n\nDuring your trial you get:\n- Ask Any AI — send to any of 9 AIs\n- All 1,000+ templates in 40+ categories\n- Compare Mode — compare 2-9 AIs at once\n- All input methods (type, paste, import, scan, dictate)\n- 37 output languages\n- Prompt History and Favorites\n\n**Important details:**\n- Trial starts when you first tap Send\n- Tied to your Apple ID\n- Cannot be reset by reinstalling, offloading data, or switching devices\n- One trial per Apple ID\n\n**After trial expires (free tier):**\n- 1 free prompt per day via Ask Any AI (single AI, no Compare)\n- 1 free template send per day (single AI, no Compare)\n- Daily free send resets at midnight\n\nUpgrade to Pro anytime: $9.99/mo or $79.99/yr",
 
-    "safe": "Absolutely! Poly-Glot AI Workspace is:\n\n✅ **100% on-device** — no data sent anywhere\n✅ **No analytics or tracking** whatsoever\n✅ **No servers** — your prompts stay on your device\n✅ **App Store reviewed** by Apple\n✅ **Privacy policy**: https://poly-glot.ai/privacy.html\n\nYour data is yours. Period.",
+    "after trial": "**What happens after the 3-day trial?**\n\nFree users can still:\n- Send **1 free prompt per day** using Ask Any AI (single AI only)\n- Send **1 free prompt per day** using any FREE template (single AI only)\n- Daily reset at midnight\n- No Compare Mode on free tier\n\n**To unlock everything:**\n- Pro Monthly: $9.99/mo\n- Pro Annual: $79.99/yr (save 33%)\n\nPro includes:\n- Unlimited sends to any AI\n- All 1,000+ templates (including 900+ Pro templates)\n- Compare Mode\n- All future templates and updates",
 
-    "feature": "**Key features of Poly-Glot AI Workspace:**\n\n📝 1,000+ Prompt Templates in 40+ categories\n🎤 Voice Input (on-device speech recognition)\n📋 One-Tap Copy to any AI\n🔀 Compare Mode — ask multiple AIs, compare answers\n🌍 Fully Localized UI in 38 Languages\n🔒 100% Private — runs entirely on your device\n📷 Camera Scan — scan printed/handwritten text\n📄 Document Import\n🤖 MCP Server Support\n📱 Works on iPhone, iPad, and Mac\n\nAll this for $9.99/mo or $79.99/yr with a 3-day free trial!",
+    "api": "**No API keys needed!** 🎉\n\nPoly-Glot works by routing your prompts to AI apps' **free web tiers** directly:\n\n1. You type/speak your prompt\n2. Poly-Glot copies it to your clipboard\n3. The selected AI opens instantly\n4. Some AIs (ChatGPT, Perplexity, Grok) auto-fill your prompt\n5. Others require a quick paste\n\nYou **don't need** to pay for:\n- ChatGPT Plus ($20/mo)\n- Claude Pro ($20/mo)\n- Gemini Advanced ($20/mo)\n- Copilot Pro ($20/mo)\n\nThat's $80+/mo saved. Poly-Glot gives you all of them for $9.99/mo.",
 
-    "differ": "**Why Poly-Glot vs paying for individual AI subscriptions?**\n\n❌ ChatGPT Plus: $20/mo\n❌ Claude Pro: $20/mo\n❌ Gemini Advanced: $20/mo\n❌ Copilot Pro: $20/mo\n💸 Total: $80+/mo\n\n✅ **Poly-Glot**: $9.99/mo (or $6.67/mo annual)\n\nOne app. All the top AIs. Compare answers. No extra subscriptions needed. Poly-Glot uses their free tiers so you get access to all of them without paying for each separately.",
+    "how does it work": "**How Poly-Glot works — step by step:**\n\n1. **Input your prompt** — Type, paste, import a file, scan text with camera, or dictate\n2. **Choose a template** (optional) — Pick from 1,000+ expert templates or write your own\n3. **Select your AI(s)** — Pick one AI or toggle Compare Mode for multiple\n4. **Set output language** — Choose which language the AI responds in\n5. **Tap Send** — Your prompt is copied to clipboard and the AI opens\n6. **For auto-fill AIs** (ChatGPT, Perplexity, Grok): Prompt appears automatically\n7. **For paste AIs** (Claude, Gemini, etc.): Just paste and send\n8. **Compare responses** — If using Compare Mode, each AI opens in sequence\n\nEverything happens on your device. No data sent to our servers.",
 
-    "android": "Android support is **coming soon**! 🤖\n\nThe Android version is currently in development. Check back at https://poly-glot.ai for updates. In the meantime, Poly-Glot is available on iPhone, iPad, and Mac.",
+    "support": "**Need help? Contact us:**\n\n📧 **Email:** hwmoses2@icloud.com\n🌐 **Website:** https://poly-glot.ai\n📋 **Support:** [Support Page](https://hmoses.github.io/poly-glot-site/support.html)\n🔒 **Privacy:** [Privacy Policy](https://hmoses.github.io/poly-glot-site/privacy.html)\n📜 **Terms:** [Terms of Use](https://hmoses.github.io/poly-glot-site/terms.html)\n🔌 **MCP Setup:** [Connect Guide](https://hmoses.github.io/poly-glot-site/connect.html)\n\nWe respond to all emails within 24 hours!",
 
-    "web": "Poly-Glot AI Workspace is available as a **native app** on iPhone, iPad, and Mac via the Apple App Store.\n\nThe product website is at **https://poly-glot.ai** and the landing page is at **https://hmoses.github.io/poly-glot-site/**.\n\nA web version is available at the dashboard: **https://poly-glot.ai/dashboard/**"
+    "who made": "Poly-Glot AI Workspace is created by **Harold Moses II**.\n\n**Background:**\n- 10+ years technical writing and development experience\n- Former: PlayStation, Airbnb, Shape Security/F5, OpenVPN, Cruise, Block/Square/CashApp, NVIDIA\n- M.A. and B.A. in Professional Technical Writing (University of Arkansas at Little Rock)\n- B.A. cognate in Software Engineering\n\nThe entire Poly-Glot product ecosystem — web app, iOS app, macOS app, MCP server, Cloudflare auth worker, and more — is built and maintained as an indie project.\n\n📧 Contact: hwmoses2@icloud.com",
+
+    "safe": "**Absolutely safe!** Poly-Glot AI Workspace is:\n\n- 100% on-device — no data sent anywhere\n- No analytics or tracking whatsoever\n- No third-party advertising services\n- No servers storing your data\n- App Store reviewed and approved by Apple\n- All payments handled by Apple (we never see your payment info)\n- Does not collect data from children under 13\n\n**Privacy Policy:** [Read Here](https://hmoses.github.io/poly-glot-site/privacy.html)\n\n**Note:** When you send a prompt to an AI (ChatGPT, Claude, etc.), that AI's own privacy policy applies to your interaction with them. Poly-Glot itself never stores or transmits your prompts.",
+
+    "feature": "**Complete Feature List:**\n\n📝 **1,000+ Prompt Templates** in 40+ categories\n⌨️ **5 Input Methods** — Type, Paste, Import, Scan, Dictate\n🔀 **Compare Mode** — Send to 2-9 AIs simultaneously\n🤖 **9 AI Apps** — ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, DuckDuckGo AI\n🌐 **37 Languages** — Full UI localization\n🌍 **37 Output Languages** — AI responds in your chosen language\n🎤 **Voice Input** — On-device speech recognition\n📷 **Camera Scan** — Scan printed/handwritten text (iOS)\n📄 **Document Import** — Import files as prompts\n📋 **One-Tap Copy** — Instant clipboard copy\n🔒 **100% Private** — No data leaves your device\n⏱️ **Prompt History** — Recent prompts stored on-device\n⭐ **Favorites** — Save your best prompts\n🔌 **MCP Support** — Connect to Claude and ChatGPT directly\n📱 **Universal** — iPhone, iPad, and Mac\n🚀 **Regular Updates** — New templates added continuously",
+
+    "differ": "**Why Poly-Glot vs individual AI subscriptions?**\n\n❌ ChatGPT Plus: $20/mo\n❌ Claude Pro: $20/mo\n❌ Gemini Advanced: $20/mo\n❌ Copilot Pro: $20/mo\n💸 **Total if you subscribe to each: $80+/mo**\n\n✅ **Poly-Glot: $9.99/mo** (or $6.67/mo annual)\n\n**What you get:**\n- One app, all 9 top AIs\n- Uses their free tiers — no extra subscriptions\n- Compare answers side by side\n- 1,000+ expert prompt templates\n- Voice input and 5 input methods\n- 37 languages\n- 100% on-device privacy\n\n**Save $70+/mo** while getting access to MORE AIs than any single subscription.",
+
+    "android": "**Android is coming soon!** 🤖\n\nThe Android version is currently in development using Capacitor.\n\nIn the meantime, Poly-Glot is available on:\n- 📱 iPhone (App Store)\n- 📱 iPad (App Store)\n- 🖥️ Mac (Mac App Store)\n\nCheck back at [poly-glot.ai](https://poly-glot.ai) for Android updates!",
+
+    "web": "**Poly-Glot web resources:**\n\n🌐 **Main website:** https://poly-glot.ai\n🏠 **Landing page:** https://hmoses.github.io/poly-glot-site/\n📊 **Web Dashboard:** https://poly-glot.ai/dashboard/\n🔌 **MCP Connect Guide:** https://hmoses.github.io/poly-glot-site/connect.html\n🔒 **Privacy Policy:** https://hmoses.github.io/poly-glot-site/privacy.html\n📜 **Terms of Use:** https://hmoses.github.io/poly-glot-site/terms.html\n📋 **Support:** https://hmoses.github.io/poly-glot-site/support.html\n\nThe native apps (iPhone, iPad, Mac) are available on the Apple App Store.",
+
+    "history": "**Prompt History and Favorites:**\n\nPoly-Glot stores your prompt history **on-device only**:\n\n⏱️ **History** — All your recent prompts saved locally\n⭐ **Favorites** — Star prompts to save them for quick access\n\n- Everything stored on your device\n- Nothing sent to any server\n- Clear history anytime from the app\n- History works across all templates and Ask Any AI",
+
+    "auto fill": "**Which AIs auto-fill your prompt?**\n\nWhen you tap Send in Poly-Glot:\n\n✅ **Auto-fill (no paste needed):**\n- ChatGPT — prompt appears automatically\n- Perplexity — prompt appears automatically\n- Grok — prompt appears automatically\n\n📋 **Clipboard copy (paste to send):**\n- Claude — paste your prompt\n- Gemini — paste your prompt\n- Copilot — paste your prompt\n- Mistral — paste your prompt\n- HuggingChat — paste your prompt\n- DuckDuckGo AI — paste your prompt\n\nIn all cases, your prompt is automatically copied to your clipboard!",
+
+    "output language": "**AI Output Language** lets you control which language the AI responds in.\n\n🌍 **How it works:**\n- Set independently from your App Language\n- Write your prompt in English → get a response in Japanese\n- Write in Spanish → get a response in German\n- Any input language → any output language\n\n**37 output languages supported** — the same 37 as the app UI.\n\nThis works with all 9 AI apps and all templates!",
+
+    "app language": "**App Language** changes the entire Poly-Glot interface:\n\n- All menus and buttons\n- All template names and descriptions\n- All category labels\n- Search placeholder text\n- Settings and navigation\n\n**37 languages supported.** Change anytime from the language picker in the app.\n\nThis is separate from the AI Output Language — you can use the app in Japanese but have the AI respond in English, for example.",
+
+    "send": "**How 'Send to AI' works:**\n\n1. Write or choose your prompt\n2. Pick an AI (or toggle Compare Mode for multiple)\n3. Tap **Send**\n4. Your prompt is copied to clipboard\n5. The selected AI opens in your browser or app\n6. **ChatGPT, Perplexity, Grok:** Prompt auto-fills — just hit Enter\n7. **Claude, Gemini, Copilot, Mistral, HuggingChat, DuckDuckGo:** Paste (Cmd+V / Ctrl+V) and send\n\nWith Compare Mode, each AI opens in sequence so you can compare all responses.",
+
+    "children": "Poly-Glot AI Workspace does not knowingly collect any information from children under 13, in compliance with COPPA.\n\nAll data stays on-device. No user data is collected from anyone, regardless of age.",
+
+    "payment": "**Payment is handled exclusively by Apple.**\n\nPoly-Glot uses Apple's In-App Purchase system:\n- We never see your credit card, Apple ID, or payment details\n- All billing goes through your Apple ID\n- Receipts come from Apple\n- Manage subscriptions in Apple ID settings\n\n**Plans:**\n- 3-day free trial (starts on first Send)\n- Pro Monthly: $9.99/mo\n- Pro Annual: $79.99/yr (save 33%)\n- Cancel anytime via Apple ID",
+
+    "disclaimer": "**Important disclaimer:**\n\nPoly-Glot AI Workspace is provided as-is without warranty of any kind.\n\n- AI-generated responses are produced by third-party services and may contain errors\n- Poly-Glot is not responsible for AI output\n- Templates are for informational purposes only\n- Templates do not constitute professional advice (legal, medical, financial, or otherwise)\n- Always consult qualified professionals for important decisions\n\n**Terms of Use:** [View Full Terms](https://hmoses.github.io/poly-glot-site/terms.html)",
+
+    "prompt studio": "**Prompt Studio** is the original name for Poly-Glot's app in the stores. The full product name is **Poly-Glot AI Workspace**.\n\nYou may see it listed as 'Prompt Studio' in some App Store listings. It's the same app!\n\n**Bundle ID:** ai.polyglot.workspace\n**App Store ID:** 6804499285",
+
+    "offline": "Poly-Glot's template library and prompt builder work **offline** — you can browse templates, build prompts, and use voice input without internet.\n\nHowever, you **do need internet** when you tap Send, because the AI apps (ChatGPT, Claude, Gemini, etc.) require a connection to generate responses.\n\nAll app data is stored on-device.",
+
+    "custom": "**Custom Prompts:**\n\nYou're not limited to templates! Use **Ask Any AI** to write any prompt from scratch:\n\n1. Go to the Ask Any AI tab\n2. Type, paste, import, scan, or dictate your prompt\n3. Choose your AI(s)\n4. Set output language\n5. Tap Send\n\nYour custom prompts are saved in History and can be added to Favorites."
   };
 
-  // Smart matching
-  function findAnswer(q) {
-    q = q.toLowerCase().trim();
-    // Direct keyword matching with priority
-    var matches = [
-      { keys: ["what is", "what's poly", "tell me about poly", "about poly", "explain poly", "what does poly"], answer: KB["what is poly-glot"] },
-      { keys: ["price", "cost", "how much", "pricing", "subscription", "plan", "pay", "fee", "charge", "expensive", "cheap", "afford"], answer: KB["how much"] },
-      { keys: ["which ai", "what ai", "ai model", "support ai", "chatgpt", "claude", "gemini", "grok", "perplexity", "copilot", "mistral", "hugging", "duckduck", "compatible", "work with"], answer: KB["which ai"] },
-      { keys: ["template", "how many template", "prompt template", "categories", "category"], answer: KB["template"] },
-      { keys: ["device", "iphone", "ipad", "mac", "macos", "ios", "apple", "platform", "run on", "work on", "available on"], answer: KB["device"] },
-      { keys: ["private", "privacy", "data", "secure", "security", "safe", "track", "collect", "spy"], answer: KB["private"] },
-      { keys: ["compare", "comparison", "side by side", "multiple ai", "compare mode"], answer: KB["compare"] },
-      { keys: ["voice", "speak", "dictate", "speech", "microphone", "input method", "scan", "camera", "import", "paste"], answer: KB["voice"] },
-      { keys: ["language", "locali", "translat", "spanish", "french", "german", "japanese", "arabic", "chinese", "korean", "hindi", "portuguese", "38 lang", "multilingual"], answer: KB["language"] },
-      { keys: ["cancel", "refund", "unsubscribe", "stop subscription"], answer: KB["cancel"] },
-      { keys: ["download", "install", "get the app", "app store", "where to get", "where can i"], answer: KB["download"] },
-      { keys: ["mcp", "model context", "protocol", "server", "developer", "integration", "automation"], answer: KB["mcp"] },
-      { keys: ["trial", "free trial", "try free", "3 day", "three day", "test", "demo"], answer: KB["trial"] },
-      { keys: ["api key", "api", "no api", "key", "token", "free tier"], answer: KB["api"] },
-      { keys: ["support", "help", "contact", "email", "reach", "customer service"], answer: KB["support"] },
-      { keys: ["who made", "who built", "who created", "creator", "developer", "founder", "harold", "team"], answer: KB["who made"] },
-      { keys: ["feature", "what can", "capability", "can it", "does it", "function", "overview"], answer: KB["feature"] },
-      { keys: ["differ", "why poly", "vs", "versus", "better", "advantage", "unique", "why should", "worth", "benefit", "compared to"], answer: KB["differ"] },
-      { keys: ["android", "google play", "samsung", "pixel"], answer: KB["android"] },
-      { keys: ["web", "browser", "website", "online", "url", "dashboard", "link"], answer: KB["web"] }
-    ];
+  // =============================================
+  // SMART MATCHING ENGINE
+  // =============================================
+  var matchRules = [
+    { keys: ["what is poly", "what's poly", "tell me about poly", "about poly", "explain poly", "what does poly", "what is this", "what app", "what product", "describe poly"], topic: "what is poly-glot" },
+    { keys: ["price", "cost", "how much", "pricing", "subscription", "plan", "pay", "fee", "charge", "expensive", "cheap", "afford", "billing", "invoice", "money worth"], topic: "how much" },
+    { keys: ["which ai", "what ai", "ai model", "supported ai", "compatible ai", "chatgpt", "claude", "gemini", "grok", "perplexity", "copilot", "mistral", "hugging", "duckduck", "compatible", "work with", "what model", "which model", "ai provider", "ai service"], topic: "which ai" },
+    { keys: ["how many template", "template list", "template example", "prompt template", "what template", "show template", "available template"], topic: "template" },
+    { keys: ["categor", "what categories", "template type", "types of template"], topic: "template categories" },
+    { keys: ["device", "iphone", "ipad", "mac ", "macos", "ios", "apple", "platform", "run on", "work on", "available on", "which device", "what device", "tablet", "laptop", "desktop", "phone"], topic: "device" },
+    { keys: ["private", "privacy", "data collect", "secure", "security", "track", "collect", "spy", "gdpr", "personal data", "information collect"], topic: "private" },
+    { keys: ["compare mode", "compare ai", "comparison", "side by side", "multiple ai", "compare answer", "compare response", "send to multiple", "send to many"], topic: "compare" },
+    { keys: ["voice", "speak", "dictate", "speech", "microphone", "input method", "scan", "camera", "import", "paste", "type prompt", "how to input", "how do i type", "how to write"], topic: "voice" },
+    { keys: ["language", "locali", "translat", "spanish", "french", "german", "japanese", "arabic", "chinese", "korean", "hindi", "portuguese", "how many lang", "multilingual", "which lang", "what lang"], topic: "language" },
+    { keys: ["cancel", "refund", "unsubscribe", "stop sub", "end sub", "terminate", "stop paying"], topic: "cancel" },
+    { keys: ["download", "install", "get the app", "app store", "where to get", "where can i get", "where to download", "how to get", "how to install", "how to download", "link to app"], topic: "download" },
+    { keys: ["mcp setup", "connect mcp", "how to connect", "mcp config", "mcp connector", "setup mcp", "configure mcp", "add mcp", "install mcp", "claude desktop", "claude connect", "chatgpt connect"], topic: "mcp setup" },
+    { keys: ["mcp", "model context protocol", "mcp server", "mcp endpoint", "mcp tool", "mcp function", "mcp api"], topic: "mcp" },
+    { keys: ["free trial", "trial", "try free", "3 day", "three day", "test it", "try it", "try before", "trial period", "trial expire", "trial end", "when does trial"], topic: "trial" },
+    { keys: ["after trial", "trial expire", "trial end", "trial over", "when trial end", "post trial", "free tier", "free version", "free plan", "without paying", "without sub"], topic: "after trial" },
+    { keys: ["api key", "api", "no api", "token", "credential", "auth key", "access key"], topic: "api" },
+    { keys: ["how does it work", "how it work", "how do i use", "how to use", "step by step", "walkthrough", "getting started", "get started", "tutorial", "guide", "how do i start"], topic: "how does it work" },
+    { keys: ["support", "help me", "contact", "email", "reach", "customer service", "customer support", "bug report", "report bug", "issue", "problem"], topic: "support" },
+    { keys: ["who made", "who built", "who created", "creator", "founder", "harold", "team", "developer", "who is behind", "who develop", "indie"], topic: "who made" },
+    { keys: ["feature", "what can", "capability", "can it do", "does it have", "what does it do", "overview", "all feature", "list feature", "full feature"], topic: "feature" },
+    { keys: ["differ", "why poly", " vs ", "versus", "better than", "advantage", "unique", "why should", "worth it", "benefit", "compared to", "alternative", "competitor", "other app"], topic: "differ" },
+    { keys: ["android", "google play", "samsung", "pixel", "google store"], topic: "android" },
+    { keys: ["website", "web app", "browser", "online", "url", "dashboard", "link", "webpage"], topic: "web" },
+    { keys: ["history", "recent prompt", "past prompt", "favorite", "saved prompt", "bookmark", "starred"], topic: "history" },
+    { keys: ["auto fill", "auto-fill", "autofill", "auto paste", "automatic"], topic: "auto fill" },
+    { keys: ["output lang", "response lang", "respond in", "ai respond", "ai language", "ai output"], topic: "output language" },
+    { keys: ["app lang", "interface lang", "ui lang", "menu lang", "change lang"], topic: "app language" },
+    { keys: ["send to ai", "how send", "how does send", "tap send", "press send", "sending"], topic: "send" },
+    { keys: ["child", "kids", "coppa", "minor", "under 13", "under 18", "age"], topic: "children" },
+    { keys: ["payment", "credit card", "apple pay", "billing", "receipt", "charged", "debit"], topic: "payment" },
+    { keys: ["disclaim", "warranty", "liability", "responsible", "legal notice", "terms of"], topic: "disclaimer" },
+    { keys: ["prompt studio", "app name", "store name", "bundle id"], topic: "prompt studio" },
+    { keys: ["offline", "without internet", "no wifi", "no internet", "airplane mode", "no connection"], topic: "offline" },
+    { keys: ["custom prompt", "write my own", "own prompt", "my own", "from scratch", "ask any ai", "free text", "open ended"], topic: "custom" },
+    { keys: ["safe", "trustworthy", "trust", "legit", "legitimate", "scam", "virus", "malware"], topic: "safe" }
+  ];
 
-    for (var i = 0; i < matches.length; i++) {
-      for (var j = 0; j < matches[i].keys.length; j++) {
-        if (q.indexOf(matches[i].keys[j]) !== -1) return matches[i].answer;
+  function findAnswer(q) {
+    // SECURITY: Sanitize input before processing
+    if (typeof q !== 'string') return KB["what is poly-glot"];
+    q = q.toLowerCase().trim().slice(0, 500);
+
+    // Keyword matching
+    for (var i = 0; i < matchRules.length; i++) {
+      for (var j = 0; j < matchRules[i].keys.length; j++) {
+        if (q.indexOf(matchRules[i].keys[j]) !== -1) {
+          return KB[matchRules[i].topic] || KB["what is poly-glot"];
+        }
       }
     }
 
     // Greeting
-    if (/^(hi|hello|hey|yo|sup|howdy|greetings|good morning|good afternoon|good evening)/i.test(q)) {
-      return "Hey there! 👋🦜 Welcome! I'm the Poly-Glot AI Assistant. I can help you with:\n\n• What Poly-Glot is & what it does\n• Pricing & free trial info\n• Supported AI models\n• Templates & categories\n• Device compatibility\n• Privacy & security\n• And more!\n\nWhat would you like to know?";
+    if (/^(hi|hello|hey|yo|sup|howdy|greetings|good\s?morning|good\s?afternoon|good\s?evening|what'?s up)/i.test(q)) {
+      return "Hey there! 👋🦜 I'm the Poly-Glot AI Assistant. I can help with:\n\n• What Poly-Glot is and how it works\n• Pricing, free trial, and subscriptions\n• Supported AI models (9 AIs!)\n• 1,000+ templates in 40+ categories\n• Device compatibility\n• Privacy and security\n• MCP integration setup\n• Compare Mode\n• Languages (37!)\n• Input methods\n• And more!\n\nWhat would you like to know?";
     }
 
     // Thanks
-    if (/^(thank|thanks|thx|ty|appreciate|awesome|great|perfect|cool)/i.test(q)) {
-      return "You're welcome! 🦜 Happy to help. If you have any other questions about Poly-Glot AI Workspace, just ask!\n\n📥 [Download on the App Store](https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285)";
+    if (/^(thank|thanks|thx|ty|appreciate|awesome|great|perfect|cool|nice|wow|amazing|excellent)/i.test(q)) {
+      return "You're welcome! 🦜 Happy to help!\n\nHave more questions? Just ask! Or try these:\n• How does Compare Mode work?\n• What happens after the free trial?\n• How do I connect via MCP?\n• What templates are available?\n\n📥 **Download:** [Get on App Store](https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285)";
     }
 
-    // Fallback
-    return "Great question! While I may not have the exact answer for that, here's what I can help with:\n\n🦜 **Poly-Glot AI Workspace** — One app for all top AIs.\n\n• 1,000+ templates in 40+ categories\n• Works with ChatGPT, Claude, Gemini, Grok & 5 more\n• 38 languages, voice input, Compare Mode\n• 100% private, on-device\n• $9.99/mo or $79.99/yr (3-day free trial)\n\nTry asking about pricing, features, supported AIs, templates, privacy, or how to download!\n\n📧 For specific questions: hwmoses2@icloud.com";
+    // Yes/No
+    if (/^(yes|yeah|yep|yup|sure|ok|okay|no|nah|nope)$/i.test(q)) {
+      return "Got it! 🦜 Is there anything specific about Poly-Glot you'd like to know? Try asking about features, pricing, templates, supported AIs, or how to get started!";
+    }
+
+    // Fallback — comprehensive
+    return "I'm not sure about that specific topic, but here's an overview of **Poly-Glot AI Workspace**:\n\n🦜 **What:** Prompt builder + AI router for 9 top AIs\n📝 **Templates:** 1,000+ in 40+ categories\n🤖 **AIs:** ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, DuckDuckGo AI\n🌐 **Languages:** 37 UI + 37 output languages\n🎤 **Input:** Type, Paste, Import, Scan, Dictate\n🔀 **Compare:** Send to multiple AIs at once\n🔒 **Privacy:** 100% on-device\n💰 **Price:** 3-day free trial → $9.99/mo or $79.99/yr\n📱 **Devices:** iPhone, iPad, Mac (Android coming)\n🔌 **MCP:** Connect to Claude and ChatGPT\n\nTry asking about any of these topics!\n\n📧 For other questions: hwmoses2@icloud.com";
   }
 
-  // Simple markdown rendering
+  // =============================================
+  // SECURE MARKDOWN RENDERER
+  // =============================================
   function renderMd(text) {
-    return text
-      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:#7dd3fc;text-decoration:underline">$1</a>')
-      .replace(/\n/g, '<br>');
+    if (typeof text !== 'string') return '';
+    var html = sanitize(text);
+    // Bold
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    // Links — validate URL safety
+    html = html.replace(/\[(.+?)\]\((.+?)\)/g, function(match, label, url) {
+      if (isSafeUrl(url)) {
+        return '<a href="' + url + '" target="_blank" rel="noopener noreferrer" style="color:#7dd3fc;text-decoration:underline">' + label + '</a>';
+      }
+      return label;
+    });
+    // Newlines
+    html = html.replace(/\n/g, '<br>');
+    return html;
   }
 
-  // Chat controller
+  // =============================================
+  // WELCOME + SUGGESTIONS
+  // =============================================
+  var welcomeMsg = "Hey there! 🦜 I'm the Poly-Glot AI Assistant. Ask me anything about Poly-Glot AI Workspace — features, pricing, supported AIs, languages, templates, MCP, or how to get started!";
+
+  var suggestionsHTML = '<div class="pgChat-suggestions">'
+    + '<button onclick="pgChat.ask(this.textContent)">What is Poly-Glot?</button>'
+    + '<button onclick="pgChat.ask(this.textContent)">How much does it cost?</button>'
+    + '<button onclick="pgChat.ask(this.textContent)">Which AIs does it support?</button>'
+    + '<button onclick="pgChat.ask(this.textContent)">How many templates?</button>'
+    + '<button onclick="pgChat.ask(this.textContent)">Is my data private?</button>'
+    + '<button onclick="pgChat.ask(this.textContent)">What devices work?</button>'
+    + '<button onclick="pgChat.ask(this.textContent)">How does it work?</button>'
+    + '<button onclick="pgChat.ask(this.textContent)">Free trial details</button>'
+    + '<button onclick="pgChat.ask(this.textContent)">Compare Mode?</button>'
+    + '<button onclick="pgChat.ask(this.textContent)">MCP setup guide</button>'
+    + '<button onclick="pgChat.ask(this.textContent)">What languages?</button>'
+    + '<button onclick="pgChat.ask(this.textContent)">How to download?</button>'
+    + '</div>';
+
+  function renderWelcome() {
+    var msgs = document.getElementById('pgChat-messages');
+    if (!msgs) return;
+    msgs.innerHTML = '';
+    var botDiv = document.createElement('div');
+    botDiv.className = 'pgChat-msg bot';
+    botDiv.innerHTML = '<div class="pgChat-avatar"><img src="assets/img/icon-128.png" alt=""></div><div class="pgChat-text">' + renderMd(welcomeMsg) + '</div>';
+    msgs.appendChild(botDiv);
+    var sugDiv = document.createElement('div');
+    sugDiv.innerHTML = suggestionsHTML;
+    msgs.appendChild(sugDiv);
+  }
+
+  // Init welcome on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderWelcome);
+  } else {
+    renderWelcome();
+  }
+
+  // =============================================
+  // CHAT CONTROLLER (SECURITY HARDENED)
+  // =============================================
   window.pgChat = {
     isOpen: false,
+
     toggle: function() {
       var win = document.getElementById('pgChat-window');
       var bubble = document.getElementById('pgChat-bubble');
+      if (!win || !bubble) return;
       this.isOpen = !this.isOpen;
       if (this.isOpen) {
         win.classList.add('open');
         bubble.style.display = 'none';
-        document.getElementById('pgChat-input').focus();
+        var inp = document.getElementById('pgChat-input');
+        if (inp) inp.focus();
       } else {
         win.classList.remove('open');
         bubble.style.display = 'flex';
       }
     },
+
+    clear: function() {
+      renderWelcome();
+      var inp = document.getElementById('pgChat-input');
+      if (inp) { inp.value = ''; inp.focus(); }
+    },
+
     send: function() {
       var input = document.getElementById('pgChat-input');
+      if (!input) return;
       var q = input.value.trim();
       if (!q) return;
+      // SECURITY: Length limit
+      if (q.length > 500) q = q.slice(0, 500);
       input.value = '';
       this.ask(q);
     },
-    ask: function(q) {
-      var msgs = document.getElementById('pgChat-messages');
-      // Hide suggestions after first question
-      var sug = document.getElementById('pgChat-suggestions');
-      if (sug) sug.style.display = 'none';
 
-      // Add user message
+    ask: function(q) {
+      // SECURITY: Rate limiting
+      if (rateLimited()) return;
+
+      // SECURITY: Input validation
+      if (typeof q !== 'string' || !q.trim()) return;
+      q = q.trim().slice(0, 500);
+
+      var msgs = document.getElementById('pgChat-messages');
+      if (!msgs) return;
+
+      // Remove suggestions on first question
+      var sugs = msgs.querySelectorAll('.pgChat-suggestions');
+      for (var s = 0; s < sugs.length; s++) sugs[s].remove();
+
+      // SECURITY: Limit conversation length — prevent DOM flooding
+      var allMsgs = msgs.querySelectorAll('.pgChat-msg');
+      if (allMsgs.length > 100) {
+        // Keep first (welcome) and last 20 messages
+        for (var m = 1; m < allMsgs.length - 20; m++) allMsgs[m].remove();
+      }
+
+      // Add user message (SANITIZED)
       var userDiv = document.createElement('div');
       userDiv.className = 'pgChat-msg user';
-      userDiv.innerHTML = '<div class="pgChat-avatar">👤</div><div class="pgChat-text">' + q.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div>';
+      var userAvatar = document.createElement('div');
+      userAvatar.className = 'pgChat-avatar';
+      userAvatar.textContent = '\uD83D\uDC64';
+      var userText = document.createElement('div');
+      userText.className = 'pgChat-text';
+      userText.textContent = q; // textContent auto-escapes HTML
+      userDiv.appendChild(userAvatar);
+      userDiv.appendChild(userText);
       msgs.appendChild(userDiv);
       msgs.scrollTop = msgs.scrollHeight;
 
@@ -2986,8 +3131,9 @@ function _demoStart() {
       msgs.appendChild(typingDiv);
       msgs.scrollTop = msgs.scrollHeight;
 
-      // Simulate typing delay then respond
+      // Get answer and respond
       var answer = findAnswer(q);
+      var delay = 500 + Math.floor(Math.random() * 600);
       setTimeout(function() {
         var typing = document.getElementById('pgChat-typing');
         if (typing) typing.remove();
@@ -2996,12 +3142,26 @@ function _demoStart() {
         botDiv.innerHTML = '<div class="pgChat-avatar"><img src="assets/img/icon-128.png" alt=""></div><div class="pgChat-text">' + renderMd(answer) + '</div>';
         msgs.appendChild(botDiv);
         msgs.scrollTop = msgs.scrollHeight;
-      }, 600 + Math.random() * 800);
+      }, delay);
     }
   };
+
+  // SECURITY: Input event handler (prevent paste bombs)
+  var chatInput = document.getElementById('pgChat-input');
+  if (chatInput) {
+    chatInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') { e.preventDefault(); pgChat.send(); }
+    });
+    chatInput.addEventListener('paste', function(e) {
+      var self = this;
+      setTimeout(function() {
+        if (self.value.length > 500) self.value = self.value.slice(0, 500);
+      }, 0);
+    });
+  }
 })();
 </script>
-<!-- ===== END MCP CHAT WIDGET ===== -->
+<!-- ===== END MCP CHAT WIDGET v2 ===== -->
 
 </body>
 </html>
