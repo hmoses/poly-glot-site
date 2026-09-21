@@ -2661,7 +2661,7 @@ function _demoStart() {
       </div>
     </div>
     <div style="display:flex;gap:6px;align-items:center">
-      <button id="pgChat-lang-btn" onclick="var dd=document.getElementById('pgGlobalLangDD');if(dd)dd.classList.toggle('open')" aria-label="Change language" title="Change language">
+      <button id="pgChat-lang-btn" onclick="var p=document.getElementById('pgGlobalLangPicker');var dd=document.getElementById('pgGlobalLangDD');if(p&&dd){p.style.zIndex='100000';dd.classList.toggle('open');setTimeout(function(){if(!dd.classList.contains('open'))p.style.zIndex='99998';},100)}" aria-label="Change language" title="Change language">
         <span id="pgChat-lang-flag" style="font-size:0.9rem;line-height:1">🌐</span>
       </button>
       <button id="pgChat-clear" onclick="pgChat.clear()" aria-label="Clear chat" title="Clear chat &amp; start over">
@@ -2672,6 +2672,46 @@ function _demoStart() {
 
   </div>
   <div id="pgChat-messages"></div>
+  <div id="pgChat-topics-bar">
+    <select id="pgChat-topics-select" onchange="if(this.value){pgChat.ask(this.value);this.selectedIndex=0;}">
+      <option value="">📋 Browse all topics…</option>
+      <option value="What is Poly-Glot?">What is Poly-Glot?</option>
+      <option value="How much does it cost?">Pricing</option>
+      <option value="Which AI models?">Which AIs?</option>
+      <option value="How does it work?">How it works</option>
+      <option value="Free trial">Free trial</option>
+      <option value="After trial ends">After trial</option>
+      <option value="Compare Mode">Compare Mode</option>
+      <option value="Templates">Templates</option>
+      <option value="Template categories">Template categories</option>
+      <option value="Languages">Languages</option>
+      <option value="App language">App language</option>
+      <option value="Output language">Output language</option>
+      <option value="Voice input">Voice input</option>
+      <option value="Devices">Devices</option>
+      <option value="Privacy">Privacy</option>
+      <option value="Download">Download</option>
+      <option value="Cancel subscription">Cancel</option>
+      <option value="MCP">MCP</option>
+      <option value="MCP setup">MCP setup</option>
+      <option value="Features">All features</option>
+      <option value="How to send">Sending prompts</option>
+      <option value="History">Prompt history</option>
+      <option value="Custom prompts">Custom prompts</option>
+      <option value="Offline">Offline use</option>
+      <option value="Android">Android</option>
+      <option value="Web version">Web version</option>
+      <option value="Who made it?">Who made it?</option>
+      <option value="Safe for children?">Children safety</option>
+      <option value="API access">API access</option>
+      <option value="Auto fill">Auto fill</option>
+      <option value="Payment methods">Payment</option>
+      <option value="Prompt Studio">Prompt Studio</option>
+      <option value="Support">Support</option>
+      <option value="How is it different?">How is it different?</option>
+      <option value="Disclaimer">Disclaimer</option>
+    </select>
+  </div>
   <div id="pgChat-input-area">
     <input id="pgChat-input" type="text" placeholder="Ask a question..." autocomplete="off" maxlength="500">
     <button id="pgChat-send" onclick="pgChat.send()" aria-label="Send message">
@@ -2771,6 +2811,30 @@ function _demoStart() {
 .pgChat-suggestions button:hover { background: rgba(125,211,252,0.15); border-color: rgba(125,211,252,0.3); }
 
 /* Input */
+#pgChat-topics-bar {
+  padding: 6px 12px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+#pgChat-topics-select {
+  width: 100%;
+  padding: 7px 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.78rem;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+#pgChat-topics-select:hover { border-color: rgba(125,211,252,0.25); }
+#pgChat-topics-select:focus { border-color: rgba(124,58,237,0.4); }
+#pgChat-topics-select option { background: #161b22; color: #e8ecf4; }
 #pgChat-input-area {
   display: flex; gap: 8px; padding: 12px 14px;
   border-top: 1px solid rgba(125,211,252,0.08);

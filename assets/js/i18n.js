@@ -289,19 +289,22 @@ var curLang='EN';
 
 // ===== BUILD PICKER =====
 function buildPicker(){
+if(!document.body)return;
 var wrap=document.createElement('div');wrap.id='pgGlobalLangPicker';
-wrap.innerHTML='<div id="pgGlobalLangBtn" title="Change language"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="pgGlobalFlag">\u{1F1FA}\u{1F1F8}</span><span id="pgGlobalCode">EN</span></div><div id="pgGlobalLangDD"></div>';
-document.body.appendChild(wrap);
-var dd=document.getElementById('pgGlobalLangDD');
+var btn=document.createElement('div');btn.id='pgGlobalLangBtn';btn.title='Change language';
+btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="pgGlobalFlag">\u{1F1FA}\u{1F1F8}</span><span id="pgGlobalCode">EN</span>';
+var dd=document.createElement('div');dd.id='pgGlobalLangDD';
+wrap.appendChild(btn);wrap.appendChild(dd);
 LANGS.forEach(function(L){
 var r=document.createElement('div');r.className='pgGlob-row'+(L.code==='EN'?' active':'');
 r.setAttribute('data-lang',L.code);
 r.innerHTML='<span class="gf">'+L.flag+'</span><span class="gc">'+L.code+'</span><span class="gn">'+L.name+'</span>';
-r.onclick=function(){setLang(L.code,L.flag);};
+r.onclick=function(e){e.stopPropagation();setLang(L.code,L.flag);};
 dd.appendChild(r);
 });
-document.getElementById('pgGlobalLangBtn').onclick=function(e){e.stopPropagation();dd.classList.toggle('open');};
+btn.onclick=function(e){e.stopPropagation();dd.classList.toggle('open');};
 document.addEventListener('click',function(e){if(!wrap.contains(e.target))dd.classList.remove('open');});
+document.body.appendChild(wrap);
 }
 
 // ===== SET LANGUAGE =====
