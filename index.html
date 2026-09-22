@@ -3076,7 +3076,10 @@ function _demoStart() {
   // =============================================
   function renderMd(text) {
     if (typeof text !== 'string') return '';
-    var html = sanitize(text);
+    // Escape HTML but do NOT truncate — bot responses are trusted KB content
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(text));
+    var html = div.innerHTML;
     // Bold
     html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     // Links — validate URL safety
