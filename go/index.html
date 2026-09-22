@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poly-Glot AI Workspace — Download Now</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0b14;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'SF Pro','Inter',sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center}
+.wrap{padding:40px 24px;max-width:420px}
+.parrot{font-size:80px;margin-bottom:16px;animation:bounce 1s ease-in-out infinite alternate}
+@keyframes bounce{0%{transform:translateY(0)}100%{transform:translateY(-10px)}}
+h1{font-size:1.6rem;font-weight:800;margin-bottom:8px;background:linear-gradient(135deg,#7dd3fc,#a78bfa,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+p{color:#8892b0;font-size:0.95rem;margin-bottom:24px;line-height:1.5}
+.btn{display:inline-block;background:linear-gradient(135deg,#7dd3fc 0%,#a78bfa 100%);color:#0a0b14;font-weight:700;font-size:1rem;padding:14px 32px;border-radius:12px;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s}
+.btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(125,211,252,0.3)}
+.sub{color:#525e78;font-size:0.7rem;margin-top:16px}
+.redirecting{color:#7dd3fc;font-size:0.85rem;margin-top:20px;display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="parrot">🦜</div>
+  <h1>Poly-Glot AI Workspace</h1>
+  <p>Your language. One prompt. Every AI — Compare the results. 1,000+ templates in 38 languages.</p>
+  <a href="#" id="cta-btn" class="btn">📱 Download Free on App Store</a>
+  <div class="sub">Available on iPhone, iPad & Mac</div>
+  <div class="redirecting" id="redirecting">Redirecting to App Store...</div>
+</div>
+<script>
+(function(){
+  // Detect platform
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/.test(ua);
+  var isMac = /Macintosh/.test(ua);
+  
+  // App Store URLs
+  var iosURL = 'https://apps.apple.com/app/id6804499285';
+  var macURL = 'https://apps.apple.com/app/id6804499285?mt=12';
+  var storeURL = isIOS ? iosURL : (isMac ? macURL : iosURL);
+
+  // Parse UTM params
+  var params = new URLSearchParams(window.location.search);
+  var source = params.get('utm_source') || params.get('src') || 'direct';
+  var campaign = params.get('utm_campaign') || params.get('c') || '';
+  var medium = params.get('utm_medium') || params.get('m') || '';
+  var content = params.get('utm_content') || '';
+
+  // Track click data
+  var clickData = {
+    t: Date.now(),
+    src: source,
+    c: campaign,
+    m: medium,
+    ct: content,
+    p: isIOS ? 'ios' : (isMac ? 'mac' : 'web'),
+    r: document.referrer || '',
+    ua: ua.substring(0, 200)
+  };
+
+  // Store in localStorage for the dashboard to read
+  var clicks = [];
+  try { clicks = JSON.parse(localStorage.getItem('pg_clicks') || '[]'); } catch(e){}
+  clicks.push(clickData);
+  // Keep last 10000
+  if(clicks.length > 10000) clicks = clicks.slice(-10000);
+  localStorage.setItem('pg_clicks', JSON.stringify(clicks));
+
+  // Also fire a pixel to CountAPI (free, no signup)
+  var countKey = 'polyglot-' + source + '-' + (campaign || 'none');
+  var img = new Image();
+  img.src = 'https://api.countapi.xyz/hit/polyglot-ai/' + encodeURIComponent(countKey);
+
+  // Set button href
+  var btn = document.getElementById('cta-btn');
+  btn.href = storeURL;
+
+  // Auto-redirect after 1.5s if came from TikTok or has utm
+  if(source !== 'direct' || document.referrer.indexOf('tiktok') > -1) {
+    document.getElementById('redirecting').style.display = 'block';
+    setTimeout(function(){ window.location.href = storeURL; }, 1500);
+  }
+
+  // Track button click
+  btn.addEventListener('click', function(e){
+    // Fire another count for explicit clicks
+    var img2 = new Image();
+    img2.src = 'https://api.countapi.xyz/hit/polyglot-ai/cta-click-' + encodeURIComponent(source);
+    
+    // Small delay to let beacon fire
+    if(!e.metaKey && !e.ctrlKey) {
+      e.preventDefault();
+      document.getElementById('redirecting').style.display = 'block';
+      setTimeout(function(){ window.location.href = storeURL; }, 300);
+    }
+  });
+})();
+</script>
+</body>
+</html>
