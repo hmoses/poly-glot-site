@@ -235,6 +235,14 @@ mcpEx2:'"Now compare that across ChatGPT, Claude, and Gemini"',
 mcpOpenL:'Open listing →',
 mcpOpenS:'Open Space →',
 mcpViewS:'View submission →'
+,
+mcpClBadge:'Live Now',
+mcpClSteps:'<li>Open <strong style="color:var(--text);">Claude Settings → MCP Connectors</strong></li><li>Click <strong style="color:var(--text);">Add Connector</strong></li><li>Paste the URL below</li><li>Name it <strong style="color:var(--text);">"Poly-Glot"</strong> → Done!</li>',
+mcpCopyBtn:'Copy',
+mcpGptBadge:'Coming Soon',
+mcpGptDesc:'OpenAI\'s MCP Apps marketplace is opening soon. Poly-Glot will be available on day one.',
+mcpGptSteps:'<li>Search <strong style="color:var(--text);">"Poly-Glot"</strong> in the ChatGPT app store</li><li>Click <strong style="color:var(--text);">Connect</strong> — one click setup</li><li>Start prompting with 1,000+ templates</li>',
+mcpGptTip:'💡 Bookmark this page — we\'ll update it when ChatGPT MCP goes live.'
 };
 
 // ===== SPANISH =====
@@ -292,6 +300,14 @@ mcpEx2:'"Ahora compara eso en ChatGPT, Claude y Gemini"',
 mcpOpenL:'Abrir listado →',
 mcpOpenS:'Abrir Space →',
 mcpViewS:'Ver envío →'
+,
+mcpClBadge:'Disponible',
+mcpClSteps:'<li>Abre <strong style="color:var(--text);">Configuración de Claude → Conectores MCP</strong></li><li>Haz clic en <strong style="color:var(--text);">Agregar Conector</strong></li><li>Pega la URL de abajo</li><li>Nómbralo <strong style="color:var(--text);">"Poly-Glot"</strong> → ¡Listo!</li>',
+mcpCopyBtn:'Copiar',
+mcpGptBadge:'Próximamente',
+mcpGptDesc:'El marketplace de MCP Apps de OpenAI abrirá pronto. Poly-Glot estará disponible desde el primer día.',
+mcpGptSteps:'<li>Busca <strong style="color:var(--text);">"Poly-Glot"</strong> en la tienda de ChatGPT</li><li>Haz clic en <strong style="color:var(--text);">Conectar</strong> — configuración con un clic</li><li>Empieza a usar más de 1,000 plantillas</li>',
+mcpGptTip:'💡 Guarda esta página — la actualizaremos cuando ChatGPT MCP esté disponible.'
 };
 
 // ===== FRENCH =====
@@ -349,6 +365,14 @@ mcpEx2:'"Maintenant compare ça sur ChatGPT, Claude et Gemini"',
 mcpOpenL:'Ouvrir la fiche →',
 mcpOpenS:'Ouvrir le Space →',
 mcpViewS:'Voir la soumission →'
+,
+mcpClBadge:'Disponible',
+mcpClSteps:'<li>Ouvrez <strong style="color:var(--text);">Paramètres Claude → Connecteurs MCP</strong></li><li>Cliquez sur <strong style="color:var(--text);">Ajouter un connecteur</strong></li><li>Collez l\'URL ci-dessous</li><li>Nommez-le <strong style="color:var(--text);">"Poly-Glot"</strong> → Terminé !</li>',
+mcpCopyBtn:'Copier',
+mcpGptBadge:'Bientôt',
+mcpGptDesc:'Le marketplace MCP Apps d\'OpenAI ouvrira bientôt. Poly-Glot sera disponible dès le premier jour.',
+mcpGptSteps:'<li>Cherchez <strong style="color:var(--text);">"Poly-Glot"</strong> dans la boutique ChatGPT</li><li>Cliquez sur <strong style="color:var(--text);">Connecter</strong> — configuration en un clic</li><li>Commencez avec plus de 1 000 modèles</li>',
+mcpGptTip:'💡 Ajoutez cette page aux favoris — nous la mettrons à jour quand ChatGPT MCP sera disponible.'
 };
 
 // ===== GERMAN =====
@@ -406,6 +430,14 @@ mcpEx2:'"Vergleiche das jetzt über ChatGPT, Claude und Gemini"',
 mcpOpenL:'Eintrag öffnen →',
 mcpOpenS:'Space öffnen →',
 mcpViewS:'Einreichung ansehen →'
+,
+mcpClBadge:'Verfügbar',
+mcpClSteps:'<li>Öffne <strong style="color:var(--text);">Claude Einstellungen → MCP-Konnektoren</strong></li><li>Klicke auf <strong style="color:var(--text);">Konnektor hinzufügen</strong></li><li>Füge die URL unten ein</li><li>Benenne es <strong style="color:var(--text);">"Poly-Glot"</strong> → Fertig!</li>',
+mcpCopyBtn:'Kopieren',
+mcpGptBadge:'Demnächst',
+mcpGptDesc:'OpenAIs MCP Apps Marketplace eröffnet bald. Poly-Glot wird ab dem ersten Tag verfügbar sein.',
+mcpGptSteps:'<li>Suche <strong style="color:var(--text);">"Poly-Glot"</strong> im ChatGPT App Store</li><li>Klicke auf <strong style="color:var(--text);">Verbinden</strong> — Ein-Klick-Einrichtung</li><li>Starte mit 1.000+ Vorlagen</li>',
+mcpGptTip:'💡 Setze ein Lesezeichen — wir aktualisieren die Seite, wenn ChatGPT MCP live geht.'
 };
 
 // ===== ITALIAN =====
@@ -463,6 +495,14 @@ mcpEx2:'"Ora confronta su ChatGPT, Claude e Gemini"',
 mcpOpenL:'Apri scheda →',
 mcpOpenS:'Apri Space →',
 mcpViewS:'Vedi invio →'
+,
+mcpClBadge:'Disponibile',
+mcpClSteps:'<li>Apri <strong style="color:var(--text);">Impostazioni Claude → Connettori MCP</strong></li><li>Clicca su <strong style="color:var(--text);">Aggiungi Connettore</strong></li><li>Incolla l\'URL qui sotto</li><li>Chiamalo <strong style="color:var(--text);">"Poly-Glot"</strong> → Fatto!</li>',
+mcpCopyBtn:'Copia',
+mcpGptBadge:'In Arrivo',
+mcpGptDesc:'Il marketplace MCP Apps di OpenAI aprirà presto. Poly-Glot sarà disponibile dal primo giorno.',
+mcpGptSteps:'<li>Cerca <strong style="color:var(--text);">"Poly-Glot"</strong> nello store ChatGPT</li><li>Clicca su <strong style="color:var(--text);">Connetti</strong> — configurazione con un clic</li><li>Inizia con oltre 1.000 modelli</li>',
+mcpGptTip:'💡 Salva questa pagina — la aggiorneremo quando ChatGPT MCP sarà disponibile.'
 };
 
 // ===== PORTUGUESE =====
@@ -520,6 +560,14 @@ mcpEx2:'"Agora compare isso no ChatGPT, Claude e Gemini"',
 mcpOpenL:'Abrir listagem →',
 mcpOpenS:'Abrir Space →',
 mcpViewS:'Ver submissão →'
+,
+mcpClBadge:'Disponível',
+mcpClSteps:'<li>Abra <strong style="color:var(--text);">Configurações do Claude → Conectores MCP</strong></li><li>Clique em <strong style="color:var(--text);">Adicionar Conector</strong></li><li>Cole a URL abaixo</li><li>Nomeie como <strong style="color:var(--text);">"Poly-Glot"</strong> → Pronto!</li>',
+mcpCopyBtn:'Copiar',
+mcpGptBadge:'Em Breve',
+mcpGptDesc:'O marketplace MCP Apps da OpenAI abrirá em breve. Poly-Glot estará disponível desde o primeiro dia.',
+mcpGptSteps:'<li>Pesquise <strong style="color:var(--text);">"Poly-Glot"</strong> na loja do ChatGPT</li><li>Clique em <strong style="color:var(--text);">Conectar</strong> — configuração com um clique</li><li>Comece com mais de 1.000 modelos</li>',
+mcpGptTip:'💡 Salve esta página — atualizaremos quando o ChatGPT MCP estiver disponível.'
 };
 
 // ===== JAPANESE =====
@@ -577,6 +625,14 @@ mcpEx2:'"ChatGPT、Claude、Geminiで比較して"',
 mcpOpenL:'リストを開く →',
 mcpOpenS:'Spaceを開く →',
 mcpViewS:'申請を見る →'
+,
+mcpClBadge:'利用可能',
+mcpClSteps:'<li><strong style="color:var(--text);">Claude設定 → MCPコネクター</strong>を開く</li><li><strong style="color:var(--text);">コネクターを追加</strong>をクリック</li><li>下のURLを貼り付け</li><li><strong style="color:var(--text);">"Poly-Glot"</strong>と名前を付けて → 完了！</li>',
+mcpCopyBtn:'コピー',
+mcpGptBadge:'近日公開',
+mcpGptDesc:'OpenAIのMCPアプリマーケットプレイスが間もなくオープンします。Poly-Glotは初日から利用可能になります。',
+mcpGptSteps:'<li>ChatGPTアプリストアで<strong style="color:var(--text);">"Poly-Glot"</strong>を検索</li><li><strong style="color:var(--text);">接続</strong>をクリック — ワンクリック設定</li><li>1,000以上のテンプレートでプロンプト開始</li>',
+mcpGptTip:'💡 このページをブックマーク — ChatGPT MCPが公開されたら更新します。'
 };
 
 // ===== KOREAN =====
@@ -634,6 +690,14 @@ mcpEx2:'"이제 ChatGPT, Claude, Gemini에서 비교해줘"',
 mcpOpenL:'목록 열기 →',
 mcpOpenS:'Space 열기 →',
 mcpViewS:'제출 보기 →'
+,
+mcpClBadge:'사용 가능',
+mcpClSteps:'<li><strong style="color:var(--text);">Claude 설정 → MCP 커넥터</strong>를 엽니다</li><li><strong style="color:var(--text);">커넥터 추가</strong>를 클릭</li><li>아래 URL을 붙여넣기</li><li><strong style="color:var(--text);">"Poly-Glot"</strong>으로 이름 지정 → 완료!</li>',
+mcpCopyBtn:'복사',
+mcpGptBadge:'곧 출시',
+mcpGptDesc:'OpenAI의 MCP 앱 마켓플레이스가 곧 열립니다. Poly-Glot은 첫날부터 이용 가능합니다.',
+mcpGptSteps:'<li>ChatGPT 앱 스토어에서 <strong style="color:var(--text);">"Poly-Glot"</strong> 검색</li><li><strong style="color:var(--text);">연결</strong> 클릭 — 원클릭 설정</li><li>1,000개 이상의 템플릿으로 시작</li>',
+mcpGptTip:'💡 이 페이지를 북마크하세요 — ChatGPT MCP가 출시되면 업데이트합니다.'
 };
 
 // ===== CHINESE SIMPLIFIED =====
@@ -691,6 +755,14 @@ mcpEx2:'"现在在ChatGPT、Claude和Gemini上比较"',
 mcpOpenL:'打开列表 →',
 mcpOpenS:'打开Space →',
 mcpViewS:'查看提交 →'
+,
+mcpClBadge:'已上线',
+mcpClSteps:'<li>打开 <strong style="color:var(--text);">Claude 设置 → MCP 连接器</strong></li><li>点击 <strong style="color:var(--text);">添加连接器</strong></li><li>粘贴下方URL</li><li>命名为 <strong style="color:var(--text);">"Poly-Glot"</strong> → 完成！</li>',
+mcpCopyBtn:'复制',
+mcpGptBadge:'即将推出',
+mcpGptDesc:'OpenAI的MCP应用市场即将开放。Poly-Glot将在首日上线。',
+mcpGptSteps:'<li>在ChatGPT应用商店搜索 <strong style="color:var(--text);">"Poly-Glot"</strong></li><li>点击 <strong style="color:var(--text);">连接</strong> — 一键设置</li><li>开始使用1,000+模板</li>',
+mcpGptTip:'💡 收藏此页面 — ChatGPT MCP上线后我们会更新。'
 };
 
 // ===== CHINESE TRADITIONAL =====
@@ -753,6 +825,14 @@ mcpEx2:'"Vergelijk dat nu over ChatGPT, Claude en Gemini"',
 mcpOpenL:'Vermelding openen →',
 mcpOpenS:'Space openen →',
 mcpViewS:'Indiening bekijken →'
+,
+mcpClBadge:'Beschikbaar',
+mcpClSteps:'<li>Open <strong style="color:var(--text);">Claude Instellingen → MCP Connectors</strong></li><li>Klik op <strong style="color:var(--text);">Connector Toevoegen</strong></li><li>Plak de URL hieronder</li><li>Noem het <strong style="color:var(--text);">"Poly-Glot"</strong> → Klaar!</li>',
+mcpCopyBtn:'Kopiëren',
+mcpGptBadge:'Binnenkort',
+mcpGptDesc:'OpenAI\'s MCP Apps marketplace opent binnenkort. Poly-Glot is beschikbaar vanaf de eerste dag.',
+mcpGptSteps:'<li>Zoek <strong style="color:var(--text);">"Poly-Glot"</strong> in de ChatGPT app store</li><li>Klik op <strong style="color:var(--text);">Verbinden</strong> — één klik instelling</li><li>Begin met 1.000+ sjablonen</li>',
+mcpGptTip:'💡 Sla deze pagina op — we updaten wanneer ChatGPT MCP live gaat.'
 };
 
 // ===== RUSSIAN =====
@@ -810,6 +890,14 @@ mcpEx2:'"Теперь сравни это в ChatGPT, Claude и Gemini"',
 mcpOpenL:'Открыть запись →',
 mcpOpenS:'Открыть Space →',
 mcpViewS:'Посмотреть заявку →'
+,
+mcpClBadge:'Доступно',
+mcpClSteps:'<li>Откройте <strong style="color:var(--text);">Настройки Claude → MCP-коннекторы</strong></li><li>Нажмите <strong style="color:var(--text);">Добавить коннектор</strong></li><li>Вставьте URL ниже</li><li>Назовите <strong style="color:var(--text);">"Poly-Glot"</strong> → Готово!</li>',
+mcpCopyBtn:'Копировать',
+mcpGptBadge:'Скоро',
+mcpGptDesc:'Маркетплейс MCP Apps от OpenAI скоро откроется. Poly-Glot будет доступен с первого дня.',
+mcpGptSteps:'<li>Найдите <strong style="color:var(--text);">"Poly-Glot"</strong> в магазине ChatGPT</li><li>Нажмите <strong style="color:var(--text);">Подключить</strong> — настройка в один клик</li><li>Начните с 1 000+ шаблонов</li>',
+mcpGptTip:'💡 Добавьте эту страницу в закладки — мы обновим её, когда ChatGPT MCP будет запущен.'
 };
 
 // ===== ARABIC =====
@@ -867,6 +955,14 @@ mcpEx2:'"الآن قارن ذلك عبر ChatGPT وClaude وGemini"',
 mcpOpenL:'فتح القائمة →',
 mcpOpenS:'فتح Space →',
 mcpViewS:'عرض التقديم →'
+,
+mcpClBadge:'متاح الآن',
+mcpClSteps:'<li>افتح <strong style="color:var(--text);">إعدادات Claude → موصلات MCP</strong></li><li>انقر على <strong style="color:var(--text);">إضافة موصل</strong></li><li>الصق الرابط أدناه</li><li>سمّه <strong style="color:var(--text);">"Poly-Glot"</strong> → تم!</li>',
+mcpCopyBtn:'نسخ',
+mcpGptBadge:'قريبًا',
+mcpGptDesc:'سوق تطبيقات MCP من OpenAI سيفتح قريبًا. سيكون Poly-Glot متاحًا من اليوم الأول.',
+mcpGptSteps:'<li>ابحث عن <strong style="color:var(--text);">"Poly-Glot"</strong> في متجر ChatGPT</li><li>انقر على <strong style="color:var(--text);">اتصال</strong> — إعداد بنقرة واحدة</li><li>ابدأ باستخدام أكثر من 1,000 قالب</li>',
+mcpGptTip:'💡 احفظ هذه الصفحة — سنحدثها عندما يتم إطلاق ChatGPT MCP.'
 };
 
 // ===== HINDI =====
@@ -924,6 +1020,14 @@ mcpEx2:'"अब ChatGPT, Claude और Gemini पर तुलना करे�
 mcpOpenL:'सूची खोलें →',
 mcpOpenS:'Space खोलें →',
 mcpViewS:'सबमिशन देखें →'
+,
+mcpClBadge:'उपलब्ध',
+mcpClSteps:'<li><strong style="color:var(--text);">Claude सेटिंग्स → MCP कनेक्टर्स</strong> खोलें</li><li><strong style="color:var(--text);">कनेक्टर जोड़ें</strong> पर क्लिक करें</li><li>नीचे दिया गया URL पेस्ट करें</li><li>इसे <strong style="color:var(--text);">"Poly-Glot"</strong> नाम दें → हो गया!</li>',
+mcpCopyBtn:'कॉपी',
+mcpGptBadge:'जल्द आ रहा',
+mcpGptDesc:'OpenAI का MCP ऐप्स मार्केटप्लेस जल्द खुल रहा है। Poly-Glot पहले दिन से उपलब्ध होगा।',
+mcpGptSteps:'<li>ChatGPT ऐप स्टोर में <strong style="color:var(--text);">"Poly-Glot"</strong> खोजें</li><li><strong style="color:var(--text);">कनेक्ट</strong> क्लिक करें — एक क्लिक सेटअप</li><li>1,000+ टेम्पलेट के साथ शुरू करें</li>',
+mcpGptTip:'💡 इस पेज को बुकमार्क करें — ChatGPT MCP लाइव होने पर हम अपडेट करेंगे।'
 };
 
 // ===== TURKISH =====
@@ -981,6 +1085,14 @@ mcpEx2:'"Şimdi bunu ChatGPT, Claude ve Gemini\'de karşılaştır"',
 mcpOpenL:'Listeyi aç →',
 mcpOpenS:'Space\'i aç →',
 mcpViewS:'Gönderimi gör →'
+,
+mcpClBadge:'Kullanılabilir',
+mcpClSteps:'<li><strong style="color:var(--text);">Claude Ayarları → MCP Bağlayıcıları</strong> açın</li><li><strong style="color:var(--text);">Bağlayıcı Ekle</strong> tıklayın</li><li>Aşağıdaki URL\'yi yapıştırın</li><li><strong style="color:var(--text);">"Poly-Glot"</strong> adını verin → Tamam!</li>',
+mcpCopyBtn:'Kopyala',
+mcpGptBadge:'Yakında',
+mcpGptDesc:'OpenAI\'ın MCP Uygulamaları pazarı yakında açılıyor. Poly-Glot ilk günden itibaren kullanılabilir olacak.',
+mcpGptSteps:'<li>ChatGPT uygulama mağazasında <strong style="color:var(--text);">"Poly-Glot"</strong> arayın</li><li><strong style="color:var(--text);">Bağlan</strong> tıklayın — tek tıkla kurulum</li><li>1.000+ şablonla başlayın</li>',
+mcpGptTip:'💡 Bu sayfayı kaydedin — ChatGPT MCP yayına girdiğinde güncelleyeceğiz.'
 };
 
 // ===== POLISH =====
@@ -1038,6 +1150,14 @@ mcpEx2:'"Teraz porównaj to na ChatGPT, Claude i Gemini"',
 mcpOpenL:'Otwórz wpis →',
 mcpOpenS:'Otwórz Space →',
 mcpViewS:'Zobacz zgłoszenie →'
+,
+mcpClBadge:'Dostępne',
+mcpClSteps:'<li>Otwórz <strong style="color:var(--text);">Ustawienia Claude → Łączniki MCP</strong></li><li>Kliknij <strong style="color:var(--text);">Dodaj łącznik</strong></li><li>Wklej poniższy URL</li><li>Nazwij go <strong style="color:var(--text);">"Poly-Glot"</strong> → Gotowe!</li>',
+mcpCopyBtn:'Kopiuj',
+mcpGptBadge:'Wkrótce',
+mcpGptDesc:'Marketplace MCP Apps od OpenAI wkrótce się otworzy. Poly-Glot będzie dostępny od pierwszego dnia.',
+mcpGptSteps:'<li>Wyszukaj <strong style="color:var(--text);">"Poly-Glot"</strong> w sklepie ChatGPT</li><li>Kliknij <strong style="color:var(--text);">Połącz</strong> — konfiguracja jednym kliknięciem</li><li>Zacznij z ponad 1000 szablonami</li>',
+mcpGptTip:'💡 Dodaj tę stronę do zakładek — zaktualizujemy ją, gdy ChatGPT MCP będzie dostępny.'
 };
 
 // ===== BENGALI =====
@@ -1095,6 +1215,14 @@ mcpEx2:'"এখন ChatGPT, Claude এবং Gemini-তে তুলনা ক�
 mcpOpenL:'তালিকা খুলুন →',
 mcpOpenS:'Space খুলুন →',
 mcpViewS:'সাবমিশন দেখুন →'
+,
+mcpClBadge:'উপলব্ধ',
+mcpClSteps:'<li><strong style="color:var(--text);">Claude সেটিংস → MCP কানেক্টর</strong> খুলুন</li><li><strong style="color:var(--text);">কানেক্টর যোগ করুন</strong> ক্লিক করুন</li><li>নিচের URL পেস্ট করুন</li><li>নাম দিন <strong style="color:var(--text);">"Poly-Glot"</strong> → সম্পন্ন!</li>',
+mcpCopyBtn:'কপি',
+mcpGptBadge:'শীঘ্রই আসছে',
+mcpGptDesc:'OpenAI-এর MCP অ্যাপস মার্কেটপ্লেস শীঘ্রই খুলছে। Poly-Glot প্রথম দিন থেকে পাওয়া যাবে।',
+mcpGptSteps:'<li>ChatGPT অ্যাপ স্টোরে <strong style="color:var(--text);">"Poly-Glot"</strong> অনুসন্ধান করুন</li><li><strong style="color:var(--text);">সংযোগ</strong> ক্লিক করুন — এক ক্লিকে সেটআপ</li><li>১,০০০+ টেমপ্লেট দিয়ে শুরু করুন</li>',
+mcpGptTip:'💡 এই পৃষ্ঠা বুকমার্ক করুন — ChatGPT MCP চালু হলে আমরা আপডেট করব।'
 };
 
 // ===== AFRIKAANS =====
@@ -1152,6 +1280,14 @@ mcpEx2:'"Vergelyk dit nou oor ChatGPT, Claude en Gemini"',
 mcpOpenL:'Maak lys oop →',
 mcpOpenS:'Maak Space oop →',
 mcpViewS:'Sien indiening →'
+,
+mcpClBadge:'Beskikbaar',
+mcpClSteps:'<li>Maak <strong style="color:var(--text);">Claude Instellings → MCP-verbinders</strong> oop</li><li>Klik <strong style="color:var(--text);">Voeg Verbinder By</strong></li><li>Plak die URL hieronder</li><li>Noem dit <strong style="color:var(--text);">"Poly-Glot"</strong> → Klaar!</li>',
+mcpCopyBtn:'Kopieer',
+mcpGptBadge:'Binnekort',
+mcpGptDesc:'OpenAI se MCP Apps-mark maak binnekort oop. Poly-Glot sal van dag een af beskikbaar wees.',
+mcpGptSteps:'<li>Soek <strong style="color:var(--text);">"Poly-Glot"</strong> in die ChatGPT-winkel</li><li>Klik <strong style="color:var(--text);">Koppel</strong> — een-klik opstelling</li><li>Begin met 1,000+ sjablone</li>',
+mcpGptTip:'💡 Boekmerk hierdie bladsy — ons sal dit opdateer wanneer ChatGPT MCP regstreeks gaan.'
 };
 
 // ===== SWAHILI =====
@@ -1209,6 +1345,14 @@ mcpEx2:'"Sasa linganisha hiyo kwenye ChatGPT, Claude na Gemini"',
 mcpOpenL:'Fungua orodha →',
 mcpOpenS:'Fungua Space →',
 mcpViewS:'Angalia uwasilishaji →'
+,
+mcpClBadge:'Inapatikana',
+mcpClSteps:'<li>Fungua <strong style="color:var(--text);">Mipangilio ya Claude → Viunganishi vya MCP</strong></li><li>Bofya <strong style="color:var(--text);">Ongeza Kiunganishi</strong></li><li>Bandika URL hapa chini</li><li>Ipe jina <strong style="color:var(--text);">"Poly-Glot"</strong> → Imekamilika!</li>',
+mcpCopyBtn:'Nakili',
+mcpGptBadge:'Inakuja Hivi Karibuni',
+mcpGptDesc:'Soko la MCP Apps la OpenAI linafungua hivi karibuni. Poly-Glot itapatikana siku ya kwanza.',
+mcpGptSteps:'<li>Tafuta <strong style="color:var(--text);">"Poly-Glot"</strong> katika duka la ChatGPT</li><li>Bofya <strong style="color:var(--text);">Unganisha</strong> — usanidi wa bofya moja</li><li>Anza na violezo 1,000+</li>',
+mcpGptTip:'💡 Hifadhi ukurasa huu — tutausasisha MCP ya ChatGPT inapokuwa hai.'
 };
 
 // ===== HAUSA =====
@@ -1266,6 +1410,14 @@ mcpEx2:'"Yanzu kwatanta wannan a ChatGPT, Claude da Gemini"',
 mcpOpenL:'Buɗe jerin →',
 mcpOpenS:'Buɗe Space →',
 mcpViewS:'Duba gabatarwa →'
+,
+mcpClBadge:'Akwai',
+mcpClSteps:'<li>Buɗe <strong style="color:var(--text);">Saitunan Claude → Masu Haɗin MCP</strong></li><li>Danna <strong style="color:var(--text);">Ƙara Mai Haɗi</strong></li><li>Manna URL din ƙasa</li><li>Suna shi <strong style="color:var(--text);">"Poly-Glot"</strong> → An gama!</li>',
+mcpCopyBtn:'Kwafa',
+mcpGptBadge:'Yana Zuwa Ba Da Jimawa',
+mcpGptDesc:'Kasuwar MCP Apps ta OpenAI za ta buɗe nan ba da jimawa. Poly-Glot zai kasance akwai daga ranar farko.',
+mcpGptSteps:'<li>Nemo <strong style="color:var(--text);">"Poly-Glot"</strong> a cikin shagon ChatGPT</li><li>Danna <strong style="color:var(--text);">Haɗa</strong> — saiti cikin danna ɗaya</li><li>Fara da samfura 1,000+</li>',
+mcpGptTip:'💡 Ajiye wannan shafin — za mu sabunta shi lokacin da ChatGPT MCP ya kasance a layi.'
 };
 
 // ===== AMHARIC =====
@@ -1323,6 +1475,14 @@ mcpEx2:'"አሁን በChatGPT፣ Claude እና Gemini ላይ ያወዳድሩ"',
 mcpOpenL:'ዝርዝር ይክፈቱ →',
 mcpOpenS:'Space ይክፈቱ →',
 mcpViewS:'ማስገቢያ ይመልከቱ →'
+,
+mcpClBadge:'ይገኛል',
+mcpClSteps:'<li><strong style="color:var(--text);">Claude ቅንብሮች → MCP ማገናኛዎች</strong> ይክፈቱ</li><li><strong style="color:var(--text);">ማገናኛ ይጨምሩ</strong> ይጫኑ</li><li>ከታች ያለውን URL ይለጥፉ</li><li><strong style="color:var(--text);">"Poly-Glot"</strong> ብለው ይሰይሙ → ተጠናቀቀ!</li>',
+mcpCopyBtn:'ቅዳ',
+mcpGptBadge:'በቅርቡ',
+mcpGptDesc:'የOpenAI MCP መተግበሪያዎች ገበያ በቅርቡ ይከፈታል። Poly-Glot ከመጀመሪያው ቀን ጀምሮ ይገኛል።',
+mcpGptSteps:'<li>በChatGPT መተግበሪያ መደብር ውስጥ <strong style="color:var(--text);">"Poly-Glot"</strong> ይፈልጉ</li><li><strong style="color:var(--text);">አገናኝ</strong> ይጫኑ — በአንድ ጠቅታ ማዋቀር</li><li>ከ1,000+ ቅጾች ጋር ይጀምሩ</li>',
+mcpGptTip:'💡 ይህን ገጽ ያስቀምጡ — ChatGPT MCP ሲጀመር እናዘምነዋለን።'
 };
 
 // ===== FILIPINO (complete) =====
@@ -1378,6 +1538,14 @@ mcpEx2:'"Ngayon i-compare iyan sa ChatGPT, Claude at Gemini"',
 mcpOpenL:'Buksan ang listahan →',
 mcpOpenS:'Buksan ang Space →',
 mcpViewS:'Tingnan ang submission →'
+,
+mcpClBadge:'Available Na',
+mcpClSteps:'<li>Buksan ang <strong style="color:var(--text);">Claude Settings → MCP Connectors</strong></li><li>I-click ang <strong style="color:var(--text);">Add Connector</strong></li><li>I-paste ang URL sa ibaba</li><li>Pangalanan itong <strong style="color:var(--text);">"Poly-Glot"</strong> → Tapos na!</li>',
+mcpCopyBtn:'Kopyahin',
+mcpGptBadge:'Malapit Na',
+mcpGptDesc:'Ang MCP Apps marketplace ng OpenAI ay malapit nang magbukas. Ang Poly-Glot ay magiging available sa unang araw.',
+mcpGptSteps:'<li>Hanapin ang <strong style="color:var(--text);">"Poly-Glot"</strong> sa ChatGPT app store</li><li>I-click ang <strong style="color:var(--text);">Connect</strong> — one click setup</li><li>Magsimula sa 1,000+ templates</li>',
+mcpGptTip:'💡 I-bookmark ang page na ito — i-a-update namin kapag live na ang ChatGPT MCP.'
 };
 
 // ===== GETTER =====
