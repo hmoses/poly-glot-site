@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hmoses.github.io/poly-glot-site/sitemap.xml
