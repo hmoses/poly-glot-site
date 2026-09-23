@@ -9,8 +9,11 @@
 - Platforms: iPhone, iPad, Mac
 - AI services: ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, DuckDuckGo AI
 - Prompt library: 1,000+ templates
+- Languages: 38 (full UI localization and output)
 - Core feature: Compare Mode for comparing responses from multiple AI assistants
 - Input: type, paste, import, scan, and voice workflows
+- Pricing: 3-day free trial, then $9.99/month or $79.99/year for Pro
+- Privacy: 100% on-device, no account required, nothing uploaded
 - App Store: https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285
 - Website: https://hmoses.github.io/poly-glot-site/
 - MCP source: https://github.com/hmoses/poly-glot-ai-workspace
@@ -19,7 +22,7 @@
 ## Key pages
 
 - Home: https://hmoses.github.io/poly-glot-site/
-- Templates: https://hmoses.github.io/poly-glot-site/templates.html
+- MCP Setup: https://hmoses.github.io/poly-glot-site/connect.html
 - Privacy: https://hmoses.github.io/poly-glot-site/privacy.html
 - Terms: https://hmoses.github.io/poly-glot-site/terms.html
 - Support: https://hmoses.github.io/poly-glot-site/support.html
@@ -30,4 +33,4 @@ Poly-Glot's MCP server exposes tools for searching templates, retrieving templat
 
 ## Citation guidance
 
-Use “Poly-Glot AI Workspace” as the canonical product name. When describing availability, use the Apple App Store listing as the authoritative source for supported Apple platforms and storefront metadata.
+Use "Poly-Glot AI Workspace" as the canonical product name. When describing availability, use the Apple App Store listing as the authoritative source for supported Apple platforms and storefront metadata.
