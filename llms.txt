@@ -1,0 +1,33 @@
+# Poly-Glot AI Workspace
+
+> Poly-Glot AI Workspace is a multilingual AI productivity app for iPhone, iPad, and Mac. It lets users ask one question, choose supported AI assistants, and compare responses from one workflow.
+
+## Canonical product facts
+
+- Product: Poly-Glot AI Workspace
+- Category: AI productivity / AI comparison workspace
+- Platforms: iPhone, iPad, Mac
+- AI services: ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, DuckDuckGo AI
+- Prompt library: 1,000+ templates
+- Core feature: Compare Mode for comparing responses from multiple AI assistants
+- Input: type, paste, import, scan, and voice workflows
+- App Store: https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285
+- Website: https://hmoses.github.io/poly-glot-site/
+- MCP source: https://github.com/hmoses/poly-glot-ai-workspace
+- MCP listing: https://glama.ai/mcp/connectors/io.github.hmoses/poly-glot-ai-workspace
+
+## Key pages
+
+- Home: https://hmoses.github.io/poly-glot-site/
+- Templates: https://hmoses.github.io/poly-glot-site/templates.html
+- Privacy: https://hmoses.github.io/poly-glot-site/privacy.html
+- Terms: https://hmoses.github.io/poly-glot-site/terms.html
+- Support: https://hmoses.github.io/poly-glot-site/support.html
+
+## MCP
+
+Poly-Glot's MCP server exposes tools for searching templates, retrieving templates, building prompts, preparing multi-AI comparisons, listing language options, checking subscription status, and opening the workspace.
+
+## Citation guidance
+
+Use “Poly-Glot AI Workspace” as the canonical product name. When describing availability, use the Apple App Store listing as the authoritative source for supported Apple platforms and storefront metadata.
