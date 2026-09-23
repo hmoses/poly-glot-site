@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>SEO Setup Checklist — Poly-Glot AI Workspace</title>
+<link rel="icon" type="image/png" href="assets/img/icon-128.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0b14;color:#e0e0e8;line-height:1.7;padding:24px}
+.wrap{max-width:720px;margin:0 auto}
+h1{font-size:1.8rem;font-weight:800;margin-bottom:8px;background:linear-gradient(135deg,#7dd3fc,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:#888;font-size:0.9rem;margin-bottom:32px}
+h2{font-size:1.2rem;font-weight:700;color:#7dd3fc;margin:32px 0 16px;padding-bottom:8px;border-bottom:1px solid rgba(125,211,252,0.15)}
+h3{font-size:1rem;font-weight:600;color:#c084fc;margin:20px 0 8px}
+.step{background:#141730;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;margin-bottom:16px}
+.step-num{display:inline-block;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7dd3fc,#a78bfa);color:#0a0b14;font-weight:800;font-size:0.85rem;text-align:center;line-height:28px;margin-right:10px;flex-shrink:0}
+.step-title{font-weight:700;font-size:1rem;margin-bottom:8px;display:flex;align-items:center}
+.step p,.step li{font-size:0.9rem;color:#b0b0c0}
+.step ol,.step ul{padding-left:20px;margin-top:8px}
+.step li{margin-bottom:6px}
+.link{color:#7dd3fc;text-decoration:none;word-break:break-all}
+.link:hover{text-decoration:underline}
+code{background:rgba(125,211,252,0.1);color:#7dd3fc;padding:2px 8px;border-radius:4px;font-size:0.85rem;font-family:'Fira Code',monospace}
+.copy-box{background:#1a1e3a;border:1px solid rgba(125,211,252,0.2);border-radius:8px;padding:12px 16px;margin:8px 0;font-family:'Fira Code',monospace;font-size:0.82rem;color:#7dd3fc;word-break:break-all;cursor:pointer;position:relative;transition:border-color 0.2s}
+.copy-box:hover{border-color:#7dd3fc}
+.copy-box::after{content:'click to copy';position:absolute;right:12px;top:12px;font-size:0.7rem;color:#666;font-family:-apple-system,sans-serif}
+.tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:0.7rem;font-weight:600;text-transform:uppercase;margin-left:8px}
+.tag-required{background:rgba(239,68,68,0.15);color:#ef4444}
+.tag-recommended{background:rgba(251,191,36,0.15);color:#fbbf24}
+.tag-done{background:rgba(16,185,129,0.15);color:#10b981}
+.check{margin:24px 0}
+.check label{display:flex;align-items:flex-start;gap:10px;padding:10px 16px;background:#141730;border:1px solid rgba(255,255,255,0.06);border-radius:8px;margin-bottom:8px;cursor:pointer;font-size:0.9rem;transition:border-color 0.2s}
+.check label:hover{border-color:rgba(125,211,252,0.3)}
+.check input[type="checkbox"]{margin-top:4px;accent-color:#10b981;width:18px;height:18px;flex-shrink:0}
+.check input:checked+span{color:#10b981;text-decoration:line-through;text-decoration-color:rgba(16,185,129,0.4)}
+.progress-bar{background:#1a1e3a;border-radius:8px;height:8px;margin:16px 0 32px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#7dd3fc,#10b981);border-radius:8px;transition:width 0.4s ease;width:0%}
+.footer{text-align:center;color:#555;font-size:0.75rem;margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06)}
+.alert{background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:8px;padding:16px;margin:16px 0;font-size:0.85rem;color:#fbbf24}
+.done-box{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:8px;padding:16px;margin:16px 0}
+.done-box h3{color:#10b981;margin:0 0 8px}
+.done-box p{font-size:0.85rem;color:#b0b0c0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>🔍 SEO Setup Checklist</h1>
+<p class="sub">Poly-Glot AI Workspace — Search Engine Registration & Monitoring</p>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<p style="text-align:center;font-size:0.8rem;color:#666;margin-top:-24px;margin-bottom:24px" id="progressText">0 / 10 complete</p>
+
+<!-- ============================== -->
+<div class="done-box">
+<h3>✅ Already Done (by Goose)</h3>
+<p>SEO metadata, JSON-LD structured data (SoftwareApplication + WebSite + FAQPage), robots.txt, sitemap.xml, llms.txt, canonical URL, Open Graph tags, Twitter Card tags, language count normalization (38), platform availability fix, stale copy cleanup. All committed to <code>main</code>.</p>
+</div>
+
+<!-- ============================== -->
+<h2>1. Google Search Console <span class="tag tag-required">Required</span></h2>
+
+<div class="step">
+<div class="step-title"><span class="step-num">1</span> Open Google Search Console</div>
+<p>Go to:</p>
+<div class="copy-box" onclick="copyText(this)">https://search.google.com/search-console</div>
+<p>Sign in with your Google account.</p>
+</div>
+
+<div class="step">
+<div class="step-title"><span class="step-num">2</span> Add Property</div>
+<ol>
+<li>Click <strong>"Add property"</strong> (top-left dropdown)</li>
+<li>Choose <strong>"URL prefix"</strong></li>
+<li>Enter your site URL:</li>
+</ol>
+<div class="copy-box" onclick="copyText(this)">https://hmoses.github.io/poly-glot-site/</div>
+<p>Click <strong>Continue</strong>.</p>
+</div>
+
+<div class="step">
+<div class="step-title"><span class="step-num">3</span> Verify Ownership</div>
+<p>Google will offer verification methods. The easiest for GitHub Pages:</p>
+<ol>
+<li>Choose <strong>"HTML tag"</strong> method</li>
+<li>Google will give you a meta tag like:<br>
+<code>&lt;meta name="google-site-verification" content="abc123..."&gt;</code></li>
+<li>Copy the <strong>entire tag</strong></li>
+<li>Open your repo: <a class="link" href="https://github.com/hmoses/poly-glot-site/edit/main/index.html" target="_blank">Edit index.html on GitHub</a></li>
+<li>Paste it in the <code>&lt;head&gt;</code> section (right after the existing meta tags, ~line 25)</li>
+<li>Commit → wait ~1 min for GitHub Pages deploy</li>
+<li>Go back to Search Console → click <strong>"Verify"</strong></li>
+</ol>
+<div class="alert">⚠️ Do NOT delete the verification meta tag after verifying — Google re-checks periodically.</div>
+</div>
+
+<div class="step">
+<div class="step-title"><span class="step-num">4</span> Submit Sitemap</div>
+<ol>
+<li>In Search Console, go to <strong>Sitemaps</strong> (left sidebar)</li>
+<li>Enter:</li>
+</ol>
+<div class="copy-box" onclick="copyText(this)">https://hmoses.github.io/poly-glot-site/sitemap.xml</div>
+<ol start="3">
+<li>Click <strong>"Submit"</strong></li>
+<li>Status should show "Success" (may take a few minutes)</li>
+</ol>
+</div>
+
+<div class="step">
+<div class="step-title"><span class="step-num">5</span> Request Indexing</div>
+<ol>
+<li>In Search Console, go to <strong>URL Inspection</strong> (top search bar)</li>
+<li>Enter your homepage URL:</li>
+</ol>
+<div class="copy-box" onclick="copyText(this)">https://hmoses.github.io/poly-glot-site/</div>
+<ol start="3">
+<li>Click <strong>"Request Indexing"</strong></li>
+<li>Repeat for these pages:</li>
+</ol>
+<div class="copy-box" onclick="copyText(this)">https://hmoses.github.io/poly-glot-site/connect.html</div>
+<div class="copy-box" onclick="copyText(this)">https://hmoses.github.io/poly-glot-site/support.html</div>
+</div>
+
+<!-- ============================== -->
+<h2>2. Bing Webmaster Tools <span class="tag tag-recommended">Recommended</span></h2>
+
+<div class="step">
+<div class="step-title"><span class="step-num">6</span> Open Bing Webmaster Tools</div>
+<div class="copy-box" onclick="copyText(this)">https://www.bing.com/webmasters</div>
+<p>Sign in with your Microsoft account.</p>
+</div>
+
+<div class="step">
+<div class="step-title"><span class="step-num">7</span> Add & Verify Site</div>
+<ol>
+<li>Click <strong>"Add Site"</strong></li>
+<li>Enter:</li>
+</ol>
+<div class="copy-box" onclick="copyText(this)">https://hmoses.github.io/poly-glot-site/</div>
+<ol start="3">
+<li><strong>Fastest method:</strong> If you already verified Google Search Console, choose <strong>"Import from Google Search Console"</strong> — one click</li>
+<li><strong>Alternative:</strong> Use the XML file method — download the BingSiteAuth.xml file and upload to your repo root</li>
+</ol>
+</div>
+
+<div class="step">
+<div class="step-title"><span class="step-num">8</span> Submit Sitemap</div>
+<ol>
+<li>Go to <strong>Sitemaps</strong> in Bing Webmaster</li>
+<li>Submit:</li>
+</ol>
+<div class="copy-box" onclick="copyText(this)">https://hmoses.github.io/poly-glot-site/sitemap.xml</div>
+</div>
+
+<!-- ============================== -->
+<h2>3. Monitor (After 1–2 Weeks) <span class="tag tag-recommended">Recommended</span></h2>
+
+<div class="step">
+<div class="step-title"><span class="step-num">9</span> Check Indexed Pages</div>
+<p>In Google Search Console → <strong>Coverage</strong> or <strong>Pages</strong>:</p>
+<ul>
+<li>Expect 5 pages indexed (index, connect, privacy, terms, support)</li>
+<li>Check for crawl errors — fix any 404s</li>
+<li>Ensure no pages are "Excluded" unexpectedly</li>
+</ul>
+<p style="margin-top:12px">Quick check — search Google for:</p>
+<div class="copy-box" onclick="copyText(this)">site:hmoses.github.io/poly-glot-site/</div>
+</div>
+
+<div class="step">
+<div class="step-title"><span class="step-num">10</span> Review Search Performance</div>
+<p>In Search Console → <strong>Performance</strong>:</p>
+<ul>
+<li><strong>Impressions</strong> — How often your site appears in search results</li>
+<li><strong>Clicks</strong> — How many people clicked through</li>
+<li><strong>CTR</strong> — Click-through rate (target: >3% for branded, >1% for generic)</li>
+<li><strong>Queries</strong> — What people searched to find you</li>
+</ul>
+<p style="margin-top:12px"><strong>Key queries to watch for:</strong></p>
+<ul>
+<li>"poly-glot ai" / "polyglot ai workspace"</li>
+<li>"compare chatgpt claude gemini"</li>
+<li>"ai prompt templates"</li>
+<li>"multi ai app" / "compare ai answers"</li>
+</ul>
+</div>
+
+<!-- ============================== -->
+<h2>Progress Tracker</h2>
+
+<div class="check">
+<label><input type="checkbox" onchange="updateProgress()"><span>Google Search Console — property added</span></label>
+<label><input type="checkbox" onchange="updateProgress()"><span>Google — ownership verified (HTML tag method)</span></label>
+<label><input type="checkbox" onchange="updateProgress()"><span>Google — sitemap submitted</span></label>
+<label><input type="checkbox" onchange="updateProgress()"><span>Google — homepage indexing requested</span></label>
+<label><input type="checkbox" onchange="updateProgress()"><span>Google — connect.html indexing requested</span></label>
+<label><input type="checkbox" onchange="updateProgress()"><span>Bing Webmaster — site added & verified</span></label>
+<label><input type="checkbox" onchange="updateProgress()"><span>Bing — sitemap submitted</span></label>
+<label><input type="checkbox" onchange="updateProgress()"><span>Checked <code>site:hmoses.github.io/poly-glot-site/</code> on Google</span></label>
+<label><input type="checkbox" onchange="updateProgress()"><span>Reviewed Search Console Performance tab</span></label>
+<label><input type="checkbox" onchange="updateProgress()"><span>Confirmed no crawl errors in Coverage report</span></label>
+</div>
+
+<div class="footer">
+<p>Poly-Glot AI Workspace — SEO Setup Guide</p>
+<p style="margin-top:4px"><a class="link" href="index.html">← Back to main site</a></p>
+</div>
+
+</div>
+
+<script>
+function copyText(el){
+  var t=el.textContent.replace('click to copy','').trim();
+  navigator.clipboard.writeText(t).then(function(){
+    el.style.borderColor='#10b981';
+    var orig=el.getAttribute('data-orig')||el.innerHTML;
+    el.setAttribute('data-orig',orig);
+    el.innerHTML='<span style="color:#10b981">✓ Copied!</span>';
+    setTimeout(function(){el.innerHTML=orig;el.style.borderColor='';},1200);
+  });
+}
+function updateProgress(){
+  var boxes=document.querySelectorAll('.check input[type="checkbox"]');
+  var checked=0;
+  boxes.forEach(function(b){if(b.checked)checked++;});
+  var pct=Math.round((checked/boxes.length)*100);
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('progressText').textContent=checked+' / '+boxes.length+' complete';
+  try{localStorage.setItem('pg_seo_checks',JSON.stringify(Array.from(boxes).map(function(b){return b.checked;})));}catch(e){}
+}
+(function(){
+  try{
+    var saved=JSON.parse(localStorage.getItem('pg_seo_checks'));
+    if(saved){
+      var boxes=document.querySelectorAll('.check input[type="checkbox"]');
+      saved.forEach(function(v,i){if(boxes[i])boxes[i].checked=v;});
+      updateProgress();
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
