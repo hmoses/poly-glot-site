@@ -1619,6 +1619,27 @@ if(t2)t2.textContent=gt('chatSub',lang);
 var inp=document.getElementById('pgChat-input');
 if(inp)inp.placeholder=gt('chatPH',lang);
 window._pgChatLang=lang;
+
+// === LOCALIZE TOPICS DROPDOWN ===
+if(window._pgChatI18n){
+var sel=document.getElementById('pgChat-topics-select');
+if(sel){
+var tops=window._pgChatI18n.getTopics(lang);
+var opts=sel.querySelectorAll('option');
+// Map option index to topic key (same order as HTML)
+var topicKeys=['_browse','_whatIs','_pricing','_whichAIs','_howWorks','_trial','_afterTrial','_compare','_templates','_categories','_languages','_appLang','_outputLang','_voice','_devices','_privacy','_download','_cancel','_mcp','_mcpSetup','_features','_sending','_history','_custom','_offline','_web','_whoMade','_children','_api','_autoFill','_payment','_promptStudio','_support','_different','_disclaimer'];
+for(var i=0;i<opts.length&&i<topicKeys.length;i++){
+if(tops[topicKeys[i]])opts[i].textContent=tops[topicKeys[i]];
+}
+}
+// === LOCALIZE BUBBLE + CLEAR TITLES ===
+var titles=window._pgChatI18n.getTitles(lang);
+var bubble=document.getElementById('pgChat-bubble');
+if(bubble&&titles.bubble)bubble.title=titles.bubble;
+var clearBtn=document.getElementById('pgChat-clear');
+if(clearBtn&&titles.clear)clearBtn.title=titles.clear;
+}
+
 // Re-render welcome message + suggestion buttons if chat is showing welcome state
 if(typeof window.pgChat!=='undefined'&&typeof window.pgChat.renderWelcome==='function'){
 // Only re-render if no user messages yet (welcome state)
