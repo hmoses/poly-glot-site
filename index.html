@@ -702,9 +702,13 @@ a:hover { opacity: 0.85; }
 }
 #gallery-mac #macTabHint {
   position:relative;
-  z-index:40;
+  z-index:60;
   margin-top:0;
   margin-bottom:24px !important;
+  display:block !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  pointer-events:none;
 }
 #gallery-mac .macbook-shell,
 #gallery-mac .macbook-display,
@@ -2910,7 +2914,11 @@ function switchMacTab(tab) {
   var label = document.getElementById('macTabLabel');
   if (label) label.textContent = _macTabLabels[tab] || '';
   var hint = document.getElementById('macTabHint');
-  if (hint) hint.style.display = 'none';
+  if (hint) {
+    hint.style.display = 'block';
+    hint.style.opacity = '1';
+    hint.style.visibility = 'visible';
+  }
 }
 
 /* ===== INTERACTIVE DEMO ANIMATION (from latest AI Workspace app) ===== */
