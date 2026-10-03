@@ -292,6 +292,19 @@ a:hover { opacity: 0.85; }
 }
 .duo-meta a { color:#9db0d6; text-decoration:underline; text-underline-offset:3px; }
 
+.duo-exact-figure {
+  margin: 0;
+  position: relative;
+}
+.duo-exact-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 28px 80px rgba(0,0,0,.5), 0 0 42px rgba(80,95,255,.12);
+}
+
 .duo-device {
   position:relative;
   display:grid;
@@ -1116,39 +1129,9 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         </div>
       </div>
 
-      <div class="duo-device" role="img" aria-label="Concept preview of Poly-Glot Compare Mode on an open iPhone Duo">
-        <div class="duo-screen left">
-          <div class="duo-ui">
-            <div class="topline">
-              <img src="assets/img/icon-128.png" alt="">
-              <div><div class="brand">Poly-Glot AI Workspace</div><div class="muted">poly-glot.ai</div></div>
-            </div>
-            <div class="tabline">✎ Ask Any AI &nbsp;&nbsp; ▦ Templates &nbsp;&nbsp; ◫ How to Use</div>
-            <h3>Compare Mode</h3>
-            <div class="muted">Ask multiple AIs the same question and compare their responses side by side.</div>
-            <div class="prompt">Explain quantum computing in simple terms.</div>
-            <div class="duo-ai-row"><span class="duo-check on"></span> ChatGPT</div>
-            <div class="duo-ai-row"><span class="duo-check"></span> Claude</div>
-            <div class="duo-ai-row"><span class="duo-check"></span> Gemini</div>
-            <div class="duo-ai-row"><span class="duo-check on"></span> Perplexity</div>
-            <div class="duo-ai-row"><span class="duo-check"></span> Microsoft Copilot</div>
-            <div class="duo-ai-row"><span class="duo-check"></span> Grok</div>
-            <div class="duo-send">➤ &nbsp; Send to Selected (2)</div>
-          </div>
-        </div>
-        <div class="duo-screen right">
-          <div class="duo-response">
-            <div class="duo-response-head">
-              <div class="duo-model">AI</div>
-              <div><strong>ChatGPT + Perplexity</strong><div class="muted">Side-by-side comparison</div></div>
-            </div>
-            <p>Quantum computing is a new kind of computing that uses the principles of quantum physics to process information in ways traditional computers cannot.</p>
-            <p>Instead of ordinary bits, quantum computers use qubits, which can represent combinations of states and explore many possibilities at once.</p>
-            <p>On iPhone Duo, Compare Mode can use the wider open display to keep multiple AI responses visible together while preserving the prompt and controls.</p>
-            <div class="duo-actions"><span>Copy</span><span>Read</span><span>Share</span><span>Save</span></div>
-          </div>
-        </div>
-      </div>
+      <figure class="duo-exact-figure">
+        <img class="duo-exact-image" src="assets/img/iphone-duo-simulator.jpg" alt="Poly-Glot AI Workspace Compare Mode shown in the iPhone Duo Xcode simulator">
+      </figure>
     </div>
   </div>
 </section>
