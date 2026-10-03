@@ -209,6 +209,206 @@ a:hover { opacity: 0.85; }
 .section-sub { font-size: 1rem; color: var(--text-faint); max-width: 600px; margin-bottom: 48px; line-height: 1.7; }
 .section-divider { width: 100%; height: 1px; background: rgba(125,211,252,0.06); }
 
+
+/* ===== IPHONE DUO COMING SOON ===== */
+.duo-coming {
+  position: relative;
+  overflow: hidden;
+  padding: 96px 0;
+  background:
+    radial-gradient(circle at 82% 46%, rgba(82,126,255,.16), transparent 36%),
+    radial-gradient(circle at 68% 82%, rgba(133,72,255,.18), transparent 30%),
+    linear-gradient(145deg, #05070d 0%, #090d19 46%, #0b1020 100%);
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.duo-coming::before {
+  content:'';
+  position:absolute; inset:0;
+  background: linear-gradient(90deg, rgba(255,255,255,.015), transparent 35%);
+  pointer-events:none;
+}
+.duo-coming-inner {
+  display:grid;
+  grid-template-columns: .88fr 1.32fr;
+  gap: 56px;
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+.duo-kicker {
+  display:inline-block;
+  margin-bottom:14px;
+  color:#8b7dff;
+  font-family:'Fira Code',monospace;
+  font-size:.74rem;
+  font-weight:700;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+}
+.duo-coming h2 {
+  margin:0 0 18px;
+  font-size:clamp(2.6rem,5vw,4.9rem);
+  line-height:.98;
+  letter-spacing:-.055em;
+  color:#fff;
+}
+.duo-coming h2 span {
+  background:linear-gradient(90deg,#a96bff 0%,#5a8cff 48%,#23b8ff 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.duo-copy {
+  max-width:520px;
+  color:#a8b2c7;
+  font-size:1.05rem;
+  line-height:1.75;
+  margin-bottom:24px;
+}
+.duo-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 18px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+  background:rgba(255,255,255,.045);
+  color:#fff;
+  font-weight:700;
+  font-size:.88rem;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+.duo-badge::before {
+  content:'';
+  width:8px; height:8px; border-radius:50%;
+  background:#a46bff;
+  box-shadow:0 0 18px rgba(164,107,255,.9);
+}
+.duo-meta {
+  margin-top:18px;
+  color:#66728d;
+  font-size:.78rem;
+}
+.duo-meta a { color:#9db0d6; text-decoration:underline; text-underline-offset:3px; }
+
+.duo-device {
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  padding:10px;
+  min-height:430px;
+  border-radius:36px;
+  background:linear-gradient(160deg,#1d2028,#05060a 36%,#171922 72%,#05060a);
+  box-shadow:0 38px 90px rgba(0,0,0,.58), 0 0 65px rgba(76,91,255,.14);
+  transform:perspective(1100px) rotateX(1.5deg);
+}
+.duo-device::after {
+  content:'';
+  position:absolute;
+  left:50%; top:6px; bottom:6px;
+  width:14px;
+  transform:translateX(-50%);
+  border-radius:10px;
+  background:linear-gradient(90deg,#050506,#2c2f36 42%,#0c0d11 52%,#30333a 67%,#050506);
+  box-shadow:0 0 18px rgba(0,0,0,.7);
+  z-index:5;
+}
+.duo-screen {
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  background:#02050a;
+  min-height:410px;
+}
+.duo-screen.left { transform:perspective(900px) rotateY(2.8deg); transform-origin:right center; }
+.duo-screen.right { transform:perspective(900px) rotateY(-2.8deg); transform-origin:left center; }
+.duo-screen::before {
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.035),transparent 13%,transparent 88%,rgba(255,255,255,.018));
+  pointer-events:none; z-index:3;
+}
+.duo-ui {
+  position:absolute; inset:0;
+  padding:26px 24px;
+  color:#eaf0fa;
+  font-size:.78rem;
+  line-height:1.45;
+  background:
+    linear-gradient(180deg,rgba(8,13,24,.98),rgba(2,6,13,.98)),
+    url('assets/img/phone-hero.png') center/cover no-repeat;
+}
+.duo-ui .topline { display:flex; align-items:center; gap:10px; margin-bottom:22px; }
+.duo-ui .topline img { width:34px; height:34px; border-radius:8px; }
+.duo-ui .brand { font-weight:800; font-size:.96rem; }
+.duo-ui .muted { color:#7f8ca6; font-size:.72rem; }
+.duo-ui .tabline { color:#b36cff; border-bottom:1px solid #8a46e8; padding-bottom:9px; margin-bottom:20px; }
+.duo-ui h3 { font-size:1.1rem; margin-bottom:5px; color:#fff; }
+.duo-ui .prompt {
+  margin:18px 0;
+  border:1px solid #2b3a52;
+  border-radius:10px;
+  padding:12px 14px;
+  background:#111a29;
+}
+.duo-ai-row { display:flex; gap:9px; align-items:center; margin:8px 0; color:#cdd5e5; }
+.duo-check { width:17px; height:17px; border-radius:5px; border:1px solid #42516c; }
+.duo-check.on { background:#14c98a; border-color:#14c98a; box-shadow:0 0 14px rgba(20,201,138,.3); }
+.duo-send {
+  position:absolute; left:22px; right:22px; bottom:24px;
+  padding:12px 16px;
+  border-radius:9px;
+  background:linear-gradient(90deg,#6e2cff,#8c2fff);
+  color:white; text-align:center; font-weight:800;
+}
+.duo-response {
+  height:100%;
+  padding:28px 24px;
+  background:linear-gradient(180deg,#08101c,#02070d);
+}
+.duo-response-head { display:flex; gap:10px; align-items:center; margin-bottom:18px; }
+.duo-model {
+  width:34px; height:34px; border-radius:9px;
+  display:grid; place-items:center;
+  background:linear-gradient(135deg,#17c88d,#0a8e69);
+  font-weight:900; color:#fff;
+}
+.duo-response p { color:#bdc6d7; margin:0 0 13px; font-size:.77rem; line-height:1.58; }
+.duo-actions {
+  position:absolute; left:22px; right:22px; bottom:24px;
+  display:flex; justify-content:space-between; gap:8px;
+  color:#9aa7bd; font-size:.68rem;
+}
+.duo-actions span {
+  flex:1; text-align:center; padding:9px 4px;
+  border:1px solid #182539; border-radius:9px;
+  background:#06101b;
+}
+@media (max-width: 900px) {
+  .duo-coming { padding:72px 0; }
+  .duo-coming-inner { grid-template-columns:1fr; gap:42px; }
+  .duo-copy { max-width:none; }
+  .duo-device { min-height:360px; }
+  .duo-screen { min-height:340px; }
+  .duo-ui, .duo-response { padding:20px 16px; }
+}
+@media (max-width: 620px) {
+  .duo-device { gap:5px; padding:7px; border-radius:25px; min-height:300px; }
+  .duo-device::after { width:9px; }
+  .duo-screen { border-radius:20px; min-height:286px; }
+  .duo-ui { padding:15px 12px; font-size:.63rem; }
+  .duo-ui .topline img { width:26px; height:26px; }
+  .duo-ui h3 { font-size:.86rem; }
+  .duo-ai-row:nth-of-type(n+6) { display:none; }
+  .duo-send { left:12px; right:12px; bottom:14px; padding:9px; font-size:.65rem; }
+  .duo-response { padding:16px 12px; }
+  .duo-response p { font-size:.62rem; line-height:1.42; }
+  .duo-actions { left:10px; right:10px; bottom:12px; font-size:.55rem; }
+  .duo-actions span { padding:7px 2px; }
+}
+
 /* ===== SCREENSHOT GALLERY ===== */
 .screenshot-gallery { background: var(--bg-alt); }
 .gallery-tabs { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
@@ -891,6 +1091,63 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         <a href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285" style="text-decoration:none"><div class="platform-pill"><span class="emoji">📱</span> iPhone <span class="coming-dot" style="background:#10b981"></span> <span style="font-size:0.7em;color:#10b981;font-weight:600">Available Now</span></div></a>
         <a href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285" style="text-decoration:none"><div class="platform-pill"><span class="emoji">📱</span> iPad <span class="coming-dot" style="background:#10b981"></span> <span style="font-size:0.7em;color:#10b981;font-weight:600">Available Now</span></div></a>
         <a href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12" style="text-decoration:none"><div class="platform-pill"><span class="emoji">💻</span> macOS <span class="coming-dot" style="background:#10b981"></span> <span style="font-size:0.7em;color:#10b981;font-weight:600">Available Now</span></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+
+<!-- ===== IPHONE DUO COMING SOON ===== -->
+<section class="duo-coming" id="iphone-duo" aria-labelledby="duo-title">
+  <div class="container">
+    <div class="duo-coming-inner">
+      <div>
+        <div class="duo-kicker">Coming Soon</div>
+        <h2 id="duo-title">Poly-Glot<br><span>on iPhone Duo</span></h2>
+        <p class="duo-copy">
+          A fold-aware Poly-Glot experience is coming to iPhone Duo, built to make Compare Mode feel at home on Apple’s new dual-display canvas. Ask once, compare responses side by side, and keep the workspace focused across the fold.
+        </p>
+        <div class="duo-badge">Coming Soon</div>
+        <div class="duo-meta">
+          iPhone Duo pre-orders begin October 16, 2026. Available October 23.
+          <a href="https://www.apple.com/iphone-duo/" target="_blank" rel="noopener">Explore iPhone Duo at Apple</a>.
+        </div>
+      </div>
+
+      <div class="duo-device" role="img" aria-label="Concept preview of Poly-Glot Compare Mode on an open iPhone Duo">
+        <div class="duo-screen left">
+          <div class="duo-ui">
+            <div class="topline">
+              <img src="assets/img/icon-128.png" alt="">
+              <div><div class="brand">Poly-Glot AI Workspace</div><div class="muted">poly-glot.ai</div></div>
+            </div>
+            <div class="tabline">✎ Ask Any AI &nbsp;&nbsp; ▦ Templates &nbsp;&nbsp; ◫ How to Use</div>
+            <h3>Compare Mode</h3>
+            <div class="muted">Ask multiple AIs the same question and compare their responses side by side.</div>
+            <div class="prompt">Explain quantum computing in simple terms.</div>
+            <div class="duo-ai-row"><span class="duo-check on"></span> ChatGPT</div>
+            <div class="duo-ai-row"><span class="duo-check"></span> Claude</div>
+            <div class="duo-ai-row"><span class="duo-check"></span> Gemini</div>
+            <div class="duo-ai-row"><span class="duo-check on"></span> Perplexity</div>
+            <div class="duo-ai-row"><span class="duo-check"></span> Microsoft Copilot</div>
+            <div class="duo-ai-row"><span class="duo-check"></span> Grok</div>
+            <div class="duo-send">➤ &nbsp; Send to Selected (2)</div>
+          </div>
+        </div>
+        <div class="duo-screen right">
+          <div class="duo-response">
+            <div class="duo-response-head">
+              <div class="duo-model">AI</div>
+              <div><strong>ChatGPT + Perplexity</strong><div class="muted">Side-by-side comparison</div></div>
+            </div>
+            <p>Quantum computing is a new kind of computing that uses the principles of quantum physics to process information in ways traditional computers cannot.</p>
+            <p>Instead of ordinary bits, quantum computers use qubits, which can represent combinations of states and explore many possibilities at once.</p>
+            <p>On iPhone Duo, Compare Mode can use the wider open display to keep multiple AI responses visible together while preserving the prompt and controls.</p>
+            <div class="duo-actions"><span>Copy</span><span>Read</span><span>Share</span><span>Save</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
