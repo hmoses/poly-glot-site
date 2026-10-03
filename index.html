@@ -632,55 +632,85 @@ a:hover { opacity: 0.85; }
 /* Realistic MacBook frame */
 .macbook-shell {
   position: relative;
-  max-width: 980px !important;
-  margin: 0 auto 38px !important;
-  padding-bottom: 22px;
+  width: min(1120px, 100%);
+  max-width: 1120px !important;
+  margin: 0 auto 52px !important;
+  padding: 28px 34px 48px;
+  border-radius: 30px 30px 16px 16px;
+  background:
+    linear-gradient(145deg,#69727f 0%,#313844 7%,#11161f 20%,#080b11 80%,#39414d 94%,#77818e 100%);
+  box-shadow:
+    0 34px 80px rgba(0,0,0,.58),
+    inset 0 0 0 1px rgba(255,255,255,.16),
+    inset 0 0 0 3px rgba(0,0,0,.55);
+}
+.macbook-shell::before {
+  content:"";
+  position:absolute;
+  top:9px;
+  left:50%;
+  transform:translateX(-50%);
+  width:9px;height:9px;border-radius:50%;
+  background:#020306;
+  box-shadow:0 0 0 1px rgba(255,255,255,.05),0 0 8px rgba(46,130,255,.12);
+  z-index:30;
+}
+.macbook-shell::after {
+  content:"";
+  position:absolute;
+  left:-5%;
+  right:-5%;
+  bottom:-12px;
+  height:34px;
+  border-radius:0 0 60px 60px;
+  background:linear-gradient(180deg,#aab2bd 0%,#7b8591 28%,#535c68 60%,#343b45 100%);
+  box-shadow:
+    0 15px 28px rgba(0,0,0,.36),
+    inset 0 1px 0 rgba(255,255,255,.24);
+  z-index:2;
 }
 .macbook-display {
   position: relative;
-  border: 10px solid #11151d !important;
-  border-radius: 22px !important;
   overflow: hidden;
-  background: #05070c !important;
+  border: 2px solid rgba(255,255,255,.05) !important;
+  border-radius: 16px !important;
+  background:#05070c !important;
   box-shadow:
-    0 30px 70px rgba(0,0,0,.5),
-    inset 0 0 0 1px rgba(255,255,255,.07) !important;
+    inset 0 0 0 1px rgba(0,0,0,.85),
+    0 0 0 7px #080b10,
+    0 0 0 9px #202732,
+    0 18px 44px rgba(0,0,0,.42) !important;
 }
 .macbook-display::before {
-  content: "";
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  width: 7px;
-  height: 7px;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: #020306;
-  box-shadow: 0 0 0 1px rgba(255,255,255,.06);
-  z-index: 20;
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-39px;
+  transform:translateX(-50%);
+  width:145px;
+  height:7px;
+  border-radius:0 0 10px 10px;
+  background:rgba(22,26,32,.34);
+  z-index:31;
 }
-.macbook-shell::after {
-  content: "";
-  position: absolute;
-  left: 4%;
-  right: 4%;
-  bottom: 2px;
-  height: 20px;
-  border-radius: 0 0 44px 44px;
-  background: linear-gradient(180deg,#9aa2ad 0%,#69727e 35%,#3e4652 100%);
-  box-shadow: 0 10px 22px rgba(0,0,0,.34);
+.macbook-display::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:14px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.035), inset 0 18px 45px rgba(0,0,0,.12);
+  z-index:25;
 }
-.macbook-shell::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 10px;
-  width: 120px;
-  height: 5px;
-  transform: translateX(-50%);
-  border-radius: 0 0 8px 8px;
-  background: rgba(15,18,24,.35);
-  z-index: 4;
+#gallery-mac #macTabHint {
+  position:relative;
+  z-index:40;
+  margin-top:-4px;
+  margin-bottom:26px !important;
+}
+@media (max-width: 760px) {
+  .macbook-shell { padding:20px 18px 38px; border-radius:22px 22px 12px 12px; }
+  .macbook-shell::after { left:-2%; right:-2%; height:25px; bottom:-8px; }
 }
 
 /* Populated History preview used in iPhone + iPad frames */
@@ -751,18 +781,25 @@ a:hover { opacity: 0.85; }
 .history-preview .hp-btn.copy { background:#72cef3;color:white;border-color:#72cef3; }
 .history-preview .hp-btn.del { color:#ff6b6b; }
 
-/* History: preserve the real portrait iPhone proportions */
-.iphone-screen.history-screen {
+/* History preview fills each device screen with device-appropriate layout */
+.iphone-screen.history-screen,
+.ipad-screen.history-screen {
   display:flex;
   align-items:stretch;
-  justify-content:center;
+  justify-content:stretch;
+  background:#0d1219;
 }
-.iphone-screen.history-screen .history-preview {
+.iphone-screen.history-screen .history-preview,
+.ipad-screen.history-screen .history-preview {
   width:100%;
   height:100%;
+  flex:1 1 auto;
   margin:0;
   box-shadow:none;
+  overflow:hidden;
 }
+
+/* iPhone History proportions */
 .iphone-screen .history-preview .hp-status { padding:7px 10px 4px; font-size:8px; }
 .iphone-screen .history-preview .hp-head { padding:5px 10px 7px; gap:5px; }
 .iphone-screen .history-preview .hp-head img { width:20px;height:20px; }
@@ -782,37 +819,29 @@ a:hover { opacity: 0.85; }
 .iphone-screen .history-preview .hp-buttons { gap:4px;margin-top:7px; }
 .iphone-screen .history-preview .hp-btn { font-size:7px;padding:5px 3px;border-radius:6px; }
 
-/* iPad keeps the portrait History capture proportional inside its 4:3 display */
-.ipad-screen.history-screen {
-  display:flex;
-  align-items:stretch;
-  justify-content:center;
-}
-.ipad-screen.history-screen .history-preview {
-  width:34.5%;
-  height:100%;
-  flex:0 0 34.5%;
-  margin:0 auto;
-  box-shadow:-24px 0 50px rgba(0,0,0,.35),24px 0 50px rgba(0,0,0,.35);
-}
-.ipad-screen .history-preview .hp-status { padding-top:6px;font-size:8px; }
-.ipad-screen .history-preview .hp-head { padding:4px 10px 6px; }
-.ipad-screen .history-preview .hp-head img { width:20px;height:20px; }
-.ipad-screen .history-preview .hp-title { font-size:10px; }
-.ipad-screen .history-preview .hp-sub { font-size:6px; }
-.ipad-screen .history-preview .hp-lang { font-size:7px;padding:3px 6px; }
-.ipad-screen .history-preview .hp-tabs span { font-size:7px;padding:7px 3px; }
-.ipad-screen .history-preview .hp-body { padding:9px 10px 15px; }
+/* iPad History reflows to a true landscape tablet layout */
+.ipad-screen .history-preview .hp-status { padding:5px 12px 3px;font-size:7px; }
+.ipad-screen .history-preview .hp-head { padding:4px 12px 6px; }
+.ipad-screen .history-preview .hp-head img { width:18px;height:18px; }
+.ipad-screen .history-preview .hp-title { font-size:9px; }
+.ipad-screen .history-preview .hp-sub { font-size:5.5px; }
+.ipad-screen .history-preview .hp-lang { font-size:6.5px;padding:3px 6px; }
+.ipad-screen .history-preview .hp-tabs span { font-size:6.5px;padding:6px 3px; }
+.ipad-screen .history-preview .hp-body { padding:8px 12px 14px; }
+.ipad-screen .history-preview .hp-row { margin-bottom:8px; }
 .ipad-screen .history-preview .hp-h { font-size:12px; }
-.ipad-screen .history-preview .hp-note { font-size:7px; }
-.ipad-screen .history-preview .hp-pill { font-size:7px;padding:4px 7px; }
-.ipad-screen .history-preview .hp-card { padding:8px 8px 7px;margin-bottom:6px;border-radius:8px; }
-.ipad-screen .history-preview .hp-card-title { font-size:9px; }
-.ipad-screen .history-preview .hp-time { font-size:6px;margin:2px 0 5px; }
-.ipad-screen .history-preview .hp-text { font-size:7px; }
-.ipad-screen .history-preview .hp-star { font-size:14px;right:7px;top:6px; }
-.ipad-screen .history-preview .hp-buttons { gap:4px;margin-top:7px; }
-.ipad-screen .history-preview .hp-btn { font-size:7px;padding:5px 3px;border-radius:6px; }
+.ipad-screen .history-preview .hp-note { font-size:6.5px; }
+.ipad-screen .history-preview .hp-pill { font-size:6.5px;padding:4px 7px; }
+.ipad-screen .history-preview .hp-card { padding:7px 9px 6px;margin-bottom:5px;border-radius:7px; }
+.ipad-screen .history-preview .hp-card-title { font-size:8.5px; }
+.ipad-screen .history-preview .hp-time { font-size:5.5px;margin:2px 0 4px; }
+.ipad-screen .history-preview .hp-text { font-size:6.5px; }
+.ipad-screen .history-preview .hp-star { font-size:13px;right:8px;top:6px; }
+.ipad-screen .history-preview .hp-buttons {
+  grid-template-columns:1.5fr 1.5fr .24fr;
+  gap:5px;margin-top:6px;
+}
+.ipad-screen .history-preview .hp-btn { font-size:6.5px;padding:5px 3px;border-radius:5px; }
 
 .gallery-label {
   text-align: center; margin-top: 10px; font-size: 0.78rem;
@@ -4134,14 +4163,17 @@ function _demoStart() {
   }
   #pgLightboxClone {
     display:none;
-    max-width:94vw;
-    max-height:88vh;
+    position:relative;
     transform-origin:center center;
+    will-change:transform;
   }
-  #pgLightboxClone > .iphone-device { width:min(360px,82vw); max-width:360px; }
-  #pgLightboxClone > .ipad-device { width:min(980px,90vw); max-width:980px; }
-  #pgLightboxClone > .demo-iphone-frame { width:min(380px,82vw); max-width:380px; }
-  #pgLightboxClone > .macbook-shell { width:min(1150px,92vw); max-width:1150px !important; margin:0 auto !important; }
+  #pgLightboxClone > .iphone-device,
+  #pgLightboxClone > .ipad-device,
+  #pgLightboxClone > .demo-iphone-frame,
+  #pgLightboxClone > .macbook-shell {
+    max-width:none !important;
+    margin:0 !important;
+  }
   #pgLightboxClone .gallery-label, #pgLightboxClone #macTabHint { display:none !important; }
   #pgLightboxClone * { pointer-events:none !important; }
   #pgLightboxClose {
@@ -4201,15 +4233,34 @@ function _demoStart() {
 
   function openDevice(device) {
     if (!device) return;
+
+    var rect=device.getBoundingClientRect();
+    var maxW=window.innerWidth*0.90;
+    var maxH=window.innerHeight*0.84;
+    var scale=Math.min(maxW/rect.width,maxH/rect.height,2.25);
+    scale=Math.max(scale,0.65);
+
     image.style.display='none';
     image.removeAttribute('src');
     cloneHost.innerHTML='';
+
     var clone=device.cloneNode(true);
     clone.removeAttribute('id');
     clone.querySelectorAll('[id]').forEach(function(n){ n.removeAttribute('id'); });
     clone.querySelectorAll('[onclick]').forEach(function(n){ n.removeAttribute('onclick'); });
-    cloneHost.appendChild(clone);
+
+    clone.style.width=rect.width+'px';
+    clone.style.height=rect.height+'px';
+    clone.style.maxWidth='none';
+    clone.style.maxHeight='none';
+    clone.style.margin='0';
+
+    cloneHost.style.width=rect.width+'px';
+    cloneHost.style.height=rect.height+'px';
+    cloneHost.style.transform='scale('+scale+')';
     cloneHost.style.display='block';
+    cloneHost.appendChild(clone);
+
     var label=labelFor(device);
     caption.textContent=label;
     caption.classList.toggle('show',!!label);
@@ -4225,6 +4276,9 @@ function _demoStart() {
     image.style.display='block';
     cloneHost.innerHTML='';
     cloneHost.style.display='none';
+    cloneHost.style.transform='';
+    cloneHost.style.width='';
+    cloneHost.style.height='';
     caption.textContent='';
     caption.classList.remove('show');
   }
