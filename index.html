@@ -509,7 +509,7 @@ a:hover { opacity: 0.85; }
   position: relative;
   overflow: hidden;
   width: 100%;
-  aspect-ratio: 942 / 2048;
+  aspect-ratio: 390 / 844;
   border-radius: 32px;
   background: #05070c;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
@@ -518,17 +518,20 @@ a:hover { opacity: 0.85; }
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center top;
   border-radius: 32px;
+  background:#05070c;
   cursor: zoom-in;
 }
 .iphone-screen .iphone-live-preview {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
   background:#0d0f1a;
-  border-radius: 32px;
+  border-radius:32px;
 }
 .iphone-home-indicator {
   position: absolute;
@@ -1502,7 +1505,7 @@ img.mac-screen-panel {
   .hero-phone-mock .phone-screen { border-radius: 18px; }
 
   .gallery-grid.ipad-grid .gallery-item div[style*="background:#0d0f1a"] { font-size: 80%; }
-  .gallery-grid.phone-grid .gallery-item div[style*="background:#0d0f1a"] { font-size: 80%; }
+  .gallery-grid.phone-grid .gallery-item div[style*="background:#0d0f1a"] { font-size: 100%; }
   #macScreen-askanyai { font-size: 85%; }
   #macScreen-howtouse { min-height: 300px !important; }
 }
@@ -1559,14 +1562,22 @@ img.mac-screen-panel {
   }
 
   .iphone-device {
-    width: min(82vw, 330px) !important;
-    max-width: 330px !important;
+    width: min(88vw, 350px) !important;
+    max-width: 350px !important;
+    height: auto !important;
     margin: 0 auto !important;
+    flex: 0 0 auto;
+  }
+  .iphone-screen {
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:390 / 844 !important;
   }
 
   .ipad-device {
     width: min(94vw, 620px) !important;
     max-width: 620px !important;
+    height:auto !important;
     margin: 0 auto !important;
   }
 
@@ -1580,7 +1591,11 @@ img.mac-screen-panel {
 
 @media (max-width: 390px) {
   .iphone-device {
-    width: min(84vw, 304px) !important;
+    width: min(90vw, 330px) !important;
+    max-width:330px !important;
+  }
+  .iphone-screen {
+    aspect-ratio:390 / 844 !important;
   }
   .gallery-panel {
     overflow-x: clip;
