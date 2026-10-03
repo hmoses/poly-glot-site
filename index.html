@@ -629,6 +629,154 @@ a:hover { opacity: 0.85; }
   .ipad-device { max-width: 560px; }
 }
 
+/* Realistic MacBook frame */
+.macbook-shell {
+  position: relative;
+  max-width: 980px !important;
+  margin: 0 auto 38px !important;
+  padding-bottom: 22px;
+}
+.macbook-display {
+  position: relative;
+  border: 10px solid #11151d !important;
+  border-radius: 22px !important;
+  overflow: hidden;
+  background: #05070c !important;
+  box-shadow:
+    0 30px 70px rgba(0,0,0,.5),
+    inset 0 0 0 1px rgba(255,255,255,.07) !important;
+}
+.macbook-display::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #020306;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.06);
+  z-index: 20;
+}
+.macbook-shell::after {
+  content: "";
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: 2px;
+  height: 20px;
+  border-radius: 0 0 44px 44px;
+  background: linear-gradient(180deg,#9aa2ad 0%,#69727e 35%,#3e4652 100%);
+  box-shadow: 0 10px 22px rgba(0,0,0,.34);
+}
+.macbook-shell::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  width: 120px;
+  height: 5px;
+  transform: translateX(-50%);
+  border-radius: 0 0 8px 8px;
+  background: rgba(15,18,24,.35);
+  z-index: 4;
+}
+
+/* Populated History preview used in iPhone + iPad frames */
+.history-preview {
+  width: 100%;
+  height: 100%;
+  background: #0d1219;
+  color: #e8edf5;
+  font-family: -apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+.history-preview .hp-status {
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 14px 5px;font-size:12px;font-weight:700;color:#fff;
+}
+.history-preview .hp-head {
+  display:flex;align-items:center;gap:8px;padding:7px 14px 10px;
+}
+.history-preview .hp-head img { width:28px;height:28px;border-radius:7px;cursor:default; }
+.history-preview .hp-title { font-size:14px;font-weight:800;line-height:1.1; }
+.history-preview .hp-sub { font-size:8px;color:#7f8895;margin-top:2px; }
+.history-preview .hp-lang {
+  margin-left:auto;padding:5px 9px;border-radius:8px;background:#1b212b;
+  border:1px solid #343b47;font-size:10px;color:#fff;
+}
+.history-preview .hp-tabs {
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid #262d37;border-bottom:1px solid #303744;
+  background:#151b23;
+}
+.history-preview .hp-tabs span {
+  padding:10px 4px;text-align:center;font-size:10px;font-weight:650;color:#9099a7;
+}
+.history-preview .hp-tabs .active {
+  color:#b98cff;border-bottom:2px solid #a970ff;
+}
+.history-preview .hp-body { padding:14px 14px 24px; }
+.history-preview .hp-row {
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;
+}
+.history-preview .hp-h { font-size:17px;font-weight:800; }
+.history-preview .hp-note { font-size:10px;color:#8d97a5;margin-top:3px; }
+.history-preview .hp-actions { display:flex;gap:7px; }
+.history-preview .hp-pill {
+  padding:6px 10px;border-radius:9px;border:1px solid #333b47;background:#171d25;
+  font-size:10px;color:#d7dde6;
+}
+.history-preview .hp-pill.clear { color:#ff7070; }
+.history-preview .hp-card {
+  position:relative;padding:12px 12px 10px;margin:0 0 9px;border-radius:12px;
+  border:1px solid #303844;background:#181e26;
+}
+.history-preview .hp-card-title { font-size:13px;font-weight:800; }
+.history-preview .hp-time { font-size:9px;color:#8c95a3;margin:3px 0 8px; }
+.history-preview .hp-text {
+  font-size:10px;color:#9aa3b0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  padding-right:18px;
+}
+.history-preview .hp-star {
+  position:absolute;right:11px;top:10px;color:#2288ff;font-size:20px;line-height:1;
+}
+.history-preview .hp-buttons { display:grid;grid-template-columns:1.2fr 1.2fr .28fr;gap:6px;margin-top:10px; }
+.history-preview .hp-btn {
+  border-radius:8px;border:1px solid #333b47;padding:8px 6px;text-align:center;
+  font-size:10px;font-weight:700;color:#e5e9ef;background:#171d25;
+}
+.history-preview .hp-btn.copy { background:#72cef3;color:white;border-color:#72cef3; }
+.history-preview .hp-btn.del { color:#ff6b6b; }
+
+/* Proportional landscape treatment for iPad */
+.ipad-screen .history-preview {
+  width: 72%;
+  height: 100%;
+  margin: 0 auto;
+  box-shadow: -24px 0 50px rgba(0,0,0,.35), 24px 0 50px rgba(0,0,0,.35);
+}
+.ipad-screen .history-preview .hp-status { padding-top:6px;font-size:8px; }
+.ipad-screen .history-preview .hp-head { padding:4px 10px 6px; }
+.ipad-screen .history-preview .hp-head img { width:20px;height:20px; }
+.ipad-screen .history-preview .hp-title { font-size:10px; }
+.ipad-screen .history-preview .hp-sub { font-size:6px; }
+.ipad-screen .history-preview .hp-lang { font-size:7px;padding:3px 6px; }
+.ipad-screen .history-preview .hp-tabs span { font-size:7px;padding:7px 3px; }
+.ipad-screen .history-preview .hp-body { padding:9px 10px 15px; }
+.ipad-screen .history-preview .hp-h { font-size:12px; }
+.ipad-screen .history-preview .hp-note { font-size:7px; }
+.ipad-screen .history-preview .hp-pill { font-size:7px;padding:4px 7px; }
+.ipad-screen .history-preview .hp-card { padding:8px 8px 7px;margin-bottom:6px;border-radius:8px; }
+.ipad-screen .history-preview .hp-card-title { font-size:9px; }
+.ipad-screen .history-preview .hp-time { font-size:6px;margin:2px 0 5px; }
+.ipad-screen .history-preview .hp-text { font-size:7px; }
+.ipad-screen .history-preview .hp-star { font-size:14px;right:7px;top:6px; }
+.ipad-screen .history-preview .hp-buttons { gap:4px;margin-top:7px; }
+.ipad-screen .history-preview .hp-btn { font-size:7px;padding:5px 3px;border-radius:6px; }
+
 .gallery-label {
   text-align: center; margin-top: 10px; font-size: 0.78rem;
   color: var(--text-faint); font-weight: 500;
@@ -1334,13 +1482,13 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <!-- Mac Screenshots — Interactive Tab Viewer -->
     <div class="gallery-panel active" id="gallery-mac">
       <!-- Interactive Mac window frame -->
-      <div style="max-width:900px;margin:0 auto">
+      <div class="macbook-shell" style="max-width:900px;margin:0 auto">
         <!-- Hint -->
         <div id="macTabHint" style="text-align:center;margin-bottom:18px;animation:hintPulse 1.6s ease-in-out infinite">
           <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.95rem;font-weight:800;color:#fff;font-family:'Fira Code',monospace;background:linear-gradient(135deg,rgba(124,58,237,.95),rgba(37,99,235,.92));border:1px solid rgba(167,139,250,.55);padding:10px 20px;border-radius:999px;box-shadow:0 0 0 1px rgba(255,255,255,.04),0 8px 24px rgba(124,58,237,.28);letter-spacing:.01em">👇 Click the tabs below to explore the app</span>
         </div>
         <!-- Mac window chrome -->
-        <div style="background:#1a1a2e;border-radius:12px;overflow:hidden;border:2px solid rgba(125,211,252,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.5)">
+        <div class="macbook-display" style="background:#1a1a2e;border-radius:12px;overflow:hidden;border:2px solid rgba(125,211,252,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.5)">
           <!-- Title bar -->
           <div style="display:flex;align-items:center;padding:10px 16px;background:rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.06)">
             <div style="display:flex;gap:7px">
@@ -1564,7 +1712,33 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           <div class="iphone-device">
             <span class="iphone-side-left" aria-hidden="true"></span>
             <div class="iphone-screen">
-              <img src="assets/img/screenshots/iphone-4-history.png?v=20261003b" alt="History on iPhone" loading="lazy">
+              <div class="history-preview" aria-label="Poly-Glot Prompt History preview">
+                <div class="hp-status"><span>3:46</span><span>▮▮▮ ◉ 50</span></div>
+                <div class="hp-head">
+                  <img src="assets/img/icon-128.png" alt="">
+                  <div><div class="hp-title">Poly-Glot AI Workspace</div><div class="hp-sub">poly-glot.ai</div></div>
+                  <div class="hp-lang">🇺🇸 EN</div>
+                </div>
+                <div class="hp-tabs"><span>✎ Ask Any AI</span><span>▦ Templates</span><span>▣ How to Use</span><span class="active">◷ History</span></div>
+                <div class="hp-body">
+                  <div class="hp-row">
+                    <div><div class="hp-h">Prompt History</div><div class="hp-note">Your recent prompts &amp; favorites</div></div>
+                    <div class="hp-actions"><span class="hp-pill">All</span><span class="hp-pill clear">Clear</span></div>
+                  </div>
+                  <div class="hp-card">
+                    <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Test</div>
+                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                  </div>
+                  <div class="hp-card">
+                    <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Test</div>
+                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                  </div>
+                  <div class="hp-card">
+                    <span class="hp-star">☆</span><div class="hp-card-title">Interview Coach</div><div class="hp-time">9m ago</div><div class="hp-text">You are an executive career coach. Prepare {{name}} for a {{job_title}} interview...</div>
+                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                  </div>
+                </div>
+              </div>
               <div class="iphone-home-indicator"></div>
             </div>
           </div>
@@ -1645,7 +1819,33 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         <div class="gallery-item">
           <div class="ipad-device">
             <div class="ipad-screen">
-              <img src="assets/img/screenshots/ipad-4-history.png" alt="History on iPad" loading="lazy">
+              <div class="history-preview" aria-label="Poly-Glot Prompt History preview">
+                <div class="hp-status"><span>3:46</span><span>▮▮▮ ◉ 50</span></div>
+                <div class="hp-head">
+                  <img src="assets/img/icon-128.png" alt="">
+                  <div><div class="hp-title">Poly-Glot AI Workspace</div><div class="hp-sub">poly-glot.ai</div></div>
+                  <div class="hp-lang">🇺🇸 EN</div>
+                </div>
+                <div class="hp-tabs"><span>✎ Ask Any AI</span><span>▦ Templates</span><span>▣ How to Use</span><span class="active">◷ History</span></div>
+                <div class="hp-body">
+                  <div class="hp-row">
+                    <div><div class="hp-h">Prompt History</div><div class="hp-note">Your recent prompts &amp; favorites</div></div>
+                    <div class="hp-actions"><span class="hp-pill">All</span><span class="hp-pill clear">Clear</span></div>
+                  </div>
+                  <div class="hp-card">
+                    <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Test</div>
+                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                  </div>
+                  <div class="hp-card">
+                    <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Test</div>
+                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                  </div>
+                  <div class="hp-card">
+                    <span class="hp-star">☆</span><div class="hp-card-title">Interview Coach</div><div class="hp-time">9m ago</div><div class="hp-text">You are an executive career coach. Prepare {{name}} for a {{job_title}} interview...</div>
+                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                  </div>
+                </div>
+              </div>
               <div class="ipad-home-indicator"></div>
             </div>
           </div>
