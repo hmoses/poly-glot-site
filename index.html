@@ -748,9 +748,13 @@ img.mac-screen-panel {
   position:relative;
   z-index:50;
 }
+@media (max-width:900px) {
+  .mac-history-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
 @media (max-width:760px) {
   .macbook-shell { padding:5px 5px 20px; border-radius:15px 15px 8px 8px; }
   .macbook-shell::after { left:0; right:0; height:14px; bottom:-6px; }
+  .mac-history-grid { grid-template-columns:1fr; }
 }
 
 /* Populated Mac History tab */
@@ -816,8 +820,8 @@ img.mac-screen-panel {
 .mac-history-pill.clear { color:#ff6b6b; }
 .mac-history-grid {
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:9px;
 }
 .mac-history-card {
   position:relative;
@@ -1942,6 +1946,48 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                     <div class="mac-history-card-title">Translation</div>
                     <div class="mac-history-time">24m ago</div>
                     <div class="mac-history-text">Translate this product description into French and Arabic.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Code Explainer</div>
+                    <div class="mac-history-time">31m ago</div>
+                    <div class="mac-history-text">Explain this JavaScript function in plain English.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Meeting Summary</div>
+                    <div class="mac-history-time">37m ago</div>
+                    <div class="mac-history-text">Summarize these meeting notes into decisions and action items.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">API Documentation</div>
+                    <div class="mac-history-time">42m ago</div>
+                    <div class="mac-history-text">Draft a concise API quickstart from this OpenAPI spec.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Release Notes</div>
+                    <div class="mac-history-time">49m ago</div>
+                    <div class="mac-history-text">Turn these engineering commits into customer-facing release notes.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Content Strategy</div>
+                    <div class="mac-history-time">55m ago</div>
+                    <div class="mac-history-text">Create an information architecture for this Help Center.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Localization QA</div>
+                    <div class="mac-history-time">1h ago</div>
+                    <div class="mac-history-text">Review this localized UI copy for clarity and consistency.</div>
                     <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
                   </div>
                 </div>
