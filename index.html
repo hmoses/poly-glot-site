@@ -3603,6 +3603,111 @@ function _demoStart() {
 </script>
 <!-- ===== END MCP CHAT WIDGET v3 ===== -->
 
+
+<!-- ===== GLOBAL IMAGE LIGHTBOX ===== -->
+<style>
+  img:not(#pgLightboxImage) { cursor: zoom-in; }
+  #pgLightbox {
+    position: fixed; inset: 0; z-index: 100000;
+    display: none; align-items: center; justify-content: center;
+    padding: 24px;
+    background: rgba(3, 5, 12, 0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  #pgLightbox.open { display: flex; }
+  #pgLightboxImage {
+    display: block;
+    max-width: min(96vw, 1600px);
+    max-height: 92vh;
+    width: auto; height: auto;
+    object-fit: contain;
+    border-radius: 14px;
+    box-shadow: 0 30px 100px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.12);
+    cursor: zoom-out;
+  }
+  #pgLightboxClose {
+    position: fixed; top: 18px; right: 18px;
+    width: 44px; height: 44px;
+    display: grid; place-items: center;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 50%;
+    background: rgba(15,18,30,.85);
+    color: #fff; font-size: 28px; line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  }
+  #pgLightboxCaption {
+    position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
+    max-width: min(90vw, 900px);
+    padding: 8px 14px; border-radius: 999px;
+    background: rgba(15,18,30,.82);
+    border: 1px solid rgba(255,255,255,.12);
+    color: rgba(255,255,255,.9);
+    font-size: .82rem; text-align: center;
+    display: none;
+  }
+  #pgLightboxCaption.show { display: block; }
+  body.pg-lightbox-open { overflow: hidden; }
+</style>
+
+<div id="pgLightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button id="pgLightboxClose" type="button" aria-label="Close image preview">&times;</button>
+  <img id="pgLightboxImage" alt="">
+  <div id="pgLightboxCaption"></div>
+</div>
+
+<script>
+(function () {
+  var box = document.getElementById('pgLightbox');
+  var image = document.getElementById('pgLightboxImage');
+  var closeBtn = document.getElementById('pgLightboxClose');
+  var caption = document.getElementById('pgLightboxCaption');
+
+  function openLightbox(img) {
+    if (!img || !img.src) return;
+    image.src = img.currentSrc || img.src;
+    image.alt = img.alt || '';
+    var label = img.alt || img.getAttribute('aria-label') || '';
+    caption.textContent = label;
+    caption.classList.toggle('show', !!label);
+    box.classList.add('open');
+    document.body.classList.add('pg-lightbox-open');
+    closeBtn.focus();
+  }
+
+  function closeLightbox() {
+    box.classList.remove('open');
+    document.body.classList.remove('pg-lightbox-open');
+    image.removeAttribute('src');
+    caption.textContent = '';
+    caption.classList.remove('show');
+  }
+
+  document.addEventListener('click', function (event) {
+    var img = event.target.closest && event.target.closest('img');
+    if (!img || img.id === 'pgLightboxImage' || box.contains(img)) return;
+    event.preventDefault();
+    event.stopPropagation();
+    openLightbox(img);
+  }, true);
+
+  closeBtn.addEventListener('click', function (event) {
+    event.stopPropagation();
+    closeLightbox();
+  });
+
+  box.addEventListener('click', function (event) {
+    if (event.target === box || event.target === image) closeLightbox();
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && box.classList.contains('open')) closeLightbox();
+  });
+})();
+</script>
+<!-- ===== END GLOBAL IMAGE LIGHTBOX ===== -->
+
 <!-- Global i18n — 38 languages, same flags as the app -->
 <script src="assets/js/i18n.js"></script>
 
