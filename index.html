@@ -630,66 +630,70 @@ a:hover { opacity: 0.85; }
 }
 
 /* Realistic MacBook frame */
+#gallery-mac #macTabHint {
+  position:relative;
+  z-index:60;
+  margin:0 0 22px !important;
+  display:block !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  pointer-events:none;
+}
 .macbook-shell {
-  position: relative;
-  width: min(1120px, 100%);
-  max-width: 1120px !important;
-  margin: 0 auto 42px !important;
-  padding: 8px 8px 28px;
-  border-radius: 22px 22px 10px 10px;
-  background: #090c12;
+  position:relative;
+  width:min(980px,100%);
+  max-width:980px !important;
+  margin:0 auto 42px !important;
+  padding:7px 7px 24px;
+  border-radius:18px 18px 9px 9px;
+  background:linear-gradient(180deg,#171b22 0%,#0a0d12 70%,#11161d 100%);
   box-shadow:
-    0 28px 64px rgba(0,0,0,.54),
-    inset 0 0 0 1px rgba(255,255,255,.045);
+    0 30px 68px rgba(0,0,0,.56),
+    inset 0 0 0 1px rgba(255,255,255,.055);
 }
 .macbook-shell::before {
   content:"";
   position:absolute;
-  top:4px;
+  top:3px;
   left:50%;
   transform:translateX(-50%);
-  width:7px;
-  height:7px;
-  border-radius:50%;
+  width:6px;height:6px;border-radius:50%;
   background:#020306;
-  box-shadow:0 0 0 1px rgba(255,255,255,.035);
-  z-index:30;
+  box-shadow:0 0 0 1px rgba(255,255,255,.03);
+  z-index:40;
 }
 .macbook-shell::after {
   content:"";
   position:absolute;
-  left:3%;
-  right:3%;
-  bottom:-7px;
-  height:18px;
-  border-radius:0 0 38px 38px;
-  background:linear-gradient(180deg,#3d444e 0%,#252b33 55%,#171b21 100%);
-  box-shadow:
-    0 9px 20px rgba(0,0,0,.32),
-    inset 0 1px 0 rgba(255,255,255,.08);
+  left:-1.8%;
+  right:-1.8%;
+  bottom:-8px;
+  height:17px;
+  border-radius:0 0 46px 46px;
+  background:linear-gradient(180deg,#4f5661 0%,#303741 42%,#1b2027 100%);
+  box-shadow:0 10px 22px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.08);
   z-index:2;
 }
 .macbook-display {
   position:relative;
   overflow:hidden;
   border:0 !important;
-  border-radius:14px !important;
+  border-radius:11px !important;
   background:#05070c !important;
   box-shadow:
-    0 0 0 2px #121721,
-    0 0 0 4px #05070b,
-    0 14px 34px rgba(0,0,0,.44) !important;
+    0 0 0 2px #030507,
+    0 0 0 4px #11161d,
+    0 12px 30px rgba(0,0,0,.42) !important;
 }
 .macbook-display::before {
   content:"";
   position:absolute;
   left:50%;
-  bottom:-23px;
+  bottom:-19px;
   transform:translateX(-50%);
-  width:110px;
-  height:4px;
+  width:100px;height:4px;
   border-radius:0 0 8px 8px;
-  background:rgba(5,7,11,.5);
+  background:rgba(3,5,8,.58);
   z-index:31;
 }
 .macbook-display::after {
@@ -697,27 +701,47 @@ a:hover { opacity: 0.85; }
   position:absolute;
   inset:0;
   pointer-events:none;
-  border-radius:14px;
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.025),
-    inset 0 16px 30px rgba(0,0,0,.08);
+  border-radius:11px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.025);
   z-index:25;
 }
-#gallery-mac #macTabHint {
+.mac-screen-stage {
   position:relative;
-  z-index:60;
-  margin-top:0;
-  margin-bottom:24px !important;
+  width:100%;
+  aspect-ratio:16 / 10;
+  overflow:hidden;
+  background:#0d1117;
+  contain:layout paint;
+}
+.mac-screen-panel {
+  position:absolute !important;
+  inset:0;
+  width:100% !important;
+  height:100% !important;
   display:block !important;
-  opacity:1 !important;
-  visibility:visible !important;
+  opacity:0;
+  visibility:hidden;
+  transform:translateZ(0);
+  transition:opacity .22s ease, visibility 0s linear .22s;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  will-change:opacity;
   pointer-events:none;
+}
+.mac-screen-panel.active {
+  opacity:1;
+  visibility:visible;
+  transition:opacity .22s ease;
+  pointer-events:auto;
+  z-index:2;
+}
+img.mac-screen-panel {
+  object-fit:cover;
+  object-position:top center;
 }
 #gallery-mac .macbook-shell,
 #gallery-mac .macbook-display,
-#gallery-mac .macbook-shell img {
-  cursor:default !important;
-}
+#gallery-mac .macbook-shell img { cursor:default !important; }
 #gallery-mac .mac-app-tab {
   cursor:pointer !important;
   pointer-events:auto !important;
@@ -725,8 +749,8 @@ a:hover { opacity: 0.85; }
   z-index:50;
 }
 @media (max-width:760px) {
-  .macbook-shell { padding:6px 6px 24px; border-radius:18px 18px 9px 9px; }
-  .macbook-shell::after { left:4%; right:4%; height:15px; bottom:-6px; }
+  .macbook-shell { padding:5px 5px 20px; border-radius:15px 15px 8px 8px; }
+  .macbook-shell::after { left:0; right:0; height:14px; bottom:-6px; }
 }
 
 /* Populated History preview used in iPhone + iPad frames */
@@ -1599,12 +1623,12 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
     <!-- Mac Screenshots — Interactive Tab Viewer -->
     <div class="gallery-panel active" id="gallery-mac">
-      <!-- Interactive Mac window frame -->
+      <!-- Hint stays outside the physical device -->
+      <div id="macTabHint" style="text-align:center;margin-bottom:22px;animation:hintPulse 1.6s ease-in-out infinite">
+        <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.95rem;font-weight:800;color:#fff;font-family:'Fira Code',monospace;background:linear-gradient(135deg,rgba(124,58,237,.95),rgba(37,99,235,.92));border:1px solid rgba(167,139,250,.55);padding:10px 20px;border-radius:999px;box-shadow:0 0 0 1px rgba(255,255,255,.04),0 8px 24px rgba(124,58,237,.28);letter-spacing:.01em">👇 Click the tabs below to explore the app</span>
+      </div>
+      <!-- Interactive MacBook frame -->
       <div class="macbook-shell" style="max-width:900px;margin:0 auto">
-        <!-- Hint -->
-        <div id="macTabHint" style="text-align:center;margin-bottom:18px;animation:hintPulse 1.6s ease-in-out infinite">
-          <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.95rem;font-weight:800;color:#fff;font-family:'Fira Code',monospace;background:linear-gradient(135deg,rgba(124,58,237,.95),rgba(37,99,235,.92));border:1px solid rgba(167,139,250,.55);padding:10px 20px;border-radius:999px;box-shadow:0 0 0 1px rgba(255,255,255,.04),0 8px 24px rgba(124,58,237,.28);letter-spacing:.01em">👇 Click the tabs below to explore the app</span>
-        </div>
         <!-- Mac window chrome -->
         <div class="macbook-display" style="background:#1a1a2e;border-radius:12px;overflow:hidden;border:2px solid rgba(125,211,252,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.5)">
           <!-- Title bar -->
@@ -1624,8 +1648,8 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             <div class="mac-app-tab" onclick="switchMacTab('history')" id="macTab-history" style="flex:1;text-align:center;padding:12px 0;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.2s;color:rgba(255,255,255,0.35);border-bottom:2px solid transparent">🕐 History</div>
           </div>
           <!-- Screenshot area -->
-          <div style="position:relative;min-height:200px">
-            <div id="macScreen-askanyai" style="display:block;width:100%;transition:opacity 0.3s;background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;padding:0;aspect-ratio:16/10;overflow:hidden">
+          <div class="mac-screen-stage">
+            <div id="macScreen-askanyai" class="mac-screen-panel active" style="background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;padding:0;overflow:hidden">
               <!-- In-app header -->
               <div style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-bottom:1px solid rgba(255,255,255,0.06)">
                 <img src="assets/img/icon-128.png" alt="" style="width:28px;height:28px;border-radius:7px">
@@ -1674,9 +1698,9 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                 <div style="margin-top:8px;font-size:0.6rem;color:rgba(255,255,255,0.25)">&#128465; Clear All</div>
               </div>
             </div>
-            <img id="macScreen-templates" src="assets/img/screenshots/mac-2-templates.png" alt="Templates on Mac" style="display:none;width:100%;transition:opacity 0.3s" loading="lazy">
+            <img id="macScreen-templates" class="mac-screen-panel" src="assets/img/screenshots/mac-2-templates.png" alt="Templates on Mac" loading="eager" decoding="async">
             <!-- Interactive Demo (from latest AI Workspace app code) -->
-            <div id="macScreen-howtouse" style="display:none;width:100%;transition:opacity 0.3s;background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;position:relative;overflow:hidden;aspect-ratio:16/10">
+            <div id="macScreen-howtouse" class="mac-screen-panel" style="background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;overflow:hidden">
               <!-- PHASE 1: Ask Any AI textarea + Send -->
               <div id="siteDemo-P1" style="padding:18px;opacity:1;transition:opacity 0.4s">
                 <div id="siteDemo-Textarea" style="background:#1c2128;border:1.5px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;min-height:54px;font-size:13px;color:#e6edf3;line-height:1.5;white-space:pre-wrap;word-break:break-word"></div>
@@ -1741,7 +1765,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                 <div style="text-align:center;margin-top:12px;font-size:12px;color:#7dd3fc;font-weight:600">⬆ Compare and pick the best answer</div>
               </div>
             </div>
-            <img id="macScreen-history" src="assets/img/screenshots/mac-5-history.png" alt="History on Mac" style="display:none;width:100%;transition:opacity 0.3s" loading="lazy">
+            <img id="macScreen-history" class="mac-screen-panel" src="assets/img/screenshots/mac-5-history.png" alt="History on Mac" loading="eager" decoding="async">
           </div>
         </div>
         <!-- Label -->
@@ -2891,6 +2915,16 @@ function switchGallery(platform) {
 }
 
 /* ===== INTERACTIVE MAC TABS ===== */
+/* Preload Mac tab images before interaction to eliminate first-click flashing */
+(function(){
+  ['assets/img/screenshots/mac-2-templates.png','assets/img/screenshots/mac-5-history.png'].forEach(function(src){
+    var im=new Image();
+    im.decoding='async';
+    im.src=src;
+  });
+})();
+
+
 var _macTabLabels = {
   askanyai: 'Ask Any AI — Type or speak, choose your AI',
   templates: '1,000+ Templates — Organized by category, ready to use',
@@ -2902,20 +2936,22 @@ function switchMacTab(tab) {
   tabs.forEach(function(t) {
     var tabEl = document.getElementById('macTab-' + t);
     var screenEl = document.getElementById('macScreen-' + t);
-    if (t === tab) {
-      tabEl.style.color = '#7dd3fc';
-      tabEl.style.borderBottom = '2px solid #7dd3fc';
-      screenEl.style.display = 'block';
-      if (t === 'howtouse') { _siteDemoStart(); }
-    } else {
-      tabEl.style.color = 'rgba(255,255,255,0.35)';
-      tabEl.style.borderBottom = '2px solid transparent';
-      screenEl.style.display = 'none';
-      if (t === 'howtouse') { _siteDemoStop(); }
+    if (!tabEl || !screenEl) return;
+
+    var active = (t === tab);
+    tabEl.style.color = active ? '#7dd3fc' : 'rgba(255,255,255,0.35)';
+    tabEl.style.borderBottom = active ? '2px solid #7dd3fc' : '2px solid transparent';
+    screenEl.classList.toggle('active', active);
+
+    if (t === 'howtouse') {
+      if (active) _siteDemoStart();
+      else _siteDemoStop();
     }
   });
+
   var label = document.getElementById('macTabLabel');
   if (label) label.textContent = _macTabLabels[tab] || '';
+
   var hint = document.getElementById('macTabHint');
   if (hint) {
     hint.style.display = 'block';
