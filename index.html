@@ -634,63 +634,61 @@ a:hover { opacity: 0.85; }
   position: relative;
   width: min(1120px, 100%);
   max-width: 1120px !important;
-  margin: 0 auto 52px !important;
-  padding: 28px 34px 48px;
-  border-radius: 30px 30px 16px 16px;
-  background:
-    linear-gradient(145deg,#69727f 0%,#313844 7%,#11161f 20%,#080b11 80%,#39414d 94%,#77818e 100%);
+  margin: 0 auto 42px !important;
+  padding: 14px 14px 34px;
+  border-radius: 24px 24px 12px 12px;
+  background: linear-gradient(145deg,#444b57 0%,#171c25 12%,#090c12 52%,#252b35 88%,#515966 100%);
   box-shadow:
-    0 34px 80px rgba(0,0,0,.58),
-    inset 0 0 0 1px rgba(255,255,255,.16),
-    inset 0 0 0 3px rgba(0,0,0,.55);
+    0 28px 64px rgba(0,0,0,.52),
+    inset 0 0 0 1px rgba(255,255,255,.13),
+    inset 0 0 0 2px rgba(0,0,0,.58);
 }
 .macbook-shell::before {
   content:"";
   position:absolute;
-  top:9px;
+  top:6px;
   left:50%;
   transform:translateX(-50%);
-  width:9px;height:9px;border-radius:50%;
+  width:8px;
+  height:8px;
+  border-radius:50%;
   background:#020306;
-  box-shadow:0 0 0 1px rgba(255,255,255,.05),0 0 8px rgba(46,130,255,.12);
+  box-shadow:0 0 0 1px rgba(255,255,255,.04);
   z-index:30;
 }
 .macbook-shell::after {
   content:"";
   position:absolute;
-  left:-5%;
-  right:-5%;
-  bottom:-12px;
-  height:34px;
-  border-radius:0 0 60px 60px;
-  background:linear-gradient(180deg,#aab2bd 0%,#7b8591 28%,#535c68 60%,#343b45 100%);
-  box-shadow:
-    0 15px 28px rgba(0,0,0,.36),
-    inset 0 1px 0 rgba(255,255,255,.24);
+  left:2%;
+  right:2%;
+  bottom:-8px;
+  height:20px;
+  border-radius:0 0 42px 42px;
+  background:linear-gradient(180deg,#707985 0%,#515965 42%,#343b45 100%);
+  box-shadow:0 10px 22px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.16);
   z-index:2;
 }
 .macbook-display {
-  position: relative;
-  overflow: hidden;
-  border: 2px solid rgba(255,255,255,.05) !important;
-  border-radius: 16px !important;
+  position:relative;
+  overflow:hidden;
+  border:0 !important;
+  border-radius:15px !important;
   background:#05070c !important;
   box-shadow:
-    inset 0 0 0 1px rgba(0,0,0,.85),
-    0 0 0 7px #080b10,
-    0 0 0 9px #202732,
-    0 18px 44px rgba(0,0,0,.42) !important;
+    0 0 0 6px #070a0f,
+    0 0 0 8px #1b212b,
+    0 14px 34px rgba(0,0,0,.4) !important;
 }
 .macbook-display::before {
   content:"";
   position:absolute;
   left:50%;
-  bottom:-39px;
+  bottom:-29px;
   transform:translateX(-50%);
-  width:145px;
-  height:7px;
-  border-radius:0 0 10px 10px;
-  background:rgba(22,26,32,.34);
+  width:118px;
+  height:5px;
+  border-radius:0 0 8px 8px;
+  background:rgba(14,18,24,.38);
   z-index:31;
 }
 .macbook-display::after {
@@ -698,30 +696,30 @@ a:hover { opacity: 0.85; }
   position:absolute;
   inset:0;
   pointer-events:none;
-  border-radius:14px;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.035), inset 0 18px 45px rgba(0,0,0,.12);
+  border-radius:15px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.035);
   z-index:25;
 }
 #gallery-mac #macTabHint {
   position:relative;
   z-index:40;
-  margin-top:-4px;
-  margin-bottom:26px !important;
+  margin-top:0;
+  margin-bottom:24px !important;
 }
 #gallery-mac .macbook-shell,
 #gallery-mac .macbook-display,
 #gallery-mac .macbook-shell img {
-  cursor: default !important;
+  cursor:default !important;
 }
 #gallery-mac .mac-app-tab {
-  cursor: pointer !important;
-  pointer-events: auto !important;
-  position: relative;
-  z-index: 50;
+  cursor:pointer !important;
+  pointer-events:auto !important;
+  position:relative;
+  z-index:50;
 }
-@media (max-width: 760px) {
-  .macbook-shell { padding:20px 18px 38px; border-radius:22px 22px 12px 12px; }
-  .macbook-shell::after { left:-2%; right:-2%; height:25px; bottom:-8px; }
+@media (max-width:760px) {
+  .macbook-shell { padding:12px 10px 28px; border-radius:18px 18px 10px 10px; }
+  .macbook-shell::after { left:3%; right:3%; height:16px; bottom:-6px; }
 }
 
 /* Populated History preview used in iPhone + iPad frames */
@@ -4297,6 +4295,7 @@ function _demoStart() {
   document.addEventListener('click',function(event){
     if (box.contains(event.target)) return;
     var target=event.target;
+    if (target.closest && target.closest('#gallery-mac')) return;
     var device=target.closest && target.closest('.iphone-device,.ipad-device,.demo-iphone-frame,[data-device-frame]');
     var img=target.closest && target.closest('img');
     if (!device && !img) return;
