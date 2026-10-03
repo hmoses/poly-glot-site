@@ -437,7 +437,9 @@ a:hover { opacity: 0.85; }
   display: grid; gap: 24px;
 }
 .gallery-grid.mac-grid { grid-template-columns: 1fr; }
-.gallery-grid.phone-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; }
+.gallery-grid.phone-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; width:100%; }
+.gallery-grid.phone-grid > *,
+.gallery-grid.ipad-grid > * { min-width:0; }
 .gallery-grid.ipad-grid { grid-template-columns: repeat(4, 1fr); }
 .gallery-item {
   border-radius: var(--radius); overflow: hidden;
@@ -1437,8 +1439,8 @@ img.mac-screen-panel {
   .nav-mobile-toggle { display: block; }
   .section-title { font-size: 1.8rem; }
   .footer-grid { grid-template-columns: 1fr; }
-  .gallery-grid.phone-grid { grid-template-columns: 1fr 1fr; }
-  .gallery-grid.ipad-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid.phone-grid { grid-template-columns: 1fr; gap: 28px; }
+  .gallery-grid.ipad-grid { grid-template-columns: 1fr; gap: 28px; }
   .model-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -1454,8 +1456,8 @@ img.mac-screen-panel {
   .model-card { padding: 14px 8px; }
   .model-card .model-name { font-size: 0.82rem; }
   .model-card .model-desc { font-size: 0.68rem; }
-  .gallery-grid.phone-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .gallery-grid.ipad-grid { grid-template-columns: 1fr; gap: 14px; }
+  .gallery-grid.phone-grid { grid-template-columns: 1fr; gap: 28px; }
+  .gallery-grid.ipad-grid { grid-template-columns: 1fr; gap: 28px; }
   .gallery-grid.mac-grid { gap: 10px; }
   .gallery-tab { padding: 8px 14px; font-size: 0.78rem; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
@@ -1526,6 +1528,64 @@ img.mac-screen-panel {
 /* Ensure all inline HTML mocks scale properly */
 .gallery-item div[style*="background:#0d0f1a"] { max-width: 100%; overflow: hidden; }
 .hero-screenshot > div { max-width: 100%; overflow: hidden; }
+
+/* Mobile device gallery — one centered device per row, never wider than viewport */
+@media (max-width: 640px) {
+  #screenshots .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .gallery-tabs {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .gallery-tabs::-webkit-scrollbar { display:none; }
+
+  .gallery-grid.phone-grid,
+  .gallery-grid.ipad-grid {
+    grid-template-columns: 1fr !important;
+    width: 100%;
+    gap: 30px !important;
+  }
+
+  .gallery-grid.phone-grid .gallery-item,
+  .gallery-grid.ipad-grid .gallery-item {
+    width: 100%;
+    min-width: 0;
+    overflow: visible;
+  }
+
+  .iphone-device {
+    width: min(82vw, 330px) !important;
+    max-width: 330px !important;
+    margin: 0 auto !important;
+  }
+
+  .ipad-device {
+    width: min(94vw, 620px) !important;
+    max-width: 620px !important;
+    margin: 0 auto !important;
+  }
+
+  .gallery-grid.phone-grid .gallery-label,
+  .gallery-grid.ipad-grid .gallery-label {
+    margin-top: 12px;
+    font-size: .82rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 390px) {
+  .iphone-device {
+    width: min(84vw, 304px) !important;
+  }
+  .gallery-panel {
+    overflow-x: clip;
+  }
+}
 </style>
 
 <script type="application/ld+json">
