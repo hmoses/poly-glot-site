@@ -437,7 +437,7 @@ a:hover { opacity: 0.85; }
   display: grid; gap: 24px;
 }
 .gallery-grid.mac-grid { grid-template-columns: 1fr; }
-.gallery-grid.phone-grid { grid-template-columns: repeat(4, 1fr); }
+.gallery-grid.phone-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; }
 .gallery-grid.ipad-grid { grid-template-columns: repeat(4, 1fr); }
 .gallery-item {
   border-radius: var(--radius); overflow: hidden;
@@ -447,6 +447,103 @@ a:hover { opacity: 0.85; }
 }
 .gallery-item:hover { transform: translateY(-4px); border-color: rgba(125,211,252,0.25); }
 .gallery-item img { display: block; width: 100%; border-radius: var(--radius); }
+.gallery-grid.phone-grid .gallery-item {
+  overflow: visible;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+.gallery-grid.phone-grid .gallery-item:hover { border-color: transparent; }
+.iphone-device {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  padding: 9px;
+  border-radius: 40px;
+  background: linear-gradient(145deg,#4c5362 0%,#171c26 12%,#070a10 52%,#282f3b 88%,#5a6270 100%);
+  box-shadow:
+    0 24px 48px rgba(0,0,0,.45),
+    inset 0 0 0 1px rgba(255,255,255,.22),
+    inset 0 0 0 3px rgba(0,0,0,.55);
+}
+.iphone-device::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 15px;
+  transform: translateX(-50%);
+  width: 30%;
+  height: 20px;
+  border-radius: 999px;
+  background: #020306;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
+  z-index: 5;
+  pointer-events: none;
+}
+.iphone-device::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 108px;
+  width: 3px;
+  height: 66px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(#69717f,#222833,#59616e);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.45);
+}
+.iphone-side-left {
+  position: absolute;
+  left: -3px;
+  top: 92px;
+  width: 3px;
+  height: 40px;
+  border-radius: 3px 0 0 3px;
+  background: linear-gradient(#69717f,#222833,#59616e);
+  box-shadow: 0 56px 0 #343b47, 0 106px 0 #343b47;
+  z-index: 2;
+}
+.iphone-screen {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 942 / 2048;
+  border-radius: 32px;
+  background: #05070c;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
+}
+.iphone-screen > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 32px;
+  cursor: zoom-in;
+}
+.iphone-screen .iphone-live-preview {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background:#0d0f1a;
+  border-radius: 32px;
+}
+.iphone-home-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  width: 34%;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.82);
+  z-index: 5;
+  pointer-events: none;
+}
+.gallery-grid.phone-grid .gallery-label {
+  margin-top: 14px;
+  font-size: .82rem;
+}
 .gallery-label {
   text-align: center; margin-top: 10px; font-size: 0.78rem;
   color: var(--text-faint); font-weight: 500;
@@ -1304,66 +1401,91 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <!-- iPhone Screenshots -->
     <div class="gallery-panel" id="gallery-iphone">
       <div class="gallery-grid phone-grid">
+
         <div class="gallery-item">
-          <div style="background:#0d0f1a;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.08)">
-            <!-- Status bar -->
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px 4px;font-size:0.6rem;font-weight:700;color:#fff">
-              <span>1:11</span>
-              <span style="display:inline-block;width:16px;height:8px;border:1.5px solid #fff;border-radius:2px;position:relative"><span style="position:absolute;top:1.5px;left:1.5px;right:1.5px;bottom:1.5px;background:#30d158;border-radius:1px"></span></span>
-            </div>
-            <!-- App header -->
-            <div style="display:flex;align-items:center;gap:6px;padding:6px 12px 8px">
-              <img src="assets/img/icon-128.png" alt="" style="width:22px;height:22px;border-radius:5px">
-              <span style="font-size:0.65rem;font-weight:800;color:#fff">Poly-Glot AI Workspace</span>
-              <span style="margin-left:auto;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,0.1);font-size:0.5rem;font-weight:700;color:#fff">🇺🇸 EN</span>
-            </div>
-            <!-- Tabs -->
-            <div style="display:flex;font-size:0.5rem;font-weight:600;color:rgba(255,255,255,0.3);border-bottom:1px solid rgba(255,255,255,0.08)">
-              <span style="padding:6px 8px;color:#f59e0b;border-bottom:2px solid #f59e0b">✏️ Ask Any AI</span>
-              <span style="padding:6px 7px">📋 Templates</span>
-              <span style="padding:6px 7px">📖 How to Use</span>
-              <span style="padding:6px 7px">🕐 History</span>
-            </div>
-            <!-- Ask Any AI -->
-            <div style="padding:10px 12px 4px">
-              <div style="font-size:0.8rem;font-weight:800;color:#fff;margin-bottom:6px">🤔 Ask Any AI</div>
-              <div style="font-size:0.45rem;color:rgba(255,255,255,0.35);line-height:1.6;margin-bottom:8px">📝 Type, paste, import, scan, or talk<br>💬 App Language 🌐 changes menus &amp; templates</div>
-            </div>
-            <!-- AI will respond in -->
-            <div style="display:flex;align-items:center;gap:6px;padding:2px 12px 6px">
-              <span style="font-size:0.45rem;color:rgba(255,255,255,0.4)">🌐 AI will respond in:</span>
-              <span style="flex:1;padding:4px 8px;border-radius:5px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.5rem;color:#fff;font-weight:600">🇺🇸 English</span>
-            </div>
-            <!-- Textarea -->
-            <div style="margin:6px 12px;border:2px solid #10b981;border-radius:8px;padding:10px;min-height:80px;background:#0d1117;box-shadow:0 0 8px rgba(16,185,129,0.3)">
-              <div style="font-size:0.45rem;color:rgba(255,255,255,0.4);line-height:1.6">Hi BUILDER! Ask any AI anything. In your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater.</div>
-            </div>
-            <!-- Buttons -->
-            <div style="display:flex;gap:4px;padding:6px 12px">
-              <div style="flex:1;background:#1c2128;border-radius:5px;padding:6px;text-align:center;font-size:0.45rem;color:rgba(255,255,255,0.5);font-weight:600">📋 Paste</div>
-              <div style="flex:1;background:#1c2128;border-radius:5px;padding:6px;text-align:center;font-size:0.45rem;color:rgba(255,255,255,0.5);font-weight:600">📄 Import</div>
-              <div style="flex:1;background:#1c2128;border-radius:5px;padding:6px;text-align:center;font-size:0.45rem;color:rgba(255,255,255,0.5);font-weight:600">📷 Scan</div>
-            </div>
-            <!-- Talk + Send -->
-            <div style="display:flex;align-items:center;padding:6px 12px 10px">
-              <div style="display:flex;align-items:center;gap:4px"><span style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;font-size:0.5rem">🎤</span><span style="font-size:0.45rem;color:rgba(255,255,255,0.4)">Talk</span></div>
-              <div style="margin-left:auto;padding:6px 16px;background:#10b981;color:#fff;border-radius:6px;font-size:0.5rem;font-weight:700">Send</div>
+          <div class="iphone-device">
+            <span class="iphone-side-left" aria-hidden="true"></span>
+            <div class="iphone-screen">
+              <div class="iphone-live-preview">
+                <!-- Status bar -->
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px 4px;font-size:0.6rem;font-weight:700;color:#fff">
+                  <span>1:11</span>
+                  <span style="display:inline-block;width:16px;height:8px;border:1.5px solid #fff;border-radius:2px;position:relative"><span style="position:absolute;top:1.5px;left:1.5px;right:1.5px;bottom:1.5px;background:#30d158;border-radius:1px"></span></span>
+                </div>
+                <!-- App header -->
+                <div style="display:flex;align-items:center;gap:6px;padding:6px 12px 8px">
+                  <img src="assets/img/icon-128.png" alt="" style="width:22px;height:22px;border-radius:5px;cursor:default">
+                  <span style="font-size:0.65rem;font-weight:800;color:#fff">Poly-Glot AI Workspace</span>
+                  <span style="margin-left:auto;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,0.1);font-size:0.5rem;font-weight:700;color:#fff">🇺🇸 EN</span>
+                </div>
+                <!-- Tabs -->
+                <div style="display:flex;font-size:0.5rem;font-weight:600;color:rgba(255,255,255,0.3);border-bottom:1px solid rgba(255,255,255,0.08)">
+                  <span style="padding:6px 8px;color:#f59e0b;border-bottom:2px solid #f59e0b">✏️ Ask Any AI</span>
+                  <span style="padding:6px 7px">📋 Templates</span>
+                  <span style="padding:6px 7px">📖 How to Use</span>
+                  <span style="padding:6px 7px">🕐 History</span>
+                </div>
+                <!-- Ask Any AI -->
+                <div style="padding:10px 12px 4px">
+                  <div style="font-size:0.8rem;font-weight:800;color:#fff;margin-bottom:6px">🤔 Ask Any AI</div>
+                  <div style="font-size:0.45rem;color:rgba(255,255,255,0.35);line-height:1.6;margin-bottom:8px">📝 Type, paste, import, scan, or talk<br>💬 App Language 🌐 changes menus &amp; templates</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px;padding:2px 12px 6px">
+                  <span style="font-size:0.45rem;color:rgba(255,255,255,0.4)">🌐 AI will respond in:</span>
+                  <span style="flex:1;padding:4px 8px;border-radius:5px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.5rem;color:#fff;font-weight:600">🇺🇸 English</span>
+                </div>
+                <div style="margin:6px 12px;border:2px solid #10b981;border-radius:8px;padding:10px;min-height:80px;background:#0d1117;box-shadow:0 0 8px rgba(16,185,129,0.3)">
+                  <div style="font-size:0.45rem;color:rgba(255,255,255,0.4);line-height:1.6">Hi BUILDER! Ask any AI anything. In your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater.</div>
+                </div>
+                <div style="display:flex;gap:4px;padding:6px 12px">
+                  <div style="flex:1;background:#1c2128;border-radius:5px;padding:6px;text-align:center;font-size:0.45rem;color:rgba(255,255,255,0.5);font-weight:600">📋 Paste</div>
+                  <div style="flex:1;background:#1c2128;border-radius:5px;padding:6px;text-align:center;font-size:0.45rem;color:rgba(255,255,255,0.5);font-weight:600">📄 Import</div>
+                  <div style="flex:1;background:#1c2128;border-radius:5px;padding:6px;text-align:center;font-size:0.45rem;color:rgba(255,255,255,0.5);font-weight:600">📷 Scan</div>
+                </div>
+                <div style="display:flex;align-items:center;padding:6px 12px 10px">
+                  <div style="display:flex;align-items:center;gap:4px"><span style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;font-size:0.5rem">🎤</span><span style="font-size:0.45rem;color:rgba(255,255,255,0.4)">Talk</span></div>
+                  <div style="margin-left:auto;padding:6px 16px;background:#10b981;color:#fff;border-radius:6px;font-size:0.5rem;font-weight:700">Send</div>
+                </div>
+              </div>
+              <div class="iphone-home-indicator"></div>
             </div>
           </div>
           <div class="gallery-label">Ask Any AI</div>
         </div>
+
         <div class="gallery-item">
-          <img src="assets/img/screenshots/iphone-2-templates.png" alt="Templates on iPhone" loading="lazy">
+          <div class="iphone-device">
+            <span class="iphone-side-left" aria-hidden="true"></span>
+            <div class="iphone-screen">
+              <img src="assets/img/screenshots/iphone-2-templates.png" alt="Templates on iPhone" loading="lazy">
+              <div class="iphone-home-indicator"></div>
+            </div>
+          </div>
           <div class="gallery-label">1,000+ Templates</div>
         </div>
+
         <div class="gallery-item">
-          <img src="assets/img/screenshots/iphone-3-howtouse.png" alt="How to Use on iPhone" loading="lazy">
+          <div class="iphone-device">
+            <span class="iphone-side-left" aria-hidden="true"></span>
+            <div class="iphone-screen">
+              <img src="assets/img/screenshots/iphone-3-howtouse.png" alt="How to Use on iPhone" loading="lazy">
+              <div class="iphone-home-indicator"></div>
+            </div>
+          </div>
           <div class="gallery-label">How to Use</div>
         </div>
+
         <div class="gallery-item">
-          <img src="assets/img/screenshots/iphone-4-history.png" alt="History on iPhone" loading="lazy">
+          <div class="iphone-device">
+            <span class="iphone-side-left" aria-hidden="true"></span>
+            <div class="iphone-screen">
+              <img src="assets/img/screenshots/iphone-4-history.png?v=20261003b" alt="History on iPhone" loading="lazy">
+              <div class="iphone-home-indicator"></div>
+            </div>
+          </div>
           <div class="gallery-label">History</div>
         </div>
+
       </div>
     </div>
 
