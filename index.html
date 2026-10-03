@@ -753,6 +753,116 @@ img.mac-screen-panel {
   .macbook-shell::after { left:0; right:0; height:14px; bottom:-6px; }
 }
 
+/* Populated Mac History tab */
+.mac-history-preview {
+  background:#0d1117;
+  color:#e6edf3;
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;
+  overflow:hidden;
+}
+.mac-history-header {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:10px 18px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.mac-history-header img {
+  width:28px;height:28px;border-radius:7px;cursor:default !important;
+}
+.mac-history-title-wrap { line-height:1.15; }
+.mac-history-app-title { font-size:.8rem;font-weight:800;color:#fff; }
+.mac-history-sub { font-size:.55rem;color:rgba(255,255,255,.3);margin-top:2px; }
+.mac-history-lang {
+  margin-left:auto;
+  padding:4px 10px;
+  border-radius:5px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  font-size:.7rem;
+  font-weight:700;
+  color:#fff;
+}
+.mac-history-tabs {
+  display:flex;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  font-size:.72rem;
+  font-weight:600;
+  color:rgba(255,255,255,.35);
+}
+.mac-history-tabs span { padding:10px 18px; }
+.mac-history-tabs .active {
+  color:#b98cff;
+  border-bottom:2px solid #a970ff;
+}
+.mac-history-body { padding:16px 20px 20px; }
+.mac-history-top {
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+.mac-history-heading { font-size:1rem;font-weight:800;color:#fff; }
+.mac-history-note { font-size:.68rem;color:#8b949e;margin-top:3px; }
+.mac-history-actions { display:flex;gap:7px; }
+.mac-history-pill {
+  padding:6px 10px;
+  border-radius:7px;
+  border:1px solid rgba(255,255,255,.12);
+  background:#171d25;
+  font-size:.65rem;
+  color:#d7dde6;
+}
+.mac-history-pill.clear { color:#ff6b6b; }
+.mac-history-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.mac-history-card {
+  position:relative;
+  padding:11px 12px 10px;
+  border-radius:10px;
+  border:1px solid #303844;
+  background:#181e26;
+}
+.mac-history-card-title { font-size:.75rem;font-weight:800;color:#eef2f7; }
+.mac-history-time { font-size:.58rem;color:#8c95a3;margin:2px 0 6px; }
+.mac-history-text {
+  font-size:.66rem;
+  color:#9aa3b0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  padding-right:18px;
+}
+.mac-history-star {
+  position:absolute;
+  right:10px;
+  top:8px;
+  color:#2288ff;
+  font-size:18px;
+  line-height:1;
+}
+.mac-history-buttons {
+  display:grid;
+  grid-template-columns:1.2fr 1.2fr .28fr;
+  gap:5px;
+  margin-top:8px;
+}
+.mac-history-btn {
+  border-radius:7px;
+  border:1px solid #333b47;
+  padding:6px 5px;
+  text-align:center;
+  font-size:.62rem;
+  font-weight:700;
+  color:#e5e9ef;
+  background:#171d25;
+}
+.mac-history-btn.copy { background:#72cef3;color:white;border-color:#72cef3; }
+.mac-history-btn.del { color:#ff6b6b; }
+
 /* Populated History preview used in iPhone + iPad frames */
 .history-preview {
   width: 100%;
@@ -1765,7 +1875,78 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                 <div style="text-align:center;margin-top:12px;font-size:12px;color:#7dd3fc;font-weight:600">⬆ Compare and pick the best answer</div>
               </div>
             </div>
-            <img id="macScreen-history" class="mac-screen-panel" src="assets/img/screenshots/mac-5-history.png" alt="History on Mac" loading="eager" decoding="async">
+            <div id="macScreen-history" class="mac-screen-panel mac-history-preview" aria-label="History on Mac">
+              <div class="mac-history-header">
+                <img src="assets/img/icon-128.png" alt="">
+                <div class="mac-history-title-wrap">
+                  <div class="mac-history-app-title">Poly-Glot AI Workspace</div>
+                  <div class="mac-history-sub">poly-glot.ai</div>
+                </div>
+                <div class="mac-history-lang">🇺🇸 EN</div>
+              </div>
+              <div class="mac-history-tabs">
+                <span>✏️ Ask Any AI</span>
+                <span>📋 Templates</span>
+                <span>📖 How to Use</span>
+                <span class="active">🕐 History</span>
+              </div>
+              <div class="mac-history-body">
+                <div class="mac-history-top">
+                  <div>
+                    <div class="mac-history-heading">Prompt History</div>
+                    <div class="mac-history-note">Your recent prompts &amp; favorites</div>
+                  </div>
+                  <div class="mac-history-actions">
+                    <span class="mac-history-pill">All</span>
+                    <span class="mac-history-pill clear">Clear</span>
+                  </div>
+                </div>
+                <div class="mac-history-grid">
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Ask Any AI</div>
+                    <div class="mac-history-time">5m ago</div>
+                    <div class="mac-history-text">Test</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Ask Any AI</div>
+                    <div class="mac-history-time">5m ago</div>
+                    <div class="mac-history-text">Write a polite email to my landlord asking to fix the heater.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Interview Coach</div>
+                    <div class="mac-history-time">9m ago</div>
+                    <div class="mac-history-text">Prepare {{name}} for a {{job_title}} interview at {{company}}.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Resume Optimizer</div>
+                    <div class="mac-history-time">12m ago</div>
+                    <div class="mac-history-text">Improve this resume for a senior technical writer role.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Ask Any AI</div>
+                    <div class="mac-history-time">18m ago</div>
+                    <div class="mac-history-text">Compare the best AI tools for developer documentation.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Translation</div>
+                    <div class="mac-history-time">24m ago</div>
+                    <div class="mac-history-text">Translate this product description into French and Arabic.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <!-- Label -->
