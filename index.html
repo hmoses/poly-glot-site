@@ -739,14 +739,61 @@ img.mac-screen-panel {
   object-fit:cover;
   object-position:top center;
 }
+
+/* One Mac tab bar only — panel content fills the display beneath it */
+.mac-ask-body {
+  height:100%;
+  box-sizing:border-box;
+}
+.mac-history-body {
+  height:100%;
+  box-sizing:border-box;
+  padding:18px 22px 22px;
+}
+.mac-template-panel {
+  overflow:hidden;
+  background:#0d1117;
+}
+.mac-template-panel > img {
+  position:absolute;
+  left:0;
+  width:100%;
+  height:auto;
+  max-width:none;
+  /* Crop away the screenshot's embedded title/tab chrome so the single live tab row is authoritative */
+  top:-15%;
+  transform:scale(1.10);
+  transform-origin:top center;
+  cursor:default !important;
+}
+#macScreen-howtouse {
+  padding:0 !important;
+}
+
+/* Give the content more vertical presence after removing duplicate headers */
+.mac-history-grid {
+  align-content:start;
+}
+.mac-history-card {
+  min-height:82px;
+}
+
 #gallery-mac .macbook-shell,
 #gallery-mac .macbook-display,
 #gallery-mac .macbook-shell img { cursor:default !important; }
+#gallery-mac .mac-primary-tabs {
+  min-height:56px;
+}
 #gallery-mac .mac-app-tab {
   cursor:pointer !important;
   pointer-events:auto !important;
   position:relative;
   z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 !important;
+  font-size:.86rem !important;
 }
 @media (max-width:900px) {
   .mac-history-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
@@ -763,41 +810,6 @@ img.mac-screen-panel {
   color:#e6edf3;
   font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;
   overflow:hidden;
-}
-.mac-history-header {
-  display:flex;
-  align-items:center;
-  gap:9px;
-  padding:10px 18px;
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.mac-history-header img {
-  width:28px;height:28px;border-radius:7px;cursor:default !important;
-}
-.mac-history-title-wrap { line-height:1.15; }
-.mac-history-app-title { font-size:.8rem;font-weight:800;color:#fff; }
-.mac-history-sub { font-size:.55rem;color:rgba(255,255,255,.3);margin-top:2px; }
-.mac-history-lang {
-  margin-left:auto;
-  padding:4px 10px;
-  border-radius:5px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.15);
-  font-size:.7rem;
-  font-weight:700;
-  color:#fff;
-}
-.mac-history-tabs {
-  display:flex;
-  border-bottom:1px solid rgba(255,255,255,.06);
-  font-size:.72rem;
-  font-weight:600;
-  color:rgba(255,255,255,.35);
-}
-.mac-history-tabs span { padding:10px 18px; }
-.mac-history-tabs .active {
-  color:#b98cff;
-  border-bottom:2px solid #a970ff;
 }
 .mac-history-body { padding:16px 20px 20px; }
 .mac-history-top {
@@ -1755,7 +1767,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             <div style="flex:1;text-align:center;font-size:0.75rem;color:rgba(255,255,255,0.4);font-weight:600">Poly-Glot AI Workspace</div>
           </div>
           <!-- In-app tabs -->
-          <div style="display:flex;border-bottom:2px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.15)">
+          <div class="mac-primary-tabs" style="display:flex;border-bottom:2px solid rgba(255,255,255,0.06);background:#05080d">
             <div class="mac-app-tab active" onclick="switchMacTab('askanyai')" id="macTab-askanyai" style="flex:1;text-align:center;padding:12px 0;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.2s;color:#7dd3fc;border-bottom:2px solid #7dd3fc">🤔 Ask Any AI</div>
             <div class="mac-app-tab" onclick="switchMacTab('templates')" id="macTab-templates" style="flex:1;text-align:center;padding:12px 0;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.2s;color:rgba(255,255,255,0.35);border-bottom:2px solid transparent">📋 Templates</div>
             <div class="mac-app-tab" onclick="switchMacTab('howtouse')" id="macTab-howtouse" style="flex:1;text-align:center;padding:12px 0;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.2s;color:rgba(255,255,255,0.35);border-bottom:2px solid transparent">ℹ️ How to Use</div>
@@ -1764,21 +1776,8 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           <!-- Screenshot area -->
           <div class="mac-screen-stage">
             <div id="macScreen-askanyai" class="mac-screen-panel active" style="background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;padding:0;overflow:hidden">
-              <!-- In-app header -->
-              <div style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-bottom:1px solid rgba(255,255,255,0.06)">
-                <img src="assets/img/icon-128.png" alt="" style="width:28px;height:28px;border-radius:7px">
-                <div><div style="font-size:0.8rem;font-weight:800;color:#fff">Poly-Glot AI Workspace</div><div style="font-size:0.55rem;color:rgba(255,255,255,0.3)">poly-glot.ai</div></div>
-                <span style="margin-left:auto;padding:4px 10px;border-radius:5px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);font-size:0.7rem;font-weight:700;color:#fff">&#127482;&#127480; EN</span>
-              </div>
-              <!-- In-app tabs -->
-              <div style="display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.35)">
-                <span style="padding:10px 18px;color:#f59e0b;border-bottom:2px solid #f59e0b">&#9999;&#65039; Ask Any AI</span>
-                <span style="padding:10px 18px">&#128203; Templates</span>
-                <span style="padding:10px 18px">&#128214; How to Use</span>
-                <span style="padding:10px 18px">&#128336; History</span>
-              </div>
               <!-- Ask Any AI content -->
-              <div style="padding:20px 24px">
+              <div class="mac-ask-body" style="padding:24px 28px">
                 <div style="font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:8px">&#129300; Ask Any AI</div>
                 <div style="font-size:0.65rem;color:rgba(255,255,255,0.4);margin-bottom:4px;line-height:1.5">
                   <span style="color:#f59e0b;font-weight:700">Tip</span><br>
@@ -1812,7 +1811,9 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                 <div style="margin-top:8px;font-size:0.6rem;color:rgba(255,255,255,0.25)">&#128465; Clear All</div>
               </div>
             </div>
-            <img id="macScreen-templates" class="mac-screen-panel" src="assets/img/screenshots/mac-2-templates.png" alt="Templates on Mac" loading="eager" decoding="async">
+            <div id="macScreen-templates" class="mac-screen-panel mac-template-panel" aria-label="Templates on Mac">
+              <img src="assets/img/screenshots/mac-2-templates.png" alt="Templates on Mac" loading="eager" decoding="async">
+            </div>
             <!-- Interactive Demo (from latest AI Workspace app code) -->
             <div id="macScreen-howtouse" class="mac-screen-panel" style="background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;overflow:hidden">
               <!-- PHASE 1: Ask Any AI textarea + Send -->
@@ -1880,20 +1881,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
               </div>
             </div>
             <div id="macScreen-history" class="mac-screen-panel mac-history-preview" aria-label="History on Mac">
-              <div class="mac-history-header">
-                <img src="assets/img/icon-128.png" alt="">
-                <div class="mac-history-title-wrap">
-                  <div class="mac-history-app-title">Poly-Glot AI Workspace</div>
-                  <div class="mac-history-sub">poly-glot.ai</div>
-                </div>
-                <div class="mac-history-lang">🇺🇸 EN</div>
-              </div>
-              <div class="mac-history-tabs">
-                <span>✏️ Ask Any AI</span>
-                <span>📋 Templates</span>
-                <span>📖 How to Use</span>
-                <span class="active">🕐 History</span>
-              </div>
               <div class="mac-history-body">
                 <div class="mac-history-top">
                   <div>
