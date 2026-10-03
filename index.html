@@ -708,6 +708,17 @@ a:hover { opacity: 0.85; }
   margin-top:-4px;
   margin-bottom:26px !important;
 }
+#gallery-mac .macbook-shell,
+#gallery-mac .macbook-display,
+#gallery-mac .macbook-shell img {
+  cursor: default !important;
+}
+#gallery-mac .mac-app-tab {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 50;
+}
 @media (max-width: 760px) {
   .macbook-shell { padding:20px 18px 38px; border-radius:22px 22px 12px 12px; }
   .macbook-shell::after { left:-2%; right:-2%; height:25px; bottom:-8px; }
@@ -4133,7 +4144,7 @@ function _demoStart() {
 
 <!-- ===== GLOBAL IMAGE + DEVICE LIGHTBOX ===== -->
 <style>
-  img:not(#pgLightboxImage), .iphone-device, .ipad-device, .macbook-shell, .demo-iphone-frame { cursor: zoom-in; }
+  img:not(#pgLightboxImage), .iphone-device, .ipad-device, .demo-iphone-frame { cursor: zoom-in; }
   #pgLightbox {
     position: fixed; inset: 0; z-index: 100000;
     display: none; align-items: center; justify-content: center;
@@ -4286,7 +4297,7 @@ function _demoStart() {
   document.addEventListener('click',function(event){
     if (box.contains(event.target)) return;
     var target=event.target;
-    var device=target.closest && target.closest('.iphone-device,.ipad-device,.macbook-shell,.demo-iphone-frame,[data-device-frame]');
+    var device=target.closest && target.closest('.iphone-device,.ipad-device,.demo-iphone-frame,[data-device-frame]');
     var img=target.closest && target.closest('img');
     if (!device && !img) return;
     event.preventDefault();
