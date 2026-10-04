@@ -1669,12 +1669,13 @@ img.mac-screen-panel {
     height:auto !important;
     aspect-ratio:4 / 3 !important;
     flex:none !important;
+    overflow:hidden !important;
   }
   .ipad-screen > img {
     width:100% !important;
     height:100% !important;
-    object-fit:contain !important;
-    object-position:center top !important;
+    object-fit:cover !important;
+    object-position:top center !important;
   }
 
   /* Mac gallery stays within viewport and keeps 16:10 device proportions */
@@ -1790,6 +1791,18 @@ img.mac-screen-panel {
     max-width: 620px !important;
     height:auto !important;
     margin: 0 auto !important;
+  }
+  .ipad-screen {
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:4 / 3 !important;
+    overflow:hidden !important;
+  }
+  .ipad-screen > img {
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    object-position:top center !important;
   }
 
   .gallery-grid.phone-grid .gallery-label,
