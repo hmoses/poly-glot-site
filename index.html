@@ -7367,5 +7367,86 @@ function _demoStart() {
 }
 </style>
 
+
+<style>
+/* ===== HISTORY NAV TABS — ONE HORIZONTAL ROW ALL DEVICES ===== */
+/* Force Ask Any AI / Templates / How to Use / History to remain one horizontal row
+   in every History preview, including iPhone and iPad. */
+.history-preview .hp-tabs{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  grid-auto-flow:column!important;
+  width:100%!important;
+  min-width:0!important;
+  gap:0!important;
+  overflow:hidden!important;
+  white-space:nowrap!important;
+}
+.history-preview .hp-tabs span{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:0!important;
+  width:100%!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  line-height:1.05!important;
+}
+
+/* iPhone History: keep all 4 tabs on one line without wrapping. */
+.iphone-screen .history-preview .hp-tabs{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+}
+.iphone-screen .history-preview .hp-tabs span{
+  font-size:5.8px!important;
+  padding:6px 1px!important;
+}
+
+/* iPad History: same one-row arrangement, proportionally larger. */
+.ipad-screen .history-preview .hp-tabs{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+}
+.ipad-screen .history-preview .hp-tabs span{
+  font-size:6.2px!important;
+  padding:6px 2px!important;
+}
+
+/* Also keep the general in-device app nav bars in one horizontal row. */
+.iphone-live-preview > div[style*="border-bottom"],
+.ipad-live-preview > div[style*="border-bottom"],
+.demo-ask-tabs{
+  flex-wrap:nowrap!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+}
+.demo-ask-tabs{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:0!important;
+  width:100%!important;
+}
+.demo-ask-tabs > span{
+  min-width:0!important;
+  text-align:center!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  white-space:nowrap!important;
+  padding-left:2px!important;
+  padding-right:2px!important;
+}
+
+@media(max-width:430px){
+  .iphone-screen .history-preview .hp-tabs span{
+    font-size:5.4px!important;
+  }
+  .ipad-screen .history-preview .hp-tabs span{
+    font-size:5.8px!important;
+  }
+}
+</style>
+
 </body>
 </html>
