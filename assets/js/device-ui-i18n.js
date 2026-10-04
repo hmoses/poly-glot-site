@@ -288,7 +288,7 @@ window._pgDeviceUI={apply:apply,appLanguages:APP_LANGS,_strings:strings};
 window.addEventListener('pg:languagechange',function(e){apply(e.detail&&e.detail.code||"EN");});
 var reapplyTimer=null;
 function observeDeviceUI(){
-  var roots=['gallery-iphone','gallery-ipad','gallery-mac','demo'].map(function(id){return document.getElementById(id);}).filter(Boolean);
+  var roots=['gallery-iphone','gallery-ipad','gallery-mac','demo','iphone-duo'].map(function(id){return document.getElementById(id);}).filter(Boolean);
   roots.forEach(function(root){
     new MutationObserver(function(){
       clearTimeout(reapplyTimer);
@@ -717,6 +717,123 @@ function localizeLiveDemo(root,c){
   root.setAttribute("dir",(norm(c)==="AR"||norm(c)==="HE")?"rtl":"ltr");
 }
 
+
+function localizeDuo(c){
+  var root=document.getElementById("iphone-duo");
+  if(!root)return;
+  c=norm(c);
+  var S=strings(c), M=meta(c);
+
+  // The localized HTML device is the source of truth once a non-English language is selected.
+  var staticImg=root.querySelector(".duo-static-en");
+  var live=root.querySelector(".duo-localized-device");
+  if(staticImg) staticImg.style.display=(c==="EN")?"block":"none";
+  if(live) live.style.display="grid";
+
+  // Language badge.
+  root.querySelectorAll(".duo-lang-badge").forEach(function(el){
+    el.textContent=M.flag+" "+M.code.replace("_","-");
+  });
+
+  // Left screen: app nav + Compare Mode workflow.
+  var tab=root.querySelector(".duo-screen.left .tabline");
+  if(tab) tab.textContent="✏️ "+(S.ask||"Ask Any AI");
+
+  var cmpTitle=root.querySelector(".duo-screen.left h3");
+  if(cmpTitle) cmpTitle.textContent="🔀 "+(S.compare||"Compare Mode");
+
+  var muted=root.querySelector(".duo-screen.left h3 + .muted");
+  if(muted) muted.textContent=S.compareSelect||S.compareHelp||"Select AIs to compare";
+
+  var prompt=root.querySelector(".duo-screen.left .prompt");
+  if(prompt){
+    var prompts={
+      EN:"Explain quantum computing in simple terms.",
+      ES:"Explica la computación cuántica en términos sencillos.",
+      FR:"Explique l’informatique quantique en termes simples.",
+      DE:"Erkläre Quantencomputing in einfachen Worten.",
+      IT:"Spiega il calcolo quantistico in termini semplici.",
+      PT:"Explique computação quântica em termos simples.",
+      NL:"Leg quantumcomputing in eenvoudige woorden uit.",
+      RU:"Объясни квантовые вычисления простыми словами.",
+      ZH:"用简单的语言解释量子计算。",
+      ZH_TW:"用簡單的語言解釋量子運算。",
+      JA:"量子コンピューティングを簡単に説明してください。",
+      KO:"양자 컴퓨팅을 쉽게 설명해 주세요.",
+      AR:"اشرح الحوسبة الكمية ببساطة.",
+      HI:"क्वांटम कंप्यूटिंग को सरल शब्दों में समझाएँ।",
+      TR:"Kuantum bilişimi basitçe açıkla.",
+      PL:"Wyjaśnij komputery kwantowe prostymi słowami.",
+      UK:"Поясни квантові обчислення простими словами."
+    };
+    prompt.textContent=prompts[c]||prompt.getAttribute("data-en")||prompt.textContent;
+    if(!prompt.getAttribute("data-en")) prompt.setAttribute("data-en","Explain quantum computing in simple terms.");
+  }
+
+  var send=root.querySelector(".duo-send");
+  if(send) send.textContent=S.compareSend||"Send to Selected";
+
+  // Right screen: response card and actions.
+  var responseLabel=root.querySelector(".duo-response-head .muted");
+  if(responseLabel){
+    var responseWords={
+      EN:"Response",ES:"Respuesta",FR:"Réponse",DE:"Antwort",IT:"Risposta",PT:"Resposta",
+      NL:"Antwoord",RU:"Ответ",ZH:"回答",ZH_TW:"回覆",JA:"回答",KO:"응답",AR:"الرد",
+      HI:"उत्तर",TR:"Yanıt",PL:"Odpowiedź",UK:"Відповідь"
+    };
+    responseLabel.textContent=responseWords[c]||"Response";
+  }
+
+  var paras=root.querySelectorAll(".duo-response p");
+  if(paras[0]){
+    var p1={
+      EN:"Quantum computing is a new kind of computing that uses quantum bits to solve some problems differently from classical computers.",
+      ES:"La computación cuántica usa bits cuánticos para resolver algunos problemas de forma distinta a las computadoras clásicas.",
+      FR:"L’informatique quantique utilise des bits quantiques pour résoudre certains problèmes différemment des ordinateurs classiques.",
+      DE:"Quantencomputer verwenden Quantenbits, um bestimmte Probleme anders zu lösen als klassische Computer.",
+      IT:"Il calcolo quantistico usa bit quantistici per risolvere alcuni problemi in modo diverso dai computer classici.",
+      PT:"A computação quântica usa bits quânticos para resolver alguns problemas de forma diferente dos computadores clássicos.",
+      RU:"Квантовые вычисления используют квантовые биты, чтобы решать некоторые задачи иначе, чем классические компьютеры.",
+      ZH:"量子计算使用量子比特，以不同于传统计算机的方式解决某些问题。",
+      ZH_TW:"量子運算使用量子位元，以不同於傳統電腦的方式解決某些問題。",
+      JA:"量子コンピューティングは量子ビットを使い、従来のコンピューターとは異なる方法で一部の問題を解きます。",
+      KO:"양자 컴퓨팅은 양자 비트를 사용해 일부 문제를 기존 컴퓨터와 다른 방식으로 해결합니다。",
+      AR:"تستخدم الحوسبة الكمية البتات الكمية لحل بعض المشكلات بطريقة مختلفة عن الحواسيب التقليدية."
+    };
+    paras[0].textContent=p1[c]||p1.EN;
+  }
+  if(paras[1]){
+    var p2={
+      EN:"Compare this answer with the other selected AI responses side by side.",
+      ES:"Compara esta respuesta con las otras respuestas de IA seleccionadas, una al lado de la otra.",
+      FR:"Comparez cette réponse côte à côte avec les autres réponses d’IA sélectionnées.",
+      DE:"Vergleiche diese Antwort direkt mit den anderen ausgewählten KI-Antworten.",
+      IT:"Confronta questa risposta con le altre risposte IA selezionate, affiancate.",
+      PT:"Compare esta resposta lado a lado com as outras respostas de IA selecionadas.",
+      RU:"Сравните этот ответ рядом с ответами других выбранных ИИ.",
+      ZH:"将此回答与其他已选 AI 的回答并排比较。",
+      ZH_TW:"將此回覆與其他已選 AI 的回覆並排比較。",
+      JA:"この回答を、選択した他のAIの回答と並べて比較できます。",
+      KO:"이 답변을 선택한 다른 AI의 답변과 나란히 비교하세요.",
+      AR:"قارن هذه الإجابة جنبًا إلى جنب مع إجابات الذكاء الاصطناعي الأخرى المحددة."
+    };
+    paras[1].textContent=p2[c]||p2.EN;
+  }
+
+  var actions=root.querySelectorAll(".duo-actions span");
+  var actionSets={
+    EN:["Copy","Read","Share","Save"],ES:["Copiar","Leer","Compartir","Guardar"],FR:["Copier","Lire","Partager","Enregistrer"],
+    DE:["Kopieren","Lesen","Teilen","Sichern"],IT:["Copia","Leggi","Condividi","Salva"],PT:["Copiar","Ler","Compartilhar","Salvar"],
+    RU:["Копировать","Читать","Поделиться","Сохранить"],ZH:["复制","朗读","分享","保存"],ZH_TW:["複製","朗讀","分享","儲存"],
+    JA:["コピー","読み上げ","共有","保存"],KO:["복사","읽기","공유","저장"],AR:["نسخ","قراءة","مشاركة","حفظ"]
+  };
+  var aa=actionSets[c]||actionSets.EN;
+  actions.forEach(function(el,i){if(aa[i])el.textContent=aa[i];});
+
+  root.setAttribute("lang",c.toLowerCase().replace("_","-"));
+  root.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr");
+}
+
 function applyAll(c){
   c=norm(c);
   var roots=[
@@ -724,6 +841,7 @@ function applyAll(c){
     document.getElementById("gallery-iphone"),
     document.getElementById("gallery-ipad"),
     document.getElementById("gallery-mac"),
+    document.getElementById("iphone-duo"),
     document.querySelector(".hero-phone-mock"),
     document.getElementById("pgLightboxClone")
   ].filter(Boolean);
@@ -733,6 +851,7 @@ function applyAll(c){
     }
     localizeLiveDemo(r,c);
   });
+  localizeDuo(c);
   document.documentElement.setAttribute("data-device-ui-lang",c);
 }
 
@@ -884,6 +1003,36 @@ html[data-device-ui-lang="KO"] #demo .demo-ask-content{
   overflow:hidden!important;
   text-overflow:ellipsis!important;
 }
+`;
+st.textContent += `
+/* Localized iPhone Duo UI stays proportional across languages. */
+#iphone-duo .duo-localized-device{min-width:0!important}
+#iphone-duo .duo-ui,#iphone-duo .duo-response{min-width:0!important;overflow:hidden!important}
+#iphone-duo .duo-ui .topline{
+  display:grid!important;
+  grid-template-columns:auto minmax(0,1fr) auto!important;
+  align-items:center!important;
+  min-width:0!important;
+}
+#iphone-duo .duo-ui .brand{
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+#iphone-duo .duo-lang-badge{white-space:nowrap!important}
+#iphone-duo .tabline,
+#iphone-duo .duo-ui h3,
+#iphone-duo .duo-ui .muted,
+#iphone-duo .duo-send,
+#iphone-duo .duo-response,
+#iphone-duo .duo-actions span{
+  overflow-wrap:anywhere!important;
+}
+html[data-device-ui-density="compact"] #iphone-duo .duo-ui,
+html[data-device-ui-density="compact"] #iphone-duo .duo-response{font-size:92%!important}
+html[data-device-ui-script="cjk"] #iphone-duo .duo-ui,
+html[data-device-ui-script="cjk"] #iphone-duo .duo-response{font-size:95%!important;letter-spacing:0!important}
+html[data-device-ui-dir="rtl"] #iphone-duo .duo-localized-device{direction:rtl!important}
 `;
 document.head.appendChild(st);
 
