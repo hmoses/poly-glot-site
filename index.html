@@ -2628,7 +2628,35 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       </div>
 
       <figure class="duo-exact-figure">
-        <img class="duo-exact-image" src="https://raw.githubusercontent.com/hmoses/poly-glot-site/966834b44c3ad125f7a5064615eef48dbe1a4f96/assets/img/iphone-duo-simulator.jpg" loading="eager" decoding="async" alt="Poly-Glot AI Workspace Compare Mode shown in the iPhone Duo Xcode simulator">
+        <img class="duo-exact-image duo-static-en" src="https://raw.githubusercontent.com/hmoses/poly-glot-site/966834b44c3ad125f7a5064615eef48dbe1a4f96/assets/img/iphone-duo-simulator.jpg" loading="eager" decoding="async" alt="Poly-Glot AI Workspace Compare Mode shown in the iPhone Duo Xcode simulator">
+        <div class="duo-device duo-localized-device" aria-label="Localized Poly-Glot AI Workspace on iPhone Duo">
+          <div class="duo-screen left">
+            <div class="duo-ui">
+              <div class="topline">
+                <img src="assets/img/icon-128.png" alt="">
+                <div><div class="brand">Poly-Glot AI Workspace</div><div class="muted">poly-glot.ai</div></div>
+                <div class="duo-lang-badge" style="margin-left:auto">🇺🇸 EN</div>
+              </div>
+              <div class="tabline">✏️ Ask Any AI</div>
+              <h3>🔀 Compare Mode</h3>
+              <div class="muted">Select AIs to compare</div>
+              <div class="prompt">Explain quantum computing in simple terms.</div>
+              <div class="duo-ai-row"><span class="duo-check on"></span><span>ChatGPT</span></div>
+              <div class="duo-ai-row"><span class="duo-check"></span><span>Claude</span></div>
+              <div class="duo-ai-row"><span class="duo-check"></span><span>Gemini</span></div>
+              <div class="duo-ai-row"><span class="duo-check on"></span><span>Perplexity</span></div>
+              <div class="duo-send">Send to Selected</div>
+            </div>
+          </div>
+          <div class="duo-screen right">
+            <div class="duo-response">
+              <div class="duo-response-head"><div class="duo-model">GPT</div><div><strong>ChatGPT</strong><div class="muted">Response</div></div></div>
+              <p>Quantum computing is a new kind of computing that uses quantum bits to solve some problems differently from classical computers.</p>
+              <p>Compare this answer with the other selected AI responses side by side.</p>
+              <div class="duo-actions"><span>Copy</span><span>Read</span><span>Share</span><span>Save</span></div>
+            </div>
+          </div>
+        </div>
       </figure>
     </div>
   </div>
@@ -9045,5 +9073,32 @@ function _demoStart() {
 }
 </style>
 
+
+<style>
+/* ===== IPHONE DUO GLOBAL-LANGUAGE UI ===== */
+.duo-localized-device{display:none}
+html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-static-en{display:none!important}
+html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-localized-device{display:grid!important}
+#iphone-duo .duo-lang-badge{
+  padding:4px 8px;border-radius:7px;background:rgba(255,255,255,.09);
+  color:#eef2f7;font-size:.7rem;font-weight:700;white-space:nowrap
+}
+#iphone-duo .duo-ui .tabline,
+#iphone-duo .duo-ui h3,
+#iphone-duo .duo-ui .muted,
+#iphone-duo .duo-ui .prompt,
+#iphone-duo .duo-send,
+#iphone-duo .duo-response,
+#iphone-duo .duo-actions{min-width:0}
+html[data-device-ui-dir="rtl"] #iphone-duo .duo-localized-device{direction:rtl}
+@media(max-width:620px){
+  #iphone-duo .duo-localized-device{min-height:310px!important}
+  #iphone-duo .duo-screen{min-height:296px!important}
+  #iphone-duo .duo-ui .brand{font-size:.78rem!important}
+  #iphone-duo .duo-lang-badge{font-size:.56rem;padding:3px 6px}
+  #iphone-duo .duo-ui .prompt{padding:9px 10px;margin:12px 0}
+  #iphone-duo .duo-ai-row{margin:5px 0}
+}
+</style>
 </body>
 </html>
