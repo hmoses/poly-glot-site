@@ -1166,39 +1166,13 @@ img.mac-screen-panel {
 .model-grid .model-card:nth-child(9) { grid-column: 3; grid-row: 5; }
 
 @media (max-width: 820px) {
-  .model-grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 10px;
-    max-width: 700px;
-    width: 100%;
-  }
+  .model-grid { grid-template-columns: repeat(2, minmax(0,1fr)); max-width: 640px; }
+  .model-grid .model-card { grid-column: auto !important; grid-row: auto !important; }
+  .model-grid .model-card:last-child { grid-column: 1 / -1 !important; width: calc(50% - 8px); justify-self: center; }
 }
 @media (max-width: 520px) {
-  .model-grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 6px;
-    width: 100%;
-    max-width: 100%;
-  }
-  .model-card {
-    padding: 10px 4px;
-    min-width: 0;
-  }
-  .model-card .model-dot {
-    width: 8px;
-    height: 8px;
-    margin-bottom: 6px;
-  }
-  .model-card .model-name {
-    font-size: .64rem;
-    line-height: 1.05;
-    overflow-wrap: anywhere;
-  }
-  .model-card .model-desc {
-    font-size: .52rem;
-    line-height: 1.1;
-    overflow-wrap: anywhere;
-  }
+  .model-grid { grid-template-columns: 1fr; }
+  .model-grid .model-card:last-child { grid-column: auto !important; width: auto; }
 }
 .model-card {
   background: var(--bg-surface);
