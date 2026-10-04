@@ -1774,9 +1774,8 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       <div class="hero-visual">
         <div class="hero-screenshot">
           <div style="background:#0d1117;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.08)">
-            <div style="display:flex;align-items:center;padding:8px 12px;background:rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.06)">
-              <div style="display:flex;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#ff5f57"></span><span style="width:8px;height:8px;border-radius:50%;background:#febc2e"></span><span style="width:8px;height:8px;border-radius:50%;background:#28c840"></span></div>
-              <div style="flex:1;text-align:center;font-size:0.55rem;color:rgba(255,255,255,0.3);font-weight:600">Poly-Glot AI Workspace</div>
+            <div style="display:flex;align-items:center;justify-content:center;padding:8px 12px;background:rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.06)">
+              <div style="text-align:center;font-size:0.55rem;color:rgba(255,255,255,0.3);font-weight:600">Poly-Glot AI Workspace</div>
             </div>
             <div style="display:flex;align-items:center;gap:6px;padding:8px 14px;border-bottom:1px solid rgba(255,255,255,0.06)">
               <img src="assets/img/icon-128.png" alt="" style="width:20px;height:20px;border-radius:5px">
@@ -1931,13 +1930,8 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         <!-- Mac window chrome -->
         <div class="macbook-display" style="background:#1a1a2e;border-radius:12px;overflow:hidden;border:2px solid rgba(125,211,252,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.5)">
           <!-- Title bar -->
-          <div style="display:flex;align-items:center;padding:10px 16px;background:rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.06)">
-            <div style="display:flex;gap:7px">
-              <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57"></span>
-              <span style="width:12px;height:12px;border-radius:50%;background:#febc2e"></span>
-              <span style="width:12px;height:12px;border-radius:50%;background:#28c840"></span>
-            </div>
-            <div style="flex:1;text-align:center;font-size:0.75rem;color:rgba(255,255,255,0.4);font-weight:600">Poly-Glot AI Workspace</div>
+          <div style="display:flex;align-items:center;justify-content:center;padding:10px 16px;background:rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.06)">
+            <div style="text-align:center;font-size:0.75rem;color:rgba(255,255,255,0.4);font-weight:600">Poly-Glot AI Workspace</div>
           </div>
           <!-- In-app tabs -->
           <div class="mac-primary-tabs" style="display:flex;border-bottom:2px solid rgba(255,255,255,0.06);background:#05080d">
@@ -5104,6 +5098,12 @@ function _demoStart() {
 }
 #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(4) {
   min-height:160px !important;
+}
+
+/* Mac app renders are native app mockups, not browser/window chrome */
+.hero-screenshot .mac-window-controls,
+#gallery-mac .mac-window-controls {
+  display:none !important;
 }
 </style>
 
