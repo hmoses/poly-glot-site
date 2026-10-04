@@ -231,7 +231,7 @@ style.textContent=
 +'html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai.active{opacity:1!important;visibility:visible!important;pointer-events:auto!important;background:#0d1117!important}'
 +'html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-stage{background:#0d1117!important}+'.pg-device-static-localized *{box-sizing:border-box;min-width:0}'+'.pgdsl-head{min-height:0;white-space:nowrap;overflow:hidden}'+'.pgdsl-head strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1}'+'.pgdsl-badge{flex:0 0 auto;white-space:nowrap}'+'.pgdsl-tabs{align-items:stretch}'+'.pgdsl-tabs span{display:flex;align-items:center;justify-content:center;min-width:0;line-height:1.15}'+'.pgdsl-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'+'.pgdsl-search{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'+'.pgdsl-cards>div{display:flex;flex-direction:column;justify-content:center;gap:3px;padding:7%;overflow:hidden}'+'.pgdsl-cards strong{font-size:clamp(6px,.9vw,11px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#eef2f7}'+'.pgdsl-cards small{font-size:clamp(5px,.7vw,8px);color:#8b949e}'+'.pgdsl-step{white-space:normal;overflow-wrap:anywhere;line-height:1.25}'+'.pgdsl-history-list strong,.pgdsl-history-list p{overflow:hidden;text-overflow:ellipsis}'+'.hero-phone-mock *,#gallery-iphone *,#gallery-ipad *,#gallery-mac *{box-sizing:border-box}'+'#gallery-iphone .pg-phone-ask-title,#gallery-ipad .ipad-native-ask-title,#gallery-mac .mac-native-ask-title{max-width:100%;overflow-wrap:anywhere}'+'#gallery-iphone .pg-phone-tips,#gallery-ipad .ipad-native-help-lines,#gallery-mac .mac-native-help-lines{min-width:0;max-width:100%}'+'#gallery-iphone .pg-phone-tips>div,#gallery-ipad .ipad-native-help-lines>div,#gallery-mac .mac-native-help-lines>div{white-space:normal!important;overflow-wrap:anywhere;line-height:1.28!important}'+'#gallery-iphone .pg-phone-how-link,#gallery-ipad .ipad-native-how-link,#gallery-mac .mac-native-how-link{white-space:nowrap;max-width:38%;overflow:hidden;text-overflow:ellipsis}'+'#gallery-iphone .pg-phone-output-row,#gallery-ipad .ipad-native-output-row{min-width:0;gap:5px!important}'+'#gallery-iphone .pg-phone-output-label,#gallery-ipad .ipad-native-output-label{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'+'#gallery-iphone .pg-phone-output-select,#gallery-ipad .ipad-native-output-select{min-width:0!important;max-width:62%!important}'+'#gallery-iphone .pg-phone-output-select strong,#gallery-ipad .ipad-native-output-select strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'+'#gallery-iphone .iphone-live-preview>div:nth-child(2){min-width:0;overflow:hidden}'+'#gallery-iphone .iphone-live-preview>div:nth-child(2)>span:nth-child(2){min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'+'#gallery-iphone .iphone-live-preview>div:nth-child(3){display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important}'+'#gallery-iphone .iphone-live-preview>div:nth-child(3)>span{min-width:0!important;padding-left:2px!important;padding-right:2px!important;text-align:center!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}'+'#gallery-ipad .ipad-live-preview>div:nth-child(2){min-width:0;overflow:hidden}'+'#gallery-ipad .ipad-live-preview>div:nth-child(2)>span:nth-child(2){min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'+'#gallery-ipad .ipad-live-preview>div:nth-child(3){display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;width:100%!important}'+'#gallery-ipad .ipad-live-preview>div:nth-child(3)>span{min-width:0!important;padding-left:3px!important;padding-right:3px!important;text-align:center!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}'+'#gallery-mac .mac-reference-tab span{min-width:0!important;max-width:100%!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}'+'html[data-device-ui-lang="AR"] #gallery-iphone .iphone-live-preview,html[data-device-ui-lang="HE"] #gallery-iphone .iphone-live-preview,html[data-device-ui-lang="AR"] #gallery-ipad .ipad-live-preview,html[data-device-ui-lang="HE"] #gallery-ipad .ipad-live-preview{direction:rtl}'+'html[data-device-ui-lang="DE"] #gallery-iphone .iphone-live-preview,html[data-device-ui-lang="FR"] #gallery-iphone .iphone-live-preview,html[data-device-ui-lang="PT"] #gallery-iphone .iphone-live-preview,html[data-device-ui-lang="RU"] #gallery-iphone .iphone-live-preview,html[data-device-ui-lang="HI"] #gallery-iphone .iphone-live-preview{font-size:96%}'+'html[data-device-ui-lang="DE"] #gallery-ipad .ipad-live-preview,html[data-device-ui-lang="FR"] #gallery-ipad .ipad-live-preview,html[data-device-ui-lang="PT"] #gallery-ipad .ipad-live-preview,html[data-device-ui-lang="RU"] #gallery-ipad .ipad-live-preview,html[data-device-ui-lang="HI"] #gallery-ipad .ipad-live-preview{font-size:96%}'';
 document.head.appendChild(style);
-window._pgDeviceUI={apply:apply,appLanguages:APP_LANGS};
+window._pgDeviceUI={apply:apply,appLanguages:APP_LANGS,_strings:strings};
 window.addEventListener('pg:languagechange',function(e){apply(e.detail&&e.detail.code||"EN");});
 var reapplyTimer=null;
 function observeDeviceUI(){
@@ -517,3 +517,62 @@ if(document.readyState==="loading"){
 }
 })();
 
+
+
+/* ===== DEVICE UI FORMAT STABILITY v2 ===== */
+(function(){
+  function norm(code){ return String(code||"EN").toUpperCase().replace(/-/g,"_"); }
+  function applyStableLayout(code){
+    code=norm(code);
+    var html=document.documentElement;
+    var compact=["DE","FR","PT","RU","HI","BN","TR","PL","FI","EL","HE","UK","RO","HU","SK","HR","CA","AF","SW","HA","AM","FIL"].indexOf(code)>=0;
+    var cjk=["ZH","ZH_TW","JA","KO"].indexOf(code)>=0;
+    html.setAttribute("data-device-ui-density", compact ? "compact" : "normal");
+    html.setAttribute("data-device-ui-script", cjk ? "cjk" : "latin");
+
+    var S=(window._pgDeviceUI&&window._pgDeviceUI._strings)?window._pgDeviceUI._strings(code):null;
+    var names={ZH:"模板",ZH_TW:"範本",JA:"テンプレート",KO:"템플릿",PT:"Modelos",ES:"Plantillas",FR:"Modèles",DE:"Vorlagen"};
+    var label=(S&&S.templates)||names[code]||"Templates";
+    document.querySelectorAll(".pg-device-static-localized[data-pg-screen='templates'] .pgdsl-cards > div").forEach(function(card,i){
+      var strong=card.querySelector("strong");
+      if(!strong){ strong=document.createElement("strong"); card.prepend(strong); }
+      strong.textContent=label+" "+String(i+1).padStart(2,"0");
+      strong.style.display="block";
+      strong.style.opacity="1";
+      strong.style.visibility="visible";
+      strong.style.color="#eef2f7";
+      var small=card.querySelector("small");
+      if(small) small.style.display="none";
+    });
+    document.querySelectorAll(".pg-device-static-localized .pgdsl-head strong").forEach(function(el){
+      el.textContent="Poly-Glot AI Workspace";
+    });
+  }
+
+  var css=document.createElement("style");
+  css.id="pg-device-ui-format-stability-v2";
+  css.textContent=
+  '.pg-device-static-localized{font-size:100%!important}'+
+  '.pg-device-static-localized .pgdsl-head{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;align-items:center!important;gap:6px!important}'+
+  '.pg-device-static-localized .pgdsl-head strong{font-size:clamp(6px,1vw,12px)!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}'+
+  '.pg-device-static-localized .pgdsl-tabs{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important}'+
+  '.pg-device-static-localized .pgdsl-tabs span{min-width:0!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;padding-left:2px!important;padding-right:2px!important}'+
+  '.pg-device-static-localized .pgdsl-cards{align-items:stretch!important}'+
+  '.pg-device-static-localized .pgdsl-cards>div{min-width:0!important;overflow:hidden!important;display:flex!important;align-items:flex-start!important;justify-content:center!important}'+
+  '.pg-device-static-localized .pgdsl-cards strong{display:block!important;opacity:1!important;visibility:visible!important;color:#eef2f7!important;font-size:clamp(6px,.9vw,11px)!important;line-height:1.15!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}'+
+  '#gallery-iphone .pg-device-static-localized .pgdsl-body{padding:5% 5%!important}'+
+  '#gallery-ipad .pg-device-static-localized .pgdsl-body{padding:4% 5%!important}'+
+  'html[data-device-ui-density="compact"] #gallery-iphone .pg-device-static-localized,html[data-device-ui-density="compact"] #gallery-ipad .pg-device-static-localized{font-size:90%!important}'+
+  'html[data-device-ui-density="compact"] #gallery-mac .pg-device-static-localized-mac{font-size:92%!important}'+
+  'html[data-device-ui-script="cjk"] .pg-device-static-localized{font-size:96%!important}'+
+  'html[data-device-ui-script="cjk"] .pgdsl-cards strong{letter-spacing:0!important;word-break:keep-all!important}'+
+  '#gallery-iphone .iphone-live-preview>div:nth-child(2)>span:nth-child(2),#gallery-ipad .ipad-live-preview>div:nth-child(2)>span:nth-child(2){white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;font-size:clamp(7px,2vw,12px)!important}'+
+  '#gallery-iphone .iphone-live-preview>div:nth-child(3),#gallery-ipad .ipad-live-preview>div:nth-child(3){display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important}'+
+  '#gallery-iphone .iphone-live-preview>div:nth-child(3)>span,#gallery-ipad .ipad-live-preview>div:nth-child(3)>span{min-width:0!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}';
+  document.head.appendChild(css);
+
+  window.addEventListener("pg:languagechange",function(e){setTimeout(function(){applyStableLayout(e.detail&&e.detail.code||"EN");},20);});
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",function(){setTimeout(function(){applyStableLayout(window._pgI18n?window._pgI18n.curLang():"EN");},50);});
+  else setTimeout(function(){applyStableLayout(window._pgI18n?window._pgI18n.curLang():"EN");},50);
+  window._pgDeviceStableLayout=applyStableLayout;
+})();
