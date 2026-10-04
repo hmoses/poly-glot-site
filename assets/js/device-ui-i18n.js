@@ -191,11 +191,16 @@ function updateDuo(code,S){
   if(!root)return;
   var M=meta(code);
   var gt=(window._pgI18n&&window._pgI18n.gt)?window._pgI18n.gt:null;
-  var g=function(k,fallback){var v=gt?gt(k,normCode(code).replace("_","-")):"";return v||fallback;};
+  var g=function(k,fallback){
+    var lang=normCode(code).replace("_","-");
+    var v=gt?gt(k,lang):"";
+    return v&&v!==k?v:fallback;
+  };
 
   var kicker=root.querySelector('.duo-kicker');
   if(kicker)kicker.textContent=g('mcpGptBadge','Coming Soon');
 
+  /* Keep the product name stable; localize all surrounding copy. */
   var title=root.querySelector('#duo-title');
   if(title)title.innerHTML='Poly-Glot<br><span>iPhone Duo</span>';
 
@@ -205,9 +210,9 @@ function updateDuo(code,S){
   var metaBox=root.querySelector('.duo-meta');
   if(metaBox){
     var link=metaBox.querySelector('a');
-    var linkText=link?link.textContent:'Explore iPhone Duo at Apple';
-    metaBox.childNodes[0].nodeValue='iPhone Duo — October 23, 2026. ';
-    if(link)link.textContent=g('navConnect',linkText).replace(/^🔌\s*/,'')+' iPhone Duo';
+    var available=g('platAvail','Available Now');
+    metaBox.childNodes[0].nodeValue='iPhone Duo — 2026-10-23 · '+available+'. ';
+    if(link)link.textContent='Apple · iPhone Duo';
   }
 
   var ui=root.querySelector('.duo-ui');
@@ -233,6 +238,38 @@ function updateDuo(code,S){
 
   root.setAttribute('dir',(normCode(code)==='AR'||normCode(code)==='HE')?'rtl':'ltr');
 }
+
+function updateSiteLabels(code,S){
+  var gt=(window._pgI18n&&window._pgI18n.gt)?window._pgI18n.gt:null;
+  var lang=normCode(code).replace("_","-");
+  var g=function(k,fallback){
+    var v=gt?gt(k,lang):"";
+    return v&&v!==k?v:fallback;
+  };
+
+  /* Mac gallery caption under the interactive render. */
+  var macLabel=document.getElementById('macTabLabel');
+  var active=document.querySelector('#gallery-mac .mac-reference-tab.active');
+  if(macLabel&&active){
+    var id=active.id||'';
+    if(id.indexOf('askanyai')>-1) macLabel.textContent=(S.ask||'Ask Any AI')+' — '+(S.typeLine||'Type, paste, import or talk');
+    else if(id.indexOf('templates')>-1) macLabel.textContent=S.templates||'Templates';
+    else if(id.indexOf('howtouse')>-1) macLabel.textContent=S.how||'How to Use';
+    else if(id.indexOf('history')>-1) macLabel.textContent=S.history||'History';
+  }
+
+  /* Localize the demo card heading that previously stayed in English. */
+  document.querySelectorAll('#demo .demo-device-card-lang > h3').forEach(function(el){
+    el.textContent='🌍 '+g('f5','Fully Localized in 38 Languages');
+  });
+
+  /* Localize the click-to-explore hint using existing translated UI terms. */
+  var hint=document.querySelector('#macTabHint span');
+  if(hint){
+    hint.textContent='👇 '+(S.ask||'Ask Any AI')+' · '+(S.templates||'Templates')+' · '+(S.how||'How to Use')+' · '+(S.history||'History');
+  }
+}
+
 function apply(code){
   var S=strings(code);
   ensureStaticLocalizedPanels();
@@ -247,6 +284,7 @@ function apply(code){
   ].forEach(function(root){localizeRoot(root,S);});
   updateBadges(code);
   updateStaticPanels(code,S);
+  updateSiteLabels(code,S);
   updateDuo(code,S);
   document.documentElement.setAttribute('data-device-ui-lang',normCode(code));
   var rtl=(normCode(code)==="AR"||normCode(code)==="HE");
