@@ -1775,9 +1775,9 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             <div style="padding:14px 16px">
               <div style="font-size:0.7rem;font-weight:800;color:#fff;margin-bottom:6px">&#129300; Ask Any AI</div>
               <div style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.5;margin-bottom:8px">Tip: Type, paste, import, scan, or talk &#9679; App Language changes menus &#9679; Compare Mode: send to multiple AIs</div>
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
-                <span style="font-size:0.42rem;color:#10b981">&#9679; AI will respond in:</span>
-                <div style="flex:1;background:#1c2128;border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px 8px;font-size:0.45rem;color:#fff;font-weight:600">&#127482;&#127480; English</div>
+              <div class="hero-mac-response-row">
+                <span class="hero-mac-response-label">&#127760; AI will respond in:</span>
+                <div class="hero-mac-response-select"><span>&#127482;&#127480;</span><strong>English</strong><span class="hero-mac-caret">▼</span></div>
               </div>
               <div style="border:2px solid #7c3aed;border-radius:8px;padding:10px 12px;min-height:70px;background:#0d1117;box-shadow:0 0 8px rgba(124,58,237,0.3);margin-bottom:8px">
                 <div style="font-size:0.42rem;color:rgba(255,255,255,0.4);line-height:1.5">Hi BUILDER! Ask any AI anything. In your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater.</div>
@@ -4942,6 +4942,62 @@ function _demoStart() {
 @media (max-width:640px) {
   .duo-kicker { font-size:.92rem; }
   .duo-badge { font-size:1rem; padding:13px 21px; }
+}
+
+/* Match hero Mac response-language control to iPhone UI, scaled for Mac */
+.hero-mac-response-row {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:2px 0 10px;
+}
+.hero-mac-response-label {
+  flex:0 0 auto;
+  color:#18c995;
+  font-size:.46rem;
+  font-weight:700;
+  white-space:nowrap;
+}
+.hero-mac-response-select {
+  flex:1 1 auto;
+  min-width:0;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:6px 10px;
+  border:1px solid #3a424f;
+  border-radius:7px;
+  background:#1b2129;
+  color:#f4f7fb;
+  font-size:.48rem;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.015);
+}
+.hero-mac-response-select strong {
+  font-weight:700;
+}
+.hero-mac-caret {
+  margin-left:auto;
+  color:#6f7885;
+  font-size:.42rem;
+}
+
+@media (min-width:961px) {
+  .hero-mac-response-row { gap:12px; margin:4px 0 12px; }
+  .hero-mac-response-label { font-size:.50rem; }
+  .hero-mac-response-select {
+    padding:7px 12px;
+    border-radius:8px;
+    font-size:.52rem;
+  }
+}
+
+@media (max-width:640px) {
+  .hero-mac-response-row { gap:7px; }
+  .hero-mac-response-label { font-size:.40rem; }
+  .hero-mac-response-select {
+    padding:5px 8px;
+    font-size:.43rem;
+  }
 }
 </style>
 
