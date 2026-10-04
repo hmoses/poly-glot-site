@@ -7132,5 +7132,196 @@ function _demoStart() {
 }
 </style>
 
+
+<style>
+/* ===== MAC GALLERY VISUAL MATCH TO APPROVED REDESIGN ===== */
+/* Keep all existing interactive tabs/screens/animation, but make the hardware match the approved redesign. */
+#gallery-mac{
+  position:relative!important;
+}
+#gallery-mac #macTabHint{
+  display:block!important;
+  margin:0 0 18px!important;
+  text-align:center!important;
+}
+#gallery-mac #macTabHint span{
+  font-size:.88rem!important;
+  padding:9px 16px!important;
+}
+
+/* Approved thinner Mac proportions */
+#gallery-mac .macbook-shell{
+  width:min(900px,94vw)!important;
+  max-width:900px!important;
+  margin:0 auto 52px!important;
+  padding:7px 7px 28px!important;
+  border-radius:17px 17px 7px 7px!important;
+  background:linear-gradient(180deg,#15191f 0%,#080a0f 72%,#06080b 100%)!important;
+  border:1px solid rgba(255,255,255,.15)!important;
+  box-shadow:
+    0 26px 58px rgba(0,0,0,.52),
+    0 0 36px rgba(85,54,255,.22),
+    inset 0 1px 0 rgba(255,255,255,.08)!important;
+}
+#gallery-mac .macbook-shell::before{
+  top:3px!important;
+  width:6px!important;
+  height:6px!important;
+}
+#gallery-mac .macbook-shell::after{
+  left:-4.8%!important;
+  right:-4.8%!important;
+  bottom:-10px!important;
+  height:24px!important;
+  border-radius:3px 3px 54% 54% / 3px 3px 70% 70%!important;
+  background:linear-gradient(180deg,#bfc3c9 0%,#9298a0 10%,#686f78 31%,#424850 56%,#282d33 78%,#15191e 100%)!important;
+  box-shadow:
+    0 12px 22px rgba(0,0,0,.44),
+    inset 0 1px 0 rgba(255,255,255,.62),
+    inset 0 -2px 0 rgba(0,0,0,.32)!important;
+}
+
+/* Crop the extra Mac title panel and retain a very thin app top strip. */
+#gallery-mac .macbook-display{
+  border-radius:10px!important;
+  overflow:hidden!important;
+}
+#gallery-mac .macbook-display > div:first-child{
+  height:18px!important;
+  min-height:18px!important;
+  padding:0 10px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+#gallery-mac .macbook-display > div:first-child > div{
+  font-size:.48rem!important;
+  line-height:1!important;
+  opacity:.65!important;
+}
+
+/* Tabs: same order/features, visually closer to approved Mac screenshot. */
+#gallery-mac .mac-primary-tabs{
+  min-height:42px!important;
+  border-bottom:1px solid rgba(255,255,255,.06)!important;
+}
+#gallery-mac .mac-app-tab{
+  min-height:42px!important;
+  font-size:.72rem!important;
+  font-weight:700!important;
+  padding:0 6px!important;
+}
+#gallery-mac .mac-app-tab.active{
+  color:#f59e0b!important;
+  border-bottom:2px solid #f59e0b!important;
+}
+
+/* Adapt existing tab content to the approved display proportions. */
+#gallery-mac .mac-screen-stage{
+  aspect-ratio:16/9!important;
+}
+#gallery-mac #macScreen-askanyai .mac-ask-body{
+  padding:18px 22px!important;
+}
+#gallery-mac .mac-native-ask-title{
+  font-size:1rem!important;
+  margin-bottom:5px!important;
+}
+#gallery-mac .mac-native-help-lines{
+  font-size:.72rem!important;
+  line-height:1.38!important;
+}
+#gallery-mac .mac-native-how-link{
+  font-size:.72rem!important;
+}
+#gallery-mac .mac-response-row{
+  margin:10px 0!important;
+}
+#gallery-mac .mac-response-label{
+  font-size:.72rem!important;
+}
+#gallery-mac .mac-response-select{
+  min-height:38px!important;
+  font-size:.72rem!important;
+}
+#gallery-mac #macScreen-askanyai .mac-ask-body > div[style*="min-height:160px"]{
+  min-height:96px!important;
+  padding:12px 15px!important;
+  margin-bottom:10px!important;
+}
+#gallery-mac #macScreen-askanyai .mac-ask-body > div[style*="min-height:160px"] > div{
+  font-size:.7rem!important;
+}
+#gallery-mac #macScreen-askanyai .mac-ask-body > div[style*="display:flex;gap:8px"]{
+  margin-bottom:8px!important;
+}
+#gallery-mac #macScreen-askanyai .mac-ask-body > div[style*="display:flex;gap:8px"] > div{
+  padding:8px!important;
+  font-size:.68rem!important;
+}
+#gallery-mac #macScreen-askanyai .mac-ask-body > div[style*="display:flex;align-items:center;gap:12px"] > div:last-child{
+  padding:8px 24px!important;
+  background:linear-gradient(135deg,#7c3aed,#2563eb)!important;
+}
+
+/* Templates screenshot adapted to the redesigned screen crop */
+#gallery-mac .mac-template-panel > img{
+  top:-12%!important;
+  transform:scale(1.07)!important;
+}
+
+/* How-to-use animation remains live */
+#gallery-mac #macScreen-howtouse{
+  background:#0d1117!important;
+}
+#gallery-mac #macScreen-howtouse > div{
+  transform-origin:top left!important;
+}
+
+/* History compressed to fit same redesigned viewport */
+#gallery-mac .mac-history-body{
+  padding:12px 16px 16px!important;
+}
+#gallery-mac .mac-history-grid{
+  gap:7px!important;
+}
+#gallery-mac .mac-history-card{
+  min-height:66px!important;
+  padding:8px 9px!important;
+}
+
+/* Hide old external static Mac image styles if any remain */
+#gallery-mac .mac-site-gallery-image,
+#gallery-mac .mac-site-image-img{
+  display:none!important;
+}
+
+@media(max-width:760px){
+  #gallery-mac .macbook-shell{
+    width:92vw!important;
+    padding:5px 5px 22px!important;
+    margin-bottom:42px!important;
+    border-radius:14px 14px 6px 6px!important;
+  }
+  #gallery-mac .macbook-shell::after{
+    left:-3.5%!important;
+    right:-3.5%!important;
+    height:19px!important;
+    bottom:-8px!important;
+  }
+  #gallery-mac .mac-primary-tabs{
+    min-height:36px!important;
+  }
+  #gallery-mac .mac-app-tab{
+    min-height:36px!important;
+    font-size:clamp(.5rem,2vw,.64rem)!important;
+    padding:0 2px!important;
+  }
+  #gallery-mac #macScreen-askanyai .mac-ask-body{
+    padding:12px 14px!important;
+  }
+}
+</style>
+
 </body>
 </html>
