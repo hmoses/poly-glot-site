@@ -5047,6 +5047,64 @@ function _demoStart() {
 #gallery-mac .mac-primary-tabs > * {
   min-width:0 !important;
 }
+
+/* ===== MAC ASK ANY AI — MATCH REFERENCE ===== */
+#gallery-mac .mac-primary-tabs {
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  width:100% !important;
+  min-height:58px !important;
+  gap:0 !important;
+  padding:0 !important;
+  margin:0 !important;
+  align-items:stretch !important;
+  box-sizing:border-box !important;
+}
+#gallery-mac .mac-primary-tabs .mac-app-tab {
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  min-width:0 !important;
+  max-width:none !important;
+  min-height:58px !important;
+  margin:0 !important;
+  padding:0 8px !important;
+  box-sizing:border-box !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  flex:none !important;
+  border-radius:0 !important;
+}
+#gallery-mac .mac-ask-body {
+  padding:26px 28px 24px !important;
+}
+#gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(3) {
+  display:flex !important;
+  align-items:center !important;
+  gap:14px !important;
+  margin:16px 0 12px !important;
+}
+#gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(3) > span {
+  flex:0 0 auto !important;
+  color:#10b981 !important;
+  font-size:.72rem !important;
+  font-weight:700 !important;
+  white-space:nowrap !important;
+}
+#gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(3) > div {
+  flex:1 1 auto !important;
+  width:auto !important;
+  max-width:none !important;
+  min-width:0 !important;
+  padding:9px 14px !important;
+  border:1px solid #3a424f !important;
+  border-radius:8px !important;
+  background:#1c2128 !important;
+}
+#gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(4) {
+  min-height:160px !important;
+}
 </style>
 
 <div id="pgLightbox" role="dialog" aria-modal="true" aria-label="Image preview">
