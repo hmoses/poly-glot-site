@@ -1584,6 +1584,7 @@ var dd=document.getElementById('pgGlobalLangDD');if(dd)dd.classList.remove('open
 var cf=document.getElementById('pgChat-lang-flag');if(cf)cf.textContent=flag;
 applyAll(code);
 updateChat(code);
+try{window.dispatchEvent(new CustomEvent('pg:languagechange',{detail:{code:code,flag:flag}}));}catch(e){}
 try{localStorage.setItem('pgLang',code);}catch(e){}
 }
 
