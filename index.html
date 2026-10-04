@@ -7124,5 +7124,201 @@ function _demoStart() {
 }
 </style>
 
+
+<style>
+/* ===== MAC HISTORY + COMPARE ANIMATION COMPACT ===== */
+/* History: fit the content proportionally inside the redesigned Mac viewport. */
+#gallery-mac #macScreen-history .mac-history-body{
+  padding:8px 10px 10px!important;
+}
+#gallery-mac #macScreen-history .mac-history-top{
+  margin-bottom:7px!important;
+  align-items:center!important;
+}
+#gallery-mac #macScreen-history .mac-history-heading{
+  font-size:.72rem!important;
+  line-height:1.1!important;
+}
+#gallery-mac #macScreen-history .mac-history-note{
+  font-size:.46rem!important;
+  margin-top:2px!important;
+}
+#gallery-mac #macScreen-history .mac-history-actions{
+  gap:4px!important;
+}
+#gallery-mac #macScreen-history .mac-history-pill{
+  padding:3px 6px!important;
+  border-radius:5px!important;
+  font-size:.46rem!important;
+}
+#gallery-mac #macScreen-history .mac-history-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:5px!important;
+  align-content:start!important;
+}
+#gallery-mac #macScreen-history .mac-history-card{
+  min-height:46px!important;
+  padding:6px 7px 5px!important;
+  border-radius:7px!important;
+}
+#gallery-mac #macScreen-history .mac-history-card-title{
+  font-size:.5rem!important;
+  line-height:1.15!important;
+  padding-right:10px!important;
+}
+#gallery-mac #macScreen-history .mac-history-time{
+  font-size:.39rem!important;
+  margin:1px 0 3px!important;
+}
+#gallery-mac #macScreen-history .mac-history-text{
+  font-size:.41rem!important;
+  line-height:1.2!important;
+  padding-right:10px!important;
+}
+#gallery-mac #macScreen-history .mac-history-star{
+  right:6px!important;
+  top:5px!important;
+  font-size:12px!important;
+}
+#gallery-mac #macScreen-history .mac-history-buttons{
+  grid-template-columns:1.15fr 1.15fr .34fr!important;
+  gap:3px!important;
+  margin-top:4px!important;
+}
+#gallery-mac #macScreen-history .mac-history-btn{
+  padding:4px 2px!important;
+  border-radius:5px!important;
+  font-size:.39rem!important;
+}
+
+/* How to Use: compact Compare Mode so the toggle and controls stay visible. */
+#gallery-mac #macScreen-howtouse #siteDemo-P1{
+  padding:10px!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-Textarea{
+  min-height:40px!important;
+  padding:8px 10px!important;
+  font-size:10px!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-SendBtn{
+  margin-top:7px!important;
+  padding:7px!important;
+  border-radius:7px!important;
+  font-size:10px!important;
+}
+
+#gallery-mac #macScreen-howtouse #siteDemo-P2{
+  padding:7px 9px 8px!important;
+  border-radius:10px 10px 0 0!important;
+  max-height:100%!important;
+  overflow:hidden!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:first-child{
+  width:24px!important;
+  height:3px!important;
+  margin-bottom:5px!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:nth-child(2){
+  font-size:9px!important;
+  margin-bottom:5px!important;
+}
+
+/* Compare Mode row */
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:nth-child(3){
+  padding:5px 7px!important;
+  margin-bottom:6px!important;
+  border-radius:7px!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:nth-child(3) > span{
+  font-size:9px!important;
+}
+#gallery-mac #siteDemo-CmpToggle{
+  width:31px!important;
+  height:17px!important;
+  border-radius:9px!important;
+  flex:0 0 auto!important;
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+#gallery-mac #siteDemo-CmpKnob{
+  width:13px!important;
+  height:13px!important;
+  top:2px!important;
+  left:2px!important;
+}
+
+/* AI choices */
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:nth-child(4){
+  gap:3px!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-AI{
+  gap:6px!important;
+  padding:5px 7px!important;
+  border-radius:7px!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-AI > div:first-child{
+  width:20px!important;
+  height:20px!important;
+  border-radius:5px!important;
+  font-size:8px!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-AI > div:nth-child(2) > div:first-child{
+  font-size:9px!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-AI > div:nth-child(2) > div:last-child{
+  font-size:7px!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-Check{
+  width:14px!important;
+  height:14px!important;
+  font-size:8px!important;
+}
+
+/* Send-to-selected button remains visible without pushing toggle off-screen. */
+#gallery-mac #siteDemo-SendAll{
+  margin-top:6px!important;
+  padding:7px!important;
+  border-radius:7px!important;
+  font-size:9px!important;
+}
+
+/* Compare results phase also scaled for the redesigned Mac viewport. */
+#gallery-mac #siteDemo-P3{
+  padding:9px!important;
+}
+#gallery-mac #siteDemo-P3 > div:first-child{
+  font-size:9px!important;
+  margin-bottom:6px!important;
+}
+#gallery-mac #siteDemo-P3 > div:nth-child(2){
+  gap:5px!important;
+}
+#gallery-mac #siteDemo-P3 > div:nth-child(2) > div{
+  padding:7px 8px!important;
+  border-radius:7px!important;
+}
+#gallery-mac #siteDemo-P3 #siteDemo-Resp1,
+#gallery-mac #siteDemo-P3 #siteDemo-Resp2{
+  font-size:8px!important;
+  line-height:1.35!important;
+}
+#gallery-mac #siteDemo-P3 > div:last-child{
+  margin-top:6px!important;
+  font-size:8px!important;
+}
+
+@media(max-width:760px){
+  #gallery-mac #macScreen-history .mac-history-grid{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:4px!important;
+  }
+  #gallery-mac #macScreen-history .mac-history-card{
+    min-height:42px!important;
+    padding:5px 6px!important;
+  }
+}
+</style>
+
 </body>
 </html>
