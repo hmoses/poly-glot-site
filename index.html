@@ -8884,5 +8884,112 @@ function _demoStart() {
 }
 </style>
 
+
+<style>
+/* ===== IPAD ASK ANY AI — FULL UI FIT ===== */
+/* Fit the complete Ask Any AI UI inside the landscape iPad frame,
+   matching the full iPhone layout without cropping the Talk/Send/Clear controls. */
+#gallery-ipad .gallery-item:first-child .ipad-screen{
+  position:relative!important;
+  overflow:hidden!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-live-preview{
+  position:absolute!important;
+  top:0!important;
+  left:50%!important;
+  width:118%!important;
+  height:118%!important;
+  transform:translateX(-50%) scale(.845)!important;
+  transform-origin:top center!important;
+  overflow:hidden!important;
+  border-radius:22px!important;
+  box-sizing:border-box!important;
+}
+
+/* Keep the entire control stack compact and proportional. */
+#gallery-ipad .gallery-item:first-child .ipad-native-ask-head{
+  padding:6px 14px 2px!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-native-ask-title{
+  font-size:.64rem!important;
+  margin-bottom:3px!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-native-help{
+  margin-bottom:4px!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-native-help-lines{
+  font-size:.36rem!important;
+  line-height:1.35!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-native-how-link{
+  font-size:.38rem!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-native-output-row{
+  margin:0 14px 5px!important;
+  padding:5px 7px!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-native-output-label{
+  font-size:.36rem!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-native-output-select{
+  padding:5px 7px!important;
+  font-size:.40rem!important;
+}
+
+/* Prompt box: reduce excess height so the lower controls remain visible. */
+#gallery-ipad .gallery-item:first-child .ipad-live-preview > div[style*="border:2px solid #10b981"]{
+  min-height:48px!important;
+  margin:3px 14px!important;
+  padding:6px 9px!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-live-preview > div[style*="border:2px solid #10b981"] > div{
+  font-size:.36rem!important;
+  line-height:1.35!important;
+}
+
+/* Match the iPhone action layout while keeping all controls in frame. */
+#gallery-ipad .gallery-item:first-child .ipad-redesign-actions{
+  gap:5px!important;
+  padding:4px 14px 3px!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-redesign-action-btn{
+  padding:5px 7px!important;
+  font-size:.38rem!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-redesign-talk-send{
+  padding:1px 14px 0!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-redesign-talk{
+  font-size:.38rem!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-redesign-mic{
+  width:18px!important;
+  height:18px!important;
+  font-size:.40rem!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-redesign-send{
+  padding:5px 15px!important;
+  font-size:.40rem!important;
+}
+#gallery-ipad .gallery-item:first-child .ipad-redesign-clear{
+  margin:3px auto 0!important;
+  padding:3px 8px!important;
+  font-size:.34rem!important;
+}
+
+/* Keep the home indicator above the scaled live UI. */
+#gallery-ipad .gallery-item:first-child .ipad-home-indicator{
+  z-index:12!important;
+}
+
+@media(max-width:620px){
+  #gallery-ipad .gallery-item:first-child .ipad-live-preview{
+    width:120%!important;
+    height:120%!important;
+    transform:translateX(-50%) scale(.8333)!important;
+  }
+}
+</style>
+
 </body>
 </html>
