@@ -2444,13 +2444,13 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           <!-- Ask Any AI content (fills remaining space) -->
           <div class="demo-ask-content" style="padding:12px 16px;flex:1;display:flex;flex-direction:column;overflow:hidden">
             <div class="demo-ask-heading" style="font-size:0.68rem;font-weight:700;color:#7dd3fc;margin-bottom:6px">&#9999;&#65039; Ask Any AI</div>
-            <div style="font-size:0.52rem;color:rgba(255,255,255,0.35);margin-bottom:8px;line-height:1.4">Tell Poly-Glot what you need. Type or speak naturally — in your language. Choose your AI, compare answers, pick the best one.</div>
+            <div class="demo-ask-description" style="font-size:0.52rem;color:rgba(255,255,255,0.35);margin-bottom:8px;line-height:1.4">Tell Poly-Glot what you need. Type or speak naturally — in your language. Choose your AI, compare answers, pick the best one.</div>
             <!-- Textarea with purple border -->
             <div id="demoTextarea" style="background:#232847;border:2px solid #7c3aed;border-radius:10px;padding:10px 12px;height:70px;font-size:0.68rem;color:#fff;line-height:1.5;box-shadow:0 0 8px rgba(124,58,237,0.4);white-space:pre-wrap;word-break:break-word;flex-shrink:0"></div>
             <!-- Send button -->
             <div id="demoSendBtn" style="margin-top:8px;padding:9px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border:none;border-radius:10px;font-size:0.72rem;font-weight:700;text-align:center;opacity:0.4;transition:opacity 0.3s,transform 0.15s;flex-shrink:0">Send to AI</div>
             <!-- AI Output Language -->
-            <div style="margin-top:10px;display:flex;align-items:center;gap:6px;flex-shrink:0">
+            <div class="demo-output-language" style="margin-top:10px;display:flex;align-items:center;gap:6px;flex-shrink:0">
               <span style="font-size:0.56rem;color:rgba(255,255,255,0.4)">&#127760; AI will respond in:</span>
               <span style="padding:3px 8px;border-radius:6px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.56rem;color:#fff;font-weight:600">&#127482;&#127480; English</span>
             </div>
@@ -5568,5 +5568,20 @@ function _demoStart() {
   }, true);
 })();
 </script>
+
+<style>
+@media (max-width:640px){
+  #demo .demo-ask-heading{order:1!important;text-align:center!important}
+  #demo .demo-ask-description{order:2!important;text-align:center!important;margin-bottom:8px!important}
+  #demo .demo-output-language{order:3!important;margin:0 0 8px!important;justify-content:flex-start!important}
+  #demo .demo-device-card-ask #demoTextarea{order:4!important}
+  #demo .demo-device-card-ask #demoSendBtn{order:5!important}
+  #demo .demo-ask-content>div:last-child{order:6!important}
+  #demo .demo-output-language>span:last-child{flex:1 1 auto!important;max-width:145px!important;text-align:center!important}
+  #demo .demo-ask-tabs{grid-template-columns:1.15fr .95fr 1.05fr .85fr!important}
+  #demo .demo-ask-tabs>span{white-space:nowrap!important;font-size:.40rem!important}
+}
+</style>
+
 </body>
 </html>
