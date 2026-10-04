@@ -8899,5 +8899,20 @@ function _demoStart() {
 }
 </style>
 
+
+<style>
+/* ===== MAC COMPARE TOGGLE TRAVEL FIX ===== */
+/* Prevent older rules from adding both left-offset and transform.
+   Keep the knob anchored at left:2px and move it only with transform. */
+#gallery-mac #siteDemo-CmpKnob{
+  left:2px!important;
+  transform:translateX(0)!important;
+}
+#gallery-mac #siteDemo-CmpToggle.is-on #siteDemo-CmpKnob{
+  left:2px!important;
+  transform:translateX(17px)!important;
+}
+</style>
+
 </body>
 </html>
