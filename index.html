@@ -792,6 +792,9 @@ img.mac-screen-panel {
 #gallery-mac .macbook-shell img { cursor:default !important; }
 #gallery-mac .mac-primary-tabs {
   min-height:56px;
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  width:100% !important;
 }
 #gallery-mac .mac-app-tab {
   cursor:pointer !important;
@@ -801,8 +804,11 @@ img.mac-screen-panel {
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:0 !important;
+  width:100% !important;
+  min-width:0 !important;
+  padding:0 8px !important;
   font-size:.86rem !important;
+  text-align:center;
 }
 @media (max-width:900px) {
   .mac-history-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
@@ -4953,9 +4959,9 @@ function _demoStart() {
 }
 .hero-mac-response-label {
   flex:0 0 auto;
-  color:#18c995;
+  color:rgba(255,255,255,.40);
   font-size:.46rem;
-  font-weight:700;
+  font-weight:600;
   white-space:nowrap;
 }
 .hero-mac-response-select {
