@@ -1826,29 +1826,29 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
               <span style="padding:4px 5px">🕐 History</span>
             </div>
             <!-- Ask Any AI heading -->
-            <div style="padding:6px 8px 2px">
+            <div class="hero-phone-ask-head" style="padding:6px 8px 2px">
               <div style="font-size:8px;font-weight:800;color:#fff;margin-bottom:4px">🤔 Ask Any AI</div>
-              <div style="font-size:4.5px;color:rgba(255,255,255,0.35);line-height:1.5;margin-bottom:6px">📝 Type, paste, import, scan, or talk<br>💬 App Language 🌐 changes menus &amp; templates</div>
-            </div>
-            <!-- AI will respond in -->
-            <div style="display:flex;align-items:center;gap:4px;padding:2px 8px 4px">
-              <span style="font-size:5px;color:rgba(255,255,255,0.4)">🌐 AI will respond in:</span>
-              <span style="flex:1;padding:3px 6px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:5.5px;color:#fff;font-weight:600">🇺🇸 English</span>
+              <div style="font-size:4.5px;color:rgba(255,255,255,0.35);line-height:1.5;margin-bottom:6px">Tell Poly-Glot what you need. Type or speak naturally — in your language. Choose your AI, compare answers, pick the best one.</div>
             </div>
             <!-- Textarea -->
-            <div style="margin:4px 8px;border:2px solid #10b981;border-radius:6px;padding:6px;min-height:50px;background:#0d1117;box-shadow:0 0 6px rgba(16,185,129,0.3)">
+            <div class="hero-phone-prompt" style="margin:4px 8px;border:2px solid #10b981;border-radius:6px;padding:6px;min-height:50px;background:#0d1117;box-shadow:0 0 6px rgba(16,185,129,0.3)">
               <div style="font-size:5px;color:rgba(255,255,255,0.4);line-height:1.5">Hi BUILDER! Ask any AI anything. In your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater.</div>
             </div>
             <!-- Buttons row -->
-            <div style="display:flex;gap:3px;padding:4px 8px">
+            <div class="hero-phone-actions" style="display:flex;gap:3px;padding:4px 8px">
               <div style="flex:1;background:#1c2128;border-radius:4px;padding:4px 2px;text-align:center;font-size:5px;color:rgba(255,255,255,0.5);font-weight:600">📋 Paste</div>
               <div style="flex:1;background:#1c2128;border-radius:4px;padding:4px 2px;text-align:center;font-size:5px;color:rgba(255,255,255,0.5);font-weight:600">📄 Import</div>
               <div style="flex:1;background:#1c2128;border-radius:4px;padding:4px 2px;text-align:center;font-size:5px;color:rgba(255,255,255,0.5);font-weight:600">📷 Scan</div>
             </div>
             <!-- Talk + Send row -->
-            <div style="display:flex;align-items:center;padding:4px 8px 6px">
+            <div class="hero-phone-send-row" style="display:flex;align-items:center;padding:4px 8px 6px">
               <div style="display:flex;align-items:center;gap:3px"><span style="width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;font-size:6px">🎤</span><span style="font-size:5px;color:rgba(255,255,255,0.4)">Talk</span></div>
               <div style="margin-left:auto;padding:4px 12px;background:#10b981;color:#fff;border-radius:5px;font-size:6px;font-weight:700">Send</div>
+            </div>
+            <!-- Output language now matches the live iPhone demo placement -->
+            <div class="hero-phone-output-row" style="display:flex;align-items:center;gap:4px;padding:3px 8px 5px">
+              <span style="font-size:5px;color:rgba(255,255,255,0.4)">🌐 AI will respond in:</span>
+              <span style="padding:3px 7px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:5.5px;color:#fff;font-weight:600">🇺🇸 English</span>
             </div>
           </div>
         </div>
@@ -5390,6 +5390,24 @@ function _demoStart() {
   }
   #demo .demo-ask-tabs {
     grid-template-columns: 1.05fr .95fr 1.05fr .95fr !important;
+  }
+}
+
+
+/* ===== HERO IPHONE CONTENT POSITION — MOBILE ONLY ===== */
+@media (max-width: 640px) {
+  .hero-phone-mock .hero-phone-ask-head {
+    padding: 7px 8px 3px !important;
+    text-align: left !important;
+  }
+  .hero-phone-mock .hero-phone-prompt {
+    margin-top: 3px !important;
+    margin-bottom: 4px !important;
+  }
+  .hero-phone-mock .hero-phone-output-row {
+    padding-top: 4px !important;
+    padding-bottom: 6px !important;
+    justify-content: flex-start !important;
   }
 }
 
