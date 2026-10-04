@@ -259,3 +259,261 @@ function syncGlobalPickerFlags(){
 function init(){syncGlobalPickerFlags();apply(window._pgI18n?window._pgI18n.curLang():"EN");observeDeviceUI();}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 })();
+
+/* ===== DEVICE UI LANGUAGE LAYOUT HARDENING ===== */
+(function(){
+"use strict";
+
+var style=document.createElement("style");
+style.id="pg-device-ui-layout-hardening";
+style.textContent=`
+/* Keep branded app/header text stable in every language. */
+.hero-phone-mock > .phone-screen > div:nth-child(2),
+#gallery-iphone .iphone-live-preview > div:nth-child(2),
+#gallery-ipad .ipad-live-preview > div:nth-child(2),
+.pg-device-static-localized .pgdsl-head{
+  display:flex!important;
+  align-items:center!important;
+  min-width:0!important;
+}
+.hero-phone-mock > .phone-screen > div:nth-child(2) > span:nth-child(2),
+#gallery-iphone .iphone-live-preview > div:nth-child(2) > span:nth-child(2),
+#gallery-ipad .ipad-live-preview > div:nth-child(2) > span:nth-child(2),
+.pg-device-static-localized .pgdsl-head strong{
+  flex:1 1 auto!important;
+  min-width:0!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+.hero-phone-mock > .phone-screen > div:nth-child(2) > span:last-child,
+#gallery-iphone .iphone-live-preview > div:nth-child(2) > span:last-child,
+#gallery-ipad .ipad-live-preview > div:nth-child(2) > span:last-child,
+.pg-device-static-localized .pgdsl-badge{
+  flex:0 0 auto!important;
+  white-space:nowrap!important;
+}
+
+/* All app nav bars stay one horizontal row; long translations shrink/ellipsis instead of wrapping. */
+.hero-phone-mock > .phone-screen > div:nth-child(3),
+#gallery-iphone .iphone-live-preview > div:nth-child(3),
+#gallery-ipad .ipad-live-preview > div:nth-child(3),
+.pg-device-static-localized .pgdsl-tabs,
+#gallery-mac .mac-reference-hotspots{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  width:100%!important;
+  min-width:0!important;
+}
+.hero-phone-mock > .phone-screen > div:nth-child(3) > span,
+#gallery-iphone .iphone-live-preview > div:nth-child(3) > span,
+#gallery-ipad .ipad-live-preview > div:nth-child(3) > span,
+.pg-device-static-localized .pgdsl-tabs > span,
+#gallery-mac .mac-reference-tab{
+  min-width:0!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  line-height:1.1!important;
+  text-align:center!important;
+}
+
+/* Localized headings/helper copy must fit their device, never enlarge or clip the hardware frame. */
+.pg-phone-ask-title,
+.ipad-native-ask-title,
+.mac-native-ask-title,
+.pgdsl-title{
+  max-width:100%!important;
+  line-height:1.12!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+.pg-phone-tips,
+.ipad-native-help-lines,
+.mac-native-help-lines{
+  max-width:100%!important;
+  min-width:0!important;
+  overflow:hidden!important;
+}
+.pg-phone-tips > div,
+.ipad-native-help-lines > div,
+.mac-native-help-lines > div{
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+  line-height:1.22!important;
+}
+.pg-phone-how-link,
+.ipad-native-how-link,
+.mac-native-how-link{
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  max-width:36%!important;
+}
+
+/* Language/output rows stay side-by-side. */
+.pg-phone-output-row,
+.ipad-native-output-row{
+  display:flex!important;
+  align-items:center!important;
+  min-width:0!important;
+  gap:5px!important;
+}
+.pg-phone-output-label,
+.ipad-native-output-label{
+  flex:1 1 auto!important;
+  min-width:0!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+.pg-phone-output-select,
+.ipad-native-output-select{
+  flex:0 1 62%!important;
+  width:auto!important;
+  min-width:0!important;
+  max-width:62%!important;
+}
+.pg-phone-output-select strong,
+.ipad-native-output-select strong{
+  min-width:0!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+
+/* Buttons remain balanced regardless of translated label length. */
+.pg-phone-action-row > div,
+.ipad-redesign-action-btn{
+  min-width:0!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+.pg-phone-send,
+.ipad-redesign-send,
+.pg-phone-clear,
+.ipad-redesign-clear{
+  white-space:nowrap!important;
+}
+
+/* Generated localized static screens: keep text visible and proportional. */
+.pg-device-static-localized,
+.pg-device-static-localized *{
+  box-sizing:border-box!important;
+  min-width:0;
+}
+.pg-device-static-localized .pgdsl-cards > div{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  padding:6%!important;
+  overflow:hidden!important;
+}
+.pg-device-static-localized .pgdsl-cards strong{
+  display:block!important;
+  color:#eef2f7!important;
+  opacity:1!important;
+  visibility:visible!important;
+  font-weight:750!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+.pg-device-static-localized .pgdsl-step{
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  line-height:1.2!important;
+}
+
+/* Long-script language groups get a small, consistent scale adjustment. */
+html[data-device-ui-density="compact"] #gallery-iphone .iphone-live-preview,
+html[data-device-ui-density="compact"] #gallery-ipad .ipad-live-preview{
+  font-size:92%!important;
+}
+html[data-device-ui-density="compact"] #gallery-mac .mac-reference-stage{
+  font-size:94%!important;
+}
+html[data-device-ui-density="compact"] .pgdsl-tabs{
+  font-size:90%!important;
+}
+html[data-device-ui-density="compact"] .pgdsl-body{
+  padding-top:4%!important;
+}
+
+/* CJK uses its native glyph metrics without excessive shrinkage. */
+html[data-device-ui-script="cjk"] #gallery-iphone .iphone-live-preview,
+html[data-device-ui-script="cjk"] #gallery-ipad .ipad-live-preview,
+html[data-device-ui-script="cjk"] #gallery-mac .mac-reference-stage{
+  letter-spacing:0!important;
+  word-break:keep-all!important;
+}
+
+/* RTL: preserve device geometry while aligning readable content correctly. */
+html[data-device-ui-dir="rtl"] .pg-phone-ask-body,
+html[data-device-ui-dir="rtl"] .ipad-live-preview,
+html[data-device-ui-dir="rtl"] .mac-reference-stage,
+html[data-device-ui-dir="rtl"] .pg-device-static-localized{
+  direction:rtl!important;
+  text-align:right;
+}
+html[data-device-ui-dir="rtl"] .pg-phone-output-select,
+html[data-device-ui-dir="rtl"] .ipad-native-output-select{
+  margin-left:0!important;
+  margin-right:auto!important;
+}
+`;
+document.head.appendChild(style);
+
+function norm(code){
+  code=String(code||"EN").toUpperCase().replace(/-/g,"_");
+  if(code==="ZH_HANT")return "ZH_TW";
+  if(code==="ZH_CN"||code==="ZH_HANS")return "ZH";
+  return code;
+}
+function currentCode(){
+  return norm(window._pgI18n&&window._pgI18n.curLang?window._pgI18n.curLang():"EN");
+}
+function harden(code){
+  code=norm(code);
+  var rtl=(code==="AR"||code==="HE");
+  var cjk=(code==="ZH"||code==="ZH_TW"||code==="JA"||code==="KO");
+  var compact=["DE","FR","IT","PT","NL","RU","HI","BN","TR","PL","SV","NO","DA","FI","EL","HE","ID","MS","TH","VI","UK","CS","RO","HU","SK","HR","CA","AF","SW","HA","AM","FIL"].indexOf(code)>=0;
+  document.documentElement.setAttribute("data-device-ui-dir",rtl?"rtl":"ltr");
+  document.documentElement.setAttribute("data-device-ui-script",cjk?"cjk":"latin");
+  document.documentElement.setAttribute("data-device-ui-density",compact?"compact":"normal");
+
+  ["gallery-iphone","gallery-ipad","gallery-mac","demo"].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el){
+      el.setAttribute("lang",code.toLowerCase().replace("_","-"));
+      el.setAttribute("dir",rtl?"rtl":"ltr");
+    }
+  });
+
+  /* Keep Mac caption in the selected language instead of leaving an English sentence under localized UI. */
+  var macLabel=document.getElementById("macTabLabel");
+  var active=document.querySelector("#gallery-mac .mac-reference-tab.active span");
+  if(macLabel&&active) macLabel.textContent=(active.textContent||"").trim();
+
+  /* Never allow generated template cards to render as empty boxes. */
+  var activeTemplate=document.querySelector(".pg-device-static-localized .pgdsl-tabs .active");
+  var templateWord=activeTemplate?(activeTemplate.textContent||"").replace(/^[^\\p{L}\\p{N}]*/u,"").trim():"";
+  document.querySelectorAll(".pg-device-static-localized .pgdsl-cards strong").forEach(function(el){
+    if(!(el.textContent||"").trim()&&templateWord)el.textContent=templateWord;
+  });
+}
+
+window.addEventListener("pg:languagechange",function(e){
+  var code=e.detail&&e.detail.code||currentCode();
+  setTimeout(function(){harden(code);},0);
+  setTimeout(function(){harden(code);},120);
+});
+if(document.readyState==="loading"){
+  document.addEventListener("DOMContentLoaded",function(){setTimeout(function(){harden(currentCode());},80);});
+}else{
+  setTimeout(function(){harden(currentCode());},80);
+}
+})();
+
