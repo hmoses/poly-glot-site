@@ -3389,7 +3389,7 @@ function _siteDemoStart() {
   p1.style.opacity = '1'; p3.style.display = 'none'; p3.style.opacity = '0';
   p2.style.transform = 'translateY(100%)';
   ta.textContent = ''; sb.style.opacity = '0.4'; sb.style.transform = 'scale(1)';
-  tog.style.background = 'rgba(255,255,255,.08)'; knob.style.left = '2px';
+  tog.style.background = '#2a3039'; tog.style.boxShadow = 'inset 0 0 0 1px rgba(255,255,255,.10)'; knob.style.left = '2px';
   sendAll.style.opacity = '0.4'; cmpCnt.textContent = '0';
   document.querySelectorAll('.siteDemo-AI').forEach(function(b) {
     b.style.borderColor = 'rgba(255,255,255,.08)'; b.style.background = '#1c2128';
@@ -3427,7 +3427,7 @@ function _siteDemoStart() {
               /* Phase 2b: Toggle Compare Mode ON */
               var t3 = setTimeout(function() {
                 if (!_siteDemoRunning) return;
-                tog.style.background = '#7c3aed'; knob.style.left = '20px';
+                tog.style.background = '#7c3aed'; tog.style.boxShadow = '0 0 12px rgba(124,58,237,.45), inset 0 0 0 1px rgba(255,255,255,.12)'; knob.style.left = '20px';
                 /* Phase 2c: Select ChatGPT */
                 var t4 = setTimeout(function() {
                   if (!_siteDemoRunning) return;
@@ -3484,10 +3484,10 @@ function _siteDemoStart() {
                           }, 100); _siteDemoTimers.push(t7b);
                         }, 400); _siteDemoTimers.push(t7);
                       }, 150); _siteDemoTimers.push(t6b);
-                    }, 800); _siteDemoTimers.push(t6);
+                    }, 1200); _siteDemoTimers.push(t6);
                   }, 600); _siteDemoTimers.push(t5);
                 }, 600); _siteDemoTimers.push(t4);
-              }, 700); _siteDemoTimers.push(t3);
+              }, 1300); _siteDemoTimers.push(t3);
             }, 400); _siteDemoTimers.push(t2);
           }, 150); _siteDemoTimers.push(t1b);
         }, 500); _siteDemoTimers.push(t1);
@@ -8442,6 +8442,155 @@ function _demoStart() {
   #gallery-mac #macScreen-howtouse #siteDemo-P2{
     top:39%!important;
     height:58%!important;
+  }
+}
+</style>
+
+
+<style>
+/* ===== MAC HOW-TO MENU — EXPANDED SLIDE FLOW ===== */
+/* Restore a larger, easy-to-read AI menu while preserving the slide-up / slide-down animation. */
+#gallery-mac #macScreen-howtouse #siteDemo-P2{
+  position:absolute!important;
+  top:auto!important;
+  bottom:0!important;
+  left:2.5%!important;
+  right:2.5%!important;
+  width:95%!important;
+  height:auto!important;
+  max-height:78%!important;
+  min-height:0!important;
+  padding:9px 10px 10px!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+  border-radius:14px 14px 0 0!important;
+  background:linear-gradient(180deg,#202631 0%,#171c24 100%)!important;
+  border:1px solid rgba(167,139,250,.35)!important;
+  border-bottom:0!important;
+  box-shadow:0 -16px 34px rgba(0,0,0,.52),0 0 22px rgba(124,58,237,.20)!important;
+}
+
+/* Larger sheet heading */
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:first-child{
+  width:30px!important;
+  height:3px!important;
+  margin:0 auto 6px!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:nth-child(2){
+  font-size:10px!important;
+  line-height:1!important;
+  margin-bottom:7px!important;
+  color:#fff!important;
+  font-weight:800!important;
+}
+
+/* Compare row remains prominent and clearly shows OFF then ON. */
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:nth-child(3){
+  min-height:32px!important;
+  padding:6px 8px!important;
+  margin-bottom:7px!important;
+  background:#262d37!important;
+  border:1px solid rgba(255,255,255,.13)!important;
+  border-radius:8px!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:nth-child(3)>span{
+  font-size:8.5px!important;
+  color:#fff!important;
+  font-weight:800!important;
+}
+#gallery-mac #siteDemo-CmpToggle{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  width:40px!important;
+  min-width:40px!important;
+  height:22px!important;
+  min-height:22px!important;
+  border-radius:11px!important;
+  background:#2a3039!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)!important;
+  transition:background .3s ease,box-shadow .3s ease!important;
+}
+#gallery-mac #siteDemo-CmpKnob{
+  width:18px!important;
+  height:18px!important;
+  top:1px!important;
+  left:2px!important;
+  transition:left .3s ease!important;
+}
+
+/* Use the previous larger vertical menu feel, but compact enough to fit. */
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:nth-child(4){
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:5px!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-AI{
+  min-height:38px!important;
+  padding:6px 8px!important;
+  gap:6px!important;
+  border-radius:8px!important;
+  background:#242b35!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-AI > div:first-child{
+  width:22px!important;
+  height:22px!important;
+  min-width:22px!important;
+  border-radius:5px!important;
+  font-size:7px!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-AI > div:nth-child(2)>div:first-child{
+  font-size:7.5px!important;
+  font-weight:800!important;
+  color:#fff!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-AI > div:nth-child(2)>div:last-child{
+  font-size:5.8px!important;
+  color:#b7c0cb!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-Check{
+  width:14px!important;
+  height:14px!important;
+  min-width:14px!important;
+  font-size:7px!important;
+}
+
+/* Keep Send to Selected clearly visible before the sheet slides down. */
+#gallery-mac #siteDemo-SendAll{
+  margin-top:7px!important;
+  padding:7px!important;
+  border-radius:7px!important;
+  font-size:8.5px!important;
+  line-height:1!important;
+}
+
+/* Responses remain both visible after the menu slides down. */
+#gallery-mac #siteDemo-P3{
+  padding:8px 9px!important;
+  height:100%!important;
+  overflow:hidden!important;
+}
+#gallery-mac #siteDemo-P3 > div:nth-child(2){
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:6px!important;
+}
+#gallery-mac #siteDemo-Resp1,
+#gallery-mac #siteDemo-Resp2{
+  font-size:6.4px!important;
+  line-height:1.28!important;
+  max-height:78px!important;
+  overflow:hidden!important;
+}
+
+@media(max-width:760px){
+  #gallery-mac #macScreen-howtouse #siteDemo-P2{
+    left:2%!important;
+    right:2%!important;
+    width:96%!important;
+    max-height:80%!important;
   }
 }
 </style>
