@@ -7448,5 +7448,124 @@ function _demoStart() {
 }
 </style>
 
+
+<style>
+/* ===== HISTORY ITEMS — HORIZONTAL ROWS ON IPHONE + MAC ===== */
+/* iPad is already correct — leave its History layout unchanged. */
+
+/* iPhone: one full-width History item per horizontal row, matching the app. */
+.iphone-screen .history-preview .hp-card-grid{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:6px!important;
+}
+.iphone-screen .history-preview .hp-card-grid .hp-card{
+  width:100%!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:8px 8px 7px!important;
+}
+.iphone-screen .history-preview .hp-card-grid .hp-buttons{
+  grid-template-columns:1.2fr 1.2fr 18px!important;
+  gap:4px!important;
+  margin-top:6px!important;
+}
+
+/* Mac: History entries become compact full-width horizontal rows instead of tiles. */
+#gallery-mac #macScreen-history .mac-history-grid{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:4px!important;
+  align-content:start!important;
+}
+#gallery-mac #macScreen-history .mac-history-card{
+  display:grid!important;
+  grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;
+  align-items:center!important;
+  column-gap:6px!important;
+  min-height:30px!important;
+  padding:5px 6px!important;
+  border-radius:6px!important;
+  margin:0!important;
+}
+#gallery-mac #macScreen-history .mac-history-card-title{
+  grid-column:1!important;
+  font-size:.45rem!important;
+  line-height:1.08!important;
+  padding:0!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+#gallery-mac #macScreen-history .mac-history-time{
+  grid-column:2!important;
+  font-size:.35rem!important;
+  margin:0!important;
+  white-space:nowrap!important;
+}
+#gallery-mac #macScreen-history .mac-history-text{
+  grid-column:3!important;
+  font-size:.38rem!important;
+  line-height:1.1!important;
+  padding:0!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+#gallery-mac #macScreen-history .mac-history-buttons{
+  grid-column:4!important;
+  display:grid!important;
+  grid-template-columns:1fr 1fr 20px!important;
+  gap:3px!important;
+  margin:0!important;
+}
+#gallery-mac #macScreen-history .mac-history-btn{
+  padding:3px 2px!important;
+  border-radius:4px!important;
+  font-size:.34rem!important;
+  line-height:1!important;
+}
+#gallery-mac #macScreen-history .mac-history-star{
+  position:static!important;
+  grid-column:5!important;
+  grid-row:1!important;
+  justify-self:center!important;
+  font-size:10px!important;
+  line-height:1!important;
+}
+
+/* Keep the Mac History heading/filters proportional above the row list. */
+#gallery-mac #macScreen-history .mac-history-body{
+  padding:7px 9px 8px!important;
+}
+#gallery-mac #macScreen-history .mac-history-top{
+  margin-bottom:5px!important;
+}
+#gallery-mac #macScreen-history .mac-history-heading{
+  font-size:.68rem!important;
+}
+#gallery-mac #macScreen-history .mac-history-note{
+  font-size:.42rem!important;
+}
+#gallery-mac #macScreen-history .mac-history-pill{
+  font-size:.4rem!important;
+  padding:3px 6px!important;
+}
+
+/* On narrow page widths, retain the row format inside the Mac render. */
+@media(max-width:760px){
+  #gallery-mac #macScreen-history .mac-history-card{
+    grid-template-columns:72px 34px minmax(0,1fr) 102px 12px!important;
+    column-gap:4px!important;
+    min-height:28px!important;
+    padding:4px 5px!important;
+  }
+  #gallery-mac #macScreen-history .mac-history-card-title{font-size:.4rem!important;}
+  #gallery-mac #macScreen-history .mac-history-time{font-size:.31rem!important;}
+  #gallery-mac #macScreen-history .mac-history-text{font-size:.33rem!important;}
+  #gallery-mac #macScreen-history .mac-history-btn{font-size:.3rem!important;padding:3px 1px!important;}
+}
+</style>
+
 </body>
 </html>
