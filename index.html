@@ -1762,12 +1762,10 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           <span class="trust-item"><span class="check">&#10003;</span> <span data-i18n="trustB">No Data Collection</span></span>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="hero-screenshot mac-site-image">
-          <img src="assets/img/poly-glot-mac-render.webp?v=exact-1" alt="Poly-Glot AI Workspace on MacBook" class="mac-site-image-img">
+      <div class="hero-visual hero-device-stack">
+        <div class="hero-mac-crop" aria-label="Poly-Glot AI Workspace on MacBook">
+          <img src="assets/img/poly-glot-mac-render.webp?v=hero-stack-1" alt="Poly-Glot AI Workspace on MacBook">
         </div>
-        <!-- iPhone HTML Mock -->
-        <!-- iPhone Mock -->
         <div class="hero-phone-mock">
           <div class="phone-screen">
             <!-- Status bar -->
@@ -1822,8 +1820,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div>    </div>
   </div>
 </section>
 
@@ -6277,6 +6274,128 @@ function _demoStart() {
 .hero-screenshot.mac-site-image{width:100%!important;margin:0!important}
 #gallery-mac .mac-site-gallery-image{width:min(980px,100%)!important;max-width:980px!important;margin:0 auto 28px!important}
 @media(max-width:760px){#gallery-mac .mac-site-gallery-image{width:94vw!important;max-width:560px!important}}
+</style>
+
+
+<style>
+/* ===== HERO MAC ABOVE IPHONE — FINAL ===== */
+.hero-device-stack{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  gap:26px!important;
+  margin-bottom:34px!important;
+  overflow:visible!important;
+}
+
+/* Crop away the oversized text above the Mac and keep the actual laptop hardware/UI. */
+.hero-device-stack .hero-mac-crop{
+  width:100%!important;
+  max-width:760px!important;
+  aspect-ratio:1.34/1!important;
+  position:relative!important;
+  overflow:hidden!important;
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.hero-device-stack .hero-mac-crop img{
+  position:absolute!important;
+  left:50%!important;
+  top:-5.5%!important;
+  transform:translateX(-50%)!important;
+  width:100%!important;
+  height:auto!important;
+  max-width:none!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+
+/* New centered iPhone presentation below the Mac. */
+.hero-device-stack .hero-phone-mock{
+  position:relative!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:230px!important;
+  max-width:62vw!important;
+  margin:0 auto!important;
+  transform:none!important;
+  z-index:5!important;
+  aspect-ratio:9/19.5!important;
+  border-radius:34px!important;
+  padding:7px!important;
+  border:2px solid rgba(255,255,255,.16)!important;
+  background:linear-gradient(160deg,#20242c,#05070b 30%,#171a21 75%,#05070b)!important;
+  box-shadow:
+    0 28px 54px rgba(0,0,0,.5),
+    0 0 34px rgba(75,48,255,.18),
+    inset 0 0 0 1px rgba(255,255,255,.03)!important;
+}
+.hero-device-stack .hero-phone-mock::before{
+  content:""!important;
+  position:absolute!important;
+  top:10px!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  width:42%!important;
+  height:16px!important;
+  border-radius:999px!important;
+  background:#000!important;
+  z-index:20!important;
+}
+.hero-device-stack .hero-phone-mock .phone-screen{
+  border-radius:27px!important;
+  overflow:hidden!important;
+  background:#0d1117!important;
+}
+
+/* Make the redesigned phone UI readable in the larger frame. */
+.hero-device-stack .pg-phone-ask-body-hero{
+  padding:10px 10px 12px!important;
+}
+.hero-device-stack .pg-phone-ask-title{
+  font-size:.72rem!important;
+}
+.hero-device-stack .pg-phone-tips{
+  font-size:.47rem!important;
+  line-height:1.35!important;
+}
+.hero-device-stack .pg-phone-how-link{
+  font-size:.44rem!important;
+}
+.hero-device-stack .pg-phone-output-label,
+.hero-device-stack .pg-phone-output-select,
+.hero-device-stack .pg-phone-action-row,
+.hero-device-stack .pg-phone-talk-send,
+.hero-device-stack .pg-phone-clear{
+  font-size:.46rem!important;
+}
+.hero-device-stack .pg-phone-prompt-box{
+  min-height:74px!important;
+  font-size:.44rem!important;
+  line-height:1.45!important;
+}
+
+@media(max-width:760px){
+  .hero-device-stack{
+    gap:18px!important;
+    margin-bottom:26px!important;
+  }
+  .hero-device-stack .hero-mac-crop{
+    width:100%!important;
+    max-width:680px!important;
+    aspect-ratio:1.30/1!important;
+  }
+  .hero-device-stack .hero-mac-crop img{
+    top:-4.8%!important;
+    width:108%!important;
+  }
+  .hero-device-stack .hero-phone-mock{
+    width:230px!important;
+    max-width:68vw!important;
+  }
+}
 </style>
 
 </body>
