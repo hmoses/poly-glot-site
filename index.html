@@ -1782,11 +1782,11 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
               <span style="font-size:0.6rem;font-weight:800;color:#fff">Poly-Glot AI Workspace</span>
               <span style="margin-left:auto;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,0.08);font-size:0.45rem;font-weight:700;color:#fff">&#127482;&#127480; EN</span>
             </div>
-            <div style="display:flex;font-size:0.45rem;font-weight:600;color:rgba(255,255,255,0.3);border-bottom:1px solid rgba(255,255,255,0.06)">
-              <span style="padding:6px 12px;color:#f59e0b;border-bottom:2px solid #f59e0b">&#9999;&#65039; Ask Any AI</span>
-              <span style="padding:6px 12px">&#128203; Templates</span>
-              <span style="padding:6px 12px">&#128214; How to Use</span>
-              <span style="padding:6px 12px">&#128336; History</span>
+            <div class="hero-mac-tabs" style="font-size:0.45rem;font-weight:600;color:rgba(255,255,255,0.3);border-bottom:1px solid rgba(255,255,255,0.06)">
+              <span class="active" style="color:#f59e0b">&#9999;&#65039; Ask Any AI</span>
+              <span>&#128203; Templates</span>
+              <span>&#128214; How to Use</span>
+              <span>&#128336; History</span>
             </div>
             <div style="padding:14px 16px">
               <div style="font-size:0.7rem;font-weight:800;color:#fff;margin-bottom:6px">&#129300; Ask Any AI</div>
@@ -1953,12 +1953,12 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                   &#9679; Output Language &#127760; AI responds in this language<br>
                   &#9679; Compare Mode: send to multiple AIs
                 </div>
-                <div style="display:flex;align-items:center;gap:10px;margin:14px 0 10px">
-                  <span style="font-size:0.7rem;color:#10b981;font-weight:600">&#9679; AI will respond in:</span>
-                  <div style="flex:1;background:#1c2128;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 14px;display:flex;align-items:center;gap:8px">
-                    <span style="font-size:0.75rem">&#127482;&#127480;</span>
-                    <span style="font-size:0.75rem;font-weight:600;color:#fff;flex:1">English</span>
-                    <span style="color:rgba(255,255,255,0.3);font-size:0.6rem">&#9660;</span>
+                <div class="mac-response-row">
+                  <span class="mac-response-label">&#127760; AI will respond in:</span>
+                  <div class="mac-response-select">
+                    <span>&#127482;&#127480;</span>
+                    <strong>English</strong>
+                    <span class="mac-response-caret">&#9660;</span>
                   </div>
                 </div>
                 <!-- Textarea -->
@@ -5073,29 +5073,6 @@ function _demoStart() {
 #gallery-mac .mac-ask-body {
   padding:26px 28px 24px !important;
 }
-#gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(3) {
-  display:flex !important;
-  align-items:center !important;
-  gap:14px !important;
-  margin:16px 0 12px !important;
-}
-#gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(3) > span {
-  flex:0 0 auto !important;
-  color:#10b981 !important;
-  font-size:.72rem !important;
-  font-weight:700 !important;
-  white-space:nowrap !important;
-}
-#gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(3) > div {
-  flex:1 1 auto !important;
-  width:auto !important;
-  max-width:none !important;
-  min-width:0 !important;
-  padding:9px 14px !important;
-  border:1px solid #3a424f !important;
-  border-radius:8px !important;
-  background:#1c2128 !important;
-}
 #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(4) {
   min-height:160px !important;
 }
@@ -5104,6 +5081,84 @@ function _demoStart() {
 .hero-screenshot .mac-window-controls,
 #gallery-mac .mac-window-controls {
   display:none !important;
+}
+
+/* ===== MAC TAB + RESPONSE CONTROL ALIGNMENT ===== */
+
+/* Hero Mac: tabs span the full app width in four equal sections. */
+.hero-mac-tabs {
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  width:100% !important;
+  gap:0 !important;
+  padding:0 !important;
+  margin:0 !important;
+}
+.hero-mac-tabs > span {
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-width:0 !important;
+  width:100% !important;
+  padding:7px 4px !important;
+  text-align:center !important;
+  box-sizing:border-box !important;
+  border-bottom:2px solid transparent !important;
+  white-space:nowrap !important;
+}
+.hero-mac-tabs > span.active {
+  border-bottom-color:#f59e0b !important;
+}
+
+/* Gallery Mac: iPhone-style compact response-language control. */
+#gallery-mac .mac-response-row {
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  margin:14px 0 10px !important;
+}
+#gallery-mac .mac-response-label {
+  flex:0 0 auto !important;
+  color:rgba(255,255,255,.40) !important;
+  font-size:.70rem !important;
+  font-weight:600 !important;
+  white-space:nowrap !important;
+}
+#gallery-mac .mac-response-select {
+  flex:0 0 auto !important;
+  width:31% !important;
+  max-width:210px !important;
+  min-width:145px !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  padding:8px 12px !important;
+  border:1px solid #3a424f !important;
+  border-radius:8px !important;
+  background:#1c2128 !important;
+  color:#fff !important;
+  box-sizing:border-box !important;
+}
+#gallery-mac .mac-response-select strong {
+  font-size:.75rem !important;
+  font-weight:600 !important;
+}
+#gallery-mac .mac-response-caret {
+  margin-left:auto !important;
+  color:rgba(255,255,255,.32) !important;
+  font-size:.60rem !important;
+}
+
+@media (max-width:760px) {
+  #gallery-mac .mac-response-row { gap:8px !important; }
+  #gallery-mac .mac-response-label { font-size:.58rem !important; }
+  #gallery-mac .mac-response-select {
+    width:38% !important;
+    min-width:110px !important;
+    max-width:155px !important;
+    padding:6px 9px !important;
+  }
+  #gallery-mac .mac-response-select strong { font-size:.62rem !important; }
 }
 </style>
 
