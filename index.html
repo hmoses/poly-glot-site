@@ -3427,7 +3427,7 @@ function _siteDemoStart() {
               /* Phase 2b: Toggle Compare Mode ON */
               var t3 = setTimeout(function() {
                 if (!_siteDemoRunning) return;
-                tog.classList.add('is-on'); tog.setAttribute('aria-checked','true'); knob.style.transform = 'translateX(18px)';
+                tog.classList.add('is-on'); tog.setAttribute('aria-checked','true'); knob.style.transform = '';
                 /* Phase 2c: Select ChatGPT */
                 var t4 = setTimeout(function() {
                   if (!_siteDemoRunning) return;
@@ -8911,6 +8911,45 @@ function _demoStart() {
 #gallery-mac #siteDemo-CmpToggle.is-on #siteDemo-CmpKnob{
   left:2px!important;
   transform:translateX(17px)!important;
+}
+</style>
+
+
+<style>
+/* ===== MAC COMPARE TOGGLE — KEEP KNOB INSIDE TRACK ===== */
+#gallery-mac #siteDemo-CmpToggle{
+  position:relative!important;
+  flex:0 0 42px!important;
+  width:42px!important;
+  min-width:42px!important;
+  max-width:42px!important;
+  height:24px!important;
+  min-height:24px!important;
+  max-height:24px!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+  border-radius:999px!important;
+}
+#gallery-mac #siteDemo-CmpKnob{
+  position:absolute!important;
+  left:2px!important;
+  right:auto!important;
+  top:2px!important;
+  width:18px!important;
+  min-width:18px!important;
+  max-width:18px!important;
+  height:18px!important;
+  min-height:18px!important;
+  max-height:18px!important;
+  box-sizing:border-box!important;
+  transform:translateX(0)!important;
+  transition:transform .34s cubic-bezier(.2,.8,.2,1)!important;
+}
+/* Shorter travel keeps a clear right-side inset inside the toggle frame. */
+#gallery-mac #siteDemo-CmpToggle.is-on #siteDemo-CmpKnob{
+  left:2px!important;
+  right:auto!important;
+  transform:translateX(12px)!important;
 }
 </style>
 
