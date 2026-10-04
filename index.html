@@ -5150,6 +5150,56 @@ function _demoStart() {
     max-width:175px !important;
   }
 }
+
+/* ===== MATCH HERO MAC TO GALLERY MAC ON IPHONE ===== */
+@media (max-width: 640px) {
+  .hero-screenshot {
+    width:94vw !important;
+    max-width:560px !important;
+    margin:0 auto 20px !important;
+    padding:7px 7px 24px !important;
+    border-radius:18px 18px 9px 9px !important;
+    background:linear-gradient(180deg,#171b22 0%,#0a0d12 70%,#11161d 100%) !important;
+    box-shadow:
+      0 30px 68px rgba(0,0,0,.56),
+      inset 0 0 0 1px rgba(255,255,255,.055) !important;
+  }
+
+  .hero-screenshot::before {
+    top:3px !important;
+    width:6px !important;
+    height:6px !important;
+    background:#020306 !important;
+    box-shadow:0 0 0 1px rgba(255,255,255,.03) !important;
+  }
+
+  .hero-screenshot::after {
+    left:-1.8% !important;
+    right:-1.8% !important;
+    bottom:-8px !important;
+    height:17px !important;
+    border-radius:0 0 46px 46px !important;
+    background:linear-gradient(180deg,#4f5661 0%,#303741 42%,#1b2027 100%) !important;
+    box-shadow:
+      0 10px 22px rgba(0,0,0,.34),
+      inset 0 1px 0 rgba(255,255,255,.08) !important;
+  }
+
+  .hero-screenshot > div {
+    border-radius:11px !important;
+    background:#05070c !important;
+    box-shadow:
+      0 0 0 2px #030507,
+      0 0 0 4px #11161d,
+      0 12px 30px rgba(0,0,0,.42) !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-screenshot {
+    width:92vw !important;
+  }
+}
 </style>
 
 <div id="pgLightbox" role="dialog" aria-modal="true" aria-label="Image preview">
