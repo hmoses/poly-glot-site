@@ -185,6 +185,54 @@ function updateStaticPanels(code,S){
     sendAll.innerHTML=(S.compareSend||"Send to Selected")+' (<span id="siteDemo-CmpCount">'+n+'</span>)';
   }
 }
+
+function updateDuo(code,S){
+  var root=document.getElementById('iphone-duo');
+  if(!root)return;
+  var M=meta(code);
+  var gt=(window._pgI18n&&window._pgI18n.gt)?window._pgI18n.gt:null;
+  var g=function(k,fallback){var v=gt?gt(k,normCode(code).replace("_","-")):"";return v||fallback;};
+
+  var kicker=root.querySelector('.duo-kicker');
+  if(kicker)kicker.textContent=g('mcpGptBadge','Coming Soon');
+
+  var title=root.querySelector('#duo-title');
+  if(title)title.innerHTML='Poly-Glot<br><span>iPhone Duo</span>';
+
+  var copy=root.querySelector('.duo-copy');
+  if(copy)copy.textContent=g('sc2P','Send the same prompt to multiple AI apps and compare their responses side by side.');
+
+  var metaBox=root.querySelector('.duo-meta');
+  if(metaBox){
+    var link=metaBox.querySelector('a');
+    var linkText=link?link.textContent:'Explore iPhone Duo at Apple';
+    metaBox.childNodes[0].nodeValue='iPhone Duo — October 23, 2026. ';
+    if(link)link.textContent=g('navConnect',linkText).replace(/^🔌\s*/,'')+' iPhone Duo';
+  }
+
+  var ui=root.querySelector('.duo-ui');
+  if(ui){
+    var badge=ui.querySelector('.duo-lang-badge'); if(badge)badge.textContent=M.flag+' '+M.code.replace('_','-');
+    var tab=ui.querySelector('.tabline'); if(tab)tab.textContent='✏️ '+(S.ask||'Ask Any AI');
+    var h=ui.querySelector('h3'); if(h)h.textContent='🔀 '+(S.compare||'Compare Mode');
+    var muted=ui.querySelector('h3 + .muted'); if(muted)muted.textContent=S.compareSelect||'Select AIs to compare';
+    var prompt=ui.querySelector('.prompt'); if(prompt)prompt.textContent=g('sc2Prompt','Explain quantum computing in simple terms.');
+    var send=ui.querySelector('.duo-send'); if(send)send.textContent=S.compareSend||'Send to Selected';
+  }
+
+  var resp=root.querySelector('.duo-response');
+  if(resp){
+    var lbl=resp.querySelector('.duo-response-head .muted'); if(lbl)lbl.textContent=S.response||S.responds||'Response';
+    var ps=resp.querySelectorAll('p');
+    if(ps[0])ps[0].textContent=g('sc2Prompt','Explain quantum computing in simple terms.');
+    if(ps[1])ps[1].textContent=g('sc2PickSub','One prompt. Every AI. You decide.');
+    var acts=resp.querySelectorAll('.duo-actions span');
+    var labels=[S.copy||'Copy',S.read||'Read',S.share||'Share',S.save||'Save'];
+    acts.forEach(function(el,i){el.textContent=labels[i]||el.textContent;});
+  }
+
+  root.setAttribute('dir',(normCode(code)==='AR'||normCode(code)==='HE')?'rtl':'ltr');
+}
 function apply(code){
   var S=strings(code);
   ensureStaticLocalizedPanels();
@@ -199,6 +247,7 @@ function apply(code){
   ].forEach(function(root){localizeRoot(root,S);});
   updateBadges(code);
   updateStaticPanels(code,S);
+  updateDuo(code,S);
   document.documentElement.setAttribute('data-device-ui-lang',normCode(code));
   var rtl=(normCode(code)==="AR"||normCode(code)==="HE");
   [
