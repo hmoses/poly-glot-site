@@ -3389,7 +3389,7 @@ function _siteDemoStart() {
   p1.style.opacity = '1'; p3.style.display = 'none'; p3.style.opacity = '0';
   p2.style.transform = 'translateY(100%)';
   ta.textContent = ''; sb.style.opacity = '0.4'; sb.style.transform = 'scale(1)';
-  tog.style.background = '#2a3039'; tog.style.boxShadow = 'inset 0 0 0 1px rgba(255,255,255,.10)'; knob.style.left = '2px';
+  tog.classList.remove('is-on'); tog.style.background = ''; tog.style.boxShadow = ''; knob.style.left = '';
   sendAll.style.opacity = '0.4'; cmpCnt.textContent = '0';
   document.querySelectorAll('.siteDemo-AI').forEach(function(b) {
     b.style.borderColor = 'rgba(255,255,255,.08)'; b.style.background = '#1c2128';
@@ -3427,7 +3427,7 @@ function _siteDemoStart() {
               /* Phase 2b: Toggle Compare Mode ON */
               var t3 = setTimeout(function() {
                 if (!_siteDemoRunning) return;
-                tog.style.background = '#7c3aed'; tog.style.boxShadow = '0 0 12px rgba(124,58,237,.45), inset 0 0 0 1px rgba(255,255,255,.12)'; knob.style.left = '20px';
+                tog.classList.add('is-on');
                 /* Phase 2c: Select ChatGPT */
                 var t4 = setTimeout(function() {
                   if (!_siteDemoRunning) return;
@@ -8824,6 +8824,32 @@ function _demoStart() {
     height:96%!important;
     max-height:96%!important;
   }
+}
+</style>
+
+
+<style>
+/* ===== MAC COMPARE TOGGLE ANIMATION FIX ===== */
+/* OFF state */
+#gallery-mac #siteDemo-CmpToggle{
+  background:#2a3039!important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.10)!important;
+  transition:background .32s ease,box-shadow .32s ease!important;
+}
+#gallery-mac #siteDemo-CmpKnob{
+  left:2px!important;
+  transition:left .32s ease!important;
+}
+
+/* ON state controlled by JS class */
+#gallery-mac #siteDemo-CmpToggle.is-on{
+  background:#7c3aed!important;
+  box-shadow:
+    0 0 14px rgba(124,58,237,.55),
+    inset 0 0 0 1px rgba(255,255,255,.14)!important;
+}
+#gallery-mac #siteDemo-CmpToggle.is-on #siteDemo-CmpKnob{
+  left:20px!important;
 }
 </style>
 
