@@ -8327,5 +8327,124 @@ function _demoStart() {
 }
 </style>
 
+
+<style>
+/* ===== MAC HOW-TO MENU — FORCE FULL VISIBILITY ===== */
+/* Final-position the Choose AI sheet high enough that the whole menu remains visible
+   inside the cropped Mac viewport on mobile. */
+#gallery-mac #macScreen-howtouse #siteDemo-P2{
+  top:42%!important;
+  bottom:auto!important;
+  left:3%!important;
+  right:3%!important;
+  width:94%!important;
+  height:54%!important;
+  max-height:none!important;
+  min-height:0!important;
+  padding:6px 8px 7px!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+  border-radius:10px!important;
+}
+
+/* Keep the top prompt/send phase compact so the AI sheet has room below it. */
+#gallery-mac #macScreen-howtouse #siteDemo-P1{
+  padding:7px 9px!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-Textarea{
+  min-height:40px!important;
+  max-height:46px!important;
+  padding:7px 9px!important;
+  font-size:9px!important;
+  line-height:1.3!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-SendBtn{
+  margin-top:6px!important;
+  padding:7px!important;
+  font-size:9px!important;
+  line-height:1!important;
+  border-radius:7px!important;
+}
+
+/* Compress menu chrome. */
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:first-child{
+  width:20px!important;
+  height:2px!important;
+  margin:0 auto 3px!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:nth-child(2){
+  font-size:8.5px!important;
+  margin-bottom:4px!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:nth-child(3){
+  min-height:24px!important;
+  padding:4px 6px!important;
+  margin-bottom:4px!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:nth-child(3) > span{
+  font-size:7.5px!important;
+}
+#gallery-mac #siteDemo-CmpToggle{
+  width:28px!important;
+  height:15px!important;
+  min-width:28px!important;
+  min-height:15px!important;
+}
+#gallery-mac #siteDemo-CmpKnob{
+  width:11px!important;
+  height:11px!important;
+  top:1.5px!important;
+  left:2px!important;
+}
+
+/* 2x2 AI choices fully visible in the sheet. */
+#gallery-mac #macScreen-howtouse #siteDemo-P2 > div:nth-child(4){
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:3px!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-AI{
+  min-height:27px!important;
+  padding:3px 5px!important;
+  gap:4px!important;
+  border-radius:5px!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-AI > div:first-child{
+  width:15px!important;
+  height:15px!important;
+  min-width:15px!important;
+  font-size:5px!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-AI > div:nth-child(2) > div:first-child{
+  font-size:6.3px!important;
+  line-height:1!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-AI > div:nth-child(2) > div:last-child{
+  font-size:4.8px!important;
+  line-height:1!important;
+}
+#gallery-mac #macScreen-howtouse .siteDemo-Check{
+  width:10px!important;
+  height:10px!important;
+  min-width:10px!important;
+  font-size:5px!important;
+}
+#gallery-mac #siteDemo-SendAll{
+  margin-top:4px!important;
+  padding:5px!important;
+  font-size:7px!important;
+  line-height:1!important;
+  border-radius:5px!important;
+}
+
+/* On mobile page widths, move the sheet even higher because the Mac render is smaller. */
+@media(max-width:760px){
+  #gallery-mac #macScreen-howtouse #siteDemo-P2{
+    top:39%!important;
+    height:58%!important;
+  }
+}
+</style>
+
 </body>
 </html>
