@@ -1886,9 +1886,233 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         <span style="display:inline-flex;align-items:center;gap:8px;font-size:0.95rem;font-weight:800;color:#fff;font-family:'Fira Code',monospace;background:linear-gradient(135deg,rgba(124,58,237,.95),rgba(37,99,235,.92));border:1px solid rgba(167,139,250,.55);padding:10px 20px;border-radius:999px;box-shadow:0 0 0 1px rgba(255,255,255,.04),0 8px 24px rgba(124,58,237,.28);letter-spacing:.01em">👇 Click the tabs below to explore the app</span>
       </div>
       <!-- Interactive MacBook frame -->
-      <div class="mac-static-redesign">
-        <div class="mac-final-image" role="img" aria-label="Poly-Glot AI Workspace on MacBook"></div>
-        <div id="macTabLabel" style="text-align:center;margin-top:18px;font-size:0.82rem;color:rgba(255,255,255,0.4);font-family:'Fira Code',monospace">Poly-Glot AI Workspace on Mac</div>
+      <div class="macbook-shell" style="max-width:900px;margin:0 auto">
+        <!-- Mac window chrome -->
+        <div class="macbook-display" style="background:#1a1a2e;border-radius:12px;overflow:hidden;border:2px solid rgba(125,211,252,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.5)">
+          <!-- Title bar -->
+          <div style="display:flex;align-items:center;justify-content:center;padding:10px 16px;background:rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.06)">
+            <div style="text-align:center;font-size:0.75rem;color:rgba(255,255,255,0.4);font-weight:600">Poly-Glot AI Workspace</div>
+          </div>
+          <!-- In-app tabs -->
+          <div class="mac-primary-tabs" style="display:flex;border-bottom:2px solid rgba(255,255,255,0.06);background:#05080d">
+            <div class="mac-app-tab active" onclick="switchMacTab('askanyai')" id="macTab-askanyai" style="flex:1;text-align:center;padding:12px 0;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.2s;color:#7dd3fc;border-bottom:2px solid #7dd3fc">🤔 Ask Any AI</div>
+            <div class="mac-app-tab" onclick="switchMacTab('templates')" id="macTab-templates" style="flex:1;text-align:center;padding:12px 0;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.2s;color:rgba(255,255,255,0.35);border-bottom:2px solid transparent">📋 Templates</div>
+            <div class="mac-app-tab" onclick="switchMacTab('howtouse')" id="macTab-howtouse" style="flex:1;text-align:center;padding:12px 0;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.2s;color:rgba(255,255,255,0.35);border-bottom:2px solid transparent">ℹ️ How to Use</div>
+            <div class="mac-app-tab" onclick="switchMacTab('history')" id="macTab-history" style="flex:1;text-align:center;padding:12px 0;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.2s;color:rgba(255,255,255,0.35);border-bottom:2px solid transparent">🕐 History</div>
+          </div>
+          <!-- Screenshot area -->
+          <div class="mac-screen-stage">
+            <div id="macScreen-askanyai" class="mac-screen-panel active" style="background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;padding:0;overflow:hidden">
+              <!-- Ask Any AI content -->
+              <div class="mac-ask-body" style="padding:24px 28px">
+                <div class="mac-native-ask-title" style="font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:8px">&#129300; Ask Any AI</div>
+                <div class="mac-native-help mac-native-help-gallery">
+                  <div class="mac-native-help-lines">
+                    <div>✏️ Type, paste, import or talk</div>
+                    <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
+                    <div>🌐 Output Language ⬇️ AI responds in this language</div>
+                    <div>🔀 Compare Mode: send to multiple AIs</div>
+                  </div>
+                  <a class="mac-native-how-link" href="#demo">How it works</a>
+                </div>
+                <div class="mac-response-row">
+                  <span class="mac-response-label">&#127760; AI will respond in:</span>
+                  <div class="mac-response-select">
+                    <span>&#127482;&#127480;</span>
+                    <strong>English</strong>
+                    <span class="mac-response-caret">&#9660;</span>
+                  </div>
+                </div>
+                <!-- Textarea -->
+                <div style="background:#0d1117;border:2px solid #10b981;border-radius:10px;padding:16px 18px;min-height:160px;margin-bottom:12px;box-shadow:0 0 12px rgba(16,185,129,0.3)">
+                  <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);line-height:1.6">Hi BUILDER! Ask any AI anything. In your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater.</div>
+                </div>
+                <!-- Action buttons -->
+                <div style="display:flex;gap:8px;margin-bottom:12px">
+                  <div style="flex:1;background:#1c2128;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px;text-align:center;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.5)">&#128203; Paste</div>
+                  <div style="flex:1;background:#1c2128;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px;text-align:center;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.5)">&#128196; Import</div>
+                </div>
+                <!-- Talk + Send row -->
+                <div style="display:flex;align-items:center;gap:12px">
+                  <div style="display:flex;align-items:center;gap:6px;color:rgba(255,255,255,0.4);font-size:0.72rem"><span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;font-size:0.7rem">&#127908;</span> Talk</div>
+                  <div style="margin-left:auto;padding:10px 28px;background:#10b981;color:#fff;border-radius:10px;font-size:0.8rem;font-weight:700">Send</div>
+                </div>
+                <div style="margin-top:8px;font-size:0.6rem;color:rgba(255,255,255,0.25)">&#128465; Clear All</div>
+              </div>
+            </div>
+            <div id="macScreen-templates" class="mac-screen-panel mac-template-panel" aria-label="Templates on Mac">
+              <img src="assets/img/screenshots/mac-2-templates.png" alt="Templates on Mac" loading="eager" decoding="async">
+            </div>
+            <!-- Interactive Demo (from latest AI Workspace app code) -->
+            <div id="macScreen-howtouse" class="mac-screen-panel" style="background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;overflow:hidden">
+              <!-- PHASE 1: Ask Any AI textarea + Send -->
+              <div id="siteDemo-P1" style="padding:18px;opacity:1;transition:opacity 0.4s">
+                <div id="siteDemo-Textarea" style="background:#1c2128;border:1.5px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;min-height:54px;font-size:13px;color:#e6edf3;line-height:1.5;white-space:pre-wrap;word-break:break-word"></div>
+                <div id="siteDemo-SendBtn" style="margin-top:12px;padding:12px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;text-align:center;opacity:0.4;transition:opacity 0.3s,transform 0.15s">Send to AI</div>
+              </div>
+              <!-- PHASE 2: AI Menu with Compare Mode -->
+              <div id="siteDemo-P2" style="position:absolute;bottom:0;left:0;right:0;background:#161b22;border-radius:16px 16px 0 0;padding:16px;transform:translateY(100%);transition:transform 0.35s ease-out;border-top:1px solid rgba(255,255,255,.08)">
+                <div style="width:32px;height:4px;background:rgba(255,255,255,.08);border-radius:2px;margin:0 auto 12px"></div>
+                <div style="text-align:center;font-size:14px;font-weight:700;margin-bottom:12px;color:#e6edf3">Choose AI</div>
+                <!-- Compare toggle -->
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#1c2128;border-radius:10px;margin-bottom:12px;border:1px solid rgba(255,255,255,.08)">
+                  <span style="font-size:13px;font-weight:600;color:#e6edf3">🔀 Compare Mode</span>
+                  <div id="siteDemo-CmpToggle" style="width:40px;height:22px;border-radius:11px;background:rgba(255,255,255,.08);transition:background 0.25s;position:relative;cursor:default">
+                    <div id="siteDemo-CmpKnob" style="width:18px;height:18px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px;transition:left 0.25s;box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
+                  </div>
+                </div>
+                <!-- AI Buttons -->
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <div class="siteDemo-AI" data-ai="chatgpt" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
+                    <div style="width:30px;height:30px;border-radius:7px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">GPT</div>
+                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">ChatGPT</div><div style="font-size:10px;color:#8b949e">Prompt auto-filled</div></div>
+                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
+                  </div>
+                  <div class="siteDemo-AI" data-ai="claude" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
+                    <div style="width:30px;height:30px;border-radius:7px;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">CLD</div>
+                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">Claude</div><div style="font-size:10px;color:#8b949e">Paste prompt</div></div>
+                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
+                  </div>
+                  <div class="siteDemo-AI" data-ai="gemini" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
+                    <div style="width:30px;height:30px;border-radius:7px;background:#4285f4;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">GEM</div>
+                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">Gemini</div><div style="font-size:10px;color:#8b949e">Paste prompt</div></div>
+                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
+                  </div>
+                  <div class="siteDemo-AI" data-ai="perplexity" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
+                    <div style="width:30px;height:30px;border-radius:7px;background:#20b2aa;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">PPX</div>
+                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">Perplexity</div><div style="font-size:10px;color:#8b949e">Prompt auto-filled</div></div>
+                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
+                  </div>
+                </div>
+                <!-- Send to Selected button -->
+                <div id="siteDemo-SendAll" style="margin-top:12px;padding:12px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border-radius:10px;font-size:14px;font-weight:700;text-align:center;opacity:0.4;transition:opacity 0.3s,transform 0.15s">Send to Selected (<span id="siteDemo-CmpCount">0</span>)</div>
+              </div>
+              <!-- PHASE 3: Dual AI Response Cards -->
+              <div id="siteDemo-P3" style="padding:18px;opacity:0;transition:opacity 0.4s;display:none">
+                <div style="font-size:12px;font-weight:700;color:#7dd3fc;margin-bottom:10px">🔀 Compare Mode — 2 AI responses</div>
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <div style="background:rgba(16,163,127,0.08);border:1px solid rgba(16,163,127,0.25);border-radius:10px;padding:12px 14px">
+                    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+                      <div style="width:22px;height:22px;border-radius:5px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">GPT</div>
+                      <span style="font-size:12px;font-weight:700;color:#10a37f">ChatGPT</span>
+                    </div>
+                    <div id="siteDemo-Resp1" style="font-size:12px;color:#8b949e;line-height:1.5;white-space:pre-wrap"></div>
+                  </div>
+                  <div style="background:rgba(217,119,6,0.08);border:1px solid rgba(217,119,6,0.25);border-radius:10px;padding:12px 14px">
+                    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+                      <div style="width:22px;height:22px;border-radius:5px;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">CLD</div>
+                      <span style="font-size:12px;font-weight:700;color:#d97706">Claude</span>
+                    </div>
+                    <div id="siteDemo-Resp2" style="font-size:12px;color:#8b949e;line-height:1.5;white-space:pre-wrap"></div>
+                  </div>
+                </div>
+                <div style="text-align:center;margin-top:12px;font-size:12px;color:#7dd3fc;font-weight:600">⬆ Compare and pick the best answer</div>
+              </div>
+            </div>
+            <div id="macScreen-history" class="mac-screen-panel mac-history-preview" aria-label="History on Mac">
+              <div class="mac-history-body">
+                <div class="mac-history-top">
+                  <div>
+                    <div class="mac-history-heading">Prompt History</div>
+                    <div class="mac-history-note">Your recent prompts &amp; favorites</div>
+                  </div>
+                  <div class="mac-history-actions">
+                    <span class="mac-history-pill">All</span>
+                    <span class="mac-history-pill clear">Clear</span>
+                  </div>
+                </div>
+                <div class="mac-history-grid">
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Ask Any AI</div>
+                    <div class="mac-history-time">5m ago</div>
+                    <div class="mac-history-text">Test</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Ask Any AI</div>
+                    <div class="mac-history-time">5m ago</div>
+                    <div class="mac-history-text">Write a polite email to my landlord asking to fix the heater.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Interview Coach</div>
+                    <div class="mac-history-time">9m ago</div>
+                    <div class="mac-history-text">Prepare {{name}} for a {{job_title}} interview at {{company}}.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Resume Optimizer</div>
+                    <div class="mac-history-time">12m ago</div>
+                    <div class="mac-history-text">Improve this resume for a senior technical writer role.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Ask Any AI</div>
+                    <div class="mac-history-time">18m ago</div>
+                    <div class="mac-history-text">Compare the best AI tools for developer documentation.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Translation</div>
+                    <div class="mac-history-time">24m ago</div>
+                    <div class="mac-history-text">Translate this product description into French and Arabic.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Code Explainer</div>
+                    <div class="mac-history-time">31m ago</div>
+                    <div class="mac-history-text">Explain this JavaScript function in plain English.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Meeting Summary</div>
+                    <div class="mac-history-time">37m ago</div>
+                    <div class="mac-history-text">Summarize these meeting notes into decisions and action items.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">API Documentation</div>
+                    <div class="mac-history-time">42m ago</div>
+                    <div class="mac-history-text">Draft a concise API quickstart from this OpenAPI spec.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Release Notes</div>
+                    <div class="mac-history-time">49m ago</div>
+                    <div class="mac-history-text">Turn these engineering commits into customer-facing release notes.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Content Strategy</div>
+                    <div class="mac-history-time">55m ago</div>
+                    <div class="mac-history-text">Create an information architecture for this Help Center.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Localization QA</div>
+                    <div class="mac-history-time">1h ago</div>
+                    <div class="mac-history-text">Review this localized UI copy for clarity and consistency.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Label -->
+        <div id="macTabLabel" style="text-align:center;margin-top:14px;font-size:0.82rem;color:rgba(255,255,255,0.4);font-family:'Fira Code',monospace">Ask Any AI — Type or speak, choose your AI</div>
       </div>
     </div>
 
@@ -6316,6 +6540,133 @@ function _demoStart() {
   #gallery-mac .mac-static-redesign{
     width:94vw!important;
     max-width:560px!important;
+  }
+}
+</style>
+
+
+<style>
+/* ===== INTERACTIVE REDESIGNED MAC — FINAL ===== */
+/* Preserve the restored interactive tab UI/animation while matching the new MacBook render. */
+#gallery-mac .macbook-shell{
+  position:relative!important;
+  width:min(980px,100%)!important;
+  max-width:980px!important;
+  margin:0 auto 54px!important;
+  padding:10px 10px 34px!important;
+  overflow:visible!important;
+  border-radius:22px 22px 9px 9px!important;
+  border:1px solid rgba(255,255,255,.20)!important;
+  background:linear-gradient(180deg,#1c2027 0%,#0b0e13 76%,#07090d 100%)!important;
+  box-shadow:
+    0 30px 72px rgba(0,0,0,.58),
+    0 0 44px rgba(94,56,255,.24),
+    inset 0 1px 0 rgba(255,255,255,.10)!important;
+}
+#gallery-mac .macbook-shell::before{
+  content:""!important;
+  position:absolute!important;
+  left:50%!important;
+  top:5px!important;
+  transform:translateX(-50%)!important;
+  width:7px!important;
+  height:7px!important;
+  border-radius:50%!important;
+  background:#000!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.05),inset 0 0 2px rgba(64,96,255,.5)!important;
+  z-index:100!important;
+}
+#gallery-mac .macbook-shell::after{
+  content:""!important;
+  position:absolute!important;
+  left:-4.5%!important;
+  right:-4.5%!important;
+  bottom:-12px!important;
+  height:30px!important;
+  border-radius:3px 3px 56% 56% / 3px 3px 72% 72%!important;
+  background:linear-gradient(180deg,#c0c4ca 0%,#9298a1 11%,#6b727c 31%,#454b54 55%,#282e35 78%,#15191e 100%)!important;
+  box-shadow:
+    0 14px 26px rgba(0,0,0,.48),
+    inset 0 1px 0 rgba(255,255,255,.68),
+    inset 0 -2px 0 rgba(0,0,0,.34),
+    0 0 22px rgba(96,64,255,.16)!important;
+  z-index:2!important;
+  pointer-events:none!important;
+}
+#gallery-mac .macbook-display{
+  position:relative!important;
+  z-index:5!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:13px!important;
+  background:#020407!important;
+  box-shadow:
+    0 0 0 2px #020305,
+    0 0 0 5px #090c11,
+    inset 0 0 0 1px rgba(255,255,255,.025)!important;
+}
+#gallery-mac .macbook-display::before{display:none!important;}
+#gallery-mac .macbook-display::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  border-radius:13px!important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.02)!important;
+  pointer-events:none!important;
+  z-index:25!important;
+}
+#gallery-mac .mac-primary-tabs{
+  position:relative!important;
+  z-index:60!important;
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  width:100%!important;
+  min-height:56px!important;
+  background:#05080d!important;
+}
+#gallery-mac .mac-app-tab{
+  cursor:pointer!important;
+  pointer-events:auto!important;
+  user-select:none!important;
+}
+#gallery-mac .mac-screen-stage{
+  position:relative!important;
+  z-index:20!important;
+  aspect-ratio:16/10!important;
+  background:#0d1117!important;
+}
+#gallery-mac #macTabHint{
+  display:block!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+#gallery-mac #macTabLabel{
+  margin-top:22px!important;
+}
+
+/* Purple ambient glow like the supplied Mac render. */
+#gallery-mac .macbook-shell{
+  filter:drop-shadow(0 0 26px rgba(87,53,255,.18));
+}
+@media(max-width:760px){
+  #gallery-mac .macbook-shell{
+    width:94vw!important;
+    max-width:560px!important;
+    padding:7px 7px 26px!important;
+    border-radius:18px 18px 8px 8px!important;
+    margin-bottom:48px!important;
+  }
+  #gallery-mac .macbook-shell::after{
+    left:-3.2%!important;
+    right:-3.2%!important;
+    bottom:-10px!important;
+    height:24px!important;
+  }
+  #gallery-mac .mac-primary-tabs{min-height:44px!important;}
+  #gallery-mac .mac-app-tab{
+    padding:0 4px!important;
+    font-size:clamp(.58rem,2.3vw,.78rem)!important;
+    white-space:nowrap!important;
   }
 }
 </style>
