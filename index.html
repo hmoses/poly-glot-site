@@ -4959,8 +4959,10 @@ function _demoStart() {
   white-space:nowrap;
 }
 .hero-mac-response-select {
-  flex:1 1 auto;
-  min-width:0;
+  flex:0 0 auto;
+  width:34%;
+  max-width:210px;
+  min-width:118px;
   display:flex;
   align-items:center;
   gap:7px;
@@ -4982,9 +4984,16 @@ function _demoStart() {
 }
 
 @media (min-width:961px) {
-  .hero-mac-response-row { gap:12px; margin:4px 0 12px; }
+  .hero-mac-response-row {
+    gap:12px;
+    margin:4px 0 12px;
+    justify-content:flex-start;
+  }
   .hero-mac-response-label { font-size:.50rem; }
   .hero-mac-response-select {
+    width:31%;
+    max-width:190px;
+    min-width:130px;
     padding:7px 12px;
     border-radius:8px;
     font-size:.52rem;
@@ -4992,9 +5001,12 @@ function _demoStart() {
 }
 
 @media (max-width:640px) {
-  .hero-mac-response-row { gap:7px; }
+  .hero-mac-response-row { gap:7px; justify-content:flex-start; }
   .hero-mac-response-label { font-size:.40rem; }
   .hero-mac-response-select {
+    width:38%;
+    max-width:150px;
+    min-width:96px;
     padding:5px 8px;
     font-size:.43rem;
   }
