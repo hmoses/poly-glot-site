@@ -8094,5 +8094,30 @@ function _demoStart() {
 }
 </style>
 
+
+<style>
+/* ===== MAC ASK TAB UNHIGHLIGHT WHEN INACTIVE ===== */
+/* The base Mac render has Ask Any AI's orange underline baked in.
+   Cover that underline whenever another tab is active. */
+#gallery-mac .mac-reference-tab:first-child:not(.active)::after{
+  content:""!important;
+  position:absolute!important;
+  left:8%!important;
+  right:8%!important;
+  bottom:0!important;
+  height:5px!important;
+  border-radius:0!important;
+  background:#05080d!important;
+  box-shadow:none!important;
+  z-index:4!important;
+}
+
+/* Keep the Ask tab itself neutral when inactive. */
+#gallery-mac .mac-reference-tab:first-child:not(.active){
+  background:transparent!important;
+  box-shadow:none!important;
+}
+</style>
+
 </body>
 </html>
