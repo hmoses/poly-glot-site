@@ -71,6 +71,7 @@ function keyFor(text){
     "Prompt History":"promptHistory","Your recent prompts & favorites":"recent","All":"all","Clear":"clear",
     "Copy":"copy","Re-edit":"reedit","How it works":"howWorks","AI will respond in:":"outputLabel",
     "Compare Mode":"compare","Choose AI":"compareSelect","Select AIs to compare":"compareSelect","Send to Selected":"compareSend","Search templates...":"search","Search templates…":"search",
+    "Response":"responds","Read":"copy","Share":"copy","Save":"copy",
     "Type, paste, import or talk":"typeLine","App Language":"appLang","Output Language":"outputLang",
     "changes menus & templates":"changesMenus","AI responds in this language":"responds"
   };
@@ -138,6 +139,7 @@ function updateBadges(code){
     }
   });
   document.querySelectorAll('.hp-lang').forEach(function(el){el.textContent=M.flag+" "+M.code.replace("_","-");});
+  document.querySelectorAll('.duo-lang-badge').forEach(function(el){el.textContent=M.flag+" "+M.code.replace("_","-");});
   document.querySelectorAll('.pg-phone-output-select,.ipad-native-output-select,.mac-response-select,.demo-output-language').forEach(function(el){
     var flag=el.querySelector('span:first-child'); if(flag)flag.textContent=M.flag;
     var strong=el.querySelector('strong'); if(strong)strong.textContent=M.name;
@@ -191,7 +193,9 @@ function apply(code){
     document.getElementById('gallery-iphone'),
     document.getElementById('gallery-ipad'),
     document.getElementById('gallery-mac'),
-    document.getElementById('demo')
+    document.getElementById('demo'),
+    document.getElementById('iphone-duo'),
+    document.getElementById('iphone-duo')
   ].forEach(function(root){localizeRoot(root,S);});
   updateBadges(code);
   updateStaticPanels(code,S);
