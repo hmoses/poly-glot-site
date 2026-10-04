@@ -576,3 +576,283 @@ if(document.readyState==="loading"){
   else setTimeout(function(){applyStableLayout(window._pgI18n?window._pgI18n.curLang():"EN");},50);
   window._pgDeviceStableLayout=applyStableLayout;
 })();
+
+
+/* ===== DEVICE UI LOCALIZATION + RESPONSIVE FORMAT v3 ===== */
+(function(){
+"use strict";
+
+function code(){
+  return window._pgI18n&&window._pgI18n.curLang ? window._pgI18n.curLang() : "EN";
+}
+function norm(v){ return String(v||"EN").toUpperCase().replace(/-/g,"_"); }
+function meta(c){
+  c=norm(c);
+  var list=(window._pgDeviceUI&&window._pgDeviceUI.appLanguages)||[];
+  return list.find(function(x){return norm(x.code)===c;}) || {code:c,name:"English",flag:"🇺🇸"};
+}
+function strings(c){
+  return window._pgDeviceUI&&window._pgDeviceUI._strings ? window._pgDeviceUI._strings(c) : {};
+}
+function setText(root,sel,value){
+  if(!root||!value)return;
+  root.querySelectorAll(sel).forEach(function(el){el.textContent=value;});
+}
+function setTab(root,idx,value){
+  if(!root||!value)return;
+  root.querySelectorAll(".demo-ask-tabs").forEach(function(tabs){
+    var span=tabs.children[idx];
+    if(span){
+      var icon=["✏️","📋","ℹ️","🕐"][idx]||"";
+      span.textContent=icon+" "+value;
+    }
+  });
+}
+
+/* Explicitly localize live device demos, including clones created after the language switch. */
+function localizeLiveDemo(root,c){
+  if(!root)return;
+  var S=strings(c), M=meta(c);
+  var ask=S.ask||"Ask Any AI";
+  var templates=S.templates||"Templates";
+  var how=S.how||"How to Use";
+  var history=S.history||"History";
+
+  setTab(root,0,ask);
+  setTab(root,1,templates);
+  setTab(root,2,how);
+  setTab(root,3,history);
+
+  setText(root,".demo-ask-heading",ask);
+  setText(root,".pg-phone-how-link",S.howWorks||"How it works");
+  setText(root,".pg-phone-output-label",S.outputLabel||"AI will respond in:");
+  setText(root,".pg-phone-demo-send",S.send||"Send");
+  setText(root,".pg-phone-demo-clear","🗑 "+(S.clearAll||"Clear All"));
+
+  root.querySelectorAll(".demo-ask-description").forEach(function(desc){
+    var lines=desc.children;
+    if(lines[0]) lines[0].textContent="✏️ "+(S.typeLine||"Type, paste, import or talk");
+    if(lines[1]) lines[1].textContent="🏳️ "+(S.appLang||"App Language")+" ⬆️ "+(S.changesMenus||"changes menus & templates");
+    if(lines[2]) lines[2].textContent="🌐 "+(S.outputLang||"Output Language")+" ⬇️ "+(S.responds||"AI responds in this language");
+    if(lines[3]) lines[3].textContent="🔀 "+(S.compare||"Compare Mode")+": "+(S.compareHelp||"send to multiple AIs");
+  });
+
+  root.querySelectorAll(".pg-phone-output-select").forEach(function(sel){
+    var spans=sel.querySelectorAll("span");
+    if(spans[0])spans[0].textContent=M.flag;
+    var strong=sel.querySelector("strong");
+    if(strong)strong.textContent=M.name;
+  });
+
+  root.querySelectorAll(".demo-phone-screen-ask > div:nth-child(2) > span:last-child").forEach(function(b){
+    b.textContent=M.flag+" "+M.code.replace("_","-");
+  });
+
+  var menu=root.querySelector("#demoAIMenu");
+  if(menu){
+    var title=menu.children[1]; if(title) title.textContent=S.compareSelect||"Select AIs to compare";
+    var cmp=menu.children[2]&&menu.children[2].querySelector("span"); if(cmp) cmp.textContent="🔀 "+(S.compare||"Compare Mode");
+    var send=menu.querySelector("#demoSendAll");
+    if(send){
+      var cnt=menu.querySelector("#demoCmpCount");
+      var n=cnt?cnt.textContent:"0";
+      send.innerHTML=(S.compareSend||"Send to Selected")+' (<span id="demoCmpCount">'+n+'</span>)';
+    }
+  }
+
+  root.setAttribute("lang",norm(c).toLowerCase().replace("_","-"));
+  root.setAttribute("dir",(norm(c)==="AR"||norm(c)==="HE")?"rtl":"ltr");
+}
+
+function applyAll(c){
+  c=norm(c);
+  var roots=[
+    document.getElementById("demo"),
+    document.getElementById("gallery-iphone"),
+    document.getElementById("gallery-ipad"),
+    document.getElementById("gallery-mac"),
+    document.querySelector(".hero-phone-mock"),
+    document.getElementById("pgLightboxClone")
+  ].filter(Boolean);
+  roots.forEach(function(r){
+    if(window._pgDeviceUI&&window._pgDeviceUI.apply) {
+      /* main apply handles gallery + generated static panels */
+    }
+    localizeLiveDemo(r,c);
+  });
+  document.documentElement.setAttribute("data-device-ui-lang",c);
+}
+
+/* One layout system for long translations and CJK/RTL scripts. */
+var st=document.createElement("style");
+st.id="pg-device-ui-responsive-v3";
+st.textContent=`
+/* Header brand never wraps or pushes the language badge out. */
+#demo .demo-phone-screen-ask>div:nth-child(2),
+#pgLightboxClone .demo-phone-screen-ask>div:nth-child(2),
+#gallery-iphone .iphone-live-preview>div:nth-child(2),
+#gallery-ipad .ipad-live-preview>div:nth-child(2){
+  display:grid!important;
+  grid-template-columns:auto minmax(0,1fr) auto!important;
+  align-items:center!important;
+  min-width:0!important;
+}
+#demo .demo-phone-screen-ask>div:nth-child(2)>div,
+#pgLightboxClone .demo-phone-screen-ask>div:nth-child(2)>div{
+  min-width:0!important;
+}
+#demo .demo-phone-screen-ask>div:nth-child(2)>div>div:first-child,
+#pgLightboxClone .demo-phone-screen-ask>div:nth-child(2)>div>div:first-child{
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+
+/* Tabs always remain a single proportional row. */
+#demo .demo-ask-tabs,
+#pgLightboxClone .demo-ask-tabs,
+#gallery-iphone .iphone-live-preview>div:nth-child(3),
+#gallery-ipad .ipad-live-preview>div:nth-child(3),
+.pg-device-static-localized .pgdsl-tabs{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:0!important;
+  width:100%!important;
+  min-width:0!important;
+}
+#demo .demo-ask-tabs>span,
+#pgLightboxClone .demo-ask-tabs>span,
+#gallery-iphone .iphone-live-preview>div:nth-child(3)>span,
+#gallery-ipad .ipad-live-preview>div:nth-child(3)>span,
+.pg-device-static-localized .pgdsl-tabs>span{
+  min-width:0!important;
+  max-width:100%!important;
+  padding-left:3px!important;
+  padding-right:3px!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  text-align:center!important;
+  line-height:1.1!important;
+}
+
+/* Ask screen scales by available space instead of clipping translated strings. */
+#demo .demo-ask-content,
+#pgLightboxClone .demo-ask-content{
+  min-height:0!important;
+  overflow:hidden!important;
+}
+#demo .demo-ask-heading,
+#pgLightboxClone .demo-ask-heading{
+  flex:0 0 auto!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  line-height:1.1!important;
+}
+#demo .demo-ask-description,
+#pgLightboxClone .demo-ask-description{
+  flex:0 0 auto!important;
+  min-width:0!important;
+  overflow:hidden!important;
+}
+#demo .demo-ask-description>div,
+#pgLightboxClone .demo-ask-description>div{
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  line-height:1.22!important;
+}
+#demo .demo-output-language,
+#pgLightboxClone .demo-output-language{
+  min-width:0!important;
+  flex:0 0 auto!important;
+}
+#demo .pg-phone-output-label,
+#pgLightboxClone .pg-phone-output-label{
+  min-width:0!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  white-space:nowrap!important;
+}
+#demo .pg-phone-output-select,
+#pgLightboxClone .pg-phone-output-select{
+  min-width:0!important;
+  max-width:62%!important;
+}
+#demo .pg-phone-output-select strong,
+#pgLightboxClone .pg-phone-output-select strong{
+  min-width:0!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+
+/* Prompt text may wrap, but never gets cut mid-line. */
+#demo #demoTextarea,
+#pgLightboxClone #demoTextarea{
+  min-height:88px!important;
+  height:auto!important;
+  max-height:128px!important;
+  overflow:hidden!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+  line-height:1.42!important;
+}
+
+/* Long-language density keeps the same device geometry. */
+html[data-device-ui-lang="DE"] #demo .demo-ask-content,
+html[data-device-ui-lang="FR"] #demo .demo-ask-content,
+html[data-device-ui-lang="IT"] #demo .demo-ask-content,
+html[data-device-ui-lang="PT"] #demo .demo-ask-content,
+html[data-device-ui-lang="RU"] #demo .demo-ask-content,
+html[data-device-ui-lang="HI"] #demo .demo-ask-content,
+html[data-device-ui-lang="BN"] #demo .demo-ask-content,
+html[data-device-ui-lang="AR"] #demo .demo-ask-content,
+html[data-device-ui-lang="HE"] #demo .demo-ask-content{
+  font-size:92%!important;
+}
+html[data-device-ui-lang="ZH"] #demo .demo-ask-content,
+html[data-device-ui-lang="ZH_TW"] #demo .demo-ask-content,
+html[data-device-ui-lang="JA"] #demo .demo-ask-content,
+html[data-device-ui-lang="KO"] #demo .demo-ask-content{
+  font-size:95%!important;
+}
+
+/* Generated localized template cards always contain visible text. */
+.pg-device-static-localized .pgdsl-cards>div{
+  min-width:0!important;
+  overflow:hidden!important;
+  padding:5%!important;
+}
+.pg-device-static-localized .pgdsl-cards strong{
+  display:block!important;
+  max-width:100%!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+`;
+document.head.appendChild(st);
+
+window.addEventListener("pg:languagechange",function(e){
+  var c=e.detail&&e.detail.code||code();
+  setTimeout(function(){applyAll(c);},0);
+  setTimeout(function(){applyAll(c);},80);
+  setTimeout(function(){applyAll(c);},250);
+});
+
+/* Catch dynamically created zoom/lightbox clones and re-localize them immediately. */
+var mo=new MutationObserver(function(muts){
+  var relevant=muts.some(function(m){return m.addedNodes&&m.addedNodes.length;});
+  if(relevant)setTimeout(function(){applyAll(code());},20);
+});
+mo.observe(document.body,{childList:true,subtree:true});
+
+if(document.readyState==="loading"){
+  document.addEventListener("DOMContentLoaded",function(){setTimeout(function(){applyAll(code());},100);});
+}else{
+  setTimeout(function(){applyAll(code());},100);
+}
+window._pgDeviceUILocalizeV3=applyAll;
+})();
+
