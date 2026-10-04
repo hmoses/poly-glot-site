@@ -1888,10 +1888,10 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         <img class="mac-reference-base" src="assets/img/poly-glot-mac-render.jpg?v=interactive-exact-1" alt="Poly-Glot AI Workspace on MacBook">
 
         <div class="mac-reference-hotspots" aria-label="Mac app navigation tabs">
-          <button class="mac-reference-tab active" onclick="switchMacTab('askanyai')" id="macTab-askanyai" aria-label="Ask Any AI"></button>
-          <button class="mac-reference-tab" onclick="switchMacTab('templates')" id="macTab-templates" aria-label="Templates"></button>
-          <button class="mac-reference-tab" onclick="switchMacTab('howtouse')" id="macTab-howtouse" aria-label="How to Use"></button>
-          <button class="mac-reference-tab" onclick="switchMacTab('history')" id="macTab-history" aria-label="History"></button>
+          <button class="mac-reference-tab active" onclick="switchMacTab('askanyai')" id="macTab-askanyai" aria-label="Ask Any AI"><span>✏️ Ask Any AI</span></button>
+          <button class="mac-reference-tab" onclick="switchMacTab('templates')" id="macTab-templates" aria-label="Templates"><span>📋 Templates</span></button>
+          <button class="mac-reference-tab" onclick="switchMacTab('howtouse')" id="macTab-howtouse" aria-label="How to Use"><span>📖 How to Use</span></button>
+          <button class="mac-reference-tab" onclick="switchMacTab('history')" id="macTab-history" aria-label="History"><span>🕐 History</span></button>
         </div>
 
         <div class="mac-reference-stage">
@@ -8160,6 +8160,77 @@ function _demoStart() {
 #gallery-mac .mac-reference-tab:first-child.active::before{
   content:""!important;
   background:transparent!important;
+}
+</style>
+
+
+<style>
+/* ===== MAC TAB BAR FULL OVERLAY — FINAL ===== */
+/* Fully cover the tab row baked into the reference image so only one tab can ever look active. */
+#gallery-mac .mac-reference-hotspots{
+  background:#05080d!important;
+  border-top:1px solid rgba(255,255,255,.035)!important;
+  border-bottom:1px solid rgba(255,255,255,.065)!important;
+  overflow:hidden!important;
+  z-index:95!important;
+}
+#gallery-mac .mac-reference-tab{
+  appearance:none!important;
+  border:0!important;
+  border-bottom:3px solid transparent!important;
+  border-radius:0!important;
+  margin:0!important;
+  padding:0 4px!important;
+  background:#05080d!important;
+  box-shadow:none!important;
+  color:rgba(255,255,255,.48)!important;
+  cursor:pointer!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  position:relative!important;
+  min-width:0!important;
+  overflow:hidden!important;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",sans-serif!important;
+  transition:color .16s ease,background .16s ease,border-color .16s ease,box-shadow .16s ease!important;
+}
+#gallery-mac .mac-reference-tab span{
+  display:block!important;
+  min-width:0!important;
+  max-width:100%!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  font-size:clamp(6px,.72vw,11px)!important;
+  font-weight:600!important;
+  line-height:1!important;
+  color:inherit!important;
+  position:relative!important;
+  z-index:5!important;
+}
+/* Disable all prior pseudo-element masks/highlights. */
+#gallery-mac .mac-reference-tab::before,
+#gallery-mac .mac-reference-tab::after{
+  content:none!important;
+  display:none!important;
+}
+/* Exactly one selected tab gets the yellow active state. */
+#gallery-mac .mac-reference-tab.active{
+  color:#f59e0b!important;
+  background:rgba(245,158,11,.10)!important;
+  border-bottom-color:#f59e0b!important;
+  box-shadow:inset 0 0 0 1px rgba(245,158,11,.22),0 0 12px rgba(245,158,11,.12)!important;
+}
+#gallery-mac .mac-reference-tab:not(.active){
+  color:rgba(255,255,255,.48)!important;
+  background:#05080d!important;
+  border-bottom-color:transparent!important;
+  box-shadow:none!important;
+}
+@media(max-width:760px){
+  #gallery-mac .mac-reference-tab span{
+    font-size:clamp(5.5px,1.45vw,8px)!important;
+  }
 }
 </style>
 
