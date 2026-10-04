@@ -1782,7 +1782,15 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             </div>
             <div style="padding:14px 16px">
               <div style="font-size:0.7rem;font-weight:800;color:#fff;margin-bottom:6px">&#129300; Ask Any AI</div>
-              <div style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.5;margin-bottom:8px">Tip: Type, paste, import, scan, or talk &#9679; App Language changes menus &#9679; Compare Mode: send to multiple AIs</div>
+              <div class="mac-native-help mac-native-help-hero">
+                <div class="mac-native-help-lines">
+                  <div>✏️ Type, paste, import or talk</div>
+                  <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
+                  <div>🌐 Output Language ⬇️ AI responds in this language</div>
+                  <div>🔀 Compare Mode: send to multiple AIs</div>
+                </div>
+                <a class="mac-native-how-link" href="#demo">How it works</a>
+              </div>
               <div class="hero-mac-response-row">
                 <span class="hero-mac-response-label">&#127760; AI will respond in:</span>
                 <div class="hero-mac-response-select"><span>&#127482;&#127480;</span><strong>English</strong><span class="hero-mac-caret">▼</span></div>
@@ -1943,12 +1951,14 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
               <!-- Ask Any AI content -->
               <div class="mac-ask-body" style="padding:24px 28px">
                 <div style="font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:8px">&#129300; Ask Any AI</div>
-                <div style="font-size:0.65rem;color:rgba(255,255,255,0.4);margin-bottom:4px;line-height:1.5">
-                  <span style="color:#f59e0b;font-weight:700">Tip</span><br>
-                  &#9679; Type, paste, import, scan, or talk<br>
-                  &#9679; App Language &#127468;&#127463; changes menus &amp; templates<br>
-                  &#9679; Output Language &#127760; AI responds in this language<br>
-                  &#9679; Compare Mode: send to multiple AIs
+                <div class="mac-native-help mac-native-help-gallery">
+                  <div class="mac-native-help-lines">
+                    <div>✏️ Type, paste, import or talk</div>
+                    <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
+                    <div>🌐 Output Language ⬇️ AI responds in this language</div>
+                    <div>🔀 Compare Mode: send to multiple AIs</div>
+                  </div>
+                  <a class="mac-native-how-link" href="#demo">How it works</a>
                 </div>
                 <div class="mac-response-row">
                   <span class="mac-response-label">&#127760; AI will respond in:</span>
@@ -2311,13 +2321,21 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                   <span style="padding:5px 10px">📖 How to Use</span>
                   <span style="padding:5px 10px">🕐 History</span>
                 </div>
-                <div style="padding:8px 14px 4px">
-                  <div style="font-size:0.7rem;font-weight:800;color:#fff;margin-bottom:4px">🤔 Ask Any AI</div>
-                  <div style="font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.5;margin-bottom:6px">📝 Type, paste, import, scan, or talk • 💬 App Language 🌐 changes menus &amp; templates</div>
+                <div class="ipad-native-ask-head">
+                  <div class="ipad-native-ask-title">🤔 Ask Any AI</div>
+                  <div class="ipad-native-help">
+                    <div class="ipad-native-help-lines">
+                      <div>✏️ Type, paste, import or talk</div>
+                      <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
+                      <div>🌐 Output Language ⬇️ AI responds in this language</div>
+                      <div>🔀 Compare Mode: send to multiple AIs</div>
+                    </div>
+                    <a class="ipad-native-how-link" href="#demo">How it works</a>
+                  </div>
                 </div>
-                <div style="display:flex;align-items:center;gap:6px;padding:2px 14px 4px">
-                  <span style="font-size:0.4rem;color:rgba(255,255,255,0.4)">🌐 AI will respond in:</span>
-                  <span style="padding:3px 8px;border-radius:5px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.45rem;color:#fff;font-weight:600">🇺🇸 English</span>
+                <div class="ipad-native-output-row">
+                  <span class="ipad-native-output-label">🌐 AI will respond in:</span>
+                  <span class="ipad-native-output-select"><span>🇺🇸</span><strong>English</strong><span class="ipad-native-output-caret">⌄</span></span>
                 </div>
                 <div style="margin:4px 14px;border:2px solid #10b981;border-radius:8px;padding:8px 10px;min-height:60px;background:#0d1117;box-shadow:0 0 8px rgba(16,185,129,0.3)">
                   <div style="font-size:0.4rem;color:rgba(255,255,255,0.4);line-height:1.5">Hi BUILDER! Ask any AI anything. In your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater.</div>
@@ -5896,6 +5914,166 @@ function _demoStart() {
   }
   #gallery-iphone .pg-phone-how-link,
   #demo .pg-phone-how-link{
+    position:static;
+    display:block;
+    width:max-content;
+    margin:3px 0 0 auto;
+  }
+}
+</style>
+
+
+<style>
+/* ===== MAC + IPAD ASK ANY AI COPY — MATCH NATIVE APP ===== */
+.mac-native-help,
+.ipad-native-help{
+  position:relative;
+  display:block;
+  color:#8b949e;
+  text-align:left;
+}
+.mac-native-help-lines,
+.ipad-native-help-lines{
+  line-height:1.52;
+}
+.mac-native-help-lines>div,
+.ipad-native-help-lines>div{
+  display:block;
+  white-space:nowrap;
+}
+.mac-native-how-link,
+.ipad-native-how-link{
+  position:absolute;
+  top:0;
+  right:0;
+  color:#a78bfa!important;
+  text-decoration:underline!important;
+  text-underline-offset:2px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+/* Hero Mac */
+.hero-screenshot .mac-native-help-hero{
+  margin:0 0 9px;
+}
+.hero-screenshot .mac-native-help-lines{
+  padding-right:78px;
+  font-size:.40rem;
+}
+.hero-screenshot .mac-native-how-link{
+  font-size:.42rem;
+}
+
+/* Interactive Mac gallery */
+#gallery-mac .mac-native-help-gallery{
+  margin:0 0 12px;
+}
+#gallery-mac .mac-native-help-lines{
+  padding-right:120px;
+  font-size:.66rem;
+}
+#gallery-mac .mac-native-how-link{
+  font-size:.68rem;
+}
+
+/* iPad gallery */
+#gallery-ipad .ipad-native-ask-head{
+  padding:8px 14px 4px;
+}
+#gallery-ipad .ipad-native-ask-title{
+  font-size:.70rem;
+  font-weight:800;
+  color:#fff;
+  line-height:1.15;
+  margin-bottom:5px;
+}
+#gallery-ipad .ipad-native-help{
+  margin-bottom:7px;
+}
+#gallery-ipad .ipad-native-help-lines{
+  padding-right:86px;
+  font-size:.40rem;
+}
+#gallery-ipad .ipad-native-how-link{
+  font-size:.42rem;
+}
+#gallery-ipad .ipad-native-output-row{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin:0 14px 7px;
+  padding:6px 8px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:9px;
+  background:#171c22;
+}
+#gallery-ipad .ipad-native-output-label{
+  color:#8b949e;
+  font-size:.40rem;
+  white-space:nowrap;
+}
+#gallery-ipad .ipad-native-output-select{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  width:58%;
+  padding:6px 8px;
+  border:1.4px solid #a78bfa;
+  border-radius:8px;
+  background:#1c2128;
+  color:#fff;
+  box-sizing:border-box;
+  font-size:.45rem;
+}
+#gallery-ipad .ipad-native-output-select strong{font-weight:700}
+#gallery-ipad .ipad-native-output-caret{margin-left:auto;color:#b8c0cc}
+
+/* Preserve proportions/readability when Mac and iPad renders are viewed on phones. */
+@media (max-width:640px){
+  .hero-screenshot .mac-native-help-lines{
+    padding-right:54px;
+    font-size:clamp(.34rem,1.55vw,.40rem);
+  }
+  .hero-screenshot .mac-native-how-link{
+    font-size:clamp(.36rem,1.6vw,.42rem);
+  }
+
+  #gallery-mac .mac-native-help-lines{
+    padding-right:86px;
+    font-size:clamp(.48rem,2.1vw,.60rem);
+  }
+  #gallery-mac .mac-native-how-link{
+    font-size:clamp(.50rem,2.15vw,.62rem);
+  }
+
+  #gallery-ipad .ipad-native-help-lines{
+    padding-right:76px;
+    font-size:clamp(.34rem,1.55vw,.41rem);
+  }
+  #gallery-ipad .ipad-native-how-link{
+    font-size:clamp(.36rem,1.6vw,.43rem);
+  }
+  #gallery-ipad .ipad-native-output-row{
+    margin-left:10px;
+    margin-right:10px;
+    padding:5px 7px;
+  }
+  #gallery-ipad .ipad-native-output-select{
+    width:60%;
+    min-width:0;
+  }
+}
+
+/* On very narrow screens, let the link move below instead of crushing the helper text. */
+@media (max-width:390px){
+  #gallery-mac .mac-native-help-lines,
+  #gallery-ipad .ipad-native-help-lines{
+    padding-right:0;
+  }
+  #gallery-mac .mac-native-how-link,
+  #gallery-ipad .ipad-native-how-link{
     position:static;
     display:block;
     width:max-content;
