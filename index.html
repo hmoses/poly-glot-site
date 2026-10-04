@@ -9100,5 +9100,20 @@ html[data-device-ui-dir="rtl"] #iphone-duo .duo-localized-device{direction:rtl}
   #iphone-duo .duo-ai-row{margin:5px 0}
 }
 </style>
+
+<style>
+/* ===== IPHONE DUO — USE EXACT XCODE SIMULATOR RENDER ===== */
+/* Use the full Xcode simulator render instead of the simplified recreated Duo UI. */
+#iphone-duo .duo-static-en{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  object-fit:contain!important;
+}
+#iphone-duo .duo-localized-device{
+  display:none!important;
+}
+</style>
+
 </body>
 </html>
