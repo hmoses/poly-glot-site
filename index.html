@@ -3389,7 +3389,7 @@ function _siteDemoStart() {
   p1.style.opacity = '1'; p3.style.display = 'none'; p3.style.opacity = '0';
   p2.style.transform = 'translateY(100%)';
   ta.textContent = ''; sb.style.opacity = '0.4'; sb.style.transform = 'scale(1)';
-  tog.classList.remove('is-on'); tog.style.background = ''; tog.style.boxShadow = ''; knob.style.left = '';
+  tog.classList.remove('is-on'); tog.setAttribute('aria-checked','false'); knob.style.transform = 'translateX(0)';
   sendAll.style.opacity = '0.4'; cmpCnt.textContent = '0';
   document.querySelectorAll('.siteDemo-AI').forEach(function(b) {
     b.style.borderColor = 'rgba(255,255,255,.08)'; b.style.background = '#1c2128';
@@ -3427,7 +3427,7 @@ function _siteDemoStart() {
               /* Phase 2b: Toggle Compare Mode ON */
               var t3 = setTimeout(function() {
                 if (!_siteDemoRunning) return;
-                tog.classList.add('is-on');
+                tog.classList.add('is-on'); tog.setAttribute('aria-checked','true'); knob.style.transform = 'translateX(18px)';
                 /* Phase 2c: Select ChatGPT */
                 var t4 = setTimeout(function() {
                   if (!_siteDemoRunning) return;
@@ -8850,6 +8850,52 @@ function _demoStart() {
 }
 #gallery-mac #siteDemo-CmpToggle.is-on #siteDemo-CmpKnob{
   left:20px!important;
+}
+</style>
+
+
+<style>
+/* ===== MAC COMPARE TOGGLE — VISIBLE OFF TO ON ===== */
+#gallery-mac #siteDemo-CmpToggle{
+  position:relative!important;
+  width:42px!important;
+  min-width:42px!important;
+  height:24px!important;
+  min-height:24px!important;
+  border-radius:999px!important;
+  background:#303641!important;
+  border:1px solid rgba(255,255,255,.16)!important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.035)!important;
+  transition:background .36s ease,box-shadow .36s ease!important;
+}
+#gallery-mac #siteDemo-CmpKnob{
+  position:absolute!important;
+  width:18px!important;
+  height:18px!important;
+  top:2px!important;
+  left:2px!important;
+  border-radius:50%!important;
+  background:#fff!important;
+  box-shadow:0 1px 4px rgba(0,0,0,.35)!important;
+  transform:translateX(0)!important;
+  transition:transform .36s cubic-bezier(.2,.8,.2,1)!important;
+}
+#gallery-mac #siteDemo-CmpToggle.is-on{
+  background:#7c3aed!important;
+  box-shadow:
+    0 0 16px rgba(124,58,237,.5),
+    inset 0 0 0 1px rgba(255,255,255,.12)!important;
+}
+#gallery-mac #siteDemo-CmpToggle.is-on #siteDemo-CmpKnob{
+  transform:translateX(18px)!important;
+}
+
+/* make the OFF state linger clearly before ON */
+#gallery-mac #siteDemo-CmpToggle[aria-checked="false"]{
+  background:#303641!important;
+}
+#gallery-mac #siteDemo-CmpToggle[aria-checked="true"]{
+  background:#7c3aed!important;
 }
 </style>
 
