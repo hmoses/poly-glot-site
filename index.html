@@ -2342,7 +2342,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                     <div><div class="hp-h">Prompt History</div><div class="hp-note">Your recent prompts &amp; favorites</div></div>
                     <div class="hp-actions"><span class="hp-pill">All</span><span class="hp-pill clear">Clear</span></div>
                   </div>
-                  <div class="hp-card">
+                  <div class="ipad-history-card-grid"><div class="hp-card">
                     <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Test</div>
                     <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
                   </div>
@@ -2353,7 +2353,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                   <div class="hp-card">
                     <span class="hp-star">☆</span><div class="hp-card-title">Interview Coach</div><div class="hp-time">9m ago</div><div class="hp-text">You are an executive career coach. Prepare {{name}} for a {{job_title}} interview...</div>
                     <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
-                  </div>
+                  </div></div>
                 </div>
               </div>
               <div class="ipad-home-indicator"></div>
@@ -7564,6 +7564,77 @@ function _demoStart() {
   #gallery-mac #macScreen-history .mac-history-time{font-size:.31rem!important;}
   #gallery-mac #macScreen-history .mac-history-text{font-size:.33rem!important;}
   #gallery-mac #macScreen-history .mac-history-btn{font-size:.3rem!important;padding:3px 1px!important;}
+}
+</style>
+
+
+<style>
+/* ===== IPAD HISTORY PROPORTIONAL CARDS ===== */
+/* Keep the iPad History screen landscape/proportional instead of using oversized full-width cards. */
+.ipad-screen .history-preview .ipad-history-card-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:6px!important;
+  width:100%!important;
+  align-items:start!important;
+}
+.ipad-screen .history-preview .ipad-history-card-grid .hp-card{
+  min-width:0!important;
+  margin:0!important;
+  padding:6px 7px 6px!important;
+  border-radius:7px!important;
+}
+.ipad-screen .history-preview .ipad-history-card-grid .hp-card-title{
+  font-size:7.7px!important;
+  padding-right:12px!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+.ipad-screen .history-preview .ipad-history-card-grid .hp-time{
+  font-size:5px!important;
+  margin:2px 0 3px!important;
+}
+.ipad-screen .history-preview .ipad-history-card-grid .hp-text{
+  font-size:5.8px!important;
+  line-height:1.2!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  padding-right:10px!important;
+}
+.ipad-screen .history-preview .ipad-history-card-grid .hp-star{
+  font-size:11px!important;
+  right:6px!important;
+  top:5px!important;
+}
+.ipad-screen .history-preview .ipad-history-card-grid .hp-buttons{
+  grid-template-columns:1fr 1fr 14px!important;
+  gap:3px!important;
+  margin-top:5px!important;
+}
+.ipad-screen .history-preview .ipad-history-card-grid .hp-btn{
+  font-size:5.5px!important;
+  padding:4px 2px!important;
+  border-radius:5px!important;
+}
+
+/* Slightly tighten the History header so the cards sit naturally in the iPad viewport. */
+.ipad-screen .history-preview .hp-body{
+  padding:7px 10px 12px!important;
+}
+.ipad-screen .history-preview .hp-row{
+  margin-bottom:6px!important;
+}
+.ipad-screen .history-preview .hp-h{
+  font-size:10.5px!important;
+}
+.ipad-screen .history-preview .hp-note{
+  font-size:6px!important;
+}
+.ipad-screen .history-preview .hp-pill{
+  font-size:6px!important;
+  padding:3px 6px!important;
 }
 </style>
 
