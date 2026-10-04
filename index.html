@@ -2154,7 +2154,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           <div class="iphone-device">
             <span class="iphone-side-left" aria-hidden="true"></span>
             <div class="iphone-screen">
-              <div class="iphone-live-preview">
+              <div class="iphone-live-preview iphone-ask-preview">
                 <!-- Status bar -->
                 <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px 4px;font-size:0.6rem;font-weight:700;color:#fff">
                   <span>1:11</span>
@@ -2167,15 +2167,15 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                   <span style="margin-left:auto;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,0.1);font-size:0.5rem;font-weight:700;color:#fff">🇺🇸 EN</span>
                 </div>
                 <!-- Tabs -->
-                <div style="display:flex;font-size:0.5rem;font-weight:600;color:rgba(255,255,255,0.3);border-bottom:1px solid rgba(255,255,255,0.08)">
-                  <span style="padding:6px 8px;color:#f59e0b;border-bottom:2px solid #f59e0b">✏️ Ask Any AI</span>
+                <div class="iphone-ask-tabs" style="display:flex;font-size:0.5rem;font-weight:600;color:rgba(255,255,255,0.3);border-bottom:1px solid rgba(255,255,255,0.08)">
+                  <span class="iphone-ask-tab-active" style="padding:6px 8px;color:#f59e0b;border-bottom:2px solid #f59e0b">✏️ Ask Any AI</span>
                   <span style="padding:6px 7px">📋 Templates</span>
                   <span style="padding:6px 7px">📖 How to Use</span>
                   <span style="padding:6px 7px">🕐 History</span>
                 </div>
                 <!-- Ask Any AI -->
-                <div style="padding:10px 12px 4px">
-                  <div style="font-size:0.8rem;font-weight:800;color:#fff;margin-bottom:6px">🤔 Ask Any AI</div>
+                <div class="iphone-ask-body" style="padding:10px 12px 4px">
+                  <div class="iphone-ask-heading" style="font-size:0.8rem;font-weight:800;color:#fff;margin-bottom:6px">🤔 Ask Any AI</div>
                   <div style="font-size:0.45rem;color:rgba(255,255,255,0.35);line-height:1.6;margin-bottom:8px">📝 Type, paste, import, scan, or talk<br>💬 App Language 🌐 changes menus &amp; templates</div>
                 </div>
                 <div style="display:flex;align-items:center;gap:6px;padding:2px 12px 6px">
@@ -5292,6 +5292,104 @@ function _demoStart() {
 
   #demo .demo-ask-heading {
     font-size: .59rem !important;
+  }
+}
+
+
+/* ===== IPHONE GALLERY UI — MOBILE ONLY ===== */
+@media (max-width: 640px) {
+  /* Keep the first iPhone mock proportional and comfortably inside an iPhone viewport. */
+  #gallery-iphone .gallery-item:first-child .iphone-device {
+    width: min(72vw, 286px) !important;
+    max-width: 286px !important;
+    margin: 0 auto !important;
+  }
+
+  #gallery-iphone .gallery-item:first-child .iphone-screen {
+    aspect-ratio: 390 / 844 !important;
+    height: auto !important;
+  }
+
+  #gallery-iphone .iphone-ask-preview {
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Four equal app tabs so Ask Any AI stays in the correct first position. */
+  #gallery-iphone .iphone-ask-tabs {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 0 !important;
+    width: 100% !important;
+    padding: 0 7px !important;
+    box-sizing: border-box !important;
+    align-items: stretch !important;
+  }
+
+  #gallery-iphone .iphone-ask-tabs > span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 6px 2px 7px !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    white-space: normal !important;
+    line-height: 1.12 !important;
+    font-size: .44rem !important;
+  }
+
+  #gallery-iphone .iphone-ask-tab-active {
+    border-bottom: 2px solid #f59e0b !important;
+  }
+
+  #gallery-iphone .iphone-ask-body {
+    padding: 10px 12px 4px !important;
+  }
+
+  #gallery-iphone .iphone-ask-heading {
+    text-align: center !important;
+    font-size: .76rem !important;
+    line-height: 1.15 !important;
+    margin: 0 0 6px !important;
+  }
+
+  /* Keep the controls visually balanced instead of leaving an oversized empty lower half. */
+  #gallery-iphone .iphone-ask-preview > div:nth-last-child(2) {
+    margin-top: 2px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  #gallery-iphone .gallery-item:first-child .iphone-device {
+    width: min(70vw, 270px) !important;
+    max-width: 270px !important;
+  }
+
+  #gallery-iphone .iphone-ask-tabs > span {
+    font-size: .41rem !important;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+  }
+
+  #gallery-iphone .iphone-ask-heading {
+    font-size: .72rem !important;
+  }
+}
+
+
+/* ===== LIVE DEMO ASK TAB POSITION — MOBILE ONLY ===== */
+@media (max-width: 640px) {
+  #demo .demo-ask-tabs > span:first-child {
+    justify-content: center !important;
+    text-align: center !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+  }
+  #demo .demo-ask-tabs {
+    grid-template-columns: 1.05fr .95fr 1.05fr .95fr !important;
   }
 }
 
