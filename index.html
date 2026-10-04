@@ -238,13 +238,14 @@ a:hover { opacity: 0.85; }
 }
 .duo-kicker {
   display:inline-block;
-  margin-bottom:14px;
-  color:#8b7dff;
+  margin-bottom:18px;
+  color:#f8ff39;
   font-family:'Fira Code',monospace;
-  font-size:.74rem;
-  font-weight:700;
-  letter-spacing:.28em;
+  font-size:1rem;
+  font-weight:900;
+  letter-spacing:.22em;
   text-transform:uppercase;
+  text-shadow:0 0 8px rgba(248,255,57,.95),0 0 22px rgba(248,255,57,.62),0 0 42px rgba(248,255,57,.32);
 }
 .duo-coming h2 {
   margin:0 0 18px;
@@ -269,21 +270,24 @@ a:hover { opacity: 0.85; }
 .duo-badge {
   display:inline-flex;
   align-items:center;
-  gap:10px;
-  padding:11px 18px;
-  border:1px solid rgba(255,255,255,.22);
+  gap:12px;
+  padding:14px 24px;
+  border:1px solid rgba(248,255,57,.72);
   border-radius:999px;
-  background:rgba(255,255,255,.045);
-  color:#fff;
-  font-weight:700;
-  font-size:.88rem;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  background:rgba(248,255,57,.07);
+  color:#f8ff39;
+  font-weight:900;
+  font-size:1.08rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  box-shadow:0 0 14px rgba(248,255,57,.18),inset 0 0 18px rgba(248,255,57,.05);
+  text-shadow:0 0 8px rgba(248,255,57,.95),0 0 20px rgba(248,255,57,.52);
 }
 .duo-badge::before {
   content:'';
-  width:8px; height:8px; border-radius:50%;
-  background:#a46bff;
-  box-shadow:0 0 18px rgba(164,107,255,.9);
+  width:10px; height:10px; border-radius:50%;
+  background:#f8ff39;
+  box-shadow:0 0 10px rgba(248,255,57,1),0 0 24px rgba(248,255,57,.85);
 }
 .duo-meta {
   margin-top:18px;
@@ -989,6 +993,38 @@ img.mac-screen-panel {
 .iphone-screen .history-preview .hp-star { font-size:14px;right:7px;top:6px; }
 .iphone-screen .history-preview .hp-buttons { gap:4px;margin-top:7px; }
 .iphone-screen .history-preview .hp-btn { font-size:7px;padding:5px 3px;border-radius:6px; }
+.iphone-screen .history-preview .hp-card-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:6px;
+}
+.iphone-screen .history-preview .hp-card-grid .hp-card {
+  margin:0;
+  min-width:0;
+  padding:7px 7px 6px;
+}
+.iphone-screen .history-preview .hp-card-grid .hp-card-title {
+  padding-right:13px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.iphone-screen .history-preview .hp-card-grid .hp-text {
+  min-width:0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.iphone-screen .history-preview .hp-card-grid .hp-buttons {
+  grid-template-columns:1fr 1fr 18px;
+  gap:3px;
+  margin-top:5px;
+}
+.iphone-screen .history-preview .hp-card-grid .hp-btn {
+  font-size:6px;
+  padding:4px 2px;
+}
+
 
 /* iPad History reflows to a true landscape tablet layout */
 .ipad-screen .history-preview .hp-status { padding:5px 12px 3px;font-size:7px; }
@@ -1116,57 +1152,67 @@ img.mac-screen-panel {
   .feature-card.feature-localized { grid-column: auto; }
 }
 
-/* Preserve the 1 / 2 / 3 / 2 / 1 provider diamond on every viewport */
-@media (max-width: 640px) {
-  .models .container {
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-  }
-  .model-grid {
-    display:grid !important;
-    grid-template-columns:repeat(5,minmax(0,1fr)) !important;
-    gap:6px !important;
-    width:100% !important;
-    max-width:100% !important;
-    margin:0 auto !important;
-  }
-  .model-grid .model-card:nth-child(1) { grid-column:3 !important; grid-row:1 !important; }
-  .model-grid .model-card:nth-child(2) { grid-column:2 !important; grid-row:2 !important; }
-  .model-grid .model-card:nth-child(3) { grid-column:4 !important; grid-row:2 !important; }
-  .model-grid .model-card:nth-child(4) { grid-column:1 !important; grid-row:3 !important; }
-  .model-grid .model-card:nth-child(5) { grid-column:3 !important; grid-row:3 !important; }
-  .model-grid .model-card:nth-child(6) { grid-column:5 !important; grid-row:3 !important; }
-  .model-grid .model-card:nth-child(7) { grid-column:2 !important; grid-row:4 !important; }
-  .model-grid .model-card:nth-child(8) { grid-column:4 !important; grid-row:4 !important; }
-  .model-grid .model-card:nth-child(9) { grid-column:3 !important; grid-row:5 !important; }
-  .model-grid .model-card {
-    width:100% !important;
-    min-width:0 !important;
-    padding:10px 3px !important;
-  }
-}
-
 /* 9-provider diamond: 1 / 2 / 3 / 2 / 1 */
 .model-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(120px, 1fr));
-  gap: 16px;
-  max-width: 1040px;
-  margin: 0 auto;
-  align-items: stretch;
+  display:grid;
+  grid-template-columns:repeat(5,minmax(120px,1fr));
+  gap:16px;
+  max-width:1040px;
+  margin:0 auto;
+  align-items:stretch;
 }
-.model-grid .model-card:nth-child(1) { grid-column: 3; grid-row: 1; }
-.model-grid .model-card:nth-child(2) { grid-column: 2; grid-row: 2; }
-.model-grid .model-card:nth-child(3) { grid-column: 4; grid-row: 2; }
-.model-grid .model-card:nth-child(4) { grid-column: 1; grid-row: 3; }
-.model-grid .model-card:nth-child(5) { grid-column: 3; grid-row: 3; }
-.model-grid .model-card:nth-child(6) { grid-column: 5; grid-row: 3; }
-.model-grid .model-card:nth-child(7) { grid-column: 2; grid-row: 4; }
-.model-grid .model-card:nth-child(8) { grid-column: 4; grid-row: 4; }
-.model-grid .model-card:nth-child(9) { grid-column: 3; grid-row: 5; }
+.model-grid .model-card:nth-child(1) { grid-column:3; grid-row:1; }
+.model-grid .model-card:nth-child(2) { grid-column:2; grid-row:2; }
+.model-grid .model-card:nth-child(3) { grid-column:4; grid-row:2; }
+.model-grid .model-card:nth-child(4) { grid-column:1; grid-row:3; }
+.model-grid .model-card:nth-child(5) { grid-column:3; grid-row:3; }
+.model-grid .model-card:nth-child(6) { grid-column:5; grid-row:3; }
+.model-grid .model-card:nth-child(7) { grid-column:2; grid-row:4; }
+.model-grid .model-card:nth-child(8) { grid-column:4; grid-row:4; }
+.model-grid .model-card:nth-child(9) { grid-column:3; grid-row:5; }
 
-/* Preserve the 1 / 2 / 3 / 2 / 1 diamond on tablets and phones */
-@media (max-width: 820px) {
+.model-card {
+  background:var(--bg-surface);
+  border:1px solid rgba(125,211,252,.06);
+  border-radius:var(--radius-sm);
+  padding:24px 16px;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  text-align:center;
+  transition:border-color .2s,transform .2s;
+}
+.model-card:hover { border-color:rgba(125,211,252,.2); transform:translateY(-2px); }
+.model-card .model-dot {
+  display:block;
+  flex:0 0 auto;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  margin:0 auto 10px !important;
+  align-self:center;
+}
+.model-card .model-name {
+  width:100%;
+  font-weight:700;
+  font-size:1rem;
+  line-height:1.15;
+  margin-bottom:4px;
+  text-align:center;
+  overflow-wrap:anywhere;
+}
+.model-card .model-desc {
+  width:100%;
+  font-size:.78rem;
+  line-height:1.25;
+  color:var(--text-faint);
+  text-align:center;
+  overflow-wrap:anywhere;
+}
+
+@media (max-width:820px) {
   .model-grid {
     grid-template-columns:repeat(5,minmax(0,1fr));
     gap:10px;
@@ -1174,15 +1220,14 @@ img.mac-screen-panel {
     max-width:700px;
   }
 }
-@media (max-width: 520px) {
-  .models .container { padding-left:10px; padding-right:10px; }
+@media (max-width:520px) {
+  .models .container { padding-left:10px !important; padding-right:10px !important; }
   .model-grid {
     grid-template-columns:repeat(5,minmax(0,1fr)) !important;
-    gap:6px !important;
+    gap:7px !important;
     width:100% !important;
     max-width:100% !important;
   }
-  .model-grid .model-card { min-width:0 !important; width:100% !important; padding:11px 3px !important; }
   .model-grid .model-card:nth-child(1) { grid-column:3 !important; grid-row:1 !important; }
   .model-grid .model-card:nth-child(2) { grid-column:2 !important; grid-row:2 !important; }
   .model-grid .model-card:nth-child(3) { grid-column:4 !important; grid-row:2 !important; }
@@ -1192,51 +1237,19 @@ img.mac-screen-panel {
   .model-grid .model-card:nth-child(7) { grid-column:2 !important; grid-row:4 !important; }
   .model-grid .model-card:nth-child(8) { grid-column:4 !important; grid-row:4 !important; }
   .model-grid .model-card:nth-child(9) { grid-column:3 !important; grid-row:5 !important; }
-  .model-card .model-dot { width:9px; height:9px; margin-bottom:6px; }
-  .model-card .model-name { font-size:.68rem; line-height:1.05; overflow-wrap:anywhere; }
-  .model-card .model-desc { font-size:.54rem; line-height:1.12; overflow-wrap:anywhere; }
-}
-
-
-.model-grid .model-card {
-    min-width: 0;
-    padding: 12px 4px;
-  }
-  .model-grid .model-card:nth-child(1) { grid-column: 3; grid-row: 1; }
-  .model-grid .model-card:nth-child(2) { grid-column: 2; grid-row: 2; }
-  .model-grid .model-card:nth-child(3) { grid-column: 4; grid-row: 2; }
-  .model-grid .model-card:nth-child(4) { grid-column: 1; grid-row: 3; }
-  .model-grid .model-card:nth-child(5) { grid-column: 3; grid-row: 3; }
-  .model-grid .model-card:nth-child(6) { grid-column: 5; grid-row: 3; }
-  .model-grid .model-card:nth-child(7) { grid-column: 2; grid-row: 4; }
-  .model-grid .model-card:nth-child(8) { grid-column: 4; grid-row: 4; }
-  .model-grid .model-card:nth-child(9) { grid-column: 3; grid-row: 5; }
-  .model-card .model-name {
-    font-size: .72rem;
-    line-height: 1.05;
-    overflow-wrap: anywhere;
-  }
-  .model-card .model-desc {
-    font-size: .56rem;
-    line-height: 1.15;
-    overflow-wrap: anywhere;
+  .model-card {
+    width:100% !important;
+    min-width:0 !important;
+    padding:12px 3px !important;
   }
   .model-card .model-dot {
-    width: 9px;
-    height: 9px;
-    margin-bottom: 6px;
+    width:10px !important;
+    height:10px !important;
+    margin:0 auto 7px !important;
   }
+  .model-card .model-name { font-size:.72rem !important; line-height:1.08 !important; }
+  .model-card .model-desc { font-size:.56rem !important; line-height:1.16 !important; }
 }
-.model-card {
-  background: var(--bg-surface);
-  border: 1px solid rgba(125,211,252,0.06);
-  border-radius: var(--radius-sm); padding: 24px 16px;
-  text-align: center; transition: border-color 0.2s, transform 0.2s;
-}
-.model-card:hover { border-color: rgba(125,211,252,0.2); transform: translateY(-2px); }
-.model-card .model-dot { width: 12px; height: 12px; border-radius: 50%; margin: 0 auto 10px; }
-.model-card .model-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
-.model-card .model-desc { font-size: 0.78rem; color: var(--text-faint); }
 
 /* ===== INTERACTIVE IN-APP DEMO ===== */
 .demo-section { background: var(--bg); }
@@ -2224,17 +2237,31 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
                     <div><div class="hp-h">Prompt History</div><div class="hp-note">Your recent prompts &amp; favorites</div></div>
                     <div class="hp-actions"><span class="hp-pill">All</span><span class="hp-pill clear">Clear</span></div>
                   </div>
-                  <div class="hp-card">
-                    <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Test</div>
-                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
-                  </div>
-                  <div class="hp-card">
-                    <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Test</div>
-                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
-                  </div>
-                  <div class="hp-card">
-                    <span class="hp-star">☆</span><div class="hp-card-title">Interview Coach</div><div class="hp-time">9m ago</div><div class="hp-text">You are an executive career coach. Prepare {{name}} for a {{job_title}} interview...</div>
-                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                  <div class="hp-card-grid">
+                    <div class="hp-card">
+                      <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Test</div>
+                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                    </div>
+                    <div class="hp-card">
+                      <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Write a polite email to my landlord asking to fix the heater.</div>
+                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                    </div>
+                    <div class="hp-card">
+                      <span class="hp-star">☆</span><div class="hp-card-title">Interview Coach</div><div class="hp-time">9m ago</div><div class="hp-text">Prepare {{name}} for a {{job_title}} interview.</div>
+                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                    </div>
+                    <div class="hp-card">
+                      <span class="hp-star">☆</span><div class="hp-card-title">Resume Optimizer</div><div class="hp-time">12m ago</div><div class="hp-text">Improve this resume for a senior technical writer role.</div>
+                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                    </div>
+                    <div class="hp-card">
+                      <span class="hp-star">☆</span><div class="hp-card-title">API Documentation</div><div class="hp-time">18m ago</div><div class="hp-text">Draft a concise API quickstart from this OpenAPI spec.</div>
+                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                    </div>
+                    <div class="hp-card">
+                      <span class="hp-star">☆</span><div class="hp-card-title">Translation</div><div class="hp-time">24m ago</div><div class="hp-text">Translate this product description into French and Arabic.</div>
+                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -4839,6 +4866,80 @@ function _demoStart() {
   .hero-phone-mock { width:min(44vw,165px) !important; max-width:165px !important; }
   #gallery-iphone .iphone-device { width:min(80vw,300px) !important; max-width:300px !important; }
   #gallery-mac .mac-app-tab { font-size:.60rem !important; }
+}
+
+/* ===== DESKTOP / MAC HERO DEVICE SCALE + MACBOOK HARDWARE ===== */
+@media (min-width: 961px) {
+  .hero-inner {
+    grid-template-columns:.78fr 1.22fr;
+    gap:42px;
+  }
+  .hero-visual {
+    width:112%;
+    max-width:820px;
+    justify-self:end;
+    margin-right:-5%;
+    overflow:visible;
+  }
+  .hero-screenshot {
+    position:relative;
+    width:100%;
+    padding:8px 8px 28px;
+    overflow:visible;
+    border:0;
+    border-radius:20px 20px 10px 10px;
+    background:linear-gradient(180deg,#171b22 0%,#0a0d12 70%,#11161d 100%);
+    box-shadow:0 34px 78px rgba(0,0,0,.52),inset 0 0 0 1px rgba(255,255,255,.055);
+  }
+  .hero-screenshot::before {
+    content:"";
+    position:absolute;
+    top:4px;
+    left:50%;
+    transform:translateX(-50%);
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#020306;
+    box-shadow:0 0 0 1px rgba(255,255,255,.03);
+    z-index:20;
+  }
+  .hero-screenshot::after {
+    content:"";
+    position:absolute;
+    left:-2%;
+    right:-2%;
+    bottom:-9px;
+    height:19px;
+    border-radius:0 0 50px 50px;
+    background:linear-gradient(180deg,#505761 0%,#303741 44%,#1b2027 100%);
+    box-shadow:0 11px 24px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.08);
+    z-index:1;
+  }
+  .hero-screenshot > div {
+    position:relative;
+    width:100%;
+    border:0 !important;
+    border-radius:12px !important;
+    overflow:hidden !important;
+    background:#05070c !important;
+    box-shadow:0 0 0 2px #030507,0 0 0 4px #11161d,0 14px 34px rgba(0,0,0,.42) !important;
+    z-index:2;
+  }
+  .hero-phone-mock {
+    width:178px;
+    right:-32px;
+    bottom:-36px;
+    border-radius:30px;
+    padding:7px;
+    transform:rotate(2deg);
+  }
+}
+
+/* Neon Coming Soon remains readable on mobile */
+@media (max-width:640px) {
+  .duo-kicker { font-size:.92rem; }
+  .duo-badge { font-size:1rem; padding:13px 21px; }
 }
 </style>
 
