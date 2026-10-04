@@ -8119,5 +8119,49 @@ function _demoStart() {
 }
 </style>
 
+
+<style>
+/* ===== MAC ASK TAB TRUE INACTIVE MASK ===== */
+/* The Ask Any AI active color is baked into the Mac reference image.
+   When another tab is selected, fully mask the baked orange tab and redraw it neutral. */
+#gallery-mac .mac-reference-tab:first-child:not(.active)::before{
+  content:"✏️  Ask Any AI"!important;
+  position:absolute!important;
+  inset:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border-radius:0!important;
+  background:#05080d!important;
+  color:rgba(255,255,255,.48)!important;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",sans-serif!important;
+  font-size:clamp(6px,.72vw,11px)!important;
+  font-weight:600!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  z-index:6!important;
+  pointer-events:none!important;
+}
+
+/* Remove every trace of the baked orange underline when Ask Any AI is inactive. */
+#gallery-mac .mac-reference-tab:first-child:not(.active)::after{
+  content:""!important;
+  position:absolute!important;
+  left:0!important;
+  right:0!important;
+  bottom:0!important;
+  height:5px!important;
+  background:#05080d!important;
+  box-shadow:none!important;
+  z-index:7!important;
+}
+
+/* Keep active Ask Any AI untouched so the original reference styling shows normally. */
+#gallery-mac .mac-reference-tab:first-child.active::before{
+  content:""!important;
+  background:transparent!important;
+}
+</style>
+
 </body>
 </html>
