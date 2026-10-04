@@ -23,19 +23,36 @@ function meta(code){
   var g=window._pgI18n&&window._pgI18n.LANGS&&window._pgI18n.LANGS.find(function(x){return normCode(x.code)===n;});
   return g?{code:n,name:g.name,flag:g.flag}:{code:n,name:"English",flag:"🇺🇸"};
 }
+var DEVICE_EXTRA={
+  EN:{compareHelp:"send to multiple AIs",promptIntro:"Hi! Ask Any AI anything — in your language.",promptExample:"Example: Write a polite email to my landlord asking to fix the heater."},
+  ES:{compareHelp:"enviar a varias IA",promptIntro:"¡Hola! Pregunta cualquier cosa a cualquier IA — en tu idioma.",promptExample:"Ejemplo: Escribe un correo amable a mi casero pidiendo que repare la calefacción."},
+  FR:{compareHelp:"envoyer à plusieurs IA",promptIntro:"Bonjour ! Demandez n'importe quoi à n'importe quelle IA — dans votre langue.",promptExample:"Exemple : Rédigez un e-mail poli à mon propriétaire pour demander de réparer le chauffage."},
+  DE:{compareHelp:"an mehrere KIs senden",promptIntro:"Hallo! Frag jede KI alles — in deiner Sprache.",promptExample:"Beispiel: Schreibe eine höfliche E-Mail an meinen Vermieter und bitte um Reparatur der Heizung."},
+  IT:{compareHelp:"invia a più IA",promptIntro:"Ciao! Chiedi qualsiasi cosa a qualsiasi IA — nella tua lingua.",promptExample:"Esempio: Scrivi un'e-mail cortese al proprietario chiedendo di riparare il riscaldamento."},
+  PT:{compareHelp:"enviar para várias IAs",promptIntro:"Olá! Pergunte qualquer coisa a qualquer IA — no seu idioma.",promptExample:"Exemplo: Escreva um e-mail educado ao senhorio pedindo para consertar o aquecedor."},
+  NL:{compareHelp:"naar meerdere AI's sturen",promptIntro:"Hallo! Vraag elke AI alles — in jouw taal.",promptExample:"Voorbeeld: Schrijf een beleefde e-mail aan mijn verhuurder om de verwarming te repareren."},
+  RU:{compareHelp:"отправить нескольким ИИ",promptIntro:"Здравствуйте! Спросите любой ИИ о чём угодно — на вашем языке.",promptExample:"Пример: Напишите вежливое письмо арендодателю с просьбой починить отопление."},
+  ZH:{compareHelp:"发送到多个 AI",promptIntro:"你好！用你的语言向任何 AI 提问。",promptExample:"示例：写一封礼貌的邮件，请房东修理暖气。"},
+  ZH_TW:{compareHelp:"傳送到多個 AI",promptIntro:"你好！用你的語言向任何 AI 提問。",promptExample:"範例：寫一封禮貌的電子郵件，請房東修理暖氣。"},
+  JA:{compareHelp:"複数のAIに送信",promptIntro:"こんにちは！あなたの言語で、どのAIにも何でも聞けます。",promptExample:"例：暖房の修理をお願いする丁寧なメールを大家さんに書いてください。"},
+  KO:{compareHelp:"여러 AI에 보내기",promptIntro:"안녕하세요! 원하는 언어로 어떤 AI에게든 무엇이든 물어보세요.",promptExample:"예: 집주인에게 난방 수리를 요청하는 정중한 이메일을 작성하세요."},
+  AR:{compareHelp:"الإرسال إلى عدة نماذج ذكاء اصطناعي",promptIntro:"مرحبًا! اسأل أي ذكاء اصطناعي أي شيء — بلغتك.",promptExample:"مثال: اكتب رسالة مهذبة إلى المالك تطلب إصلاح التدفئة."},
+  HI:{compareHelp:"कई AI को भेजें",promptIntro:"नमस्ते! अपनी भाषा में किसी भी AI से कुछ भी पूछें।",promptExample:"उदाहरण: मकान मालिक को हीटर ठीक करने के लिए विनम्र ईमेल लिखें।"}
+};
 function strings(code){
-  var n=normCode(code), c=CORE[n]||CORE.EN, e=EXTRA[n]||EXTRA.EN;
-  return Object.assign({},EXTRA.EN,CORE.EN,e,c);
+  var n=normCode(code), c=CORE[n]||CORE.EN, e=EXTRA[n]||EXTRA.EN, x=DEVICE_EXTRA[n]||DEVICE_EXTRA.EN;
+  return Object.assign({},EXTRA.EN,CORE.EN,DEVICE_EXTRA.EN,e,c,x);
 }
 function keyFor(text){
   var t=text.trim();
   var pairs={
-    "Ask Any AI":"ask","Templates":"templates","How to Use":"how","History":"history",
-    "Paste":"paste","Import":"import","Scan":"scan","Talk":"talk","Send":"send","Clear All":"clearAll",
+    "Ask Any AI":"ask","Templates":"templates","1,000+ Templates":"templates","How to Use":"how","History":"history",
+    "Paste":"paste","Import":"import","Scan":"scan","Talk":"talk","Send":"send","Send to AI":"send","Clear All":"clearAll",
     "Prompt History":"promptHistory","Your recent prompts & favorites":"recent","All":"all","Clear":"clear",
     "Copy":"copy","Re-edit":"reedit","How it works":"howWorks","AI will respond in:":"outputLabel",
     "Compare Mode":"compare","Send to Selected":"compareSend","Search templates...":"search","Search templates…":"search",
-    "Type, paste, import or talk":"typeLine","App Language":"appLang","Output Language":"outputLang"
+    "Type, paste, import or talk":"typeLine","App Language":"appLang","Output Language":"outputLang",
+    "changes menus & templates":"changesMenus","AI responds in this language":"responds"
   };
   return pairs[t]||null;
 }
@@ -48,6 +65,24 @@ function translateTextNode(node,S){
   var icon="", body=trimmed;
   var m=trimmed.match(/^([^\p{L}\p{N}]*)(.*)$/u);
   if(m){icon=m[1];body=m[2];}
+
+  // Compound helper lines used by the real app UI.
+  if(body==="App Language ⬆️ changes menus & templates"){
+    node.nodeValue=prefix+icon+(S.appLang||"App Language")+" ⬆️ "+(S.changesMenus||"changes menus & templates")+suffix; return;
+  }
+  if(body==="Output Language ⬇️ AI responds in this language"){
+    node.nodeValue=prefix+icon+(S.outputLang||"Output Language")+" ⬇️ "+(S.responds||"AI responds in this language")+suffix; return;
+  }
+  if(body==="Compare Mode: send to multiple AIs"){
+    node.nodeValue=prefix+icon+(S.compare||"Compare Mode")+": "+(S.compareHelp||"send to multiple AIs")+suffix; return;
+  }
+  if(body==="Hi ARCHITECT! Ask Any AI anything — in your language." || body==="Hi BUILDER! Ask any AI anything. In your language."){
+    node.nodeValue=prefix+(S.promptIntro||body)+suffix; return;
+  }
+  if(body==="Example: Write a polite email to my landlord asking to fix the heater" || body==="Example: Write a polite email to my landlord asking to fix the heater."){
+    node.nodeValue=prefix+(S.promptExample||body)+suffix; return;
+  }
+
   var k=keyFor(body);
   if(k&&S[k])node.nodeValue=prefix+icon+S[k]+suffix;
 }
@@ -73,8 +108,35 @@ function updateBadges(code){
     var strong=el.querySelector('strong'); if(strong)strong.textContent=M.name;
   });
 }
+function ensureStaticLocalizedPanels(){
+  document.querySelectorAll('#gallery-iphone .iphone-screen > img, #gallery-ipad .ipad-screen > img').forEach(function(img){
+    if(img.dataset.pgLocalized==="1")return;
+    var alt=(img.getAttribute('alt')||"");
+    var type=/Templates/i.test(alt)?"templates":(/How to Use/i.test(alt)?"how":null);
+    if(!type)return;
+    img.dataset.pgLocalized="1";
+    img.style.display="none";
+    var p=document.createElement('div');
+    p.className="pg-device-static-localized";
+    p.dataset.pgScreen=type;
+    p.innerHTML='<div class="pgdsl-head"><img src="assets/img/icon-128.png" alt=""><strong>Poly-Glot AI Workspace</strong><span class="pgdsl-badge">🇺🇸 EN</span></div>'
+      +'<div class="pgdsl-tabs"><span>✏️ Ask Any AI</span><span class="'+(type==="templates"?"active":"")+'">📋 Templates</span><span class="'+(type==="how"?"active":"")+'">📖 How to Use</span><span>🕐 History</span></div>'
+      +(type==="templates"
+        ?'<div class="pgdsl-body"><div class="pgdsl-title">Templates</div><div class="pgdsl-search">Search templates…</div><div class="pgdsl-cards"><div></div><div></div><div></div><div></div><div></div><div></div></div></div>'
+        :'<div class="pgdsl-body"><div class="pgdsl-title">How to Use</div><div class="pgdsl-step">1 · Type, paste, import or talk</div><div class="pgdsl-step">2 · App Language ⬆️ changes menus & templates</div><div class="pgdsl-step">3 · Output Language ⬇️ AI responds in this language</div><div class="pgdsl-step">4 · Compare Mode: send to multiple AIs</div></div>');
+    img.parentNode.insertBefore(p,img);
+  });
+}
+function updateStaticPanels(code,S){
+  var M=meta(code);
+  document.querySelectorAll('.pg-device-static-localized').forEach(function(p){
+    var b=p.querySelector('.pgdsl-badge'); if(b)b.textContent=M.flag+" "+M.code.replace("_","-");
+    localizeRoot(p,S);
+  });
+}
 function apply(code){
   var S=strings(code);
+  ensureStaticLocalizedPanels();
   [
     document.querySelector('.hero-phone-mock'),
     document.getElementById('gallery-iphone'),
@@ -83,8 +145,22 @@ function apply(code){
     document.getElementById('demo')
   ].forEach(function(root){localizeRoot(root,S);});
   updateBadges(code);
+  updateStaticPanels(code,S);
   document.documentElement.setAttribute('data-device-ui-lang',normCode(code));
 }
+var style=document.createElement('style');
+style.textContent=
+'.pg-device-static-localized{position:absolute;inset:0;background:#0d0f1a;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;overflow:hidden}'
++'.pgdsl-head{display:flex;align-items:center;gap:8px;padding:6% 6% 3%;font-size:clamp(7px,1.3vw,14px)}'
++'.pgdsl-head img{width:7%;aspect-ratio:1;border-radius:22%}.pgdsl-head strong{font-weight:800}.pgdsl-badge{margin-left:auto;background:rgba(255,255,255,.08);padding:1.5% 2.5%;border-radius:6px}'
++'.pgdsl-tabs{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.38);font-size:clamp(5px,.85vw,10px)}'
++'.pgdsl-tabs span{padding:4% 2%;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pgdsl-tabs .active{color:#f59e0b;border-bottom:2px solid #f59e0b}'
++'.pgdsl-body{padding:5% 6%}.pgdsl-title{font-size:clamp(11px,2vw,22px);font-weight:800;margin-bottom:4%}.pgdsl-search{background:#171c22;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:3%;color:#8b949e;font-size:clamp(7px,1.1vw,12px);margin-bottom:4%}'
++'.pgdsl-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:3%}.pgdsl-cards div{height:48px;background:#171c22;border:1px solid rgba(245,158,11,.24);border-radius:8px}'
++'.pgdsl-step{background:#171c22;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:3.3%;margin-bottom:2.5%;font-size:clamp(7px,1.05vw,12px);color:#b9c1ce}'
++'#gallery-iphone .pg-device-static-localized{border-radius:32px}#gallery-ipad .pg-device-static-localized{border-radius:22px}'
++'#gallery-ipad .pgdsl-cards{grid-template-columns:repeat(3,1fr)}#gallery-ipad .pgdsl-cards div{height:58px}';
+document.head.appendChild(style);
 window._pgDeviceUI={apply:apply,appLanguages:APP_LANGS};
 window.addEventListener('pg:languagechange',function(e){apply(e.detail&&e.detail.code||"EN");});
 function init(){apply(window._pgI18n?window._pgI18n.curLang():"EN");}
