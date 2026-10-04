@@ -1922,7 +1922,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     </ul>
     <span class="nav-cta">
       <span class="pulse-dot" style="width:6px;height:6px;background:#10b981;border-radius:50%;animation:pulse 2s infinite"></span>
-      <a href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12" style="color:inherit;text-decoration:none">Available Now</a>
+      <a href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285" data-app-store-auto="true" style="color:inherit;text-decoration:none">Available Now</a>
     </span>
     <button class="nav-mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show-mobile')" aria-label="Menu">&#9776;</button>
   </div>
@@ -1937,11 +1937,11 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         <h1><span data-i18n="heroH1a">Your Language. One Prompt.</span><br><span class="gradient-text" data-i18n="heroH1b">Every AI — Compare the Results.</span></h1>
         <p class="hero-sub" data-i18n="heroSub">Tell Poly-Glot what you need. Type or speak naturally in your language. Choose your AI, compare answers, pick the best one. 1,000+ templates in 38 languages. Available now on Mac, iPhone &amp; iPad.</p>
         <div class="hero-actions">
-          <a class="btn-coming-soon" href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12" style="text-decoration:none;color:inherit">
+          <a class="btn-coming-soon" href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12" data-app-store-target="mac" style="text-decoration:none;color:inherit">
             <span class="pulse-dot" style="background:#10b981"></span>
             <span data-i18n="heroMac">&#63743; Mac — Download Now</span>
           </a>
-          <a class="btn-coming-soon" href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285" style="text-decoration:none;color:inherit">
+          <a class="btn-coming-soon" href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285" data-app-store-target="ios" style="text-decoration:none;color:inherit">
             <span class="pulse-dot" style="background:#10b981"></span>
             <span data-i18n="heroIOS">📱 iPhone &amp; iPad — Download Now</span>
           </a>
@@ -2053,9 +2053,9 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <div class="platforms-inner">
       <div class="platforms-label" data-i18n="platLabel">Available on Apple platforms</div>
       <div class="platform-pills">
-        <a href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285" style="text-decoration:none"><div class="platform-pill"><span class="emoji">📱</span> iPhone <span class="coming-dot" style="background:#10b981"></span> <span style="font-size:0.7em;color:#10b981;font-weight:600">Available Now</span></div></a>
-        <a href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285" style="text-decoration:none"><div class="platform-pill"><span class="emoji">📱</span> iPad <span class="coming-dot" style="background:#10b981"></span> <span style="font-size:0.7em;color:#10b981;font-weight:600">Available Now</span></div></a>
-        <a href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12" style="text-decoration:none"><div class="platform-pill"><span class="emoji">💻</span> macOS <span class="coming-dot" style="background:#10b981"></span> <span style="font-size:0.7em;color:#10b981;font-weight:600">Available Now</span></div></a>
+        <a href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285" data-app-store-target="ios" style="text-decoration:none"><div class="platform-pill"><span class="emoji">📱</span> iPhone <span class="coming-dot" style="background:#10b981"></span> <span style="font-size:0.7em;color:#10b981;font-weight:600">Available Now</span></div></a>
+        <a href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285" data-app-store-target="ios" style="text-decoration:none"><div class="platform-pill"><span class="emoji">📱</span> iPad <span class="coming-dot" style="background:#10b981"></span> <span style="font-size:0.7em;color:#10b981;font-weight:600">Available Now</span></div></a>
+        <a href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12" data-app-store-target="mac" style="text-decoration:none"><div class="platform-pill"><span class="emoji">💻</span> macOS <span class="coming-dot" style="background:#10b981"></span> <span style="font-size:0.7em;color:#10b981;font-weight:600">Available Now</span></div></a>
       </div>
     </div>
   </div>
@@ -5134,6 +5134,22 @@ function _demoStart() {
     max-width:220px !important;
   }
 }
+
+/* ===== FINAL HERO PHONE SCALE ON IPHONE ===== */
+@media (max-width: 640px) {
+  .hero-phone-mock {
+    width:min(44vw, 185px) !important;
+    max-width:185px !important;
+    aspect-ratio:390 / 844 !important;
+    height:auto !important;
+  }
+}
+@media (max-width: 390px) {
+  .hero-phone-mock {
+    width:min(46vw, 175px) !important;
+    max-width:175px !important;
+  }
+}
 </style>
 
 <div id="pgLightbox" role="dialog" aria-modal="true" aria-label="Image preview">
@@ -5253,5 +5269,43 @@ function _demoStart() {
 <script src="assets/js/i18n.js"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
+
+<script>
+/* Device-aware App Store routing */
+(function () {
+  var IOS_URL = 'https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285';
+  var MAC_URL = 'https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12';
+
+  function isIPadOS() {
+    return /Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1;
+  }
+  function isMac() {
+    return /Macintosh/.test(navigator.userAgent) && !isIPadOS();
+  }
+  function deviceStoreUrl() {
+    return isMac() ? MAC_URL : IOS_URL;
+  }
+
+  function applyStoreLinks() {
+    document.querySelectorAll('[data-app-store-auto="true"]').forEach(function (a) {
+      a.href = deviceStoreUrl();
+    });
+    document.querySelectorAll('[data-app-store-target="mac"]').forEach(function (a) {
+      a.href = MAC_URL;
+    });
+    document.querySelectorAll('[data-app-store-target="ios"]').forEach(function (a) {
+      a.href = IOS_URL;
+    });
+  }
+
+  applyStoreLinks();
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-app-store-auto="true"]');
+    if (!a) return;
+    a.href = deviceStoreUrl();
+  }, true);
+})();
+</script>
 </body>
 </html>
