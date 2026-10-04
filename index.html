@@ -3338,8 +3338,9 @@ function switchMacTab(tab) {
     if (!tabEl || !screenEl) return;
 
     var active = (t === tab);
-    tabEl.style.color = active ? '#7dd3fc' : 'rgba(255,255,255,0.35)';
-    tabEl.style.borderBottom = active ? '2px solid #7dd3fc' : '2px solid transparent';
+    tabEl.classList.toggle('active', active);
+    tabEl.style.color = active ? '#f59e0b' : 'rgba(255,255,255,0.35)';
+    tabEl.style.borderBottom = active ? '2px solid #f59e0b' : '2px solid transparent';
     screenEl.classList.toggle('active', active);
 
     if (t === 'howtouse') {
@@ -8007,6 +8008,39 @@ function _demoStart() {
     font-size:6px!important;
     max-height:66px!important;
   }
+}
+</style>
+
+
+<style>
+/* ===== MAC CLICKED TAB YELLOW HIGHLIGHT ===== */
+#gallery-mac .mac-reference-tab{
+  position:relative!important;
+  border-radius:6px!important;
+  transition:background .18s ease,box-shadow .18s ease!important;
+}
+#gallery-mac .mac-reference-tab.active{
+  background:rgba(245,158,11,.14)!important;
+  box-shadow:
+    inset 0 0 0 1px rgba(245,158,11,.34),
+    0 0 12px rgba(245,158,11,.16)!important;
+}
+#gallery-mac .mac-reference-tab::before{
+  content:""!important;
+  position:absolute!important;
+  inset:4px 8px!important;
+  border-radius:5px!important;
+  background:transparent!important;
+  pointer-events:none!important;
+  transition:background .18s ease!important;
+}
+#gallery-mac .mac-reference-tab.active::before{
+  background:rgba(245,158,11,.08)!important;
+}
+#gallery-mac .mac-reference-tab.active::after{
+  background:#f59e0b!important;
+  height:3px!important;
+  box-shadow:0 0 10px rgba(245,158,11,.55)!important;
 }
 </style>
 
