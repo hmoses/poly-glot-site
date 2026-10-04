@@ -791,24 +791,35 @@ img.mac-screen-panel {
 #gallery-mac .macbook-display,
 #gallery-mac .macbook-shell img { cursor:default !important; }
 #gallery-mac .mac-primary-tabs {
-  min-height:56px;
   display:grid !important;
   grid-template-columns:repeat(4,minmax(0,1fr)) !important;
   width:100% !important;
+  min-height:56px !important;
+  gap:0 !important;
+  padding:0 !important;
+  margin:0 !important;
+  align-items:stretch !important;
+  box-sizing:border-box !important;
 }
 #gallery-mac .mac-app-tab {
   cursor:pointer !important;
   pointer-events:auto !important;
   position:relative;
   z-index:50;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
   width:100% !important;
   min-width:0 !important;
-  padding:0 8px !important;
+  max-width:none !important;
+  min-height:56px !important;
+  padding:0 10px !important;
+  margin:0 !important;
+  box-sizing:border-box !important;
   font-size:.86rem !important;
-  text-align:center;
+  text-align:center !important;
+  flex:none !important;
+  border-radius:0 !important;
 }
 @media (max-width:900px) {
   .mac-history-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
@@ -5016,6 +5027,25 @@ function _demoStart() {
     padding:5px 8px;
     font-size:.43rem;
   }
+}
+
+/* Mac tab row: four equal full-width tabs across the device */
+#gallery-mac .mac-primary-tabs > .mac-app-tab {
+  grid-column:auto !important;
+  justify-self:stretch !important;
+  align-self:stretch !important;
+}
+#gallery-mac .mac-app-tab > span,
+#gallery-mac .mac-app-tab .tab-label {
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-width:0 !important;
+  white-space:nowrap !important;
+  text-align:center !important;
+}
+#gallery-mac .mac-primary-tabs > * {
+  min-width:0 !important;
 }
 </style>
 
