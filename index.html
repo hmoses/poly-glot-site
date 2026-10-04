@@ -1828,11 +1828,14 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             <!-- Ask Any AI heading -->
             <div class="pg-phone-ask-body pg-phone-ask-body-hero">
               <div class="pg-phone-ask-title">🤔 Ask Any AI</div>
-              <div class="pg-phone-tips">
-                <div>✏️ Type, paste, import or talk</div>
-                <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
-                <div>🌐 Output Language ⬇️ AI responds in this language</div>
-                <div>🔀 Compare Mode: send to multiple AIs</div>
+              <div class="pg-phone-tips-wrap">
+                <div class="pg-phone-tips">
+                  <div>✏️ Type, paste, import or talk</div>
+                  <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
+                  <div>🌐 Output Language ⬇️ AI responds in this language</div>
+                  <div>🔀 Compare Mode: send to multiple AIs</div>
+                </div>
+                <a class="pg-phone-how-link" href="#demo">How it works</a>
               </div>
               <div class="pg-phone-output-row">
                 <span class="pg-phone-output-label">🌐 AI will respond in:</span>
@@ -2452,11 +2455,14 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           <!-- Ask Any AI content -->
           <div class="demo-ask-content pg-phone-ask-body pg-phone-ask-body-demo" style="flex:1;display:flex;flex-direction:column;overflow:hidden">
             <div class="demo-ask-heading pg-phone-ask-title">🤔 Ask Any AI</div>
-            <div class="demo-ask-description pg-phone-tips">
-              <div>✏️ Type, paste, import or talk</div>
-              <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
-              <div>🌐 Output Language ⬇️ AI responds in this language</div>
-              <div>🔀 Compare Mode: send to multiple AIs</div>
+            <div class="pg-phone-tips-wrap">
+              <div class="demo-ask-description pg-phone-tips">
+                <div>✏️ Type, paste, import or talk</div>
+                <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
+                <div>🌐 Output Language ⬇️ AI responds in this language</div>
+                <div>🔀 Compare Mode: send to multiple AIs</div>
+              </div>
+              <a class="pg-phone-how-link" href="#demo">How it works</a>
             </div>
             <div class="demo-output-language pg-phone-output-row">
               <span class="pg-phone-output-label">🌐 AI will respond in:</span>
@@ -5812,6 +5818,89 @@ function _demoStart() {
 .hero-phone-mock .pg-phone-prompt-box > div,
 #gallery-iphone .pg-phone-prompt-box > div {
   text-align:left !important;
+}
+</style>
+
+
+<style>
+/* ===== IPHONE ASK ANY AI COPY — MATCH NATIVE APP ===== */
+.pg-phone-tips-wrap{
+  position:relative;
+  display:block;
+}
+.pg-phone-tips{
+  text-align:left!important;
+}
+.pg-phone-tips>div{
+  display:block;
+  white-space:nowrap;
+}
+.pg-phone-how-link{
+  position:absolute;
+  top:0;
+  right:0;
+  color:#a78bfa!important;
+  text-decoration:underline!important;
+  text-underline-offset:2px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+/* Hero iPhone */
+.hero-phone-mock .pg-phone-tips-wrap{margin-bottom:6px}
+.hero-phone-mock .pg-phone-tips{padding-right:34px;font-size:4.5px!important;line-height:1.55!important}
+.hero-phone-mock .pg-phone-how-link{font-size:4.8px;top:0}
+
+/* Screenshot-gallery iPhone */
+#gallery-iphone .pg-phone-tips-wrap{margin-bottom:10px}
+#gallery-iphone .pg-phone-tips{padding-right:64px;font-size:.46rem!important;line-height:1.55!important}
+#gallery-iphone .pg-phone-how-link{font-size:.48rem;top:0}
+
+/* Live-demo iPhone */
+#demo .pg-phone-tips-wrap{margin-bottom:10px}
+#demo .pg-phone-tips{padding-right:72px;font-size:.52rem!important;line-height:1.55!important}
+#demo .pg-phone-how-link{font-size:.54rem;top:0}
+
+/* Keep the four reference lines intact and readable as the mock scales. */
+@media (max-width:640px){
+  .hero-phone-mock .pg-phone-tips{
+    font-size:clamp(4.5px,1.25vw,5.2px)!important;
+    padding-right:38px;
+  }
+  .hero-phone-mock .pg-phone-how-link{
+    font-size:clamp(4.8px,1.3vw,5.4px);
+  }
+
+  #gallery-iphone .pg-phone-tips{
+    font-size:clamp(.44rem,1.8vw,.50rem)!important;
+    padding-right:68px;
+  }
+  #gallery-iphone .pg-phone-how-link{
+    font-size:clamp(.46rem,1.9vw,.52rem);
+  }
+
+  #demo .pg-phone-tips{
+    font-size:clamp(.48rem,2vw,.55rem)!important;
+    padding-right:74px;
+  }
+  #demo .pg-phone-how-link{
+    font-size:clamp(.50rem,2.05vw,.57rem);
+  }
+}
+
+/* If the phone is very narrow, let only the helper link drop slightly instead of crushing the reference text. */
+@media (max-width:390px){
+  #gallery-iphone .pg-phone-tips,
+  #demo .pg-phone-tips{
+    padding-right:0;
+  }
+  #gallery-iphone .pg-phone-how-link,
+  #demo .pg-phone-how-link{
+    position:static;
+    display:block;
+    width:max-content;
+    margin:3px 0 0 auto;
+  }
 }
 </style>
 
