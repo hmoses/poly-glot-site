@@ -59,7 +59,9 @@ var DEVICE_EXTRA={
 };
 function strings(code){
   var n=normCode(code), c=CORE[n]||CORE.EN, e=EXTRA[n]||EXTRA.EN, x=DEVICE_EXTRA[n]||DEVICE_EXTRA.EN;
-  return Object.assign({},EXTRA.EN,CORE.EN,DEVICE_EXTRA.EN,e,c,x);
+  var out=Object.assign({},EXTRA.EN,CORE.EN,DEVICE_EXTRA.EN,e,c,x);
+  out.compareSelect=out.compareSelect||out.compareSelectAIs||"Select AIs to compare";
+  return out;
 }
 function keyFor(text){
   var t=text.trim();
@@ -68,7 +70,7 @@ function keyFor(text){
     "Paste":"paste","Import":"import","Scan":"scan","Talk":"talk","Send":"send","Send to AI":"send","Clear All":"clearAll",
     "Prompt History":"promptHistory","Your recent prompts & favorites":"recent","All":"all","Clear":"clear",
     "Copy":"copy","Re-edit":"reedit","How it works":"howWorks","AI will respond in:":"outputLabel",
-    "Compare Mode":"compare","Send to Selected":"compareSend","Search templates...":"search","Search templates…":"search",
+    "Compare Mode":"compare","Choose AI":"compareSelect","Select AIs to compare":"compareSelect","Send to Selected":"compareSend","Search templates...":"search","Search templates…":"search",
     "Type, paste, import or talk":"typeLine","App Language":"appLang","Output Language":"outputLang",
     "changes menus & templates":"changesMenus","AI responds in this language":"responds"
   };
@@ -93,6 +95,21 @@ function translateTextNode(node,S){
   }
   if(body==="Compare Mode: send to multiple AIs"){
     node.nodeValue=prefix+icon+(S.compare||"Compare Mode")+": "+(S.compareHelp||"send to multiple AIs")+suffix; return;
+  }
+  if(body==="Choose AI"){
+    node.nodeValue=prefix+(S.compareSelect||"Select AIs to compare")+suffix; return;
+  }
+  if(body==="Send to AI"){
+    node.nodeValue=prefix+(S.send||"Send")+suffix; return;
+  }
+  if(body==="Prompt auto-filled" || body==="Paste prompt"){
+    node.nodeValue=prefix+(S.empty||"Type or speak your prompt first.")+suffix; return;
+  }
+  if(body==="Compare Mode — 2 AI responses"){
+    node.nodeValue=prefix+icon+(S.compare||"Compare Mode")+" — 2 AI"+suffix; return;
+  }
+  if(body==="Compare and pick the best answer"){
+    node.nodeValue=prefix+(S.compare||"Compare Mode")+suffix; return;
   }
   if(body==="Hi ARCHITECT! Ask Any AI anything — in your language." || body==="Hi BUILDER! Ask any AI anything. In your language."){
     node.nodeValue=prefix+(S.promptIntro||body)+suffix; return;
@@ -127,7 +144,7 @@ function updateBadges(code){
   });
 }
 function ensureStaticLocalizedPanels(){
-  document.querySelectorAll('#gallery-iphone .iphone-screen > img, #gallery-ipad .ipad-screen > img').forEach(function(img){
+  document.querySelectorAll('#gallery-iphone .iphone-screen > img, #gallery-ipad .ipad-screen > img, #gallery-mac #macScreen-templates > img').forEach(function(img){
     if(img.dataset.pgLocalized==="1")return;
     var alt=(img.getAttribute('alt')||"");
     var type=/Templates/i.test(alt)?"templates":(/How to Use/i.test(alt)?"how":(/History/i.test(alt)?"history":null));
@@ -135,7 +152,7 @@ function ensureStaticLocalizedPanels(){
     img.dataset.pgLocalized="1";
     img.style.display="none";
     var p=document.createElement('div');
-    p.className="pg-device-static-localized";
+    p.className="pg-device-static-localized"+(img.closest&&img.closest("#gallery-mac")?" pg-device-static-localized-mac":"");
     p.dataset.pgScreen=type;
     p.innerHTML='<div class="pgdsl-head"><img src="assets/img/icon-128.png" alt=""><strong>Poly-Glot AI Workspace</strong><span class="pgdsl-badge">🇺🇸 EN</span></div>'
       +'<div class="pgdsl-tabs"><span>✏️ Ask Any AI</span><span class="'+(type==="templates"?"active":"")+'">📋 Templates</span><span class="'+(type==="how"?"active":"")+'">📖 How to Use</span><span class="'+(type==="history"?"active":"")+'">🕐 History</span></div>'
@@ -153,6 +170,18 @@ function updateStaticPanels(code,S){
     var b=p.querySelector('.pgdsl-badge'); if(b)b.textContent=M.flag+" "+M.code.replace("_","-");
     localizeRoot(p,S);
   });
+
+  // Mac How to Use / Compare animation uses live DOM, so update its key labels directly.
+  var choose=document.querySelector('#gallery-mac #siteDemo-P2 > div:nth-child(2)');
+  if(choose)choose.textContent=S.compareSelect||"Select AIs to compare";
+  var cmp=document.querySelector('#gallery-mac #siteDemo-P2 > div:nth-child(3) > span');
+  if(cmp)cmp.textContent="🔀 "+(S.compare||"Compare Mode");
+  var sendAll=document.getElementById('siteDemo-SendAll');
+  if(sendAll){
+    var count=document.getElementById('siteDemo-CmpCount');
+    var n=count?count.textContent:"0";
+    sendAll.innerHTML=(S.compareSend||"Send to Selected")+' (<span id="siteDemo-CmpCount">'+n+'</span>)';
+  }
 }
 function apply(code){
   var S=strings(code);
@@ -190,7 +219,17 @@ style.textContent=
 +'#gallery-ipad .pgdsl-cards{grid-template-columns:repeat(3,1fr)}#gallery-ipad .pgdsl-cards div{height:58px}'
 +'.pgdsl-history-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:4%}.pgdsl-recent{font-size:clamp(6px,.9vw,10px);color:#8b949e}.pgdsl-history-actions{display:flex;gap:5px}.pgdsl-history-actions span{padding:4px 7px;border:1px solid rgba(255,255,255,.12);border-radius:7px;font-size:clamp(5px,.8vw,9px)}'
 +'.pgdsl-history-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3%}.pgdsl-history-list>div{padding:4%;border:1px solid rgba(255,255,255,.12);border-radius:8px;background:#171c22;min-width:0}.pgdsl-history-list strong{display:block;font-size:clamp(7px,1vw,12px)}.pgdsl-history-list small,.pgdsl-history-list p{font-size:clamp(5px,.75vw,9px);color:#8b949e;margin:3px 0}.pgdsl-history-list button{border:0;border-radius:5px;padding:3px 6px;margin-right:3px;background:#7dd3fc;color:#071018;font-size:clamp(5px,.7vw,8px);font-weight:700}.pgdsl-history-list button+button{background:#202733;color:#e6edf3;border:1px solid rgba(255,255,255,.10)}'
-+'#gallery-ipad .pgdsl-history-list{grid-template-columns:repeat(3,minmax(0,1fr))}';
++'#gallery-ipad .pgdsl-history-list{grid-template-columns:repeat(3,minmax(0,1fr))}'
++'.pg-device-static-localized-mac{border-radius:0!important;z-index:5}'
++'#gallery-mac .pg-device-static-localized-mac .pgdsl-head{padding:2.2% 3% 1.2%;font-size:clamp(7px,.8vw,12px)}'
++'#gallery-mac .pg-device-static-localized-mac .pgdsl-tabs{font-size:clamp(5px,.62vw,9px)}'
++'#gallery-mac .pg-device-static-localized-mac .pgdsl-body{padding:2.5% 3%}'
++'#gallery-mac .pg-device-static-localized-mac .pgdsl-title{font-size:clamp(10px,1.25vw,18px);margin-bottom:2%}'
++'#gallery-mac .pg-device-static-localized-mac .pgdsl-search{padding:1.5%;margin-bottom:2%;font-size:clamp(6px,.75vw,10px)}'
++'#gallery-mac .pg-device-static-localized-mac .pgdsl-cards{grid-template-columns:repeat(3,1fr);gap:2%}'
++'#gallery-mac .pg-device-static-localized-mac .pgdsl-cards div{height:42px}'
++'html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai.active{opacity:1!important;visibility:visible!important;pointer-events:auto!important;background:#0d1117!important}'
++'html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-stage{background:#0d1117!important}';
 document.head.appendChild(style);
 window._pgDeviceUI={apply:apply,appLanguages:APP_LANGS};
 window.addEventListener('pg:languagechange',function(e){apply(e.detail&&e.detail.code||"EN");});
@@ -204,6 +243,19 @@ function observeDeviceUI(){
     }).observe(root,{childList:true,subtree:true});
   });
 }
-function init(){apply(window._pgI18n?window._pgI18n.curLang():"EN");observeDeviceUI();}
+function syncGlobalPickerFlags(){
+  if(!window._pgI18n||!window._pgI18n.LANGS)return;
+  window._pgI18n.LANGS.forEach(function(L){
+    var M=APP_LANGS.find(function(x){return x.code===normCode(L.code)&&!x.siteOnly;});
+    if(M)L.flag=M.flag;
+  });
+  document.querySelectorAll('.pgGlob-row[data-lang]').forEach(function(row){
+    var M=meta(row.getAttribute('data-lang'));
+    var flag=row.querySelector('.gf'); if(flag)flag.textContent=M.flag;
+  });
+  var cur=meta(window._pgI18n.curLang());
+  var gf=document.getElementById('pgGlobalFlag'); if(gf)gf.textContent=cur.flag;
+}
+function init(){syncGlobalPickerFlags();apply(window._pgI18n?window._pgI18n.curLang():"EN");observeDeviceUI();}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 })();
