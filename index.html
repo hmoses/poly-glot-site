@@ -1881,7 +1881,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <!-- Mac Screenshots — Interactive Tab Viewer -->
     <div class="gallery-panel active" id="gallery-mac">
       <div class="mac-site-gallery-image">
-        <img src="assets/img/poly-glot-mac-render.webp?v=exact-1" alt="Poly-Glot AI Workspace on MacBook" class="mac-site-image-img">
+        <img src="assets/img/poly-glot-mac-render.jpg?v=gallery-static-2" alt="Poly-Glot AI Workspace on MacBook" class="mac-site-image-img">
       </div>
       <div id="macTabLabel" style="text-align:center;margin-top:18px;font-size:0.82rem;color:rgba(255,255,255,0.4);font-family:'Fira Code',monospace">Poly-Glot AI Workspace on Mac</div>
     </div>
@@ -6509,6 +6509,46 @@ function _demoStart() {
     width:210px!important;
     max-width:56vw!important;
     aspect-ratio:9/18!important;
+  }
+}
+</style>
+
+
+<style>
+/* ===== STATIC MAC GALLERY — FINAL ===== */
+#gallery-mac .mac-site-gallery-image{
+  width:min(980px,100%)!important;
+  margin:0 auto 28px!important;
+  background:transparent!important;
+  border:0!important;
+  padding:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+#gallery-mac .mac-site-gallery-image::before,
+#gallery-mac .mac-site-gallery-image::after{
+  content:none!important;
+  display:none!important;
+}
+#gallery-mac .mac-site-image-img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  object-fit:contain!important;
+}
+#gallery-mac .macbook-shell,
+#gallery-mac .mac-primary-tabs,
+#gallery-mac .mac-screen-stage,
+#gallery-mac #macTabHint{
+  display:none!important;
+}
+@media(max-width:760px){
+  #gallery-mac .mac-site-gallery-image{
+    width:94vw!important;
+    max-width:560px!important;
   }
 }
 </style>
