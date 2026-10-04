@@ -7320,5 +7320,52 @@ function _demoStart() {
 }
 </style>
 
+
+<style>
+/* ===== HERO TRUST TEXT VISIBILITY FIX ===== */
+/* Keep the real trust text fully visible above the device stack. */
+.hero .trust-row{
+  position:relative!important;
+  z-index:20!important;
+  margin-bottom:24px!important;
+  row-gap:10px!important;
+}
+.hero .trust-item{
+  position:relative!important;
+  z-index:21!important;
+  white-space:nowrap!important;
+}
+
+/* Prevent the Mac image from intruding into the trust text area. */
+.hero-device-stack{
+  margin-top:10px!important;
+  position:relative!important;
+  z-index:1!important;
+}
+
+/* Crop the baked-in duplicate "No Data Collection" text completely instead of showing it half-hidden. */
+.hero-device-stack .hero-mac-crop{
+  overflow:hidden!important;
+  margin-top:0!important;
+}
+.hero-device-stack .hero-mac-crop img{
+  top:-17.5%!important;
+}
+
+/* Mobile: preserve a clean gap and fully remove the baked duplicate line. */
+@media(max-width:760px){
+  .hero .trust-row{
+    margin-bottom:22px!important;
+    gap:12px!important;
+  }
+  .hero-device-stack{
+    margin-top:6px!important;
+  }
+  .hero-device-stack .hero-mac-crop img{
+    top:-17%!important;
+  }
+}
+</style>
+
 </body>
 </html>
