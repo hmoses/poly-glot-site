@@ -3388,7 +3388,7 @@ function _siteDemoStart() {
   p1.style.opacity = '1'; p3.style.display = 'none'; p3.style.opacity = '0';
   p2.style.transform = 'translateY(100%)';
   ta.textContent = ''; sb.style.opacity = '0.4'; sb.style.transform = 'scale(1)';
-  tog.classList.remove('is-on'); tog.setAttribute('aria-checked','false'); knob.style.transform = 'translateX(0)';
+  tog.classList.remove('is-on'); tog.setAttribute('aria-checked','false'); knob.style.transform = '';
   sendAll.style.opacity = '0.4'; cmpCnt.textContent = '0';
   document.querySelectorAll('.siteDemo-AI').forEach(function(b) {
     b.style.borderColor = 'rgba(255,255,255,.08)'; b.style.background = '#1c2128';
@@ -3426,7 +3426,7 @@ function _siteDemoStart() {
               /* Phase 2b: Toggle Compare Mode ON */
               var t3 = setTimeout(function() {
                 if (!_siteDemoRunning) return;
-                tog.classList.add('is-on'); tog.setAttribute('aria-checked','true'); knob.style.transform = '';
+                tog.classList.add('is-on'); tog.setAttribute('aria-checked','true');
                 /* Phase 2c: Select ChatGPT */
                 var t4 = setTimeout(function() {
                   if (!_siteDemoRunning) return;
@@ -3486,7 +3486,7 @@ function _siteDemoStart() {
                     }, 1500); _siteDemoTimers.push(t6);
                   }, 600); _siteDemoTimers.push(t5);
                 }, 600); _siteDemoTimers.push(t4);
-              }, 700); _siteDemoTimers.push(t3);
+              }, 350); _siteDemoTimers.push(t3);
             }, 400); _siteDemoTimers.push(t2);
           }, 150); _siteDemoTimers.push(t1b);
         }, 500); _siteDemoTimers.push(t1);
@@ -8827,178 +8827,60 @@ function _demoStart() {
 </style>
 
 
-<style>
-/* ===== MAC COMPARE TOGGLE ANIMATION FIX ===== */
-/* OFF state */
-#gallery-mac #siteDemo-CmpToggle{
-  background:#2a3039!important;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.10)!important;
-  transition:background .32s ease,box-shadow .32s ease!important;
-}
-#gallery-mac #siteDemo-CmpKnob{
-  left:2px!important;
-  transition:left .32s ease!important;
-}
-
-/* ON state controlled by JS class */
-#gallery-mac #siteDemo-CmpToggle.is-on{
-  background:#7c3aed!important;
-  box-shadow:
-    0 0 14px rgba(124,58,237,.55),
-    inset 0 0 0 1px rgba(255,255,255,.14)!important;
-}
-#gallery-mac #siteDemo-CmpToggle.is-on #siteDemo-CmpKnob{
-  left:20px!important;
-}
-</style>
-
 
 <style>
-/* ===== MAC COMPARE TOGGLE — VISIBLE OFF TO ON ===== */
+/* ===== MAC COMPARE TOGGLE — SINGLE SOURCE OF TRUTH ===== */
 #gallery-mac #siteDemo-CmpToggle{
   position:relative!important;
-  width:42px!important;
-  min-width:42px!important;
-  height:24px!important;
-  min-height:24px!important;
-  border-radius:999px!important;
-  background:#303641!important;
-  border:1px solid rgba(255,255,255,.16)!important;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.035)!important;
-  transition:background .36s ease,box-shadow .36s ease!important;
-}
-#gallery-mac #siteDemo-CmpKnob{
-  position:absolute!important;
-  width:18px!important;
-  height:18px!important;
-  top:2px!important;
-  left:2px!important;
-  border-radius:50%!important;
-  background:#fff!important;
-  box-shadow:0 1px 4px rgba(0,0,0,.35)!important;
-  transform:translateX(0)!important;
-  transition:transform .36s cubic-bezier(.2,.8,.2,1)!important;
-}
-#gallery-mac #siteDemo-CmpToggle.is-on{
-  background:#7c3aed!important;
-  box-shadow:
-    0 0 16px rgba(124,58,237,.5),
-    inset 0 0 0 1px rgba(255,255,255,.12)!important;
-}
-#gallery-mac #siteDemo-CmpToggle.is-on #siteDemo-CmpKnob{
-  transform:translateX(18px)!important;
-}
-
-/* make the OFF state linger clearly before ON */
-#gallery-mac #siteDemo-CmpToggle[aria-checked="false"]{
-  background:#303641!important;
-}
-#gallery-mac #siteDemo-CmpToggle[aria-checked="true"]{
-  background:#7c3aed!important;
-}
-</style>
-
-
-<style>
-/* ===== MAC COMPARE TOGGLE TRAVEL FIX ===== */
-/* Prevent older rules from adding both left-offset and transform.
-   Keep the knob anchored at left:2px and move it only with transform. */
-#gallery-mac #siteDemo-CmpKnob{
-  left:2px!important;
-  transform:translateX(0)!important;
-}
-#gallery-mac #siteDemo-CmpToggle.is-on #siteDemo-CmpKnob{
-  left:2px!important;
-  transform:translateX(17px)!important;
-}
-</style>
-
-
-<style>
-/* ===== MAC COMPARE TOGGLE — KEEP KNOB INSIDE TRACK ===== */
-#gallery-mac #siteDemo-CmpToggle{
-  position:relative!important;
-  flex:0 0 42px!important;
-  width:42px!important;
-  min-width:42px!important;
-  max-width:42px!important;
-  height:24px!important;
-  min-height:24px!important;
-  max-height:24px!important;
-  box-sizing:border-box!important;
-  overflow:hidden!important;
-  border-radius:999px!important;
-}
-#gallery-mac #siteDemo-CmpKnob{
-  position:absolute!important;
-  left:2px!important;
-  right:auto!important;
-  top:2px!important;
-  width:18px!important;
-  min-width:18px!important;
-  max-width:18px!important;
-  height:18px!important;
-  min-height:18px!important;
-  max-height:18px!important;
-  box-sizing:border-box!important;
-  transform:translateX(0)!important;
-  transition:transform .34s cubic-bezier(.2,.8,.2,1)!important;
-}
-/* Shorter travel keeps a clear right-side inset inside the toggle frame. */
-#gallery-mac #siteDemo-CmpToggle.is-on #siteDemo-CmpKnob{
-  left:2px!important;
-  right:auto!important;
-  transform:translateX(12px)!important;
-}
-</style>
-
-
-<style>
-/* ===== MAC COMPARE TOGGLE — FAST FULL SLOT ON STATE ===== */
-/* Faster toggle motion and a true full-width ON fill. */
-#gallery-mac #siteDemo-CmpToggle{
-  position:relative!important;
-  flex:0 0 42px!important;
-  width:42px!important;
-  min-width:42px!important;
-  max-width:42px!important;
+  flex:0 0 44px!important;
+  width:44px!important;
+  min-width:44px!important;
+  max-width:44px!important;
   height:24px!important;
   min-height:24px!important;
   max-height:24px!important;
   padding:0!important;
-  overflow:hidden!important;
+  margin:0!important;
   box-sizing:border-box!important;
+  overflow:hidden!important;
+  border:0!important;
   border-radius:999px!important;
   background:#303641!important;
-  border:1px solid rgba(255,255,255,.14)!important;
-  transition:background .16s ease,box-shadow .16s ease!important;
+  box-shadow:none!important;
+  transition:background .08s linear, box-shadow .08s linear!important;
 }
-#gallery-mac #siteDemo-CmpToggle.is-on{
+#gallery-mac #siteDemo-CmpToggle[aria-checked="false"]{
+  background:#303641!important;
+  box-shadow:none!important;
+}
+#gallery-mac #siteDemo-CmpToggle.is-on,
+#gallery-mac #siteDemo-CmpToggle[aria-checked="true"]{
   background:#7c3aed!important;
-  border-color:#8b5cf6!important;
-  box-shadow:
-    0 0 12px rgba(124,58,237,.42),
-    inset 0 0 0 1px rgba(255,255,255,.08)!important;
+  box-shadow:0 0 12px rgba(124,58,237,.46)!important;
 }
 #gallery-mac #siteDemo-CmpKnob{
   position:absolute!important;
   left:2px!important;
+  right:auto!important;
   top:2px!important;
-  width:18px!important;
-  height:18px!important;
-  min-width:18px!important;
-  max-width:18px!important;
-  min-height:18px!important;
-  max-height:18px!important;
+  width:20px!important;
+  min-width:20px!important;
+  max-width:20px!important;
+  height:20px!important;
+  min-height:20px!important;
+  max-height:20px!important;
   margin:0!important;
+  padding:0!important;
   box-sizing:border-box!important;
   border-radius:50%!important;
   background:#fff!important;
+  box-shadow:0 1px 3px rgba(0,0,0,.28)!important;
   transform:translateX(0)!important;
-  transition:transform .16s cubic-bezier(.2,.8,.2,1)!important;
+  transition:transform .08s linear!important;
 }
-#gallery-mac #siteDemo-CmpToggle.is-on #siteDemo-CmpKnob{
-  transform:translateX(18px)!important;
+#gallery-mac #siteDemo-CmpToggle.is-on #siteDemo-CmpKnob,
+#gallery-mac #siteDemo-CmpToggle[aria-checked="true"] #siteDemo-CmpKnob{
+  transform:translateX(20px)!important;
 }
 </style>
 
