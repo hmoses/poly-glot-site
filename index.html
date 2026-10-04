@@ -8595,5 +8595,61 @@ function _demoStart() {
 }
 </style>
 
+
+<style>
+/* ===== MAC HOW-TO MENU — TALL EXPANSION ===== */
+/* Expand the Compare sheet much higher while preserving the slide animation. */
+#gallery-mac #macScreen-howtouse #siteDemo-P2{
+  top:24%!important;
+  bottom:auto!important;
+  left:2.5%!important;
+  right:2.5%!important;
+  width:95%!important;
+  height:73%!important;
+  max-height:73%!important;
+  min-height:0!important;
+  padding:9px 10px 10px!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+  border-radius:14px 14px 0 0!important;
+}
+
+/* Keep the upper prompt/send area compact enough for the taller menu. */
+#gallery-mac #macScreen-howtouse #siteDemo-P1{
+  padding:6px 9px!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-Textarea{
+  min-height:34px!important;
+  max-height:40px!important;
+  padding:6px 8px!important;
+  font-size:8.5px!important;
+  line-height:1.25!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-SendBtn{
+  margin-top:5px!important;
+  padding:6px!important;
+  font-size:8.5px!important;
+}
+
+/* Give AI rows a little more vertical presence now that the sheet is taller. */
+#gallery-mac #macScreen-howtouse .siteDemo-AI{
+  min-height:42px!important;
+  padding:7px 9px!important;
+}
+#gallery-mac #siteDemo-SendAll{
+  margin-top:8px!important;
+  padding:8px!important;
+  font-size:9px!important;
+}
+
+@media(max-width:760px){
+  #gallery-mac #macScreen-howtouse #siteDemo-P2{
+    top:20%!important;
+    height:77%!important;
+    max-height:77%!important;
+  }
+}
+</style>
+
 </body>
 </html>
