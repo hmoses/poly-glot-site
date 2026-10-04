@@ -1781,7 +1781,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
               <span>&#128336; History</span>
             </div>
             <div style="padding:14px 16px">
-              <div style="font-size:0.7rem;font-weight:800;color:#fff;margin-bottom:6px">&#129300; Ask Any AI</div>
+              <div class="mac-native-ask-title" style="font-size:0.7rem;font-weight:800;color:#fff;margin-bottom:6px">&#129300; Ask Any AI</div>
               <div class="mac-native-help mac-native-help-hero">
                 <div class="mac-native-help-lines">
                   <div>✏️ Type, paste, import or talk</div>
@@ -1950,7 +1950,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             <div id="macScreen-askanyai" class="mac-screen-panel active" style="background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;padding:0;overflow:hidden">
               <!-- Ask Any AI content -->
               <div class="mac-ask-body" style="padding:24px 28px">
-                <div style="font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:8px">&#129300; Ask Any AI</div>
+                <div class="mac-native-ask-title" style="font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:8px">&#129300; Ask Any AI</div>
                 <div class="mac-native-help mac-native-help-gallery">
                   <div class="mac-native-help-lines">
                     <div>✏️ Type, paste, import or talk</div>
@@ -6074,6 +6074,117 @@ function _demoStart() {
   }
   #gallery-mac .mac-native-how-link,
   #gallery-ipad .ipad-native-how-link{
+    position:static;
+    display:block;
+    width:max-content;
+    margin:3px 0 0 auto;
+  }
+}
+</style>
+
+
+<style>
+/* ===== CROSS-DEVICE ASK ANY AI ALIGNMENT =====
+   Match native app helper copy on iPhone, iPad and Mac. */
+.pg-phone-ask-title,
+.ipad-native-ask-title,
+.mac-native-ask-title {
+  text-align:left !important;
+  justify-content:flex-start !important;
+  margin-left:0 !important;
+  margin-right:auto !important;
+}
+
+.mac-native-help,
+.ipad-native-help {
+  position:relative;
+  display:block;
+  text-align:left !important;
+}
+
+.mac-native-help-lines,
+.ipad-native-help-lines {
+  text-align:left !important;
+  color:#8b949e !important;
+  line-height:1.5 !important;
+  padding-right:110px;
+}
+
+.mac-native-help-lines > div,
+.ipad-native-help-lines > div {
+  display:block;
+  white-space:nowrap;
+}
+
+.mac-native-how-link,
+.ipad-native-how-link {
+  position:absolute;
+  top:0;
+  right:0;
+  color:#a78bfa !important;
+  font-weight:700 !important;
+  text-decoration:underline !important;
+  text-underline-offset:2px;
+  white-space:nowrap;
+}
+
+/* Hero Mac proportions */
+.hero-screenshot .mac-native-help-lines {
+  font-size:.42rem !important;
+  padding-right:58px;
+}
+.hero-screenshot .mac-native-how-link {
+  font-size:.44rem !important;
+}
+
+/* Gallery Mac proportions */
+#gallery-mac .mac-native-help-lines {
+  font-size:.68rem !important;
+  padding-right:118px;
+}
+#gallery-mac .mac-native-how-link {
+  font-size:.70rem !important;
+}
+
+/* iPad proportions */
+#gallery-ipad .ipad-native-ask-title {
+  text-align:left !important;
+}
+#gallery-ipad .ipad-native-help-lines {
+  font-size:.43rem !important;
+  padding-right:74px;
+}
+#gallery-ipad .ipad-native-how-link {
+  font-size:.45rem !important;
+}
+
+/* Keep helper copy readable when Mac/iPad renders are viewed from a phone. */
+@media (max-width:640px) {
+  #gallery-mac .mac-native-help-lines {
+    font-size:clamp(.48rem,2vw,.60rem) !important;
+    padding-right:92px;
+  }
+  #gallery-mac .mac-native-how-link {
+    font-size:clamp(.50rem,2.05vw,.62rem) !important;
+  }
+
+  #gallery-ipad .ipad-native-help-lines {
+    font-size:clamp(.38rem,1.55vw,.46rem) !important;
+    padding-right:68px;
+  }
+  #gallery-ipad .ipad-native-how-link {
+    font-size:clamp(.40rem,1.6vw,.48rem) !important;
+  }
+}
+
+/* Extremely narrow screens: preserve the copy and let only the helper link drop below. */
+@media (max-width:390px) {
+  #gallery-mac .mac-native-help-lines,
+  #gallery-ipad .ipad-native-help-lines {
+    padding-right:0;
+  }
+  #gallery-mac .mac-native-how-link,
+  #gallery-ipad .ipad-native-how-link {
     position:static;
     display:block;
     width:max-content;
