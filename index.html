@@ -1760,7 +1760,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         <div class="trust-row">
           <span class="trust-item"><span class="check">&#10003;</span> <span data-i18n="trustA">100% On-Device</span></span>
           <span class="trust-item"><span class="check">&#10003;</span> <span data-i18n="trustB">No Data Collection</span></span>
-          <span class="trust-item"><span class="check">&#10003;</span> <span data-i18n="trustC">3-Day Free Trial</span></span>
         </div>
       </div>
       <div class="hero-visual">
@@ -6190,6 +6189,184 @@ function _demoStart() {
     width:max-content;
     margin:3px 0 0 auto;
   }
+}
+</style>
+
+
+<style>
+/* ===== UNIFIED ASK ANY AI — MAC / IPAD / IPHONE ===== */
+
+/* Left-align the Ask Any AI heading everywhere. */
+.pg-phone-ask-title,
+.mac-native-ask-title,
+.ipad-native-ask-title,
+#demo .demo-ask-heading {
+  text-align:left !important;
+  justify-content:flex-start !important;
+  margin-left:0 !important;
+}
+
+/* Mac helper copy matches the native iPhone wording and alignment. */
+.mac-native-help {
+  position:relative;
+  display:block;
+  text-align:left !important;
+}
+.mac-native-help-lines {
+  color:#8b949e;
+  line-height:1.5;
+  text-align:left !important;
+}
+.mac-native-help-lines > div {
+  display:block;
+  white-space:nowrap;
+}
+.mac-native-how-link {
+  position:absolute;
+  top:0;
+  right:0;
+  color:#a78bfa !important;
+  text-decoration:underline !important;
+  text-underline-offset:2px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.mac-native-help-hero {
+  margin-bottom:8px;
+}
+.mac-native-help-hero .mac-native-help-lines {
+  font-size:.42rem;
+  padding-right:58px;
+}
+.mac-native-help-hero .mac-native-how-link {
+  font-size:.44rem;
+}
+.mac-native-help-gallery {
+  margin-bottom:12px;
+}
+.mac-native-help-gallery .mac-native-help-lines {
+  font-size:.66rem;
+  padding-right:96px;
+}
+.mac-native-help-gallery .mac-native-how-link {
+  font-size:.68rem;
+}
+
+/* iPad helper copy matches the same native wording/alignment. */
+.ipad-native-ask-head {
+  padding:8px 14px 3px;
+  text-align:left !important;
+}
+.ipad-native-ask-title {
+  font-size:.72rem;
+  font-weight:800;
+  color:#fff;
+  margin:0 0 6px;
+  line-height:1.15;
+}
+.ipad-native-help {
+  position:relative;
+  display:block;
+  text-align:left !important;
+  margin-bottom:7px;
+}
+.ipad-native-help-lines {
+  color:#8b949e;
+  font-size:.40rem;
+  line-height:1.5;
+  padding-right:70px;
+  text-align:left !important;
+}
+.ipad-native-help-lines > div {
+  display:block;
+  white-space:nowrap;
+}
+.ipad-native-how-link {
+  position:absolute;
+  top:0;
+  right:0;
+  color:#a78bfa !important;
+  text-decoration:underline !important;
+  text-underline-offset:2px;
+  font-size:.42rem;
+  font-weight:700;
+  white-space:nowrap;
+}
+.ipad-native-output-row {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:0 14px 8px;
+  padding:7px 9px;
+  border:1px solid rgba(255,255,255,.08);
+  background:#171c22;
+  border-radius:10px;
+}
+.ipad-native-output-label {
+  color:#8b949e;
+  font-size:.40rem;
+  white-space:nowrap;
+}
+.ipad-native-output-select {
+  margin-left:auto;
+  width:58%;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 8px;
+  border:1.5px solid #a78bfa;
+  background:#1c2128;
+  color:#fff;
+  border-radius:8px;
+  box-sizing:border-box;
+  font-size:.44rem;
+}
+.ipad-native-output-select strong { font-weight:700; }
+.ipad-native-output-caret { margin-left:auto;color:#b8c0cc; }
+
+/* Keep helper text intact and proportional on narrow displays. */
+@media (max-width:760px) {
+  #gallery-mac .mac-native-help-gallery .mac-native-help-lines {
+    font-size:.54rem;
+    padding-right:80px;
+  }
+  #gallery-mac .mac-native-help-gallery .mac-native-how-link {
+    font-size:.56rem;
+  }
+
+  #gallery-ipad .ipad-native-help-lines {
+    font-size:clamp(.34rem,1.5vw,.40rem);
+    padding-right:62px;
+  }
+  #gallery-ipad .ipad-native-how-link {
+    font-size:clamp(.36rem,1.55vw,.42rem);
+  }
+}
+
+/* On very narrow phones, move only the helper link below instead of crushing text. */
+@media (max-width:390px) {
+  #gallery-mac .mac-native-help-gallery .mac-native-help-lines,
+  #gallery-ipad .ipad-native-help-lines {
+    padding-right:0;
+  }
+  #gallery-mac .mac-native-how-link,
+  #gallery-ipad .ipad-native-how-link {
+    position:static;
+    display:block;
+    width:max-content;
+    margin:3px 0 0 auto;
+  }
+}
+
+/* Hero Mac hardware: use the same clean top-lid treatment as gallery Macs. */
+.hero-screenshot {
+  border:0 !important;
+}
+.hero-screenshot::before {
+  top:3px !important;
+}
+.hero-screenshot > div {
+  border:0 !important;
 }
 </style>
 
