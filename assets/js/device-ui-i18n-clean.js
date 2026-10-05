@@ -137,21 +137,37 @@ function syncAllTabLabels(S,M){
   var hero=document.querySelector(".hero-phone-mock .phone-screen");
   if(hero&&hero.children&&hero.children[2])applyTabs(hero.children[2]);
 
+  /* History screens: localize every visible label and remove English-only sample content. */
+  var sampleTitles=[S.ask,S.ask,S.compare,S.templates,S.how,S.history];
+  var sampleTexts=[
+    "Test",
+    S.promptExample,
+    S.compareHelp,
+    S.typeLine,
+    S.howWorks,
+    S.recent
+  ];
+  var sampleTimes=["5m","5m","9m","12m","18m","24m"];
+
   document.querySelectorAll(".history-preview").forEach(function(root){
-    var badge=root.querySelector(".hp-lang"); if(badge)badge.textContent=M.flag+" "+M.code.replace("_","-");
+    var badge=root.querySelector(".hp-lang");
+    if(badge)badge.textContent=M.flag+" "+M.code.replace("_","-");
+
     setText(root.querySelector(".hp-h"),S.promptHistory||S.history);
     setText(root.querySelector(".hp-note"),S.recent);
+
     var pills=root.querySelectorAll(".hp-actions .hp-pill");
     if(pills[0])pills[0].textContent=S.all;
     if(pills[1])pills[1].textContent=S.clear;
-    root.querySelectorAll(".hp-card-title").forEach(function(el){
-      var base=el.getAttribute("data-pg-base");
-      if(!base){base=(el.textContent||"").trim();el.setAttribute("data-pg-base",base)}
-      if(base==="Ask Any AI"||base==="Frag jede KI"||base==="Vraag het aan elke AI"||base==="问任何AI")el.textContent=S.ask;
-      else el.textContent=base;
-    });
-    root.querySelectorAll(".hp-buttons").forEach(function(row){
-      var btns=row.querySelectorAll(".hp-btn");
+
+    root.querySelectorAll(".hp-card").forEach(function(card,i){
+      var title=card.querySelector(".hp-card-title");
+      var time=card.querySelector(".hp-time");
+      var body=card.querySelector(".hp-text");
+      if(title)title.textContent=sampleTitles[i%sampleTitles.length];
+      if(time)time.textContent=sampleTimes[i%sampleTimes.length];
+      if(body)body.textContent=sampleTexts[i%sampleTexts.length];
+      var btns=card.querySelectorAll(".hp-btn");
       if(btns[0])btns[0].textContent=S.copy;
       if(btns[1])btns[1].textContent=S.reedit;
     });
@@ -160,17 +176,19 @@ function syncAllTabLabels(S,M){
   document.querySelectorAll("#gallery-mac .mac-history-preview").forEach(function(root){
     setText(root.querySelector(".mac-history-heading"),S.promptHistory||S.history);
     setText(root.querySelector(".mac-history-note"),S.recent);
+
     var pills=root.querySelectorAll(".mac-history-actions .mac-history-pill");
     if(pills[0])pills[0].textContent=S.all;
     if(pills[1])pills[1].textContent=S.clear;
-    root.querySelectorAll(".mac-history-card-title").forEach(function(el){
-      var base=el.getAttribute("data-pg-base");
-      if(!base){base=(el.textContent||"").trim();el.setAttribute("data-pg-base",base)}
-      if(base==="Ask Any AI"||base==="Frag jede KI"||base==="Vraag het aan elke AI"||base==="问任何AI")el.textContent=S.ask;
-      else el.textContent=base;
-    });
-    root.querySelectorAll(".mac-history-buttons").forEach(function(row){
-      var btns=row.querySelectorAll(".mac-history-btn");
+
+    root.querySelectorAll(".mac-history-card").forEach(function(card,i){
+      var title=card.querySelector(".mac-history-card-title");
+      var time=card.querySelector(".mac-history-time");
+      var body=card.querySelector(".mac-history-text");
+      if(title)title.textContent=sampleTitles[i%sampleTitles.length];
+      if(time)time.textContent=sampleTimes[i%sampleTimes.length];
+      if(body)body.textContent=sampleTexts[i%sampleTexts.length];
+      var btns=card.querySelectorAll(".mac-history-btn");
       if(btns[0])btns[0].textContent=S.copy;
       if(btns[1])btns[1].textContent=S.reedit;
     });
@@ -184,10 +202,16 @@ function syncAllTabLabels(S,M){
   });
 
   document.querySelectorAll(".pg-phone-talk,.ipad-redesign-talk").forEach(function(el){
-    var spans=el.querySelectorAll("span"); if(spans.length)spans[spans.length-1].textContent=S.talk;
+    var spans=el.querySelectorAll("span");
+    if(spans.length)spans[spans.length-1].textContent=S.talk;
   });
   document.querySelectorAll(".pg-phone-send,.ipad-redesign-send").forEach(function(el){el.textContent=S.send});
   document.querySelectorAll(".pg-phone-clear,.ipad-redesign-clear").forEach(function(el){el.textContent="🗑 "+S.clearAll});
+
+  /* Keep template cards readable in every language: translated label + clean numeric suffix. */
+  document.querySelectorAll(".pgdsl-cards>div b,.pgmac-template-grid>div b,.pgl-grid>div b").forEach(function(el,i){
+    el.textContent=S.templates+" "+((i%6)+1);
+  });
 }
 
 function composed(root,S){
