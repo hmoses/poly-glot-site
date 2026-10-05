@@ -9317,5 +9317,76 @@ html[data-device-ui-lang="HE"] #iphone-duo .duo-coming-inner > div:first-child{
 }
 </style>
 
+
+<style>
+/* ===== IPHONE DUO LOCALIZATION — EXACT ENGLISH UI PARITY v3 ===== */
+/* The screenshot remains the source of truth. Non-English languages replace
+   text only; the English device, fold, controls, Xcode chrome and proportions
+   remain untouched. */
+#iphone-duo .duo-localized-overlay.duo-text-parity{
+  display:block!important;
+  background:transparent!important;
+  overflow:hidden!important;
+}
+#iphone-duo .duo-text-parity .duo-txt{
+  position:absolute;
+  z-index:2;
+  box-sizing:border-box;
+  color:#dfe7f2;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",sans-serif;
+  line-height:1.18;
+  overflow:hidden;
+}
+#iphone-duo .duo-text-parity .duo-txt::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  z-index:-1;
+  background:#071018;
+}
+/* Left control screen — positions match the exact English screenshot. */
+#iphone-duo .duo-text-parity .badge{left:45.15%;top:19.45%;width:4.4%;height:2.15%;font-size:.62cqw;text-align:center;padding:.32cqw .15cqw;border-radius:.28cqw;background:#141d2a}
+#iphone-duo .duo-text-parity .tab{top:24.2%;height:2.5%;font-size:.58cqw;text-align:center;padding:.35cqw .05cqw;white-space:nowrap;text-overflow:ellipsis}
+#iphone-duo .duo-text-parity .t1{left:25.0%;width:6.5%;color:#e879f9}
+#iphone-duo .duo-text-parity .t2{left:31.5%;width:6.3%}
+#iphone-duo .duo-text-parity .t3{left:37.8%;width:6.5%}
+#iphone-duo .duo-text-parity .t4{left:44.3%;width:5.2%}
+#iphone-duo .duo-text-parity .compare{left:25.4%;top:29.2%;width:12.5%;height:2.7%;font-size:.9cqw;font-weight:750;padding:.25cqw .35cqw}
+#iphone-duo .duo-text-parity .compare-sub{left:25.4%;top:32.0%;width:22.8%;height:3.7%;font-size:.55cqw;color:#9aa5b6;padding:.2cqw .35cqw}
+#iphone-duo .duo-text-parity .prompt-label{left:25.4%;top:37.1%;width:9.8%;height:1.9%;font-size:.55cqw;font-weight:700;padding:.18cqw .25cqw}
+#iphone-duo .duo-text-parity .prompt{left:25.4%;top:39.3%;width:22.7%;height:5.4%;font-size:.67cqw;color:#e3e9f2;padding:.75cqw .75cqw;border-radius:.35cqw;background:#182231}
+#iphone-duo .duo-text-parity .select-label{left:25.4%;top:46.1%;width:12.9%;height:1.9%;font-size:.53cqw;font-weight:700;padding:.18cqw .25cqw}
+#iphone-duo .duo-text-parity .send{left:25.2%;top:76.9%;width:23.3%;height:4.3%;font-size:.64cqw;font-weight:800;text-align:center;padding:1.15cqw .25cqw;border-radius:.35cqw;color:white;background:linear-gradient(90deg,#6d28d9,#8b5cf6)}
+/* Response screens — preserve the model headers/icons from the English render. */
+#iphone-duo .duo-text-parity .resp-label{top:23.25%;height:1.65%;font-size:.55cqw;color:#8792a5;padding:.12cqw .15cqw}
+#iphone-duo .duo-text-parity .r1{left:55.0%;width:7.6%}
+#iphone-duo .duo-text-parity .r2{left:73.15%;width:8.0%}
+#iphone-duo .duo-text-parity .resp-copy{top:28.0%;height:42.0%;font-size:.62cqw;line-height:1.43;color:#cbd4df;padding:.35cqw .45cqw}
+#iphone-duo .duo-text-parity .r1copy{left:51.7%;width:15.4%}
+#iphone-duo .duo-text-parity .r2copy{left:69.8%;width:15.4%}
+#iphone-duo .duo-text-parity .actions{top:76.7%;height:3.5%;font-size:.48cqw;text-align:center;padding:.9cqw .15cqw;color:#dfe6ef;white-space:nowrap}
+#iphone-duo .duo-text-parity .a1{left:51.55%;width:15.7%}
+#iphone-duo .duo-text-parity .a2{left:69.65%;width:15.7%}
+/* Keep structural English controls visible. The masks only cover text areas. */
+#iphone-duo .duo-text-parity .tab::before,
+#iphone-duo .duo-text-parity .compare::before,
+#iphone-duo .duo-text-parity .compare-sub::before,
+#iphone-duo .duo-text-parity .prompt-label::before,
+#iphone-duo .duo-text-parity .select-label::before,
+#iphone-duo .duo-text-parity .resp-label::before,
+#iphone-duo .duo-text-parity .resp-copy::before,
+#iphone-duo .duo-text-parity .actions::before{background:#071018}
+#iphone-duo .duo-text-parity[dir="rtl"] .duo-txt{direction:rtl;text-align:right}
+#iphone-duo .duo-text-parity[dir="rtl"] .badge,
+#iphone-duo .duo-text-parity[dir="rtl"] .send,
+#iphone-duo .duo-text-parity[dir="rtl"] .actions,
+#iphone-duo .duo-text-parity[dir="rtl"] .tab{text-align:center}
+@media(max-width:620px){
+  #iphone-duo .duo-text-parity .duo-txt{font-weight:500}
+  #iphone-duo .duo-text-parity .compare{font-weight:750}
+  #iphone-duo .duo-text-parity .send{font-weight:800}
+}
+</style>
+
 </body>
 </html>
