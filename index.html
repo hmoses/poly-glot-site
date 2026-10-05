@@ -5563,8 +5563,8 @@ function _demoStart() {
 <!-- ===== END GLOBAL IMAGE + DEVICE LIGHTBOX ===== -->
 
 <!-- Global i18n — 38 languages, same flags as the app -->
-<script src="assets/js/i18n.js?v=global-sync-v12"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v21"></script>
+<script src="assets/js/i18n.js?v=global-sync-v13"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v22"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
 
@@ -9991,35 +9991,121 @@ html[data-pg-rtl="true"] .pg-hero-mac-text-overlay .pg-hm{
 </style>
 
 
-<style>
-/* ===== FLOATING CONTROLS + RTL LAYOUT PARITY v27 ===== */
 
-/* Keep the site shell/layout identical to English even for Arabic/Hebrew.
-   Only localized text/content regions use RTL reading direction. */
+<style>
+/* ===== HE + AR NATIVE RTL PARITY v28 ===== */
+
+/* Keep the website shell exactly where English puts it. */
 html[dir="rtl"] body{
   direction:ltr!important;
 }
+html[dir="rtl"] nav,
+html[dir="rtl"] .nav,
+html[dir="rtl"] .nav-inner,
+html[dir="rtl"] .container,
+html[dir="rtl"] #screenshots .gallery-tabs,
+html[dir="rtl"] #screenshots .gallery-tab{
+  direction:ltr!important;
+}
 
-/* Restore the original floating control relationship:
-   language selector lower-left, chat bubble lower-right, same vertical line. */
+/* Hebrew/Arabic page copy reads naturally RTL without mirroring page geometry. */
+html[dir="rtl"] [data-i18n],
+html[dir="rtl"] [data-i18n-html],
+html[dir="rtl"] .section-title,
+html[dir="rtl"] .section-sub,
+html[dir="rtl"] .hero-copy,
+html[dir="rtl"] .feature-copy,
+html[dir="rtl"] #iphone-duo .duo-copy,
+html[dir="rtl"] #iphone-duo .duo-meta{
+  direction:rtl!important;
+  unicode-bidi:plaintext!important;
+  text-align:right!important;
+}
+
+/* Native-app RTL geometry: Ask on the right, History on the left. */
+html[dir="rtl"] #gallery-mac .mac-reference-hotspots{
+  direction:rtl!important;
+}
+html[dir="rtl"] #gallery-mac .mac-reference-tab{
+  direction:rtl!important;
+}
+html[dir="rtl"] #gallery-mac .mac-reference-tab .mac-tab-label{
+  direction:rtl!important;
+  unicode-bidi:plaintext!important;
+  text-align:center!important;
+}
+
+/* Real Mac panel follows the same RTL layout as the iOS app screenshots. */
+html[dir="rtl"] #gallery-mac .mac-reference-stage,
+html[dir="rtl"] #gallery-mac .mac-screen-panel,
+html[dir="rtl"] #gallery-mac #macScreen-askanyai .mac-ask-body,
+html[dir="rtl"] #gallery-mac #macScreen-howtouse,
+html[dir="rtl"] #gallery-mac #macScreen-history{
+  direction:rtl!important;
+}
+html[dir="rtl"] #gallery-mac .mac-native-ask-title,
+html[dir="rtl"] #gallery-mac .mac-native-help-lines,
+html[dir="rtl"] #gallery-mac .mac-history-body,
+html[dir="rtl"] #gallery-mac #siteDemo-P1,
+html[dir="rtl"] #gallery-mac #siteDemo-P2,
+html[dir="rtl"] #gallery-mac #siteDemo-P3{
+  direction:rtl!important;
+  unicode-bidi:plaintext!important;
+  text-align:right!important;
+}
+html[dir="rtl"] #gallery-mac .mac-native-help{
+  direction:rtl!important;
+}
+html[dir="rtl"] #gallery-mac .mac-native-how-link{
+  order:-1!important;
+  margin-left:0!important;
+  margin-right:auto!important;
+  text-align:right!important;
+}
+html[dir="rtl"] #gallery-mac .mac-response-row{
+  direction:rtl!important;
+  flex-direction:row!important;
+}
+html[dir="rtl"] #gallery-mac .mac-response-label{
+  direction:rtl!important;
+  text-align:right!important;
+}
+html[dir="rtl"] #gallery-mac .mac-response-select{
+  direction:rtl!important;
+  margin-left:0!important;
+  margin-right:auto!important;
+}
+html[dir="rtl"] #gallery-mac #macScreen-askanyai .mac-ask-body > div[style*="display:flex;gap:8px"]{
+  direction:rtl!important;
+}
+html[dir="rtl"] #gallery-mac #macScreen-askanyai .mac-ask-body > div[style*="display:flex;align-items:center;gap:12px"]{
+  direction:rtl!important;
+  flex-direction:row!important;
+}
+html[dir="rtl"] #gallery-mac #macScreen-askanyai .mac-ask-body > div[style*="display:flex;align-items:center;gap:12px"] > div[style*="margin-left:auto"]{
+  margin-left:0!important;
+  margin-right:auto!important;
+}
+
+/* iPhone/iPad/Duo translated content is RTL, but device frames stay fixed. */
+html[dir="rtl"] #gallery-iphone .iphone-screen,
+html[dir="rtl"] #gallery-ipad .ipad-screen{
+  direction:rtl!important;
+}
+html[dir="rtl"] #iphone-duo .duo-localized-overlay,
+html[dir="rtl"] #iphone-duo .duo-text-only .duo-loc{
+  direction:rtl!important;
+  unicode-bidi:plaintext!important;
+}
+
+/* Keep the floating controls in their original English positions. */
 #pgGlobalLangPicker{
-  display:block!important;
-  visibility:visible!important;
-  opacity:1!important;
   position:fixed!important;
   left:24px!important;
   right:auto!important;
   bottom:24px!important;
   z-index:99999!important;
-  pointer-events:auto!important;
-  transform:none!important;
   direction:ltr!important;
-}
-#pgGlobalLangBtn{
-  display:flex!important;
-  align-items:center!important;
-  visibility:visible!important;
-  opacity:1!important;
 }
 #pgChat-bubble{
   position:fixed!important;
@@ -10027,72 +10113,15 @@ html[dir="rtl"] body{
   left:auto!important;
   bottom:24px!important;
   z-index:99999!important;
-}
-
-/* Dropdown opens upward from the floating language pill. */
-#pgGlobalLangDD{
-  left:0!important;
-  right:auto!important;
-  bottom:52px!important;
   direction:ltr!important;
 }
-
-/* Arabic/Hebrew text is RTL without mirroring the whole page shell. */
-html[dir="rtl"] [data-i18n],
-html[dir="rtl"] [data-i18n-html],
-html[dir="rtl"] .section-title,
-html[dir="rtl"] .section-sub,
-html[dir="rtl"] .hero-copy,
-html[dir="rtl"] .feature-copy,
-html[dir="rtl"] .duo-copy,
-html[dir="rtl"] .duo-meta{
-  direction:rtl!important;
-  text-align:right!important;
-  unicode-bidi:plaintext!important;
-}
-
-/* Keep navigation/device selector geometry the same as English. */
-html[dir="rtl"] nav,
-html[dir="rtl"] .nav-inner,
-html[dir="rtl"] #screenshots .gallery-tabs,
-html[dir="rtl"] #screenshots .gallery-tab{
-  direction:ltr!important;
-}
-
-/* Mac/iPhone/iPad localized app UI itself reads RTL. */
-html[dir="rtl"] #gallery-mac .mac-reference-stage,
-html[dir="rtl"] #gallery-mac .mac-screen-panel,
-html[dir="rtl"] #gallery-mac .mac-reference-hotspots,
-html[dir="rtl"] #gallery-mac .mac-reference-tab,
-html[dir="rtl"] #gallery-iphone,
-html[dir="rtl"] #gallery-ipad,
-html[dir="rtl"] #iphone-duo .duo-localized-overlay{
-  direction:rtl!important;
-}
-
-/* The selector and chat controls stay anchored even in RTL locales. */
-html[dir="rtl"] #pgGlobalLangPicker{
-  left:24px!important;
-  right:auto!important;
-  direction:ltr!important;
-}
-html[dir="rtl"] #pgChat-bubble{
-  right:24px!important;
-  left:auto!important;
-  direction:ltr!important;
-}
+html[dir="rtl"] #pgGlobalLangPicker{left:24px!important;right:auto!important;direction:ltr!important}
+html[dir="rtl"] #pgChat-bubble{right:24px!important;left:auto!important;direction:ltr!important}
+html[dir="rtl"] #pgGlobalLangDD{direction:ltr!important;left:0!important;right:auto!important}
 
 @media(max-width:480px){
-  #pgGlobalLangPicker{
-    left:16px!important;
-    bottom:16px!important;
-  }
-  #pgChat-bubble{
-    right:16px!important;
-    bottom:16px!important;
-    width:56px!important;
-    height:56px!important;
-  }
+  #pgGlobalLangPicker{left:16px!important;bottom:16px!important}
+  #pgChat-bubble{right:16px!important;bottom:16px!important}
   #pgGlobalLangDD{
     position:fixed!important;
     left:16px!important;
@@ -10100,16 +10129,6 @@ html[dir="rtl"] #pgChat-bubble{
     bottom:84px!important;
     top:auto!important;
     transform:none!important;
-    width:min(62vw,300px)!important;
-    max-height:58vh!important;
-  }
-  html[dir="rtl"] #pgGlobalLangPicker{
-    left:16px!important;
-    right:auto!important;
-  }
-  html[dir="rtl"] #pgChat-bubble{
-    right:16px!important;
-    left:auto!important;
   }
 }
 </style>
