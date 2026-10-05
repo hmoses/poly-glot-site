@@ -584,7 +584,7 @@ function heroMacTextOverlay(S,M,c){
     host.appendChild(old);
   }
   old.setAttribute("lang",c.toLowerCase().replace("_","-"));
-  old.setAttribute("dir",(c==="AR")?"rtl":"ltr");
+  old.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr");
   old.innerHTML=
     '<span class="pg-hm lang">'+M.flag+' '+M.code.replace("_","-")+'</span>'+
     '<span class="pg-hm tab t1">✏️ '+S.ask+'</span>'+
@@ -609,7 +609,7 @@ function heroMacTextOverlay(S,M,c){
 function apply(code){
  var c=norm(code||current()),S=strings(c),M=meta(c);
  document.querySelectorAll(".pg-device-static-localized,.pg-mac-panel-localized").forEach(function(el){el.remove()});
- roots().forEach(function(r){localizeText(r,S);composed(r,S);badge(r,M);r.setAttribute("dir",(c==="AR")?"rtl":"ltr")});
+ roots().forEach(function(r){localizeText(r,S);composed(r,S);badge(r,M);r.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr")});
  staticScreens(S,M,c);macOverlay(S,M,c);heroMacTextOverlay(S,M,c);syncPlainBadges(S,M);syncAllTabLabels(S,M);siteLabels(S,M,c);languageDemoOverlay(S,M,c);duo(S,M,c);
  document.documentElement.setAttribute("data-device-ui-lang",c);
 }
