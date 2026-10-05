@@ -434,9 +434,6 @@ function duo(S,M,c){
     }catch(e){return fb}
   };
 
-  // The marketing copy in this section has its own 38-language keys.
-  // Do not reuse generic MCP/Compare Mode strings here; doing so caused
-  // translated languages to replace the approved Duo copy and reflow badly.
   var kicker=root.querySelector(".duo-kicker");
   var titleA=root.querySelector('[data-i18n="duoTitleA"]');
   var titleB=root.querySelector('[data-i18n="duoTitleB"]');
@@ -454,48 +451,43 @@ function duo(S,M,c){
 
   var overlay=root.querySelector(".duo-localized-overlay");
   if(!overlay)return;
-  if(c==="EN"){overlay.innerHTML="";return}
+  if(c==="EN"){overlay.innerHTML="";overlay.classList.remove("duo-text-parity");return}
 
+  /*
+   * IMPORTANT: keep the exact English Xcode/iPhone Duo screenshot as the UI.
+   * Localized languages only mask and replace text. We do NOT redraw panes,
+   * controls, borders, checkboxes, or buttons, so every language has the
+   * identical UI geometry as English.
+   */
   var prompt=gt("sc2Prompt",S.promptExample);
   var response1=gt("sc2PickSub",S.responds||"Response");
   var response2=gt("sc2P",S.compareHelp||"Compare responses side by side.");
   var selected=S.compareSend||"Send to Selected";
+  var dir=(c==="AR"||c==="HE")?"rtl":"ltr";
 
+  overlay.classList.add("duo-text-parity");
   overlay.innerHTML=
-    '<div class="duo-ov-pane duo-ov-left">'+
-      '<div class="duo-ov-apphead"><img src="assets/img/icon-128.png" alt=""><div><b>Poly-Glot AI Workspace</b><small>poly-glot.ai</small></div><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+
-      '<div class="duo-ov-tabs"><span class="active">✏️ '+S.ask+'</span><span>⌘ '+S.templates+'</span><span>▣ '+S.how+'</span><span>◷ '+S.history+'</span></div>'+
-      '<div class="duo-ov-compare-title">🔀 '+S.compare+'</div>'+
-      '<div class="duo-ov-sub">'+S.compareHelp+'</div>'+
-      '<div class="duo-ov-label">'+(S.promptHistory||S.promptIntro)+'</div>'+
-      '<div class="duo-ov-prompt">'+prompt+'</div>'+
-      '<div class="duo-ov-label duo-ov-select">'+(S.compareSelect||S.compare)+'</div>'+
-      '<div class="duo-ov-ai checked">✓ <span>ChatGPT</span></div>'+
-      '<div class="duo-ov-ai">□ <span>Claude</span></div>'+
-      '<div class="duo-ov-ai">□ <span>Gemini</span></div>'+
-      '<div class="duo-ov-ai checked">✓ <span>Perplexity</span></div>'+
-      '<div class="duo-ov-ai">□ <span>Microsoft Copilot</span></div>'+
-      '<div class="duo-ov-ai">□ <span>Grok</span></div>'+
-      '<div class="duo-ov-ai">□ <span>Mistral</span></div>'+
-      '<div class="duo-ov-ai">□ <span>DuckDuckGo AI</span></div>'+
-      '<div class="duo-ov-ai">□ <span>HuggingChat</span></div>'+
-      '<div class="duo-ov-send">✈ '+selected+' (2)</div>'+
-    '</div>'+
-    '<div class="duo-ov-pane duo-ov-mid">'+
-      '<div class="duo-ov-modelhead"><span class="duo-ov-model gpt">◎</span><div><b>ChatGPT</b><small>'+S.response+'</small></div><i>⋮</i></div>'+
-      '<p>'+response1+'</p><p>'+response2+'</p>'+
-      '<div class="duo-ov-actions"><span>'+S.copy+'</span><span>'+S.read+'</span><span>'+S.share+'</span><span>'+S.save+'</span></div>'+
-    '</div>'+
-    '<div class="duo-ov-pane duo-ov-right">'+
-      '<div class="duo-ov-modelhead"><span class="duo-ov-model ppx">✦</span><div><b>Perplexity</b><small>'+S.response+'</small></div><i>⋮</i></div>'+
-      '<p>'+response2+'</p><p>'+response1+'</p>'+
-      '<div class="duo-ov-actions"><span>'+S.copy+'</span><span>'+S.read+'</span><span>'+S.share+'</span><span>'+S.save+'</span></div>'+
-    '</div>';
+    '<div class="duo-txt badge">'+M.flag+' '+M.code.replace("_","-")+'</div>'+
+    '<div class="duo-txt tab t1">✏️ '+S.ask+'</div>'+
+    '<div class="duo-txt tab t2">📋 '+S.templates+'</div>'+
+    '<div class="duo-txt tab t3">📖 '+S.how+'</div>'+
+    '<div class="duo-txt tab t4">🕐 '+S.history+'</div>'+
+    '<div class="duo-txt compare">🔀 '+S.compare+'</div>'+
+    '<div class="duo-txt compare-sub">'+S.compareHelp+'</div>'+
+    '<div class="duo-txt prompt-label">'+(S.promptHistory||S.promptIntro)+'</div>'+
+    '<div class="duo-txt prompt">'+prompt+'</div>'+
+    '<div class="duo-txt select-label">'+(S.compareSelect||S.compare)+'</div>'+
+    '<div class="duo-txt send">✈ '+selected+' (2)</div>'+
+    '<div class="duo-txt resp-label r1">'+S.response+'</div>'+
+    '<div class="duo-txt resp-copy r1copy">'+response1+' '+response2+'</div>'+
+    '<div class="duo-txt resp-label r2">'+S.response+'</div>'+
+    '<div class="duo-txt resp-copy r2copy">'+response2+' '+response1+'</div>'+
+    '<div class="duo-txt actions a1">'+S.copy+'　 '+S.read+'　 '+S.share+'　 '+S.save+'</div>'+
+    '<div class="duo-txt actions a2">'+S.copy+'　 '+S.read+'　 '+S.share+'　 '+S.save+'</div>';
 
   overlay.setAttribute("lang",c.toLowerCase().replace("_","-"));
-  overlay.setAttribute("dir",(c==="AR")?"rtl":"ltr");
+  overlay.setAttribute("dir",dir);
 }
-
 
 function heroMacTextOverlay(S,M,c){
   var host=document.querySelector(".hero-device-stack .hero-mac-crop");
