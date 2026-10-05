@@ -9569,5 +9569,172 @@ html[data-device-ui-lang="KO"] #iphone-duo #duo-title{
 }
 </style>
 
+
+<style>
+/* ===== LOCALIZED TAB UI — ALL DEVICES / ALL 38 LANGUAGES v20 ===== */
+
+/* Device selector tabs: stable equal-width row on mobile and desktop. */
+#screenshots .gallery-tabs{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:12px!important;
+  width:min(100%,520px)!important;
+  margin:0 0 32px!important;
+}
+#screenshots .gallery-tab{
+  min-width:0!important;
+  width:100%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:7px!important;
+  padding:10px 12px!important;
+  line-height:1.15!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  border-radius:10px!important;
+  box-sizing:border-box!important;
+}
+@media(max-width:620px){
+  #screenshots .gallery-tabs{
+    gap:8px!important;
+    margin-bottom:28px!important;
+  }
+  #screenshots .gallery-tab{
+    padding:10px 6px!important;
+    font-size:clamp(.72rem,3.2vw,.88rem)!important;
+  }
+}
+
+/* Universal four-tab app navigation geometry. */
+.iphone-ask-tabs,
+.demo-ask-tabs,
+.history-preview .hp-tabs,
+.pgl-tabs,
+.pgdsl-tabs,
+.pg-real-tabs{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  width:100%!important;
+  min-width:0!important;
+  overflow:hidden!important;
+}
+.iphone-ask-tabs > *,
+.demo-ask-tabs > *,
+.history-preview .hp-tabs > *,
+.pgl-tabs > *,
+.pgdsl-tabs > *,
+.pg-real-tabs > *{
+  min-width:0!important;
+  max-width:100%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  line-height:1.08!important;
+  box-sizing:border-box!important;
+}
+
+/* MAC: localized labels must cover the baked English tabs instead of disappearing. */
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  left:10.6%!important;
+  top:17.6%!important;
+  width:78.8%!important;
+  height:7.2%!important;
+  z-index:170!important;
+  overflow:hidden!important;
+  background:#05080d!important;
+  border-top:1px solid rgba(255,255,255,.035)!important;
+  border-bottom:1px solid rgba(255,255,255,.065)!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab.active,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab:not(.active){
+  min-width:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  margin:0!important;
+  padding:0 3px!important;
+  border:0!important;
+  border-bottom:3px solid transparent!important;
+  border-radius:0!important;
+  background:#05080d!important;
+  box-shadow:none!important;
+  color:rgba(255,255,255,.48)!important;
+  overflow:hidden!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab span{
+  display:block!important;
+  width:100%!important;
+  min-width:0!important;
+  opacity:1!important;
+  visibility:visible!important;
+  color:inherit!important;
+  text-shadow:none!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",sans-serif!important;
+  font-size:clamp(5px,.72vw,10px)!important;
+  font-weight:600!important;
+  line-height:1!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab.active{
+  color:#f59e0b!important;
+  border-bottom-color:#f59e0b!important;
+  background:rgba(245,158,11,.09)!important;
+  box-shadow:inset 0 0 0 1px rgba(245,158,11,.18)!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab::before,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab::after{
+  content:none!important;
+  display:none!important;
+}
+
+/* CJK uses compact type without truncating the row height. */
+html[data-device-ui-lang="ZH"] #gallery-mac .mac-reference-tab span,
+html[data-device-ui-lang="ZH-TW"] #gallery-mac .mac-reference-tab span,
+html[data-device-ui-lang="JA"] #gallery-mac .mac-reference-tab span,
+html[data-device-ui-lang="KO"] #gallery-mac .mac-reference-tab span{
+  letter-spacing:0!important;
+  font-size:clamp(5px,.69vw,9px)!important;
+}
+
+/* RTL keeps visual tab order matching the app while text reads correctly. */
+html[data-device-ui-lang="AR"] #gallery-mac .mac-reference-hotspots,
+html[data-device-ui-lang="HE"] #gallery-mac .mac-reference-hotspots,
+html[data-device-ui-lang="AR"] .pg-real-tabs,
+html[data-device-ui-lang="HE"] .pg-real-tabs{
+  direction:ltr!important;
+}
+html[data-device-ui-lang="AR"] #gallery-mac .mac-reference-tab span,
+html[data-device-ui-lang="HE"] #gallery-mac .mac-reference-tab span,
+html[data-device-ui-lang="AR"] .pg-real-tabs > *,
+html[data-device-ui-lang="HE"] .pg-real-tabs > *{
+  direction:rtl!important;
+}
+
+/* Keep localized tab hint compact even when labels are long. */
+#gallery-mac #macTabHint{
+  max-width:100%!important;
+  overflow:hidden!important;
+}
+#gallery-mac #macTabHint span{
+  max-width:100%!important;
+  box-sizing:border-box!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+</style>
+
 </body>
 </html>
