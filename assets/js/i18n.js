@@ -1622,8 +1622,9 @@ function setLang(code,flag){
 curLang=code;
 var rtl=(code==="AR"||code==="HE");
 document.documentElement.setAttribute("lang",code==="ZH_TW"?"zh-Hant":code.toLowerCase().replace("_","-"));
-document.documentElement.setAttribute("dir",rtl?"rtl":"ltr");
-document.body&&document.body.setAttribute("dir",rtl?"rtl":"ltr");
+document.documentElement.setAttribute("dir","ltr");
+document.documentElement.setAttribute("data-pg-rtl",rtl?"true":"false");
+if(document.body)document.body.setAttribute("dir","ltr");
 var gf=document.getElementById('pgGlobalFlag'),gc=document.getElementById('pgGlobalCode');
 if(gf)gf.textContent=flag;if(gc)gc.textContent=code;
 document.querySelectorAll('.pgGlob-row').forEach(function(r){r.classList.toggle('active',r.getAttribute('data-lang')===code);});
