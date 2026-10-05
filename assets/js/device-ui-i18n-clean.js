@@ -40,8 +40,7 @@ var APP_LANGS=[
 {"code":"SK","name":"Slovak","flag":"🇸🇰"},
 {"code":"HR","name":"Croatian","flag":"🇭🇷"},
 {"code":"CA","name":"Catalan","flag":"🇪🇸"},
-{"code":"AF","name":"Afrikaans","flag":"🇿🇦"}
-
+{"code":"AF","name":"Afrikaans","flag":"🇿🇦"},
 {"code":"SW","name":"Swahili","flag":"🇰🇪"},
 {"code":"HA","name":"Hausa","flag":"🇳🇬"},
 {"code":"AM","name":"Amharic","flag":"🇪🇹"},];
