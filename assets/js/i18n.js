@@ -1561,16 +1561,15 @@ var wrap=document.createElement('div');wrap.id='pgGlobalLangPicker';
 var btn=document.createElement('div');btn.id='pgGlobalLangBtn';btn.title='Change language';
 btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="pgGlobalFlag">\u{1F1FA}\u{1F1F8}</span><span id="pgGlobalCode">EN</span>';
 var dd=document.createElement('div');dd.id='pgGlobalLangDD';
-var hdr=document.createElement('div');hdr.className='pgGlob-head';hdr.textContent=LANGS.length+' languages';dd.appendChild(hdr);
 wrap.appendChild(btn);wrap.appendChild(dd);
 LANGS.forEach(function(L){
 var r=document.createElement('div');r.className='pgGlob-row'+(L.code==='EN'?' active':'');
 r.setAttribute('data-lang',L.code);
-r.innerHTML='<span class="gf">'+L.flag+'</span><span class="gc">'+L.code+'</span><span class="gn">'+L.name+'</span>';
+r.innerHTML='<span class="gf">'+L.flag+'</span><span class="gc">'+L.code+'</span>';r.title=L.name;r.setAttribute('aria-label',L.name+' ('+L.code+')');
 r.onclick=function(e){e.stopPropagation();setLang(L.code,L.flag);};
 dd.appendChild(r);
 });
-btn.onclick=function(e){e.stopPropagation();dd.classList.toggle('open');};
+btn.onclick=function(e){e.stopPropagation();var opening=!dd.classList.contains('open');dd.classList.toggle('open');if(opening){setTimeout(function(){var a=dd.querySelector('.pgGlob-row.active');if(a)a.scrollIntoView({block:'center'});},0);}};
 document.addEventListener('click',function(e){if(!wrap.contains(e.target))dd.classList.remove('open');});
 document.body.appendChild(wrap);
 }
@@ -1693,21 +1692,15 @@ if(navCTA&&!navCTA.getAttribute('data-i18n'))navCTA.setAttribute('data-i18n','na
 // ===== CSS =====
 var css=document.createElement('style');
 css.textContent='#pgGlobalLangPicker{position:fixed;bottom:24px;left:24px;z-index:99998}'
-+'#pgGlobalLangBtn{display:flex;align-items:center;gap:6px;padding:6px 12px;background:var(--bg-surface,#161b22);border:1px solid var(--border,rgba(255,255,255,0.08));border-radius:8px;cursor:pointer;color:var(--text-muted,rgba(255,255,255,0.6));font-family:inherit;font-size:0.78rem;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:transform 0.15s,box-shadow 0.15s,border-color 0.15s;white-space:nowrap}'
-+'#pgGlobalLangBtn:hover{transform:scale(1.05);box-shadow:0 6px 28px rgba(0,0,0,0.5);border-color:rgba(125,211,252,0.25)}'
-+'#pgGlobalLangBtn svg{color:var(--text-muted,rgba(255,255,255,0.5))}'
-+'#pgGlobalFlag{font-size:1rem}#pgGlobalCode{color:#7dd3fc;font-family:"Fira Code",monospace;font-weight:700}'
-+'#pgGlobalLangDD{display:none;position:absolute;bottom:44px;left:0;width:270px;max-height:min(70vh,620px);overflow-y:auto;background:var(--bg-surface,#161b22);border:1px solid var(--border,rgba(255,255,255,0.08));border-radius:12px;padding:6px;box-shadow:0 12px 48px rgba(0,0,0,0.7);scrollbar-width:thin;scrollbar-color:rgba(125,211,252,0.15) transparent}'
-+'#pgGlobalLangDD::-webkit-scrollbar{width:4px}#pgGlobalLangDD::-webkit-scrollbar-thumb{background:rgba(125,211,252,0.15);border-radius:2px}'
++'#pgGlobalLangBtn{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#0d1117;border:1px solid rgba(255,255,255,.12);border-radius:10px;cursor:pointer;color:rgba(255,255,255,.78);font-family:inherit;font-size:.82rem;font-weight:700;box-shadow:0 8px 28px rgba(0,0,0,.45);white-space:nowrap}'
++'#pgGlobalLangBtn svg{color:rgba(255,255,255,.5)}#pgGlobalFlag{font-size:1.05rem}#pgGlobalCode{color:#cfd6e4;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;font-weight:700}'
++'#pgGlobalLangDD{display:none;position:absolute;bottom:52px;left:0;width:220px;max-height:min(72vh,640px);overflow-y:auto;overscroll-behavior:contain;background:#080c12;border:1px solid rgba(255,255,255,.14);border-radius:28px;padding:14px 10px;box-shadow:0 20px 70px rgba(0,0,0,.7);scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.34) transparent}'
++'#pgGlobalLangDD::-webkit-scrollbar{width:4px}#pgGlobalLangDD::-webkit-scrollbar-thumb{background:rgba(255,255,255,.34);border-radius:99px}'
 +'#pgGlobalLangDD.open{display:block}'
-+'.pgGlob-head{position:sticky;top:0;z-index:2;padding:8px 10px 7px;background:var(--bg-surface,#161b22);border-bottom:1px solid rgba(255,255,255,.07);font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7dd3fc}'
-+'.pgGlob-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:0.82rem;color:#e8ecf4;transition:background 0.12s;border:1px solid transparent}'
-+'.pgGlob-row:hover{background:rgba(125,211,252,0.08)}'
-+'.pgGlob-row.active{background:rgba(124,58,237,0.15);border-color:rgba(124,58,237,0.3)}'
-+'.pgGlob-row .gf{font-size:1.1rem;width:24px;text-align:center}'
-+'.pgGlob-row .gc{font-size:0.65rem;font-weight:700;color:#7dd3fc;font-family:"Fira Code",monospace;width:30px}'
-+'.pgGlob-row .gn{flex:1;font-size:0.8rem}'
-+'@media(max-width:480px){#pgGlobalLangPicker{bottom:16px;left:8px}}';
++'.pgGlob-row{display:grid;grid-template-columns:42px 1fr;align-items:center;gap:10px;min-height:58px;padding:4px 14px;border-radius:14px;cursor:pointer;color:#f3f4f6;border:1px solid transparent}'
++'.pgGlob-row:hover{background:rgba(255,255,255,.05)}.pgGlob-row.active{background:rgba(124,58,237,.16);border-color:rgba(124,58,237,.34)}'
++'.pgGlob-row .gf{font-size:1.6rem;width:42px;text-align:center;line-height:1}.pgGlob-row .gc{font-size:1.22rem;font-weight:500;color:#f4f5f8;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;letter-spacing:.01em}.pgGlob-row .gn{display:none!important}'
++'@media(max-width:640px){#pgGlobalLangPicker{bottom:18px;left:10px}#pgGlobalLangDD{position:fixed;left:50%;bottom:auto;top:50%;transform:translate(-50%,-50%);width:min(68vw,360px);max-height:72vh;border-radius:34px;padding:16px 12px}.pgGlob-row{grid-template-columns:44px 1fr;min-height:66px;padding:4px 18px}.pgGlob-row .gf{font-size:1.7rem}.pgGlob-row .gc{font-size:1.35rem}}';
 document.head.appendChild(css);
 
 // ===== INIT =====
