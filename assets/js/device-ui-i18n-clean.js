@@ -5,11 +5,46 @@
  */
 (function(){
 "use strict";
-var APP_LANGS=[{"code":"EN","name":"English","flag":"🇺🇸"},{"code":"ES","name":"Spanish","flag":"🇪🇸"},{"code":"FR","name":"French","flag":"🇫🇷"},{"code":"DE","name":"German","flag":"🇩🇪"},{"code":"IT","name":"Italian","flag":"🇮🇹"},{"code":"PT","name":"Portuguese","flag":"🇧🇷"},{"code":"NL","name":"Dutch","flag":"🇳🇱"},{"code":"RU","name":"Russian","flag":"🇷🇺"},{"code":"ZH","name":"Chinese (Simplified)","flag":"🇨🇳"},{"code":"ZH_TW","name":"Chinese (Traditional)","flag":"🇹🇼"},{"code":"JA","name":"Japanese","flag":"🇯🇵"},{"code":"KO","name":"Korean","flag":"🇰🇷"},{"code":"AR","name":"Arabic","flag":"🇸🇦"},{"code":"HI","name":"Hindi","flag":"🇮🇳"},{"code":"BN","name":"Bengali","flag":"🇧🇩"},{"code":"TR","name":"Turkish","flag":"🇹🇷"},{"code":"PL","name":"Polish","flag":"🇵🇱"},{"code":"SV","name":"Swedish","flag":"🇸🇪"},{"code":"NO","name":"Norwegian","flag":"🇳🇴"},{"code":"DA","name":"Danish","flag":"🇩🇰"},{"code":"FI","name":"Finnish","flag":"🇫🇮"},{"code":"EL","name":"Greek","flag":"🇬🇷"},{"code":"HE","name":"Hebrew","flag":"🇮🇱"},{"code":"ID","name":"Indonesian","flag":"🇮🇩"},{"code":"MS","name":"Malay","flag":"🇲🇾"},{"code":"TH","name":"Thai","flag":"🇹🇭"},{"code":"VI","name":"Vietnamese","flag":"🇻🇳"},{"code":"UK","name":"Ukrainian","flag":"🇺🇦"},{"code":"CS","name":"Czech","flag":"🇨🇿"},{"code":"RO","name":"Romanian","flag":"🇷🇴"},{"code":"HU","name":"Hungarian","flag":"🇭🇺"},{"code":"SK","name":"Slovak","flag":"🇸🇰"},{"code":"HR","name":"Croatian","flag":"🇭🇷"},{"code":"CA","name":"Catalan","flag":"🇪🇸"},{"code":"AF","name":"Afrikaans","flag":"🇿🇦"},
-{"code":"SW","name":"Swahili","flag":"🇰🇪","siteOnly":true},
-{"code":"HA","name":"Hausa","flag":"🇳🇬","siteOnly":true},
-{"code":"AM","name":"Amharic","flag":"🇪🇹","siteOnly":true},
-{"code":"FIL","name":"Filipino","flag":"🇵🇭","siteOnly":true}];
+var APP_LANGS=[
+{"code":"EN","name":"English","flag":"🇺🇸"},
+{"code":"ES","name":"Español","flag":"🇪🇸"},
+{"code":"FR","name":"Français","flag":"🇫🇷"},
+{"code":"DE","name":"Deutsch","flag":"🇩🇪"},
+{"code":"IT","name":"Italiano","flag":"🇮🇹"},
+{"code":"PT","name":"Português","flag":"🇧🇷"},
+{"code":"NL","name":"Nederlands","flag":"🇳🇱"},
+{"code":"RU","name":"Русский","flag":"🇷🇺"},
+{"code":"ZH","name":"简体中文","flag":"🇨🇳"},
+{"code":"ZH_TW","name":"繁體中文","flag":"🇹🇼"},
+{"code":"JA","name":"日本語","flag":"🇯🇵"},
+{"code":"KO","name":"한국어","flag":"🇰🇷"},
+{"code":"AR","name":"العربية","flag":"🇸🇦"},
+{"code":"HI","name":"हिन्दी","flag":"🇮🇳"},
+{"code":"BN","name":"বাংলা","flag":"🇧🇩"},
+{"code":"TR","name":"Türkçe","flag":"🇹🇷"},
+{"code":"PL","name":"Polski","flag":"🇵🇱"},
+{"code":"SV","name":"Svenska","flag":"🇸🇪"},
+{"code":"NO","name":"Norsk","flag":"🇳🇴"},
+{"code":"DA","name":"Dansk","flag":"🇩🇰"},
+{"code":"FI","name":"Suomi","flag":"🇫🇮"},
+{"code":"EL","name":"Ελληνικά","flag":"🇬🇷"},
+{"code":"ID","name":"Bahasa Indonesia","flag":"🇮🇩"},
+{"code":"MS","name":"Bahasa Melayu","flag":"🇲🇾"},
+{"code":"TH","name":"ไทย","flag":"🇹🇭"},
+{"code":"VI","name":"Tiếng Việt","flag":"🇻🇳"},
+{"code":"UK","name":"Українська","flag":"🇺🇦"},
+{"code":"CS","name":"Čeština","flag":"🇨🇿"},
+{"code":"RO","name":"Română","flag":"🇷🇴"},
+{"code":"HU","name":"Magyar","flag":"🇭🇺"},
+{"code":"SK","name":"Slovenčina","flag":"🇸🇰"},
+{"code":"HR","name":"Hrvatski","flag":"🇭🇷"},
+{"code":"CA","name":"Català","flag":"🇪🇸"},
+{"code":"AF","name":"Afrikaans","flag":"🇿🇦"},
+{"code":"SW","name":"Swahili","flag":"🇰🇪"},
+{"code":"HA","name":"Hausa","flag":"🇳🇬"},
+{"code":"AM","name":"አማርኛ","flag":"🇪🇹"},
+{"code":"FIL","name":"Filipino","flag":"🇵🇭"}
+];
 var CORE={"EN":{"ask":"Ask Any AI","templates":"Templates","compare":"Compare Mode","compareSend":"Send to Selected","send":"Send","copy":"Copy","outputLabel":"AI will respond in:","search":"Search templates…","empty":"Type or speak your prompt first."},"ES":{"ask":"Pregunta a cualquier IA","templates":"Plantillas","compare":"Modo Comparar","compareSend":"Enviar a seleccionados","send":"Enviar","copy":"Copiar","outputLabel":"La IA responderá en:","search":"Buscar plantillas…","empty":"Escribe o habla tu prompt primero."},"FR":{"ask":"Demandez à n'importe quelle IA","templates":"Modèles","compare":"Mode Comparaison","compareSend":"Envoyer aux sélectionnés","send":"Envoyer","copy":"Copier","outputLabel":"L'IA répondra en:","search":"Rechercher des modèles…","empty":"Tapez ou parlez votre prompt d'abord."},"DE":{"ask":"Frag jede KI","templates":"Vorlagen","compare":"Vergleichsmodus","compareSend":"An Ausgewählte senden","send":"Senden","copy":"Kopieren","outputLabel":"KI antwortet auf:","search":"Vorlagen suchen…","empty":"Tippe oder sprich deinen Prompt zuerst."},"IT":{"ask":"Chiedi a qualsiasi IA","templates":"Modelli","compare":"Modalità Confronto","compareSend":"Invia ai selezionati","send":"Invia","copy":"Copia","outputLabel":"L'IA risponderà in:","search":"Cerca modelli…","empty":"Scrivi o parla il tuo prompt prima."},"PT":{"ask":"Pergunte a qualquer IA","templates":"Modelos","compare":"Modo Comparação","compareSend":"Enviar para selecionados","send":"Enviar","copy":"Copiar","outputLabel":"A IA responderá em:","search":"Pesquisar modelos…","empty":"Digite ou fale seu prompt primeiro."},"NL":{"ask":"Vraag het aan elke AI","templates":"Sjablonen","compare":"Vergelijkingsmodus","compareSend":"Naar geselecteerde sturen","send":"Versturen","copy":"Kopiëren","outputLabel":"AI antwoordt in:","search":"Sjablonen zoeken…","empty":"Typ of spreek je prompt eerst."},"RU":{"ask":"Спросите любой ИИ","templates":"Шаблоны","compare":"Режим сравнения","compareSend":"Отправить выбранным","send":"Отправить","copy":"Копировать","outputLabel":"ИИ ответит на:","search":"Поиск шаблонов…","empty":"Сначала напишите или произнесите запрос."},"ZH":{"ask":"问任何AI","templates":"模板","compare":"对比模式","compareSend":"发送到已选","send":"发送","copy":"复制","outputLabel":"AI将用以下语言回复：","search":"搜索模板…","empty":"请先输入或说出你的提示词。"},"ZH_TW":{"ask":"問任何AI","templates":"範本","compare":"對比模式","compareSend":"傳送到已選","send":"傳送","copy":"複製","outputLabel":"AI將用以下語言回覆：","search":"搜尋範本…","empty":"請先輸入或說出你的提示詞。"},"JA":{"ask":"どのAIにも聞ける","templates":"テンプレート","compare":"比較モード","compareSend":"選択したAIに送信","send":"送信","copy":"コピー","outputLabel":"AIの回答言語：","search":"テンプレートを検索…","empty":"先にプロンプトを入力または話してください。"},"KO":{"ask":"아무 AI에게 물어봐","templates":"템플릿","compare":"비교 모드","compareSend":"선택한 AI로 전송","send":"보내기","copy":"복사","outputLabel":"AI 응답 언어:","search":"템플릿 검색…","empty":"먼저 프롬프트를 입력하거나 말하세요."},"AR":{"ask":"اسأل أي ذكاء اصطناعي","templates":"القوالب","compare":"وضع المقارنة","compareSend":"إرسال إلى المحدد","send":"إرسال","copy":"نسخ","outputLabel":"سيرد الذكاء الاصطناعي بـ:","search":"ابحث في القوالب…","empty":"اكتب أو تحدث طلبك أولاً."},"HI":{"ask":"किसी भी AI से पूछें","templates":"टेम्पलेट्स","compare":"तुलना मोड","compareSend":"चयनित को भेजें","send":"भेजें","copy":"कॉपी","outputLabel":"AI इस भाषा में जवाब देगा:","search":"टेम्पलेट खोजें…","empty":"पहले अपना प्रॉम्प्ट टाइप करें या बोलें।"},"BN":{"ask":"যেকোনো AI কে জিজ্ঞাসা করুন","templates":"টেমপ্লেট","compare":"তুলনা মোড","compareSend":"নির্বাচিতদের পাঠান","send":"পাঠান","copy":"কপি","outputLabel":"AI will respond in:","search":"টেমপ্লেট খুঁজুন…","empty":"Type or speak your prompt first."},"TR":{"ask":"Herhangi bir Yapay Zekaya Sor","templates":"Şablonlar","compare":"Karşılaştırma Modu","compareSend":"Seçilenlere Gönder","send":"Gönder","copy":"Kopyala","outputLabel":"AI will respond in:","search":"Şablon ara…","empty":"Type or speak your prompt first."},"PL":{"ask":"Zapytaj dowolne AI","templates":"Szablony","compare":"Tryb porównania","compareSend":"Wyślij do wybranych","send":"Wyślij","copy":"Kopiuj","outputLabel":"AI will respond in:","search":"Szukaj szablonów…","empty":"Type or speak your prompt first."},"SV":{"ask":"Fråga vilken AI som helst","templates":"Mallar","compare":"Jämförelseläge","compareSend":"Skicka till valda","send":"Skicka","copy":"Kopiera","outputLabel":"AI will respond in:","search":"Sök mallar…","empty":"Type or speak your prompt first."},"NO":{"ask":"Spør hvilken som helst AI","templates":"Maler","compare":"Sammenligningsmodus","compareSend":"Send til valgte","send":"Send","copy":"Kopier","outputLabel":"AI will respond in:","search":"Søk i maler…","empty":"Type or speak your prompt first."},"DA":{"ask":"Spørg enhver AI","templates":"Skabeloner","compare":"Sammenligningstilstand","compareSend":"Send til valgte","send":"Send","copy":"Kopiér","outputLabel":"AI will respond in:","search":"Søg i skabeloner…","empty":"Type or speak your prompt first."},"FI":{"ask":"Kysy miltä tahansa tekoälyltä","templates":"Mallit","compare":"Vertailutila","compareSend":"Lähetä valituille","send":"Lähetä","copy":"Kopioi","outputLabel":"AI will respond in:","search":"Hae malleja…","empty":"Type or speak your prompt first."},"EL":{"ask":"Ρωτήστε οποιοδήποτε AI","templates":"Πρότυπα","compare":"Λειτουργία σύγκρισης","compareSend":"Αποστολή στα επιλεγμένα","send":"Αποστολή","copy":"Αντιγραφή","outputLabel":"AI will respond in:","search":"Αναζήτηση προτύπων…","empty":"Type or speak your prompt first."},"HE":{"ask":"שאל כל AI","templates":"תבניות","compare":"מצב השוואה","compareSend":"שלח לנבחרים","send":"שלח","copy":"העתק","outputLabel":"AI will respond in:","search":"חיפוש תבניות…","empty":"Type or speak your prompt first."},"ID":{"ask":"Tanya AI Mana Saja","templates":"Template","compare":"Mode Perbandingan","compareSend":"Kirim ke yang dipilih","send":"Kirim","copy":"Salin","outputLabel":"AI will respond in:","search":"Cari template…","empty":"Type or speak your prompt first."},"MS":{"ask":"Tanya Mana-mana AI","templates":"Templat","compare":"Mod Perbandingan","compareSend":"Hantar ke yang dipilih","send":"Hantar","copy":"Salin","outputLabel":"AI will respond in:","search":"Cari templat…","empty":"Type or speak your prompt first."},"TH":{"ask":"ถามAIตัวไหนก็ได้","templates":"เทมเพลต","compare":"โหมดเปรียบเทียบ","compareSend":"ส่งไปยังที่เลือก","send":"ส่ง","copy":"คัดลอก","outputLabel":"AI will respond in:","search":"ค้นหาเทมเพลต…","empty":"Type or speak your prompt first."},"VI":{"ask":"Hỏi bất kỳ AI nào","templates":"Mẫu","compare":"Chế độ So sánh","compareSend":"Gửi đến đã chọn","send":"Gửi","copy":"Sao chép","outputLabel":"AI will respond in:","search":"Tìm mẫu…","empty":"Type or speak your prompt first."},"UK":{"ask":"Запитайте будь-який ШІ","templates":"Шаблони","compare":"Режим порівняння","compareSend":"Надіслати обраним","send":"Надіслати","copy":"Копіювати","outputLabel":"AI will respond in:","search":"Пошук шаблонів…","empty":"Type or speak your prompt first."},"CS":{"ask":"Zeptejte se jakéhokoli AI","templates":"Šablony","compare":"Režim porovnání","compareSend":"Odeslat vybraným","send":"Odeslat","copy":"Kopírovat","outputLabel":"AI will respond in:","search":"Hledat šablony…","empty":"Type or speak your prompt first."},"RO":{"ask":"Întreabă orice AI","templates":"Șabloane","compare":"Mod Comparare","compareSend":"Trimite la selectate","send":"Trimite","copy":"Copiază","outputLabel":"AI will respond in:","search":"Caută șabloane…","empty":"Type or speak your prompt first."},"HU":{"ask":"Kérdezz bármely AI-t","templates":"Sablonok","compare":"Összehasonlító mód","compareSend":"Küldés a kiválasztottaknak","send":"Küldés","copy":"Másolás","outputLabel":"AI will respond in:","search":"Sablonok keresése…","empty":"Type or speak your prompt first."},"SK":{"ask":"Opýtajte sa akéhokoľvek AI","templates":"Šablóny","compare":"Režim porovnania","compareSend":"Odoslať vybraným","send":"Odoslať","copy":"Kopírovať","outputLabel":"AI will respond in:","search":"Hľadať šablóny…","empty":"Type or speak your prompt first."},"HR":{"ask":"Pitajte bilo koji AI","templates":"Predlošci","compare":"Način usporedbe","compareSend":"Pošalji odabranima","send":"Pošalji","copy":"Kopiraj","outputLabel":"AI will respond in:","search":"Pretraži predloške…","empty":"Type or speak your prompt first."},"CA":{"ask":"Pregunta a qualsevol IA","templates":"Plantilles","compare":"Mode Comparació","compareSend":"Envia als seleccionats","send":"Envia","copy":"Copia","outputLabel":"AI will respond in:","search":"Cerca plantilles…","empty":"Type or speak your prompt first."},"AF":{"ask":"Vra enige KI","templates":"Sjablone","compare":"Vergelykingsmodus","compareSend":"Stuur na geselekteerdes","send":"Stuur","copy":"Kopieer","outputLabel":"AI will respond in:","search":"Soek sjablone…","empty":"Type or speak your prompt first."},
 "SW":{"ask":"Uliza AI Yoyote","templates":"Violezo","compare":"Hali ya Kulinganisha","compareSend":"Tuma kwa Zilizochaguliwa","send":"Tuma","copy":"Nakili","outputLabel":"AI itajibu kwa:","search":"Tafuta violezo…","empty":"Andika au sema ombi lako kwanza."},
 "HA":{"ask":"Tambayi Duk Wani AI","templates":"Samfura","compare":"Yanayin Kwatantawa","compareSend":"Aika zuwa Zaɓaɓɓu","send":"Aika","copy":"Kwafi","outputLabel":"AI zai amsa da:","search":"Nemo samfura…","empty":"Rubuta ko faɗi buƙatarka da farko."},
@@ -445,7 +480,7 @@ function duo(S,M,c){
     '</div>';
 
   overlay.setAttribute("lang",c.toLowerCase().replace("_","-"));
-  overlay.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr");
+  overlay.setAttribute("dir",(c==="AR")?"rtl":"ltr");
 }
 
 
@@ -460,7 +495,7 @@ function heroMacTextOverlay(S,M,c){
     host.appendChild(old);
   }
   old.setAttribute("lang",c.toLowerCase().replace("_","-"));
-  old.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr");
+  old.setAttribute("dir",(c==="AR")?"rtl":"ltr");
   old.innerHTML=
     '<span class="pg-hm lang">'+M.flag+' '+M.code.replace("_","-")+'</span>'+
     '<span class="pg-hm tab t1">✏️ '+S.ask+'</span>'+
@@ -484,7 +519,7 @@ function heroMacTextOverlay(S,M,c){
 
 function apply(code){
  var c=norm(code||current()),S=strings(c),M=meta(c);
- roots().forEach(function(r){localizeText(r,S);composed(r,S);badge(r,M);r.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr")});
+ roots().forEach(function(r){localizeText(r,S);composed(r,S);badge(r,M);r.setAttribute("dir",(c==="AR")?"rtl":"ltr")});
  staticScreens(S,M,c);macOverlay(S,M,c);heroMacTextOverlay(S,M,c);syncPlainBadges(S,M);syncAllTabLabels(S,M);siteLabels(S,M,c);languageDemoOverlay(S,M,c);duo(S,M,c);
  document.documentElement.setAttribute("data-device-ui-lang",c);
 }
