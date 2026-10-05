@@ -5786,7 +5786,7 @@ function _demoStart() {
 
 <!-- Global i18n — 38 languages, same flags as the app -->
 <script src="assets/js/i18n.js?v=global-sync-v14"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v27"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v28"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
 
@@ -11269,6 +11269,258 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
   direction:rtl!important;
   unicode-bidi:plaintext!important;
   text-align:right!important;
+}
+</style>
+
+
+<style id="pg-gallery-mac-text-parity-v36">
+/* Mac gallery now follows the same strategy as the stable iPhone localization:
+   exact English render remains untouched; translated text masks only replace text. */
+
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-stage,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-full-overlay,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-inline-overlay,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-panel-localized,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-final-mac-locale,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-badge-localized{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+
+#gallery-mac .pg-gallery-mac-text-overlay{
+  position:absolute!important;
+  left:6.6%!important;
+  top:3.8%!important;
+  width:86.8%!important;
+  height:80.8%!important;
+  z-index:500!important;
+  pointer-events:none!important;
+  background:transparent!important;
+  overflow:hidden!important;
+  container-type:inline-size!important;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",sans-serif!important;
+}
+html[data-device-ui-lang="EN"] #gallery-mac .pg-gallery-mac-text-overlay{
+  display:none!important;
+}
+
+#gallery-mac .pg-gallery-mac-text-overlay .pg-gm{
+  position:absolute!important;
+  display:flex!important;
+  align-items:center!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+  color:#dfe7f2!important;
+  line-height:1.18!important;
+  white-space:nowrap!important;
+  text-overflow:ellipsis!important;
+}
+#gallery-mac .pg-gallery-mac-text-overlay .pg-gm::before{
+  content:""!important;
+  position:absolute!important;
+  inset:-2px!important;
+  z-index:-1!important;
+  background:#071018!important;
+}
+
+/* Exact English-render text regions. */
+#gallery-mac .pg-gallery-mac-text-overlay .lang{
+  right:2.8%!important;
+  top:8.1%!important;
+  min-width:6.5%!important;
+  height:6.2%!important;
+  justify-content:center!important;
+  padding:0 .65em!important;
+  border-radius:.45em!important;
+  background:#171b25!important;
+  font-size:clamp(6px,.80vw,10px)!important;
+}
+#gallery-mac .pg-gallery-mac-text-overlay .lang::before{display:none!important}
+
+#gallery-mac .pg-gallery-mac-text-overlay .tab{
+  top:17.2%!important;
+  height:7.4%!important;
+  justify-content:center!important;
+  background:#05080d!important;
+  color:#858b96!important;
+  font-size:clamp(5px,.78vw,10px)!important;
+  font-weight:600!important;
+  text-align:center!important;
+}
+#gallery-mac .pg-gallery-mac-text-overlay .tab::before{background:#05080d!important}
+#gallery-mac .pg-gallery-mac-text-overlay .t1{
+  left:0!important;width:25%!important;color:#f59e0b!important;border-bottom:2px solid #f59e0b!important;
+}
+#gallery-mac .pg-gallery-mac-text-overlay .t2{left:25%!important;width:25%!important}
+#gallery-mac .pg-gallery-mac-text-overlay .t3{left:50%!important;width:25%!important}
+#gallery-mac .pg-gallery-mac-text-overlay .t4{left:75%!important;width:25%!important}
+
+#gallery-mac .pg-gallery-mac-text-overlay .title{
+  left:4.2%!important;
+  top:29.3%!important;
+  width:39%!important;
+  height:6.5%!important;
+  background:#080c12!important;
+  font-size:clamp(9px,1.25vw,16px)!important;
+  font-weight:800!important;
+}
+#gallery-mac .pg-gallery-mac-text-overlay .how{
+  right:4%!important;
+  top:30.6%!important;
+  width:23%!important;
+  height:5.2%!important;
+  justify-content:flex-end!important;
+  background:#080c12!important;
+  color:#c084fc!important;
+  text-decoration:underline!important;
+  text-underline-offset:2px!important;
+  font-size:clamp(5px,.72vw,9px)!important;
+}
+
+#gallery-mac .pg-gallery-mac-text-overlay .help{
+  left:4.2%!important;
+  width:61%!important;
+  height:4.2%!important;
+  background:#080c12!important;
+  color:#aab2c0!important;
+  font-size:clamp(4px,.64vw,8px)!important;
+}
+#gallery-mac .pg-gallery-mac-text-overlay .h1{top:36.8%!important}
+#gallery-mac .pg-gallery-mac-text-overlay .h2{top:40.4%!important}
+#gallery-mac .pg-gallery-mac-text-overlay .h3{top:44.0%!important}
+#gallery-mac .pg-gallery-mac-text-overlay .h4{top:47.6%!important}
+
+#gallery-mac .pg-gallery-mac-text-overlay .output{
+  left:4.2%!important;
+  top:53.2%!important;
+  width:27%!important;
+  height:5.5%!important;
+  background:#080c12!important;
+  color:#aab2c0!important;
+  font-size:clamp(4px,.66vw,8px)!important;
+}
+#gallery-mac .pg-gallery-mac-text-overlay .select{
+  left:28.4%!important;
+  top:52.4%!important;
+  width:31.5%!important;
+  height:6.6%!important;
+  padding:0 1.1em!important;
+  background:#171b25!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  border-radius:.55em!important;
+  font-size:clamp(4px,.69vw,8px)!important;
+}
+#gallery-mac .pg-gallery-mac-text-overlay .select::before{display:none!important}
+#gallery-mac .pg-gallery-mac-text-overlay .select b{
+  margin-left:auto!important;
+  font-weight:500!important;
+  color:#c4ccd8!important;
+}
+
+#gallery-mac .pg-gallery-mac-text-overlay .prompt{
+  left:4.1%!important;
+  top:61.3%!important;
+  width:91.8%!important;
+  height:17.6%!important;
+  justify-content:center!important;
+  text-align:center!important;
+  white-space:normal!important;
+  background:#0c1017!important;
+  color:#8d96a6!important;
+  border-radius:.35em!important;
+  padding:1.6%!important;
+  font-size:clamp(4px,.66vw,8px)!important;
+  line-height:1.35!important;
+}
+#gallery-mac .pg-gallery-mac-text-overlay .prompt::before{background:#0c1017!important}
+
+#gallery-mac .pg-gallery-mac-text-overlay .action{
+  top:81.2%!important;
+  height:6.5%!important;
+  justify-content:center!important;
+  background:#161c28!important;
+  color:#cfd5df!important;
+  border-radius:.35em!important;
+  font-size:clamp(4px,.64vw,8px)!important;
+}
+#gallery-mac .pg-gallery-mac-text-overlay .action::before{background:#161c28!important}
+#gallery-mac .pg-gallery-mac-text-overlay .paste{left:4.1%!important;width:44.8%!important}
+#gallery-mac .pg-gallery-mac-text-overlay .imp{left:51.1%!important;width:44.8%!important}
+
+#gallery-mac .pg-gallery-mac-text-overlay .talk{
+  left:4.1%!important;
+  top:89.6%!important;
+  width:22%!important;
+  height:5.8%!important;
+  background:#080c12!important;
+  color:#aab2c0!important;
+  font-size:clamp(4px,.64vw,8px)!important;
+}
+#gallery-mac .pg-gallery-mac-text-overlay .send{
+  right:4.1%!important;
+  top:88.8%!important;
+  width:15.5%!important;
+  height:7.2%!important;
+  justify-content:center!important;
+  background:linear-gradient(90deg,#7c3aed,#2563eb)!important;
+  border-radius:.45em!important;
+  color:#fff!important;
+  font-weight:700!important;
+  font-size:clamp(4px,.68vw,8px)!important;
+}
+#gallery-mac .pg-gallery-mac-text-overlay .send::before{display:none!important}
+
+/* Keep original transparent hotspots clickable while making them visually inert. */
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots{
+  z-index:700!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab span,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab::before,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab::after{
+  opacity:0!important;
+  color:transparent!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+
+/* RTL: same coordinates, native text direction only. */
+#gallery-mac .pg-gallery-mac-text-overlay[data-pg-rtl="true"] .title,
+#gallery-mac .pg-gallery-mac-text-overlay[data-pg-rtl="true"] .how,
+#gallery-mac .pg-gallery-mac-text-overlay[data-pg-rtl="true"] .help,
+#gallery-mac .pg-gallery-mac-text-overlay[data-pg-rtl="true"] .output,
+#gallery-mac .pg-gallery-mac-text-overlay[data-pg-rtl="true"] .prompt,
+#gallery-mac .pg-gallery-mac-text-overlay[data-pg-rtl="true"] .talk{
+  direction:rtl!important;
+  unicode-bidi:plaintext!important;
+  text-align:right!important;
+}
+#gallery-mac .pg-gallery-mac-text-overlay[data-pg-rtl="true"] .tab,
+#gallery-mac .pg-gallery-mac-text-overlay[data-pg-rtl="true"] .lang,
+#gallery-mac .pg-gallery-mac-text-overlay[data-pg-rtl="true"] .send{
+  text-align:center!important;
+}
+
+@media(max-width:760px){
+  #gallery-mac .pg-gallery-mac-text-overlay .tab,
+  #gallery-mac .pg-gallery-mac-text-overlay .title,
+  #gallery-mac .pg-gallery-mac-text-overlay .how,
+  #gallery-mac .pg-gallery-mac-text-overlay .help,
+  #gallery-mac .pg-gallery-mac-text-overlay .output,
+  #gallery-mac .pg-gallery-mac-text-overlay .select,
+  #gallery-mac .pg-gallery-mac-text-overlay .prompt,
+  #gallery-mac .pg-gallery-mac-text-overlay .action,
+  #gallery-mac .pg-gallery-mac-text-overlay .talk,
+  #gallery-mac .pg-gallery-mac-text-overlay .send,
+  #gallery-mac .pg-gallery-mac-text-overlay .lang{
+    font-size:5px!important;
+  }
 }
 </style>
 
