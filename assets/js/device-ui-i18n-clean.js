@@ -247,28 +247,57 @@ function duo(S,M,c){
       return v&&v!==k?v:fb;
     }catch(e){return fb}
   };
-  var kicker=root.querySelector(".duo-kicker");if(kicker)kicker.textContent=gt("mcpGptBadge","Coming Soon");
-  var title=root.querySelector("#duo-title");if(title)title.innerHTML='Poly-Glot<br><span>iPhone Duo</span>';
-  var copy=root.querySelector(".duo-copy");if(copy)copy.textContent=gt("sc2P","Send the same prompt to multiple AI apps and compare their responses side by side.");
-  var metaBox=root.querySelector(".duo-meta");
-  if(metaBox){
-    var link=metaBox.querySelector("a");
-    var available=gt("platAvail","Available Now");
-    if(metaBox.firstChild)metaBox.firstChild.nodeValue='iPhone Duo · 2026-10-23 · '+available+'. ';
-    if(link)link.textContent='Apple · iPhone Duo';
-  }
-  var badge=root.querySelector(".duo-lang-badge");if(badge)badge.textContent=M.flag+" "+M.code.replace("_","-");
-  var tab=root.querySelector(".duo-ui .tabline");if(tab)tab.textContent="✏️ "+S.ask;
-  var ct=root.querySelector(".duo-ui h3");if(ct)ct.textContent="🔀 "+S.compare;
-  var cs=root.querySelector(".duo-ui h3 + .muted");if(cs)cs.textContent=S.compareSelect;
-  var prompt=root.querySelector(".duo-ui .prompt");if(prompt)prompt.textContent=gt("sc2Prompt",S.promptExample);
-  var send=root.querySelector(".duo-send");if(send)send.textContent=S.compareSend;
-  var response=root.querySelector(".duo-response-head .muted");if(response)response.textContent=S.response||"Response";
-  var ps=root.querySelectorAll(".duo-response p");
-  if(ps[0])ps[0].textContent=gt("sc2Prompt",S.promptIntro);
-  if(ps[1])ps[1].textContent=gt("sc2PickSub",S.compareHelp);
-  var acts=root.querySelectorAll(".duo-actions span"), av=[S.copy,S.read,S.share,S.save];
-  acts.forEach(function(el,i){if(av[i])el.textContent=av[i]});
+
+  var kicker=root.querySelector(".duo-kicker");
+  if(kicker)kicker.textContent=gt("mcpGptBadge","Coming Soon");
+
+  var copy=root.querySelector(".duo-copy");
+  if(copy)copy.textContent=gt("sc2P","Send the same prompt to multiple AI apps and compare their responses side by side.");
+
+  var live=root.querySelector(".duo-localized-device");
+  if(!live)return;
+  if(c==="EN")return;
+
+  var prompt=gt("sc2Prompt",S.promptExample);
+  var response1=gt("sc2PickSub",S.responds||"Response");
+  var response2=gt("sc2P",S.compareHelp||"Compare responses side by side.");
+
+  var selected=S.compareSend||"Send to Selected";
+  live.innerHTML=
+    '<div class="pg-duo-xcode-head"><span class="pg-duo-traffic">● ● ●</span><b>Poly-Glot</b><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+
+    '<div class="pg-duo-device-shell">'+
+      '<div class="pg-duo-pane pg-duo-control">'+
+        '<div class="pg-duo-apphead"><img src="assets/img/icon-128.png" alt=""><div><b>Poly-Glot AI Workspace</b><small>poly-glot.ai</small></div><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+
+        '<div class="pg-duo-tabs"><span class="on">✏️ '+S.ask+'</span><span>⌘ '+S.templates+'</span><span>▣ '+S.how+'</span><span>◷ '+S.history+'</span></div>'+
+        '<h3>🔀 '+S.compare+'</h3>'+
+        '<p class="pg-duo-muted">'+S.compareHelp+'</p>'+
+        '<label>'+S.promptIntro+'</label>'+
+        '<div class="pg-duo-prompt">'+prompt+'</div>'+
+        '<b class="pg-duo-select">'+(S.compareSelect||S.compare)+'</b>'+
+        '<div class="pg-duo-ai checked">✓ <span>ChatGPT</span></div>'+
+        '<div class="pg-duo-ai">□ <span>Claude</span></div>'+
+        '<div class="pg-duo-ai">□ <span>Gemini</span></div>'+
+        '<div class="pg-duo-ai checked">✓ <span>Perplexity</span></div>'+
+        '<div class="pg-duo-ai">□ <span>Microsoft Copilot</span></div>'+
+        '<div class="pg-duo-ai">□ <span>Grok</span></div>'+
+        '<div class="pg-duo-ai">□ <span>Mistral</span></div>'+
+        '<button>'+selected+' (2)</button>'+
+      '</div>'+
+      '<div class="pg-duo-pane pg-duo-response">'+
+        '<div class="pg-duo-modelhead"><span class="pg-duo-model gpt">◉</span><div><b>ChatGPT</b><small>'+S.response+'</small></div></div>'+
+        '<p>'+response1+'</p><p>'+response2+'</p>'+
+        '<div class="pg-duo-actions"><span>'+S.copy+'</span><span>'+S.read+'</span><span>'+S.share+'</span><span>'+S.save+'</span></div>'+
+      '</div>'+
+      '<div class="pg-duo-pane pg-duo-response">'+
+        '<div class="pg-duo-modelhead"><span class="pg-duo-model ppx">✦</span><div><b>Perplexity</b><small>'+S.response+'</small></div></div>'+
+        '<p>'+response2+'</p><p>'+response1+'</p>'+
+        '<div class="pg-duo-actions"><span>'+S.copy+'</span><span>'+S.read+'</span><span>'+S.share+'</span><span>'+S.save+'</span></div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="pg-duo-xcode-foot"><span>iPhone Duo</span><b>'+S.compare+'</b><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>';
+
+  live.setAttribute("lang",c.toLowerCase().replace("_","-"));
+  live.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr");
 }
 
 
@@ -283,6 +312,28 @@ var css=document.createElement("style");css.textContent=
 '.pg-mac-full-overlay{position:absolute!important;left:10.6%!important;top:11.15%!important;width:78.8%!important;height:71.95%!important;z-index:85!important;background:#0d1117!important;color:#fff!important;overflow:hidden!important;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif!important}.pg-mac-full-overlay .pgdsl-head{height:13%;padding:1.6% 3%}.pg-mac-full-overlay .pgdsl-head img{width:4.5%}.pg-mac-full-overlay .pgdsl-tabs{height:11%;font-size:clamp(5px,.72vw,10px)}.pg-mac-full-overlay .pgdsl-tabs span{display:flex;align-items:center;justify-content:center;padding:0 2%}.pgmac-body{padding:3% 4%;font-size:clamp(6px,.7vw,10px)}.pgmac-body h3{font-size:clamp(10px,1.2vw,16px);margin:0 0 1.6%}.pgmac-help{line-height:1.45;color:#aab2c0}.pgmac-output{margin:2% 0;background:#161b22;border:1px solid rgba(255,255,255,.08);padding:1.6% 2%;border-radius:7px}.pgmac-prompt{min-height:82px;border:2px solid #8b2cff;border-radius:8px;padding:2.5%;color:#8b949e}.pgmac-actions{display:grid;grid-template-columns:1fr 1fr;gap:1%;margin-top:1.8%}.pgmac-actions span{background:#1c2128;padding:1.5%;text-align:center;border-radius:6px}.pgmac-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:1.6%}.pgmac-bottom b{background:linear-gradient(135deg,#7c3aed,#2563eb);padding:1.5% 5%;border-radius:7px}';
 css.textContent+=
 '.pg-langphone-global{position:absolute;inset:0;z-index:999;background:#0d0f1a;color:#fff;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif}.pgl-status{height:42px;display:flex;justify-content:space-between;align-items:flex-end;padding:0 24px 7px;font-size:.72rem;font-weight:700}.pgl-head{display:flex;align-items:center;gap:8px;padding:7px 14px}.pgl-head img{width:26px;height:26px;border-radius:6px}.pgl-head div{min-width:0}.pgl-head b{display:block;font-size:.7rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pgl-head small{display:block;color:#596071;font-size:.43rem}.pgl-head>span{margin-left:auto;background:rgba(255,255,255,.08);padding:4px 7px;border-radius:5px;font-size:.53rem}.pgl-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid rgba(255,255,255,.07)}.pgl-tabs span{padding:8px 3px;text-align:center;font-size:.46rem;font-weight:600;color:#6e7380;line-height:1.12;min-width:0}.pgl-tabs .active{color:#f59e0b;border-bottom:2px solid #f59e0b}.pgl-body{padding:12px;flex:1;overflow:hidden}.pgl-search{background:#1c2128;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:9px 12px;color:#777f8d;font-size:.54rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pgl-cats{display:flex;gap:5px;margin:9px 0}.pgl-cats span{border:1px solid rgba(255,255,255,.1);padding:5px 9px;border-radius:15px;color:#808796;font-size:.46rem}.pgl-cats .on{background:#45c78c;color:#fff;border-color:#45c78c}.pgl-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pgl-grid>div{min-height:92px;background:#1a1e2e;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:9px 9px 0;display:flex;flex-direction:column;overflow:hidden}.pgl-grid em{font-style:normal;color:#f59e0b;font-size:.42rem;font-weight:700}.pgl-grid b{font-size:.54rem;line-height:1.2;margin:3px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pgl-grid small{font-size:.39rem;color:#687080;line-height:1.2;flex:1}.pgl-grid strong{margin:0 -9px;background:#e9a32d;color:#111;padding:4px 9px;font-size:.41rem}.pgl-home{width:36%;height:5px;background:#fff;border-radius:3px;margin:7px auto 10px;opacity:.2}';
+css.textContent+=
+'html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-full-overlay{z-index:140!important}'+
+'html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots{z-index:160!important}'+
+'html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots .mac-reference-tab span{opacity:0!important;color:transparent!important;text-shadow:none!important}'+
+'html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab::after{display:none!important}'+
+'html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-full-overlay .pgdsl-tabs .active{border-bottom:2px solid #f59e0b!important;box-shadow:none!important;background:rgba(245,158,11,.08)!important}'+
+'.pg-duo-xcode-head,.pg-duo-xcode-foot{display:flex;align-items:center;justify-content:space-between;background:#2a3139;color:#dfe7f2;padding:10px 14px;font-size:.72rem;border:1px solid rgba(255,255,255,.08)}'+
+'.pg-duo-xcode-head{border-radius:18px 18px 0 0}.pg-duo-xcode-foot{border-radius:0 0 18px 18px}.pg-duo-traffic{color:#ff6b6b;letter-spacing:4px}'+
+'#iphone-duo .pg-duo-device-shell{display:grid;grid-template-columns:1.12fr .94fr .94fr;gap:2px;background:#05070b;border-left:1px solid rgba(255,255,255,.07);border-right:1px solid rgba(255,255,255,.07);overflow:hidden}'+
+'#iphone-duo .pg-duo-pane{min-width:0;background:#071018;color:#edf3fb;padding:14px 12px;min-height:430px;position:relative}'+
+'#iphone-duo .pg-duo-control{border-right:2px solid #111827}'+
+'#iphone-duo .pg-duo-response{border-left:1px solid rgba(255,255,255,.05);display:flex;flex-direction:column}'+
+'#iphone-duo .pg-duo-apphead{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;align-items:center;margin-bottom:8px}'+
+'#iphone-duo .pg-duo-apphead img{width:28px;height:28px;border-radius:7px}#iphone-duo .pg-duo-apphead b{display:block;font-size:.66rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#iphone-duo .pg-duo-apphead small{display:block;color:#6f7b8e;font-size:.46rem}#iphone-duo .pg-duo-apphead>span{font-size:.5rem;background:#141d2a;padding:4px 6px;border-radius:5px}'+
+'#iphone-duo .pg-duo-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:10px}#iphone-duo .pg-duo-tabs span{padding:6px 2px;font-size:.43rem;color:#788396;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}#iphone-duo .pg-duo-tabs .on{color:#e879f9;border-bottom:2px solid #d946ef}'+
+'#iphone-duo .pg-duo-control h3{font-size:.8rem;margin:5px 0 2px}#iphone-duo .pg-duo-muted{font-size:.5rem;color:#8d98a9;line-height:1.3;margin:0 0 8px}#iphone-duo .pg-duo-control label{display:block;font-size:.5rem;font-weight:700;margin-bottom:5px}'+
+'#iphone-duo .pg-duo-prompt{background:#182231;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:9px;font-size:.56rem;line-height:1.3;margin-bottom:8px}#iphone-duo .pg-duo-select{display:block;font-size:.52rem;margin-bottom:5px}'+
+'#iphone-duo .pg-duo-ai{font-size:.51rem;padding:3px 0;color:#cbd5e1}#iphone-duo .pg-duo-ai.checked{color:#34d399;font-weight:700}#iphone-duo .pg-duo-ai span{color:#e5edf7;margin-left:6px}'+
+'#iphone-duo .pg-duo-control button{position:absolute;left:12px;right:12px;bottom:12px;border:0;border-radius:7px;padding:9px;background:linear-gradient(90deg,#7c3aed,#8b5cf6);color:#fff;font-size:.56rem;font-weight:800}'+
+'#iphone-duo .pg-duo-modelhead{display:flex;align-items:center;gap:8px;margin-bottom:10px}#iphone-duo .pg-duo-model{width:30px;height:30px;border-radius:7px;display:grid;place-items:center;background:#0f766e;color:white;font-weight:800}#iphone-duo .pg-duo-model.ppx{background:#0f4c5c}#iphone-duo .pg-duo-modelhead b{display:block;font-size:.7rem}#iphone-duo .pg-duo-modelhead small{color:#6f7b8e;font-size:.45rem}'+
+'#iphone-duo .pg-duo-response p{font-size:.53rem;line-height:1.45;color:#c7d0dc;margin:0 0 10px}#iphone-duo .pg-duo-actions{margin-top:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}#iphone-duo .pg-duo-actions span{border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:6px 2px;text-align:center;font-size:.43rem;color:#b8c2cf}'+
+'@media(max-width:760px){#iphone-duo .pg-duo-device-shell{grid-template-columns:1.12fr .94fr .94fr}#iphone-duo .pg-duo-pane{min-height:300px;padding:9px 7px}#iphone-duo .pg-duo-response p{font-size:.42rem}#iphone-duo .pg-duo-control h3{font-size:.62rem}#iphone-duo .pg-duo-control button{left:7px;right:7px;bottom:7px;padding:7px;font-size:.46rem}#iphone-duo .pg-duo-tabs span{font-size:.35rem}#iphone-duo .pg-duo-apphead b{font-size:.5rem}}';
 document.head.appendChild(css);
 window._pgDeviceUI={apply:apply,appLanguages:APP_LANGS,_strings:strings};
 window.addEventListener("pg:languagechange",function(e){apply(e.detail&&e.detail.code||current())});
