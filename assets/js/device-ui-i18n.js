@@ -296,6 +296,67 @@ function updateSiteLabels(code,S){
   }
 }
 
+
+function localizeHistoryTables(code,S){
+  var roots=[
+    document.getElementById('gallery-mac'),
+    document.getElementById('gallery-iphone'),
+    document.getElementById('gallery-ipad')
+  ].filter(Boolean);
+
+  roots.forEach(function(root){
+    /* Shared iPhone/iPad history previews. */
+    root.querySelectorAll('.history-preview').forEach(function(h){
+      var tabs=h.querySelectorAll('.hp-tabs span');
+      var tabLabels=['✎ '+(S.ask||'Ask Any AI'),'▦ '+(S.templates||'Templates'),'▣ '+(S.how||'How to Use'),'◷ '+(S.history||'History')];
+      tabs.forEach(function(el,i){ if(tabLabels[i]) el.textContent=tabLabels[i]; });
+
+      var title=h.querySelector('.hp-h'); if(title) title.textContent=S.promptHistory||S.history||'Prompt History';
+      var note=h.querySelector('.hp-note'); if(note) note.textContent=S.recent||'Your recent prompts & favorites';
+
+      var pills=h.querySelectorAll('.hp-actions .hp-pill');
+      if(pills[0]) pills[0].textContent=S.all||'All';
+      if(pills[1]) pills[1].textContent=S.clear||'Clear';
+
+      h.querySelectorAll('.hp-btn.copy').forEach(function(el){el.textContent=S.copy||'Copy';});
+      h.querySelectorAll('.hp-buttons .hp-btn:not(.copy):not(.del)').forEach(function(el){el.textContent=S.reedit||'Re-edit';});
+      h.querySelectorAll('.hp-card-title').forEach(function(el){
+        var t=(el.getAttribute('data-en')||el.textContent||'').trim();
+        if(!el.getAttribute('data-en')) el.setAttribute('data-en',t);
+        if(/Ask Any AI/i.test(t)) el.textContent=S.ask||t;
+      });
+    });
+
+    /* Mac history panel. */
+    root.querySelectorAll('.mac-history-preview').forEach(function(h){
+      var heading=h.querySelector('.mac-history-heading'); if(heading) heading.textContent=S.promptHistory||S.history||'Prompt History';
+      var note=h.querySelector('.mac-history-note'); if(note) note.textContent=S.recent||'Your recent prompts & favorites';
+      var pills=h.querySelectorAll('.mac-history-pill');
+      if(pills[0]) pills[0].textContent=S.all||'All';
+      if(pills[1]) pills[1].textContent=S.clear||'Clear';
+      h.querySelectorAll('.mac-history-btn.copy').forEach(function(el){el.textContent=S.copy||'Copy';});
+      h.querySelectorAll('.mac-history-btn:not(.copy):not(.del)').forEach(function(el){el.textContent=S.reedit||'Re-edit';});
+      h.querySelectorAll('.mac-history-card-title').forEach(function(el){
+        var t=(el.getAttribute('data-en')||el.textContent||'').trim();
+        if(!el.getAttribute('data-en')) el.setAttribute('data-en',t);
+        if(/Ask Any AI/i.test(t)) el.textContent=S.ask||t;
+      });
+    });
+  });
+
+  /* Keep the Mac caption localized after every tab click. Avoid English-only
+     explanatory suffixes when a translated equivalent is unavailable. */
+  var macLabel=document.getElementById('macTabLabel');
+  var active=document.querySelector('#gallery-mac .mac-reference-tab.active');
+  if(macLabel&&active){
+    var id=active.id||'';
+    if(id.indexOf('askanyai')>-1) macLabel.textContent=S.ask||'Ask Any AI';
+    else if(id.indexOf('templates')>-1) macLabel.textContent=S.templates||'Templates';
+    else if(id.indexOf('howtouse')>-1) macLabel.textContent=S.how||'How to Use';
+    else if(id.indexOf('history')>-1) macLabel.textContent=S.history||'History';
+  }
+}
+
 function apply(code){
   var S=strings(code);
   ensureStaticLocalizedPanels();
@@ -311,6 +372,7 @@ function apply(code){
   updateBadges(code);
   updateStaticPanels(code,S);
   updateSiteLabels(code,S);
+  localizeHistoryTables(code,S);
   updateDuo(code,S);
   document.documentElement.setAttribute('data-device-ui-lang',normCode(code));
   var rtl=(normCode(code)==="AR"||normCode(code)==="HE");
