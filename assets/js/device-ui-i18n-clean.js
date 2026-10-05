@@ -227,65 +227,114 @@ function composed(root,S){
 
 function badge(root,M){root.querySelectorAll(".pgdsl-badge,.duo-lang-badge,.pg-phone-lang-badge,.ipad-native-lang-badge").forEach(function(el){el.textContent=M.flag+" "+M.code.replace("_","-")})}
 
+function localizedScreenMarkup(type,S,M,device){
+ var active=type==="templates"?"templates":type==="how"?"how":type==="history"?"history":"ask";
+ var tabs='<div class="pg-real-tabs">'+
+   '<span class="'+(active==="ask"?"active":"")+'">✏️ '+S.ask+'</span>'+
+   '<span class="'+(active==="templates"?"active":"")+'">📋 '+S.templates+'</span>'+
+   '<span class="'+(active==="how"?"active":"")+'">📖 '+S.how+'</span>'+
+   '<span class="'+(active==="history"?"active":"")+'">🕐 '+S.history+'</span></div>';
+ var body="";
+ if(active==="templates"){
+   body='<div class="pg-real-body"><h3>📋 '+S.templates+'</h3><div class="pg-real-search">🔎 '+S.search+'</div>'+
+     '<div class="pg-real-template-grid">'+
+     Array.from({length:6},function(_,i){return '<div class="pg-real-template-card"><b>'+S.templates+' '+(i+1)+'</b><small>AI</small><span>›</span></div>'}).join("")+
+     '</div></div>';
+ }else if(active==="how"){
+   body='<div class="pg-real-body"><h3>📖 '+S.how+'</h3><div class="pg-real-steps">'+
+     '<div><b>1</b><span>'+S.typeLine+'</span></div>'+
+     '<div><b>2</b><span>'+S.appLang+' — '+S.changesMenus+'</span></div>'+
+     '<div><b>3</b><span>'+S.outputLang+' — '+S.responds+'</span></div>'+
+     '<div><b>4</b><span>'+S.compare+' — '+S.compareHelp+'</span></div>'+
+     '</div></div>';
+ }else{
+   body='<div class="pg-real-body"><div class="pg-real-history-head"><div><h3>🕐 '+(S.promptHistory||S.history)+'</h3><small>'+S.recent+'</small></div><div><span>'+S.all+'</span><span>'+S.clear+'</span></div></div>'+
+   '<div class="pg-real-history-list">'+
+   '<div><b>'+S.ask+'</b><small>5m</small><p>Test</p><em>'+S.copy+'</em><em>'+S.reedit+'</em></div>'+
+   '<div><b>'+S.ask+'</b><small>12m</small><p>'+S.promptExample+'</p><em>'+S.copy+'</em><em>'+S.reedit+'</em></div>'+
+   '<div><b>'+S.compare+'</b><small>19m</small><p>'+S.compareHelp+'</p><em>'+S.copy+'</em><em>'+S.reedit+'</em></div>'+
+   '</div></div>';
+ }
+ return '<div class="pg-real-head"><img src="assets/img/icon-128.png" alt=""><strong>Poly-Glot AI Workspace</strong><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+tabs+body;
+}
+
 function makeStatic(img,type,S,M){
  var p=img.previousElementSibling;
  if(!p||!p.classList.contains("pg-device-static-localized")){
    p=document.createElement("div");p.className="pg-device-static-localized";img.parentNode.insertBefore(p,img);
  }
- p.innerHTML='<div class="pgdsl-head"><img src="assets/img/icon-128.png" alt=""><strong>Poly-Glot AI Workspace</strong><span class="pgdsl-badge">'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+
- '<div class="pgdsl-tabs"><span>✏️ '+S.ask+'</span><span class="'+(type==="templates"?"active":"")+'">📋 '+S.templates+'</span><span class="'+(type==="how"?"active":"")+'">📖 '+S.how+'</span><span class="'+(type==="history"?"active":"")+'">🕐 '+S.history+'</span></div>'+
- (type==="templates"?'<div class="pgdsl-body"><div class="pgdsl-title">'+S.templates+'</div><div class="pgdsl-search">🔎 '+S.search+'</div><div class="pgdsl-cards">'+Array.from({length:6},(_,i)=>'<div><b>'+S.templates+' '+(i+1)+'</b><small>AI</small></div>').join("")+'</div></div>':
- type==="how"?'<div class="pgdsl-body"><div class="pgdsl-title">'+S.how+'</div><div class="pgdsl-step">1 · '+S.typeLine+'</div><div class="pgdsl-step">2 · '+S.appLang+' — '+S.changesMenus+'</div><div class="pgdsl-step">3 · '+S.outputLang+' — '+S.responds+'</div><div class="pgdsl-step">4 · '+S.compare+'</div></div>':
- '<div class="pgdsl-body"><div class="pgdsl-title">'+(S.promptHistory||S.history)+'</div><div class="pgdsl-history-actions"><span>'+S.all+'</span><span>'+S.clear+'</span></div><div class="pgdsl-history-list"><div><b>'+S.ask+'</b><small>5m</small></div><div><b>'+S.ask+'</b><small>12m</small></div><div><b>'+S.ask+'</b><small>19m</small></div></div></div>');
+ p.classList.toggle("pg-static-ipad",!!img.closest(".ipad-screen"));
+ p.classList.toggle("pg-static-iphone",!!img.closest(".iphone-screen"));
+ p.innerHTML=localizedScreenMarkup(type,S,M,img.closest(".ipad-screen")?"ipad":"iphone");
  img.style.display="none";
 }
 function staticScreens(S,M,c){
  document.querySelectorAll('#gallery-iphone .iphone-screen>img,#gallery-ipad .ipad-screen>img').forEach(function(img){
    var alt=img.alt||"",type=/Templates/i.test(alt)?"templates":/How to Use/i.test(alt)?"how":/History/i.test(alt)?"history":null;
    if(!type)return;
-   if(c==="EN"){img.style.display="block";var p=img.previousElementSibling;if(p&&p.classList.contains("pg-device-static-localized"))p.remove();}
-   else makeStatic(img,type,S,M);
+   if(c==="EN"){
+     img.style.display="block";
+     var p=img.previousElementSibling;
+     if(p&&p.classList.contains("pg-device-static-localized"))p.remove();
+   }else makeStatic(img,type,S,M);
  });
 }
 
 function macOverlay(S,M,c){
- var host=document.querySelector("#gallery-mac .mac-reference-interactive");if(!host)return;
- var old=host.querySelector(".pg-mac-full-overlay");
- if(c==="EN"){if(old)old.remove();return}
- if(!old){old=document.createElement("div");old.className="pg-mac-full-overlay";host.appendChild(old)}
- old.style.display="block";old.style.visibility="visible";old.style.opacity="1";old.setAttribute("aria-hidden","false");
+ var host=document.querySelector("#gallery-mac .mac-reference-interactive");
+ if(!host)return;
+ var oldFull=host.querySelector(".pg-mac-full-overlay");
+ if(oldFull)oldFull.remove();
 
+ var tabs=host.querySelectorAll(".mac-reference-tab");
+ var vals=[S.ask,S.templates,S.how,S.history];
+ var icons=["✏️ ","📋 ","📖 ","🕐 "];
+ tabs.forEach(function(btn,i){
+   var sp=btn.querySelector("span");
+   if(sp&&vals[i])sp.textContent=icons[i]+vals[i];
+ });
+
+ var stage=host.querySelector(".mac-reference-stage");
+ if(!stage)return;
+ var ov=stage.querySelector(".pg-mac-panel-localized");
+ if(c==="EN"){
+   if(ov)ov.remove();
+   return;
+ }
  var active=document.querySelector("#gallery-mac .mac-reference-tab.active");
  var id=active&&active.id||"macTab-askanyai";
  var type=id.indexOf("templates")>-1?"templates":id.indexOf("howtouse")>-1?"how":id.indexOf("history")>-1?"history":"ask";
- var tabs='<div class="pgdsl-tabs">'+
-   '<span class="'+(type==="ask"?"active":"")+'">✏️ '+S.ask+'</span>'+
-   '<span class="'+(type==="templates"?"active":"")+'">📋 '+S.templates+'</span>'+
-   '<span class="'+(type==="how"?"active":"")+'">📖 '+S.how+'</span>'+
-   '<span class="'+(type==="history"?"active":"")+'">🕐 '+S.history+'</span></div>';
 
- var body="";
- if(type==="templates"){
-   body='<div class="pgmac-body"><h3>📋 '+S.templates+'</h3><div class="pgdsl-search">🔎 '+S.search+'</div><div class="pgmac-template-grid">'+
-     '<div><b>'+S.templates+' 01</b><small>AI</small></div><div><b>'+S.templates+' 02</b><small>AI</small></div><div><b>'+S.templates+' 03</b><small>AI</small></div>'+
-     '<div><b>'+S.templates+' 04</b><small>AI</small></div><div><b>'+S.templates+' 05</b><small>AI</small></div><div><b>'+S.templates+' 06</b><small>AI</small></div></div></div>';
- }else if(type==="how"){
-   body='<div class="pgmac-body"><h3>📖 '+S.how+'</h3>'+
-     '<div class="pgdsl-step">1 · '+S.typeLine+'</div>'+
-     '<div class="pgdsl-step">2 · '+S.appLang+' — '+S.changesMenus+'</div>'+
-     '<div class="pgdsl-step">3 · '+S.outputLang+' — '+S.responds+'</div>'+
-     '<div class="pgdsl-step">4 · '+S.compare+' — '+S.compareHelp+'</div></div>';
- }else if(type==="history"){
-   body='<div class="pgmac-body"><div class="pgmac-history-head"><div><h3>🕐 '+(S.promptHistory||S.history)+'</h3><small>'+S.recent+'</small></div><div><span>'+S.all+'</span><span>'+S.clear+'</span></div></div>'+
-     '<div class="pgmac-history-grid"><div><b>'+S.ask+'</b><small>5m</small><p>Test</p><span>'+S.copy+'</span><span>'+S.reedit+'</span></div>'+
-     '<div><b>'+S.ask+'</b><small>12m</small><p>Test</p><span>'+S.copy+'</span><span>'+S.reedit+'</span></div>'+
-     '<div><b>'+S.ask+'</b><small>19m</small><p>Test</p><span>'+S.copy+'</span><span>'+S.reedit+'</span></div></div></div>';
+ /* Ask Any AI and History are real HTML previews: localize those in place.
+    Only replace image/demo-only panels that cannot be translated cleanly. */
+ if(type==="ask"||type==="history"){
+   if(ov)ov.remove();
  }else{
-   body='<div class="pgmac-body"><h3>🤔 '+S.ask+'</h3><div class="pgmac-help"><div>✏️ '+S.typeLine+'</div><div>🏳️ '+S.appLang+' ⬆️ '+S.changesMenus+'</div><div>🌐 '+S.outputLang+' ⬇️ '+S.responds+'</div><div>🔀 '+S.compare+': '+S.compareHelp+'</div></div><div class="pgmac-output">'+S.outputLabel+'</div><div class="pgmac-prompt">'+S.promptIntro+'<br><br>'+S.promptExample+'</div><div class="pgmac-actions"><span>📋 '+S.paste+'</span><span>📄 '+S.import+'</span></div><div class="pgmac-bottom"><span>🎤 '+S.talk+'</span><b>'+S.send+'</b></div><small>🗑 '+S.clearAll+'</small></div>';
+   if(!ov){ov=document.createElement("div");ov.className="pg-mac-panel-localized";stage.appendChild(ov)}
+   ov.innerHTML=localizedScreenMarkup(type,S,M,"mac");
  }
- old.innerHTML='<div class="pgdsl-head"><img src="assets/img/icon-128.png" alt=""><strong>Poly-Glot AI Workspace</strong><span class="pgdsl-badge">'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+tabs+body;
- var hint=document.querySelector("#macTabHint span");if(hint)hint.textContent="👇 "+S.ask+" · "+S.templates+" · "+S.how+" · "+S.history;
- var label=document.getElementById("macTabLabel");if(label)label.textContent=type==="templates"?S.templates:type==="how"?S.how:type==="history"?S.history:S.ask+" — "+S.typeLine;
+ var hint=document.querySelector("#macTabHint span");
+ if(hint)hint.textContent="👇 "+S.ask+" · "+S.templates+" · "+S.how+" · "+S.history;
+ var label=document.getElementById("macTabLabel");
+ if(label)label.textContent=type==="templates"?S.templates:type==="how"?S.how:type==="history"?S.history:S.ask+" — "+S.typeLine;
+
+ /* Finish the real Ask Any AI panel in-place. */
+ var ask=host.querySelector("#macScreen-askanyai");
+ if(ask){
+   var title=ask.querySelector(".mac-native-ask-title");if(title)title.textContent="🤔 "+S.ask;
+   var help=ask.querySelector(".mac-native-help-lines");
+   if(help&&help.children.length>=4){
+     help.children[0].textContent="✏️ "+S.typeLine;
+     help.children[1].textContent="🏳️ "+S.appLang+" ⬆️ "+S.changesMenus;
+     help.children[2].textContent="🌐 "+S.outputLang+" ⬇️ "+S.responds;
+     help.children[3].textContent="🔀 "+S.compare+": "+S.compareHelp;
+   }
+   var how=ask.querySelector(".mac-native-how-link");if(how)how.textContent=S.howWorks||S.how;
+   var out=ask.querySelector(".mac-response-label");if(out)out.textContent="🌐 "+S.outputLabel;
+   var sel=ask.querySelector(".mac-response-select strong");if(sel)sel.textContent=M.name||M.code;
+   var prompt=ask.querySelector('div[style*="min-height:160px"] > div');
+   if(prompt)prompt.innerHTML=S.promptIntro+"<br><br>"+S.promptExample;
+ }
 }
 
 function syncPlainBadges(S,M){
@@ -489,6 +538,8 @@ css.textContent+='/* MAC LOCALIZED TAB STYLE PARITY v9 */'+
 'html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-full-overlay .pgdsl-tabs span:not(.active){color:rgba(255,255,255,.48)!important;background:#05080d!important;border-bottom-color:transparent!important;box-shadow:none!important}';
 css.textContent+='/* HERO MAC TEXT-ONLY LOCALIZATION v17 — preserve approved render */'+
 '.hero-device-stack .hero-mac-crop{position:relative!important}.pg-hero-mac-text-overlay{position:absolute!important;left:6.6%!important;top:3.8%!important;width:86.8%!important;height:80.8%!important;z-index:260!important;pointer-events:none!important;color:#fff!important;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",sans-serif!important}.pg-hero-mac-text-overlay .pg-hm{position:absolute!important;display:flex!important;align-items:center!important;box-sizing:border-box!important;overflow:hidden!important;white-space:nowrap!important;text-overflow:ellipsis!important}.pg-hero-mac-text-overlay .lang{right:2.9%!important;top:8.1%!important;height:6.2%!important;padding:0 .65em!important;border-radius:.45em!important;background:#171b25!important;font-size:clamp(5px,.85vw,10px)!important}.pg-hero-mac-text-overlay .tab{top:17.2%!important;height:7.4%!important;justify-content:center!important;background:#05080d!important;font-size:clamp(5px,.82vw,10px)!important;font-weight:600!important;color:#858b96!important}.pg-hero-mac-text-overlay .t1{left:0!important;width:25%!important;color:#f59e0b!important;border-bottom:2px solid #f59e0b!important}.pg-hero-mac-text-overlay .t2{left:25%!important;width:25%!important}.pg-hero-mac-text-overlay .t3{left:50%!important;width:25%!important}.pg-hero-mac-text-overlay .t4{left:75%!important;width:25%!important}.pg-hero-mac-text-overlay .title{left:4.2%!important;top:29.3%!important;width:28%!important;height:6.5%!important;background:#080c12!important;font-size:clamp(7px,1.35vw,15px)!important;font-weight:800!important}.pg-hero-mac-text-overlay .how{right:4%!important;top:31%!important;width:18%!important;height:4.8%!important;justify-content:flex-end!important;background:#080c12!important;color:#c084fc!important;text-decoration:underline!important;font-size:clamp(5px,.75vw,9px)!important}.pg-hero-mac-text-overlay .help{left:4.2%!important;width:51%!important;height:4.2%!important;background:#080c12!important;color:#aab2c0!important;font-size:clamp(4px,.66vw,8px)!important}.pg-hero-mac-text-overlay .h1{top:36.8%!important}.pg-hero-mac-text-overlay .h2{top:40.4%!important}.pg-hero-mac-text-overlay .h3{top:44%!important}.pg-hero-mac-text-overlay .h4{top:47.6%!important}.pg-hero-mac-text-overlay .output{left:4.2%!important;top:53.2%!important;width:24%!important;height:5.5%!important;background:#080c12!important;color:#aab2c0!important;font-size:clamp(4px,.68vw,8px)!important}.pg-hero-mac-text-overlay .select{left:28.4%!important;top:52.4%!important;width:31.5%!important;height:6.6%!important;padding:0 1.1em!important;background:#171b25!important;border:1px solid rgba(255,255,255,.10)!important;border-radius:.55em!important;font-size:clamp(4px,.7vw,8px)!important}.pg-hero-mac-text-overlay .prompt{left:4.1%!important;top:61.3%!important;width:91.8%!important;height:17.6%!important;justify-content:center!important;text-align:center!important;white-space:normal!important;background:#0c1017!important;color:#8d96a6!important;border:2px solid #7c3aed!important;border-radius:.55em!important;padding:1.2%!important;font-size:clamp(4px,.68vw,8px)!important;line-height:1.35!important}.pg-hero-mac-text-overlay .action{top:81.2%!important;height:6.5%!important;justify-content:center!important;background:#161c28!important;color:#cfd5df!important;border-radius:.35em!important;font-size:clamp(4px,.66vw,8px)!important}.pg-hero-mac-text-overlay .paste{left:4.1%!important;width:44.8%!important}.pg-hero-mac-text-overlay .imp{left:51.1%!important;width:44.8%!important}.pg-hero-mac-text-overlay .talk{left:4.1%!important;top:89.6%!important;width:20%!important;height:5.8%!important;background:#080c12!important;color:#aab2c0!important;font-size:clamp(4px,.66vw,8px)!important}.pg-hero-mac-text-overlay .send{right:4.1%!important;top:88.8%!important;width:13.5%!important;height:7.2%!important;justify-content:center!important;background:linear-gradient(90deg,#7c3aed,#2563eb)!important;border-radius:.45em!important;font-weight:700!important;font-size:clamp(4px,.68vw,8px)!important}@media(max-width:760px){.pg-hero-mac-text-overlay{left:6.1%!important;top:3.6%!important;width:87.8%!important;height:81%!important}.pg-hero-mac-text-overlay .tab,.pg-hero-mac-text-overlay .title,.pg-hero-mac-text-overlay .how,.pg-hero-mac-text-overlay .help,.pg-hero-mac-text-overlay .output,.pg-hero-mac-text-overlay .select,.pg-hero-mac-text-overlay .prompt,.pg-hero-mac-text-overlay .action,.pg-hero-mac-text-overlay .talk,.pg-hero-mac-text-overlay .send,.pg-hero-mac-text-overlay .lang{font-size:5px!important}}';
+css.textContent+='/* GALLERY LOCALIZED DEVICE PARITY v18 */'+
+'.pg-device-static-localized{position:absolute!important;inset:0!important;z-index:30!important;background:#0d0f1a!important;color:#fff!important;overflow:hidden!important;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",sans-serif!important}.pg-real-head{height:12%;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:2%;padding:2.2% 4%;background:#080b10;border-bottom:1px solid rgba(255,255,255,.06)}.pg-real-head img{width:auto!important;height:62%!important;max-width:none!important;border-radius:22%!important}.pg-real-head strong{font-size:clamp(7px,1.25vw,13px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pg-real-head span{font-size:clamp(6px,.9vw,10px);padding:.35em .65em;border-radius:.45em;background:rgba(255,255,255,.08);white-space:nowrap}.pg-real-tabs{height:10%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#070a0f;border-bottom:1px solid rgba(255,255,255,.07)}.pg-real-tabs span{display:flex;align-items:center;justify-content:center;min-width:0;padding:0 2px;font-size:clamp(5px,.82vw,9px);font-weight:600;color:rgba(255,255,255,.46);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-bottom:2px solid transparent}.pg-real-tabs span.active{color:#f59e0b;background:rgba(245,158,11,.08);border-bottom-color:#f59e0b}.pg-real-body{height:78%;padding:4% 5%;overflow:hidden;background:#0d1117}.pg-real-body h3{font-size:clamp(9px,1.55vw,16px);margin:0 0 3%;color:#fff}.pg-real-search{height:12%;display:flex;align-items:center;padding:0 3%;border:1px solid rgba(255,255,255,.12);border-radius:.65em;background:#1c2128;color:#8b949e;font-size:clamp(6px,.9vw,10px);margin-bottom:3%}.pg-real-template-grid{display:grid;grid-template-columns:1fr 1fr;gap:3%;height:68%}.pg-real-template-card{position:relative;min-width:0;padding:5%;border:1px solid rgba(255,255,255,.08);border-radius:.65em;background:#171c27;display:flex;flex-direction:column;justify-content:center}.pg-real-template-card b{font-size:clamp(6px,1vw,11px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pg-real-template-card small{color:#7dd3fc;font-size:clamp(5px,.72vw,8px);margin-top:3%}.pg-real-template-card span{position:absolute;right:6%;top:50%;transform:translateY(-50%);color:#6b7280}.pg-real-steps{display:grid;grid-template-columns:1fr;gap:4%;height:78%}.pg-real-steps>div{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:4%;padding:0 4%;border:1px solid rgba(255,255,255,.11);border-radius:.7em;background:#1c2128;color:#b3bac5;font-size:clamp(6px,.95vw,11px);overflow:hidden}.pg-real-steps b{width:1.8em;height:1.8em;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(125,211,252,.12);color:#7dd3fc}.pg-real-steps span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pg-real-history-head{display:flex;align-items:center;justify-content:space-between;gap:3%;margin-bottom:3%}.pg-real-history-head h3{margin:0}.pg-real-history-head small{display:block;color:#8b949e;font-size:clamp(5px,.75vw,8px)}.pg-real-history-head>div:last-child{display:flex;gap:.4em}.pg-real-history-head>div:last-child span{padding:.35em .65em;border:1px solid rgba(255,255,255,.1);border-radius:.45em;font-size:clamp(5px,.72vw,8px)}.pg-real-history-list{display:grid;grid-template-columns:1fr;gap:3%}.pg-real-history-list>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2%;padding:2.5% 3%;border:1px solid rgba(255,255,255,.08);border-radius:.6em;background:#171c27}.pg-real-history-list b,.pg-real-history-list p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pg-real-history-list b{font-size:clamp(6px,.9vw,10px)}.pg-real-history-list small{font-size:clamp(5px,.7vw,8px);color:#8b949e}.pg-real-history-list p{grid-column:1 / -1;color:#aab2c0;font-size:clamp(5px,.75vw,9px);margin:.2em 0}.pg-real-history-list em{font-style:normal;color:#7dd3fc;font-size:clamp(5px,.7vw,8px);margin-right:.5em}.pg-static-iphone .pg-real-head{height:13%}.pg-static-iphone .pg-real-tabs{height:11%}.pg-static-iphone .pg-real-body{height:76%}.pg-static-iphone .pg-real-template-grid{grid-template-columns:1fr!important}.pg-static-iphone .pg-real-template-card:nth-child(n+5){display:none}.pg-static-iphone .pg-real-head strong{font-size:7px}.pg-static-iphone .pg-real-head span,.pg-static-iphone .pg-real-tabs span,.pg-static-iphone .pg-real-body h3,.pg-static-iphone .pg-real-search,.pg-static-iphone .pg-real-template-card b,.pg-static-iphone .pg-real-template-card small,.pg-static-iphone .pg-real-steps>div,.pg-static-iphone .pg-real-history-list *{font-size:5.5px!important}.pg-static-ipad .pg-real-head strong{font-size:8px}.pg-static-ipad .pg-real-head span,.pg-static-ipad .pg-real-tabs span,.pg-static-ipad .pg-real-body h3,.pg-static-ipad .pg-real-search,.pg-static-ipad .pg-real-template-card b,.pg-static-ipad .pg-real-template-card small,.pg-static-ipad .pg-real-steps>div,.pg-static-ipad .pg-real-history-list *{font-size:6px!important}.mac-reference-stage{position:relative!important}.pg-mac-panel-localized{position:absolute!important;inset:0!important;z-index:120!important;background:#0d1117!important;color:#fff!important;overflow:hidden!important;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",sans-serif!important}.pg-mac-panel-localized .pg-real-head,.pg-mac-panel-localized .pg-real-tabs{display:none!important}.pg-mac-panel-localized .pg-real-body{height:100%!important;padding:4% 5%!important}.pg-mac-panel-localized .pg-real-body h3{font-size:clamp(10px,1.25vw,16px)!important}.pg-mac-panel-localized .pg-real-search,.pg-mac-panel-localized .pg-real-steps>div,.pg-mac-panel-localized .pg-real-template-card b{font-size:clamp(7px,.82vw,10px)!important}.pg-mac-panel-localized .pg-real-template-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}';
 document.head.appendChild(css);
 window._pgDeviceUI={apply:apply,appLanguages:APP_LANGS,_strings:strings};
 window.addEventListener("pg:languagechange",function(e){apply(e.detail&&e.detail.code||current())});
