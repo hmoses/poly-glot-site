@@ -159,7 +159,7 @@ function syncAllTabLabels(S,M){
     });
   }
 
-  document.querySelectorAll(".iphone-ask-tabs,.demo-ask-tabs,.history-preview .hp-tabs,.pgl-tabs,.pgdsl-tabs,.pg-real-tabs,.mac-reference-hotspots").forEach(applyTabs);
+  document.querySelectorAll(".iphone-ask-tabs,.demo-ask-tabs,.history-preview .hp-tabs,.pgl-tabs,.pgdsl-tabs,.pg-real-tabs").forEach(applyTabs);
 
   document.querySelectorAll("#gallery-ipad .ipad-live-preview").forEach(function(root){
     var tabbar=root.children&&root.children[2];
@@ -324,7 +324,17 @@ function macOverlay(S,M,c){
  var icons=["✏️ ","📋 ","📖 ","🕐 "];
  tabs.forEach(function(btn,i){
    var sp=btn.querySelector("span");
-   if(sp&&vals[i])sp.textContent=icons[i]+vals[i];
+   if(!sp){
+     sp=document.createElement("span");
+     btn.textContent="";
+     btn.appendChild(sp);
+   }
+   var label=vals[i]||"";
+   sp.textContent=icons[i]+label;
+   sp.setAttribute("data-full-label",label);
+   sp.className="mac-tab-label"+(label.length>18?" is-long":label.length>12?" is-medium":"");
+   btn.setAttribute("title",label);
+   btn.setAttribute("aria-label",label);
  });
 
  var stage=host.querySelector(".mac-reference-stage");
