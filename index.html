@@ -1886,6 +1886,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
       <div class="mac-reference-interactive" aria-label="Interactive Poly-Glot AI Workspace Mac demo">
         <img class="mac-reference-base" src="assets/img/poly-glot-mac-render.jpg?v=interactive-exact-1" alt="Poly-Glot AI Workspace on MacBook">
+        <div class="pg-mac-full-overlay pg-mac-inline-overlay" aria-hidden="true"></div>
 
         <div class="mac-reference-hotspots" aria-label="Mac app navigation tabs">
           <button class="mac-reference-tab active" onclick="switchMacTab('askanyai')" id="macTab-askanyai" aria-label="Ask Any AI"><span>✏️ Ask Any AI</span></button>
@@ -5544,7 +5545,7 @@ function _demoStart() {
 
 <!-- Global i18n — 38 languages, same flags as the app -->
 <script src="assets/js/i18n.js?v=global-sync-v8"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v12"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v13"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
 
@@ -9176,6 +9177,23 @@ html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-full-overlay .pgdsl-ta
   border-bottom:2px solid transparent!important;
   background:transparent!important;
   box-shadow:none!important;
+}
+</style>
+
+
+<style>
+/* ===== MAC LOCALIZATION HARD FAILSAFE v13 =====
+   Keep a real overlay node in the Mac render so localized UI cannot fall back
+   to the baked-in English screenshot. The runtime fills this node on every
+   language change. */
+html[data-device-ui-lang]:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-inline-overlay{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  z-index:150!important;
+}
+html[data-device-ui-lang="EN"] #gallery-mac .pg-mac-inline-overlay{
+  display:none!important;
 }
 </style>
 
