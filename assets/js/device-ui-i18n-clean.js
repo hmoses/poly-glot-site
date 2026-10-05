@@ -400,10 +400,39 @@ function duo(S,M,c){
 }
 
 
+
+function heroMacOverlay(S,M,c){
+  var host=document.querySelector(".hero-device-stack .hero-mac-crop");
+  if(!host)return;
+  var old=host.querySelector(".pg-hero-mac-overlay");
+  if(c==="EN"){
+    if(old)old.remove();
+    return;
+  }
+  if(!old){
+    old=document.createElement("div");
+    old.className="pg-hero-mac-overlay";
+    host.appendChild(old);
+  }
+  old.setAttribute("lang",c.toLowerCase().replace("_","-"));
+  old.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr");
+  old.innerHTML=
+    '<div class="pg-hero-mac-head"><img src="assets/img/icon-128.png" alt=""><strong>Poly-Glot AI Workspace</strong><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+
+    '<div class="pg-hero-mac-tabs"><b>✏️ '+S.ask+'</b><span>📋 '+S.templates+'</span><span>📖 '+S.how+'</span><span>🕐 '+S.history+'</span></div>'+
+    '<div class="pg-hero-mac-body">'+
+      '<h3>🤔 '+S.ask+'</h3>'+
+      '<div class="pg-hero-mac-help"><div>✏️ '+S.typeLine+'</div><div>🏳️ '+S.appLang+' ⬆️ '+S.changesMenus+'</div><div>🌐 '+S.outputLang+' ⬇️ '+S.responds+'</div><div>🔀 '+S.compare+': '+S.compareHelp+'</div></div>'+
+      '<div class="pg-hero-mac-output"><span>🌐 '+S.outputLabel+'</span><strong>'+M.flag+' '+(M.name||M.code)+'</strong></div>'+
+      '<div class="pg-hero-mac-prompt">'+S.promptIntro+'<br><br>'+S.promptExample+'</div>'+
+      '<div class="pg-hero-mac-actions"><span>📋 '+S.paste+'</span><span>📄 '+S.import+'</span></div>'+
+      '<div class="pg-hero-mac-bottom"><span>🎤 '+S.talk+'</span><b>'+S.send+'</b></div>'+
+    '</div>';
+}
+
 function apply(code){
  var c=norm(code||current()),S=strings(c),M=meta(c);
  roots().forEach(function(r){localizeText(r,S);composed(r,S);badge(r,M);r.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr")});
- staticScreens(S,M,c);macOverlay(S,M,c);syncPlainBadges(S,M);syncAllTabLabels(S,M);siteLabels(S,M,c);languageDemoOverlay(S,M,c);duo(S,M,c);
+ staticScreens(S,M,c);macOverlay(S,M,c);heroMacOverlay(S,M,c);syncPlainBadges(S,M);syncAllTabLabels(S,M);siteLabels(S,M,c);languageDemoOverlay(S,M,c);duo(S,M,c);
  document.documentElement.setAttribute("data-device-ui-lang",c);
 }
 var css=document.createElement("style");css.textContent=
@@ -454,6 +483,9 @@ css.textContent+='/* MAC LOCALIZED TAB STYLE PARITY v9 */'+
 'html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-full-overlay .pgdsl-tabs span{display:flex!important;align-items:center!important;justify-content:center!important;min-width:0!important;padding:0 4px!important;margin:0!important;background:#05080d!important;color:rgba(255,255,255,.48)!important;border:0!important;border-bottom:3px solid transparent!important;border-radius:0!important;box-shadow:none!important;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",sans-serif!important;font-size:clamp(6px,.72vw,11px)!important;font-weight:600!important;line-height:1!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;transition:color .16s ease,background .16s ease,border-color .16s ease,box-shadow .16s ease!important}'+
 'html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-full-overlay .pgdsl-tabs span.active{color:#f59e0b!important;background:rgba(245,158,11,.14)!important;border-bottom-color:#f59e0b!important;box-shadow:inset 0 0 0 1px rgba(245,158,11,.34),0 0 12px rgba(245,158,11,.16)!important}'+
 'html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-full-overlay .pgdsl-tabs span:not(.active){color:rgba(255,255,255,.48)!important;background:#05080d!important;border-bottom-color:transparent!important;box-shadow:none!important}';
+
+css.textContent+='/* HERO MAC LOCALIZED OVERLAY v14 */'+
+'.hero-device-stack .hero-mac-crop{position:relative!important}.pg-hero-mac-overlay{position:absolute!important;left:10.7%!important;top:10.2%!important;width:78.6%!important;height:59.5%!important;z-index:30!important;background:#070b11!important;color:#fff!important;overflow:hidden!important;border-radius:1.1%!important;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",sans-serif!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)!important}.pg-hero-mac-head{height:14%;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:1.3%;padding:1.4% 2.4%;background:#05080d;border-bottom:1px solid rgba(255,255,255,.05)}.pg-hero-mac-head img{position:static!important;transform:none!important;width:auto!important;height:56%!important;max-width:none!important;border-radius:22%!important}.pg-hero-mac-head strong{font-size:clamp(5px,.75vw,11px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pg-hero-mac-head span{font-size:clamp(4px,.55vw,8px);padding:.25em .55em;border-radius:.45em;background:rgba(255,255,255,.08);white-space:nowrap}.pg-hero-mac-tabs{height:13%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#05080d;border-bottom:1px solid rgba(255,255,255,.07)}.pg-hero-mac-tabs>*{display:flex;align-items:center;justify-content:center;min-width:0;font-size:clamp(4px,.58vw,8px);font-weight:600;color:rgba(255,255,255,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-bottom:2px solid transparent}.pg-hero-mac-tabs b{color:#f59e0b;background:rgba(245,158,11,.08);border-bottom-color:#f59e0b}.pg-hero-mac-body{height:73%;padding:2.7% 3.2%;position:relative}.pg-hero-mac-body h3{font-size:clamp(6px,.95vw,14px);margin:0 0 1.2%}.pg-hero-mac-help{display:grid;grid-template-columns:1fr 1fr;gap:.25em 1em;font-size:clamp(3px,.46vw,7px);line-height:1.3;color:#aab2c0;margin-bottom:1.5%}.pg-hero-mac-output{display:flex;align-items:center;gap:2%;font-size:clamp(3px,.46vw,7px);margin-bottom:1.4%}.pg-hero-mac-output strong{min-width:34%;padding:.6em .8em;border:1px solid rgba(255,255,255,.1);border-radius:.6em;background:#171b25}.pg-hero-mac-prompt{min-height:34%;display:flex;align-items:center;justify-content:center;text-align:center;border:2px solid #7c3aed;border-radius:.65em;background:#0c1017;color:#8d96a6;font-size:clamp(3px,.46vw,7px);line-height:1.4;padding:2%}.pg-hero-mac-actions{display:grid;grid-template-columns:1fr 1fr;gap:1%;margin-top:1.2%}.pg-hero-mac-actions span{display:flex;justify-content:center;align-items:center;padding:.55em;background:#161c28;border-radius:.45em;font-size:clamp(3px,.44vw,7px);color:#cfd5df}.pg-hero-mac-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:1.1%;font-size:clamp(3px,.44vw,7px);color:#aab2c0}.pg-hero-mac-bottom b{background:linear-gradient(90deg,#7c3aed,#2563eb);padding:.5em 2.2em;border-radius:.5em;color:#fff}@media(max-width:760px){.pg-hero-mac-overlay{left:7.5%!important;top:10.5%!important;width:85%!important;height:60%!important}.pg-hero-mac-help{grid-template-columns:1fr}.pg-hero-mac-body{padding:2.2% 3%}}';
 document.head.appendChild(css);
 window._pgDeviceUI={apply:apply,appLanguages:APP_LANGS,_strings:strings};
 window.addEventListener("pg:languagechange",function(e){apply(e.detail&&e.detail.code||current())});
