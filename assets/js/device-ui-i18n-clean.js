@@ -388,7 +388,9 @@ function macOverlay(S,M,c){
      '<div><b>'+S.templates+'</b><small>18m</small><p>'+S.typeLine+'</p></div></div></div>';
  }
 
- ov.innerHTML='<div class="pgmc-head"><img src="assets/img/icon-128.png" alt=""><strong>Poly-Glot AI Workspace</strong><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+tabHtml+body;
+ ov.innerHTML='<div class="pgmc-window-title">Poly-Glot AI Workspace</div>'+
+   '<div class="pgmc-head"><img src="assets/img/icon-128.png" alt=""><strong>Poly-Glot AI Workspace</strong><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+
+   tabHtml+body;
  host.appendChild(ov);
 
  var hint=document.querySelector("#macTabHint span");
