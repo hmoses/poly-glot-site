@@ -250,54 +250,51 @@ function duo(S,M,c){
 
   var kicker=root.querySelector(".duo-kicker");
   if(kicker)kicker.textContent=gt("mcpGptBadge","Coming Soon");
-
   var copy=root.querySelector(".duo-copy");
   if(copy)copy.textContent=gt("sc2P","Send the same prompt to multiple AI apps and compare their responses side by side.");
 
-  var live=root.querySelector(".duo-localized-device");
-  if(!live)return;
-  if(c==="EN")return;
+  var overlay=root.querySelector(".duo-localized-overlay");
+  if(!overlay)return;
+  if(c==="EN"){overlay.innerHTML="";return}
 
   var prompt=gt("sc2Prompt",S.promptExample);
   var response1=gt("sc2PickSub",S.responds||"Response");
   var response2=gt("sc2P",S.compareHelp||"Compare responses side by side.");
-
   var selected=S.compareSend||"Send to Selected";
-  live.innerHTML=
-    '<div class="pg-duo-xcode-head"><span class="pg-duo-traffic">● ● ●</span><b>Poly-Glot</b><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+
-    '<div class="pg-duo-device-shell">'+
-      '<div class="pg-duo-pane pg-duo-control">'+
-        '<div class="pg-duo-apphead"><img src="assets/img/icon-128.png" alt=""><div><b>Poly-Glot AI Workspace</b><small>poly-glot.ai</small></div><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+
-        '<div class="pg-duo-tabs"><span class="on">✏️ '+S.ask+'</span><span>⌘ '+S.templates+'</span><span>▣ '+S.how+'</span><span>◷ '+S.history+'</span></div>'+
-        '<h3>🔀 '+S.compare+'</h3>'+
-        '<p class="pg-duo-muted">'+S.compareHelp+'</p>'+
-        '<label>'+S.promptIntro+'</label>'+
-        '<div class="pg-duo-prompt">'+prompt+'</div>'+
-        '<b class="pg-duo-select">'+(S.compareSelect||S.compare)+'</b>'+
-        '<div class="pg-duo-ai checked">✓ <span>ChatGPT</span></div>'+
-        '<div class="pg-duo-ai">□ <span>Claude</span></div>'+
-        '<div class="pg-duo-ai">□ <span>Gemini</span></div>'+
-        '<div class="pg-duo-ai checked">✓ <span>Perplexity</span></div>'+
-        '<div class="pg-duo-ai">□ <span>Microsoft Copilot</span></div>'+
-        '<div class="pg-duo-ai">□ <span>Grok</span></div>'+
-        '<div class="pg-duo-ai">□ <span>Mistral</span></div>'+
-        '<button>'+selected+' (2)</button>'+
-      '</div>'+
-      '<div class="pg-duo-pane pg-duo-response">'+
-        '<div class="pg-duo-modelhead"><span class="pg-duo-model gpt">◉</span><div><b>ChatGPT</b><small>'+S.response+'</small></div></div>'+
-        '<p>'+response1+'</p><p>'+response2+'</p>'+
-        '<div class="pg-duo-actions"><span>'+S.copy+'</span><span>'+S.read+'</span><span>'+S.share+'</span><span>'+S.save+'</span></div>'+
-      '</div>'+
-      '<div class="pg-duo-pane pg-duo-response">'+
-        '<div class="pg-duo-modelhead"><span class="pg-duo-model ppx">✦</span><div><b>Perplexity</b><small>'+S.response+'</small></div></div>'+
-        '<p>'+response2+'</p><p>'+response1+'</p>'+
-        '<div class="pg-duo-actions"><span>'+S.copy+'</span><span>'+S.read+'</span><span>'+S.share+'</span><span>'+S.save+'</span></div>'+
-      '</div>'+
-    '</div>'+
-    '<div class="pg-duo-xcode-foot"><span>iPhone Duo</span><b>'+S.compare+'</b><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>';
 
-  live.setAttribute("lang",c.toLowerCase().replace("_","-"));
-  live.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr");
+  overlay.innerHTML=
+    '<div class="duo-ov-pane duo-ov-left">'+
+      '<div class="duo-ov-apphead"><img src="assets/img/icon-128.png" alt=""><div><b>Poly-Glot AI Workspace</b><small>poly-glot.ai</small></div><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+
+      '<div class="duo-ov-tabs"><span class="active">✏️ '+S.ask+'</span><span>⌘ '+S.templates+'</span><span>▣ '+S.how+'</span><span>◷ '+S.history+'</span></div>'+
+      '<div class="duo-ov-compare-title">🔀 '+S.compare+'</div>'+
+      '<div class="duo-ov-sub">'+S.compareHelp+'</div>'+
+      '<div class="duo-ov-label">'+(S.promptHistory||S.promptIntro)+'</div>'+
+      '<div class="duo-ov-prompt">'+prompt+'</div>'+
+      '<div class="duo-ov-label duo-ov-select">'+(S.compareSelect||S.compare)+'</div>'+
+      '<div class="duo-ov-ai checked">✓ <span>ChatGPT</span></div>'+
+      '<div class="duo-ov-ai">□ <span>Claude</span></div>'+
+      '<div class="duo-ov-ai">□ <span>Gemini</span></div>'+
+      '<div class="duo-ov-ai checked">✓ <span>Perplexity</span></div>'+
+      '<div class="duo-ov-ai">□ <span>Microsoft Copilot</span></div>'+
+      '<div class="duo-ov-ai">□ <span>Grok</span></div>'+
+      '<div class="duo-ov-ai">□ <span>Mistral</span></div>'+
+      '<div class="duo-ov-ai">□ <span>DuckDuckGo AI</span></div>'+
+      '<div class="duo-ov-ai">□ <span>HuggingChat</span></div>'+
+      '<div class="duo-ov-send">✈ '+selected+' (2)</div>'+
+    '</div>'+
+    '<div class="duo-ov-pane duo-ov-mid">'+
+      '<div class="duo-ov-modelhead"><span class="duo-ov-model gpt">◎</span><div><b>ChatGPT</b><small>'+S.response+'</small></div><i>⋮</i></div>'+
+      '<p>'+response1+'</p><p>'+response2+'</p>'+
+      '<div class="duo-ov-actions"><span>'+S.copy+'</span><span>'+S.read+'</span><span>'+S.share+'</span><span>'+S.save+'</span></div>'+
+    '</div>'+
+    '<div class="duo-ov-pane duo-ov-right">'+
+      '<div class="duo-ov-modelhead"><span class="duo-ov-model ppx">✦</span><div><b>Perplexity</b><small>'+S.response+'</small></div><i>⋮</i></div>'+
+      '<p>'+response2+'</p><p>'+response1+'</p>'+
+      '<div class="duo-ov-actions"><span>'+S.copy+'</span><span>'+S.read+'</span><span>'+S.share+'</span><span>'+S.save+'</span></div>'+
+    '</div>';
+
+  overlay.setAttribute("lang",c.toLowerCase().replace("_","-"));
+  overlay.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr");
 }
 
 
@@ -334,6 +331,22 @@ css.textContent+=
 '#iphone-duo .pg-duo-modelhead{display:flex;align-items:center;gap:8px;margin-bottom:10px}#iphone-duo .pg-duo-model{width:30px;height:30px;border-radius:7px;display:grid;place-items:center;background:#0f766e;color:white;font-weight:800}#iphone-duo .pg-duo-model.ppx{background:#0f4c5c}#iphone-duo .pg-duo-modelhead b{display:block;font-size:.7rem}#iphone-duo .pg-duo-modelhead small{color:#6f7b8e;font-size:.45rem}'+
 '#iphone-duo .pg-duo-response p{font-size:.53rem;line-height:1.45;color:#c7d0dc;margin:0 0 10px}#iphone-duo .pg-duo-actions{margin-top:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}#iphone-duo .pg-duo-actions span{border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:6px 2px;text-align:center;font-size:.43rem;color:#b8c2cf}'+
 '@media(max-width:760px){#iphone-duo .pg-duo-device-shell{grid-template-columns:1.12fr .94fr .94fr}#iphone-duo .pg-duo-pane{min-height:300px;padding:9px 7px}#iphone-duo .pg-duo-response p{font-size:.42rem}#iphone-duo .pg-duo-control h3{font-size:.62rem}#iphone-duo .pg-duo-control button{left:7px;right:7px;bottom:7px;padding:7px;font-size:.46rem}#iphone-duo .pg-duo-tabs span{font-size:.35rem}#iphone-duo .pg-duo-apphead b{font-size:.5rem}}';
+css.textContent+=
+'#iphone-duo .duo-localized-overlay{container-type:inline-size}'+
+'#iphone-duo .duo-ov-pane{position:absolute;background:linear-gradient(180deg,rgba(6,15,24,.985),rgba(2,8,14,.995));overflow:hidden;box-sizing:border-box;color:#eef3fb}'+
+'#iphone-duo .duo-ov-left{left:24.15%;top:15.45%;width:26.15%;height:68.25%;padding:1.55% 1.25% 1.2%;clip-path:polygon(2.5% 1%,98.5% 3%,99.5% 98%,0 100%);border-radius:2.2% 1.4% 1.2% 2.2%}'+
+'#iphone-duo .duo-ov-mid{left:50.15%;top:16.75%;width:18.45%;height:66.55%;padding:1.65% 1.1% 1.15%;clip-path:polygon(1% 0,99% 2%,99% 98%,0 100%)}'+
+'#iphone-duo .duo-ov-right{left:68.35%;top:17.65%;width:18.45%;height:65.8%;padding:1.65% 1.1% 1.15%;clip-path:polygon(0 0,97.5% 3%,100% 99%,1% 98%);border-radius:0 2.2% 2.2% 0}'+
+'#iphone-duo .duo-ov-apphead{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.45cqw;align-items:center;margin-bottom:.5cqw}'+
+'#iphone-duo .duo-ov-apphead img{width:2.35cqw;height:2.35cqw;border-radius:.5cqw}#iphone-duo .duo-ov-apphead b{display:block;font-size:1.12cqw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#iphone-duo .duo-ov-apphead small{display:block;color:#8792a5;font-size:.68cqw}#iphone-duo .duo-ov-apphead>span{font-size:.82cqw;background:#182231;padding:.28cqw .45cqw;border-radius:.35cqw;white-space:nowrap}'+
+'#iphone-duo .duo-ov-tabs{display:grid;grid-template-columns:1.2fr .9fr 1fr .85fr;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:.55cqw}#iphone-duo .duo-ov-tabs span{padding:.42cqw .18cqw;font-size:.71cqw;color:#8d98aa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}#iphone-duo .duo-ov-tabs .active{color:#e879f9;border-bottom:2px solid #d946ef}'+
+'#iphone-duo .duo-ov-compare-title{font-size:1.22cqw;font-weight:750;margin:.45cqw 0 .15cqw}#iphone-duo .duo-ov-sub{font-size:.77cqw;color:#9aa5b6;line-height:1.25;margin-bottom:.5cqw}#iphone-duo .duo-ov-label{font-size:.78cqw;font-weight:700;margin:.28cqw 0}'+
+'#iphone-duo .duo-ov-prompt{background:#172334;border:1px solid #2b3b50;border-radius:.55cqw;padding:.65cqw .8cqw;font-size:.9cqw;line-height:1.25;margin-bottom:.5cqw}#iphone-duo .duo-ov-select{margin-top:.15cqw}'+
+'#iphone-duo .duo-ov-ai{font-size:.82cqw;line-height:1.5;color:#d5dce7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#iphone-duo .duo-ov-ai.checked{color:#34d399;font-weight:700}#iphone-duo .duo-ov-ai span{color:#ecf1f7;margin-left:.28cqw}'+
+'#iphone-duo .duo-ov-send{position:absolute;left:5%;right:4%;bottom:3.6%;padding:.72cqw .45cqw;border-radius:.5cqw;background:linear-gradient(90deg,#6d28d9,#8b5cf6);font-size:.86cqw;font-weight:800;text-align:center;color:#fff}'+
+'#iphone-duo .duo-ov-modelhead{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.5cqw;align-items:center;margin-bottom:.85cqw}#iphone-duo .duo-ov-model{width:2.6cqw;height:2.6cqw;border-radius:.55cqw;display:grid;place-items:center;background:#10a37f;color:#fff;font-size:1.4cqw;font-weight:900}.duo-ov-model.ppx{background:#0d6b78!important}#iphone-duo .duo-ov-modelhead b{display:block;font-size:1.05cqw}#iphone-duo .duo-ov-modelhead small{display:block;color:#8b96a7;font-size:.69cqw}#iphone-duo .duo-ov-modelhead i{font-style:normal;color:#8ba0c1;font-size:1.2cqw}'+
+'#iphone-duo .duo-ov-mid p,#iphone-duo .duo-ov-right p{font-size:.82cqw;line-height:1.46;color:#cbd4df;margin:0 0 .9cqw}#iphone-duo .duo-ov-actions{position:absolute;left:5%;right:5%;bottom:3.5%;display:grid;grid-template-columns:repeat(4,1fr);gap:.3cqw}#iphone-duo .duo-ov-actions span{font-size:.62cqw;text-align:center;color:#dfe6ef;border:1px solid rgba(255,255,255,.08);border-radius:.35cqw;padding:.4cqw .1cqw}'+
+'@media(max-width:760px){#iphone-duo .duo-ov-left{padding:1.25% 1.1%}#iphone-duo .duo-ov-mid,#iphone-duo .duo-ov-right{padding:1.25% .9%}}';
 document.head.appendChild(css);
 window._pgDeviceUI={apply:apply,appLanguages:APP_LANGS,_strings:strings};
 window.addEventListener("pg:languagechange",function(e){apply(e.detail&&e.detail.code||current())});
