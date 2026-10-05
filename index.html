@@ -2629,6 +2629,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
       <figure class="duo-exact-figure">
         <img class="duo-exact-image duo-static-en" src="https://raw.githubusercontent.com/hmoses/poly-glot-site/966834b44c3ad125f7a5064615eef48dbe1a4f96/assets/img/iphone-duo-simulator.jpg" loading="eager" decoding="async" alt="Poly-Glot AI Workspace Compare Mode shown in the iPhone Duo Xcode simulator">
+        <div class="duo-localized-overlay" aria-hidden="true"></div>
         <div class="duo-device duo-localized-device" aria-label="Localized Poly-Glot AI Workspace on iPhone Duo">
           <div class="duo-screen left">
             <div class="duo-ui">
@@ -5543,7 +5544,7 @@ function _demoStart() {
 
 <!-- Global i18n — 38 languages, same flags as the app -->
 <script src="assets/js/i18n.js?v=global-sync-v8"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v6"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v7"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
 
@@ -9099,8 +9100,9 @@ function _demoStart() {
 
 
 <style>
-/* ===== IPHONE DUO — EXACT ENGLISH RENDER + LOCALIZED LIVE RENDER ===== */
-html[data-device-ui-lang="EN"] #iphone-duo .duo-exact-figure > .duo-static-en{
+/* ===== IPHONE DUO — EXACT XCODE BASE + LOCALIZED OVERLAY ===== */
+#iphone-duo .duo-exact-figure{position:relative!important;}
+#iphone-duo .duo-exact-figure > .duo-static-en{
   display:block!important;
   visibility:visible!important;
   opacity:1!important;
@@ -9108,52 +9110,21 @@ html[data-device-ui-lang="EN"] #iphone-duo .duo-exact-figure > .duo-static-en{
   height:auto!important;
   object-fit:contain!important;
 }
-html[data-device-ui-lang="EN"] #iphone-duo .duo-exact-figure > .duo-localized-device{
+#iphone-duo .duo-exact-figure > .duo-localized-device{
   display:none!important;
   visibility:hidden!important;
   opacity:0!important;
 }
-html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-exact-figure > .duo-static-en{
-  display:none!important;
-  visibility:hidden!important;
-  opacity:0!important;
+#iphone-duo .duo-localized-overlay{
+  display:none;
+  position:absolute;
+  inset:0;
+  z-index:12;
+  pointer-events:none;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;
+  color:#eef3fb;
 }
-html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-exact-figure > .duo-localized-device{
-  display:block!important;
-  visibility:visible!important;
-  opacity:1!important;
-  width:100%!important;
-  min-height:0!important;
-  padding:0!important;
-  gap:0!important;
-  border-radius:22px!important;
-  overflow:hidden!important;
-  transform:none!important;
-  background:#252c34!important;
-}
-html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-exact-figure > .duo-localized-device::after{
-  display:none!important;
-  content:none!important;
-}
-html:not([data-device-ui-lang="EN"]) #iphone-duo .pg-duo-device-shell{
-  width:100%!important;
-  min-height:clamp(220px,31vw,430px)!important;
-  height:auto!important;
-}
-html:not([data-device-ui-lang="EN"]) #iphone-duo .pg-duo-pane{
-  min-height:clamp(220px,31vw,430px)!important;
-}
-@media(max-width:760px){
-  html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-exact-figure > .duo-localized-device{
-    border-radius:14px!important;
-  }
-  html:not([data-device-ui-lang="EN"]) #iphone-duo .pg-duo-device-shell{
-    min-height:220px!important;
-  }
-  html:not([data-device-ui-lang="EN"]) #iphone-duo .pg-duo-pane{
-    min-height:220px!important;
-  }
-}
+html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-localized-overlay{display:block;}
 </style>
 
 </body>
