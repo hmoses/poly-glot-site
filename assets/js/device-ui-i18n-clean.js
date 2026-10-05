@@ -331,20 +331,15 @@ function siteLabels(S,M,c){
 }
 
 function languageDemoOverlay(S,M,c){
+  /* Keep the Fully Localized UI phone as a live animated demo.
+     A previous localized overlay covered the original phone and froze its
+     built-in language cycling, which also caused the caption and phone UI
+     to drift out of sync. Remove that overlay here and let the original
+     interactive/animated demo own #langPhone. */
   var phone=document.getElementById("langPhone");if(!phone)return;
   var o=phone.querySelector(".pg-langphone-global");
-  if(c==="EN"){if(o)o.remove();return}
-  if(!o){o=document.createElement("div");o.className="pg-langphone-global";phone.appendChild(o)}
-  o.innerHTML='<div class="pgl-status"><span>9:41</span><span>▮▮▮ ◔ ▰</span></div>'+
-    '<div class="pgl-head"><img src="assets/img/icon-128.png"><div><b>Poly-Glot AI Workspace</b><small>poly-glot.ai</small></div><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+
-    '<div class="pgl-tabs"><span>✏️ '+S.ask+'</span><span class="active">📋 '+S.templates+'</span><span>ℹ️ '+S.how+'</span><span>🕐 '+S.history+'</span></div>'+
-    '<div class="pgl-body"><div class="pgl-search">🔎 '+S.search+'</div><div class="pgl-cats"><span class="on">'+S.all+'</span><span>★ '+(S.free||"FREE")+'</span><span>💰</span><span>💼</span></div><div class="pgl-grid">'+
-    '<div><em>AI</em><b>'+S.templates+' 01</b><small>'+S.search+'</small><strong>PRO</strong></div>'+
-    '<div><em>AI</em><b>'+S.templates+' 02</b><small>'+S.search+'</small><strong>PRO</strong></div>'+
-    '<div><em>AI</em><b>'+S.templates+' 03</b><small>'+S.search+'</small><strong>PRO</strong></div>'+
-    '<div><em>AI</em><b>'+S.templates+' 04</b><small>'+S.search+'</small><strong>PRO</strong></div></div></div><div class="pgl-home"></div>';
+  if(o)o.remove();
 }
-
 function duo(S,M,c){
   var root=document.getElementById("iphone-duo");if(!root)return;
   var gt=function(k,fb){
