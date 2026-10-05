@@ -178,26 +178,63 @@
   function localizeSpecialSurfaces(){
     var c=currentCode(), s=currentTable();
 
-    /* Hint above Mac mockup. */
+    function cleanIconText(el, icon, value){
+      if(!el || !value) return;
+      el.textContent=(icon?icon+' ':'')+value;
+    }
+    function setExactText(root, from, to){
+      if(!root || !to) return;
+      root.querySelectorAll('*').forEach(function(el){
+        if(el.children.length===0 && (el.textContent||'').trim()===from) el.textContent=to;
+      });
+    }
+
+    /* Explicit device-gallery navigation labels. These are interactive UI,
+       so they must follow the global language selector rather than remain
+       frozen in the original English mockup. */
+    var macAsk=document.querySelector('#macTab-askanyai span');
+    var macTpl=document.querySelector('#macTab-templates span');
+    var macHow=document.querySelector('#macTab-howtouse span');
+    var macHist=document.querySelector('#macTab-history span');
+    cleanIconText(macAsk,'✏️',s.ask||'Ask Any AI');
+    cleanIconText(macTpl,'📋',s.templates||'Templates');
+    cleanIconText(macHow,'📖',s.how||'How to Use');
+    cleanIconText(macHist,'🕐',s.history||'History');
+
+    /* History screen chrome. User-generated/sample prompt content can remain
+       content, but every app control/heading is localized. */
+    var mh=document.getElementById('macScreen-history');
+    if(mh){
+      var heading=mh.querySelector('.mac-history-heading');
+      var note=mh.querySelector('.mac-history-note');
+      if(heading) heading.textContent=s.promptHistory||s.history||'Prompt History';
+      if(note) note.textContent=s.recent||'Your recent prompts & favorites';
+      var pills=mh.querySelectorAll('.mac-history-pill');
+      if(pills[0]) pills[0].textContent=s.all||'All';
+      if(pills[1]) pills[1].textContent=s.clear||'Clear';
+      mh.querySelectorAll('.mac-history-btn.copy').forEach(function(el){el.textContent=s.copy||'Copy';});
+      mh.querySelectorAll('.mac-history-btn:not(.copy):not(.del)').forEach(function(el){el.textContent=s.reedit||'Re-edit';});
+      mh.querySelectorAll('.mac-history-card-title').forEach(function(el){
+        if((el.textContent||'').trim()==='Ask Any AI') el.textContent=s.ask||'Ask Any AI';
+      });
+    }
+
+    /* Caption under the active Mac screen. Keep it short so every language
+       stays proportional on mobile. */
+    var macLabel=document.getElementById('macTabLabel');
+    if(macLabel){
+      var active=document.querySelector('#gallery-mac .mac-reference-tab.active');
+      var id=active&&active.id||'macTab-askanyai';
+      if(id.indexOf('templates')>=0) macLabel.textContent=(s.templates||'Templates');
+      else if(id.indexOf('howtouse')>=0) macLabel.textContent=(s.how||'How to Use');
+      else if(id.indexOf('history')>=0) macLabel.textContent=(s.history||'History');
+      else macLabel.textContent=(s.ask||'Ask Any AI')+' — '+(s.typeLine||'Type, paste, import or talk');
+    }
+
+    /* Hint above Mac mockup — works for every supported app language. */
     var hint=document.querySelector('#macTabHint span');
     if(hint){
-      var hints={
-        EN:'👇 Click the tabs below to explore the app',
-        ES:'👇 Haz clic en las pestañas de abajo para explorar la app',
-        FR:'👇 Cliquez sur les onglets ci-dessous pour explorer l’app',
-        DE:'👇 Klicken Sie unten auf die Tabs, um die App zu erkunden',
-        IT:'👇 Tocca le schede qui sotto per esplorare l’app',
-        PT:'👇 Clique nas abas abaixo para explorar o app',
-        NL:'👇 Klik op de tabbladen hieronder om de app te verkennen',
-        RU:'👇 Нажмите вкладки ниже, чтобы изучить приложение',
-        ZH:'👇 点击下方标签页探索应用',
-        ZH_TW:'👇 點擊下方分頁探索 App',
-        JA:'👇 下のタブをクリックしてアプリを確認',
-        KO:'👇 아래 탭을 눌러 앱을 살펴보세요',
-        AR:'👇 اضغط على علامات التبويب أدناه لاستكشاف التطبيق',
-        HI:'👇 ऐप देखने के लिए नीचे दिए टैब पर टैप करें'
-      };
-      hint.textContent=hints[c]||('👇 '+(s.ask||'Ask Any AI')+' · '+(s.templates||'Templates')+' · '+(s.how||'How to Use')+' · '+(s.history||'History'));
+      hint.textContent='👇 '+(s.ask||'Ask Any AI')+' · '+(s.templates||'Templates')+' · '+(s.how||'How to Use')+' · '+(s.history||'History');
     }
 
     /* Caption under Mac mockup. */
