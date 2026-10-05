@@ -3377,7 +3377,14 @@ function switchMacTab(tab) {
   });
 
   var label = document.getElementById('macTabLabel');
-  if (label) label.textContent = _macTabLabels[tab] || '';
+  if (label) {
+    var activeBtn=document.getElementById('macTab-'+tab);
+    var activeText=activeBtn&&activeBtn.querySelector('span');
+    label.textContent=activeText?(activeText.textContent||'').trim():(_macTabLabels[tab]||'');
+  }
+  if(window._pgDeviceUI&&window._pgDeviceUI.apply){
+    window._pgDeviceUI.apply(window._pgI18n&&window._pgI18n.curLang?window._pgI18n.curLang():'EN');
+  }
 
   var hint = document.getElementById('macTabHint');
   if (hint) {
