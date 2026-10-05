@@ -511,7 +511,7 @@ function duo(S,M,c){
   if(linkText)linkText.textContent=gt("duoLink","Explore iPhone Duo at Apple");
 
   root.setAttribute("lang",c.toLowerCase().replace("_","-"));
-  root.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr");
+  root.setAttribute("dir","ltr");root.setAttribute("data-pg-rtl",(c==="AR"||c==="HE")?"true":"false");
 
   /* Keep the exact English Xcode/device image for every language. */
   var image=root.querySelector(".duo-static-en");
@@ -583,7 +583,7 @@ function heroMacTextOverlay(S,M,c){
     host.appendChild(old);
   }
   old.setAttribute("lang",c.toLowerCase().replace("_","-"));
-  old.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr");
+  old.setAttribute("dir","ltr");old.setAttribute("data-pg-rtl",(c==="AR"||c==="HE")?"true":"false");
   old.innerHTML=
     '<span class="pg-hm lang">'+M.flag+' '+M.code.replace("_","-")+'</span>'+
     '<span class="pg-hm tab t1">✏️ '+S.ask+'</span>'+
@@ -608,7 +608,7 @@ function heroMacTextOverlay(S,M,c){
 function apply(code){
  var c=norm(code||current()),S=strings(c),M=meta(c);
  document.querySelectorAll(".pg-device-static-localized,.pg-mac-panel-localized").forEach(function(el){el.remove()});
- roots().forEach(function(r){localizeText(r,S);composed(r,S);badge(r,M);r.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr")});
+ roots().forEach(function(r){localizeText(r,S);composed(r,S);badge(r,M);r.setAttribute("dir","ltr");r.setAttribute("data-pg-rtl",(c==="AR"||c==="HE")?"true":"false")});
  staticScreens(S,M,c);macOverlay(S,M,c);heroMacTextOverlay(S,M,c);syncPlainBadges(S,M);syncAllTabLabels(S,M);siteLabels(S,M,c);languageDemoOverlay(S,M,c);duo(S,M,c);
  document.documentElement.setAttribute("data-device-ui-lang",c);
 }
