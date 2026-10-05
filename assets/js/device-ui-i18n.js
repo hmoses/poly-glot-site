@@ -146,7 +146,7 @@ function updateBadges(code){
   });
 }
 function ensureStaticLocalizedPanels(){
-  document.querySelectorAll('#gallery-iphone .iphone-screen > img, #gallery-ipad .ipad-screen > img, #gallery-mac #macScreen-templates > img').forEach(function(img){
+  document.querySelectorAll('#gallery-iphone .iphone-screen > img, #gallery-ipad .ipad-screen > img, #gallery-mac #macScreen-templates > img, #gallery-mac #macScreen-history > img').forEach(function(img){
     if(img.dataset.pgLocalized==="1")return;
     var alt=(img.getAttribute('alt')||"");
     var type=/Templates/i.test(alt)?"templates":(/How to Use/i.test(alt)?"how":(/History/i.test(alt)?"history":null));
@@ -246,6 +246,32 @@ function updateSiteLabels(code,S){
     var v=gt?gt(k,lang):"";
     return v&&v!==k?v:fallback;
   };
+
+  /* Localize the four interactive Mac navigation tabs. */
+  var macTabs=[
+    ['macTab-askanyai','✏️ '+(S.ask||'Ask Any AI')],
+    ['macTab-templates','📋 '+(S.templates||'Templates')],
+    ['macTab-howtouse','📖 '+(S.how||'How to Use')],
+    ['macTab-history','🕐 '+(S.history||'History')]
+  ];
+  macTabs.forEach(function(item){
+    var btn=document.getElementById(item[0]);
+    if(!btn)return;
+    var span=btn.querySelector('span');
+    if(span)span.textContent=item[1];
+    btn.setAttribute('aria-label',item[1].replace(/^[^\p{L}\p{N}]*/u,'').trim());
+  });
+
+  /* Localize device gallery captions below iPhone/iPad renders. */
+  document.querySelectorAll('#gallery-iphone .gallery-label, #gallery-ipad .gallery-label').forEach(function(el){
+    var original=(el.getAttribute('data-pg-label-en')||el.textContent||'').trim();
+    if(!el.getAttribute('data-pg-label-en'))el.setAttribute('data-pg-label-en',original);
+    var key=original.toLowerCase();
+    if(key.indexOf('template')>-1) el.textContent=S.templates||'Templates';
+    else if(key.indexOf('how to use')>-1) el.textContent=S.how||'How to Use';
+    else if(key.indexOf('history')>-1) el.textContent=S.history||'History';
+    else if(key.indexOf('ask any ai')>-1) el.textContent=S.ask||'Ask Any AI';
+  });
 
   /* Mac gallery caption under the interactive render. */
   var macLabel=document.getElementById('macTabLabel');
