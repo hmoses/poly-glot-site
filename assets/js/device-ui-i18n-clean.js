@@ -318,123 +318,84 @@ function staticScreens(S,M,c){
 function macOverlay(S,M,c){
  var host=document.querySelector("#gallery-mac .mac-reference-interactive");
  if(!host)return;
+
  var oldFull=host.querySelector(".pg-mac-full-overlay");
  if(oldFull)oldFull.remove();
- var oldPanel=host.querySelector(".pg-mac-panel-localized");
- if(oldPanel)oldPanel.remove();
+ host.querySelectorAll(".pg-mac-panel-localized").forEach(function(el){el.remove()});
 
  var tabs=host.querySelectorAll(".mac-reference-tab");
  var vals=[S.ask,S.templates,S.how,S.history];
  var icons=["✏️ ","📋 ","📖 ","🕐 "];
  tabs.forEach(function(btn,i){
    var sp=btn.querySelector("span");
-   if(!sp){
-     sp=document.createElement("span");
-     btn.textContent="";
-     btn.appendChild(sp);
-   }
+   if(!sp){sp=document.createElement("span");btn.textContent="";btn.appendChild(sp);}
    var label=vals[i]||"";
    sp.textContent=icons[i]+label;
-   sp.setAttribute("data-full-label",label);
-   sp.className="mac-tab-label"+(label.length>18?" is-long":label.length>12?" is-medium":"");
+   sp.className="mac-tab-label";
    btn.setAttribute("title",label);
    btn.setAttribute("aria-label",label);
  });
 
- var stage=host.querySelector(".mac-reference-stage");
- if(!stage)return;
- var ov=stage.querySelector(".pg-mac-panel-localized");if(ov){ov.remove();ov=null;}
- if(c==="EN"){
-   if(ov)ov.remove();
-   return;
- }
- var active=document.querySelector("#gallery-mac .mac-reference-tab.active");
+ if(c==="EN") return;
+
+ var active=host.querySelector(".mac-reference-tab.active");
  var id=active&&active.id||"macTab-askanyai";
  var type=id.indexOf("templates")>-1?"templates":id.indexOf("howtouse")>-1?"how":id.indexOf("history")>-1?"history":"ask";
 
- /* Keep the exact English panel geometry and animation for every locale.
-    Never replace a Mac panel with alternate markup. */
- if(ov)ov.remove();
+ var ov=document.createElement("div");
+ ov.className="pg-mac-full-overlay pg-mac-canonical-localized";
+ ov.setAttribute("lang",c.toLowerCase().replace("_","-"));
+ ov.setAttribute("dir","ltr");
+
+ var tabHtml='<div class="pgmc-tabs">'+
+   '<span class="'+(type==="ask"?"active":"")+'">✏️ '+S.ask+'</span>'+
+   '<span class="'+(type==="templates"?"active":"")+'">📋 '+S.templates+'</span>'+
+   '<span class="'+(type==="how"?"active":"")+'">📖 '+S.how+'</span>'+
+   '<span class="'+(type==="history"?"active":"")+'">🕐 '+S.history+'</span>'+
+   '</div>';
+
+ var body="";
+ if(type==="ask"){
+   body='<div class="pgmc-body pgmc-ask">'+
+     '<div class="pgmc-title-row"><h3>🤔 '+S.ask+'</h3><span class="pgmc-how">'+(S.howWorks||S.how)+'</span></div>'+
+     '<div class="pgmc-help">'+
+       '<div>✏️ '+S.typeLine+'</div>'+
+       '<div>🏳️ '+S.appLang+' ⬆️ '+S.changesMenus+'</div>'+
+       '<div>🌐 '+S.outputLang+' ⬇️ '+S.responds+'</div>'+
+       '<div>🔀 '+S.compare+': '+S.compareHelp+'</div>'+
+     '</div>'+
+     '<div class="pgmc-output"><span>🌐 '+S.outputLabel+'</span><strong><i>'+M.flag+'</i> '+(M.name||M.code)+' <b>▼</b></strong></div>'+
+     '<div class="pgmc-prompt">'+S.promptIntro+'<br><br>'+S.promptExample+'</div>'+
+     '<div class="pgmc-actions"><span>📋 '+S.paste+'</span><span>📄 '+S.import+'</span></div>'+
+     '<div class="pgmc-bottom"><span class="pgmc-talk">🎤 '+S.talk+'</span><strong class="pgmc-send">'+S.send+'</strong></div>'+
+   '</div>';
+ }else if(type==="templates"){
+   body='<div class="pgmc-body"><div class="pgmc-section-title">📋 '+S.templates+'</div>'+
+     '<div class="pgmc-search">🔎 '+S.search+'</div>'+
+     '<div class="pgmc-card-grid">'+
+       Array.from({length:6},function(_,i){return '<div><b>'+S.templates+' '+(i+1)+'</b><small>AI</small></div>'}).join("")+
+     '</div></div>';
+ }else if(type==="how"){
+   body='<div class="pgmc-body"><div class="pgmc-section-title">📖 '+S.how+'</div>'+
+     '<div class="pgmc-steps"><div><b>1</b><span>'+S.typeLine+'</span></div>'+
+     '<div><b>2</b><span>'+S.appLang+' — '+S.changesMenus+'</span></div>'+
+     '<div><b>3</b><span>'+S.outputLang+' — '+S.responds+'</span></div>'+
+     '<div><b>4</b><span>'+S.compare+' — '+S.compareHelp+'</span></div></div></div>';
+ }else{
+   body='<div class="pgmc-body"><div class="pgmc-history-head"><div><div class="pgmc-section-title">🕐 '+(S.promptHistory||S.history)+'</div><small>'+S.recent+'</small></div><div><span>'+S.all+'</span><span>'+S.clear+'</span></div></div>'+
+     '<div class="pgmc-history-grid"><div><b>'+S.ask+'</b><small>5m</small><p>'+S.promptExample+'</p></div>'+
+     '<div><b>'+S.compare+'</b><small>12m</small><p>'+S.compareHelp+'</p></div>'+
+     '<div><b>'+S.templates+'</b><small>18m</small><p>'+S.typeLine+'</p></div></div></div>';
+ }
+
+ ov.innerHTML='<div class="pgmc-head"><img src="assets/img/icon-128.png" alt=""><strong>Poly-Glot AI Workspace</strong><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+tabHtml+body;
+ host.appendChild(ov);
+
  var hint=document.querySelector("#macTabHint span");
  if(hint)hint.textContent="👇 "+S.ask+" · "+S.templates+" · "+S.how+" · "+S.history;
  var label=document.getElementById("macTabLabel");
  if(label)label.textContent=type==="templates"?S.templates:type==="how"?S.how:type==="history"?S.history:S.ask+" — "+S.typeLine;
-
- /* Finish the real Ask Any AI panel in-place. */
- var ask=host.querySelector("#macScreen-askanyai");
- if(ask){
-   var title=ask.querySelector(".mac-native-ask-title");if(title)title.textContent="🤔 "+S.ask;
-   var help=ask.querySelector(".mac-native-help-lines");
-   if(help&&help.children.length>=4){
-     help.children[0].textContent="✏️ "+S.typeLine;
-     help.children[1].textContent="🏳️ "+S.appLang+" ⬆️ "+S.changesMenus;
-     help.children[2].textContent="🌐 "+S.outputLang+" ⬇️ "+S.responds;
-     help.children[3].textContent="🔀 "+S.compare+": "+S.compareHelp;
-   }
-   var how=ask.querySelector(".mac-native-how-link");if(how)how.textContent=S.howWorks||S.how;
-   var out=ask.querySelector(".mac-response-label");if(out)out.textContent="🌐 "+S.outputLabel;
-   var sel=ask.querySelector(".mac-response-select strong");if(sel)sel.textContent=M.name||M.code;
-   var prompt=ask.querySelector('div[style*="min-height:160px"] > div');
-   if(prompt)prompt.innerHTML=S.promptIntro+"<br><br>"+S.promptExample;
-
-   var actionBoxes=ask.querySelectorAll('div[style*="display:flex;gap:8px"] > div');
-   if(actionBoxes[0])actionBoxes[0].textContent="📋 "+S.paste;
-   if(actionBoxes[1])actionBoxes[1].textContent="📄 "+S.import;
-
-   var talkNode=ask.querySelector('div[style*="display:flex;align-items:center;gap:6px"]');
-   if(talkNode){
-     var mic=talkNode.querySelector("span");
-     talkNode.innerHTML="";
-     if(mic)talkNode.appendChild(mic);
-     talkNode.appendChild(document.createTextNode(" "+S.talk));
-   }
-
-   var sendNode=ask.querySelector('div[style*="margin-left:auto"]');
-   if(sendNode)sendNode.textContent=S.send;
-
-   var clearNode=ask.querySelector('div[style*="margin-top:8px"]');
-   if(clearNode)clearNode.textContent="🗑 "+S.clearAll;
- }
-
- /* Localize the real How to Use animation in place so timing, transitions,
-    toggle motion, AI selection and response animation remain identical to English. */
- var howPanel=host.querySelector("#macScreen-howtouse");
- if(howPanel){
-   var sendBtn=howPanel.querySelector("#siteDemo-SendBtn");
-   if(sendBtn)sendBtn.textContent=S.send||"Send to AI";
-
-   var p2=howPanel.querySelector("#siteDemo-P2");
-   if(p2){
-     var choose=p2.children&&p2.children[1];
-     if(choose)choose.textContent=S.compareSelect||S.compare;
-     var cmp=p2.children&&p2.children[2];
-     var cmpLabel=cmp&&cmp.querySelector("span");
-     if(cmpLabel)cmpLabel.textContent="🔀 "+S.compare;
-
-     var aiRows=p2.querySelectorAll(".siteDemo-AI");
-     aiRows.forEach(function(row){
-       var sub=row.querySelector("div[style*='font-size:10px']");
-       if(sub)sub.textContent=S.promptIntro||S.typeLine;
-     });
-
-     var sendAll=howPanel.querySelector("#siteDemo-SendAll");
-     if(sendAll){
-       var count=howPanel.querySelector("#siteDemo-CmpCount");
-       var n=count?count.textContent:"0";
-       sendAll.innerHTML=(S.compareSend||S.send||"Send to Selected")+' (<span id="siteDemo-CmpCount">'+n+'</span>)';
-     }
-   }
-
-   var p3=howPanel.querySelector("#siteDemo-P3");
-   if(p3){
-     var top=p3.firstElementChild;
-     if(top)top.textContent="🔀 "+S.compare+" — 2 "+(S.response||"responses");
-     var bottom=p3.lastElementChild;
-     if(bottom)bottom.textContent="⬆ "+(S.compareHelp||S.compare);
-   }
- }
 }
-
 function syncPlainBadges(S,M){
   roots().forEach(function(root){
     root.querySelectorAll("span,div").forEach(function(el){
