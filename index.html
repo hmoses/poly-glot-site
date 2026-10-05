@@ -5543,7 +5543,7 @@ function _demoStart() {
 
 <!-- Global i18n — 38 languages, same flags as the app -->
 <script src="assets/js/i18n.js?v=global-sync-v8"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v5"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v6"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
 
@@ -9119,9 +9119,40 @@ html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-exact-figure > .duo-static
   opacity:0!important;
 }
 html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-exact-figure > .duo-localized-device{
-  display:grid!important;
+  display:block!important;
   visibility:visible!important;
   opacity:1!important;
+  width:100%!important;
+  min-height:0!important;
+  padding:0!important;
+  gap:0!important;
+  border-radius:22px!important;
+  overflow:hidden!important;
+  transform:none!important;
+  background:#252c34!important;
+}
+html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-exact-figure > .duo-localized-device::after{
+  display:none!important;
+  content:none!important;
+}
+html:not([data-device-ui-lang="EN"]) #iphone-duo .pg-duo-device-shell{
+  width:100%!important;
+  min-height:clamp(220px,31vw,430px)!important;
+  height:auto!important;
+}
+html:not([data-device-ui-lang="EN"]) #iphone-duo .pg-duo-pane{
+  min-height:clamp(220px,31vw,430px)!important;
+}
+@media(max-width:760px){
+  html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-exact-figure > .duo-localized-device{
+    border-radius:14px!important;
+  }
+  html:not([data-device-ui-lang="EN"]) #iphone-duo .pg-duo-device-shell{
+    min-height:220px!important;
+  }
+  html:not([data-device-ui-lang="EN"]) #iphone-duo .pg-duo-pane{
+    min-height:220px!important;
+  }
 }
 </style>
 
