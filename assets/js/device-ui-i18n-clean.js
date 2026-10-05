@@ -434,10 +434,23 @@ function duo(S,M,c){
     }catch(e){return fb}
   };
 
+  // The marketing copy in this section has its own 38-language keys.
+  // Do not reuse generic MCP/Compare Mode strings here; doing so caused
+  // translated languages to replace the approved Duo copy and reflow badly.
   var kicker=root.querySelector(".duo-kicker");
-  if(kicker)kicker.textContent=gt("mcpGptBadge","Coming Soon");
+  var titleA=root.querySelector('[data-i18n="duoTitleA"]');
+  var titleB=root.querySelector('[data-i18n="duoTitleB"]');
   var copy=root.querySelector(".duo-copy");
-  if(copy)copy.textContent=gt("sc2P","Send the same prompt to multiple AI apps and compare their responses side by side.");
+  var metaText=root.querySelector('[data-i18n="duoMeta"]');
+  var linkText=root.querySelector('[data-i18n="duoLink"]');
+  if(kicker)kicker.textContent=gt("duoKicker","Coming Soon");
+  if(titleA)titleA.textContent=gt("duoTitleA","Poly-Glot");
+  if(titleB)titleB.textContent=gt("duoTitleB","on iPhone Duo");
+  if(copy)copy.textContent=gt("duoCopy","A fold-aware Poly-Glot experience is coming to iPhone Duo.");
+  if(metaText)metaText.textContent=gt("duoMeta","iPhone Duo pre-orders begin October 16, 2026. Available October 23.");
+  if(linkText)linkText.textContent=gt("duoLink","Explore iPhone Duo at Apple");
+  root.setAttribute("lang",c.toLowerCase().replace("_","-"));
+  root.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr");
 
   var overlay=root.querySelector(".duo-localized-overlay");
   if(!overlay)return;
