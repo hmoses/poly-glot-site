@@ -8,44 +8,41 @@
 
 // ===== 38 LANGUAGES — same codes, flags, order as the app =====
 var LANGS=[
-{code:"EN",flag:"\u{1F1FA}\u{1F1F8}",name:"English"},
-{code:"ES",flag:"\u{1F1EA}\u{1F1F8}",name:"Espa\u00f1ol"},
-{code:"FR",flag:"\u{1F1EB}\u{1F1F7}",name:"Fran\u00e7ais"},
-{code:"DE",flag:"\u{1F1E9}\u{1F1EA}",name:"Deutsch"},
-{code:"IT",flag:"\u{1F1EE}\u{1F1F9}",name:"Italiano"},
-{code:"PT",flag:"\u{1F1E7}\u{1F1F7}",name:"Portugu\u00eas"},
-{code:"NL",flag:"\u{1F1F3}\u{1F1F1}",name:"Nederlands"},
-{code:"RU",flag:"\u{1F1F7}\u{1F1FA}",name:"\u0420\u0443\u0441\u0441\u043A\u0438\u0439"},
-{code:"ZH",flag:"\u{1F1E8}\u{1F1F3}",name:"\u7B80\u4F53\u4E2D\u6587"},
-{code:"ZH-TW",flag:"\u{1F1F9}\u{1F1FC}",name:"\u7E41\u9AD4\u4E2D\u6587"},
-{code:"JA",flag:"\u{1F1EF}\u{1F1F5}",name:"\u65E5\u672C\u8A9E"},
-{code:"KO",flag:"\u{1F1F0}\u{1F1F7}",name:"\uD55C\uAD6D\uC5B4"},
-{code:"AR",flag:"\u{1F1F8}\u{1F1E6}",name:"\u0627\u0644\u0639\u0631\u0628\u064A\u0629"},
-{code:"HI",flag:"\u{1F1EE}\u{1F1F3}",name:"\u0939\u093F\u0928\u094D\u0926\u0940"},
-{code:"BN",flag:"\u{1F1E7}\u{1F1E9}",name:"\u09AC\u09BE\u0982\u09B2\u09BE"},
-{code:"TR",flag:"\u{1F1F9}\u{1F1F7}",name:"T\u00fcrk\u00e7e"},
-{code:"PL",flag:"\u{1F1F5}\u{1F1F1}",name:"Polski"},
-{code:"SV",flag:"\u{1F1F8}\u{1F1EA}",name:"Svenska"},
-{code:"NO",flag:"\u{1F1F3}\u{1F1F4}",name:"Norsk"},
-{code:"DA",flag:"\u{1F1E9}\u{1F1F0}",name:"Dansk"},
-{code:"FI",flag:"\u{1F1EB}\u{1F1EE}",name:"Suomi"},
-{code:"EL",flag:"\u{1F1EC}\u{1F1F7}",name:"\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC"},
-{code:"HE",flag:"\u{1F1EE}\u{1F1F1}",name:"\u05E2\u05D1\u05E8\u05D9\u05EA"},
-{code:"ID",flag:"\u{1F1EE}\u{1F1E9}",name:"Bahasa Indonesia"},
-{code:"MS",flag:"\u{1F1F2}\u{1F1FE}",name:"Bahasa Melayu"},
-{code:"TH",flag:"\u{1F1F9}\u{1F1ED}",name:"\u0E44\u0E17\u0E22"},
-{code:"VI",flag:"\u{1F1FB}\u{1F1F3}",name:"Ti\u1EBFng Vi\u1EC7t"},
-{code:"UK",flag:"\u{1F1FA}\u{1F1E6}",name:"\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430"},
-{code:"CS",flag:"\u{1F1E8}\u{1F1FF}",name:"\u010Ce\u0161tina"},
-{code:"RO",flag:"\u{1F1F7}\u{1F1F4}",name:"Rom\u00e2n\u0103"},
-{code:"HU",flag:"\u{1F1ED}\u{1F1FA}",name:"Magyar"},
-{code:"SK",flag:"\u{1F1F8}\u{1F1F0}",name:"Sloven\u010Dina"},
-{code:"HR",flag:"\u{1F1ED}\u{1F1F7}",name:"Hrvatski"},
-{code:"CA",flag:"\u{1F1EA}\u{1F1F8}",name:"Catal\u00e0"},
-{code:"AF",flag:"\u{1F1FF}\u{1F1E6}",name:"Afrikaans"},
-{code:"SW",flag:"\u{1F1F0}\u{1F1EA}",name:"Swahili"},
-{code:"HA",flag:"\u{1F1F3}\u{1F1EC}",name:"Hausa"},
-{code:"AM",flag:"\u{1F1EA}\u{1F1F9}",name:"\u12A0\u121B\u122D\u129B"}
+{code:"EN",flag:"🇺🇸",name:"English"},
+{code:"ES",flag:"🇪🇸",name:"Spanish"},
+{code:"FR",flag:"🇫🇷",name:"French"},
+{code:"DE",flag:"🇩🇪",name:"German"},
+{code:"IT",flag:"🇮🇹",name:"Italian"},
+{code:"PT",flag:"🇧🇷",name:"Portuguese"},
+{code:"NL",flag:"🇳🇱",name:"Dutch"},
+{code:"RU",flag:"🇷🇺",name:"Russian"},
+{code:"ZH",flag:"🇨🇳",name:"Chinese (Simplified)"},
+{code:"ZH_TW",flag:"🇹🇼",name:"Chinese (Traditional)"},
+{code:"JA",flag:"🇯🇵",name:"Japanese"},
+{code:"KO",flag:"🇰🇷",name:"Korean"},
+{code:"AR",flag:"🇸🇦",name:"Arabic"},
+{code:"HI",flag:"🇮🇳",name:"Hindi"},
+{code:"BN",flag:"🇧🇩",name:"Bengali"},
+{code:"TR",flag:"🇹🇷",name:"Turkish"},
+{code:"PL",flag:"🇵🇱",name:"Polish"},
+{code:"SV",flag:"🇸🇪",name:"Swedish"},
+{code:"NO",flag:"🇳🇴",name:"Norwegian"},
+{code:"DA",flag:"🇩🇰",name:"Danish"},
+{code:"FI",flag:"🇫🇮",name:"Finnish"},
+{code:"EL",flag:"🇬🇷",name:"Greek"},
+{code:"HE",flag:"🇮🇱",name:"Hebrew"},
+{code:"ID",flag:"🇮🇩",name:"Indonesian"},
+{code:"MS",flag:"🇲🇾",name:"Malay"},
+{code:"TH",flag:"🇹🇭",name:"Thai"},
+{code:"VI",flag:"🇻🇳",name:"Vietnamese"},
+{code:"UK",flag:"🇺🇦",name:"Ukrainian"},
+{code:"CS",flag:"🇨🇿",name:"Czech"},
+{code:"RO",flag:"🇷🇴",name:"Romanian"},
+{code:"HU",flag:"🇭🇺",name:"Hungarian"},
+{code:"SK",flag:"🇸🇰",name:"Slovak"},
+{code:"HR",flag:"🇭🇷",name:"Croatian"},
+{code:"CA",flag:"🇪🇸",name:"Catalan"},
+{code:"AF",flag:"🇿🇦",name:"Afrikaans"}
 ];
 
 // ===== TRANSLATION KEYS =====
@@ -1593,7 +1590,7 @@ AM:{duoKicker:"በቅርቡ",duoTitleA:"Poly-Glot",duoTitleB:"በ iPhone Duo",du
 };
 
 // ===== GETTER =====
-function gt(k,lang){return(DUO[lang]&&DUO[lang][k])||(T[lang]&&T[lang][k])||(DUO.EN&&DUO.EN[k])||T.EN[k]||'';}
+function gt(k,lang){var key=(lang==="ZH_TW"?"ZH-TW":lang);return(DUO[key]&&DUO[key][k])||(T[key]&&T[key][k])||(DUO.EN&&DUO.EN[k])||T.EN[k]||'';}
 
 // ===== GLOBAL STATE =====
 var curLang='EN';
@@ -1751,7 +1748,7 @@ document.head.appendChild(css);
 function init(){
 buildPicker();tagAll();
 var saved;try{saved=localStorage.getItem('pgLang');}catch(e){}
-if(saved){var L=LANGS.find(function(l){return l.code===saved;});if(L)setLang(L.code,L.flag);}
+if(saved){if(saved==="ZH-TW")saved="ZH_TW";var L=LANGS.find(function(l){return l.code===saved;});if(L)setLang(L.code,L.flag);}
 }
 
 // Expose
