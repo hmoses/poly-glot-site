@@ -593,10 +593,26 @@ function heroMacTextOverlay(S,M,c){
 
 function apply(code){
  var c=norm(code||current()),S=strings(c),M=meta(c);
- document.querySelectorAll(".pg-device-static-localized,.pg-mac-panel-localized").forEach(function(el){el.remove()});
- roots().forEach(function(r){localizeText(r,S);composed(r,S);badge(r,M);r.setAttribute("dir","ltr");r.setAttribute("data-pg-rtl",(c==="AR"||c==="HE")?"true":"false")});
- staticScreens(S,M,c);macOverlay(S,M,c);heroMacTextOverlay(S,M,c);syncPlainBadges(S,M);syncAllTabLabels(S,M);siteLabels(S,M,c);languageDemoOverlay(S,M,c);duo(S,M,c);
  document.documentElement.setAttribute("data-device-ui-lang",c);
+ document.querySelectorAll(".pg-device-static-localized,.pg-mac-panel-localized").forEach(function(el){el.remove()});
+
+ /* Mac is rendered first so no legacy localization path can visibly win. */
+ try{macOverlay(S,M,c)}catch(e){console.error("Poly-Glot Mac localization:",e)}
+
+ roots().forEach(function(r){
+   /* Do not mutate the Mac gallery DOM after its canonical localized render exists. */
+   if(r&&r.id==="gallery-mac")return;
+   localizeText(r,S);composed(r,S);badge(r,M);
+   r.setAttribute("dir","ltr");
+   r.setAttribute("data-pg-rtl",(c==="AR"||c==="HE")?"true":"false");
+ });
+ staticScreens(S,M,c);
+ heroMacTextOverlay(S,M,c);
+ syncPlainBadges(S,M);
+ syncAllTabLabels(S,M);
+ siteLabels(S,M,c);
+ languageDemoOverlay(S,M,c);
+ duo(S,M,c);
 }
 var css=document.createElement("style");css.textContent=
 '.pg-device-static-localized{position:absolute;inset:0;background:#0d0f1a;color:#fff;z-index:8;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;overflow:hidden}.pgdsl-head{display:flex;align-items:center;gap:8px;padding:5% 6% 3%}.pgdsl-head img{width:8%;aspect-ratio:1;border-radius:22%}.pgdsl-head strong{font-size:clamp(7px,1.5vw,15px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pgdsl-badge{margin-left:auto;font-size:clamp(6px,1vw,10px);background:rgba(255,255,255,.08);padding:3px 6px;border-radius:5px}.pgdsl-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid rgba(255,255,255,.08);font-size:clamp(5px,.9vw,10px);color:#8b949e}.pgdsl-tabs span{padding:4% 2%;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pgdsl-tabs .active{color:#f59e0b;border-bottom:2px solid #f59e0b}.pgdsl-body{padding:5% 6%}.pgdsl-title{font-weight:800;font-size:clamp(11px,2vw,20px);margin-bottom:4%}.pgdsl-search,.pgdsl-step{background:#1c2128;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:3%;margin-bottom:3%;color:#aab2c0}.pgdsl-cards{display:grid;grid-template-columns:1fr 1fr;gap:3%}.pgdsl-cards div,.pgdsl-history-list div{background:#1a1e2e;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:6%;min-height:45px}.pgdsl-history-actions{display:flex;gap:6px;margin-bottom:4%}.pgdsl-history-actions span{border:1px solid rgba(255,255,255,.12);padding:4px 8px;border-radius:6px}.pgdsl-history-list{display:grid;grid-template-columns:repeat(2,1fr);gap:3%}.iphone-screen,.ipad-screen{position:relative}'+
