@@ -30,6 +30,7 @@ var LANGS=[
 {code:"DA",flag:"\u{1F1E9}\u{1F1F0}",name:"Dansk"},
 {code:"FI",flag:"\u{1F1EB}\u{1F1EE}",name:"Suomi"},
 {code:"EL",flag:"\u{1F1EC}\u{1F1F7}",name:"\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC"},
+{code:"HE",flag:"\u{1F1EE}\u{1F1F1}",name:"\u05E2\u05D1\u05E8\u05D9\u05EA"},
 {code:"ID",flag:"\u{1F1EE}\u{1F1E9}",name:"Bahasa Indonesia"},
 {code:"MS",flag:"\u{1F1F2}\u{1F1FE}",name:"Bahasa Melayu"},
 {code:"TH",flag:"\u{1F1F9}\u{1F1ED}",name:"\u0E44\u0E17\u0E22"},
@@ -44,8 +45,7 @@ var LANGS=[
 {code:"AF",flag:"\u{1F1FF}\u{1F1E6}",name:"Afrikaans"},
 {code:"SW",flag:"\u{1F1F0}\u{1F1EA}",name:"Swahili"},
 {code:"HA",flag:"\u{1F1F3}\u{1F1EC}",name:"Hausa"},
-{code:"AM",flag:"\u{1F1EA}\u{1F1F9}",name:"\u12A0\u121B\u122D\u129B"},
-{code:"FIL",flag:"\u{1F1F5}\u{1F1ED}",name:"Filipino"}
+{code:"AM",flag:"\u{1F1EA}\u{1F1F9}",name:"\u12A0\u121B\u122D\u129B"}
 ];
 
 // ===== TRANSLATION KEYS =====
@@ -1700,7 +1700,7 @@ css.textContent='#pgGlobalLangPicker{position:fixed;bottom:24px;left:24px;z-inde
 +'.pgGlob-row{display:grid;grid-template-columns:42px 1fr;align-items:center;gap:10px;min-height:58px;padding:4px 14px;border-radius:14px;cursor:pointer;color:#f3f4f6;border:1px solid transparent}'
 +'.pgGlob-row:hover{background:rgba(255,255,255,.05)}.pgGlob-row.active{background:rgba(124,58,237,.16);border-color:rgba(124,58,237,.34)}'
 +'.pgGlob-row .gf{font-size:1.6rem;width:42px;text-align:center;line-height:1}.pgGlob-row .gc{font-size:1.22rem;font-weight:500;color:#f4f5f8;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;letter-spacing:.01em}.pgGlob-row .gn{display:none!important}'
-+'@media(max-width:640px){#pgGlobalLangPicker{bottom:18px;left:10px}#pgGlobalLangDD{position:fixed;left:50%;bottom:auto;top:50%;transform:translate(-50%,-50%);width:min(68vw,360px);max-height:72vh;border-radius:34px;padding:16px 12px}.pgGlob-row{grid-template-columns:44px 1fr;min-height:66px;padding:4px 18px}.pgGlob-row .gf{font-size:1.7rem}.pgGlob-row .gc{font-size:1.35rem}}';
++'@media(max-width:640px){#pgGlobalLangPicker{bottom:18px;left:10px}#pgGlobalLangDD{position:fixed;left:50%;bottom:auto;top:50%;transform:translate(-50%,-50%);width:min(58vw,300px);max-height:56vh;border-radius:24px;padding:10px 8px}.pgGlob-row{grid-template-columns:36px 1fr;gap:8px;min-height:46px;padding:2px 12px;border-radius:11px}.pgGlob-row .gf{font-size:1.25rem;width:36px}.pgGlob-row .gc{font-size:1rem}}';
 document.head.appendChild(css);
 
 // ===== INIT =====
