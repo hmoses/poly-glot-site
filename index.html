@@ -254,12 +254,13 @@ a:hover { opacity: 0.85; }
   letter-spacing:-.055em;
   color:#fff;
 }
-.duo-coming h2 span {
+.duo-coming h2 > span:not(.duo-title-main) {
   background:linear-gradient(90deg,#a96bff 0%,#5a8cff 48%,#23b8ff 100%);
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
 }
+.duo-title-main { color:#fff; -webkit-text-fill-color:#fff; }
 .duo-copy {
   max-width:520px;
   color:#a8b2c7;
@@ -2632,14 +2633,14 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   <div class="container">
     <div class="duo-coming-inner">
       <div>
-        <div class="duo-kicker">Coming Soon</div>
-        <h2 id="duo-title">Poly-Glot<br><span>on iPhone Duo</span></h2>
-        <p class="duo-copy">
+        <div class="duo-kicker" data-i18n="duoKicker">Coming Soon</div>
+        <h2 id="duo-title"><span class="duo-title-main" data-i18n="duoTitleA">Poly-Glot</span><br><span data-i18n="duoTitleB">on iPhone Duo</span></h2>
+        <p class="duo-copy" data-i18n="duoCopy">
           A fold-aware Poly-Glot experience is coming to iPhone Duo, built to make Compare Mode feel at home on Apple’s new dual-display canvas. Ask once, compare responses side by side, and keep the workspace focused across the fold.
         </p>
         <div class="duo-meta">
-          iPhone Duo pre-orders begin October 16, 2026. Available October 23.
-          <a href="https://www.apple.com/iphone-duo/" target="_blank" rel="noopener">Explore iPhone Duo at Apple</a>.
+          <span data-i18n="duoMeta">iPhone Duo pre-orders begin October 16, 2026. Available October 23.</span>
+          <a href="https://www.apple.com/iphone-duo/" target="_blank" rel="noopener" data-i18n="duoLink">Explore iPhone Duo at Apple</a><span aria-hidden="true">.</span>
         </div>
       </div>
 
