@@ -9854,5 +9854,53 @@ html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab.active .mac
 }
 </style>
 
+
+<style>
+/* ===== FULL MAC UI LOCALIZATION PARITY v24 ===== */
+/* For localized modes, the real HTML Ask Any AI panel overlays the baked English
+   body while preserving the exact Mac frame, tab geometry, interactions and animation. */
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai.active{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  z-index:3!important;
+  background:#0d1117!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-stage{
+  background:#0d1117!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-ask-body{
+  height:100%!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+  padding:18px 22px!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-native-ask-title{
+  font-size:clamp(10px,1.15vw,16px)!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-native-help-lines{
+  font-size:clamp(6px,.72vw,10px)!important;
+  line-height:1.38!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-native-how-link{
+  font-size:clamp(6px,.72vw,10px)!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-response-row{
+  margin-top:8px!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-response-label,
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-response-select{
+  font-size:clamp(6px,.72vw,10px)!important;
+}
+/* Long localized labels fit the English four-tab geometry without clipping. */
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab .mac-tab-label{
+  white-space:normal!important;
+  overflow:hidden!important;
+  text-overflow:clip!important;
+  line-height:1.02!important;
+  max-height:100%!important;
+}
+</style>
+
 </body>
 </html>
