@@ -11524,5 +11524,121 @@ html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab::after{
 }
 </style>
 
+
+<script>
+/* ===== FORCE GALLERY UI LABEL LOCALIZATION ===== */
+(function(){
+  "use strict";
+
+  function norm(v){ return String(v||"EN").toUpperCase().replace(/-/g,"_"); }
+  function code(){
+    try { return norm(window._pgI18n&&window._pgI18n.curLang?window._pgI18n.curLang():"EN"); }
+    catch(e){ return "EN"; }
+  }
+  function strings(){
+    var c=code();
+    return window._pgDeviceUI&&window._pgDeviceUI._strings
+      ? (window._pgDeviceUI._strings(c)||{})
+      : {};
+  }
+  function setText(sel,value){
+    if(!value)return;
+    document.querySelectorAll(sel).forEach(function(el){el.textContent=value;});
+  }
+  function setIconText(sel,icon,value){
+    if(!value)return;
+    document.querySelectorAll(sel).forEach(function(el){el.textContent=icon+" "+value;});
+  }
+
+  function activeMacKey(){
+    var a=document.querySelector("#gallery-mac .mac-reference-tab.active");
+    if(!a)return "ask";
+    if(a.id.indexOf("templates")>=0)return "templates";
+    if(a.id.indexOf("howtouse")>=0)return "how";
+    if(a.id.indexOf("history")>=0)return "history";
+    return "ask";
+  }
+
+  function apply(){
+    var S=strings();
+    if(!S||!Object.keys(S).length)return;
+
+    /* Mac interactive tab bar */
+    setIconText("#macTab-askanyai span","✏️",S.ask||"Ask Any AI");
+    setIconText("#macTab-templates span","📋",S.templates||"Templates");
+    setIconText("#macTab-howtouse span","📖",S.how||"How to Use");
+    setIconText("#macTab-history span","🕐",S.history||"History");
+
+    /* Mac hint: always derived from the active app localization table. */
+    setText("#macTabHint span",
+      "👇 "+(S.ask||"Ask Any AI")+" · "+(S.templates||"Templates")+" · "+
+      (S.how||"How to Use")+" · "+(S.history||"History")
+    );
+
+    /* Mac history UI chrome */
+    setText("#macScreen-history .mac-history-heading",S.promptHistory||S.history||"Prompt History");
+    setText("#macScreen-history .mac-history-note",S.recent||"");
+    var pills=document.querySelectorAll("#macScreen-history .mac-history-pill");
+    if(pills[0])pills[0].textContent=S.all||"All";
+    if(pills[1])pills[1].textContent=S.clear||"Clear";
+    setText("#macScreen-history .mac-history-btn.copy",S.copy||"Copy");
+    document.querySelectorAll("#macScreen-history .mac-history-btn:not(.copy):not(.del)").forEach(function(el){
+      el.textContent=S.reedit||"Re-edit";
+    });
+    document.querySelectorAll("#macScreen-history .mac-history-card-title").forEach(function(el){
+      if((el.dataset.pgBaseTitle||(el.dataset.pgBaseTitle=(el.textContent||"").trim()))==="Ask Any AI"){
+        el.textContent=S.ask||"Ask Any AI";
+      }
+    });
+
+    /* Caption under the active Mac screen */
+    var cap=document.getElementById("macTabLabel");
+    if(cap){
+      var k=activeMacKey();
+      if(k==="templates") cap.textContent=S.templates||"Templates";
+      else if(k==="how") cap.textContent=S.how||"How to Use";
+      else if(k==="history") cap.textContent=S.history||"History";
+      else cap.textContent=(S.ask||"Ask Any AI")+" — "+(S.typeLine||"");
+    }
+
+    /* Explicitly localize any matching captions under iPhone/iPad renders too. */
+    document.querySelectorAll("#gallery-iphone .gallery-item, #gallery-ipad .gallery-item").forEach(function(item){
+      var caption=item.querySelector(".gallery-caption, figcaption, [class*='caption']");
+      if(!caption)return;
+      var raw=caption.dataset.pgBaseCaption||(caption.dataset.pgBaseCaption=(caption.textContent||"").trim());
+      if(/Ask Any AI/i.test(raw)) caption.textContent=S.ask||"Ask Any AI";
+      else if(/Templates/i.test(raw)) caption.textContent=S.templates||"Templates";
+      else if(/How to Use/i.test(raw)) caption.textContent=S.how||"How to Use";
+      else if(/History/i.test(raw)) caption.textContent=S.history||"History";
+    });
+  }
+
+  /* Apply after the site's primary localization renderer, and after tab clicks. */
+  window.addEventListener("pg:languagechange",function(){
+    setTimeout(apply,0);
+    setTimeout(apply,80);
+    setTimeout(apply,250);
+  });
+
+  document.addEventListener("click",function(e){
+    if(e.target.closest&&e.target.closest(".mac-reference-tab,.gallery-tab")){
+      setTimeout(apply,0);
+      setTimeout(apply,80);
+    }
+  });
+
+  var obs=new MutationObserver(function(){ setTimeout(apply,0); });
+  function start(){
+    apply();
+    ["gallery-mac","gallery-iphone","gallery-ipad"].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el)obs.observe(el,{subtree:true,childList:true});
+    });
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});
+  else start();
+})();
+</script>
+
 </body>
 </html>
