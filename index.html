@@ -3451,9 +3451,12 @@ function _siteDemoStart() {
   });
   if (r1) r1.textContent = '';
   if (r2) r2.textContent = '';
-  var prompt = 'Write a polite email to my landlord asking to fix the heater before winter.';
-  var resp1Text = 'Subject: Heating Repair Request\nDear [Landlord],\nI hope this finds you well. I\'m writing to request a repair for the heating system.\nThank you.\nBest regards';
-  var resp2Text = 'Hi [Landlord],\nI wanted to reach out about the heater — it hasn\'t been working well.\nAppreciate your help!\nWarm regards';
+  /* Use the current locale's strings, but keep the exact English animation sequence/timing. */
+  var _animLang=(window._pgI18n&&window._pgI18n.curLang)?window._pgI18n.curLang():'EN';
+  var _animS=(window._pgDeviceUI&&window._pgDeviceUI._strings)?window._pgDeviceUI._strings(_animLang):null;
+  var prompt=(_animS&&_animS.promptExample)||'Write a polite email to my landlord asking to fix the heater before winter.';
+  var resp1Text=(_animS&&_animS.compareHelp)||'Compare responses side by side.';
+  var resp2Text=(_animS&&_animS.responds)||'AI responds in this language.';
   /* Phase 1: Type prompt */
   var ci = 0;
   var t0 = setTimeout(function() {
@@ -9733,6 +9736,25 @@ html[data-device-ui-lang="HE"] .pg-real-tabs > *{
   white-space:nowrap!important;
   overflow:hidden!important;
   text-overflow:ellipsis!important;
+}
+</style>
+
+
+<style>
+/* ===== MAC LOCALIZATION PARITY — SAME UI + SAME ANIMATION v21 ===== */
+html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-panel-localized{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+#gallery-mac #macScreen-howtouse{
+  display:block;
+}
+#gallery-mac #macScreen-howtouse.active{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
 }
 </style>
 
