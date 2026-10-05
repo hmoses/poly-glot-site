@@ -298,17 +298,28 @@ function macOverlay(S,M,c){
  var host=document.querySelector("#gallery-mac .mac-reference-interactive");
  if(!host)return;
 
- /* iPhone-parity strategy: preserve the approved English render and localize text only. */
- host.querySelectorAll(".pg-mac-full-overlay,.pg-mac-panel-localized,.pg-final-mac-locale,.pg-mac-badge-localized,.pg-gallery-mac-text-overlay").forEach(function(el){el.remove()});
+ /* Use the real HTML Mac panel for localized UI. This keeps one clean renderer
+    instead of drawing translated text on top of the baked English screenshot. */
+ host.querySelectorAll(".pg-mac-full-overlay,.pg-mac-panel-localized,.pg-final-mac-locale,.pg-gallery-mac-text-overlay,.pg-mac-badge-localized").forEach(function(el){el.remove()});
 
  var stage=host.querySelector(".mac-reference-stage");
- var base=host.querySelector(".mac-reference-base");
  var tabs=host.querySelectorAll(".mac-reference-tab");
- if(base){
-   base.style.setProperty("display","block","important");
-   base.style.setProperty("visibility","visible","important");
-   base.style.setProperty("opacity","1","important");
- }
+ var ask=host.querySelector("#macScreen-askanyai");
+ var body=ask&&ask.querySelector(".mac-ask-body");
+
+ /* Restore tab buttons from any older text-mask inline styles. */
+ tabs.forEach(function(btn){
+   btn.style.removeProperty("opacity");
+   btn.style.removeProperty("color");
+   btn.style.removeProperty("background");
+   btn.style.removeProperty("border");
+   btn.style.removeProperty("box-shadow");
+   var sp=btn.querySelector("span");
+   if(sp){
+     sp.style.removeProperty("opacity");
+     sp.style.removeProperty("color");
+   }
+ });
 
  if(c==="EN"){
    if(stage){
@@ -324,51 +335,77 @@ function macOverlay(S,M,c){
    return;
  }
 
- /* Hide every HTML body layer so nothing can stack over the English reference image. */
  if(stage){
-   stage.style.setProperty("display","none","important");
-   stage.style.setProperty("visibility","hidden","important");
-   stage.style.setProperty("opacity","0","important");
-   stage.style.setProperty("pointer-events","none","important");
+   stage.style.removeProperty("display");
+   stage.style.removeProperty("visibility");
+   stage.style.removeProperty("opacity");
+   stage.style.removeProperty("pointer-events");
  }
 
- /* Hotspots stay clickable, but all visible tab text comes from the overlay. */
- tabs.forEach(function(btn){
+ /* One localized language badge covers the baked EN badge. */
+ var badge=document.createElement("div");
+ badge.className="pg-mac-badge-localized";
+ badge.textContent=M.flag+" "+M.code.replace("_","-");
+ host.appendChild(badge);
+
+ var labels=[
+   "✏️ "+S.ask,
+   "📋 "+S.templates,
+   "📖 "+S.how,
+   "🕐 "+S.history
+ ];
+ tabs.forEach(function(btn,i){
    var sp=btn.querySelector("span");
-   if(sp){
-     sp.style.setProperty("opacity","0","important");
-     sp.style.setProperty("color","transparent","important");
-   }
-   btn.style.setProperty("background","transparent","important");
-   btn.style.setProperty("border","0","important");
-   btn.style.setProperty("box-shadow","none","important");
+   if(sp)sp.textContent=labels[i];
  });
 
- var ov=document.createElement("div");
- ov.className="pg-gallery-mac-text-overlay";
- ov.setAttribute("lang",c.toLowerCase().replace("_","-"));
- ov.setAttribute("dir","ltr");
- ov.setAttribute("data-pg-rtl",(c==="AR"||c==="HE")?"true":"false");
- ov.innerHTML=
-   '<span class="pg-gm lang">'+M.flag+' '+M.code.replace("_","-")+'</span>'+
-   '<span class="pg-gm tab t1">✏️ '+S.ask+'</span>'+
-   '<span class="pg-gm tab t2">📋 '+S.templates+'</span>'+
-   '<span class="pg-gm tab t3">📖 '+S.how+'</span>'+
-   '<span class="pg-gm tab t4">🕐 '+S.history+'</span>'+
-   '<span class="pg-gm title">🤔 '+S.ask+'</span>'+
-   '<span class="pg-gm how">'+(S.howWorks||S.how)+'</span>'+
-   '<span class="pg-gm help h1">✏️ '+S.typeLine+'</span>'+
-   '<span class="pg-gm help h2">🏳️ '+S.appLang+' ⬆️ '+S.changesMenus+'</span>'+
-   '<span class="pg-gm help h3">🌐 '+S.outputLang+' ⬇️ '+S.responds+'</span>'+
-   '<span class="pg-gm help h4">🔀 '+S.compare+': '+S.compareHelp+'</span>'+
-   '<span class="pg-gm output">🌐 '+S.outputLabel+'</span>'+
-   '<span class="pg-gm select">'+M.flag+' '+(M.name||M.code)+' <b>▼</b></span>'+
-   '<span class="pg-gm prompt">'+S.promptIntro+'<br><br>'+S.promptExample+'</span>'+
-   '<span class="pg-gm action paste">📋 '+S.paste+'</span>'+
-   '<span class="pg-gm action imp">📄 '+S.import+'</span>'+
-   '<span class="pg-gm talk">🎤 '+S.talk+'</span>'+
-   '<span class="pg-gm send">'+S.send+'</span>';
- host.appendChild(ov);
+ if(body){
+   var title=body.querySelector(".mac-native-ask-title");
+   if(title)title.textContent="🤔 "+S.ask;
+
+   var lines=body.querySelectorAll(".mac-native-help-lines>div");
+   if(lines[0])lines[0].textContent="✏️ "+S.typeLine;
+   if(lines[1])lines[1].textContent="🏳️ "+S.appLang+" ⬆️ "+S.changesMenus;
+   if(lines[2])lines[2].textContent="🌐 "+S.outputLang+" ⬇️ "+S.responds;
+   if(lines[3])lines[3].textContent="🔀 "+S.compare+": "+S.compareHelp;
+
+   var how=body.querySelector(".mac-native-how-link");
+   if(how)how.textContent=S.howWorks||S.how;
+
+   var out=body.querySelector(".mac-response-label");
+   if(out)out.textContent="🌐 "+S.outputLabel;
+
+   var sel=body.querySelector(".mac-response-select");
+   if(sel){
+     var spans=sel.querySelectorAll("span");
+     var strong=sel.querySelector("strong");
+     if(spans[0])spans[0].textContent=M.flag;
+     if(strong)strong.textContent=M.name||M.code;
+   }
+
+   var kids=body.children;
+   if(kids[3]){
+     var prompt=kids[3].querySelector("div")||kids[3];
+     prompt.innerHTML=(S.promptIntro||"")+"<br><br>"+(S.promptExample||"");
+   }
+   if(kids[4]){
+     var actions=kids[4].children;
+     if(actions[0])actions[0].textContent="📋 "+S.paste;
+     if(actions[1])actions[1].textContent="📄 "+S.import;
+   }
+   if(kids[5]){
+     var talk=kids[5].children[0];
+     var send=kids[5].children[1];
+     if(talk){
+       var mic=talk.querySelector("span");
+       talk.textContent="";
+       if(mic){talk.appendChild(mic);talk.appendChild(document.createTextNode(" "+S.talk));}
+       else talk.textContent="🎤 "+S.talk;
+     }
+     if(send)send.textContent=S.send;
+   }
+   if(kids[6])kids[6].textContent="🗑 "+(S.clearAll||"Clear All");
+ }
 
  var hint=document.querySelector("#macTabHint span");
  if(hint)hint.textContent="👇 "+S.ask+" · "+S.templates+" · "+S.how+" · "+S.history;
