@@ -320,6 +320,8 @@ function macOverlay(S,M,c){
  if(!host)return;
  var oldFull=host.querySelector(".pg-mac-full-overlay");
  if(oldFull)oldFull.remove();
+ var oldPanel=host.querySelector(".pg-mac-panel-localized");
+ if(oldPanel)oldPanel.remove();
 
  var tabs=host.querySelectorAll(".mac-reference-tab");
  var vals=[S.ask,S.templates,S.how,S.history];
@@ -340,14 +342,9 @@ function macOverlay(S,M,c){
  var id=active&&active.id||"macTab-askanyai";
  var type=id.indexOf("templates")>-1?"templates":id.indexOf("howtouse")>-1?"how":id.indexOf("history")>-1?"history":"ask";
 
- /* Ask Any AI and History are real HTML previews: localize those in place.
-    Only replace image/demo-only panels that cannot be translated cleanly. */
- if(type==="ask"||type==="history"){
-   if(ov)ov.remove();
- }else{
-   if(!ov){ov=document.createElement("div");ov.className="pg-mac-panel-localized";stage.appendChild(ov)}
-   ov.innerHTML=localizedScreenMarkup(type,S,M,"mac");
- }
+ /* Keep the exact English panel geometry and animation for every locale.
+    Never replace a Mac panel with alternate markup. */
+ if(ov)ov.remove();
  var hint=document.querySelector("#macTabHint span");
  if(hint)hint.textContent="👇 "+S.ask+" · "+S.templates+" · "+S.how+" · "+S.history;
  var label=document.getElementById("macTabLabel");
@@ -369,6 +366,44 @@ function macOverlay(S,M,c){
    var sel=ask.querySelector(".mac-response-select strong");if(sel)sel.textContent=M.name||M.code;
    var prompt=ask.querySelector('div[style*="min-height:160px"] > div');
    if(prompt)prompt.innerHTML=S.promptIntro+"<br><br>"+S.promptExample;
+ }
+
+ /* Localize the real How to Use animation in place so timing, transitions,
+    toggle motion, AI selection and response animation remain identical to English. */
+ var howPanel=host.querySelector("#macScreen-howtouse");
+ if(howPanel){
+   var sendBtn=howPanel.querySelector("#siteDemo-SendBtn");
+   if(sendBtn)sendBtn.textContent=S.send||"Send to AI";
+
+   var p2=howPanel.querySelector("#siteDemo-P2");
+   if(p2){
+     var choose=p2.children&&p2.children[1];
+     if(choose)choose.textContent=S.compareSelect||S.compare;
+     var cmp=p2.children&&p2.children[2];
+     var cmpLabel=cmp&&cmp.querySelector("span");
+     if(cmpLabel)cmpLabel.textContent="🔀 "+S.compare;
+
+     var aiRows=p2.querySelectorAll(".siteDemo-AI");
+     aiRows.forEach(function(row){
+       var sub=row.querySelector("div[style*='font-size:10px']");
+       if(sub)sub.textContent=S.promptIntro||S.typeLine;
+     });
+
+     var sendAll=howPanel.querySelector("#siteDemo-SendAll");
+     if(sendAll){
+       var count=howPanel.querySelector("#siteDemo-CmpCount");
+       var n=count?count.textContent:"0";
+       sendAll.innerHTML=(S.compareSend||S.send||"Send to Selected")+' (<span id="siteDemo-CmpCount">'+n+'</span>)';
+     }
+   }
+
+   var p3=howPanel.querySelector("#siteDemo-P3");
+   if(p3){
+     var top=p3.firstElementChild;
+     if(top)top.textContent="🔀 "+S.compare+" — 2 "+(S.response||"responses");
+     var bottom=p3.lastElementChild;
+     if(bottom)bottom.textContent="⬆ "+(S.compareHelp||S.compare);
+   }
  }
 }
 
