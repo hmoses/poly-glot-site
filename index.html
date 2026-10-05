@@ -9902,5 +9902,91 @@ html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab .mac-tab-la
 }
 </style>
 
+
+<style>
+/* ===== ARABIC + HEBREW TRUE RTL v25 ===== */
+html[dir="rtl"] body{
+  direction:rtl!important;
+}
+/* Site copy follows RTL naturally. */
+html[dir="rtl"] .section-title,
+html[dir="rtl"] .section-sub,
+html[dir="rtl"] #screenshots .section-title,
+html[dir="rtl"] #screenshots .section-sub,
+html[dir="rtl"] #iphone-duo .duo-copy,
+html[dir="rtl"] #iphone-duo .duo-meta{
+  text-align:right!important;
+}
+
+/* Device selector keeps device order stable, but labels remain readable. */
+html[dir="rtl"] #screenshots .gallery-tabs{
+  direction:ltr!important;
+}
+html[dir="rtl"] #screenshots .gallery-tab{
+  direction:ltr!important;
+}
+
+/* Mac app navigation is true RTL: Ask Any AI starts at the right edge. */
+html[dir="rtl"] #gallery-mac .mac-reference-hotspots{
+  direction:rtl!important;
+}
+html[dir="rtl"] #gallery-mac .mac-reference-tab{
+  direction:rtl!important;
+}
+html[dir="rtl"] #gallery-mac .mac-reference-tab .mac-tab-label{
+  direction:rtl!important;
+  unicode-bidi:plaintext!important;
+  text-align:center!important;
+}
+
+/* The localized Mac content reads right-to-left while preserving English geometry/animation. */
+html[dir="rtl"] #gallery-mac .mac-reference-stage,
+html[dir="rtl"] #gallery-mac .mac-screen-panel,
+html[dir="rtl"] #gallery-mac #macScreen-askanyai .mac-ask-body,
+html[dir="rtl"] #gallery-mac #macScreen-howtouse,
+html[dir="rtl"] #gallery-mac #macScreen-history{
+  direction:rtl!important;
+}
+html[dir="rtl"] #gallery-mac .mac-native-ask-title,
+html[dir="rtl"] #gallery-mac .mac-native-help-lines,
+html[dir="rtl"] #gallery-mac .mac-response-row,
+html[dir="rtl"] #gallery-mac .mac-history-body,
+html[dir="rtl"] #gallery-mac #siteDemo-P1,
+html[dir="rtl"] #gallery-mac #siteDemo-P2,
+html[dir="rtl"] #gallery-mac #siteDemo-P3{
+  direction:rtl!important;
+  text-align:right!important;
+}
+html[dir="rtl"] #gallery-mac .mac-native-how-link{
+  margin-left:0!important;
+  margin-right:auto!important;
+}
+html[dir="rtl"] #gallery-mac .mac-response-row{
+  flex-direction:row-reverse!important;
+}
+html[dir="rtl"] #gallery-mac .mac-response-select{
+  direction:rtl!important;
+}
+
+/* Hint pill and generated device tab bars mirror correctly. */
+html[dir="rtl"] #gallery-mac #macTabHint,
+html[dir="rtl"] #gallery-mac #macTabHint span,
+html[dir="rtl"] .pg-real-tabs,
+html[dir="rtl"] .iphone-ask-tabs,
+html[dir="rtl"] .demo-ask-tabs,
+html[dir="rtl"] .history-preview .hp-tabs,
+html[dir="rtl"] .pgl-tabs,
+html[dir="rtl"] .pgdsl-tabs{
+  direction:rtl!important;
+}
+
+/* Duo localized text respects Arabic and Hebrew direction. */
+html[dir="rtl"] #iphone-duo .duo-localized-overlay,
+html[dir="rtl"] #iphone-duo .duo-text-only .duo-loc{
+  direction:rtl!important;
+  unicode-bidi:plaintext!important;
+}
+</style>
+
 </body>
 </html>
