@@ -9213,5 +9213,109 @@ html[data-device-ui-lang="EN"] #gallery-mac .pg-mac-inline-overlay{
 }
 </style>
 
+
+<style>
+/* ===== IPHONE DUO — MULTILINGUAL RESPONSIVE FIT v2 ===== */
+#iphone-duo{
+  scroll-margin-top:84px;
+}
+#iphone-duo .duo-coming-inner > div,
+#iphone-duo .duo-exact-figure{
+  min-width:0;
+}
+#iphone-duo #duo-title,
+#iphone-duo .duo-copy,
+#iphone-duo .duo-meta{
+  max-width:100%;
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+#iphone-duo #duo-title{
+  text-wrap:balance;
+}
+#iphone-duo .duo-meta{
+  line-height:1.55;
+}
+#iphone-duo .duo-meta a{
+  display:inline;
+}
+
+@media(max-width:900px){
+  #iphone-duo.duo-coming{
+    padding-top:44px;
+    padding-bottom:34px;
+  }
+  #iphone-duo .duo-coming-inner{
+    gap:30px;
+  }
+  #iphone-duo #duo-title{
+    font-size:clamp(2.35rem,8.6vw,3.8rem);
+    line-height:1.02;
+    letter-spacing:-.04em;
+  }
+  #iphone-duo .duo-copy{
+    font-size:1rem;
+    line-height:1.68;
+    margin-bottom:18px;
+  }
+  #iphone-duo .duo-meta{
+    margin-top:12px;
+  }
+  #iphone-duo .duo-exact-figure{
+    margin:0;
+  }
+}
+@media(max-width:620px){
+  #iphone-duo.duo-coming{
+    padding-top:32px;
+    padding-bottom:24px;
+  }
+  #iphone-duo .container{
+    padding-left:22px;
+    padding-right:22px;
+  }
+  #iphone-duo .duo-coming-inner{
+    gap:24px;
+  }
+  #iphone-duo .duo-kicker{
+    margin-bottom:12px;
+    font-size:.82rem;
+    letter-spacing:.14em;
+  }
+  #iphone-duo #duo-title{
+    margin-bottom:16px;
+    font-size:clamp(2.05rem,10.4vw,3.05rem);
+    line-height:1.04;
+    letter-spacing:-.03em;
+  }
+  #iphone-duo .duo-copy{
+    font-size:.98rem;
+    line-height:1.62;
+    margin-bottom:16px;
+  }
+  #iphone-duo .duo-meta{
+    font-size:.76rem;
+    line-height:1.55;
+    margin-top:10px;
+  }
+  #iphone-duo .duo-exact-image{
+    border-radius:18px;
+  }
+}
+/* CJK scripts need slightly looser tracking than Latin text. */
+html[data-device-ui-lang="ZH"] #iphone-duo #duo-title,
+html[data-device-ui-lang="ZH-TW"] #iphone-duo #duo-title,
+html[data-device-ui-lang="JA"] #iphone-duo #duo-title,
+html[data-device-ui-lang="KO"] #iphone-duo #duo-title{
+  letter-spacing:-.015em;
+  line-height:1.08;
+}
+/* RTL section text aligns naturally while the simulator overlay keeps its own geometry. */
+html[data-device-ui-lang="AR"] #iphone-duo .duo-coming-inner > div:first-child,
+html[data-device-ui-lang="HE"] #iphone-duo .duo-coming-inner > div:first-child{
+  text-align:right;
+}
+</style>
+
 </body>
 </html>
