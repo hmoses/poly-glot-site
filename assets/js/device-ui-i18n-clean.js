@@ -434,59 +434,48 @@ function duo(S,M,c){
     }catch(e){return fb}
   };
 
+  /* Localize only the copy around the Duo render. The device/Xcode render is
+     intentionally identical in every language. */
   var kicker=root.querySelector(".duo-kicker");
   var titleA=root.querySelector('[data-i18n="duoTitleA"]');
   var titleB=root.querySelector('[data-i18n="duoTitleB"]');
   var copy=root.querySelector(".duo-copy");
   var metaText=root.querySelector('[data-i18n="duoMeta"]');
   var linkText=root.querySelector('[data-i18n="duoLink"]');
+
   if(kicker)kicker.textContent=gt("duoKicker","Coming Soon");
   if(titleA)titleA.textContent=gt("duoTitleA","Poly-Glot");
   if(titleB)titleB.textContent=gt("duoTitleB","on iPhone Duo");
   if(copy)copy.textContent=gt("duoCopy","A fold-aware Poly-Glot experience is coming to iPhone Duo.");
   if(metaText)metaText.textContent=gt("duoMeta","iPhone Duo pre-orders begin October 16, 2026. Available October 23.");
   if(linkText)linkText.textContent=gt("duoLink","Explore iPhone Duo at Apple");
+
   root.setAttribute("lang",c.toLowerCase().replace("_","-"));
   root.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr");
 
+  /* Exact same Duo render for EN + all localized languages. */
+  var image=root.querySelector(".duo-static-en");
+  if(image){
+    image.style.display="block";
+    image.style.visibility="visible";
+    image.style.opacity="1";
+  }
+
   var overlay=root.querySelector(".duo-localized-overlay");
-  if(!overlay)return;
-  if(c==="EN"){overlay.innerHTML="";overlay.classList.remove("duo-text-parity");return}
+  if(overlay){
+    overlay.innerHTML="";
+    overlay.classList.remove("duo-text-parity");
+    overlay.style.display="none";
+    overlay.style.visibility="hidden";
+    overlay.style.opacity="0";
+  }
 
-  /*
-   * IMPORTANT: keep the exact English Xcode/iPhone Duo screenshot as the UI.
-   * Localized languages only mask and replace text. We do NOT redraw panes,
-   * controls, borders, checkboxes, or buttons, so every language has the
-   * identical UI geometry as English.
-   */
-  var prompt=gt("sc2Prompt",S.promptExample);
-  var response1=gt("sc2PickSub",S.responds||"Response");
-  var response2=gt("sc2P",S.compareHelp||"Compare responses side by side.");
-  var selected=S.compareSend||"Send to Selected";
-  var dir=(c==="AR"||c==="HE")?"rtl":"ltr";
-
-  overlay.classList.add("duo-text-parity");
-  overlay.innerHTML=
-    '<div class="duo-txt badge">'+M.flag+' '+M.code.replace("_","-")+'</div>'+
-    '<div class="duo-txt tab t1">✏️ '+S.ask+'</div>'+
-    '<div class="duo-txt tab t2">📋 '+S.templates+'</div>'+
-    '<div class="duo-txt tab t3">📖 '+S.how+'</div>'+
-    '<div class="duo-txt tab t4">🕐 '+S.history+'</div>'+
-    '<div class="duo-txt compare">🔀 '+S.compare+'</div>'+
-    '<div class="duo-txt compare-sub">'+S.compareHelp+'</div>'+
-    '<div class="duo-txt prompt-label">'+(S.promptHistory||S.promptIntro)+'</div>'+
-    '<div class="duo-txt prompt">'+prompt+'</div>'+
-    '<div class="duo-txt select-label">'+(S.compareSelect||S.compare)+'</div>'+
-    '<div class="duo-txt send">✈ '+selected+' (2)</div>'+
-    '<div class="duo-txt resp-label r1">'+S.response+'</div>'+
-    '<div class="duo-txt resp-copy r1copy">'+response1+' '+response2+'</div>'+
-    '<div class="duo-txt resp-label r2">'+S.response+'</div>'+
-    '<div class="duo-txt resp-copy r2copy">'+response2+' '+response1+'</div>'+
-    '<div class="duo-txt actions a1">'+S.copy+'　 '+S.read+'　 '+S.share+'　 '+S.save+'</div>'+
-    '<div class="duo-txt actions a2">'+S.copy+'　 '+S.read+'　 '+S.share+'　 '+S.save+'</div>';
-
-  overlay.setAttribute("lang",c.toLowerCase().replace("_","-"));
-  overlay.setAttribute("dir",dir);
+  var localizedDevice=root.querySelector(".duo-localized-device");
+  if(localizedDevice){
+    localizedDevice.style.display="none";
+    localizedDevice.style.visibility="hidden";
+    localizedDevice.style.opacity="0";
+  }
 }
 
 function heroMacTextOverlay(S,M,c){
