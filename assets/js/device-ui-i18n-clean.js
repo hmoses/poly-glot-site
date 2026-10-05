@@ -125,7 +125,7 @@ function strings(code){
 }
 function current(){return norm(window._pgI18n&&window._pgI18n.curLang?window._pgI18n.curLang():"EN")}
 function setText(el,v){if(el&&v!=null)el.textContent=v}
-function roots(){return [document.querySelector(".hero-phone-mock"),document.getElementById("demo"),document.getElementById("gallery-iphone"),document.getElementById("gallery-ipad"),document.getElementById("gallery-mac"),document.getElementById("iphone-duo"),document.getElementById("pgLightboxClone")].filter(Boolean)}
+function roots(){return [document.querySelector(".hero-phone-mock"),document.getElementById("demo"),document.getElementById("gallery-iphone"),document.getElementById("gallery-ipad"),document.getElementById("iphone-duo"),document.getElementById("pgLightboxClone")].filter(Boolean)}
 
 var exact={
  "Ask Any AI":"ask","Templates":"templates","1,000+ Templates":"templates","How to Use":"how","History":"history","Paste":"paste","Import":"import","Scan":"scan","Talk":"talk","Send":"send","Send to AI":"send","Clear All":"clearAll","Prompt History":"promptHistory","Your recent prompts & favorites":"recent","All":"all","Clear":"clear","Copy":"copy","Re-edit":"reedit","How it works":"howWorks","AI will respond in:":"outputLabel","Compare Mode":"compare","Choose AI":"compareSelect","Select AIs to compare":"compareSelect","Send to Selected":"compareSend","Search templates...":"search","Search templates…":"search"
@@ -204,27 +204,6 @@ function syncAllTabLabels(S,M){
       if(time)time.textContent=sampleTimes[i%sampleTimes.length];
       if(body)body.textContent=sampleTexts[i%sampleTexts.length];
       var btns=card.querySelectorAll(".hp-btn");
-      if(btns[0])btns[0].textContent=S.copy;
-      if(btns[1])btns[1].textContent=S.reedit;
-    });
-  });
-
-  document.querySelectorAll("#gallery-mac .mac-history-preview").forEach(function(root){
-    setText(root.querySelector(".mac-history-heading"),S.promptHistory||S.history);
-    setText(root.querySelector(".mac-history-note"),S.recent);
-
-    var pills=root.querySelectorAll(".mac-history-actions .mac-history-pill");
-    if(pills[0])pills[0].textContent=S.all;
-    if(pills[1])pills[1].textContent=S.clear;
-
-    root.querySelectorAll(".mac-history-card").forEach(function(card,i){
-      var title=card.querySelector(".mac-history-card-title");
-      var time=card.querySelector(".mac-history-time");
-      var body=card.querySelector(".mac-history-text");
-      if(title)title.textContent=sampleTitles[i%sampleTitles.length];
-      if(time)time.textContent=sampleTimes[i%sampleTimes.length];
-      if(body)body.textContent=sampleTexts[i%sampleTexts.length];
-      var btns=card.querySelectorAll(".mac-history-btn");
       if(btns[0])btns[0].textContent=S.copy;
       if(btns[1])btns[1].textContent=S.reedit;
     });
@@ -319,105 +298,123 @@ function macOverlay(S,M,c){
  var host=document.querySelector("#gallery-mac .mac-reference-interactive");
  if(!host)return;
 
- host.querySelectorAll(".pg-mac-full-overlay,.pg-mac-panel-localized").forEach(function(el){el.remove()});
+ /* Remove every reconstructed/legacy Mac localization layer. */
+ host.querySelectorAll(".pg-mac-full-overlay,.pg-mac-panel-localized,.pg-final-mac-locale").forEach(function(el){el.remove()});
 
- /* Hard reset every competing legacy Mac layer before drawing one canonical locale. */
  var stage=host.querySelector(".mac-reference-stage");
- var inline=host.querySelector(".pg-mac-inline-overlay");
+ var ask=host.querySelector("#macScreen-askanyai");
+ var tabs=host.querySelectorAll(".mac-reference-tab");
+ if(!stage||!ask)return;
+
+ /* English uses the approved base image exactly as-is. */
  if(c==="EN"){
-   if(stage){
-     stage.style.removeProperty("display");
-     stage.style.removeProperty("visibility");
-     stage.style.removeProperty("opacity");
-     stage.style.removeProperty("pointer-events");
-   }
+   stage.style.removeProperty("display");
+   stage.style.removeProperty("visibility");
+   stage.style.removeProperty("opacity");
+   stage.style.removeProperty("background");
+   ask.style.removeProperty("opacity");
+   ask.style.removeProperty("visibility");
+   ask.style.removeProperty("display");
+   tabs.forEach(function(btn,i){
+     var sp=btn.querySelector("span");
+     if(sp)sp.textContent=["✏️ Ask Any AI","📋 Templates","📖 How to Use","🕐 History"][i];
+   });
    return;
  }
- if(stage){
-   stage.style.setProperty("display","none","important");
-   stage.style.setProperty("visibility","hidden","important");
-   stage.style.setProperty("opacity","0","important");
-   stage.style.setProperty("pointer-events","none","important");
- }
- if(inline){
-   inline.style.setProperty("display","none","important");
-   inline.style.setProperty("visibility","hidden","important");
-   inline.style.setProperty("opacity","0","important");
- }
 
+ /* For every non-English locale, the existing stage becomes one opaque UI.
+    This covers the baked English body instead of stacking over it. */
+ stage.style.setProperty("display","block","important");
+ stage.style.setProperty("visibility","visible","important");
+ stage.style.setProperty("opacity","1","important");
+ stage.style.setProperty("background","#0d1117","important");
+ stage.style.setProperty("top","24.6%","important");
+ stage.style.setProperty("height","64.8%","important");
+ stage.style.setProperty("z-index","320","important");
+ stage.style.setProperty("overflow","hidden","important");
 
- var tabs=host.querySelectorAll(".mac-reference-tab");
  var vals=[S.ask,S.templates,S.how,S.history];
  var icons=["✏️ ","📋 ","📖 ","🕐 "];
  tabs.forEach(function(btn,i){
    var sp=btn.querySelector("span");
-   if(!sp){sp=document.createElement("span");btn.textContent="";btn.appendChild(sp);}
-   var label=vals[i]||"";
-   sp.textContent=icons[i]+label;
+   if(!sp){sp=document.createElement("span");btn.appendChild(sp)}
+   sp.textContent=icons[i]+vals[i];
    sp.className="mac-tab-label";
-   btn.setAttribute("title",label);
-   btn.setAttribute("aria-label",label);
  });
 
  var active=host.querySelector(".mac-reference-tab.active");
  var id=active&&active.id||"macTab-askanyai";
  var type=id.indexOf("templates")>-1?"templates":id.indexOf("howtouse")>-1?"how":id.indexOf("history")>-1?"history":"ask";
 
- var ov=document.createElement("div");
- ov.className="pg-mac-full-overlay pg-mac-canonical-localized";
- ov.setAttribute("lang",c.toLowerCase().replace("_","-"));
- ov.setAttribute("dir","ltr");
+ host.querySelectorAll(".mac-screen-panel").forEach(function(panel){
+   panel.style.setProperty("opacity","0","important");
+   panel.style.setProperty("visibility","hidden","important");
+   panel.style.setProperty("pointer-events","none","important");
+ });
 
- var tabHtml='<div class="pgmc-tabs">'+
-   '<span class="'+(type==="ask"?"active":"")+'">✏️ '+S.ask+'</span>'+
-   '<span class="'+(type==="templates"?"active":"")+'">📋 '+S.templates+'</span>'+
-   '<span class="'+(type==="how"?"active":"")+'">📖 '+S.how+'</span>'+
-   '<span class="'+(type==="history"?"active":"")+'">🕐 '+S.history+'</span>'+
-   '</div>';
+ var panel= type==="templates" ? host.querySelector("#macScreen-templates") :
+            type==="how" ? host.querySelector("#macScreen-howtouse") :
+            type==="history" ? host.querySelector("#macScreen-history") : ask;
 
- var body="";
  if(type==="ask"){
-   body='<div class="pgmc-body pgmc-ask">'+
-     '<div class="pgmc-title-row"><h3>🤔 '+S.ask+'</h3><span class="pgmc-how">'+(S.howWorks||S.how)+'</span></div>'+
-     '<div class="pgmc-help">'+
-       '<div>✏️ '+S.typeLine+'</div>'+
-       '<div>🏳️ '+S.appLang+' ⬆️ '+S.changesMenus+'</div>'+
-       '<div>🌐 '+S.outputLang+' ⬇️ '+S.responds+'</div>'+
-       '<div>🔀 '+S.compare+': '+S.compareHelp+'</div>'+
-     '</div>'+
-     '<div class="pgmc-output"><span>🌐 '+S.outputLabel+'</span><strong><i>'+M.flag+'</i> '+(M.name||M.code)+' <b>▼</b></strong></div>'+
-     '<div class="pgmc-prompt">'+S.promptIntro+'<br><br>'+S.promptExample+'</div>'+
-     '<div class="pgmc-actions"><span>📋 '+S.paste+'</span><span>📄 '+S.import+'</span></div>'+
-     '<div class="pgmc-bottom"><span class="pgmc-talk">🎤 '+S.talk+'</span><strong class="pgmc-send">'+S.send+'</strong></div>'+
-   '</div>';
- }else if(type==="templates"){
-   body='<div class="pgmc-body"><div class="pgmc-section-title">📋 '+S.templates+'</div>'+
-     '<div class="pgmc-search">🔎 '+S.search+'</div>'+
-     '<div class="pgmc-card-grid">'+
-       Array.from({length:6},function(_,i){return '<div><b>'+S.templates+' '+(i+1)+'</b><small>AI</small></div>'}).join("")+
-     '</div></div>';
- }else if(type==="how"){
-   body='<div class="pgmc-body"><div class="pgmc-section-title">📖 '+S.how+'</div>'+
-     '<div class="pgmc-steps"><div><b>1</b><span>'+S.typeLine+'</span></div>'+
-     '<div><b>2</b><span>'+S.appLang+' — '+S.changesMenus+'</span></div>'+
-     '<div><b>3</b><span>'+S.outputLang+' — '+S.responds+'</span></div>'+
-     '<div><b>4</b><span>'+S.compare+' — '+S.compareHelp+'</span></div></div></div>';
+   panel.style.setProperty("display","block","important");
+   panel.style.setProperty("opacity","1","important");
+   panel.style.setProperty("visibility","visible","important");
+   panel.style.setProperty("pointer-events","auto","important");
+   panel.style.setProperty("background","#0d1117","important");
+
+   var title=panel.querySelector(".mac-native-ask-title");
+   if(title)title.textContent="🤔 "+S.ask;
+
+   var help=panel.querySelector(".mac-native-help-lines");
+   if(help){
+     var l=help.children;
+     if(l[0])l[0].textContent="✏️ "+S.typeLine;
+     if(l[1])l[1].textContent="🏳️ "+S.appLang+" ⬆️ "+S.changesMenus;
+     if(l[2])l[2].textContent="🌐 "+S.outputLang+" ⬇️ "+S.responds;
+     if(l[3])l[3].textContent="🔀 "+S.compare+": "+S.compareHelp;
+   }
+   var how=panel.querySelector(".mac-native-how-link");
+   if(how)how.textContent=S.howWorks||S.how;
+
+   var label=panel.querySelector(".mac-response-label");
+   if(label)label.textContent="🌐 "+S.outputLabel;
+   var select=panel.querySelector(".mac-response-select");
+   if(select){
+     var kids=select.children;
+     if(kids[0])kids[0].textContent=M.flag;
+     if(kids[1])kids[1].textContent=M.name||M.code;
+   }
+
+   var body=panel.querySelector(".mac-ask-body");
+   if(body){
+     body.style.setProperty("background","#0d1117","important");
+     body.style.setProperty("height","100%","important");
+     body.style.setProperty("overflow","hidden","important");
+   }
+
+   var prompt=panel.querySelector(".mac-ask-body > div:nth-child(4) > div");
+   if(prompt)prompt.innerHTML=S.promptIntro+"<br><br>"+S.promptExample;
+
+   var actions=panel.querySelectorAll(".mac-ask-body > div:nth-child(5) > div");
+   if(actions[0])actions[0].textContent="📋 "+S.paste;
+   if(actions[1])actions[1].textContent="📄 "+S.import;
+
+   var bottom=panel.querySelector(".mac-ask-body > div:nth-child(6)");
+   if(bottom){
+     var parts=bottom.children;
+     if(parts[0])parts[0].innerHTML='<span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;font-size:0.7rem">🎤</span> '+S.talk;
+     if(parts[1])parts[1].textContent=S.send;
+   }
  }else{
-   body='<div class="pgmc-body"><div class="pgmc-history-head"><div><div class="pgmc-section-title">🕐 '+(S.promptHistory||S.history)+'</div><small>'+S.recent+'</small></div><div><span>'+S.all+'</span><span>'+S.clear+'</span></div></div>'+
-     '<div class="pgmc-history-grid"><div><b>'+S.ask+'</b><small>5m</small><p>'+S.promptExample+'</p></div>'+
-     '<div><b>'+S.compare+'</b><small>12m</small><p>'+S.compareHelp+'</p></div>'+
-     '<div><b>'+S.templates+'</b><small>18m</small><p>'+S.typeLine+'</p></div></div></div>';
+   /* For non-Ask tabs, use the localized screen markup inside the same opaque stage. */
+   panel.style.setProperty("display","block","important");
+   panel.style.setProperty("opacity","1","important");
+   panel.style.setProperty("visibility","visible","important");
+   panel.style.setProperty("pointer-events","auto","important");
+   panel.style.setProperty("background","#0d1117","important");
+   panel.innerHTML=localizedScreenMarkup(type,S,M,"mac").replace(/^<div class="pg-real-head">[\s\S]*?<\/div><div class="pg-real-tabs">[\s\S]*?<\/div>/,"");
  }
-
- ov.innerHTML='<div class="pgmc-window-title">Poly-Glot AI Workspace</div>'+
-   '<div class="pgmc-head"><img src="assets/img/icon-128.png" alt=""><strong>Poly-Glot AI Workspace</strong><span>'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+
-   tabHtml+body;
- host.appendChild(ov);
-
- var hint=document.querySelector("#macTabHint span");
- if(hint)hint.textContent="👇 "+S.ask+" · "+S.templates+" · "+S.how+" · "+S.history;
- var label=document.getElementById("macTabLabel");
- if(label)label.textContent=type==="templates"?S.templates:type==="how"?S.how:type==="history"?S.history:S.ask+" — "+S.typeLine;
 }
 function syncPlainBadges(S,M){
   roots().forEach(function(root){
