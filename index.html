@@ -5543,7 +5543,7 @@ function _demoStart() {
 
 <!-- Global i18n — 38 languages, same flags as the app -->
 <script src="assets/js/i18n.js?v=global-sync-v8"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v3"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v4"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
 
@@ -9099,11 +9099,8 @@ function _demoStart() {
 
 
 <style>
-/* ===== IPHONE DUO — EXACT XCODE RENDER ONLY ===== */
-/* Always use the exact Xcode simulator render supplied for the iPhone Duo section.
-   Global site language can still localize the surrounding copy, but never swaps
-   this visual back to the simplified recreated device. */
-html #iphone-duo .duo-exact-figure > .duo-static-en{
+/* ===== IPHONE DUO — EXACT ENGLISH RENDER + LOCALIZED LIVE RENDER ===== */
+html[data-device-ui-lang="EN"] #iphone-duo .duo-exact-figure > .duo-static-en{
   display:block!important;
   visibility:visible!important;
   opacity:1!important;
@@ -9111,10 +9108,20 @@ html #iphone-duo .duo-exact-figure > .duo-static-en{
   height:auto!important;
   object-fit:contain!important;
 }
-html #iphone-duo .duo-exact-figure > .duo-localized-device{
+html[data-device-ui-lang="EN"] #iphone-duo .duo-exact-figure > .duo-localized-device{
   display:none!important;
   visibility:hidden!important;
   opacity:0!important;
+}
+html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-exact-figure > .duo-static-en{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+}
+html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-exact-figure > .duo-localized-device{
+  display:grid!important;
+  visibility:visible!important;
+  opacity:1!important;
 }
 </style>
 
