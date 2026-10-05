@@ -1728,6 +1728,228 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   .nav-cta{padding:6px 8px!important;font-size:.68rem!important}
 }
 </style>
+
+<style>
+/* ===== ALL-LANGUAGE DEVICE UI FIT / OVERFLOW GUARD v30 =====
+   Keeps the English geometry, but removes fixed-width assumptions that break
+   translated Mac/iPhone/iPad UI. Applies to all supported app languages. */
+
+/* Every simulated device panel must be allowed to shrink inside its frame. */
+.hero-phone-mock .phone-screen,
+#gallery-iphone .iphone-screen,
+#gallery-ipad .ipad-screen,
+#gallery-mac .mac-reference-stage,
+#gallery-mac .mac-screen-stage,
+#gallery-mac .mac-screen-panel,
+#gallery-mac .mac-ask-body,
+#demo .demo-phone-screen,
+#demo #langPhone,
+.pg-phone-ask-body{
+  min-width:0!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+#gallery-mac .mac-ask-body,
+.pg-phone-ask-body,
+#gallery-ipad .ipad-native-ask-head{
+  overflow:hidden!important;
+}
+
+/* Output-language controls: label + selector share the available width.
+   Nothing is allowed to push past the right/left edge of a device. */
+.pg-phone-output-row,
+#gallery-mac .mac-response-row,
+#gallery-ipad .ipad-native-output-row{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,52%)!important;
+  align-items:center!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+  gap:8px!important;
+}
+.pg-phone-output-label,
+#gallery-mac .mac-response-label,
+#gallery-ipad .ipad-native-output-label{
+  min-width:0!important;
+  max-width:100%!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+  line-height:1.2!important;
+}
+.pg-phone-output-select,
+#gallery-mac .mac-response-select,
+#gallery-ipad .ipad-native-output-select{
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+}
+.pg-phone-output-select strong,
+#gallery-mac .mac-response-select strong,
+#gallery-ipad .ipad-native-output-select strong{
+  display:block!important;
+  min-width:0!important;
+  max-width:100%!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  white-space:nowrap!important;
+  flex:1 1 auto!important;
+}
+.pg-phone-output-select > span:first-child,
+#gallery-mac .mac-response-select > span:first-child,
+#gallery-ipad .ipad-native-output-select > span:first-child{
+  flex:0 0 auto!important;
+}
+.pg-phone-output-caret,
+#gallery-mac .mac-response-caret,
+#gallery-ipad .ipad-native-output-caret{
+  flex:0 0 auto!important;
+  margin-left:4px!important;
+  margin-right:0!important;
+}
+
+/* Localized app tabs: keep four equal columns, but permit a compact second line
+   instead of clipping or forcing the device wider. */
+.iphone-ask-tabs > *,
+.demo-ask-tabs > *,
+.history-preview .hp-tabs > *,
+.pgl-tabs > *,
+.pgdsl-tabs > *,
+.pg-real-tabs > *,
+#gallery-mac .mac-reference-tab .mac-tab-label{
+  min-width:0!important;
+  max-width:100%!important;
+  white-space:normal!important;
+  overflow:hidden!important;
+  text-overflow:clip!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+  line-height:1.05!important;
+  text-align:center!important;
+}
+.iphone-ask-tabs,
+.demo-ask-tabs,
+.history-preview .hp-tabs,
+.pgl-tabs,
+.pgdsl-tabs,
+.pg-real-tabs,
+#gallery-mac .mac-reference-hotspots{
+  min-width:0!important;
+  max-width:100%!important;
+  overflow:hidden!important;
+}
+
+/* Helper/instruction copy may wrap in localized modes rather than escaping the frame. */
+html:not([data-device-ui-lang="EN"]) .pg-phone-tips>div,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-native-help-lines>div,
+html:not([data-device-ui-lang="EN"]) #gallery-ipad .ipad-native-help-lines>div{
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+}
+html:not([data-device-ui-lang="EN"]) .pg-phone-tips,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-native-help-lines,
+html:not([data-device-ui-lang="EN"]) #gallery-ipad .ipad-native-help-lines{
+  min-width:0!important;
+  max-width:100%!important;
+  padding-right:0!important;
+  padding-left:0!important;
+}
+html:not([data-device-ui-lang="EN"]) .pg-phone-how-link,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-native-how-link,
+html:not([data-device-ui-lang="EN"]) #gallery-ipad .ipad-native-how-link{
+  position:static!important;
+  display:block!important;
+  width:max-content!important;
+  max-width:100%!important;
+  margin:3px 0 0 auto!important;
+  white-space:normal!important;
+  text-align:right!important;
+}
+
+/* Long localized headings/prompts/actions remain inside the app frame. */
+.pg-phone-ask-title,
+#gallery-mac .mac-native-ask-title,
+#gallery-ipad .ipad-native-ask-title,
+.pg-phone-prompt-box,
+.pg-phone-action-row>div,
+.pg-phone-talk,
+.pg-phone-send,
+.pg-phone-clear{
+  min-width:0!important;
+  max-width:100%!important;
+  overflow-wrap:anywhere!important;
+}
+html:not([data-device-ui-lang="EN"]) .pg-phone-action-row>div{
+  white-space:normal!important;
+  line-height:1.12!important;
+}
+
+/* CJK: keep characters together when practical, but never let them overflow. */
+html[data-device-ui-lang="ZH"] .pg-phone-output-label,
+html[data-device-ui-lang="ZH_TW"] .pg-phone-output-label,
+html[data-device-ui-lang="ZH-TW"] .pg-phone-output-label,
+html[data-device-ui-lang="JA"] .pg-phone-output-label,
+html[data-device-ui-lang="KO"] .pg-phone-output-label,
+html[data-device-ui-lang="ZH"] #gallery-mac .mac-response-label,
+html[data-device-ui-lang="ZH_TW"] #gallery-mac .mac-response-label,
+html[data-device-ui-lang="ZH-TW"] #gallery-mac .mac-response-label,
+html[data-device-ui-lang="JA"] #gallery-mac .mac-response-label,
+html[data-device-ui-lang="KO"] #gallery-mac .mac-response-label{
+  word-break:keep-all!important;
+  overflow-wrap:anywhere!important;
+}
+
+/* RTL languages read RTL while the physical app layout remains identical. */
+html[data-device-ui-lang="AR"] .pg-phone-output-label,
+html[data-device-ui-lang="HE"] .pg-phone-output-label,
+html[data-device-ui-lang="AR"] .pg-phone-output-select strong,
+html[data-device-ui-lang="HE"] .pg-phone-output-select strong,
+html[data-device-ui-lang="AR"] #gallery-mac .mac-response-label,
+html[data-device-ui-lang="HE"] #gallery-mac .mac-response-label,
+html[data-device-ui-lang="AR"] #gallery-mac .mac-response-select strong,
+html[data-device-ui-lang="HE"] #gallery-mac .mac-response-select strong,
+html[data-device-ui-lang="AR"] #gallery-ipad .ipad-native-output-label,
+html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-label,
+html[data-device-ui-lang="AR"] #gallery-ipad .ipad-native-output-select strong,
+html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
+  direction:rtl!important;
+  unicode-bidi:plaintext!important;
+  text-align:right!important;
+}
+
+/* Very small simulated devices need a little more room for the selector. */
+@media(max-width:640px){
+  .pg-phone-output-row,
+  #gallery-mac .mac-response-row,
+  #gallery-ipad .ipad-native-output-row{
+    grid-template-columns:minmax(0,42%) minmax(0,58%)!important;
+    gap:5px!important;
+  }
+  .pg-phone-output-select,
+  #gallery-mac .mac-response-select,
+  #gallery-ipad .ipad-native-output-select{
+    padding-left:6px!important;
+    padding-right:6px!important;
+  }
+}
+
+/* Never allow localized content to create horizontal scrolling inside a device. */
+.hero-phone-mock *,
+#gallery-iphone .iphone-live-preview *,
+#gallery-ipad .ipad-live-preview *,
+#gallery-mac .mac-reference-stage *,
+#demo .demo-phone-screen *{
+  box-sizing:border-box;
+}
+</style>
+
 </head>
 <body>
 
