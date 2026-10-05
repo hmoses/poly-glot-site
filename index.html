@@ -9758,5 +9758,48 @@ html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-panel-localized{
 }
 </style>
 
+
+<style>
+/* ===== APP LANGUAGE + UI PARITY FINAL v22 ===== */
+/* Canonical app language list is now the source of truth: 35 languages. */
+.pg-device-static-localized,
+.pg-mac-panel-localized{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+
+/* Preserve the English device screenshots/render geometry in every locale. */
+#gallery-iphone .iphone-screen>img,
+#gallery-ipad .ipad-screen>img,
+#gallery-mac .mac-reference-base{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+
+/* Preserve actual English interactive panels and their transitions. */
+#gallery-mac .mac-screen-panel{
+  transition:opacity .2s ease,visibility 0s linear .2s!important;
+}
+#gallery-mac .mac-screen-panel.active{
+  transition:opacity .2s ease!important;
+}
+
+/* The four navigation tabs keep the exact English geometry in every locale. */
+#gallery-mac .mac-reference-hotspots{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+}
+#gallery-mac .mac-reference-tab{
+  min-width:0!important;
+}
+
+/* Canonical code spelling shown by the app. */
+#pgGlobalCode{
+  text-transform:none!important;
+}
+</style>
+
 </body>
 </html>
