@@ -5786,7 +5786,7 @@ function _demoStart() {
 
 <!-- Global i18n — 38 languages, same flags as the app -->
 <script src="assets/js/i18n.js?v=global-sync-v14"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v22"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v23"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
 
@@ -10611,6 +10611,332 @@ html[data-device-ui-lang="HE"] .pg-phone-tips{
     grid-template-columns:minmax(0,40%) minmax(0,60%)!important;
     gap:5px!important;
   }
+}
+</style>
+
+
+<style>
+/* ===== CANONICAL LOCALIZED DEVICE GEOMETRY v32 =====
+   Every locale uses the same Mac geometry as the approved English device UI. */
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-stage{
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots{
+  z-index:400!important;
+  background:transparent!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots .mac-reference-tab span{
+  opacity:0!important;
+  color:transparent!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-canonical-localized{
+  position:absolute!important;
+  left:10.6%!important;
+  top:11.15%!important;
+  width:78.8%!important;
+  height:71.95%!important;
+  z-index:300!important;
+  display:grid!important;
+  grid-template-rows:13% 11% 76%!important;
+  overflow:hidden!important;
+  background:#0d1117!important;
+  color:#fff!important;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",sans-serif!important;
+  pointer-events:none!important;
+  box-sizing:border-box!important;
+}
+#gallery-mac .pgmc-head{
+  display:grid!important;
+  grid-template-columns:auto minmax(0,1fr) auto!important;
+  align-items:center!important;
+  gap:10px!important;
+  padding:1.5% 3%!important;
+  background:#080b10!important;
+  border-bottom:1px solid rgba(255,255,255,.06)!important;
+  min-width:0!important;
+}
+#gallery-mac .pgmc-head img{
+  width:30px!important;
+  height:30px!important;
+  max-width:none!important;
+  border-radius:7px!important;
+}
+#gallery-mac .pgmc-head strong{
+  min-width:0!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  font-size:clamp(9px,1.0vw,14px)!important;
+}
+#gallery-mac .pgmc-head>span{
+  white-space:nowrap!important;
+  padding:5px 8px!important;
+  border-radius:6px!important;
+  background:#171b25!important;
+  font-size:clamp(7px,.8vw,11px)!important;
+}
+#gallery-mac .pgmc-tabs{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  background:#05080d!important;
+  border-bottom:1px solid rgba(255,255,255,.07)!important;
+  min-width:0!important;
+}
+#gallery-mac .pgmc-tabs span{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:0!important;
+  padding:0 6px!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  color:#858b96!important;
+  font-size:clamp(7px,.82vw,11px)!important;
+  font-weight:600!important;
+  border-bottom:3px solid transparent!important;
+}
+#gallery-mac .pgmc-tabs span.active{
+  color:#f59e0b!important;
+  border-bottom-color:#f59e0b!important;
+}
+#gallery-mac .pgmc-body{
+  min-width:0!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  padding:3% 4%!important;
+  background:#0d1117!important;
+  box-sizing:border-box!important;
+}
+#gallery-mac .pgmc-ask{
+  display:grid!important;
+  grid-template-rows:auto auto auto minmax(74px,1fr) auto auto!important;
+  gap:7px!important;
+}
+#gallery-mac .pgmc-title-row{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:start!important;
+  gap:12px!important;
+}
+#gallery-mac .pgmc-title-row h3{
+  margin:0!important;
+  font-size:clamp(12px,1.35vw,18px)!important;
+  line-height:1.1!important;
+}
+#gallery-mac .pgmc-how{
+  color:#c084fc!important;
+  text-decoration:underline!important;
+  text-underline-offset:2px!important;
+  white-space:nowrap!important;
+  font-size:clamp(7px,.78vw,11px)!important;
+  font-weight:700!important;
+}
+#gallery-mac .pgmc-help{
+  color:#aab2c0!important;
+  font-size:clamp(7px,.72vw,10px)!important;
+  line-height:1.35!important;
+}
+#gallery-mac .pgmc-help>div{
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+#gallery-mac .pgmc-output{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(180px,42%)!important;
+  align-items:center!important;
+  gap:10px!important;
+  min-width:0!important;
+}
+#gallery-mac .pgmc-output>span{
+  color:#aab2c0!important;
+  font-size:clamp(7px,.75vw,11px)!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+#gallery-mac .pgmc-output>strong{
+  display:grid!important;
+  grid-template-columns:auto minmax(0,1fr) auto!important;
+  gap:7px!important;
+  align-items:center!important;
+  min-width:0!important;
+  padding:7px 10px!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  border-radius:8px!important;
+  background:#171b25!important;
+  font-size:clamp(7px,.76vw,11px)!important;
+}
+#gallery-mac .pgmc-output i{font-style:normal!important}
+#gallery-mac .pgmc-output b{font-weight:500!important;color:#b8c0cc!important}
+#gallery-mac .pgmc-prompt{
+  min-width:0!important;
+  min-height:74px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:10px 14px!important;
+  border:2px solid #7c3aed!important;
+  border-radius:10px!important;
+  background:#0c1017!important;
+  box-shadow:0 0 11px rgba(124,58,237,.28)!important;
+  color:#8d96a6!important;
+  text-align:center!important;
+  font-size:clamp(7px,.75vw,11px)!important;
+  line-height:1.4!important;
+  overflow:hidden!important;
+}
+#gallery-mac .pgmc-actions{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:8px!important;
+}
+#gallery-mac .pgmc-actions span{
+  padding:7px 8px!important;
+  border-radius:7px!important;
+  background:#1c2128!important;
+  color:#cfd5df!important;
+  text-align:center!important;
+  font-size:clamp(7px,.72vw,10px)!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+#gallery-mac .pgmc-bottom{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:center!important;
+  gap:10px!important;
+}
+#gallery-mac .pgmc-talk{
+  color:#aab2c0!important;
+  font-size:clamp(7px,.72vw,10px)!important;
+}
+#gallery-mac .pgmc-send{
+  padding:8px 26px!important;
+  border-radius:8px!important;
+  background:linear-gradient(90deg,#7c3aed,#2563eb)!important;
+  color:#fff!important;
+  font-size:clamp(8px,.8vw,11px)!important;
+  font-weight:800!important;
+  white-space:nowrap!important;
+}
+
+/* Non-Ask tabs keep the same shell and proportions. */
+#gallery-mac .pgmc-section-title{
+  font-size:clamp(12px,1.3vw,18px)!important;
+  font-weight:800!important;
+  margin-bottom:2%!important;
+}
+#gallery-mac .pgmc-search{
+  padding:8px 10px!important;
+  border:1px solid rgba(255,255,255,.1)!important;
+  border-radius:8px!important;
+  background:#1c2128!important;
+  color:#8b949e!important;
+  font-size:clamp(7px,.75vw,10px)!important;
+  margin-bottom:2%!important;
+}
+#gallery-mac .pgmc-card-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:8px!important;
+}
+#gallery-mac .pgmc-card-grid>div,
+#gallery-mac .pgmc-history-grid>div{
+  min-width:0!important;
+  padding:10px!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  border-radius:8px!important;
+  background:#171c27!important;
+}
+#gallery-mac .pgmc-card-grid b,
+#gallery-mac .pgmc-history-grid b{
+  display:block!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  font-size:clamp(7px,.8vw,11px)!important;
+}
+#gallery-mac .pgmc-card-grid small,
+#gallery-mac .pgmc-history-grid small{
+  color:#8b949e!important;
+  font-size:clamp(6px,.68vw,9px)!important;
+}
+#gallery-mac .pgmc-steps{
+  display:grid!important;
+  gap:8px!important;
+}
+#gallery-mac .pgmc-steps>div{
+  display:grid!important;
+  grid-template-columns:auto minmax(0,1fr)!important;
+  align-items:center!important;
+  gap:10px!important;
+  padding:9px 11px!important;
+  border:1px solid rgba(255,255,255,.1)!important;
+  border-radius:8px!important;
+  background:#1c2128!important;
+  font-size:clamp(7px,.78vw,11px)!important;
+}
+#gallery-mac .pgmc-steps b{
+  display:grid!important;
+  place-items:center!important;
+  width:22px!important;
+  height:22px!important;
+  border-radius:50%!important;
+  background:rgba(125,211,252,.12)!important;
+  color:#7dd3fc!important;
+}
+#gallery-mac .pgmc-history-head{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:10px!important;
+  margin-bottom:10px!important;
+}
+#gallery-mac .pgmc-history-head>div:last-child{
+  display:flex!important;
+  gap:6px!important;
+}
+#gallery-mac .pgmc-history-head>div:last-child span{
+  padding:5px 8px!important;
+  border:1px solid rgba(255,255,255,.1)!important;
+  border-radius:6px!important;
+  font-size:clamp(6px,.7vw,9px)!important;
+}
+#gallery-mac .pgmc-history-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:8px!important;
+}
+#gallery-mac .pgmc-history-grid p{
+  color:#aab2c0!important;
+  font-size:clamp(6px,.7vw,9px)!important;
+  line-height:1.3!important;
+  display:-webkit-box!important;
+  -webkit-line-clamp:3!important;
+  -webkit-box-orient:vertical!important;
+  overflow:hidden!important;
+}
+
+/* RTL changes reading direction only; layout positions stay identical. */
+html[data-device-ui-lang="AR"] #gallery-mac .pg-mac-canonical-localized,
+html[data-device-ui-lang="HE"] #gallery-mac .pg-mac-canonical-localized{
+  direction:ltr!important;
+}
+html[data-device-ui-lang="AR"] #gallery-mac .pgmc-title-row h3,
+html[data-device-ui-lang="HE"] #gallery-mac .pgmc-title-row h3,
+html[data-device-ui-lang="AR"] #gallery-mac .pgmc-help,
+html[data-device-ui-lang="HE"] #gallery-mac .pgmc-help,
+html[data-device-ui-lang="AR"] #gallery-mac .pgmc-prompt,
+html[data-device-ui-lang="HE"] #gallery-mac .pgmc-prompt{
+  direction:rtl!important;
+  unicode-bidi:plaintext!important;
+  text-align:right!important;
 }
 </style>
 
