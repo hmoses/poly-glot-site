@@ -1184,3 +1184,157 @@ if(document.readyState==="loading"){
 window._pgDeviceUILocalizeV3=applyAll;
 })();
 
+
+
+
+/* ===== COMPLETE RUSSIAN DEVICE LABEL LOCALIZATION v4 ===== */
+(function(){
+"use strict";
+
+var RU_FULL={
+  how:"Как использовать",
+  history:"История",
+  paste:"Вставить",
+  import:"Импорт",
+  scan:"Сканировать",
+  talk:"Говорить",
+  clearAll:"Очистить всё",
+  promptHistory:"История запросов",
+  recent:"Недавние запросы и избранное",
+  all:"Все",
+  clear:"Очистить",
+  reedit:"Редактировать",
+  howWorks:"Как это работает",
+  typeLine:"Введите, вставьте, импортируйте или говорите",
+  appLang:"Язык приложения",
+  outputLang:"Язык ответа",
+  changesMenus:"меняет меню и шаблоны",
+  responds:"ИИ отвечает на этом языке",
+  compareHelp:"отправить нескольким ИИ",
+  compareSelect:"Выберите ИИ для сравнения",
+  promptIntro:"Привет! Спросите любой ИИ о чём угодно — на своём языке.",
+  promptExample:"Пример: Напишите вежливое письмо арендодателю с просьбой починить отопление.",
+  explore:"👇 Нажмите вкладки ниже, чтобы изучить приложение",
+  caption:"Спросите любой ИИ — введите или произнесите запрос и выберите ИИ"
+};
+
+function currentCode(){
+  return window._pgI18n&&window._pgI18n.curLang ? String(window._pgI18n.curLang()||"EN").toUpperCase().replace(/-/g,"_") : "EN";
+}
+
+function installStringsOverride(){
+  if(!window._pgDeviceUI||!window._pgDeviceUI._strings||window._pgDeviceUI._strings.__pgRuFull)return;
+  var base=window._pgDeviceUI._strings;
+  var wrapped=function(code){
+    var out=base(code)||{};
+    var n=String(code||"EN").toUpperCase().replace(/-/g,"_");
+    return n==="RU" ? Object.assign({},out,RU_FULL) : out;
+  };
+  wrapped.__pgRuFull=true;
+  window._pgDeviceUI._strings=wrapped;
+}
+
+function replaceExactText(root,map){
+  if(!root)return;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+  var nodes=[],n;
+  while((n=walker.nextNode())) nodes.push(n);
+  nodes.forEach(function(node){
+    var raw=node.nodeValue||"";
+    var t=raw.trim();
+    if(!t)return;
+    if(map[t]){
+      var a=raw.indexOf(t);
+      node.nodeValue=raw.slice(0,a)+map[t]+raw.slice(a+t.length);
+      return;
+    }
+    if(/^Ask Any AI\s*[—-]\s*Type or speak,\s*choose your AI/i.test(t)){
+      var a2=raw.indexOf(t);
+      node.nodeValue=raw.slice(0,a2)+RU_FULL.caption+raw.slice(a2+t.length);
+    }
+  });
+}
+
+function applyRussianResiduals(){
+  installStringsOverride();
+  if(currentCode()!=="RU")return;
+
+  var S=window._pgDeviceUI&&window._pgDeviceUI._strings ? window._pgDeviceUI._strings("RU") : RU_FULL;
+
+  var exact={
+    "Ask Any AI":S.ask||"Спросите любой ИИ",
+    "Templates":S.templates||"Шаблоны",
+    "How to Use":S.how,
+    "History":S.history,
+    "How it works":S.howWorks,
+    "Type, paste, import or talk":S.typeLine,
+    "App Language":S.appLang,
+    "Output Language":S.outputLang,
+    "changes menus & templates":S.changesMenus,
+    "AI responds in this language":S.responds,
+    "AI will respond in:":S.outputLabel||"ИИ ответит на:",
+    "Compare Mode":S.compare||"Режим сравнения",
+    "Paste":S.paste,
+    "Import":S.import,
+    "Scan":S.scan,
+    "Talk":S.talk,
+    "Send":S.send||"Отправить",
+    "Send to AI":S.send||"Отправить",
+    "Send to Selected":S.compareSend||"Отправить выбранным",
+    "Copy":S.copy||"Копировать",
+    "Clear All":S.clearAll,
+    "Clear":S.clear,
+    "Prompt History":S.promptHistory,
+    "Your recent prompts & favorites":S.recent,
+    "All":S.all,
+    "Re-edit":S.reedit,
+    "Choose AI":S.compareSelect,
+    "Select AIs to compare":S.compareSelect,
+    "Search templates…":S.search||"Поиск шаблонов…",
+    "Search templates...":S.search||"Поиск шаблонов…",
+    "Click the tabs below to explore the app":RU_FULL.explore.replace(/^👇\s*/,"")
+  };
+
+  ["demo","gallery-iphone","gallery-ipad","gallery-mac","pgLightboxClone"].forEach(function(id){
+    replaceExactText(document.getElementById(id),exact);
+  });
+  replaceExactText(document.querySelector(".hero-phone-mock"),exact);
+
+  var hint=document.querySelector("#macTabHint span");
+  if(hint)hint.textContent=RU_FULL.explore;
+
+  var capCandidates=document.querySelectorAll("#gallery-mac p,#gallery-mac .gallery-caption,#gallery-mac [class*='caption']");
+  capCandidates.forEach(function(el){
+    if(/Ask Any AI\s*[—-]\s*Type or speak,\s*choose your AI/i.test(el.textContent||"")){
+      el.textContent=RU_FULL.caption;
+    }
+  });
+
+  /* Force the existing device-localization pass again after the dictionary override. */
+  if(window._pgDeviceUI&&window._pgDeviceUI.apply){
+    window._pgDeviceUI.apply("RU");
+  }
+
+  document.documentElement.setAttribute("data-device-ui-lang","RU");
+}
+
+function run(){
+  installStringsOverride();
+  if(currentCode()==="RU"){
+    setTimeout(applyRussianResiduals,0);
+    setTimeout(applyRussianResiduals,80);
+    setTimeout(applyRussianResiduals,300);
+  }
+}
+
+window.addEventListener("pg:languagechange",function(e){
+  var code=e.detail&&e.detail.code ? String(e.detail.code).toUpperCase().replace(/-/g,"_") : currentCode();
+  if(code==="RU")run();
+});
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",run);else run();
+
+var observer=new MutationObserver(function(){
+  if(currentCode()==="RU")setTimeout(applyRussianResiduals,20);
+});
+if(document.documentElement)observer.observe(document.documentElement,{childList:true,subtree:true});
+})();
