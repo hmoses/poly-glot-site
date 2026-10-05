@@ -319,9 +319,32 @@ function macOverlay(S,M,c){
  var host=document.querySelector("#gallery-mac .mac-reference-interactive");
  if(!host)return;
 
- var oldFull=host.querySelector(".pg-mac-full-overlay");
- if(oldFull)oldFull.remove();
- host.querySelectorAll(".pg-mac-panel-localized").forEach(function(el){el.remove()});
+ host.querySelectorAll(".pg-mac-full-overlay,.pg-mac-panel-localized").forEach(function(el){el.remove()});
+
+ /* Hard reset every competing legacy Mac layer before drawing one canonical locale. */
+ var stage=host.querySelector(".mac-reference-stage");
+ var inline=host.querySelector(".pg-mac-inline-overlay");
+ if(c==="EN"){
+   if(stage){
+     stage.style.removeProperty("display");
+     stage.style.removeProperty("visibility");
+     stage.style.removeProperty("opacity");
+     stage.style.removeProperty("pointer-events");
+   }
+   return;
+ }
+ if(stage){
+   stage.style.setProperty("display","none","important");
+   stage.style.setProperty("visibility","hidden","important");
+   stage.style.setProperty("opacity","0","important");
+   stage.style.setProperty("pointer-events","none","important");
+ }
+ if(inline){
+   inline.style.setProperty("display","none","important");
+   inline.style.setProperty("visibility","hidden","important");
+   inline.style.setProperty("opacity","0","important");
+ }
+
 
  var tabs=host.querySelectorAll(".mac-reference-tab");
  var vals=[S.ask,S.templates,S.how,S.history];
@@ -335,8 +358,6 @@ function macOverlay(S,M,c){
    btn.setAttribute("title",label);
    btn.setAttribute("aria-label",label);
  });
-
- if(c==="EN") return;
 
  var active=host.querySelector(".mac-reference-tab.active");
  var id=active&&active.id||"macTab-askanyai";
