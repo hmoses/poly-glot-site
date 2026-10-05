@@ -9390,28 +9390,6 @@ html[data-device-ui-lang="HE"] #iphone-duo .duo-coming-inner > div:first-child{
 
 
 <style>
-/* ===== IPHONE DUO — SAME EXACT RENDER IN ALL LANGUAGES v4 ===== */
-#iphone-duo .duo-static-en{
-  display:block!important;
-  visibility:visible!important;
-  opacity:1!important;
-  width:100%!important;
-  height:auto!important;
-  object-fit:contain!important;
-}
-#iphone-duo .duo-localized-overlay,
-#iphone-duo .duo-localized-device,
-html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-localized-overlay,
-html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-localized-device{
-  display:none!important;
-  visibility:hidden!important;
-  opacity:0!important;
-  pointer-events:none!important;
-}
-</style>
-
-
-<style>
 /* ===== IPHONE DUO — TEXT-ONLY LOCALIZATION ON EXACT ENGLISH RENDER v5 ===== */
 #iphone-duo .duo-localized-device{
   display:none!important;
@@ -9475,6 +9453,120 @@ html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-localized-device{
 #iphone-duo .duo-text-only[dir="rtl"] .tab,
 #iphone-duo .duo-text-only[dir="rtl"] .send,
 #iphone-duo .duo-text-only[dir="rtl"] .actions{text-align:center}
+</style>
+
+
+<style>
+/* ===== DUO + MOBILE LOCALIZATION FINAL FIX v6 ===== */
+/* Exact simulator image remains unchanged; translated text overlay is allowed. */
+#iphone-duo .duo-localized-overlay.duo-text-only{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+html[data-device-ui-lang="EN"] #iphone-duo .duo-localized-overlay{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+}
+
+/* Prevent any translated surface from making the page wider than the viewport. */
+html,body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden!important;
+}
+.nav,.nav-inner,#iphone-duo,#iphone-duo .container,#iphone-duo .duo-coming-inner{
+  max-width:100vw!important;
+  overflow-x:hidden!important;
+}
+#iphone-duo .container{
+  width:100%!important;
+  box-sizing:border-box!important;
+}
+#iphone-duo .duo-coming-inner{
+  width:100%!important;
+}
+#iphone-duo .duo-coming-inner > *{
+  min-width:0!important;
+  max-width:100%!important;
+}
+#iphone-duo #duo-title,
+#iphone-duo .duo-copy,
+#iphone-duo .duo-meta{
+  margin-left:0!important;
+  margin-right:0!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+
+/* Mobile nav must never push the brand off-screen in longer locales. */
+@media(max-width:760px){
+  .nav-inner{
+    width:100%!important;
+    max-width:100%!important;
+    padding-left:14px!important;
+    padding-right:12px!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto auto!important;
+    gap:8px!important;
+  }
+  .nav-brand{
+    min-width:0!important;
+    max-width:none!important;
+    width:auto!important;
+    overflow:hidden!important;
+  }
+  .nav-brand span{
+    min-width:0!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+    font-size:clamp(.68rem,3vw,.86rem)!important;
+  }
+  .nav-cta{
+    min-width:0!important;
+    max-width:145px!important;
+    padding:7px 9px!important;
+    overflow:hidden!important;
+  }
+  .nav-cta a{
+    display:block!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+    font-size:clamp(.68rem,2.8vw,.82rem)!important;
+  }
+  .nav-mobile-toggle{
+    display:block!important;
+  }
+
+  #iphone-duo .container{
+    padding-left:22px!important;
+    padding-right:22px!important;
+  }
+  #iphone-duo #duo-title{
+    width:100%!important;
+    font-size:clamp(2rem,9.6vw,3rem)!important;
+    line-height:1.06!important;
+    overflow:visible!important;
+    text-wrap:balance;
+  }
+  #iphone-duo .duo-copy,
+  #iphone-duo .duo-meta{
+    width:100%!important;
+  }
+}
+
+/* CJK titles need a little more room and no aggressive negative tracking. */
+html[data-device-ui-lang="ZH"] #iphone-duo #duo-title,
+html[data-device-ui-lang="ZH-TW"] #iphone-duo #duo-title,
+html[data-device-ui-lang="JA"] #iphone-duo #duo-title,
+html[data-device-ui-lang="KO"] #iphone-duo #duo-title{
+  letter-spacing:0!important;
+  line-height:1.1!important;
+  word-break:keep-all!important;
+}
 </style>
 
 </body>
