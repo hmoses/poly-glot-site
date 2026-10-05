@@ -162,7 +162,7 @@ function syncAllTabLabels(S,M){
     });
   }
 
-  document.querySelectorAll(".iphone-ask-tabs,.demo-ask-tabs,.history-preview .hp-tabs,.pgl-tabs,.pgdsl-tabs").forEach(applyTabs);
+  document.querySelectorAll(".iphone-ask-tabs,.demo-ask-tabs,.history-preview .hp-tabs,.pgl-tabs,.pgdsl-tabs,.pg-real-tabs,.mac-reference-hotspots").forEach(applyTabs);
 
   document.querySelectorAll("#gallery-ipad .ipad-live-preview").forEach(function(root){
     var tabbar=root.children&&root.children[2];
