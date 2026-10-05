@@ -9801,5 +9801,58 @@ html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-panel-localized{
 }
 </style>
 
+
+<style>
+/* ===== MAC TAB FULL-LABEL LOCALIZATION v23 ===== */
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots{
+  container-type:inline-size!important;
+  overflow:visible!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab{
+  overflow:hidden!important;
+  padding:0 4px!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab .mac-tab-label{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  padding:2px 3px!important;
+  box-sizing:border-box!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  text-align:center!important;
+  line-height:1.05!important;
+  font-size:clamp(6px,1.55cqw,10px)!important;
+  font-weight:600!important;
+  color:inherit!important;
+  word-break:normal!important;
+  overflow-wrap:anywhere!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab .mac-tab-label.is-medium{
+  font-size:clamp(5.5px,1.32cqw,9px)!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab .mac-tab-label.is-long{
+  font-size:clamp(5px,1.10cqw,8px)!important;
+  line-height:1.0!important;
+}
+/* CJK text can stay slightly larger while still fitting the same English geometry. */
+html[data-device-ui-lang="ZH"] #gallery-mac .mac-tab-label,
+html[data-device-ui-lang="ZH_TW"] #gallery-mac .mac-tab-label,
+html[data-device-ui-lang="JA"] #gallery-mac .mac-tab-label,
+html[data-device-ui-lang="KO"] #gallery-mac .mac-tab-label{
+  font-size:clamp(6px,1.45cqw,9px)!important;
+  overflow-wrap:normal!important;
+  word-break:keep-all!important;
+}
+/* Preserve active-state parity with English. */
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab.active .mac-tab-label{
+  color:#f59e0b!important;
+}
+</style>
+
 </body>
 </html>
