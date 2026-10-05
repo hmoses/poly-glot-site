@@ -299,7 +299,7 @@ function macOverlay(S,M,c){
  if(!host)return;
 
  /* Remove every reconstructed/legacy Mac localization layer. */
- host.querySelectorAll(".pg-mac-full-overlay,.pg-mac-panel-localized,.pg-final-mac-locale").forEach(function(el){el.remove()});
+ host.querySelectorAll(".pg-mac-full-overlay,.pg-mac-panel-localized,.pg-final-mac-locale,.pg-mac-badge-localized").forEach(function(el){el.remove()});
 
  var stage=host.querySelector(".mac-reference-stage");
  var ask=host.querySelector("#macScreen-askanyai");
@@ -332,6 +332,11 @@ function macOverlay(S,M,c){
  stage.style.setProperty("height","64.8%","important");
  stage.style.setProperty("z-index","320","important");
  stage.style.setProperty("overflow","hidden","important");
+
+ var badge=document.createElement("div");
+ badge.className="pg-mac-badge-localized";
+ badge.textContent=M.flag+" "+M.code.replace("_","-");
+ host.appendChild(badge);
 
  var vals=[S.ask,S.templates,S.how,S.history];
  var icons=["✏️ ","📋 ","📖 ","🕐 "];
