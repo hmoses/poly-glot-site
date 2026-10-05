@@ -9388,5 +9388,27 @@ html[data-device-ui-lang="HE"] #iphone-duo .duo-coming-inner > div:first-child{
 }
 </style>
 
+
+<style>
+/* ===== IPHONE DUO — SAME EXACT RENDER IN ALL LANGUAGES v4 ===== */
+#iphone-duo .duo-static-en{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  width:100%!important;
+  height:auto!important;
+  object-fit:contain!important;
+}
+#iphone-duo .duo-localized-overlay,
+#iphone-duo .duo-localized-device,
+html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-localized-overlay,
+html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-localized-device{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+</style>
+
 </body>
 </html>
