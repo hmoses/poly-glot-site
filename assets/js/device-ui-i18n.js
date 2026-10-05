@@ -1338,3 +1338,155 @@ var observer=new MutationObserver(function(){
 });
 if(document.documentElement)observer.observe(document.documentElement,{childList:true,subtree:true});
 })();
+
+
+
+/* ===== APP LOCALIZATION RUNTIME PARITY v5 ===== */
+(function(){
+'use strict';
+if(window.__polyglotSiteDeviceAppRuntimeLoaded) return;
+window.__polyglotSiteDeviceAppRuntimeLoaded=true;
+
+/*
+  Mirrors the production localization-runtime.js used by both:
+  - hmoses/polyglot-workspace-ios
+  - hmoses/polyglot-workspace-mac
+
+  The app runtime localizes visible text by building a reverse map from the
+  English localization table, then replacing matching text/attributes with the
+  active language table. This site adapter applies the same mechanism only to
+  the simulated iPhone/iPad/Mac UI so device previews track the real apps.
+*/
+
+function hasUI(){
+  return !!(window._pgDeviceUI && typeof window._pgDeviceUI._strings==='function');
+}
+function lang(){
+  return window._pgI18n&&typeof window._pgI18n.curLang==='function'
+    ? String(window._pgI18n.curLang()||'EN').toUpperCase().replace(/-/g,'_')
+    : 'EN';
+}
+function table(code){
+  if(!hasUI()) return {};
+  return window._pgDeviceUI._strings(code||lang())||{};
+}
+function t(key,fallback){
+  var cur=table(lang()), en=table('EN');
+  return (cur&&cur[key])||(en&&en[key])||fallback||'';
+}
+function roots(){
+  return [
+    document.getElementById('demo'),
+    document.getElementById('gallery-iphone'),
+    document.getElementById('gallery-ipad'),
+    document.getElementById('gallery-mac'),
+    document.querySelector('.hero-phone-mock'),
+    document.getElementById('pgLightboxClone')
+  ].filter(Boolean);
+}
+function buildReverseMap(){
+  var en=table('EN'), rev={}, ambiguous={};
+  Object.keys(en||{}).forEach(function(key){
+    var v=en[key];
+    if(typeof v!=='string'||!v||v.length>=500||v.indexOf('<')!==-1||v.indexOf('\n')!==-1) return;
+    if(ambiguous[v]) return;
+    if(typeof rev[v]==='undefined') rev[v]=key;
+    else if(rev[v]!==key){ delete rev[v]; ambiguous[v]=true; }
+  });
+  return rev;
+}
+function localizeTextNode(node,rev){
+  if(!node||!node.parentElement) return;
+  var p=node.parentElement;
+  if(/^(SCRIPT|STYLE|TEXTAREA|INPUT|OPTION|CODE|PRE)$/i.test(p.tagName)||p.isContentEditable) return;
+  var raw=node.nodeValue||'', trimmed=raw.trim();
+  if(!trimmed) return;
+  var key=rev[trimmed];
+  if(!key) return;
+  var next=t(key,trimmed);
+  if(!next||next===trimmed) return;
+  var lead=(raw.match(/^\s*/)||[''])[0], tail=(raw.match(/\s*$/)||[''])[0];
+  node.nodeValue=lead+next+tail;
+}
+function localizeAttributes(el,rev){
+  if(!el||!el.getAttribute) return;
+  ['placeholder','title','aria-label'].forEach(function(attr){
+    var raw=el.getAttribute(attr);
+    if(!raw) return;
+    var key=rev[raw];
+    if(!key) return;
+    var next=t(key,raw);
+    if(next&&next!==raw) el.setAttribute(attr,next);
+  });
+  if((el.tagName==='BUTTON'||(el.tagName==='INPUT'&&/^(button|submit)$/i.test(el.type||'')))&&el.value){
+    var k=rev[el.value];
+    if(k){
+      var nv=t(k,el.value);
+      if(nv&&nv!==el.value) el.value=nv;
+    }
+  }
+}
+function localizeComposedText(root){
+  var S=table(lang());
+  if(!root) return;
+
+  root.querySelectorAll('.demo-ask-description').forEach(function(desc){
+    var lines=desc.children;
+    if(lines[0]) lines[0].textContent='✏️ '+(S.typeLine||'Type, paste, import or talk');
+    if(lines[1]) lines[1].textContent='🏳️ '+(S.appLang||'App Language')+' ⬆️ '+(S.changesMenus||'changes menus & templates');
+    if(lines[2]) lines[2].textContent='🌐 '+(S.outputLang||'Output Language')+' ⬇️ '+(S.responds||'AI responds in this language');
+    if(lines[3]) lines[3].textContent='🔀 '+(S.compare||'Compare Mode')+': '+(S.compareHelp||'send to multiple AIs');
+  });
+
+  root.querySelectorAll('.pg-phone-tips,.ipad-native-help-lines,.mac-native-help-lines').forEach(function(box){
+    var lines=box.children;
+    if(lines[0]) lines[0].textContent='✏️ '+(S.typeLine||'Type, paste, import or talk');
+    if(lines[1]) lines[1].textContent='🏳️ '+(S.appLang||'App Language')+' ⬆️ '+(S.changesMenus||'changes menus & templates');
+    if(lines[2]) lines[2].textContent='🌐 '+(S.outputLang||'Output Language')+' ⬇️ '+(S.responds||'AI responds in this language');
+    if(lines[3]) lines[3].textContent='🔀 '+(S.compare||'Compare Mode')+': '+(S.compareHelp||'send to multiple AIs');
+  });
+}
+function localizeAllVisible(){
+  if(!hasUI()||!document.body) return false;
+  var rev=buildReverseMap();
+  roots().forEach(function(root){
+    var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null);
+    var nodes=[];
+    while(walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function(n){localizeTextNode(n,rev);});
+    root.querySelectorAll('*').forEach(function(el){localizeAttributes(el,rev);});
+    localizeComposedText(root);
+    root.setAttribute('lang',lang().toLowerCase().replace('_','-'));
+    root.setAttribute('dir',/^(AR|HE)$/i.test(lang())?'rtl':'ltr');
+  });
+  return true;
+}
+
+var scheduled=false;
+function schedule(){
+  if(scheduled) return;
+  scheduled=true;
+  setTimeout(function(){
+    scheduled=false;
+    localizeAllVisible();
+  },0);
+}
+function install(){
+  if(!hasUI()){ setTimeout(install,100); return; }
+  if(!window.__polyglotSiteDeviceLocalizationObserver&&document.documentElement){
+    window.__polyglotSiteDeviceLocalizationObserver=new MutationObserver(schedule);
+    window.__polyglotSiteDeviceLocalizationObserver.observe(document.documentElement,{
+      subtree:true,
+      childList:true,
+      characterData:true,
+      attributes:true,
+      attributeFilter:['placeholder','title','aria-label']
+    });
+  }
+  schedule();
+}
+window.addEventListener('pg:languagechange',schedule);
+window.__polyglotSiteDeviceLocalizeAllVisible=localizeAllVisible;
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',install,{once:true});
+else install();
+})();
