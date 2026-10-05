@@ -5563,8 +5563,8 @@ function _demoStart() {
 <!-- ===== END GLOBAL IMAGE + DEVICE LIGHTBOX ===== -->
 
 <!-- Global i18n — 38 languages, same flags as the app -->
-<script src="assets/js/i18n.js?v=global-sync-v11"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v20"></script>
+<script src="assets/js/i18n.js?v=global-sync-v12"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v21"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
 
@@ -9903,128 +9903,90 @@ html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab .mac-tab-la
 </style>
 
 
+
 <style>
-/* ===== ARABIC + HEBREW TRUE RTL v25 ===== */
-html[dir="rtl"] body{
+/* ===== RTL TEXT SCOPE + ORIGINAL FLOATING CONTROLS v27 ===== */
+/* Preserve the original physical page geometry for every locale. */
+html,body{direction:ltr!important;}
+
+/* Hebrew and Arabic text read RTL without mirroring the whole website. */
+html[data-pg-rtl="true"] [data-i18n],
+html[data-pg-rtl="true"] [data-i18n-html],
+html[data-pg-rtl="true"] .section-title,
+html[data-pg-rtl="true"] .section-sub,
+html[data-pg-rtl="true"] #iphone-duo .duo-copy,
+html[data-pg-rtl="true"] #iphone-duo .duo-meta{
   direction:rtl!important;
-}
-/* Site copy follows RTL naturally. */
-html[dir="rtl"] .section-title,
-html[dir="rtl"] .section-sub,
-html[dir="rtl"] #screenshots .section-title,
-html[dir="rtl"] #screenshots .section-sub,
-html[dir="rtl"] #iphone-duo .duo-copy,
-html[dir="rtl"] #iphone-duo .duo-meta{
+  unicode-bidi:plaintext!important;
   text-align:right!important;
 }
 
-/* Device selector keeps device order stable, but labels remain readable. */
-html[dir="rtl"] #screenshots .gallery-tabs{
+/* Device chrome and tab geometry stay identical to English. */
+html[data-pg-rtl="true"] #gallery-mac .mac-reference-hotspots,
+html[data-pg-rtl="true"] #screenshots .gallery-tabs{
   direction:ltr!important;
 }
-html[dir="rtl"] #screenshots .gallery-tab{
-  direction:ltr!important;
-}
-
-/* Mac app navigation is true RTL: Ask Any AI starts at the right edge. */
-html[dir="rtl"] #gallery-mac .mac-reference-hotspots{
-  direction:rtl!important;
-}
-html[dir="rtl"] #gallery-mac .mac-reference-tab{
-  direction:rtl!important;
-}
-html[dir="rtl"] #gallery-mac .mac-reference-tab .mac-tab-label{
+html[data-pg-rtl="true"] #gallery-mac .mac-reference-tab .mac-tab-label{
   direction:rtl!important;
   unicode-bidi:plaintext!important;
   text-align:center!important;
 }
-
-/* The localized Mac content reads right-to-left while preserving English geometry/animation. */
-html[dir="rtl"] #gallery-mac .mac-reference-stage,
-html[dir="rtl"] #gallery-mac .mac-screen-panel,
-html[dir="rtl"] #gallery-mac #macScreen-askanyai .mac-ask-body,
-html[dir="rtl"] #gallery-mac #macScreen-howtouse,
-html[dir="rtl"] #gallery-mac #macScreen-history{
+html[data-pg-rtl="true"] #gallery-mac .mac-native-ask-title,
+html[data-pg-rtl="true"] #gallery-mac .mac-native-help-lines,
+html[data-pg-rtl="true"] #gallery-mac .mac-response-label,
+html[data-pg-rtl="true"] #gallery-mac .mac-response-select,
+html[data-pg-rtl="true"] #gallery-mac .mac-native-how-link,
+html[data-pg-rtl="true"] #gallery-mac #siteDemo-P1,
+html[data-pg-rtl="true"] #gallery-mac #siteDemo-P2,
+html[data-pg-rtl="true"] #gallery-mac #siteDemo-P3,
+html[data-pg-rtl="true"] #gallery-mac .mac-history-body{
   direction:rtl!important;
-}
-html[dir="rtl"] #gallery-mac .mac-native-ask-title,
-html[dir="rtl"] #gallery-mac .mac-native-help-lines,
-html[dir="rtl"] #gallery-mac .mac-response-row,
-html[dir="rtl"] #gallery-mac .mac-history-body,
-html[dir="rtl"] #gallery-mac #siteDemo-P1,
-html[dir="rtl"] #gallery-mac #siteDemo-P2,
-html[dir="rtl"] #gallery-mac #siteDemo-P3{
-  direction:rtl!important;
+  unicode-bidi:plaintext!important;
   text-align:right!important;
 }
-html[dir="rtl"] #gallery-mac .mac-native-how-link{
-  margin-left:0!important;
-  margin-right:auto!important;
-}
-html[dir="rtl"] #gallery-mac .mac-response-row{
-  flex-direction:row-reverse!important;
-}
-html[dir="rtl"] #gallery-mac .mac-response-select{
-  direction:rtl!important;
-}
-
-/* Hint pill and generated device tab bars mirror correctly. */
-html[dir="rtl"] #gallery-mac #macTabHint,
-html[dir="rtl"] #gallery-mac #macTabHint span,
-html[dir="rtl"] .pg-real-tabs,
-html[dir="rtl"] .iphone-ask-tabs,
-html[dir="rtl"] .demo-ask-tabs,
-html[dir="rtl"] .history-preview .hp-tabs,
-html[dir="rtl"] .pgl-tabs,
-html[dir="rtl"] .pgdsl-tabs{
-  direction:rtl!important;
-}
-
-/* Duo localized text respects Arabic and Hebrew direction. */
-html[dir="rtl"] #iphone-duo .duo-localized-overlay,
-html[dir="rtl"] #iphone-duo .duo-text-only .duo-loc{
+html[data-pg-rtl="true"] #iphone-duo .duo-text-only .duo-loc,
+html[data-pg-rtl="true"] .pg-hero-mac-text-overlay .pg-hm{
   direction:rtl!important;
   unicode-bidi:plaintext!important;
 }
-</style>
 
-
-<style>
-/* ===== GLOBAL LANGUAGE PICKER VISIBILITY FAILSAFE v26 ===== */
+/* Restore the original floating control positions: language left, chat right,
+   both on the same horizontal line. */
 #pgGlobalLangPicker{
   display:block!important;
   visibility:visible!important;
   opacity:1!important;
   position:fixed!important;
-  left:16px!important;
+  left:24px!important;
   right:auto!important;
   bottom:24px!important;
-  z-index:2147483000!important;
-  pointer-events:auto!important;
+  z-index:99998!important;
   transform:none!important;
+  pointer-events:auto!important;
+  direction:ltr!important;
 }
 #pgGlobalLangBtn{
   display:flex!important;
   visibility:visible!important;
   opacity:1!important;
-  pointer-events:auto!important;
 }
-@media(max-width:760px){
+#pgChat-bubble{
+  position:fixed!important;
+  right:24px!important;
+  left:auto!important;
+  bottom:24px!important;
+}
+@media(max-width:480px){
   #pgGlobalLangPicker{
     left:16px!important;
     right:auto!important;
-    /* Keep it above Safari's bottom toolbar / home-indicator area. */
-    bottom:calc(env(safe-area-inset-bottom, 0px) + 92px)!important;
+    bottom:16px!important;
   }
-}
-/* RTL changes page direction, not the fixed control's physical position. */
-html[dir="rtl"] #pgGlobalLangPicker{
-  left:16px!important;
-  right:auto!important;
-  direction:ltr!important;
-}
-html[dir="rtl"] #pgGlobalLangDD{
-  direction:ltr!important;
+  #pgChat-bubble{
+    right:16px!important;
+    left:auto!important;
+    bottom:16px!important;
+  }
 }
 </style>
 
