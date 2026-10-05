@@ -10355,5 +10355,264 @@ html[dir="rtl"] #pgGlobalLangDD{direction:ltr!important;left:0!important;right:a
 }
 </style>
 
+
+<style>
+/* ===== SINGLE AUTHORITATIVE LOCALIZED DEVICE UI v31 =====
+   In localized modes, translated HTML fully replaces the English content layer
+   instead of sitting over the baked English screenshot. */
+
+/* MAC — translated Ask Any AI panel owns the full inner viewport. */
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-stage{
+  top:24.6%!important;
+  height:64.5%!important;
+  background:#0d1117!important;
+  z-index:120!important;
+  border-radius:0 0 8px 8px!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots{
+  z-index:140!important;
+  background:#05080d!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai.active{
+  display:block!important;
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  z-index:8!important;
+  background:#0d1117!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-ask-body{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:6px!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  min-height:0!important;
+  padding:12px 18px 12px!important;
+  overflow:hidden!important;
+  background:#0d1117!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-native-ask-title{
+  flex:0 0 auto!important;
+  margin:0!important;
+  font-size:clamp(10px,1.15vw,16px)!important;
+  line-height:1.12!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-native-help{
+  flex:0 0 auto!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:start!important;
+  gap:10px!important;
+  margin:0!important;
+  min-width:0!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-native-help-lines{
+  min-width:0!important;
+  padding:0!important;
+  font-size:clamp(6px,.70vw,10px)!important;
+  line-height:1.28!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-native-help-lines>div{
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-native-how-link{
+  position:static!important;
+  display:block!important;
+  width:auto!important;
+  margin:0!important;
+  padding:0!important;
+  white-space:nowrap!important;
+  font-size:clamp(6px,.70vw,10px)!important;
+  line-height:1.2!important;
+  align-self:start!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-response-row{
+  flex:0 0 auto!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(150px,42%)!important;
+  gap:8px!important;
+  width:100%!important;
+  margin:2px 0!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-response-select{
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  padding:6px 9px!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(4){
+  flex:1 1 auto!important;
+  min-height:66px!important;
+  height:auto!important;
+  margin:0!important;
+  padding:10px 12px!important;
+  overflow:hidden!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(4)>div{
+  font-size:clamp(6px,.78vw,11px)!important;
+  line-height:1.35!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(5){
+  flex:0 0 auto!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:8px!important;
+  margin:0!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(5)>div{
+  min-width:0!important;
+  padding:7px 8px!important;
+  font-size:clamp(6px,.72vw,10px)!important;
+  white-space:normal!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(6){
+  flex:0 0 auto!important;
+  min-width:0!important;
+  margin:0!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(6)>div{
+  min-width:0!important;
+  font-size:clamp(6px,.72vw,10px)!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
+  flex:0 0 auto!important;
+  margin:0!important;
+  font-size:clamp(5px,.62vw,9px)!important;
+}
+
+/* Localized tabs always replace the baked English tab row. */
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab{
+  background:#05080d!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab span,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab .mac-tab-label{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  padding:2px 4px!important;
+  color:inherit!important;
+  white-space:normal!important;
+  overflow:hidden!important;
+  text-overflow:clip!important;
+  text-align:center!important;
+  line-height:1.03!important;
+  overflow-wrap:anywhere!important;
+}
+
+/* IPHONE / DEMO / IPAD — one opaque localized content layer, no English bleed-through. */
+html:not([data-device-ui-lang="EN"]) #gallery-iphone .iphone-live-preview,
+html:not([data-device-ui-lang="EN"]) #gallery-ipad .ipad-live-preview,
+html:not([data-device-ui-lang="EN"]) #demo .demo-phone-screen,
+html:not([data-device-ui-lang="EN"]) .hero-phone-mock .phone-screen{
+  background:#0d1117!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-iphone .pg-phone-ask-body,
+html:not([data-device-ui-lang="EN"]) #gallery-ipad .ipad-native-ask-head,
+html:not([data-device-ui-lang="EN"]) #demo .pg-phone-ask-body,
+html:not([data-device-ui-lang="EN"]) .hero-phone-mock .pg-phone-ask-body{
+  position:relative!important;
+  z-index:3!important;
+  background:#0d1117!important;
+}
+
+/* Helper link and instructions use one row; long languages wrap safely. */
+html:not([data-device-ui-lang="EN"]) .pg-phone-tips-wrap,
+html:not([data-device-ui-lang="EN"]) #gallery-ipad .ipad-native-help{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  gap:6px!important;
+  align-items:start!important;
+}
+html:not([data-device-ui-lang="EN"]) .pg-phone-how-link,
+html:not([data-device-ui-lang="EN"]) #gallery-ipad .ipad-native-how-link{
+  position:static!important;
+  margin:0!important;
+  width:auto!important;
+  align-self:start!important;
+  white-space:nowrap!important;
+}
+html:not([data-device-ui-lang="EN"]) .pg-phone-tips,
+html:not([data-device-ui-lang="EN"]) #gallery-ipad .ipad-native-help-lines{
+  padding:0!important;
+  min-width:0!important;
+}
+html:not([data-device-ui-lang="EN"]) .pg-phone-tips>div,
+html:not([data-device-ui-lang="EN"]) #gallery-ipad .ipad-native-help-lines>div{
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+}
+
+/* Buttons/actions stay in their own lanes instead of stacking over each other. */
+html:not([data-device-ui-lang="EN"]) .pg-phone-action-row{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:6px!important;
+}
+html:not([data-device-ui-lang="EN"]) .pg-phone-action-row>div{
+  min-width:0!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+html:not([data-device-ui-lang="EN"]) .pg-phone-talk-send,
+html:not([data-device-ui-lang="EN"]) #gallery-ipad .ipad-redesign-talk-send{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:center!important;
+  gap:8px!important;
+}
+html:not([data-device-ui-lang="EN"]) .pg-phone-send,
+html:not([data-device-ui-lang="EN"]) #gallery-ipad .ipad-redesign-send{
+  margin:0!important;
+  min-width:64px!important;
+  text-align:center!important;
+}
+
+/* RTL: only text direction changes; geometry never mirrors or overlaps. */
+html[data-device-ui-lang="AR"] #gallery-mac #macScreen-askanyai .mac-ask-body,
+html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-ask-body,
+html[data-device-ui-lang="AR"] .pg-phone-ask-body,
+html[data-device-ui-lang="HE"] .pg-phone-ask-body,
+html[data-device-ui-lang="AR"] #gallery-ipad .ipad-native-ask-head,
+html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-ask-head{
+  direction:ltr!important;
+}
+html[data-device-ui-lang="AR"] #gallery-mac #macScreen-askanyai .mac-native-ask-title,
+html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-ask-title,
+html[data-device-ui-lang="AR"] #gallery-mac #macScreen-askanyai .mac-native-help-lines,
+html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help-lines,
+html[data-device-ui-lang="AR"] .pg-phone-ask-title,
+html[data-device-ui-lang="HE"] .pg-phone-ask-title,
+html[data-device-ui-lang="AR"] .pg-phone-tips,
+html[data-device-ui-lang="HE"] .pg-phone-tips{
+  direction:rtl!important;
+  unicode-bidi:plaintext!important;
+  text-align:right!important;
+}
+
+/* Phone-size fallback for especially long translations. */
+@media(max-width:640px){
+  html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-stage{
+    top:24.4%!important;
+    height:65%!important;
+  }
+  html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-ask-body{
+    padding:9px 12px!important;
+    gap:4px!important;
+  }
+  html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-response-row{
+    grid-template-columns:minmax(0,40%) minmax(0,60%)!important;
+    gap:5px!important;
+  }
+}
+</style>
+
 </body>
 </html>
