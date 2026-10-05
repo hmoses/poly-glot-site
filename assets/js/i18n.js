@@ -1585,6 +1585,31 @@ var cf=document.getElementById('pgChat-lang-flag');if(cf)cf.textContent=flag;
 applyAll(code);
 updateChat(code);
 try{window.dispatchEvent(new CustomEvent('pg:languagechange',{detail:{code:code,flag:flag}}));}catch(e){}
+/* Keep all live device renders synchronized with the global language.
+   i18n.js is the source of truth for the global selector, so retry after
+   dependent device-localization scripts finish loading. */
+(function syncDeviceSurfaces(selectedCode){
+  var tries=0;
+  function run(){
+    tries++;
+    try{
+      if(window._pgDeviceUI&&typeof window._pgDeviceUI.apply==='function'){
+        window._pgDeviceUI.apply(selectedCode);
+      }
+      if(typeof window._pgGlobalDeviceSyncV6==='function'){
+        window._pgGlobalDeviceSyncV6();
+      }
+      if(typeof window.__pgSiteLocalizeAllVisible==='function'){
+        window.__pgSiteLocalizeAllVisible();
+      }
+      if(typeof window.__polyglotSiteDeviceLocalizeAllVisible==='function'){
+        window.__polyglotSiteDeviceLocalizeAllVisible();
+      }
+    }catch(e){}
+    if(tries<10)setTimeout(run,tries<4?60:180);
+  }
+  run();
+})(code);
 try{localStorage.setItem('pgLang',code);}catch(e){}
 }
 
