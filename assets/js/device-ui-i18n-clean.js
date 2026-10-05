@@ -94,20 +94,102 @@ function roots(){return [document.querySelector(".hero-phone-mock"),document.get
 var exact={
  "Ask Any AI":"ask","Templates":"templates","1,000+ Templates":"templates","How to Use":"how","History":"history","Paste":"paste","Import":"import","Scan":"scan","Talk":"talk","Send":"send","Send to AI":"send","Clear All":"clearAll","Prompt History":"promptHistory","Your recent prompts & favorites":"recent","All":"all","Clear":"clear","Copy":"copy","Re-edit":"reedit","How it works":"howWorks","AI will respond in:":"outputLabel","Compare Mode":"compare","Choose AI":"compareSelect","Select AIs to compare":"compareSelect","Send to Selected":"compareSend","Search templates...":"search","Search templates…":"search"
 };
+var _pgOriginalText=new WeakMap();
 function localizeText(root,S){
   var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[],node;
   while((node=w.nextNode()))nodes.push(node);
   nodes.forEach(function(n){
     if(!n.parentElement||/^(SCRIPT|STYLE)$/i.test(n.parentElement.tagName))return;
-    var raw=n.nodeValue||"",t=raw.trim(); if(!t)return;
+    if(!_pgOriginalText.has(n))_pgOriginalText.set(n,n.nodeValue||"");
+    var raw=_pgOriginalText.get(n)||"",t=raw.trim(); if(!t)return;
     var icon=(t.match(/^[^\p{L}\p{N}]*/u)||[""])[0],body=t.slice(icon.length);
     var k=exact[body]||exact[t];
     if(k&&S[k]){
       var lead=(raw.match(/^\s*/)||[""])[0],tail=(raw.match(/\s*$/)||[""])[0];
       n.nodeValue=lead+icon+S[k]+tail;
+    }else{
+      n.nodeValue=raw;
     }
   });
 }
+function syncAllTabLabels(S,M){
+  var values=[S.ask,S.templates,S.how,S.history];
+
+  function applyTabs(container){
+    if(!container)return;
+    var spans=Array.from(container.children).filter(function(el){return el&&el.tagName});
+    if(spans.length<4)return;
+    var icons=["✏️ ","📋 ","📖 ","🕐 "];
+    spans.slice(0,4).forEach(function(el,i){
+      var txt=(el.textContent||"").trim();
+      var originalIcon=(txt.match(/^[^\p{L}\p{N}]*/u)||[""])[0];
+      el.textContent=(originalIcon||icons[i])+values[i];
+    });
+  }
+
+  document.querySelectorAll(".iphone-ask-tabs,.demo-ask-tabs,.history-preview .hp-tabs,.pgl-tabs,.pgdsl-tabs").forEach(applyTabs);
+
+  document.querySelectorAll("#gallery-ipad .ipad-live-preview").forEach(function(root){
+    var tabbar=root.children&&root.children[2];
+    if(tabbar)applyTabs(tabbar);
+  });
+
+  var hero=document.querySelector(".hero-phone-mock .phone-screen");
+  if(hero&&hero.children&&hero.children[2])applyTabs(hero.children[2]);
+
+  document.querySelectorAll(".history-preview").forEach(function(root){
+    var badge=root.querySelector(".hp-lang"); if(badge)badge.textContent=M.flag+" "+M.code.replace("_","-");
+    setText(root.querySelector(".hp-h"),S.promptHistory||S.history);
+    setText(root.querySelector(".hp-note"),S.recent);
+    var pills=root.querySelectorAll(".hp-actions .hp-pill");
+    if(pills[0])pills[0].textContent=S.all;
+    if(pills[1])pills[1].textContent=S.clear;
+    root.querySelectorAll(".hp-card-title").forEach(function(el){
+      var base=el.getAttribute("data-pg-base");
+      if(!base){base=(el.textContent||"").trim();el.setAttribute("data-pg-base",base)}
+      if(base==="Ask Any AI"||base==="Frag jede KI"||base==="Vraag het aan elke AI"||base==="问任何AI")el.textContent=S.ask;
+      else el.textContent=base;
+    });
+    root.querySelectorAll(".hp-buttons").forEach(function(row){
+      var btns=row.querySelectorAll(".hp-btn");
+      if(btns[0])btns[0].textContent=S.copy;
+      if(btns[1])btns[1].textContent=S.reedit;
+    });
+  });
+
+  document.querySelectorAll("#gallery-mac .mac-history-preview").forEach(function(root){
+    setText(root.querySelector(".mac-history-heading"),S.promptHistory||S.history);
+    setText(root.querySelector(".mac-history-note"),S.recent);
+    var pills=root.querySelectorAll(".mac-history-actions .mac-history-pill");
+    if(pills[0])pills[0].textContent=S.all;
+    if(pills[1])pills[1].textContent=S.clear;
+    root.querySelectorAll(".mac-history-card-title").forEach(function(el){
+      var base=el.getAttribute("data-pg-base");
+      if(!base){base=(el.textContent||"").trim();el.setAttribute("data-pg-base",base)}
+      if(base==="Ask Any AI"||base==="Frag jede KI"||base==="Vraag het aan elke AI"||base==="问任何AI")el.textContent=S.ask;
+      else el.textContent=base;
+    });
+    root.querySelectorAll(".mac-history-buttons").forEach(function(row){
+      var btns=row.querySelectorAll(".mac-history-btn");
+      if(btns[0])btns[0].textContent=S.copy;
+      if(btns[1])btns[1].textContent=S.reedit;
+    });
+  });
+
+  document.querySelectorAll(".pg-phone-action-row,.ipad-redesign-actions").forEach(function(row){
+    var items=row.children||[];
+    if(items[0])items[0].innerHTML="📋 <strong>"+S.paste+"</strong>";
+    if(items[1])items[1].innerHTML="📄 <strong>"+S.import+"</strong>";
+    if(items[2])items[2].innerHTML="📷 <strong>"+S.scan+"</strong>";
+  });
+
+  document.querySelectorAll(".pg-phone-talk,.ipad-redesign-talk").forEach(function(el){
+    var spans=el.querySelectorAll("span"); if(spans.length)spans[spans.length-1].textContent=S.talk;
+  });
+  document.querySelectorAll(".pg-phone-send,.ipad-redesign-send").forEach(function(el){el.textContent=S.send});
+  document.querySelectorAll(".pg-phone-clear,.ipad-redesign-clear").forEach(function(el){el.textContent="🗑 "+S.clearAll});
+}
+
 function composed(root,S){
  root.querySelectorAll(".pg-phone-tips,.ipad-native-help-lines,.mac-native-help-lines,.demo-ask-description").forEach(function(box){
    var l=box.children;
@@ -301,7 +383,7 @@ function duo(S,M,c){
 function apply(code){
  var c=norm(code||current()),S=strings(c),M=meta(c);
  roots().forEach(function(r){localizeText(r,S);composed(r,S);badge(r,M);r.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr")});
- staticScreens(S,M,c);macOverlay(S,M,c);syncPlainBadges(S,M);siteLabels(S,M,c);languageDemoOverlay(S,M,c);duo(S,M,c);
+ staticScreens(S,M,c);macOverlay(S,M,c);syncPlainBadges(S,M);syncAllTabLabels(S,M);siteLabels(S,M,c);languageDemoOverlay(S,M,c);duo(S,M,c);
  document.documentElement.setAttribute("data-device-ui-lang",c);
 }
 var css=document.createElement("style");css.textContent=
