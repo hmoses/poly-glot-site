@@ -9410,5 +9410,72 @@ html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-localized-device{
 }
 </style>
 
+
+<style>
+/* ===== IPHONE DUO — TEXT-ONLY LOCALIZATION ON EXACT ENGLISH RENDER v5 ===== */
+#iphone-duo .duo-localized-device{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+}
+#iphone-duo .duo-static-en{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  width:100%!important;
+  height:auto!important;
+}
+#iphone-duo .duo-localized-overlay.duo-text-only{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:20!important;
+  pointer-events:none!important;
+  background:transparent!important;
+  container-type:inline-size;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",sans-serif;
+}
+#iphone-duo .duo-text-only .duo-loc{
+  position:absolute;
+  display:block;
+  box-sizing:border-box;
+  overflow:hidden;
+  color:#eaf0f7;
+  background:#071018;
+  line-height:1.22;
+}
+/* left screen */
+#iphone-duo .duo-text-only .badge{left:45.1%;top:19.2%;width:4.6%;height:2.1%;font-size:.58cqw;text-align:center;padding:.28cqw .12cqw;border-radius:.28cqw;background:#172130}
+#iphone-duo .duo-text-only .tab{top:23.7%;height:2.65%;font-size:.55cqw;text-align:center;padding:.45cqw .05cqw;white-space:nowrap;text-overflow:ellipsis}
+#iphone-duo .duo-text-only .ask{left:24.7%;width:6.8%;color:#d946ef}
+#iphone-duo .duo-text-only .templates{left:31.5%;width:6.4%}
+#iphone-duo .duo-text-only .how{left:37.9%;width:6.5%}
+#iphone-duo .duo-text-only .history{left:44.4%;width:5.5%}
+#iphone-duo .duo-text-only .compare-title{left:25.1%;top:28.8%;width:13.0%;height:2.5%;font-size:.8cqw;font-weight:800;padding:.35cqw .3cqw}
+#iphone-duo .duo-text-only .compare-sub{left:25.1%;top:31.4%;width:23.0%;height:3.5%;font-size:.53cqw;color:#9aa5b6;padding:.18cqw .3cqw}
+#iphone-duo .duo-text-only .prompt-label{left:25.1%;top:36.4%;width:10.2%;height:1.8%;font-size:.5cqw;font-weight:700;padding:.18cqw .22cqw}
+#iphone-duo .duo-text-only .prompt{left:25.1%;top:38.6%;width:23.1%;height:5.6%;font-size:.61cqw;padding:.7cqw .65cqw;border-radius:.35cqw;background:#172334}
+#iphone-duo .duo-text-only .select-label{left:25.1%;top:45.6%;width:13.6%;height:1.8%;font-size:.5cqw;font-weight:700;padding:.18cqw .22cqw}
+#iphone-duo .duo-text-only .send{left:25.0%;top:76.5%;width:23.6%;height:4.15%;font-size:.6cqw;font-weight:800;text-align:center;padding:1.08cqw .2cqw;border-radius:.35cqw;color:#fff;background:linear-gradient(90deg,#6d28d9,#8b5cf6)}
+/* response screens */
+#iphone-duo .duo-text-only .model-sub{top:22.8%;height:1.6%;font-size:.48cqw;color:#8995a8;padding:.18cqw .1cqw}
+#iphone-duo .duo-text-only .model-sub-a{left:55.2%;width:7.0%}
+#iphone-duo .duo-text-only .model-sub-b{left:73.4%;width:7.0%}
+#iphone-duo .duo-text-only .response{top:27.6%;height:43.5%;font-size:.60cqw;line-height:1.42;color:#cbd4df;padding:.35cqw .45cqw}
+#iphone-duo .duo-text-only .response-a{left:51.5%;width:15.6%}
+#iphone-duo .duo-text-only .response-b{left:69.7%;width:15.6%}
+#iphone-duo .duo-text-only .actions{top:76.4%;height:3.6%;font-size:.45cqw;text-align:center;padding:.95cqw .1cqw;color:#dfe6ef;white-space:nowrap}
+#iphone-duo .duo-text-only .actions-a{left:51.4%;width:15.8%}
+#iphone-duo .duo-text-only .actions-b{left:69.6%;width:15.8%}
+/* RTL languages keep the exact geometry; only text direction changes. */
+#iphone-duo .duo-text-only[dir="rtl"] .duo-loc{direction:rtl;text-align:right}
+#iphone-duo .duo-text-only[dir="rtl"] .badge,
+#iphone-duo .duo-text-only[dir="rtl"] .tab,
+#iphone-duo .duo-text-only[dir="rtl"] .send,
+#iphone-duo .duo-text-only[dir="rtl"] .actions{text-align:center}
+</style>
+
 </body>
 </html>
