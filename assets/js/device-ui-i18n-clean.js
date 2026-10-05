@@ -434,8 +434,7 @@ function duo(S,M,c){
     }catch(e){return fb}
   };
 
-  /* Localize only the copy around the Duo render. The device/Xcode render is
-     intentionally identical in every language. */
+  /* Localize section copy. */
   var kicker=root.querySelector(".duo-kicker");
   var titleA=root.querySelector('[data-i18n="duoTitleA"]');
   var titleB=root.querySelector('[data-i18n="duoTitleB"]');
@@ -453,21 +452,12 @@ function duo(S,M,c){
   root.setAttribute("lang",c.toLowerCase().replace("_","-"));
   root.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr");
 
-  /* Exact same Duo render for EN + all localized languages. */
+  /* Keep the exact English Xcode/device image for every language. */
   var image=root.querySelector(".duo-static-en");
   if(image){
     image.style.display="block";
     image.style.visibility="visible";
     image.style.opacity="1";
-  }
-
-  var overlay=root.querySelector(".duo-localized-overlay");
-  if(overlay){
-    overlay.innerHTML="";
-    overlay.classList.remove("duo-text-parity");
-    overlay.style.display="none";
-    overlay.style.visibility="hidden";
-    overlay.style.opacity="0";
   }
 
   var localizedDevice=root.querySelector(".duo-localized-device");
@@ -476,6 +466,49 @@ function duo(S,M,c){
     localizedDevice.style.visibility="hidden";
     localizedDevice.style.opacity="0";
   }
+
+  /* Text-only overlay: same UI geometry as English, localized words only. */
+  var overlay=root.querySelector(".duo-localized-overlay");
+  if(!overlay)return;
+  overlay.innerHTML="";
+  if(c==="EN"){
+    overlay.style.display="none";
+    overlay.style.visibility="hidden";
+    overlay.style.opacity="0";
+    return;
+  }
+
+  var prompt=gt("sc2Prompt",S.promptExample||"Explain quantum computing in simple terms.");
+  var responseA=gt("sc2P",S.compareHelp||"Compare responses side by side.");
+  var responseB=gt("sc2PickSub",S.responds||"Response");
+  var selected=S.compareSend||"Send to Selected";
+  var dir=(c==="AR"||c==="HE")?"rtl":"ltr";
+
+  overlay.style.display="block";
+  overlay.style.visibility="visible";
+  overlay.style.opacity="1";
+  overlay.className="duo-localized-overlay duo-text-only";
+  overlay.setAttribute("lang",c.toLowerCase().replace("_","-"));
+  overlay.setAttribute("dir",dir);
+
+  overlay.innerHTML=
+    '<span class="duo-loc badge">'+M.flag+' '+M.code.replace("_","-")+'</span>'+
+    '<span class="duo-loc tab ask">✏️ '+S.ask+'</span>'+
+    '<span class="duo-loc tab templates">📋 '+S.templates+'</span>'+
+    '<span class="duo-loc tab how">📖 '+S.how+'</span>'+
+    '<span class="duo-loc tab history">🕐 '+S.history+'</span>'+
+    '<span class="duo-loc compare-title">🔀 '+S.compare+'</span>'+
+    '<span class="duo-loc compare-sub">'+S.compareHelp+'</span>'+
+    '<span class="duo-loc prompt-label">'+(S.promptIntro||S.ask)+'</span>'+
+    '<span class="duo-loc prompt">'+prompt+'</span>'+
+    '<span class="duo-loc select-label">'+(S.compareSelect||S.compare)+'</span>'+
+    '<span class="duo-loc send">✈ '+selected+' (2)</span>'+
+    '<span class="duo-loc model-sub model-sub-a">'+S.response+'</span>'+
+    '<span class="duo-loc model-sub model-sub-b">'+S.response+'</span>'+
+    '<span class="duo-loc response response-a">'+responseA+' '+responseB+'</span>'+
+    '<span class="duo-loc response response-b">'+responseA+' '+responseB+'</span>'+
+    '<span class="duo-loc actions actions-a">'+S.copy+'　 '+S.read+'　 '+S.share+'　 '+S.save+'</span>'+
+    '<span class="duo-loc actions actions-b">'+S.copy+'　 '+S.read+'　 '+S.share+'　 '+S.save+'</span>';
 }
 
 function heroMacTextOverlay(S,M,c){
