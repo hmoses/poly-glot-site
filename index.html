@@ -5786,7 +5786,7 @@ function _demoStart() {
 
 <!-- Global i18n — 38 languages, same flags as the app -->
 <script src="assets/js/i18n.js?v=global-sync-v14"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v23"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v24"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
 
@@ -10936,6 +10936,141 @@ html[data-device-ui-lang="AR"] #gallery-mac .pgmc-prompt,
 html[data-device-ui-lang="HE"] #gallery-mac .pgmc-prompt{
   direction:rtl!important;
   unicode-bidi:plaintext!important;
+  text-align:right!important;
+}
+</style>
+
+
+<style>
+/* ===== FULL MAC SCREEN LOCALIZATION MASK v33 =====
+   Match the approved English Mac render exactly; only text changes per locale. */
+html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-canonical-localized{
+  left:6.6%!important;
+  top:3.8%!important;
+  width:86.8%!important;
+  height:80.8%!important;
+  grid-template-rows:7.4% 10.8% 8.8% 73%!important;
+  background:#080b10!important;
+  border-radius:7px 7px 5px 5px!important;
+}
+#gallery-mac .pgmc-window-title{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:0!important;
+  background:#0a0e14!important;
+  border-bottom:1px solid rgba(255,255,255,.06)!important;
+  color:#9aa4b5!important;
+  font-size:clamp(7px,.78vw,11px)!important;
+  font-weight:650!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+#gallery-mac .pgmc-head{
+  padding:0 4.2%!important;
+  gap:9px!important;
+  background:#080b10!important;
+}
+#gallery-mac .pgmc-head img{
+  width:25px!important;
+  height:25px!important;
+  border-radius:6px!important;
+}
+#gallery-mac .pgmc-head strong{
+  font-size:clamp(8px,.94vw,13px)!important;
+}
+#gallery-mac .pgmc-head>span{
+  padding:4px 7px!important;
+  font-size:clamp(6px,.73vw,10px)!important;
+}
+#gallery-mac .pgmc-tabs{
+  height:auto!important;
+}
+#gallery-mac .pgmc-tabs span{
+  font-size:clamp(6px,.75vw,10px)!important;
+  padding:0 4px!important;
+}
+#gallery-mac .pgmc-body{
+  padding:2.8% 4.2%!important;
+}
+#gallery-mac .pgmc-ask{
+  grid-template-rows:auto auto auto minmax(70px,1fr) auto auto!important;
+  gap:6px!important;
+}
+#gallery-mac .pgmc-title-row h3{
+  font-size:clamp(11px,1.25vw,17px)!important;
+}
+#gallery-mac .pgmc-help{
+  font-size:clamp(6px,.67vw,9.5px)!important;
+  line-height:1.32!important;
+}
+#gallery-mac .pgmc-output{
+  grid-template-columns:minmax(0,1fr) minmax(160px,39%)!important;
+}
+#gallery-mac .pgmc-output>strong{
+  padding:6px 9px!important;
+}
+#gallery-mac .pgmc-prompt{
+  min-height:70px!important;
+  padding:9px 12px!important;
+  font-size:clamp(6px,.7vw,10px)!important;
+}
+#gallery-mac .pgmc-actions span{
+  padding:6px 8px!important;
+}
+#gallery-mac .pgmc-send{
+  padding:7px 24px!important;
+}
+
+/* Completely suppress every original English live layer beneath localized Mac UI. */
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-stage,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-inline-overlay{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-base{
+  z-index:1!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-canonical-localized{
+  z-index:500!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots{
+  left:6.6%!important;
+  top:22.0%!important;
+  width:86.8%!important;
+  height:7.1%!important;
+  z-index:600!important;
+  background:transparent!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab{
+  background:transparent!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab::after{
+  display:none!important;
+}
+
+/* RTL keeps exact English geometry; only text flow changes. */
+html[data-device-ui-lang="AR"] #gallery-mac .pgmc-head,
+html[data-device-ui-lang="HE"] #gallery-mac .pgmc-head,
+html[data-device-ui-lang="AR"] #gallery-mac .pgmc-tabs,
+html[data-device-ui-lang="HE"] #gallery-mac .pgmc-tabs,
+html[data-device-ui-lang="AR"] #gallery-mac .pgmc-output,
+html[data-device-ui-lang="HE"] #gallery-mac .pgmc-output,
+html[data-device-ui-lang="AR"] #gallery-mac .pgmc-actions,
+html[data-device-ui-lang="HE"] #gallery-mac .pgmc-actions,
+html[data-device-ui-lang="AR"] #gallery-mac .pgmc-bottom,
+html[data-device-ui-lang="HE"] #gallery-mac .pgmc-bottom{
+  direction:ltr!important;
+}
+html[data-device-ui-lang="AR"] #gallery-mac .pgmc-title-row h3,
+html[data-device-ui-lang="HE"] #gallery-mac .pgmc-title-row h3,
+html[data-device-ui-lang="AR"] #gallery-mac .pgmc-help,
+html[data-device-ui-lang="HE"] #gallery-mac .pgmc-help,
+html[data-device-ui-lang="AR"] #gallery-mac .pgmc-prompt,
+html[data-device-ui-lang="HE"] #gallery-mac .pgmc-prompt{
+  direction:rtl!important;
   text-align:right!important;
 }
 </style>
