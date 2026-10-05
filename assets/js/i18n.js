@@ -42,8 +42,7 @@ var LANGS=[
 {code:"SK",flag:"🇸🇰",name:"Slovak"},
 {code:"HR",flag:"🇭🇷",name:"Croatian"},
 {code:"CA",flag:"🇪🇸",name:"Catalan"},
-{code:"AF",flag:"🇿🇦",name:"Afrikaans"}
-
+{code:"AF",flag:"🇿🇦",name:"Afrikaans"},
 {code:"SW",flag:"🇰🇪",name:"Swahili"},
 {code:"HA",flag:"🇳🇬",name:"Hausa"},
 {code:"AM",flag:"🇪🇹",name:"Amharic"},];
