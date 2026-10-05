@@ -1561,6 +1561,7 @@ var wrap=document.createElement('div');wrap.id='pgGlobalLangPicker';
 var btn=document.createElement('div');btn.id='pgGlobalLangBtn';btn.title='Change language';
 btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="pgGlobalFlag">\u{1F1FA}\u{1F1F8}</span><span id="pgGlobalCode">EN</span>';
 var dd=document.createElement('div');dd.id='pgGlobalLangDD';
+var hdr=document.createElement('div');hdr.className='pgGlob-head';hdr.textContent=LANGS.length+' languages';dd.appendChild(hdr);
 wrap.appendChild(btn);wrap.appendChild(dd);
 LANGS.forEach(function(L){
 var r=document.createElement('div');r.className='pgGlob-row'+(L.code==='EN'?' active':'');
@@ -1696,9 +1697,10 @@ css.textContent='#pgGlobalLangPicker{position:fixed;bottom:24px;left:24px;z-inde
 +'#pgGlobalLangBtn:hover{transform:scale(1.05);box-shadow:0 6px 28px rgba(0,0,0,0.5);border-color:rgba(125,211,252,0.25)}'
 +'#pgGlobalLangBtn svg{color:var(--text-muted,rgba(255,255,255,0.5))}'
 +'#pgGlobalFlag{font-size:1rem}#pgGlobalCode{color:#7dd3fc;font-family:"Fira Code",monospace;font-weight:700}'
-+'#pgGlobalLangDD{display:none;position:absolute;bottom:44px;left:0;width:260px;max-height:420px;overflow-y:auto;background:var(--bg-surface,#161b22);border:1px solid var(--border,rgba(255,255,255,0.08));border-radius:12px;padding:6px;box-shadow:0 12px 48px rgba(0,0,0,0.7);scrollbar-width:thin;scrollbar-color:rgba(125,211,252,0.15) transparent}'
++'#pgGlobalLangDD{display:none;position:absolute;bottom:44px;left:0;width:270px;max-height:min(70vh,620px);overflow-y:auto;background:var(--bg-surface,#161b22);border:1px solid var(--border,rgba(255,255,255,0.08));border-radius:12px;padding:6px;box-shadow:0 12px 48px rgba(0,0,0,0.7);scrollbar-width:thin;scrollbar-color:rgba(125,211,252,0.15) transparent}'
 +'#pgGlobalLangDD::-webkit-scrollbar{width:4px}#pgGlobalLangDD::-webkit-scrollbar-thumb{background:rgba(125,211,252,0.15);border-radius:2px}'
 +'#pgGlobalLangDD.open{display:block}'
++'.pgGlob-head{position:sticky;top:0;z-index:2;padding:8px 10px 7px;background:var(--bg-surface,#161b22);border-bottom:1px solid rgba(255,255,255,.07);font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7dd3fc}'
 +'.pgGlob-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:0.82rem;color:#e8ecf4;transition:background 0.12s;border:1px solid transparent}'
 +'.pgGlob-row:hover{background:rgba(125,211,252,0.08)}'
 +'.pgGlob-row.active{background:rgba(124,58,237,0.15);border-color:rgba(124,58,237,0.3)}'
