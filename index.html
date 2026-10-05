@@ -9127,5 +9127,57 @@ function _demoStart() {
 html:not([data-device-ui-lang="EN"]) #iphone-duo .duo-localized-overlay{display:block;}
 </style>
 
+
+<style>
+/* ===== MAC LOCALIZED SINGLE ACTIVE HIGHLIGHT — FINAL OVERRIDE ===== */
+/* In localized Mac mode, the live overlay owns the visible tab styling.
+   Hotspot buttons remain clickable but completely invisible so they cannot
+   draw a second yellow border/highlight over the localized tab row. */
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+  z-index:160!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab.active,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab:not(.active){
+  background:transparent!important;
+  border:0!important;
+  border-bottom:0!important;
+  box-shadow:none!important;
+  color:transparent!important;
+  outline:0!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab::before,
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab::after{
+  content:none!important;
+  display:none!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab span{
+  opacity:0!important;
+  color:transparent!important;
+  text-shadow:none!important;
+}
+/* The localized overlay draws the one and only selected state. */
+html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-full-overlay .pgdsl-tabs .active{
+  color:#f59e0b!important;
+  border:0!important;
+  border-bottom:2px solid #f59e0b!important;
+  background:rgba(245,158,11,.08)!important;
+  box-shadow:none!important;
+}
+html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-full-overlay .pgdsl-tabs span:not(.active){
+  border:0!important;
+  border-bottom:2px solid transparent!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+</style>
+
 </body>
 </html>
