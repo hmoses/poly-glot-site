@@ -147,11 +147,38 @@ function macOverlay(S,M,c){
  var old=host.querySelector(".pg-mac-full-overlay");
  if(c==="EN"){if(old)old.remove();return}
  if(!old){old=document.createElement("div");old.className="pg-mac-full-overlay";host.appendChild(old)}
- old.innerHTML='<div class="pgdsl-head"><img src="assets/img/icon-128.png" alt=""><strong>Poly-Glot AI Workspace</strong><span class="pgdsl-badge">'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+
- '<div class="pgdsl-tabs"><span class="active">✏️ '+S.ask+'</span><span>📋 '+S.templates+'</span><span>📖 '+S.how+'</span><span>🕐 '+S.history+'</span></div>'+
- '<div class="pgmac-body"><h3>🤔 '+S.ask+'</h3><div class="pgmac-help"><div>✏️ '+S.typeLine+'</div><div>🏳️ '+S.appLang+' ⬆️ '+S.changesMenus+'</div><div>🌐 '+S.outputLang+' ⬇️ '+S.responds+'</div><div>🔀 '+S.compare+': '+S.compareHelp+'</div></div><div class="pgmac-output">'+S.outputLabel+' <strong>'+M.name+'</strong></div><div class="pgmac-prompt">'+S.promptIntro+'<br><br>'+S.promptExample+'</div><div class="pgmac-actions"><span>📋 '+S.paste+'</span><span>📄 '+S.import+'</span></div><div class="pgmac-bottom"><span>🎤 '+S.talk+'</span><b>'+S.send+'</b></div><small>🗑 '+S.clearAll+'</small></div>';
+
+ var active=document.querySelector("#gallery-mac .mac-reference-tab.active");
+ var id=active&&active.id||"macTab-askanyai";
+ var type=id.indexOf("templates")>-1?"templates":id.indexOf("howtouse")>-1?"how":id.indexOf("history")>-1?"history":"ask";
+ var tabs='<div class="pgdsl-tabs">'+
+   '<span class="'+(type==="ask"?"active":"")+'">✏️ '+S.ask+'</span>'+
+   '<span class="'+(type==="templates"?"active":"")+'">📋 '+S.templates+'</span>'+
+   '<span class="'+(type==="how"?"active":"")+'">📖 '+S.how+'</span>'+
+   '<span class="'+(type==="history"?"active":"")+'">🕐 '+S.history+'</span></div>';
+
+ var body="";
+ if(type==="templates"){
+   body='<div class="pgmac-body"><h3>📋 '+S.templates+'</h3><div class="pgdsl-search">🔎 '+S.search+'</div><div class="pgmac-template-grid">'+
+     '<div><b>'+S.templates+' 01</b><small>AI</small></div><div><b>'+S.templates+' 02</b><small>AI</small></div><div><b>'+S.templates+' 03</b><small>AI</small></div>'+
+     '<div><b>'+S.templates+' 04</b><small>AI</small></div><div><b>'+S.templates+' 05</b><small>AI</small></div><div><b>'+S.templates+' 06</b><small>AI</small></div></div></div>';
+ }else if(type==="how"){
+   body='<div class="pgmac-body"><h3>📖 '+S.how+'</h3>'+
+     '<div class="pgdsl-step">1 · '+S.typeLine+'</div>'+
+     '<div class="pgdsl-step">2 · '+S.appLang+' — '+S.changesMenus+'</div>'+
+     '<div class="pgdsl-step">3 · '+S.outputLang+' — '+S.responds+'</div>'+
+     '<div class="pgdsl-step">4 · '+S.compare+' — '+S.compareHelp+'</div></div>';
+ }else if(type==="history"){
+   body='<div class="pgmac-body"><div class="pgmac-history-head"><div><h3>🕐 '+(S.promptHistory||S.history)+'</h3><small>'+S.recent+'</small></div><div><span>'+S.all+'</span><span>'+S.clear+'</span></div></div>'+
+     '<div class="pgmac-history-grid"><div><b>'+S.ask+'</b><small>5m</small><p>Test</p><span>'+S.copy+'</span><span>'+S.reedit+'</span></div>'+
+     '<div><b>'+S.ask+'</b><small>12m</small><p>Test</p><span>'+S.copy+'</span><span>'+S.reedit+'</span></div>'+
+     '<div><b>'+S.ask+'</b><small>19m</small><p>Test</p><span>'+S.copy+'</span><span>'+S.reedit+'</span></div></div></div>';
+ }else{
+   body='<div class="pgmac-body"><h3>🤔 '+S.ask+'</h3><div class="pgmac-help"><div>✏️ '+S.typeLine+'</div><div>🏳️ '+S.appLang+' ⬆️ '+S.changesMenus+'</div><div>🌐 '+S.outputLang+' ⬇️ '+S.responds+'</div><div>🔀 '+S.compare+': '+S.compareHelp+'</div></div><div class="pgmac-output">'+S.outputLabel+'</div><div class="pgmac-prompt">'+S.promptIntro+'<br><br>'+S.promptExample+'</div><div class="pgmac-actions"><span>📋 '+S.paste+'</span><span>📄 '+S.import+'</span></div><div class="pgmac-bottom"><span>🎤 '+S.talk+'</span><b>'+S.send+'</b></div><small>🗑 '+S.clearAll+'</small></div>';
+ }
+ old.innerHTML='<div class="pgdsl-head"><img src="assets/img/icon-128.png" alt=""><strong>Poly-Glot AI Workspace</strong><span class="pgdsl-badge">'+M.flag+' '+M.code.replace("_","-")+'</span></div>'+tabs+body;
  var hint=document.querySelector("#macTabHint span");if(hint)hint.textContent="👇 "+S.ask+" · "+S.templates+" · "+S.how+" · "+S.history;
- var label=document.getElementById("macTabLabel");if(label)label.textContent=S.ask;
+ var label=document.getElementById("macTabLabel");if(label)label.textContent=type==="templates"?S.templates:type==="how"?S.how:type==="history"?S.history:S.ask+" — "+S.typeLine;
 }
 
 function syncPlainBadges(S,M){
@@ -194,10 +221,7 @@ function siteLabels(S,M,c){
   if(cur)cur.textContent="🌍 "+M.flag+" "+M.code.replace("_","-");
 
   var replay=document.querySelector("#demo .demo-replay-btn");
-  if(replay){
-    var r={RU:"↻ Повторить демо",ZH:"↻ 重播演示",ZH_TW:"↻ 重播示範",JA:"↻ デモを再生",KO:"↻ 데모 다시보기",AR:"↻ إعادة العرض",ES:"↻ Repetir demo",FR:"↻ Rejouer la démo",DE:"↻ Demo wiederholen",IT:"↻ Ripeti demo",PT:"↻ Repetir demonstração"}[c];
-    if(r)replay.textContent=S.replay||"↻ Replay Demo";
-  }
+  if(replay)replay.textContent=S.replay||"↻ Replay Demo";
 }
 
 function languageDemoOverlay(S,M,c){
@@ -217,16 +241,34 @@ function languageDemoOverlay(S,M,c){
 
 function duo(S,M,c){
   var root=document.getElementById("iphone-duo");if(!root)return;
-  var gt=function(k,fb){try{var v=window._pgI18n&&window._pgI18n.gt?window._pgI18n.gt(k,c.replace("_","-")):"";return v&&v!==k?v:fb}catch(e){return fb}};
+  var gt=function(k,fb){
+    try{
+      var v=window._pgI18n&&window._pgI18n.gt?window._pgI18n.gt(k,c.replace("_","-")):"";
+      return v&&v!==k?v:fb;
+    }catch(e){return fb}
+  };
   var kicker=root.querySelector(".duo-kicker");if(kicker)kicker.textContent=gt("mcpGptBadge","Coming Soon");
   var title=root.querySelector("#duo-title");if(title)title.innerHTML='Poly-Glot<br><span>iPhone Duo</span>';
   var copy=root.querySelector(".duo-copy");if(copy)copy.textContent=gt("sc2P","Send the same prompt to multiple AI apps and compare their responses side by side.");
+  var metaBox=root.querySelector(".duo-meta");
+  if(metaBox){
+    var link=metaBox.querySelector("a");
+    var available=gt("platAvail","Available Now");
+    if(metaBox.firstChild)metaBox.firstChild.nodeValue='iPhone Duo · 2026-10-23 · '+available+'. ';
+    if(link)link.textContent='Apple · iPhone Duo';
+  }
   var badge=root.querySelector(".duo-lang-badge");if(badge)badge.textContent=M.flag+" "+M.code.replace("_","-");
   var tab=root.querySelector(".duo-ui .tabline");if(tab)tab.textContent="✏️ "+S.ask;
   var ct=root.querySelector(".duo-ui h3");if(ct)ct.textContent="🔀 "+S.compare;
   var cs=root.querySelector(".duo-ui h3 + .muted");if(cs)cs.textContent=S.compareSelect;
+  var prompt=root.querySelector(".duo-ui .prompt");if(prompt)prompt.textContent=gt("sc2Prompt",S.promptExample);
   var send=root.querySelector(".duo-send");if(send)send.textContent=S.compareSend;
-  var response=root.querySelector(".duo-response-head .muted");if(response)response.textContent=S.response||"Response"; var acts=root.querySelectorAll(".duo-actions span"); var av=[S.copy,S.read,S.share,S.save]; acts.forEach(function(el,i){if(av[i])el.textContent=av[i]});
+  var response=root.querySelector(".duo-response-head .muted");if(response)response.textContent=S.response||"Response";
+  var ps=root.querySelectorAll(".duo-response p");
+  if(ps[0])ps[0].textContent=gt("sc2Prompt",S.promptIntro);
+  if(ps[1])ps[1].textContent=gt("sc2PickSub",S.compareHelp);
+  var acts=root.querySelectorAll(".duo-actions span"), av=[S.copy,S.read,S.share,S.save];
+  acts.forEach(function(el,i){if(av[i])el.textContent=av[i]});
 }
 
 
@@ -244,5 +286,10 @@ css.textContent+=
 document.head.appendChild(css);
 window._pgDeviceUI={apply:apply,appLanguages:APP_LANGS,_strings:strings};
 window.addEventListener("pg:languagechange",function(e){apply(e.detail&&e.detail.code||current())});
+document.addEventListener("click",function(e){
+  if(e.target&&e.target.closest&&e.target.closest("#gallery-mac .mac-reference-tab")){
+    setTimeout(function(){apply(current())},30);
+  }
+});
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",function(){apply(current())});else apply(current());
 })();
