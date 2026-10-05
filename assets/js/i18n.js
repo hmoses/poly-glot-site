@@ -1621,6 +1621,10 @@ document.body.appendChild(wrap);
 // ===== SET LANGUAGE =====
 function setLang(code,flag){
 curLang=code;
+var rtl=(code==="AR"||code==="HE");
+document.documentElement.setAttribute("lang",code==="ZH_TW"?"zh-Hant":code.toLowerCase().replace("_","-"));
+document.documentElement.setAttribute("dir",rtl?"rtl":"ltr");
+document.body&&document.body.setAttribute("dir",rtl?"rtl":"ltr");
 var gf=document.getElementById('pgGlobalFlag'),gc=document.getElementById('pgGlobalCode');
 if(gf)gf.textContent=flag;if(gc)gc.textContent=code;
 document.querySelectorAll('.pgGlob-row').forEach(function(r){r.classList.toggle('active',r.getAttribute('data-lang')===code);});
@@ -1751,7 +1755,7 @@ document.head.appendChild(css);
 function init(){
 buildPicker();tagAll();
 var saved;try{saved=localStorage.getItem('pgLang');}catch(e){}
-if(saved){if(saved==="ZH-TW")saved="ZH_TW";var L=LANGS.find(function(l){return l.code===saved;});if(L)setLang(L.code,L.flag);}
+if(saved){if(saved==="ZH-TW")saved="ZH_TW";var L=LANGS.find(function(l){return l.code===saved;});if(L)setLang(L.code,L.flag);}else{document.documentElement.setAttribute("dir","ltr");}
 }
 
 // Expose
