@@ -1631,10 +1631,10 @@ var curLang='EN';
 function buildPicker(){
 if(!document.body)return;
 var wrap=document.createElement('div');wrap.id='pgGlobalLangPicker';
-var btn=document.createElement('div');btn.id='pgGlobalLangBtn';btn.title='Change language';
-btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="pgGlobalFlag">\u{1F1FA}\u{1F1F8}</span><span id="pgGlobalCode">EN</span>';
+var btn=document.createElement('button');btn.type='button';btn.id='pgGlobalLangBtn';
+btn.innerHTML='<span id="pgGlobalFlag">\u{1F1FA}\u{1F1F8}</span><span id="pgGlobalCode">EN</span>';
 var dd=document.createElement('div');dd.id='pgGlobalLangDD';
-wrap.appendChild(btn);wrap.appendChild(dd);
+wrap.appendChild(btn);document.body.appendChild(dd);
 LANGS.forEach(function(L){
 var r=document.createElement('div');r.className='pgGlob-row'+(L.code==='EN'?' active':'');
 r.setAttribute('data-lang',L.code);
@@ -1642,8 +1642,8 @@ r.innerHTML='<span class="gf">'+L.flag+'</span><span class="gc">'+L.code+'</span
 r.onclick=function(e){e.stopPropagation();setLang(L.code,L.flag);};
 dd.appendChild(r);
 });
-btn.onclick=function(e){e.stopPropagation();var opening=!dd.classList.contains('open');dd.classList.toggle('open');if(opening){var r=btn.getBoundingClientRect();dd.style.left=r.left+'px';dd.style.top=(r.bottom+6)+'px';setTimeout(function(){var a=dd.querySelector('.pgGlob-row.active');if(a)a.scrollIntoView({block:'center'});},0);}};
-document.addEventListener('click',function(e){if(!wrap.contains(e.target))dd.classList.remove('open');});
+btn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var opening=!dd.classList.contains('open');dd.classList.toggle('open');if(opening){var r=btn.getBoundingClientRect();dd.style.left=Math.max(8,r.left)+'px';dd.style.top=(r.bottom+6)+'px';setTimeout(function(){var a=dd.querySelector('.pgGlob-row.active');if(a)a.scrollIntoView({block:'center'});},0);}});
+document.addEventListener('click',function(e){if(!wrap.contains(e.target)&&!dd.contains(e.target))dd.classList.remove('open');});
 var slot=document.getElementById('pgLangSlot');
 if(slot){slot.appendChild(wrap);}else{var navBrand=document.querySelector('.nav-brand');if(navBrand&&navBrand.parentNode){navBrand.parentNode.insertBefore(wrap,navBrand.nextSibling);}else{document.body.appendChild(wrap);}}
 }
