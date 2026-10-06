@@ -1521,10 +1521,10 @@ img.mac-screen-panel {
   .hero-phone { display: none; }
   .hero-phone-mock {
     display: block;
-    width: 128px;
+    width: 320px;
     right: 0;
     bottom: 0;
-    transform: rotate(2deg);
+    transform: none;
   }
   .hero-screenshot {
     width: 100%;
@@ -1598,15 +1598,15 @@ img.mac-screen-panel {
   }
   .hero-phone-mock {
     display: block !important;
-    width: clamp(96px, 27vw, 132px);
+    width: min(82vw, 320px);
     right: 0;
     bottom: 0;
-    border-radius: 22px;
-    padding: 5px;
-    transform: rotate(2deg);
+    border-radius: 44px;
+    padding: 10px;
+    transform: none;
     box-shadow: 0 14px 34px rgba(0,0,0,.58), 0 0 0 1px rgba(167,139,250,.14);
   }
-  .hero-phone-mock .phone-screen { border-radius: 18px; }
+  .hero-phone-mock .phone-screen { border-radius: 36px; }
 
   .gallery-grid.ipad-grid .gallery-item div[style*="background:#0d0f1a"] { font-size: 80%; }
   .gallery-grid.phone-grid .gallery-item div[style*="background:#0d0f1a"] { font-size: 100%; }
@@ -1625,10 +1625,10 @@ img.mac-screen-panel {
     border-radius: 12px;
   }
   .hero-phone-mock {
-    width: 104px;
+    width: min(78vw, 300px);
     right: 0;
     bottom: 0;
-    transform: rotate(1.5deg);
+    transform: none;
   }
 }
 
@@ -4999,17 +4999,17 @@ function _demoStart() {
   .hero-phone-mock {
     position:relative !important;
     display:block !important;
-    width:min(42vw,172px) !important;
-    max-width:172px !important;
-    aspect-ratio:390 / 844 !important;
+    width:min(82vw,320px) !important;
+    max-width:320px !important;
+    aspect-ratio:auto !important;
     height:auto !important;
     margin:0 auto !important;
     right:auto !important;
     bottom:auto !important;
     transform:none !important;
-    padding:7px !important;
-    border:0 !important;
-    border-radius:34px !important;
+    padding:10px !important;
+    border:3px solid #3a3a3c !important;
+    border-radius:44px !important;
     overflow:hidden !important;
     background:linear-gradient(145deg,#4c5362 0%,#171c26 12%,#070a10 52%,#282f3b 88%,#5a6270 100%) !important;
     box-shadow:0 22px 48px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.18),inset 0 0 0 3px rgba(0,0,0,.5) !important;
@@ -5156,7 +5156,7 @@ function _demoStart() {
 
 @media (max-width: 390px) {
   .hero-screenshot { width:92vw !important; }
-  .hero-phone-mock { width:min(44vw,165px) !important; max-width:165px !important; }
+  .hero-phone-mock { width:min(78vw,300px) !important; max-width:300px !important; }
   #gallery-iphone .iphone-device { width:min(80vw,300px) !important; max-width:300px !important; }
   #gallery-mac .mac-app-tab { font-size:.60rem !important; }
 }
@@ -5222,12 +5222,12 @@ function _demoStart() {
     z-index:2;
   }
   .hero-phone-mock {
-    width:170px;
+    width:320px;
     right:-22px;
     bottom:-34px;
-    border-radius:30px;
-    padding:7px;
-    transform:rotate(2deg);
+    border-radius:44px;
+    padding:10px;
+    transform:none;
   }
 }
 
@@ -5785,8 +5785,8 @@ function _demoStart() {
 <!-- ===== END GLOBAL IMAGE + DEVICE LIGHTBOX ===== -->
 
 <!-- Global i18n — 38 languages, same flags as the app -->
-<script src="assets/js/i18n.js?v=nuclear-v16"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=nuclear-v31"></script>
+<script src="assets/js/i18n.js?v=nuke-v17"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=nuke-v32"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
 
@@ -6010,9 +6010,9 @@ function _demoStart() {
 }
 @media (max-width:640px){
   .hero-phone-mock{
-    width:min(46vw,180px)!important;
-    max-width:180px!important;
-    aspect-ratio:390/844!important;
+    width:min(82vw,320px)!important;
+    max-width:320px!important;
+    aspect-ratio:auto!important;
     height:auto!important;
   }
   #gallery-iphone .iphone-device{
@@ -6826,16 +6826,16 @@ function _demoStart() {
   position:relative!important;
   right:auto!important;
   bottom:auto!important;
-  width:230px!important;
-  max-width:62vw!important;
+  width:320px!important;
+  max-width:320px!important;
   margin:0 auto!important;
   transform:none!important;
   z-index:5!important;
-  aspect-ratio:9/19.5!important;
-  border-radius:34px!important;
-  padding:7px!important;
-  border:2px solid rgba(255,255,255,.16)!important;
-  background:linear-gradient(160deg,#20242c,#05070b 30%,#171a21 75%,#05070b)!important;
+  aspect-ratio:auto!important;
+  border-radius:44px!important;
+  padding:10px!important;
+  border:3px solid #3a3a3c!important;
+  background:#000!important;
   box-shadow:
     0 28px 54px rgba(0,0,0,.5),
     0 0 34px rgba(75,48,255,.18),
@@ -6854,9 +6854,10 @@ function _demoStart() {
   z-index:20!important;
 }
 .hero-device-stack .hero-phone-mock .phone-screen{
-  border-radius:27px!important;
+  border-radius:36px!important;
   overflow:hidden!important;
-  background:#0d1117!important;
+  background:#0d0f1a!important;
+  height:640px!important;
 }
 
 /* Make the redesigned phone UI readable in the larger frame. */
@@ -6901,8 +6902,8 @@ function _demoStart() {
     width:108%!important;
   }
   .hero-device-stack .hero-phone-mock{
-    width:230px!important;
-    max-width:68vw!important;
+    width:min(82vw,320px)!important;
+    max-width:320px!important;
   }
 }
 </style>
@@ -6953,15 +6954,15 @@ function _demoStart() {
   right:auto!important;
   bottom:auto!important;
   transform:none!important;
-  width:224px!important;
-  max-width:58vw!important;
-  aspect-ratio:9/18.15!important;
+  width:320px!important;
+  max-width:320px!important;
+  aspect-ratio:auto!important;
   margin:0 auto!important;
-  padding:6px!important;
-  border-radius:31px!important;
+  padding:10px!important;
+  border-radius:44px!important;
   overflow:hidden!important;
-  background:linear-gradient(160deg,#22262e,#05070b 30%,#161920 76%,#05070b)!important;
-  border:2px solid rgba(255,255,255,.15)!important;
+  background:#000!important;
+  border:3px solid #3a3a3c!important;
   box-shadow:
     0 24px 46px rgba(0,0,0,.48),
     0 0 30px rgba(76,48,255,.16),
@@ -6980,10 +6981,10 @@ function _demoStart() {
   z-index:30!important;
 }
 .hero-device-stack .hero-phone-mock .phone-screen{
-  height:100%!important;
-  border-radius:25px!important;
+  height:640px!important;
+  border-radius:36px!important;
   overflow:hidden!important;
-  background:#0d1117!important;
+  background:#0d0f1a!important;
 }
 .hero-device-stack .pg-phone-ask-body-hero{
   padding:8px 9px 9px!important;
@@ -7015,9 +7016,9 @@ function _demoStart() {
     top:-12%!important;
   }
   .hero-device-stack .hero-phone-mock{
-    width:210px!important;
-    max-width:56vw!important;
-    aspect-ratio:9/18!important;
+    width:min(78vw,320px)!important;
+    max-width:320px!important;
+    aspect-ratio:auto!important;
   }
 }
 </style>
