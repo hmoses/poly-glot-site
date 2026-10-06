@@ -11579,11 +11579,20 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
 }
 /* KILL ALL OVERLAYS - static phones only */
 #demoAIMenu,
-#demoBrowser{
+#demoBrowser,
+.demo-device-card-ask .pg-device-static-localized,
+.demo-device-card-ask .pg-langphone-global,
+.demo-device-card-ask .pg-mac-full-overlay,
+.demo-phone-screen-ask .pg-device-static-localized,
+.demo-phone-screen-ask .pg-langphone-global{
   display:none!important;
   transform:translateY(100%)!important;
   visibility:hidden!important;
   pointer-events:none!important;
+  opacity:0!important;
+  width:0!important;
+  height:0!important;
+  overflow:hidden!important;
 }
 @media(max-width:768px){
   #demo .demo-iphone-frame{
