@@ -2625,7 +2625,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
     <h2 class="section-title" style="text-align:center" data-i18n="demoH">Compare AIs. Work in Your Language.</h2>
     <p class="section-sub" style="text-align:center;margin:0 auto 48px" data-i18n="demoSub">See Ask Any AI, Compare Mode, and Poly-Glot’s fully localized interface working together in one live demo.</p>
 
-    <div style="display:flex;gap:40px;justify-content:center;align-items:center;flex-wrap:wrap">
+    <div style="display:flex;gap:40px;justify-content:center;align-items:flex-start;flex-wrap:wrap">
 
     <!-- ===== ORIGINAL ASK ANY AI DEMO ===== -->
     <div class="demo-device-card demo-device-card-ask" style="width:320px;position:relative">
@@ -5792,8 +5792,8 @@ function _demoStart() {
 <!-- ===== END GLOBAL IMAGE + DEVICE LIGHTBOX ===== -->
 
 <!-- Global i18n — 38 languages, same flags as the app -->
-<script src="assets/js/i18n.js?v=smash-v20"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=smash-v35"></script>
+<script src="assets/js/i18n.js?v=align-v21"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=align-v36"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
 
@@ -11576,6 +11576,14 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
 #demo .demo-device-card{
   width:320px!important;
   max-width:320px!important;
+}
+/* KILL ALL OVERLAYS - static phones only */
+#demoAIMenu,
+#demoBrowser{
+  display:none!important;
+  transform:translateY(100%)!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
 }
 @media(max-width:768px){
   #demo .demo-iphone-frame{
