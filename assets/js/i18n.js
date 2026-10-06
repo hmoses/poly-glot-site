@@ -159,7 +159,7 @@ fq4a:"Compare Mode lets you send the same prompt to multiple AI models at once a
 fq5q:"Which AI providers does Poly-Glot support?",
 fq5a:"Poly-Glot supports 9 AI providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, and DuckDuckGo AI.",
 fq6q:"How does the free trial work?",
-fq6a:"3-day trial with everything unlocked. After that, 1 free send/day. Upgrade to Pro ($9.99/mo or $79.99/yr) for unlimited.",
+fq6a:"3-day full-access trial starting on the first qualifying Send. After that, Free templates share one single-AI Send every rolling 24 hours. Pro templates and Compare Mode lock until you subscribe to Pro. The trial does not automatically convert to a paid subscription.",
 fq7q:"How many input methods are supported?",
 fq7a:"Five: type, paste, import, scan, and dictate. The entire UI is fully localized in 38 languages.",
 fq8q:"Can I cancel my subscription?",
