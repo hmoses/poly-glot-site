@@ -5792,8 +5792,8 @@ function _demoStart() {
 <!-- ===== END GLOBAL IMAGE + DEVICE LIGHTBOX ===== -->
 
 <!-- Global i18n — 38 languages, same flags as the app -->
-<script src="assets/js/i18n.js?v=final-v18"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=final-v33"></script>
+<script src="assets/js/i18n.js?v=cave-v19"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=cave-v34"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
 
@@ -10165,18 +10165,22 @@ html[data-pg-rtl="true"] .pg-hero-mac-text-overlay .pg-hm{
 
 /* Restore the original floating control positions: language left, chat right,
    both on the same horizontal line. */
+/* picker position now controlled by nav slot */
 #pgGlobalLangPicker{
-  display:block!important;
+  display:flex!important;
   visibility:visible!important;
   opacity:1!important;
-  position:fixed!important;
-  left:24px!important;
+  position:relative!important;
+  left:auto!important;
   right:auto!important;
-  bottom:24px!important;
+  bottom:auto!important;
+  top:auto!important;
   z-index:99998!important;
   transform:none!important;
   pointer-events:auto!important;
   direction:ltr!important;
+  margin-left:10px!important;
+  align-items:center!important;
 }
 #pgGlobalLangBtn{
   display:flex!important;
@@ -10191,9 +10195,11 @@ html[data-pg-rtl="true"] .pg-hero-mac-text-overlay .pg-hm{
 }
 @media(max-width:480px){
   #pgGlobalLangPicker{
-    left:16px!important;
+    position:relative!important;
+    left:auto!important;
     right:auto!important;
-    bottom:16px!important;
+    bottom:auto!important;
+    top:auto!important;
   }
   #pgChat-bubble{
     right:16px!important;
@@ -10312,11 +10318,13 @@ html[dir="rtl"] #iphone-duo .duo-text-only .duo-loc{
 }
 
 /* Keep the floating controls in their original English positions. */
+/* picker position now controlled by nav slot */
 #pgGlobalLangPicker{
-  position:fixed!important;
-  left:24px!important;
+  position:relative!important;
+  left:auto!important;
   right:auto!important;
-  bottom:24px!important;
+  bottom:auto!important;
+  top:auto!important;
   z-index:99999!important;
   direction:ltr!important;
 }
@@ -10328,21 +10336,13 @@ html[dir="rtl"] #iphone-duo .duo-text-only .duo-loc{
   z-index:99999!important;
   direction:ltr!important;
 }
-html[dir="rtl"] #pgGlobalLangPicker{left:24px!important;right:auto!important;direction:ltr!important}
+html[dir="rtl"] #pgGlobalLangPicker{position:relative!important;left:auto!important;right:auto!important;direction:ltr!important}
 html[dir="rtl"] #pgChat-bubble{right:24px!important;left:auto!important;direction:ltr!important}
 html[dir="rtl"] #pgGlobalLangDD{direction:ltr!important;left:0!important;right:auto!important}
 
 @media(max-width:480px){
-  #pgGlobalLangPicker{left:16px!important;bottom:16px!important}
+  #pgGlobalLangPicker{position:relative!important;left:auto!important;bottom:auto!important;top:auto!important;right:auto!important}
   #pgChat-bubble{right:16px!important;bottom:16px!important}
-  #pgGlobalLangDD{
-    position:fixed!important;
-    left:16px!important;
-    right:auto!important;
-    bottom:84px!important;
-    top:auto!important;
-    transform:none!important;
-  }
 }
 </style>
 
@@ -11550,6 +11550,51 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
 }
 #pgGlobalLangDD{
   z-index:999999!important;
+}
+/* ===== NUCLEAR: BOTH DEMO PHONES IDENTICAL SIZE ===== */
+#demo .demo-iphone-frame{
+  width:300px!important;
+  max-width:300px!important;
+  min-width:300px!important;
+  height:660px!important;
+  max-height:660px!important;
+  border-radius:44px!important;
+  padding:10px!important;
+  background:#000!important;
+  border:3px solid #3a3a3c!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+}
+#demo .demo-phone-screen,
+#demo #langPhone{
+  height:100%!important;
+  max-height:100%!important;
+  border-radius:36px!important;
+  overflow:hidden!important;
+  aspect-ratio:auto!important;
+}
+#demo .demo-device-card{
+  width:320px!important;
+  max-width:320px!important;
+}
+@media(max-width:768px){
+  #demo .demo-iphone-frame{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+  }
+  #demo .demo-phone-screen,
+  #demo #langPhone{
+    height:auto!important;
+    max-height:none!important;
+    aspect-ratio:390/844!important;
+  }
+  #demo .demo-device-card{
+    width:min(82vw,320px)!important;
+    max-width:320px!important;
+  }
 }
 </style>
 
