@@ -2057,8 +2057,8 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
                 <span class="pg-phone-output-label">🌐 AI will respond in:</span>
                 <span class="pg-phone-output-select" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1)"><span>🇺🇸</span><strong>English</strong><span class="pg-phone-output-caret">⌄</span></span>
               </div>
-              <div class="pg-phone-prompt-box" style="flex:1;min-height:70px;padding:10px 12px;border-radius:10px;border:2px solid rgba(125,80,220,0.5);background:rgba(125,80,220,0.04);font-size:0.55rem;color:rgba(255,255,255,0.6);line-height:1.5">
-                <div>Hi! Ask any AI anything. In your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater</div>
+              <div class="pg-phone-prompt-box" style="flex:1;min-height:60px;padding:10px 12px;border-radius:10px;border:2px solid rgba(16,185,129,0.5);background:rgba(16,185,129,0.04);font-size:0.55rem;color:rgba(255,255,255,0.6);line-height:1.5">
+                <div>Write a polite email to my landlord asking to fix the heater before winter.</div>
               </div>
               <div class="pg-phone-action-row" style="display:flex;gap:6px;margin-top:8px">
                 <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px;padding:8px;border-radius:8px;background:rgba(255,255,255,0.06);font-size:0.52rem;font-weight:600;color:#fff">📋 Paste</div>
@@ -2066,8 +2066,9 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
               </div>
               <div class="pg-phone-talk-send" style="display:flex;gap:8px;margin-top:6px">
                 <div class="pg-phone-talk" style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px;padding:8px;border-radius:8px;background:rgba(255,255,255,0.06);font-size:0.52rem;font-weight:600;color:#fff"><span class="pg-phone-mic">🎤</span><span>Talk</span></div>
-                <div class="pg-phone-send" style="flex:1.5;padding:8px;border-radius:8px;background:#ef4444;text-align:center;font-size:0.56rem;font-weight:700;color:#fff">Send</div>
+                <div class="pg-phone-send" style="flex:1;padding:8px;border-radius:8px;background:linear-gradient(135deg,#7c3aed,#3b82f6);text-align:center;font-size:0.56rem;font-weight:700;color:#fff">Send to AI</div>
               </div>
+              <div class="pg-phone-clear" style="text-align:center;margin-top:6px;font-size:0.48rem;color:rgba(255,255,255,0.3)">🗑 Clear All</div>
             </div>
           </div>
         </div>
@@ -2697,8 +2698,9 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
             </div>
             <div class="pg-phone-talk-send" style="display:flex;gap:8px;margin-top:6px;flex-shrink:0">
               <div class="pg-phone-talk" style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px;padding:8px;border-radius:8px;background:rgba(255,255,255,0.06);font-size:0.52rem;font-weight:600;color:#fff"><span class="pg-phone-mic">🎤</span><span>Talk</span></div>
-              <div id="demoSendBtn" class="pg-phone-send" style="flex:1.5;padding:8px;border-radius:8px;background:#ef4444;text-align:center;font-size:0.56rem;font-weight:700;color:#fff;opacity:0.4;transition:opacity 0.3s,transform 0.15s">Send</div>
+              <div id="demoSendBtn" class="pg-phone-send" style="flex:1;padding:8px;border-radius:8px;background:linear-gradient(135deg,#7c3aed,#3b82f6);text-align:center;font-size:0.56rem;font-weight:700;color:#fff;opacity:0.4;transition:opacity 0.3s,transform 0.15s">Send to AI</div>
             </div>
+            <div class="pg-phone-clear pg-phone-demo-clear" style="text-align:center;margin-top:6px;font-size:0.48rem;color:rgba(255,255,255,0.3);flex-shrink:0">🗑 Clear All</div>
           </div>
           <!-- AI Menu overlay (slides up) -->
           <div id="demoAIMenu" style="position:absolute;bottom:0;left:0;right:0;background:#161b22;border-radius:16px 16px 0 0;padding:12px 14px;transform:translateY(100%);transition:transform 0.35s ease-out;z-index:20;border-top:1px solid rgba(255,255,255,0.08)">
@@ -11614,9 +11616,7 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
   width:320px!important;
   max-width:320px!important;
 }
-/* KILL ALL OVERLAYS - demo phones AND duo section */
-#demoAIMenu,
-#demoBrowser,
+/* KILL LOCALIZATION OVERLAYS - demo phones AND duo section (NOT demo animation elements) */
 .demo-device-card-ask .pg-device-static-localized,
 .demo-device-card-ask .pg-langphone-global,
 .demo-device-card-ask .pg-mac-full-overlay,
