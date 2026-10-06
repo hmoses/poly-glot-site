@@ -7349,11 +7349,12 @@ function _demoStart() {
   z-index:2!important;
 }
 
-/* The approved Ask Any AI screenshot is already in the base image, so reveal it untouched. */
+/* Show the Ask Any AI panel content (not hiding to rely on background image) */
 #gallery-mac #macScreen-askanyai.active{
-  opacity:0!important;
-  visibility:hidden!important;
-  pointer-events:none!important;
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  overflow:hidden!important;
 }
 
 /* Adapt older screens to the approved render's inner viewport. */
@@ -7372,6 +7373,18 @@ function _demoStart() {
 }
 #gallery-mac #macScreen-howtouse{
   overflow:hidden!important;
+}
+/* All Mac screen panels clip content within frame */
+#gallery-mac .mac-screen-panel{
+  overflow:hidden!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-P3{
+  overflow:hidden!important;
+  max-height:100%!important;
+}
+#gallery-mac #macScreen-askanyai .mac-ask-body{
+  overflow:hidden!important;
+  max-height:100%!important;
 }
 #gallery-mac .mac-history-body{
   padding:12px 16px 14px!important;
