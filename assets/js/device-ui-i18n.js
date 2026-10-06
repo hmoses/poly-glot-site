@@ -37,7 +37,7 @@ function meta(code){
   return g?{code:n,name:g.name,flag:g.flag}:{code:n,name:"English",flag:"🇺🇸"};
 }
 var DEVICE_EXTRA={
-  EN:{compareHelp:"send to multiple AIs",promptIntro:"Hi! Ask Any AI anything — in your language.",promptExample:"Example: Write a polite email to my landlord asking to fix the heater."},
+  EN:{compareHelp:"send to multiple AIs",promptIntro:"Hi ARCHITECT! Ask Any AI anything — in your language.",promptExample:"Example: Write a polite email to my landlord asking to fix the heater"},
   ES:{compareHelp:"enviar a varias IA",promptIntro:"¡Hola! Pregunta cualquier cosa a cualquier IA — en tu idioma.",promptExample:"Ejemplo: Escribe un correo amable a mi casero pidiendo que repare la calefacción."},
   FR:{compareHelp:"envoyer à plusieurs IA",promptIntro:"Bonjour ! Demandez n'importe quoi à n'importe quelle IA — dans votre langue.",promptExample:"Exemple : Rédigez un e-mail poli à mon propriétaire pour demander de réparer le chauffage."},
   DE:{compareHelp:"an mehrere KIs senden",promptIntro:"Hallo! Frag jede KI alles — in deiner Sprache.",promptExample:"Beispiel: Schreibe eine höfliche E-Mail an meinen Vermieter und bitte um Reparatur der Heizung."},
