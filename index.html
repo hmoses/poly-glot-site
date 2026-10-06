@@ -160,17 +160,17 @@ a:hover { opacity: 0.85; }
 .hero-screenshot img { display: block; width: 100%; border-radius: 16px; }
 .hero-phone-mock {
   position: relative;
-  width: 420px; border-radius: 40px;
-  background: #000; padding: 12px;
-  border: 3px solid rgba(167,139,250,0.25);
-  box-shadow: 0 16px 60px rgba(0,0,0,0.6), 0 0 100px rgba(124,58,237,0.15);
+  width: 320px; border-radius: 44px;
+  background: #000; padding: 10px;
+  border: 3px solid #3a3a3c;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.06);
   z-index: 5;
-  aspect-ratio: 9 / 19.5;
   overflow: hidden;
 }
 .hero-phone-mock .phone-screen {
-  border-radius: 20px; overflow: hidden; background: #0d1117;
-  height: 100%; display: flex; flex-direction: column;
+  border-radius: 36px; overflow: hidden; background: #0d0f1a;
+  height: 640px; display: flex; flex-direction: column;
+  position: relative;
 }
 .hero-phone {
   display: none;
@@ -1961,6 +1961,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
       <img src="assets/img/icon-128.png" alt="Poly-Glot AI">
       <span>Poly-Glot AI Workspace</span>
     </a>
+    <div id="pgLangSlot"></div>
     <ul class="nav-links">
       <li><a href="#screenshots">Screenshots</a></li>
       <li><a href="#features">Features</a></li>
@@ -5784,8 +5785,8 @@ function _demoStart() {
 <!-- ===== END GLOBAL IMAGE + DEVICE LIGHTBOX ===== -->
 
 <!-- Global i18n — 38 languages, same flags as the app -->
-<script src="assets/js/i18n.js?v=nav-lang-v15"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=clean-runtime-v30"></script>
+<script src="assets/js/i18n.js?v=nuclear-v16"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=nuclear-v31"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
 
@@ -11495,6 +11496,67 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
 }
 </style>
 
+<style>
+/* ===== NUCLEAR: HERO PHONE = SAME SIZE AS DEMO IPHONES ===== */
+.hero-phone-mock{
+  width:320px!important;
+  max-width:320px!important;
+  min-width:320px!important;
+  border-radius:44px!important;
+  padding:10px!important;
+  background:#000!important;
+  border:3px solid #3a3a3c!important;
+  box-shadow:0 30px 80px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.06)!important;
+  aspect-ratio:auto!important;
+  height:auto!important;
+  position:relative!important;
+  right:auto!important;
+  bottom:auto!important;
+  transform:none!important;
+  overflow:hidden!important;
+}
+.hero-phone-mock .phone-screen{
+  border-radius:36px!important;
+  overflow:hidden!important;
+  background:#0d0f1a!important;
+  height:640px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  position:relative!important;
+}
+.hero-device-stack .hero-phone-mock{
+  width:320px!important;
+  max-width:320px!important;
+  min-width:320px!important;
+  aspect-ratio:auto!important;
+  margin:0!important;
+}
+/* Mobile: scale down proportionally but SAME ratio as demo */
+@media(max-width:768px){
+  .hero-phone-mock,.hero-device-stack .hero-phone-mock{
+    width:min(82vw,320px)!important;
+    max-width:320px!important;
+    min-width:0!important;
+  }
+  .hero-phone-mock .phone-screen{
+    height:auto!important;
+    aspect-ratio:390/844!important;
+  }
+}
+@media(max-width:480px){
+  .hero-phone-mock,.hero-device-stack .hero-phone-mock{
+    width:min(78vw,300px)!important;
+    max-width:300px!important;
+  }
+}
+/* ===== NUCLEAR: LANGUAGE SELECTOR IN NAV ===== */
+#pgLangSlot{
+  display:flex!important;
+  align-items:center!important;
+  flex-shrink:0!important;
+  margin-left:12px!important;
+}
+</style>
 
 <script>
 /* ===== FORCE GALLERY UI LABEL LOCALIZATION ===== */

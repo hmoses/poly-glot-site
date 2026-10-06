@@ -1644,8 +1644,8 @@ dd.appendChild(r);
 });
 btn.onclick=function(e){e.stopPropagation();var opening=!dd.classList.contains('open');dd.classList.toggle('open');if(opening){setTimeout(function(){var a=dd.querySelector('.pgGlob-row.active');if(a)a.scrollIntoView({block:'center'});},0);}};
 document.addEventListener('click',function(e){if(!wrap.contains(e.target))dd.classList.remove('open');});
-var navBrand=document.querySelector('.nav-brand');
-if(navBrand&&navBrand.parentNode){navBrand.parentNode.insertBefore(wrap,navBrand.nextSibling);}else{document.body.appendChild(wrap);}
+var slot=document.getElementById('pgLangSlot');
+if(slot){slot.appendChild(wrap);}else{var navBrand=document.querySelector('.nav-brand');if(navBrand&&navBrand.parentNode){navBrand.parentNode.insertBefore(wrap,navBrand.nextSibling);}else{document.body.appendChild(wrap);}}
 }
 
 // ===== SET LANGUAGE =====
