@@ -116,7 +116,7 @@ a:hover { opacity: 0.85; }
   background: radial-gradient(circle, rgba(125,211,252,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
-.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; overflow: visible; }
+.hero-inner { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; overflow: visible; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.25);
@@ -135,7 +135,7 @@ a:hover { opacity: 0.85; }
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.hero-sub { font-size: 1.15rem; color: var(--text-muted); line-height: 1.65; max-width: 480px; margin-bottom: 32px; }
+.hero-sub { font-size: 1.15rem; color: var(--text-muted); line-height: 1.65; max-width: 100%; margin-bottom: 32px; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
 .btn-coming-soon {
   display: inline-flex; align-items: center; gap: 8px;
@@ -2000,65 +2000,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
           <span class="trust-item"><span class="check">&#10003;</span> <span data-i18n="trustB">No Data Collection</span></span>
         </div>
       </div>
-      <div class="hero-visual hero-device-stack">
-        <div class="hero-mac-crop" aria-label="Poly-Glot AI Workspace on MacBook">
-          <img src="assets/img/poly-glot-mac-render.jpg?v=hero-stack-2" alt="Poly-Glot AI Workspace on MacBook">
-        </div>
-        <div class="hero-phone-mock">
-          <div class="phone-screen">
-            <!-- Status bar -->
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px 4px;font-size:7px;font-weight:700;color:#fff">
-              <span>1:11</span>
-              <span style="display:flex;gap:2px;align-items:center">
-                <span style="display:inline-block;width:12px;height:6px;border:1px solid #fff;border-radius:2px;position:relative"><span style="position:absolute;top:1px;left:1px;right:1px;bottom:1px;background:#30d158;border-radius:1px"></span></span>
-              </span>
-            </div>
-            <!-- App header -->
-            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px 6px">
-              <img src="assets/img/icon-128.png" alt="" style="width:16px;height:16px;border-radius:4px">
-              <span style="font-size:7px;font-weight:800;color:#fff">Poly-Glot AI Workspace</span>
-              <span style="margin-left:auto;padding:1px 4px;border-radius:3px;background:rgba(255,255,255,0.1);font-size:5px;font-weight:700;color:#fff">🇺🇸 EN</span>
-            </div>
-            <!-- Tabs -->
-            <div style="display:flex;font-size:5.5px;font-weight:600;color:rgba(255,255,255,0.3);border-bottom:1px solid rgba(255,255,255,0.08)">
-              <span style="padding:4px 6px;color:#f59e0b;border-bottom:1.5px solid #f59e0b">✏️ Ask Any AI</span>
-              <span style="padding:4px 5px">📋 Templates</span>
-              <span style="padding:4px 5px">📖 How to Use</span>
-              <span style="padding:4px 5px">🕐 History</span>
-            </div>
-            <!-- Ask Any AI heading -->
-            <div class="pg-phone-ask-body pg-phone-ask-body-hero">
-              <div class="pg-phone-ask-title">🤔 Ask Any AI</div>
-              <div class="pg-phone-tips-wrap">
-                <div class="pg-phone-tips">
-                  <div>✏️ Type, paste, import or talk</div>
-                  <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
-                  <div>🌐 Output Language ⬇️ AI responds in this language</div>
-                  <div>🔀 Compare Mode: send to multiple AIs</div>
-                </div>
-                <a class="pg-phone-how-link" href="#demo">How it works</a>
-              </div>
-              <div class="pg-phone-output-row">
-                <span class="pg-phone-output-label">🌐 AI will respond in:</span>
-                <span class="pg-phone-output-select"><span>🇺🇸</span><strong>English</strong><span class="pg-phone-output-caret">⌄</span></span>
-              </div>
-              <div class="pg-phone-prompt-box">
-                <div>Hi ARCHITECT! Ask Any AI anything — in your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater</div>
-              </div>
-              <div class="pg-phone-action-row">
-                <div>📋 <strong>Paste</strong></div>
-                <div>📄 <strong>Import</strong></div>
-                <div>📷 <strong>Scan</strong></div>
-              </div>
-              <div class="pg-phone-talk-send">
-                <div class="pg-phone-talk"><span class="pg-phone-mic">🎤</span><span>Talk</span></div>
-                <div class="pg-phone-send">Send</div>
-              </div>
-              <div class="pg-phone-clear">🗑 Clear All</div>
-            </div>
-          </div>
-        </div>
-      </div>    </div>
+    </div>
   </div>
 </section>
 
