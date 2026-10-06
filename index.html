@@ -1951,6 +1951,65 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 }
 </style>
 
+
+<style id="pg-mac-screen-bleed-fix-v1">
+/* Keep every interactive Mac tab strictly inside the visible laptop display. */
+#gallery-mac .mac-reference-hotspots{
+  left:10.6%!important;
+  top:17.6%!important;
+  width:78.8%!important;
+  height:7.2%!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+}
+#gallery-mac .mac-reference-stage{
+  left:10.6%!important;
+  top:24.6%!important;
+  width:78.8%!important;
+  height:64.8%!important;
+  max-height:64.8%!important;
+  overflow:hidden!important;
+  border-radius:0 0 8px 8px!important;
+  box-sizing:border-box!important;
+  clip-path:inset(0 round 0 0 8px 8px)!important;
+  contain:paint!important;
+}
+#gallery-mac .mac-reference-stage .mac-screen-panel{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+}
+#gallery-mac .mac-reference-stage .mac-screen-panel > img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:cover!important;
+  object-position:center top!important;
+  overflow:hidden!important;
+}
+#gallery-mac #macScreen-askanyai .mac-ask-body,
+#gallery-mac #macScreen-howtouse > *,
+#gallery-mac #macScreen-templates > *,
+#gallery-mac #macScreen-history > *{
+  max-width:100%!important;
+  max-height:100%!important;
+  box-sizing:border-box!important;
+}
+#gallery-mac #macScreen-askanyai,
+#gallery-mac #macScreen-howtouse,
+#gallery-mac #macScreen-templates,
+#gallery-mac #macScreen-history{
+  overflow:hidden!important;
+}
+</style>
+
 </head>
 <body>
 
