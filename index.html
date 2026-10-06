@@ -1952,64 +1952,6 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 </style>
 
 
-<style id="pg-mac-screen-bleed-fix-v1">
-/* Keep every interactive Mac tab strictly inside the visible laptop display. */
-#gallery-mac .mac-reference-hotspots{
-  left:10.6%!important;
-  top:17.6%!important;
-  width:78.8%!important;
-  height:7.2%!important;
-  overflow:hidden!important;
-  box-sizing:border-box!important;
-}
-#gallery-mac .mac-reference-stage{
-  left:10.6%!important;
-  top:24.6%!important;
-  width:78.8%!important;
-  height:64.8%!important;
-  max-height:64.8%!important;
-  overflow:hidden!important;
-  border-radius:0 0 8px 8px!important;
-  box-sizing:border-box!important;
-  clip-path:inset(0 round 0 0 8px 8px)!important;
-  contain:paint!important;
-}
-#gallery-mac .mac-reference-stage .mac-screen-panel{
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  max-width:100%!important;
-  max-height:100%!important;
-  overflow:hidden!important;
-  box-sizing:border-box!important;
-}
-#gallery-mac .mac-reference-stage .mac-screen-panel > img{
-  display:block!important;
-  width:100%!important;
-  height:100%!important;
-  max-width:100%!important;
-  max-height:100%!important;
-  object-fit:cover!important;
-  object-position:center top!important;
-  overflow:hidden!important;
-}
-#gallery-mac #macScreen-askanyai .mac-ask-body,
-#gallery-mac #macScreen-howtouse > *,
-#gallery-mac #macScreen-templates > *,
-#gallery-mac #macScreen-history > *{
-  max-width:100%!important;
-  max-height:100%!important;
-  box-sizing:border-box!important;
-}
-#gallery-mac #macScreen-askanyai,
-#gallery-mac #macScreen-howtouse,
-#gallery-mac #macScreen-templates,
-#gallery-mac #macScreen-history{
-  overflow:hidden!important;
-}
-</style>
-
 </head>
 <body>
 
@@ -11884,6 +11826,95 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
   else start();
 })();
 </script>
+
+
+<style id="pg-mac-screen-bleed-fix-v2">
+/* FINAL OVERRIDE: keep all 4 Mac tab UIs inside the actual black display,
+   above the silver lower bezel/base. Placed last so it wins over prior !important rules. */
+#gallery-mac .mac-reference-hotspots{
+  left:10.6%!important;
+  top:17.6%!important;
+  width:78.8%!important;
+  height:7.2%!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+}
+
+#gallery-mac .mac-reference-stage{
+  left:10.6%!important;
+  top:24.6%!important;
+  width:78.8%!important;
+  height:59.2%!important;
+  max-height:59.2%!important;
+  overflow:hidden!important;
+  border-radius:0 0 8px 8px!important;
+  box-sizing:border-box!important;
+  clip-path:inset(0 0 0 0 round 0 0 8px 8px)!important;
+  contain:layout paint!important;
+  isolation:isolate!important;
+}
+
+#gallery-mac .mac-reference-stage .mac-screen-panel,
+#gallery-mac #macScreen-askanyai,
+#gallery-mac #macScreen-templates,
+#gallery-mac #macScreen-howtouse,
+#gallery-mac #macScreen-history{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+  border-radius:0 0 8px 8px!important;
+}
+
+#gallery-mac .mac-reference-stage .mac-screen-panel > img,
+#gallery-mac #macScreen-templates > img,
+#gallery-mac #macScreen-howtouse > img,
+#gallery-mac #macScreen-history > img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:cover!important;
+  object-position:center top!important;
+  overflow:hidden!important;
+}
+
+/* Prevent generated/live inner UI from painting outside the shortened stage. */
+#gallery-mac #macScreen-askanyai .mac-ask-body{
+  height:100%!important;
+  max-height:100%!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+  padding-bottom:10px!important;
+}
+
+#gallery-mac #macScreen-history .mac-history-list,
+#gallery-mac #macScreen-templates .pg-device-static-localized,
+#gallery-mac #macScreen-history .pg-device-static-localized{
+  max-height:100%!important;
+  overflow:hidden!important;
+}
+
+/* Safety mask across bottom edge of actual display to guarantee no tab can
+   visually enter the silver Mac base. */
+#gallery-mac .mac-reference-stage::after{
+  content:""!important;
+  position:absolute!important;
+  left:0!important;
+  right:0!important;
+  bottom:0!important;
+  height:2px!important;
+  background:#0d1117!important;
+  z-index:9999!important;
+  pointer-events:none!important;
+}
+</style>
 
 </body>
 </html>
