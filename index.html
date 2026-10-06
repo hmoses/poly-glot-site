@@ -9423,18 +9423,18 @@ html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-full-overlay .pgdsl-ta
 
 
 <style>
-/* ===== MAC LOCALIZATION HARD FAILSAFE v13 =====
-   Keep a real overlay node in the Mac render so localized UI cannot fall back
-   to the baked-in English screenshot. The runtime fills this node on every
-   language change. */
-html[data-device-ui-lang]:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-inline-overlay{
-  display:block!important;
-  visibility:visible!important;
-  opacity:1!important;
-  z-index:150!important;
-}
-html[data-device-ui-lang="EN"] #gallery-mac .pg-mac-inline-overlay{
+/* ===== MAC LOCALIZATION HARD FAILSAFE v14 (FIXED) =====
+   v13 had higher specificity (html[attr]:not()) that beat later rules trying
+   to hide this EMPTY overlay, blocking the real translated content beneath.
+   Now: always hide this overlay. Real content lives in .mac-reference-stage. */
+html[data-device-ui-lang]:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-inline-overlay,
+html[data-device-ui-lang="EN"] #gallery-mac .pg-mac-inline-overlay,
+#gallery-mac .pg-mac-inline-overlay{
   display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  z-index:-1!important;
 }
 </style>
 
@@ -10616,20 +10616,21 @@ html[data-device-ui-lang="HE"] .pg-phone-tips{
 
 
 <style>
-/* ===== CANONICAL LOCALIZED DEVICE GEOMETRY v32 =====
-   Every locale uses the same Mac geometry as the approved English device UI. */
+/* ===== CANONICAL LOCALIZED DEVICE GEOMETRY v33 (FIXED) =====
+   mac-reference-stage MUST stay visible — it holds the real translated content. */
 html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-stage{
-  visibility:hidden!important;
-  opacity:0!important;
-  pointer-events:none!important;
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
 }
 html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots{
   z-index:400!important;
   background:transparent!important;
 }
 html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots .mac-reference-tab span{
-  opacity:0!important;
-  color:transparent!important;
+  opacity:1!important;
+  color:inherit!important;
 }
 html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-canonical-localized{
   position:absolute!important;
@@ -11023,8 +11024,7 @@ html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-canonical-localized{
   padding:7px 24px!important;
 }
 
-/* Completely suppress every original English live layer beneath localized Mac UI. */
-html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-stage,
+/* Suppress only overlay layers — mac-reference-stage MUST stay visible for localization. */
 html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-inline-overlay{
   display:none!important;
   visibility:hidden!important;

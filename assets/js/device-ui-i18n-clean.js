@@ -613,7 +613,7 @@ css.textContent+=
 css.textContent+=
 'html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-full-overlay{z-index:140!important}'+
 'html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots{z-index:160!important}'+
-'html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots .mac-reference-tab span{opacity:0!important;color:transparent!important;text-shadow:none!important}'+
+'html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-hotspots .mac-reference-tab span{opacity:1!important;color:inherit!important;text-shadow:none!important}'+
 'html:not([data-device-ui-lang="EN"]) #gallery-mac .mac-reference-tab::after{display:none!important}'+
 'html:not([data-device-ui-lang="EN"]) #gallery-mac .pg-mac-full-overlay .pgdsl-tabs .active{border-bottom:2px solid #f59e0b!important;box-shadow:none!important;background:rgba(245,158,11,.08)!important}'+
 '.pg-duo-xcode-head,.pg-duo-xcode-foot{display:flex;align-items:center;justify-content:space-between;background:#2a3139;color:#dfe7f2;padding:10px 14px;font-size:.72rem;border:1px solid rgba(255,255,255,.08)}'+
