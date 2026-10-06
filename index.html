@@ -1957,11 +1957,13 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 <!-- ===== NAV ===== -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-brand">
-      <img src="assets/img/icon-128.png" alt="Poly-Glot AI">
-      <span>Poly-Glot AI Workspace</span>
-    </a>
-    <div id="pgLangSlot"></div>
+    <div style="display:flex;align-items:center;gap:0;flex-shrink:0">
+      <a href="#" class="nav-brand">
+        <img src="assets/img/icon-128.png" alt="Poly-Glot AI">
+        <span>Poly-Glot AI Workspace</span>
+      </a>
+      <div id="pgLangSlot"></div>
+    </div>
     <ul class="nav-links">
       <li><a href="#screenshots">Screenshots</a></li>
       <li><a href="#features">Features</a></li>
@@ -2004,56 +2006,65 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
       </div>
       <div class="hero-visual hero-device-stack">
         <div class="hero-phone-mock">
+          <!-- Dynamic Island -->
+          <div style="position:relative;z-index:10;display:flex;justify-content:center;padding-top:4px;margin-bottom:-26px">
+            <div style="width:100px;height:28px;background:#000;border-radius:20px"></div>
+          </div>
           <div class="phone-screen">
             <!-- Status bar -->
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px 4px;font-size:7px;font-weight:700;color:#fff">
-              <span>1:11</span>
-              <span style="display:flex;gap:2px;align-items:center">
-                <span style="display:inline-block;width:12px;height:6px;border:1px solid #fff;border-radius:2px;position:relative"><span style="position:absolute;top:1px;left:1px;right:1px;bottom:1px;background:#30d158;border-radius:1px"></span></span>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 28px 4px;color:#fff;font-size:0.78rem;font-weight:700;flex-shrink:0">
+              <span>9:41</span>
+              <span style="display:flex;gap:3px;align-items:flex-end">
+                <span style="display:inline-flex;gap:1.5px;align-items:flex-end;margin-right:2px">
+                  <span style="width:3px;height:4px;background:#fff;border-radius:0.5px"></span>
+                  <span style="width:3px;height:6px;background:#fff;border-radius:0.5px"></span>
+                  <span style="width:3px;height:9px;background:#fff;border-radius:0.5px"></span>
+                  <span style="width:3px;height:12px;background:#fff;border-radius:0.5px"></span>
+                </span>
+                <svg width="13" height="10" viewBox="0 0 16 12" fill="white" style="margin-right:2px"><path d="M8 10.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-3.5-3a5.25 5.25 0 017 0 .75.75 0 01-1 1.12 3.75 3.75 0 00-5 0 .75.75 0 01-1-1.12zm-3-3a9 9 0 0113 0 .75.75 0 01-1.06 1.06 7.5 7.5 0 00-10.88 0A.75.75 0 011.5 4.5z"/></svg>
+                <span style="display:inline-block;width:20px;height:10px;border:1.5px solid #fff;border-radius:3px;position:relative"><span style="position:absolute;top:1.5px;left:1.5px;right:1.5px;bottom:1.5px;background:#30d158;border-radius:1px"></span></span>
               </span>
             </div>
-            <!-- App header -->
-            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px 6px">
-              <img src="assets/img/icon-128.png" alt="" style="width:16px;height:16px;border-radius:4px">
-              <span style="font-size:7px;font-weight:800;color:#fff">Poly-Glot AI Workspace</span>
-              <span style="margin-left:auto;padding:1px 4px;border-radius:3px;background:rgba(255,255,255,0.1);font-size:5px;font-weight:700;color:#fff">🇺🇸 EN</span>
+            <!-- App Header -->
+            <div style="display:flex;align-items:center;gap:8px;padding:6px 16px 6px;flex-shrink:0">
+              <img src="assets/img/icon-128.png" alt="" style="width:26px;height:26px;border-radius:6px">
+              <div>
+                <div style="font-size:0.78rem;font-weight:800;color:#fff">Poly-Glot AI Workspace</div>
+                <div style="font-size:0.44rem;color:rgba(255,255,255,0.3)">poly-glot.ai</div>
+              </div>
+              <span style="margin-left:auto;padding:3px 7px;border-radius:4px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);font-size:0.55rem;font-weight:700;color:#fff">&#127482;&#127480; EN</span>
             </div>
             <!-- Tabs -->
-            <div style="display:flex;font-size:5.5px;font-weight:600;color:rgba(255,255,255,0.3);border-bottom:1px solid rgba(255,255,255,0.08)">
-              <span style="padding:4px 6px;color:#f59e0b;border-bottom:1.5px solid #f59e0b">✏️ Ask Any AI</span>
-              <span style="padding:4px 5px">📋 Templates</span>
-              <span style="padding:4px 5px">📖 How to Use</span>
-              <span style="padding:4px 5px">🕐 History</span>
+            <div style="display:flex;gap:16px;padding:8px 16px 10px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.6rem;font-weight:600;color:rgba(255,255,255,0.3);flex-shrink:0">
+              <span style="color:#7dd3fc;border-bottom:2px solid #7dd3fc;padding-bottom:6px">&#9999;&#65039; Ask Any AI</span>
+              <span>&#128203; Templates</span>
+              <span>&#128214; How to Use</span>
+              <span>&#128336; History</span>
             </div>
-            <!-- Ask Any AI heading -->
-            <div class="pg-phone-ask-body pg-phone-ask-body-hero">
-              <div class="pg-phone-ask-title">🤔 Ask Any AI</div>
+            <!-- Ask Any AI content -->
+            <div class="pg-phone-ask-body pg-phone-ask-body-hero" style="flex:1;display:flex;flex-direction:column;padding:12px 14px 10px;overflow:hidden">
+              <div class="pg-phone-ask-title" style="font-size:0.88rem;font-weight:800;margin-bottom:6px">🤔 Ask Any AI</div>
               <div class="pg-phone-tips-wrap">
-                <div class="pg-phone-tips">
+                <div class="pg-phone-tips" style="font-size:0.52rem;line-height:1.5;margin-bottom:6px">
                   <div>✏️ Type, paste, import or talk</div>
                   <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
                   <div>🌐 Output Language ⬇️ AI responds in this language</div>
                   <div>🔀 Compare Mode: send to multiple AIs</div>
                 </div>
-                <a class="pg-phone-how-link" href="#demo">How it works</a>
+                <a class="pg-phone-how-link" href="#demo" style="font-size:0.5rem;color:#7dd3fc;text-decoration:none;font-weight:600">How it works</a>
               </div>
-              <div class="pg-phone-output-row">
+              <div class="pg-phone-output-row" style="display:flex;align-items:center;gap:6px;margin:10px 0;font-size:0.52rem">
                 <span class="pg-phone-output-label">🌐 AI will respond in:</span>
-                <span class="pg-phone-output-select"><span>🇺🇸</span><strong>English</strong><span class="pg-phone-output-caret">⌄</span></span>
+                <span class="pg-phone-output-select" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1)"><span>🇺🇸</span><strong>English</strong><span class="pg-phone-output-caret">⌄</span></span>
               </div>
-              <div class="pg-phone-prompt-box">
+              <div class="pg-phone-prompt-box" style="flex:1;min-height:80px;padding:10px 12px;border-radius:10px;border:2px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.04);font-size:0.58rem;color:rgba(255,255,255,0.6);line-height:1.5">
                 <div>Hi! Ask Any AI anything — in your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater</div>
               </div>
-              <div class="pg-phone-action-row">
-                <div>📋 <strong>Paste</strong></div>
-                <div>📄 <strong>Import</strong></div>
-                <div>📷 <strong>Scan</strong></div>
+              <div class="pg-phone-talk-send" style="display:flex;gap:8px;margin-top:10px">
+                <div class="pg-phone-talk" style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px;padding:8px;border-radius:8px;background:rgba(255,255,255,0.06);font-size:0.56rem;font-weight:600;color:#fff"><span class="pg-phone-mic">🎤</span><span>Talk</span></div>
+                <div class="pg-phone-send" style="flex:2;padding:8px;border-radius:8px;background:linear-gradient(135deg,#10b981,#3b82f6);text-align:center;font-size:0.62rem;font-weight:700;color:#fff">Send</div>
               </div>
-              <div class="pg-phone-talk-send">
-                <div class="pg-phone-talk"><span class="pg-phone-mic">🎤</span><span>Talk</span></div>
-                <div class="pg-phone-send">Send</div>
-              </div>
-              <div class="pg-phone-clear">🗑 Clear All</div>
+              <div class="pg-phone-clear" style="text-align:center;margin-top:6px;font-size:0.5rem;color:rgba(255,255,255,0.3)">🗑 Clear All</div>
             </div>
           </div>
         </div>
@@ -5015,15 +5026,11 @@ function _demoStart() {
     box-shadow:0 22px 48px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.18),inset 0 0 0 3px rgba(0,0,0,.5) !important;
   }
   .hero-phone-mock::before {
-    content:"";
-    position:absolute;
-    left:50%; top:13px; transform:translateX(-50%);
-    width:31%; height:18px; border-radius:999px;
-    background:#020306; z-index:8;
+    content:none;
   }
   .hero-phone-mock .phone-screen {
-    width:100% !important; height:100% !important;
-    border-radius:27px !important;
+    width:100% !important; height:640px !important;
+    border-radius:36px !important;
     overflow:hidden !important;
     background:#0d1117 !important;
   }
@@ -5785,8 +5792,8 @@ function _demoStart() {
 <!-- ===== END GLOBAL IMAGE + DEVICE LIGHTBOX ===== -->
 
 <!-- Global i18n — 38 languages, same flags as the app -->
-<script src="assets/js/i18n.js?v=nuke-v17"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=nuke-v32"></script>
+<script src="assets/js/i18n.js?v=final-v18"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=final-v33"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
 
@@ -6842,16 +6849,7 @@ function _demoStart() {
     inset 0 0 0 1px rgba(255,255,255,.03)!important;
 }
 .hero-device-stack .hero-phone-mock::before{
-  content:""!important;
-  position:absolute!important;
-  top:10px!important;
-  left:50%!important;
-  transform:translateX(-50%)!important;
-  width:42%!important;
-  height:16px!important;
-  border-radius:999px!important;
-  background:#000!important;
-  z-index:20!important;
+  content:none!important;
 }
 .hero-device-stack .hero-phone-mock .phone-screen{
   border-radius:36px!important;
@@ -6969,15 +6967,7 @@ function _demoStart() {
     inset 0 0 0 1px rgba(255,255,255,.025)!important;
 }
 .hero-device-stack .hero-phone-mock::before{
-  content:""!important;
-  position:absolute!important;
-  top:9px!important;
-  left:50%!important;
-  transform:translateX(-50%)!important;
-  width:42%!important;
-  height:14px!important;
-  border-radius:999px!important;
-  background:#000!important;
+  content:none!important;
   z-index:30!important;
 }
 .hero-device-stack .hero-phone-mock .phone-screen{
@@ -11499,7 +11489,8 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
 
 <style>
 /* ===== NUCLEAR: HERO PHONE = SAME SIZE AS DEMO IPHONES ===== */
-.hero-phone-mock{
+.hero-phone-mock,
+.hero-device-stack .hero-phone-mock{
   width:320px!important;
   max-width:320px!important;
   min-width:320px!important;
@@ -11515,8 +11506,14 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
   bottom:auto!important;
   transform:none!important;
   overflow:hidden!important;
+  margin:0!important;
 }
-.hero-phone-mock .phone-screen{
+.hero-phone-mock::before,
+.hero-device-stack .hero-phone-mock::before{
+  content:none!important;
+}
+.hero-phone-mock .phone-screen,
+.hero-device-stack .hero-phone-mock .phone-screen{
   border-radius:36px!important;
   overflow:hidden!important;
   background:#0d0f1a!important;
@@ -11525,13 +11522,6 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
   flex-direction:column!important;
   position:relative!important;
 }
-.hero-device-stack .hero-phone-mock{
-  width:320px!important;
-  max-width:320px!important;
-  min-width:320px!important;
-  aspect-ratio:auto!important;
-  margin:0!important;
-}
 /* Mobile: scale down proportionally but SAME ratio as demo */
 @media(max-width:768px){
   .hero-phone-mock,.hero-device-stack .hero-phone-mock{
@@ -11539,7 +11529,8 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
     max-width:320px!important;
     min-width:0!important;
   }
-  .hero-phone-mock .phone-screen{
+  .hero-phone-mock .phone-screen,
+  .hero-device-stack .hero-phone-mock .phone-screen{
     height:auto!important;
     aspect-ratio:390/844!important;
   }
@@ -11555,7 +11546,10 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
   display:flex!important;
   align-items:center!important;
   flex-shrink:0!important;
-  margin-left:12px!important;
+  margin-left:10px!important;
+}
+#pgGlobalLangDD{
+  z-index:999999!important;
 }
 </style>
 

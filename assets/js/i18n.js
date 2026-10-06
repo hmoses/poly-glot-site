@@ -1642,7 +1642,7 @@ r.innerHTML='<span class="gf">'+L.flag+'</span><span class="gc">'+L.code+'</span
 r.onclick=function(e){e.stopPropagation();setLang(L.code,L.flag);};
 dd.appendChild(r);
 });
-btn.onclick=function(e){e.stopPropagation();var opening=!dd.classList.contains('open');dd.classList.toggle('open');if(opening){setTimeout(function(){var a=dd.querySelector('.pgGlob-row.active');if(a)a.scrollIntoView({block:'center'});},0);}};
+btn.onclick=function(e){e.stopPropagation();var opening=!dd.classList.contains('open');dd.classList.toggle('open');if(opening){var r=btn.getBoundingClientRect();dd.style.left=r.left+'px';dd.style.top=(r.bottom+6)+'px';setTimeout(function(){var a=dd.querySelector('.pgGlob-row.active');if(a)a.scrollIntoView({block:'center'});},0);}};
 document.addEventListener('click',function(e){if(!wrap.contains(e.target))dd.classList.remove('open');});
 var slot=document.getElementById('pgLangSlot');
 if(slot){slot.appendChild(wrap);}else{var navBrand=document.querySelector('.nav-brand');if(navBrand&&navBrand.parentNode){navBrand.parentNode.insertBefore(wrap,navBrand.nextSibling);}else{document.body.appendChild(wrap);}}
@@ -1770,17 +1770,17 @@ if(navCTA&&!navCTA.getAttribute('data-i18n'))navCTA.setAttribute('data-i18n','na
 
 // ===== CSS =====
 var css=document.createElement('style');
-css.textContent='#pgGlobalLangPicker{position:relative;z-index:99998;margin-left:14px;display:flex;align-items:center}'
+css.textContent='#pgGlobalLangPicker{position:relative;z-index:99998;margin-left:10px;display:flex;align-items:center}'
 +'#pgGlobalLangBtn{display:flex;align-items:center;gap:6px;padding:5px 14px 5px 10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,.15);border-radius:20px;cursor:pointer;color:#fff;font-family:inherit;font-size:.78rem;font-weight:700;white-space:nowrap;transition:background .2s}'
 +'#pgGlobalLangBtn:hover{background:rgba(255,255,255,0.14)}'
 +'#pgGlobalLangBtn svg{display:none}#pgGlobalFlag{font-size:1rem}#pgGlobalCode{color:#fff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;font-weight:700;font-size:.82rem}'
-+'#pgGlobalLangDD{display:none;position:absolute;top:100%;left:0;width:220px;max-height:min(72vh,640px);overflow-y:auto;overscroll-behavior:contain;background:#080c12;border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 10px;box-shadow:0 20px 70px rgba(0,0,0,.7);scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.34) transparent;margin-top:8px}'
++'#pgGlobalLangDD{display:none;position:fixed;top:64px;right:auto;left:auto;width:220px;max-height:min(80vh,700px);overflow-y:auto;overscroll-behavior:contain;background:#080c12;border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 10px;box-shadow:0 20px 70px rgba(0,0,0,.85);scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.34) transparent;z-index:999999}'
 +'#pgGlobalLangDD::-webkit-scrollbar{width:4px}#pgGlobalLangDD::-webkit-scrollbar-thumb{background:rgba(255,255,255,.34);border-radius:99px}'
 +'#pgGlobalLangDD.open{display:block}'
 +'.pgGlob-row{display:grid;grid-template-columns:42px 1fr;align-items:center;gap:10px;min-height:58px;padding:4px 14px;border-radius:14px;cursor:pointer;color:#f3f4f6;border:1px solid transparent}'
 +'.pgGlob-row:hover{background:rgba(255,255,255,.05)}.pgGlob-row.active{background:rgba(124,58,237,.16);border-color:rgba(124,58,237,.34)}'
 +'.pgGlob-row .gf{font-size:1.6rem;width:42px;text-align:center;line-height:1}.pgGlob-row .gc{font-size:1.22rem;font-weight:500;color:#f4f5f8;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;letter-spacing:.01em}.pgGlob-row .gn{display:none!important}'
-+'@media(max-width:640px){#pgGlobalLangPicker{bottom:18px;left:10px}#pgGlobalLangDD{position:fixed;left:50%;bottom:auto;top:50%;transform:translate(-50%,-50%);width:min(58vw,300px);max-height:56vh;border-radius:24px;padding:10px 8px}.pgGlob-row{grid-template-columns:36px 1fr;gap:8px;min-height:46px;padding:2px 12px;border-radius:11px}.pgGlob-row .gf{font-size:1.25rem;width:36px}.pgGlob-row .gc{font-size:1rem}}';
++'@media(max-width:640px){#pgGlobalLangDD{left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;width:min(58vw,300px);max-height:56vh;border-radius:24px;padding:10px 8px}.pgGlob-row{grid-template-columns:36px 1fr;gap:8px;min-height:46px;padding:2px 12px;border-radius:11px}.pgGlob-row .gf{font-size:1.25rem;width:36px}.pgGlob-row .gc{font-size:1rem}}';
 document.head.appendChild(css);
 
 // ===== INIT =====
