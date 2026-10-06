@@ -11942,5 +11942,33 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
 }
 </style>
 
+
+<style id="pg-demo-phone-proportion-fix-v1">
+/* Make the two live demo iPhones look less tall/narrow on desktop.
+   Preserve screen height/content while widening the hardware proportionally. */
+@media (min-width:769px){
+  #demo .demo-device-card{
+    width:370px!important;
+    max-width:370px!important;
+  }
+  #demo .demo-iphone-frame{
+    width:350px!important;
+    max-width:350px!important;
+    min-width:350px!important;
+    height:660px!important;
+    max-height:660px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  #demo .demo-phone-screen,
+  #demo #langPhone{
+    width:100%!important;
+    height:640px!important;
+    min-height:640px!important;
+    max-height:640px!important;
+  }
+}
+</style>
+
 </body>
 </html>
