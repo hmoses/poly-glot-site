@@ -5729,16 +5729,33 @@ function _demoStart() {
     closeBtn.focus();
   }
 
+  function freezeComputedTree(source, clone) {
+    if (!source || !clone || source.nodeType!==1 || clone.nodeType!==1) return;
+    var cs=window.getComputedStyle(source);
+    var css='';
+    for (var i=0;i<cs.length;i++) {
+      var prop=cs[i];
+      css+=prop+':'+cs.getPropertyValue(prop)+';';
+    }
+    clone.style.cssText=css;
+
+    var srcKids=source.children||[];
+    var cloneKids=clone.children||[];
+    for (var j=0;j<Math.min(srcKids.length,cloneKids.length);j++) {
+      freezeComputedTree(srcKids[j],cloneKids[j]);
+    }
+  }
+
   function openDevice(device) {
     if (!device) return;
 
     var rect=device.getBoundingClientRect();
     var isDemoPhone=device.classList && device.classList.contains('demo-iphone-frame');
-    var baseW=isDemoPhone ? 320 : rect.width;
-    var baseH=isDemoPhone ? Math.max(660, rect.height*(320/Math.max(rect.width,1))) : rect.height;
+    var baseW=rect.width;
+    var baseH=rect.height;
     var maxW=window.innerWidth*0.90;
     var maxH=window.innerHeight*0.84;
-    var scale=Math.min(maxW/baseW,maxH/baseH,isDemoPhone ? 1.35 : 2.25);
+    var scale=Math.min(maxW/baseW,maxH/baseH,2.25);
     scale=Math.max(scale,0.65);
 
     image.style.display='none';
@@ -5746,19 +5763,28 @@ function _demoStart() {
     cloneHost.innerHTML='';
 
     var clone=device.cloneNode(true);
+
+    /* Freeze the exact rendered gallery appearance before moving the clone
+       outside its scoped #gallery-* CSS. This keeps typography, spacing,
+       controls, and proportions identical in the click preview. */
+    freezeComputedTree(device,clone);
+
     clone.removeAttribute('id');
     clone.querySelectorAll('[id]').forEach(function(n){ n.removeAttribute('id'); });
     clone.querySelectorAll('[onclick]').forEach(function(n){ n.removeAttribute('onclick'); });
 
     clone.style.width=baseW+'px';
-    clone.style.height=isDemoPhone ? 'auto' : rect.height+'px';
+    clone.style.height=baseH+'px';
     clone.style.maxWidth='none';
     clone.style.maxHeight='none';
     clone.style.margin='0';
+    clone.style.transform='none';
+    clone.style.transformOrigin='top left';
 
     cloneHost.style.width=baseW+'px';
     cloneHost.style.height=baseH+'px';
     cloneHost.style.transform='scale('+scale+')';
+    cloneHost.style.transformOrigin='center center';
     cloneHost.style.display='block';
     cloneHost.appendChild(clone);
 
