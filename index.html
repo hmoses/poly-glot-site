@@ -3332,6 +3332,10 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
         <div class="faq-q" data-i18n="fq10q" onclick="toggleFaq(this)">What is MCP and how does it work with Poly-Glot?<span class="toggle">+</span></div>
         <div class="faq-a"><p data-i18n="fq10a">MCP (Model Context Protocol) lets compatible AI assistants connect to external tools. Poly-Glot&apos;s MCP server can expose capabilities such as searching templates, retrieving template details, building prompts, preparing comparisons, checking language options, and opening the workspace from supported MCP clients.</p></div>
       </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How many MCP tools are available?<span class="toggle">+</span></div>
+        <div class="faq-a"><p>Poly-Glot currently provides 15 MCP tools covering template search and prompt building, Compare Mode preparation, language detection and translation, transcription, subscription status, workspace launch, and Bring Your Own Model workflows.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -3454,7 +3458,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
     </div>
 
     <!-- Tools Grid -->
-    <h4 style="margin-bottom:16px;" data-i18n="mcpToolsH">7 Tools Available</h4>
+    <h4 style="margin-bottom:16px;" data-i18n="mcpToolsH">15 Tools Available</h4>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:24px;">
       <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
         <code style="color:#7dd3fc;font-size:0.8rem;">search_templates</code>
@@ -3474,7 +3478,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
       </div>
       <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
         <code style="color:#7dd3fc;font-size:0.8rem;">get_language_options</code>
-        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;" data-i18n="mcpT5d">35 supported languages</p>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;" data-i18n="mcpT5d">38 supported languages</p>
       </div>
       <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
         <code style="color:#7dd3fc;font-size:0.8rem;">get_subscription_status</code>
@@ -3483,6 +3487,38 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
       <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
         <code style="color:#7dd3fc;font-size:0.8rem;">open_workspace</code>
         <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;" data-i18n="mcpT7d">Launch full workspace</p>
+      </div>
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">transcribe_audio</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">Transcribe audio for Poly-Glot workflows</p>
+      </div>
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">detect_language</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">Detect text language and map it to a supported language</p>
+      </div>
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">translate_text</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">Translate text while preserving meaning and formatting</p>
+      </div>
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">localize_text</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">Localize text for a target language, locale, audience, and tone</p>
+      </div>
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">get_custom_model_capabilities</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">Show Bring Your Own Model capabilities and requirements</p>
+      </div>
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">validate_custom_model</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">Validate a developer-supplied custom model endpoint</p>
+      </div>
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">run_custom_model</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">Run a Poly-Glot prompt against a custom model endpoint</p>
+      </div>
+      <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+        <code style="color:#7dd3fc;font-size:0.8rem;">prepare_custom_compare</code>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">Prepare Compare Mode with built-in AI services and custom models</p>
       </div>
     </div>
 
