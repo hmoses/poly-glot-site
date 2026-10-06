@@ -11577,14 +11577,18 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
   width:320px!important;
   max-width:320px!important;
 }
-/* KILL ALL OVERLAYS - static phones only */
+/* KILL ALL OVERLAYS - demo phones AND duo section */
 #demoAIMenu,
 #demoBrowser,
 .demo-device-card-ask .pg-device-static-localized,
 .demo-device-card-ask .pg-langphone-global,
 .demo-device-card-ask .pg-mac-full-overlay,
 .demo-phone-screen-ask .pg-device-static-localized,
-.demo-phone-screen-ask .pg-langphone-global{
+.demo-phone-screen-ask .pg-langphone-global,
+.duo-localized-overlay,
+.duo-localized-device,
+#iphone-duo .duo-localized-overlay,
+#iphone-duo .duo-localized-device{
   display:none!important;
   transform:translateY(100%)!important;
   visibility:hidden!important;
@@ -11593,6 +11597,11 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
   width:0!important;
   height:0!important;
   overflow:hidden!important;
+}
+#iphone-duo .duo-static-en{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
 }
 @media(max-width:768px){
   #demo .demo-iphone-frame{

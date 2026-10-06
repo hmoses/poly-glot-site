@@ -505,17 +505,11 @@ function duo(S,M,c){
     localizedDevice.style.opacity="0";
   }
 
-  /* Text-only overlay: same UI geometry as English, localized words only. */
+  /* Text-only overlay: DISABLED — always show static English image. */
   var overlay=root.querySelector(".duo-localized-overlay");
-  if(!overlay)return;
-  overlay.innerHTML="";
-  if(c==="EN"){
-    overlay.style.display="none";
-    overlay.style.visibility="hidden";
-    overlay.style.opacity="0";
-    return;
-  }
-
+  if(overlay){overlay.innerHTML="";overlay.style.display="none";overlay.style.visibility="hidden";overlay.style.opacity="0";}
+  return;
+  /* DEAD CODE BELOW - overlays disabled */
   var prompt=gt("sc2Prompt",S.promptExample||"Explain quantum computing in simple terms.");
   var responseA=gt("sc2P",S.compareHelp||"Compare responses side by side.");
   var responseB=gt("sc2PickSub",S.responds||"Response");
@@ -547,7 +541,7 @@ function duo(S,M,c){
     '<span class="duo-loc response response-b">'+responseA+' '+responseB+'</span>'+
     '<span class="duo-loc actions actions-a">'+S.copy+'　 '+S.read+'　 '+S.share+'　 '+S.save+'</span>'+
     '<span class="duo-loc actions actions-b">'+S.copy+'　 '+S.read+'　 '+S.share+'　 '+S.save+'</span>';
-}
+}}
 
 function heroMacTextOverlay(S,M,c){
   var host=document.querySelector(".hero-device-stack .hero-mac-crop");
