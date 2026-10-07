@@ -2644,6 +2644,83 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 }
 </style>
 
+
+<style>
+/* EMPHASIZED COMPARE RESPONSES v3 */
+.inline-response-list{
+  gap:14px!important;
+  border-top:none!important;
+  margin-top:20px!important;
+}
+.inline-response-row{
+  display:grid!important;
+  grid-template-columns:220px minmax(0,1fr)!important;
+  gap:24px!important;
+  align-items:center!important;
+  padding:22px 24px!important;
+  margin:0!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  border-radius:16px!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.02))!important;
+  box-shadow:0 10px 24px rgba(0,0,0,.16)!important;
+}
+.inline-response-row:nth-child(1){
+  border-color:rgba(16,163,127,.28)!important;
+  background:linear-gradient(145deg,rgba(16,163,127,.09),rgba(255,255,255,.02))!important;
+}
+.inline-response-row:nth-child(2){
+  border-color:rgba(217,119,6,.28)!important;
+  background:linear-gradient(145deg,rgba(217,119,6,.09),rgba(255,255,255,.02))!important;
+}
+.inline-response-row:nth-child(3){
+  border-color:rgba(32,178,170,.28)!important;
+  background:linear-gradient(145deg,rgba(32,178,170,.09),rgba(255,255,255,.02))!important;
+}
+.inline-response-badge{
+  display:flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  flex-wrap:wrap!important;
+}
+.inline-response-badge .ai-provider-badge{
+  min-width:108px!important;
+  justify-content:flex-start!important;
+  padding:8px 12px!important;
+  font-size:.78rem!important;
+}
+.inline-response-badge .response-type{
+  min-height:auto!important;
+  padding:5px 8px!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.06)!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  color:rgba(255,255,255,.62)!important;
+  font-size:.58rem!important;
+  letter-spacing:.06em!important;
+}
+.inline-response-row p{
+  margin:0!important;
+  color:rgba(255,255,255,.82)!important;
+  font-size:.98rem!important;
+  line-height:1.72!important;
+  text-align:left!important;
+}
+.inline-response-row p strong{
+  color:#fff!important;
+  font-weight:800!important;
+}
+@media(max-width:760px){
+  .inline-response-row{
+    grid-template-columns:1fr!important;
+    gap:12px!important;
+    padding:18px!important;
+  }
+  .inline-response-row p{
+    font-size:.93rem!important;
+  }
+}
+</style>
+
 </head>
 <body>
 
