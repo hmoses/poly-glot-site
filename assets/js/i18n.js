@@ -169,7 +169,7 @@ fq9a:"Most AI subscriptions cost $20/mo for one service. Poly-Glot gives you 9 A
 fq10q:"What is MCP and how does it work with Poly-Glot?",
 fq10a:"MCP (Model Context Protocol) lets AI assistants connect to external tools. Connect Poly-Glot via MCP to search templates and build prompts from within Claude or ChatGPT.",
 // MCP
-mcpEye:"\uD83D\uDD0C MCP Integration",mcpH:"Connect to Claude & ChatGPT",mcpSub:"Access 1,000+ prompt templates directly inside your AI assistant \u2014 no app download required.",
+mcpEye:"\uD83D\uDD0C MCP Integration",mcpH:"Poly-Glot MCP Ecosystem",mcpSub:"Connect the same production Poly-Glot MCP server across supported clients and discovery surfaces \u2014 with 15 tools, 38 languages, and Compare Mode.",
 // Footer
 ftTag:"Your Language. One Prompt. Every AI \u2014 Compare the Results. 1,000+ templates. 38 languages. Available now on Mac, iPhone & iPad.",
 ftProd:"Product",ftPlat:"Platform",ftComp:"Company",
