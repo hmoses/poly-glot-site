@@ -383,6 +383,59 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   </div>
 </section>
 
+<!-- ===== CONNECT TO CURSOR ===== -->
+<section class="section">
+  <h2 class="section-title">
+    <span style="display:inline-flex;width:24px;height:24px;border-radius:6px;align-items:center;justify-content:center;background:#111827;color:#fff;font-weight:800;font-size:12px;">C</span>
+    Connect to Cursor
+    <span class="badge badge-live">Live Now</span>
+  </h2>
+  <p class="section-sub">Cursor supports remote MCP servers over Streamable HTTP, so Poly-Glot can connect directly to Cursor using the same production MCP endpoint.</p>
+
+  <div class="guide-card">
+    <h3>One-click install</h3>
+    <p style="color:var(--text-muted);margin-bottom:14px;">Open this link on a device with Cursor installed. Cursor will prompt you to add Poly-Glot as an MCP server.</p>
+    <a class="about-link primary" href="cursor://anysphere.cursor-deeplink/mcp/install?name=Poly-Glot&config=eyJ1cmwiOiJodHRwczovL2JyLXN0ZWVwLWxlYWYtYWUybzI5cXotbWNwLmNvbXB1dGUuYy0yLnVzLWVhc3QtMi5hd3MubmVvbi50ZWNoL21jcCJ9">➕ Add Poly-Glot to Cursor</a>
+  </div>
+
+  <div class="guide-card">
+    <h3>Manual setup</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-content">
+          <strong>Open Cursor MCP settings</strong>
+          <p>Open Cursor Settings → MCP, or create an <code>mcp.json</code> configuration file.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <strong>Add the Poly-Glot remote server</strong>
+          <p>For a project, create <code>.cursor/mcp.json</code>. For a global installation, use <code>~/.cursor/mcp.json</code>.</p>
+          <div class="code-block"><pre style="margin:0;white-space:pre-wrap;">{
+  "mcpServers": {
+    "poly-glot": {
+      "url": "https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp"
+    }
+  }
+}</pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <strong>Enable Poly-Glot</strong>
+          <p>Cursor will connect to the server and expose the available Poly-Glot MCP tools. Approve access or complete authentication if prompted.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <strong>Verify the connection</strong>
+          <p>In Cursor, open MCP management and confirm Poly-Glot is connected. You can also ask Cursor to list or use Poly-Glot tools.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== AVAILABLE TOOLS ===== -->
 <section class="section">
   <h2 class="section-title">🛠️ 15 Tools Available</h2>
