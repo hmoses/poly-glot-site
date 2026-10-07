@@ -1,9 +1,9 @@
-🦜 Just shipped something I'm really proud of — the Poly-Glot AI Workspace product page is now fully localized in 37 languages with an AI-powered MCP chat assistant built in.
+🦜 Just shipped something I'm really proud of — the Poly-Glot AI Workspace product page is now fully localized in 38 languages with an AI-powered MCP chat assistant built in.
 
 Here's what makes it different:
 
-🌐 **37-Language Global Localization**
-Every text surface on the site — hero, features, pricing, FAQ, footer, even the chat widget — translates instantly when you pick a language. The same 37 languages the app supports: English, Spanish, French, German, Japanese, Korean, Chinese (Simplified + Traditional), Italian, Portuguese, Dutch, Russian, Arabic, Hindi, Bengali, Turkish, Polish, Swedish, Norwegian, Danish, Finnish, Greek, Indonesian, Malay, Thai, Vietnamese, Ukrainian, Czech, Romanian, Hungarian, Slovak, Croatian, Catalan, Afrikaans, Swahili, Hausa, and Amharic.
+🌐 **38-Language Global Localization**
+Every text surface on the site — hero, features, pricing, FAQ, footer, even the chat widget — translates instantly when you pick a language. The same 38 languages the app supports: English, Spanish, French, German, Japanese, Korean, Chinese (Simplified + Traditional), Italian, Portuguese, Dutch, Russian, Arabic, Hindi, Bengali, Turkish, Polish, Swedish, Norwegian, Danish, Finnish, Greek, Hebrew, Indonesian, Malay, Thai, Vietnamese, Ukrainian, Czech, Romanian, Hungarian, Slovak, Croatian, Catalan, Afrikaans, Swahili, Hausa, and Amharic.
 
 One click. Entire site transforms. No page reload.
 
