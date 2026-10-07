@@ -2271,7 +2271,9 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
   --ai:#7dd3fc;
   display:inline-flex;
   align-items:center;
+  justify-content:center;
   gap:6px;
+  min-height:28px;
   padding:6px 10px;
   border-radius:999px;
   border:1px solid color-mix(in srgb,var(--ai) 34%,transparent);
@@ -2279,7 +2281,10 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
   color:#fff;
   font-size:.72rem;
   font-weight:700;
+  line-height:1;
   white-space:nowrap;
+  text-align:center;
+  vertical-align:middle;
 }
 .ai-provider-badge .ai-dot{
   width:8px;height:8px;border-radius:50%;
@@ -2287,8 +2292,10 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
   box-shadow:0 0 10px color-mix(in srgb,var(--ai) 65%,transparent);
 }
 .ai-provider-badge.compact{
-  padding:5px 8px;
+  padding:5px 9px;
   font-size:.66rem;
+  min-height:26px;
+  line-height:1;
 }
 .compare-response-card{
   padding:14px;
@@ -2304,13 +2311,20 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
   justify-content:space-between;
   gap:8px;
   margin-bottom:10px;
+  min-height:28px;
 }
 .response-type{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:26px;
   color:rgba(255,255,255,.34);
   font-size:.62rem;
   font-weight:700;
+  line-height:1;
   text-transform:uppercase;
   letter-spacing:.08em;
+  text-align:center;
 }
 .compare-response-copy{
   font-size:.72rem;
