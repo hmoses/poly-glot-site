@@ -96,7 +96,7 @@ naEye:"\uD83D\uDCF2 Native Apps",naH:"One AI workspace. Every Apple device.",naS
 // Showcase Card 1
 sc1Tag:"\uD83D\uDCB0 Why use 1 AI?",
 sc1H:"\uD83D\uDD00 Compare 9 AIs \u2014 pick the best answer",
-sc1P:"Send the same prompt to ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, and DuckDuckGo AI. Compare answers side by side with \uD83D\uDD00 Compare Mode. Fully localized in 38 languages \u2014 every response in your language. Just $9.99/mo.",
+sc1P:"Send the same prompt to ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, and DuckDuckGo AI. Compare answers side by side with \uD83D\uDD00 Compare Mode. Fully localized in 38 languages. Start with a 3-day full-access trial, then keep using Poly-Glot with 1 free send every rolling 24 hours. Upgrade to Pro for unlimited sends, all templates, and Compare Mode.",
 sc1Row:"1 AI subscription",
 sc1PgLabel:"Poly-Glot AI Workspace",
 sc1Compare:"\uD83D\uDD00 Compare Mode \u00b7 9 AIs \u00b7 38 languages \u00b7 One subscription.",
