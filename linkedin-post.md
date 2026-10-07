@@ -19,7 +19,7 @@ XSS prevention via textContent (never innerHTML for user input), input sanitizat
 Users can type anything OR use a dropdown to browse all 36 knowledge base topics. From "What is Poly-Glot?" to "MCP setup" to "Is it safe for children?" — every question has a detailed, formatted answer.
 
 🔀 **What is Poly-Glot AI Workspace?**
-It's a native app for Mac, iPhone & iPad that lets you ask any AI — ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral — all from one place. Toggle 🔀 Compare Mode to send the same prompt to multiple AIs and pick the best answer. 1,000+ templates. 37 languages. 100% on-device privacy.
+It's a native app for Mac, iPhone & iPad that lets you ask any AI — ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, and DuckDuckGo AI — all from one place. Toggle 🔀 Compare Mode to send the same prompt to multiple AIs and pick the best answer. 1,000+ templates. 38 languages. 100% on-device privacy.
 
 The tech stack: vanilla HTML/CSS/JS, GitHub Pages, GitHub Actions CI/CD. No frameworks. No build tools. Just clean, fast, accessible code.
 
