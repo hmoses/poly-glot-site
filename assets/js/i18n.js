@@ -117,7 +117,7 @@ im1:"Type",im1p:"Write prompts from scratch with structured fields that guide yo
 // Features
 featEye:"\u26A1 Features",featH:"Everything you need to write better prompts",featSub:"Why choose or pay for one AI? Ask Poly-Glot. Choose your AI providers. Compare the answers. Pick the best one.",
 f1:"1,000+ Prompt Templates",f1p:"Curated templates for writing, coding, marketing, education, business, and more. Organized by category, ready to use.",
-f2:"Voice Input",f2p:"Speak your prompt instead of typing. On-device speech recognition turns your voice into structured, copy-ready prompts.",
+f2:"Five Ways to Build Prompts",f2p:"Type, paste, import, scan, or dictate. Start with text, a file, your camera, or your voice and turn it into a structured prompt.",
 f3:"One-Tap Copy",f3p:"Build your prompt, tap copy, paste it into ChatGPT, Claude, Gemini, or any AI. No accounts, no APIs, no friction.",
 f4:"100% Private",f4p:"Everything runs on your device. No data collection, no tracking, no servers. Your prompts never leave your phone or Mac.",
 f5:"Fully Localized in 38 Languages",f5p:"The entire UI \u2014 every button, label, menu, and template \u2014 is fully translated into 38 languages. Choose your output language and send to one AI or compare several. Every response comes back in your selected language from the first word. Not just prompts \u2014 the whole app speaks your language.",
