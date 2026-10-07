@@ -317,6 +317,101 @@ a:hover { opacity: 0.85; }
   .category-count-total { min-width:0; width:100%; text-align:left; }
   .category-constellation { grid-template-columns:repeat(3,minmax(0,1fr)); }
 }
+
+.featured-template-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  margin:0 0 34px;
+}
+.featured-template-card {
+  position:relative;
+  min-height:188px;
+  padding:22px 21px 20px;
+  border:1px solid rgba(255,255,255,.085);
+  border-radius:16px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(125,211,252,.07), transparent 42%),
+    linear-gradient(145deg,rgba(20,23,48,.97),rgba(12,14,29,.96));
+  box-shadow:0 14px 34px rgba(0,0,0,.20);
+  overflow:hidden;
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;
+}
+.featured-template-card::before {
+  content:"";
+  position:absolute;
+  left:0; top:0; bottom:0;
+  width:3px;
+  background:linear-gradient(180deg,var(--accent),var(--purple));
+  opacity:.8;
+}
+.featured-template-card:hover {
+  transform:translateY(-3px);
+  border-color:rgba(125,211,252,.26);
+  box-shadow:0 18px 42px rgba(0,0,0,.28);
+}
+.featured-template-category {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:17px;
+  color:var(--text-muted);
+  font-family:'Fira Code',monospace;
+  font-size:.72rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+.featured-template-category .featured-template-icon {
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:9px;
+  background:rgba(255,255,255,.035);
+  font-size:1rem;
+}
+.featured-template-card h3 {
+  margin:0 0 9px;
+  color:#fff;
+  font-size:1.02rem;
+  line-height:1.3;
+  letter-spacing:-.01em;
+}
+.featured-template-card p {
+  margin:0;
+  color:var(--text-muted);
+  font-size:.84rem;
+  line-height:1.58;
+}
+.all-categories-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin:8px 0 14px;
+}
+.all-categories-head h3 {
+  margin:0;
+  color:var(--text);
+  font-size:1rem;
+  font-weight:800;
+}
+.all-categories-head span {
+  color:var(--text-faint);
+  font-size:.74rem;
+  font-family:'Fira Code',monospace;
+}
+@media (max-width: 900px) {
+  .featured-template-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 620px) {
+  .featured-template-grid { grid-template-columns:1fr; gap:10px; }
+  .featured-template-card { min-height:0; padding:18px 18px 17px; }
+  .all-categories-head { align-items:flex-start; flex-direction:column; gap:4px; }
+}
+
 @media (max-width: 540px) {
   .template-categories { padding:48px 0 52px; }
   .category-constellation { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
@@ -2216,12 +2311,93 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
       <div class="template-categories-copy">
         <div class="section-eyebrow">🧩 Template Library</div>
         <h2 class="section-title">1,000+ templates. Every category.</h2>
-        <p class="template-categories-sub">Explore Poly-Glot’s template library by category. Compact, focused, and ready for the way you work.</p>
+        <p class="template-categories-sub">From marketing copy to code reviews, from lesson plans to legal drafts. Find the right prompt in seconds.</p>
       </div>
       <div class="category-count-total" aria-label="39 visible template categories">
-        <strong>39</strong>
-        <span>Categories</span>
+        <strong>1,000+</strong>
+        <span>Templates</span>
       </div>
+    </div>
+
+    <div class="featured-template-grid" aria-label="Featured Poly-Glot templates">
+
+      <article class="featured-template-card">
+        <div class="featured-template-category">
+          <span class="featured-template-icon" aria-hidden="true">💰</span>
+          <span>Money</span>
+        </div>
+        <h3>Side Hustle Finder</h3>
+        <p>Discover personalized side income ideas based on your skills, schedule, and goals. Get a step-by-step launch plan in 60 seconds.</p>
+      </article>
+      <article class="featured-template-card">
+        <div class="featured-template-category">
+          <span class="featured-template-icon" aria-hidden="true">💼</span>
+          <span>Career</span>
+        </div>
+        <h3>Resume Bullet Writer</h3>
+        <p>Turn boring job descriptions into powerful, metric-driven resume bullets that get interviews.</p>
+      </article>
+      <article class="featured-template-card">
+        <div class="featured-template-category">
+          <span class="featured-template-icon" aria-hidden="true">📈</span>
+          <span>Marketing</span>
+        </div>
+        <h3>Viral Post Generator</h3>
+        <p>Create scroll-stopping social media posts for LinkedIn, X, Instagram, or TikTok.</p>
+      </article>
+      <article class="featured-template-card">
+        <div class="featured-template-category">
+          <span class="featured-template-icon" aria-hidden="true">⚖️</span>
+          <span>Legal</span>
+        </div>
+        <h3>Contract Red Flag Scanner</h3>
+        <p>Paste any contract and get a plain-English breakdown of risky clauses and hidden fees.</p>
+      </article>
+      <article class="featured-template-card">
+        <div class="featured-template-category">
+          <span class="featured-template-icon" aria-hidden="true">💻</span>
+          <span>Coding</span>
+        </div>
+        <h3>Debug My Code</h3>
+        <p>Paste broken code, get the fix with explanation. Works with Python, JavaScript, Swift, SQL, and 20+ languages.</p>
+      </article>
+      <article class="featured-template-card">
+        <div class="featured-template-category">
+          <span class="featured-template-icon" aria-hidden="true">🎓</span>
+          <span>Study</span>
+        </div>
+        <h3>Exam Prep Coach</h3>
+        <p>Turn any topic into flashcards, practice questions, and a study schedule.</p>
+      </article>
+      <article class="featured-template-card">
+        <div class="featured-template-category">
+          <span class="featured-template-icon" aria-hidden="true">✉️</span>
+          <span>Email</span>
+        </div>
+        <h3>Cold Email That Gets Replies</h3>
+        <p>Write personalized outreach emails that actually get opened. Sales, networking, job hunting.</p>
+      </article>
+      <article class="featured-template-card">
+        <div class="featured-template-category">
+          <span class="featured-template-icon" aria-hidden="true">🏠</span>
+          <span>Real Estate</span>
+        </div>
+        <h3>Property Listing Writer</h3>
+        <p>Turn basic property details into a compelling listing description that sells.</p>
+      </article>
+      <article class="featured-template-card">
+        <div class="featured-template-category">
+          <span class="featured-template-icon" aria-hidden="true">🤝</span>
+          <span>Negotiation</span>
+        </div>
+        <h3>Salary Negotiation Script</h3>
+        <p>Get a word-for-word script to negotiate your offer based on your role and market data.</p>
+      </article>
+    </div>
+
+    <div class="all-categories-head">
+      <h3>Browse every category</h3>
+      <span>39 categories</span>
     </div>
     <div class="category-constellation" aria-label="Poly-Glot template categories">
         <div class="category-tile">
@@ -2498,6 +2674,8 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
           </div>
         </div>
     </div>
+  </div>
+
   </div>
 </section>
 
