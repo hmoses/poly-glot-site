@@ -109,7 +109,7 @@ sc2Prompt:"Write a polite email to my landlord asking to fix the heater before w
 sc2PromptLabel:"YOUR PROMPT",
 sc2GptResp:'<strong style="color:rgba(255,255,255,0.6)">Subject:</strong> Heating Repair Request<br><br>Dear [Landlord],<br><br>I hope this message finds you well. As winter approaches, I wanted to bring to your attention that the heater in my unit hasn\'t been functioning properly...<br><br><span style="color:rgba(255,255,255,0.25)">Formal. Professional. Safe.</span>',
 sc2CldResp:'Hi [Landlord],<br><br>I hope you\'re doing well! I wanted to reach out about the heater — it hasn\'t been working reliably lately.<br><br>With winter coming up, I\'d really appreciate if we could get it looked at...<br><br><span style="color:rgba(255,255,255,0.25)">Warm. Friendly. Human.</span>',
-sc2Pick:"\u2713 Pick the one that sounds like you.",
+sc2Pick:"\u2713 See the differences. Pick the best result.",
 sc2PickSub:"One prompt. Every AI. You decide.",
 // Input Methods
 imEye:"\u270D\uFE0F Input Methods",imH:"Five ways to build prompts",imSub:"Type it, paste it, import it, or dictate it \u2014 in any of 38 languages. The entire app is fully localized, so Poly-Glot meets you wherever your ideas start.",
