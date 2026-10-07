@@ -218,6 +218,61 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   </div>
 </section>
 
+<!-- ===== OTHER SUPPORTED MCP CLIENTS ===== -->
+<section class="section" id="other-clients">
+  <h2 class="section-title">🧩 Connect from other supported MCP clients</h2>
+  <p class="section-sub">Claude and ChatGPT are not the only ways to use Poly-Glot. Any client that supports a remote <strong>Streamable HTTP MCP</strong> server can connect to the same production endpoint. The exact menu names vary by client.</p>
+
+  <div class="guide-card">
+    <h3>Cursor <span class="badge badge-live">Supported</span></h3>
+    <div class="steps">
+      <div class="step"><div class="step-content"><strong>Open Cursor → Customize → MCPs</strong><p>Add a new MCP server, or edit your global <code>~/.cursor/mcp.json</code>.</p></div></div>
+      <div class="step"><div class="step-content"><strong>Add Poly-Glot as a remote server</strong>
+        <div class="code-block">{<br>
+&nbsp;&nbsp;"mcpServers": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"poly-glot": { "url": "https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp" }<br>
+&nbsp;&nbsp;}<br>
+}<button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+      </div></div>
+      <div class="step"><div class="step-content"><strong>Enable Poly-Glot</strong><p>Save the configuration, enable the server, and approve tool access when Cursor asks. Poly-Glot's 15 tools will then be available to Agent.</p></div></div>
+    </div>
+  </div>
+
+  <div class="guide-card">
+    <h3>Visual Studio Code / GitHub Copilot Agent Mode <span class="badge badge-live">Supported</span></h3>
+    <div class="steps">
+      <div class="step"><div class="step-content"><strong>Run “MCP: Add Server”</strong><p>Open the Command Palette in VS Code and choose the MCP command for adding a server.</p></div></div>
+      <div class="step"><div class="step-content"><strong>Choose HTTP and enter the Poly-Glot endpoint</strong>
+        <div class="code-block">https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp<button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+      </div></div>
+      <div class="step"><div class="step-content"><strong>Name it Poly-Glot and start it</strong><p>VS Code supports Streamable HTTP MCP servers. Start the server from the MCP view and enable its tools in Agent mode.</p></div></div>
+    </div>
+  </div>
+
+  <div class="guide-card">
+    <h3>goose <span class="badge">MCP Client</span></h3>
+    <p style="color:var(--text-muted);">goose supports MCP extensions and multiple MCP servers. In a goose build that exposes a remote HTTP/URL extension option, add Poly-Glot as a custom remote MCP extension using the production endpoint below, then enable the extension and approve its tools.</p>
+    <div class="code-block">https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp<button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+    <div class="info-box" style="margin-top:14px;"><strong>Important:</strong> goose's extension UI and transport options can vary by release. If your build only offers command/stdio extensions, do not paste the URL into a command field; use a goose version or connection path that supports remote HTTP MCP.</div>
+  </div>
+
+  <div class="guide-card">
+    <h3>Any other Streamable HTTP MCP client</h3>
+    <div class="steps">
+      <div class="step"><div class="step-content"><strong>Open the client's MCP / Tools / Integrations settings</strong><p>Look for Add server, Add connector, Custom MCP, or Remote MCP.</p></div></div>
+      <div class="step"><div class="step-content"><strong>Select remote HTTP / Streamable HTTP</strong><p>Do not choose stdio unless the client is wrapping the remote endpoint for you.</p></div></div>
+      <div class="step"><div class="step-content"><strong>Paste the production endpoint</strong>
+        <div class="code-block">https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp<button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+      </div></div>
+      <div class="step"><div class="step-content"><strong>Name it Poly-Glot, connect, and approve tools</strong><p>After the client completes the MCP handshake, it should discover the same 15 server-side Poly-Glot tools.</p></div></div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Directories are not clients:</strong> Official MCP Registry, MCP.so, Glama, and the Hugging Face listing are discovery/inspection surfaces. You do not create a separate Poly-Glot server for each directory. Use the same production endpoint in the MCP client you actually use.
+  </div>
+</section>
+
 <!-- ===== CONNECT TO CLAUDE ===== -->
 <section class="section">
   <h2 class="section-title">
