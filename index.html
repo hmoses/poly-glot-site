@@ -2343,6 +2343,64 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 </style>
 
 
+
+<style>
+/* FORCE BALANCED FEATURES BENTO v2 */
+#features .features-grid{
+  display:grid!important;
+  grid-template-columns:minmax(300px,.92fr) minmax(0,1.6fr)!important;
+  gap:18px!important;
+  align-items:stretch!important;
+}
+#features .feature-card.feature-primary{
+  grid-column:1!important;
+  grid-row:1!important;
+  min-height:370px!important;
+  height:100%!important;
+  padding:32px!important;
+  justify-content:center!important;
+}
+#features .feature-secondary-grid{
+  grid-column:2!important;
+  grid-row:1!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-template-rows:repeat(2,minmax(0,1fr))!important;
+  gap:18px!important;
+  min-width:0!important;
+}
+#features .feature-secondary-grid .feature-card{
+  min-height:176px!important;
+  height:100%!important;
+  padding:22px!important;
+}
+@media (max-width:900px){
+  #features .features-grid{
+    grid-template-columns:1fr!important;
+  }
+  #features .feature-card.feature-primary,
+  #features .feature-secondary-grid{
+    grid-column:1!important;
+    grid-row:auto!important;
+  }
+  #features .feature-card.feature-primary{
+    min-height:260px!important;
+  }
+}
+@media (max-width:620px){
+  #features .feature-secondary-grid{
+    grid-template-columns:1fr!important;
+    grid-template-rows:auto!important;
+    gap:12px!important;
+  }
+  #features .feature-card.feature-primary,
+  #features .feature-secondary-grid .feature-card{
+    min-height:0!important;
+    height:auto!important;
+  }
+}
+</style>
+
 </head>
 <body>
 
