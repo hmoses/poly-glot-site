@@ -81,7 +81,7 @@ navSS:"Screenshots",navFeat:"Features",navPrice1:"Pricing",navDemo:"Demo",navPri
 heroBadge:"Available Now on Mac, iPhone & iPad",
 heroH1a:"Your Language. One Prompt.",
 heroH1b:"Compare 9 AIs. Pick the Best Answer.",
-heroSub:"Tell Poly-Glot what you need. Type or speak naturally in your language. Choose your AI, compare answers, pick the best one. 1,000+ templates in 38 languages. Available now on Mac, iPhone & iPad.",
+heroSub:"Ask once. Compare answers from the AI providers you choose. Pick the response that works best for you — with 1,000+ templates in a fully localized 38-language workspace.",
 heroMac:"\uF8FF Mac \u2014 Download Now",
 heroIOS:"\uD83D\uDCF1 iPhone & iPad \u2014 Download Now",
 trustA:"100% On-Device",trustB:"No Data Collection",trustC:"3-Day Free Trial",
