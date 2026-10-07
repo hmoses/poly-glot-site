@@ -80,7 +80,7 @@ navSS:"Screenshots",navFeat:"Features",navPrice1:"Pricing",navDemo:"Demo",navPri
 // Hero
 heroBadge:"Available Now on Mac, iPhone & iPad",
 heroH1a:"Your Language. One Prompt.",
-heroH1b:"Every AI \u2014 Compare the Results.",
+heroH1b:"Compare 9 AIs. Pick the Best Answer.",
 heroSub:"Tell Poly-Glot what you need. Type or speak naturally in your language. Choose your AI, compare answers, pick the best one. 1,000+ templates in 38 languages. Available now on Mac, iPhone & iPad.",
 heroMac:"\uF8FF Mac \u2014 Download Now",
 heroIOS:"\uD83D\uDCF1 iPhone & iPad \u2014 Download Now",
