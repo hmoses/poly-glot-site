@@ -96,7 +96,7 @@ naEye:"\uD83D\uDCF2 Native Apps",naH:"One AI workspace. Every Apple device.",naS
 // Showcase Card 1
 sc1Tag:"\uD83D\uDCB0 Why use 1 AI?",
 sc1H:"\uD83D\uDD00 Compare 9 AIs \u2014 pick the best answer",
-sc1P:"Send the same prompt to ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, and DuckDuckGo AI. Compare answers side by side with \uD83D\uDD00 Compare Mode. Fully localized in 38 languages. Start with a 3-day full-access trial, then keep using Poly-Glot with 1 free send every rolling 24 hours. Upgrade to Pro for unlimited sends, all templates, and Compare Mode.",
+sc1P:"Send the same prompt to ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, and DuckDuckGo AI. Compare answers with \uD83D\uDD00 Compare Mode. Fully localized in 38 languages. Start with a 3-day full-access trial, then keep using Poly-Glot with 1 free send every rolling 24 hours. Upgrade to Pro for unlimited sends, all templates, and Compare Mode.",
 sc1Row:"1 AI subscription",
 sc1PgLabel:"Poly-Glot AI Workspace",
 sc1Compare:"\uD83D\uDD00 Compare Mode \u00b7 9 AIs \u00b7 38 languages \u00b7 One subscription.",
@@ -155,7 +155,7 @@ fq2a:"Available now on the App Store for Mac, iPhone, and iPad. You can also con
 fq3q:"Is my data private?",
 fq3a:"Yes. 100% on your device. No data collection, no tracking, no servers. Your prompts never leave your device.",
 fq4q:"What is Compare Mode?",
-fq4a:"Compare Mode lets you send the same prompt to multiple AI providers and see both responses side by side. Pick the best answer. Included in the free trial and Pro.",
+fq4a:"Compare Mode lets you send the same prompt to multiple AI providers and compare the responses in one place. Pick the best answer. Included in the free trial and Pro.",
 fq5q:"Which AI providers does Poly-Glot support?",
 fq5a:"Poly-Glot supports 9 AI providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, and DuckDuckGo AI.",
 fq6q:"How does the free trial work?",
@@ -1581,7 +1581,7 @@ Object.keys(SITE_PATCH).forEach(function(code){
 // ===== IPHONE DUO SECTION — 38 LANGUAGES =====
 // Product names remain canonical; all surrounding UI/copy follows the global language.
 var DUO={
-EN:{duoKicker:"Coming Soon",duoTitleA:"Poly-Glot",duoTitleB:"on iPhone Duo",duoCopy:"A fold-aware Poly-Glot experience is coming to iPhone Duo, built to make Compare Mode feel at home on Apple’s new dual-display canvas. Ask once, compare responses side by side, and keep the workspace focused across the fold.",duoMeta:"iPhone Duo pre-orders begin October 16, 2026. Available October 23.",duoLink:"Explore iPhone Duo at Apple"},
+EN:{duoKicker:"Coming Soon",duoTitleA:"Poly-Glot",duoTitleB:"on iPhone Duo",duoCopy:"A fold-aware Poly-Glot experience is coming to iPhone Duo, built to make Compare Mode feel at home on Apple’s new dual-display canvas. Ask once, compare responses together, and keep the workspace focused across the fold.",duoMeta:"iPhone Duo pre-orders begin October 16, 2026. Available October 23.",duoLink:"Explore iPhone Duo at Apple"},
 ES:{duoKicker:"Próximamente",duoTitleA:"Poly-Glot",duoTitleB:"en iPhone Duo",duoCopy:"Una experiencia Poly-Glot adaptada al plegado llegará a iPhone Duo, diseñada para que el Modo Comparar se sienta natural en la nueva pantalla dual de Apple. Pregunta una vez, compara respuestas lado a lado y mantén el espacio de trabajo enfocado a ambos lados del pliegue.",duoMeta:"Las reservas de iPhone Duo comienzan el 16 de octubre de 2026. Disponible el 23 de octubre.",duoLink:"Explorar iPhone Duo en Apple"},
 FR:{duoKicker:"Bientôt disponible",duoTitleA:"Poly-Glot",duoTitleB:"sur iPhone Duo",duoCopy:"Une expérience Poly-Glot adaptée au pli arrive sur iPhone Duo, conçue pour que le mode Comparaison s’intègre naturellement au nouvel écran double d’Apple. Posez votre question une fois, comparez les réponses côte à côte et gardez l’espace de travail centré sur les deux écrans.",duoMeta:"Les précommandes de l’iPhone Duo débutent le 16 octobre 2026. Disponible le 23 octobre.",duoLink:"Découvrir l’iPhone Duo chez Apple"},
 DE:{duoKicker:"Demnächst",duoTitleA:"Poly-Glot",duoTitleB:"auf dem iPhone Duo",duoCopy:"Eine faltoptimierte Poly-Glot-Erfahrung kommt auf das iPhone Duo. Sie ist dafür ausgelegt, dass sich der Vergleichsmodus auf Apples neuer Dual-Display-Fläche natürlich anfühlt. Einmal fragen, Antworten nebeneinander vergleichen und den Arbeitsbereich über beide Displays hinweg fokussiert halten.",duoMeta:"Vorbestellungen für das iPhone Duo starten am 16. Oktober 2026. Verfügbar ab 23. Oktober.",duoLink:"iPhone Duo bei Apple ansehen"},
