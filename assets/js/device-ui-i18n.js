@@ -204,7 +204,7 @@ function updateDuo(code,S){
   if(title)title.innerHTML='Poly-Glot<br><span>iPhone Duo</span>';
 
   var copy=root.querySelector('.duo-copy');
-  if(copy)copy.textContent=g('sc2P','Send the same prompt to multiple AI apps and compare their responses side by side.');
+  if(copy)copy.textContent=g('sc2P','Send the same prompt to multiple AI apps and compare their responses together.');
 
   var metaBox=root.querySelector('.duo-meta');
   if(metaBox){
@@ -929,7 +929,7 @@ function localizeDuo(c){
   }
   if(paras[1]){
     var p2={
-      EN:"Compare this answer with the other selected AI responses side by side.",
+      EN:"Compare this answer with the other selected AI responses.",
       ES:"Compara esta respuesta con las otras respuestas de IA seleccionadas, una al lado de la otra.",
       FR:"Comparez cette réponse côte à côte avec les autres réponses d’IA sélectionnées.",
       DE:"Vergleiche diese Antwort direkt mit den anderen ausgewählten KI-Antworten.",
