@@ -12066,5 +12066,154 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
 }
 </style>
 
+
+<style>
+/* ===== FINAL MOBILE ANIMATED IPHONE MATCHES GALLERY ===== */
+@media (max-width:768px){
+  /* Make the animated Ask Any AI phone use the same geometry and visual hierarchy
+     as the first iPhone gallery render. */
+  #demo .demo-device-card-ask{
+    width:min(72vw,286px)!important;
+    max-width:286px!important;
+  }
+  #demo .demo-device-card-ask .demo-iphone-frame{
+    width:100%!important;
+    min-width:0!important;
+    max-width:286px!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:0 auto!important;
+  }
+  #demo .demo-device-card-ask .demo-phone-screen-ask{
+    width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+    aspect-ratio:390/844!important;
+  }
+
+  /* Match the first iPhone tab treatment. */
+  #demo .demo-device-card-ask .demo-ask-tabs{
+    display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:0!important;
+    width:100%!important;
+    padding:0 7px!important;
+    box-sizing:border-box!important;
+  }
+  #demo .demo-device-card-ask .demo-ask-tabs>span{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-width:0!important;
+    width:100%!important;
+    padding:6px 2px 7px!important;
+    white-space:normal!important;
+    text-align:center!important;
+    font-size:.44rem!important;
+    line-height:1.12!important;
+  }
+  #demo .demo-device-card-ask .demo-ask-tab-active{
+    color:#f59e0b!important;
+    border-bottom:2px solid #f59e0b!important;
+  }
+
+  /* Critical: lock every child into the same order as the gallery/native UI. */
+  #demo .demo-device-card-ask .demo-ask-content{
+    display:flex!important;
+    flex-direction:column!important;
+    padding:10px 12px 12px!important;
+    overflow:hidden!important;
+  }
+  #demo .demo-device-card-ask .demo-ask-heading{
+    order:1!important;
+    text-align:left!important;
+    justify-content:flex-start!important;
+    font-size:.80rem!important;
+    line-height:1.15!important;
+    margin:0 0 8px!important;
+  }
+  #demo .demo-device-card-ask .pg-phone-tips-wrap{
+    order:2!important;
+    display:block!important;
+    margin:0 0 9px!important;
+  }
+  #demo .demo-device-card-ask .demo-ask-description{
+    text-align:left!important;
+    font-size:.43rem!important;
+    line-height:1.45!important;
+    margin:0!important;
+  }
+  #demo .demo-device-card-ask .pg-phone-how-link{
+    display:none!important;
+  }
+  #demo .demo-device-card-ask .demo-output-language{
+    order:3!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,52%)!important;
+    gap:8px!important;
+    width:100%!important;
+    padding:7px 8px!important;
+    margin:0 0 9px!important;
+  }
+  #demo .demo-device-card-ask .pg-phone-output-label{
+    font-size:.43rem!important;
+  }
+  #demo .demo-device-card-ask .pg-phone-output-select{
+    width:100%!important;
+    max-width:none!important;
+    padding:7px 8px!important;
+    font-size:.50rem!important;
+    text-align:left!important;
+  }
+  #demo .demo-device-card-ask #demoTextarea.pg-phone-prompt-box{
+    order:4!important;
+    width:100%!important;
+    min-height:88px!important;
+    height:88px!important;
+    padding:10px!important;
+    margin:0 0 9px!important;
+    font-size:.45rem!important;
+    line-height:1.55!important;
+  }
+  #demo .demo-device-card-ask .pg-phone-action-row{
+    order:5!important;
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:6px!important;
+    margin:0 0 9px!important;
+  }
+  #demo .demo-device-card-ask .pg-phone-action-row>div{
+    padding:7px 3px!important;
+    font-size:.46rem!important;
+  }
+  #demo .demo-device-card-ask .pg-phone-talk-send{
+    order:6!important;
+    display:flex!important;
+    align-items:center!important;
+    margin:0 0 8px!important;
+  }
+  #demo .demo-device-card-ask .pg-phone-talk{
+    gap:5px!important;
+    font-size:.46rem!important;
+  }
+  #demo .demo-device-card-ask .pg-phone-mic{
+    width:22px!important;
+    height:22px!important;
+    font-size:.58rem!important;
+  }
+  #demo .demo-device-card-ask .pg-phone-send{
+    margin-left:auto!important;
+    padding:7px 18px!important;
+    font-size:.53rem!important;
+  }
+  #demo .demo-device-card-ask .pg-phone-demo-clear{
+    order:7!important;
+    padding:5px 9px!important;
+    margin:0!important;
+    font-size:.42rem!important;
+  }
+}
+</style>
+
 </body>
 </html>
