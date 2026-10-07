@@ -12,7 +12,7 @@
 - Languages: 38 (full UI localization and output)
 - Core feature: Compare Mode for comparing responses from multiple AI assistants
 - Input: type, paste, import, scan, and voice workflows
-- Pricing: 3-day free trial, then $9.99/month or $79.99/year for Pro
+- Pricing: 3-day full-access trial; after trial, 1 free single-AI send every rolling 24 hours; Pro is $9.99/month or $79.99/year for unlimited sends, all templates, and Compare Mode
 - Privacy: app history and settings are kept on-device; prompts are sent to the selected third-party AI provider when the user sends them
 - App Store: https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285
 - Website: https://hmoses.github.io/poly-glot-site/
