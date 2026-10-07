@@ -90,7 +90,7 @@ platLabel:"Available on Apple platforms",
 platIPhone:"iPhone",platIPad:"iPad",platMac:"macOS",
 platAvail:"Available Now",
 // Screenshots
-ssEye:"\uD83D\uDCF8 Screenshots",ssH:"See it for yourself.",ssSub:"Poly-Glot AI Workspace runs natively on Mac, iPhone & iPad. Available now on the App Store.",
+ssEye:"\uD83D\uDCF8 Screenshots",ssH:"SEE THE APP FOR YOURSELF",ssSub:"Poly-Glot AI Workspace runs natively on Mac, iPhone & iPad. Available now on the App Store.",
 // Native Apps
 naEye:"\uD83D\uDCF2 Native Apps",naH:"One AI workspace. Every Apple device.",naSub:"Poly-Glot AI Workspace runs natively on Mac, iPhone & iPad. Same templates, same power, wherever you work.",
 // Showcase Card 1
