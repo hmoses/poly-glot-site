@@ -5,7 +5,6 @@ Never sends visitor content; translates only published site copy during a build.
 """
 import json, re, time, pathlib, sys, os
 from bs4 import BeautifulSoup, NavigableString
-from deep_translator import GoogleTranslator
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 PAGES=['connect.html','compare-ai-tools.html','multilingual-ai-workspace.html','prompt-templates.html','mcp-integrations.html','privacy-and-pricing.html','privacy.html','terms.html','support.html','share.html','seo-setup.html','linkedin.html','linkedin-mcp-2026.html']
 LANG={'ES':'es','FR':'fr','DE':'de','IT':'it','PT':'pt','NL':'nl','RU':'ru','ZH':'zh-CN','ZH_TW':'zh-TW','JA':'ja','KO':'ko','AR':'ar','HI':'hi','BN':'bn','TR':'tr','PL':'pl','SV':'sv','NO':'no','DA':'da','FI':'fi','EL':'el','HE':'iw','ID':'id','MS':'ms','TH':'th','VI':'vi','UK':'uk','CS':'cs','RO':'ro','HU':'hu','SK':'sk','HR':'hr','CA':'ca','AF':'af','SW':'sw','HA':'ha','AM':'am'}
@@ -30,6 +29,7 @@ def extract():
                     if value and re.search('[A-Za-z]',value):found.add(value)
     return sorted(found)
 def main():
+    from deep_translator import GoogleTranslator
     terms=extract()
     assert len(LANG)==37
     dest=ROOT/'assets'/'locales'/'subpages'
