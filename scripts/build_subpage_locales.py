@@ -45,24 +45,27 @@ def main():
             except ValueError:pass
         translations={s:prior[s] for s in terms if s in prior and prior[s] and prior[s]!=s}
         translator=GoogleTranslator(source='en',target=target)
-        for n,term in enumerate(terms):
-            if term in translations:continue
-            for attempt in range(4):
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+        todo=[term for term in terms if term not in translations]
+        def run_one(term):
+            local_translator=GoogleTranslator(source='en',target=target)
+            for attempt in range(5):
                 try:
-                    value=translator.translate(term)
-                    if value and value.strip() and value.strip()!=term:
-                        translations[term]=value.strip()
-                    elif value and value.strip()==term:
-                        translations[term]=term # product and technical terms may be intentionally unchanged
-                    break
+                    value=local_translator.translate(term)
+                    if value is not None and value.strip():
+                        return term,value.strip()
                 except Exception as exc:
-                    if attempt==3:print(f'FAILED {code} {n}: {exc}',flush=True)
-                    else:time.sleep(2**attempt)
-            if n%50==0:
-                path.write_text(json.dumps(translations,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
-                print(code,n,'/',len(terms),flush=True)
-            time.sleep(0.09)
-        path.write_text(json.dumps(translations,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+                    if attempt==4: print(f'FAILED {code}: {term[:60]}: {exc}',flush=True)
+                    else:time.sleep(min(30,2**attempt))
+            return term,None
+        with ThreadPoolExecutor(max_workers=5) as pool:
+            for n,future in enumerate(as_completed([pool.submit(run_one,term) for term in todo]),1):
+                term,value=future.result()
+                if value is not None:translations[term]=value
+                if n%80==0:
+                    path.write_text(json.dumps(translations,ensure_ascii=False,indent=2)+'\\n',encoding='utf8')
+                    print(code,n,'/',len(todo),flush=True)
+        path.write_text(json.dumps(translations,ensure_ascii=False,indent=2)+'\\n',encoding='utf8')
         unfilled=[t for t in terms if t not in translations]
         if unfilled:missing[code]=unfilled
         print(code,'complete',len(translations),'/',len(terms),flush=True)
