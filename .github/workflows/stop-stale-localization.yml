@@ -39,3 +39,5 @@ jobs:
           PY
 
 # Cancel superseded offline translations after introducing short-label fallback.
+
+# Preserve the current 38-language MIT-model build; cancel earlier incomplete variants.
