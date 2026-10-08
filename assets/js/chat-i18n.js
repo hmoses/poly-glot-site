@@ -100,6 +100,16 @@ Object.keys(EXTRA_TOPICS).forEach(function(code){
   TOPICS[code]=Object.assign({},TOPICS[code]||TOPICS.EN,EXTRA_TOPICS[code]);
 });
 
+// ===== NEW FREE/CROSS-DEVICE TOPIC LABELS =====
+(function(){
+var NEW_TOPIC_LABELS={"EN":["Free plan","Apple Devices + MCP"],"ES":["Plan gratis","Dispositivos Apple + MCP"],"FR":["Offre gratuite","Appareils Apple + MCP"],"DE":["Kostenloser Plan","Apple-Geräte + MCP"],"IT":["Piano gratuito","Dispositivi Apple + MCP"],"PT":["Plano grátis","Dispositivos Apple + MCP"],"NL":["Gratis plan","Apple-apparaten + MCP"],"RU":["Бесплатный план","Устройства Apple + MCP"],"ZH":["免费方案","Apple 设备 + MCP"],"ZH-TW":["免費方案","Apple 裝置 + MCP"],"JA":["無料プラン","Appleデバイス + MCP"],"KO":["무료 플랜","Apple 기기 + MCP"],"AR":["الخطة المجانية","أجهزة Apple + MCP"],"HI":["मुफ़्त प्लान","Apple डिवाइस + MCP"],"BN":["ফ্রি প্ল্যান","Apple ডিভাইস + MCP"],"TR":["Ücretsiz plan","Apple aygıtları + MCP"],"PL":["Plan bezpłatny","Urządzenia Apple + MCP"],"SV":["Gratisplan","Apple-enheter + MCP"],"NO":["Gratisplan","Apple-enheter + MCP"],"DA":["Gratis plan","Apple-enheder + MCP"],"FI":["Ilmainen paketti","Apple-laitteet + MCP"],"EL":["Δωρεάν πλάνο","Συσκευές Apple + MCP"],"HE":["תוכנית חינמית","מכשירי Apple + MCP"],"ID":["Paket gratis","Perangkat Apple + MCP"],"MS":["Pelan percuma","Peranti Apple + MCP"],"TH":["แผนฟรี","อุปกรณ์ Apple + MCP"],"VI":["Gói miễn phí","Thiết bị Apple + MCP"],"UK":["Безкоштовний план","Пристрої Apple + MCP"],"CS":["Plán zdarma","Zařízení Apple + MCP"],"RO":["Plan gratuit","Dispozitive Apple + MCP"],"HU":["Ingyenes csomag","Apple-eszközök + MCP"],"SK":["Plán zadarmo","Zariadenia Apple + MCP"],"HR":["Besplatni plan","Apple uređaji + MCP"],"CA":["Pla gratuït","Dispositius Apple + MCP"],"AF":["Gratis plan","Apple-toestelle + MCP"],"SW":["Mpango wa bure","Vifaa vya Apple + MCP"],"HA":["Tsarin kyauta","Na'urorin Apple + MCP"],"AM":["ነፃ ዕቅድ","የApple መሣሪያዎች + MCP"]};
+Object.keys(NEW_TOPIC_LABELS).forEach(function(code){
+  if(!TOPICS[code]) return;
+  TOPICS[code]._freePlan=NEW_TOPIC_LABELS[code][0];
+  TOPICS[code]._crossDevice=NEW_TOPIC_LABELS[code][1];
+});
+})();
+
 // =============================================
 // KB ANSWER TRANSLATIONS — per language
 // Keys match the English KB keys in the chatbot.
