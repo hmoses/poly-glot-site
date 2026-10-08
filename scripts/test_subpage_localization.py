@@ -24,11 +24,11 @@ async def main():
   for code in CODES:
    for path in PAGES:
     url='http://127.0.0.1:8765/'+path+'?lang='+code
-    await page.goto(url,wait_until='networkidle',timeout=30000)
+    await page.goto(url,wait_until='domcontentloaded',timeout=20000)
     try:
      await page.wait_for_function('window._pgSecondaryLocaleAudit && window._pgSecondaryLocaleAudit.language==='+json.dumps(code),timeout=7000)
      if code!='EN':
-      await page.wait_for_function('window._pgSecondaryLocaleAudit && window._pgSecondaryLocaleAudit.complete',timeout=15000)
+      await page.wait_for_function('window._pgSecondaryLocaleAudit && window._pgSecondaryLocaleAudit.complete',timeout=5000)
     except Exception:pass
     data=await page.evaluate('''() => ({audit:window._pgSecondaryLocaleAudit||null,locale:window._pgI18n?.curLang?.(),dir:document.documentElement.dir,flagCount:window._pgI18n?.LANGS?.length})''')
     audit=data['audit']
