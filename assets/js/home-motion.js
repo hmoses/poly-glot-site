@@ -5,10 +5,10 @@ if(reduced&&reduced.matches||!window.requestAnimationFrame)return;
 const boot=()=>{
 const unique=sel=>[...new Set([...document.querySelectorAll(sel)])];
 const sections=unique('body > section,main > section,.section,#knowledge-center');
-const cards=unique('.feature-card,.template-card,.pricing-card,.guide-card,main.wrap article,.showcase-inline-section');
-const headings=unique('.section-title,.section-eyebrow,main.wrap > h1,#knowledge-center h2');
+const cards=unique('.feature-card,.template-card,.pricing-card,.guide-card,main.wrap article');
+const headings=[]; // Homepage headings stay fixed and fully readable.
 const safe=e=>!e.closest('.nav,.nav-links,.modal,[role="dialog"],.phone-screen,.pg-phone-screen,.hero-phone-mock');
-const S=sections.filter(safe),C=cards.filter(safe),H=headings.filter(safe);
+const S=sections.filter(safe),C=cards.filter(safe),H=[];
 S.forEach(e=>e.classList.add('pg-motion-section'));C.forEach(e=>e.classList.add('pg-motion-card'));H.forEach(e=>e.classList.add('pg-motion-item'));
 let raf=0;
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
