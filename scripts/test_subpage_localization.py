@@ -4,11 +4,15 @@ import asyncio, http.server, threading, os, json
 from pathlib import Path
 from playwright.async_api import async_playwright
 ROOT=Path(__file__).resolve().parents[1]
+CATALOGS=ROOT/'assets'/'locales'/'subpages'
 PAGES=['connect.html','compare-ai-tools.html','multilingual-ai-workspace.html','prompt-templates.html','mcp-integrations.html','privacy-and-pricing.html','privacy.html','terms.html','support.html','share.html','seo-setup.html','linkedin.html','linkedin-mcp-2026.html']
 CODES=['EN','ES','FR','DE','IT','PT','NL','RU','ZH','ZH_TW','JA','KO','AR','HI','BN','TR','PL','SV','NO','DA','FI','EL','HE','ID','MS','TH','VI','UK','CS','RO','HU','SK','HR','CA','AF','SW','HA','AM']
 class Handler(http.server.SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
 async def main():
+ files=list(CATALOGS.glob('*.json'))
+ if len(files)<39:
+  raise SystemExit(f'Translation catalogs not yet generated: found {len(files)} of 39 JSON artifacts')
  os.chdir(ROOT)
  server=http.server.ThreadingHTTPServer(('127.0.0.1',8765),Handler)
  threading.Thread(target=server.serve_forever,daemon=True).start()
