@@ -6,9 +6,9 @@ const boot=()=>{
 const unique=sel=>[...new Set([...document.querySelectorAll(sel)])];
 const sections=unique('body > section,main > section,.section,#knowledge-center');
 const cards=unique('.feature-card,.template-card,.pricing-card,.faq-item,.guide-card,main.wrap article,.showcase-inline-section,.duo-exact-figure,.inline-response-row,.inline-prompt-block,.inline-price-item');
-const headings=unique('.section-title,.section-eyebrow,.section-sub,main.wrap > h1,main.wrap > .lead,#knowledge-center h2');
+const headings=unique('.section-title,.section-eyebrow,.section-sub,main.wrap > h1,main.wrap > .lead,#knowledge-center h2,#iphone-duo .duo-kicker,#iphone-duo #duo-title,#iphone-duo .duo-copy,#faq .section-title,#faq .section-eyebrow,#faq .section-sub');
 const safe=e=>!e.closest('.nav,.nav-links,.modal,[role="dialog"],.phone-screen,.pg-phone-screen,.hero-phone-mock');
-const S=sections.filter(safe),C=cards.filter(safe),H=headings.filter(safe).filter(e=>!e.closest('#faq,#iphone-duo'));
+const S=sections.filter(safe),C=cards.filter(safe),H=headings.filter(safe);
 const faqItems=unique('#faq .faq-item');
 S.forEach(e=>e.classList.add('pg-motion-section'));C.forEach(e=>e.classList.add('pg-motion-card'));H.forEach(e=>e.classList.add('pg-motion-item'));
 let raf=0;
