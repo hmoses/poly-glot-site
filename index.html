@@ -2894,6 +2894,13 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 </style>
 
 <link rel="stylesheet" href="assets/css/section-motion.css?v=4">
+<style id="pg-home-price-reveal">
+@media (prefers-reduced-motion:no-preference){
+.inline-pricing-row>.pg-price-reveal{opacity:0;transform:translate3d(0,28px,0) scale(.985);transition:opacity .65s ease-out,transform .65s cubic-bezier(.2,.75,.2,1);transition-delay:var(--pg-price-delay,0ms);will-change:opacity,transform}
+.inline-pricing-row>.pg-price-reveal.pg-price-visible{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+@media (prefers-reduced-motion:reduce){.inline-pricing-row>.pg-price-reveal{opacity:1!important;transform:none!important;transition:none!important}}
+</style>
 </head>
 <body>
 
