@@ -23,7 +23,7 @@ No. You choose the providers and follow the available sending workflow. The exte
 
 ## Can I compare AI answers for free?
 
-Compare Mode is available during the full-access trial and requires Pro afterward. Free access after trial is limited; consult the current product or App Store for entitlements.
+Compare Mode is unlocked during the 3-day full-access trial and locks afterward unless you subscribe to Pro. The Free plan retains 25 featured templates and one shared single-AI Send every rolling 24 hours.
 
 ## Further information
 
