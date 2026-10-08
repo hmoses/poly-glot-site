@@ -165,6 +165,6 @@ function apply(){
 }
 function schedule(){if(scheduled)return;scheduled=true;setTimeout(function(){scheduled=false;apply();},0);}
 window.addEventListener("pg:languagechange",function(){schedule();setTimeout(schedule,160);});
-window._pgSiteCopy={apply:apply,language:function(){return active;},knownKeys:function(){return KEYS.length;}};
+window._pgSiteCopy={apply:apply,language:function(){return active;},knownKeys:function(){return KEYS.length;},mcpLocales:MCP_LOCALES};
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",schedule,{once:true});else schedule();
 })();
