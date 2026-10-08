@@ -65,6 +65,11 @@ function apply(){
  allAttrs.forEach(function(x){var value=translate(x.term,lang);var target=value||x.value;if(x.el.getAttribute(x.a)!==target)x.el.setAttribute(x.a,target);});
  document.querySelectorAll("main,article,footer,.card,.guide-card,.about-card").forEach(function(el){el.setAttribute("dir",rtl?"rtl":"ltr");});
  document.documentElement.setAttribute("data-pg-secondary-locale",lang);
+ /* Report actual translation coverage; a visible selector is not proof of completion. */
+ var missing=[],seen=new Set();
+ allNodes.forEach(function(n){var o=allOrigins.get(n);if(!o||!o.term||seen.has(o.term))return;seen.add(o.term);if(lang!=="EN"&&!translate(o.term,lang))missing.push(o.term);});
+ window._pgSecondaryLocaleAudit={language:lang,page:location.pathname,total:seen.size,missing:missing,complete:missing.length===0};
+
 }
 /* Use the homepage language engine as the only source of locale state. */
 window.addEventListener("pg:languagechange",function(){apply();});
