@@ -1722,6 +1722,22 @@ Object.keys(FREE_PLAN_NAME_OVERRIDE).forEach(function(code){
 });
 })();
 
+// ===== FREE PLAN DISPLAY OVERRIDE =====
+(function(){
+  var codes=(typeof LANGS!=="undefined"&&LANGS)?LANGS.map(function(x){return x.code;}):["EN"];
+  codes.forEach(function(code){
+    T[code]=T[code]||{};
+    var localizedFree=T[code].prTier1||T.EN.prTier1||"Free";
+    T[code].prName1=localizedFree;
+  });
+  T.EN.prTier1="Free Plan";
+  T.EN.prName1="Free Forever";
+  T.EN.prDesc1="3-day full-access trial included · then Free stays $0 with 1 shared single-AI Send every rolling 24 hours";
+  T.EN.crossDeviceH="One purchase. All Apple devices. MCP access too.";
+  T.EN.crossDeviceP="Use the same Apple ID to install Poly-Glot on iPhone, iPad, and Mac. In a supported MCP client, link the same Poly-Glot account so the same entitlement can be used there too — no separate MCP subscription. MCP is a connection, not another app download.";
+  T.EN.pricingAccessNote="Free or Pro: use the same Poly-Glot entitlement across iPhone, iPad, and Mac with the same Apple ID. Supported MCP clients can use that entitlement after Poly-Glot account linking — no separate MCP subscription.";
+})();
+
 // ===== GETTER =====
 function gt(k,lang){var duoKey=(lang==="ZH_TW"?"ZH-TW":lang);return(DUO[duoKey]&&DUO[duoKey][k])||(T[lang]&&T[lang][k])||(DUO.EN&&DUO.EN[k])||T.EN[k]||'';}
 
