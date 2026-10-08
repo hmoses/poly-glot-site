@@ -1939,8 +1939,9 @@ if(gf)gf.textContent=flag;if(gc)gc.textContent=code;
 document.querySelectorAll('.pgGlob-row').forEach(function(r){r.classList.toggle('active',r.getAttribute('data-lang')===code);});
 var dd=document.getElementById('pgGlobalLangDD');if(dd)dd.classList.remove('open');
 var cf=document.getElementById('pgChat-lang-flag');if(cf)cf.textContent=flag;
-applyAll(code);
-updateChat(code);
+/* Secondary pages omit many homepage widgets; keep language changes functional even if a page-specific renderer fails. */
+try{applyAll(code);}catch(e){console.warn('[Poly-Glot i18n] Page translation error:',e);}
+try{updateChat(code);}catch(e){console.warn('[Poly-Glot i18n] Chat localization error:',e);}
 try{window.dispatchEvent(new CustomEvent('pg:languagechange',{detail:{code:code,flag:flag}}));}catch(e){}
 /* Keep all live device renders synchronized with the global language.
    i18n.js is the source of truth for the global selector, so retry after
