@@ -76,6 +76,14 @@ Object.keys(TOPICS).forEach(function(code){
   if(!TOPICS[code]._crossDevice) TOPICS[code]._crossDevice = "Apple Devices + MCP";
 });
 
+// ===== FREE PLAN TOPIC LABEL — ALL 38 LANGUAGES =====
+(function(){
+var FREE_PLAN_TOPIC={"EN":"Free plan","ES":"Plan gratis","FR":"Offre gratuite","DE":"Kostenloser Plan","IT":"Piano gratuito","PT":"Plano grátis","NL":"Gratis abonnement","RU":"Бесплатный план","ZH":"免费方案","ZH-TW":"免費方案","JA":"無料プラン","KO":"무료 플랜","AR":"الخطة المجانية","HI":"मुफ़्त प्लान","BN":"ফ্রি প্ল্যান","TR":"Ücretsiz plan","PL":"Plan bezpłatny","SV":"Gratisplan","NO":"Gratisplan","DA":"Gratis plan","FI":"Ilmainen paketti","EL":"Δωρεάν πλάνο","HE":"תוכנית חינמית","ID":"Paket gratis","MS":"Pelan percuma","TH":"แผนฟรี","VI":"Gói miễn phí","UK":"Безкоштовний план","CS":"Bezplatný plán","RO":"Plan gratuit","HU":"Ingyenes csomag","SK":"Bezplatný plán","HR":"Besplatni plan","CA":"Pla gratuït","AF":"Gratis plan","SW":"Mpango wa bure","HA":"Tsarin kyauta","AM":"ነፃ ዕቅድ"};
+Object.keys(TOPICS).forEach(function(code){
+  TOPICS[code]._freePlan=FREE_PLAN_TOPIC[code]||FREE_PLAN_TOPIC.EN;
+});
+})();
+
 // =============================================
 // KB ANSWER TRANSLATIONS — per language
 // Keys match the English KB keys in the chatbot.
