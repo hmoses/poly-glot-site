@@ -72,6 +72,8 @@ var LANGS=[
 // chat: chatT, chatSub, chatPH, chatWel, cs1..cs12
 
 var T={};
+var PG_NAV_GUIDES = {"EN":"Guides","ES":"Guías","FR":"Guides","DE":"Anleitungen","IT":"Guide","PT":"Guias","NL":"Handleidingen","RU":"Руководства","ZH":"指南","ZH_TW":"指南","JA":"ガイド","KO":"가이드","AR":"الأدلة","HI":"मार्गदर्शिकाएँ","BN":"নির্দেশিকা","TR":"Kılavuzlar","PL":"Poradniki","SV":"Guider","NO":"Veiledninger","DA":"Vejledninger","FI":"Oppaat","EL":"Οδηγοί","HE":"מדריכים","ID":"Panduan","MS":"Panduan","TH":"คู่มือ","VI":"Hướng dẫn","UK":"Посібники","CS":"Průvodci","RO":"Ghiduri","HU":"Útmutatók","SK":"Príručky","HR":"Vodiči","CA":"Guies","AF":"Gidse","SW":"Miongozo","HA":"Jagorori","AM":"መመሪያዎች"};
+
 
 // ===== ENGLISH (complete — master key set) =====
 T.EN={
@@ -1821,6 +1823,7 @@ function pgApplyCatalog(lang){
 
 // ===== END CATALOG LOCALIZATION =====
 
+Object.keys(PG_NAV_GUIDES).forEach(function(c){T[c]=T[c]||{};T[c].navGuides=PG_NAV_GUIDES[c];});
 // ===== GETTER =====
 function gt(k,lang){var duoKey=(lang==="ZH_TW"?"ZH-TW":lang);return(DUO[duoKey]&&DUO[duoKey][k])||(T[lang]&&T[lang][k])||(DUO.EN&&DUO.EN[k])||T.EN[k]||'';}
 
@@ -1961,9 +1964,11 @@ window.pgChat.renderWelcome();
 
 // ===== TAG NAV (only elements without data-i18n in HTML) =====
 function tagAll(){
-var navA=document.querySelectorAll('nav.nav ul.nav-links li a');
-var nk=['navSS','navFeat','navPrice1','navDemo','navPrice2','navFAQ','navConnect'];
-navA.forEach(function(a,i){if(nk[i]&&!a.getAttribute('data-i18n'))a.setAttribute('data-i18n',nk[i]);});
+var navKeys={'#screenshots':'navSS','#features':'navFeat','#apps':'sc2Tag','#demo':'navDemo','#pricing':'navPrice1','#faq':'navFAQ','#knowledge-center':'navGuides','#connect':'navConnect'};
+document.querySelectorAll('nav.nav ul.nav-links li a').forEach(function(a){
+  var key=navKeys[a.getAttribute('href')];
+  if(key)a.setAttribute('data-i18n',key);
+});
 var navCTA=document.querySelector('nav.nav .nav-cta a');
 if(navCTA&&!navCTA.getAttribute('data-i18n'))navCTA.setAttribute('data-i18n','navCTA');
 // All other elements are tagged directly in HTML with data-i18n attributes
