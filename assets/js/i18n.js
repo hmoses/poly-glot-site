@@ -1748,6 +1748,22 @@ Object.keys(CROSS_DEVICE_COPY).forEach(function(code){
 });
 })();
 
+// ===== FREE PLAN CARD — KEEP THE $0 TIER AS FREE, NOT TRIAL =====
+(function(){
+Object.keys(T).forEach(function(code){
+  if(!T[code]) return;
+  if(T[code].prTier1){
+    // Reuse each locale's existing localized "Free" tier label as the card name.
+    T[code].prName1=T[code].prTier1;
+  }
+});
+T.EN.prTier1="Free";
+T.EN.prName1="Free Forever";
+T.EN.prDesc1="3-day full-access trial included · then Free stays $0 with 1 shared single-AI Send every rolling 24 hours";
+T.EN.pf1a="25 Featured Free Templates";
+T.EN.pf1b="1 Shared Single-AI Send / Rolling 24 Hours";
+})();
+
 // ===== GETTER =====
 function gt(k,lang){var duoKey=(lang==="ZH_TW"?"ZH-TW":lang);return(DUO[duoKey]&&DUO[duoKey][k])||(T[lang]&&T[lang][k])||(DUO.EN&&DUO.EN[k])||T.EN[k]||'';}
 
