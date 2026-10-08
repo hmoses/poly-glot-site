@@ -1817,7 +1817,7 @@ var opts=sel.querySelectorAll('option');
 // Map option index to topic key (same order as HTML)
 var topicKeys=['_browse','_whatIs','_pricing','_whichAIs','_howWorks','_trial','_afterTrial','_compare','_templates','_categories','_languages','_appLang','_outputLang','_voice','_devices','_crossDevice','_privacy','_download','_cancel','_mcp','_mcpSetup','_features','_sending','_history','_custom','_offline','_web','_whoMade','_children','_api','_autoFill','_payment','_promptStudio','_support','_different','_disclaimer'];
 for(var i=0;i<opts.length&&i<topicKeys.length;i++){
-if(tops[topicKeys[i]])opts[i].textContent=tops[topicKeys[i]];
+var topicText=tops[topicKeys[i]]||(window._pgChatI18n.TOPICS.EN&&window._pgChatI18n.TOPICS.EN[topicKeys[i]]);if(topicText)opts[i].textContent=topicText;
 }
 }
 // === LOCALIZE BUBBLE + CLEAR TITLES ===
