@@ -1969,6 +1969,7 @@ try{window.dispatchEvent(new CustomEvent('pg:languagechange',{detail:{code:code,
   run();
 })(code);
 try{localStorage.setItem('pgLang',code);}catch(e){}
+try{sessionStorage.setItem('pgLang',code);}catch(e){}
 }
 
 // ===== APPLY TO ALL SITE ELEMENTS =====
@@ -2070,7 +2071,7 @@ document.head.appendChild(css);
 // ===== INIT =====
 function init(){
 buildPicker();tagAll();
-var saved;try{saved=localStorage.getItem('pgLang');}catch(e){}
+var saved;try{var q=new URLSearchParams(location.search).get('lang');saved=q&&LANGS.some(function(x){return x.code===q.toUpperCase();})?q.toUpperCase():localStorage.getItem('pgLang');}catch(e){try{saved=localStorage.getItem('pgLang');}catch(_){}}
 if(saved){if(saved==="ZH-TW")saved="ZH_TW";var L=LANGS.find(function(l){return l.code===saved;});if(L)setLang(L.code,L.flag);}else{document.documentElement.setAttribute("dir","ltr");}
 }
 
