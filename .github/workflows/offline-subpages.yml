@@ -17,17 +17,9 @@ jobs:
     timeout-minutes: 300
     strategy:
       fail-fast: false
-      max-parallel: 4
+      max-parallel: 10
       matrix:
-        include:
-          - group: 1
-            codes: "ES,FR,DE,IT,PT,NL,RU,ZH,ZH_TW"
-          - group: 2
-            codes: "JA,KO,AR,HI,BN,TR,PL,SV,NO"
-          - group: 3
-            codes: "DA,FI,EL,HE,ID,MS,TH,VI,UK"
-          - group: 4
-            codes: "CS,RO,HU,SK,HR,CA,AF,SW,HA,AM"
+        code: ["ES","FR","DE","IT","PT","NL","RU","ZH","ZH_TW","JA","KO","AR","HI","BN","TR","PL","SV","NO","DA","FI","EL","HE","ID","MS","TH","VI","UK","CS","RO","HU","SK","HR","CA","AF","SW","HA","AM"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -38,13 +30,13 @@ jobs:
           python -m pip install --disable-pip-version-check beautifulsoup4 deep-translator ctranslate2 "transformers>=4.40,<5" sentencepiece "huggingface_hub[hf_xet]" opencc-python-reimplemented
       - name: Translate locale group without Google rate limits
         env:
-          PG_ONLY_LOCALES: ${{ matrix.codes }}
+          PG_ONLY_LOCALE: ${{ matrix.code }}
           HF_HUB_DISABLE_TELEMETRY: "1"
         run: python scripts/build_subpage_locales_offline.py
       - name: Upload translation catalogs
         uses: actions/upload-artifact@v4
         with:
-          name: offline-catalogs-${{ matrix.group }}
+          name: offline-catalogs-${{ matrix.code }}
           path: assets/locales/subpages/*.json
           retention-days: 3
   publish:
