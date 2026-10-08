@@ -22,7 +22,7 @@ document.querySelectorAll("[aria-label],[title],[placeholder]").forEach(function
 /* Capture all visible translatable copy, including cards, buttons, FAQ and footer.
  * Never replace executable examples, technical identifiers, or user data. */
 var allOrigins=new WeakMap(),allNodes=[],allAttrs=[],attrOrigins=new WeakMap();
-function eligible(n){var p=n.parentElement;return !!p&&!p.closest("script,style,noscript,pre,code,textarea,svg,#pgGlobalLangDD,#pgGlobalLangPicker,[contenteditable],.code-block,.hljs,.language-json,[data-no-translate]");}
+function eligible(n){var p=n.parentElement;return !!p&&!p.closest("script,style,noscript,pre,code,textarea,svg,#pgGlobalLangDD,#pgGlobalLangPicker,[data-i18n],[data-i18n-html],[contenteditable],.code-block,.hljs,.language-json,[data-no-translate]");}
 function registerAll(){
  if(!document.body)return;
  var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n;
