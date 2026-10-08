@@ -1,0 +1,33 @@
+name: Validate 38-language subpages in browser
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - assets/locales/subpages/**
+      - scripts/test_subpage_localization.py
+      - .github/workflows/test-subpage-localization.yml
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Playwright and Chromium
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Test all 494 language-page combinations
+        run: python scripts/test_subpage_localization.py
+      - name: Archive failures and coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: localization-browser-report
+          path: localization-browser-report.json
+          if-no-files-found: ignore
