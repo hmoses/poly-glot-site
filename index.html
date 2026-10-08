@@ -2971,6 +2971,10 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
         <strong style="color:var(--text);">One purchase. All your Apple devices. MCP too.</strong><br>
         Use the same Apple ID on iPhone, iPad, and Mac so your Poly-Glot purchase/subscription applies across those devices. In supported MCP clients, link the same Poly-Glot account to use that entitlement there too — no separate MCP subscription.
       </div>
+      <div class="cross-device-note" style="margin:18px auto 0;max-width:820px;color:var(--text-muted);font-size:.88rem;line-height:1.65;">
+        <strong style="color:var(--text);">One purchase. All your Apple devices. MCP too.</strong>
+        Use the same Apple ID on iPhone, iPad, and Mac. In a supported MCP client, link your Poly-Glot account to use the same Poly-Glot entitlement there too — no separate MCP subscription.
+      </div>
     </div>
   </div>
 </section>
@@ -4365,14 +4369,14 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
     <div class="pricing-grid">
       <div class="pricing-card">
         <div class="pricing-tier" data-i18n="prTier1">Free</div>
-        <div class="pricing-name" data-i18n="prName1">Trial</div>
+        <div class="pricing-name" data-i18n="prName1">Free Plan</div>
         <div class="pricing-price">$0</div>
-        <div class="pricing-desc" data-i18n="prDesc1">3-day free trial · then 1 free send every rolling 24 hours</div>
+        <div class="pricing-desc" data-i18n="prDesc1">3-day full-access trial included · then stay on Free for $0</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li data-i18n="pf1a"><span class="ck">&#10003;</span> All 1,000+ Templates (3 days)</li>
-          <li data-i18n="pf1b"><span class="ck">&#10003;</span> Compare Mode (3 days)</li>
-          <li data-i18n="pf1c"><span class="ck">&#10003;</span> 1 Free Send/Day After Trial</li>
+          <li data-i18n="pf1a"><span class="ck">&#10003;</span> 25 Featured Free Templates</li>
+          <li data-i18n="pf1b"><span class="ck">&#10003;</span> 1 Shared Single-AI Send / Rolling 24 Hours</li>
+          <li data-i18n="pf1c"><span class="ck">&#10003;</span> All 9 AI Providers</li>
           <li data-i18n="pf1d"><span class="ck">&#10003;</span> 5 Input Methods</li>
         </ul>
         <a class="pricing-cta" data-i18n="prCTA1" href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12" style="text-decoration:none;color:inherit">Download Free</a>
@@ -5465,7 +5469,7 @@ function _demoStart() {
 </script>
 
 <!-- Chat i18n — loads BEFORE the chat widget so translations are available -->
-<script src="assets/js/chat-i18n.js?v=2026-10-07-v2"></script>
+<script src="assets/js/chat-i18n.js?v=2026-10-07-v4"></script>
 
 <!-- ===== POLY-GLOT MCP CHAT WIDGET v4 — FULLY LOCALIZED ===== -->
 <div id="pgChat-bubble" onclick="pgChat.toggle()" title="Ask Poly-Glot AI anything">
@@ -5497,6 +5501,7 @@ function _demoStart() {
       <option value="How much does it cost?">Pricing</option>
       <option value="Which AI providers?">Which AIs?</option>
       <option value="How does it work?">How it works</option>
+      <option value="Free plan">Free plan</option>
       <option value="Free trial">Free trial</option>
       <option value="After trial ends">After trial</option>
       <option value="Compare Mode">Compare Mode</option>
@@ -5508,7 +5513,6 @@ function _demoStart() {
       <option value="Voice input">Voice input</option>
       <option value="Devices">Devices</option>
       <option value="All devices + MCP">Apple Devices + MCP</option>
-      <option value="All devices and MCP">All Devices + MCP</option>
       <option value="Privacy">Privacy</option>
       <option value="Download">Download</option>
       <option value="Cancel subscription">Cancel</option>
@@ -5764,7 +5768,7 @@ function _demoStart() {
 
     "trial": "**3-Day Full-Access Trial**\n\nThe trial starts on your **first qualifying Send**.\n\nDuring the trial:\n- Ask Any AI\n- All 1,000+ templates\n- Compare Mode\n- All input methods\n- 38 languages\n\nAfter the trial:\n- Free templates remain available\n- Ask Any AI and Free templates share **one single-AI Send every rolling 24 hours**\n- Pro templates and Compare Mode lock until Pro\n\nThe trial does not automatically convert to a paid subscription.",
 
-    "after trial": "**After the 3-day trial:**\n\nFree users keep access to Free templates and can use **one shared single-AI Send every rolling 24 hours** across Ask Any AI and Free templates.\n\nLocked after trial until Pro:\n- Pro templates\n- Compare Mode\n- Unlimited sends\n\n**Pro Monthly:** $9.99/mo\n**Pro Annual:** $79.99/yr",
+    "free plan": "**Free Plan — $0**\n\nPoly-Glot starts with a **3-day full-access trial**. After the trial, you can stay on the Free plan for $0.\n\nFree includes:\n- 25 Featured Free Templates\n- 1 shared single-AI Send every rolling 24 hours across Ask Any AI and Free templates\n- All 9 supported AI providers for that single-AI Send\n- Type, Paste, Import, Scan (iOS), and Dictate\n\nPro templates, Compare Mode, and unlimited sends require Pro after the trial.",\n\n    "after trial": "**After the 3-day trial:**\n\nFree users keep access to Free templates and can use **one shared single-AI Send every rolling 24 hours** across Ask Any AI and Free templates.\n\nLocked after trial until Pro:\n- Pro templates\n- Compare Mode\n- Unlimited sends\n\n**Pro Monthly:** $9.99/mo\n**Pro Annual:** $79.99/yr",
 
     "api": "**No API keys needed!** 🎉\n\nPoly-Glot works by routing your prompts to AI apps' **free web tiers** directly:\n\n1. You type/speak your prompt\n2. Poly-Glot copies it to your clipboard\n3. The selected AI opens instantly\n4. Some AIs (ChatGPT, Perplexity, Grok) auto-fill your prompt\n5. Others require a quick paste\n\nYou **don't need** to pay for:\n- ChatGPT Plus ($20/mo)\n- Claude Pro ($20/mo)\n- Gemini Advanced ($20/mo)\n- Copilot Pro ($20/mo)\n\nThat's $80+/mo saved. Poly-Glot gives you all of them for $9.99/mo.",
 
@@ -5812,6 +5816,7 @@ function _demoStart() {
   // =============================================
   var matchRules = [
     { keys: ["what is poly", "what's poly", "tell me about poly", "about poly", "explain poly", "what does poly", "what is this", "what app", "what product", "describe poly"], topic: "what is poly-glot" },
+    { keys: ["free plan", "free model", "free tier", "what is free", "stay free", "$0 plan", "free version"], topic: "free plan" },
     { keys: ["price", "cost", "how much", "pricing", "subscription", "plan", "pay", "fee", "charge", "expensive", "cheap", "afford", "billing", "invoice", "money worth"], topic: "how much" },
     { keys: ["which ai", "what ai", "ai model", "supported ai", "compatible ai", "chatgpt", "claude", "gemini", "grok", "perplexity", "copilot", "mistral", "hugging", "duckduck", "compatible", "work with", "what model", "which model", "ai provider", "ai service"], topic: "which ai" },
     { keys: ["how many template", "template list", "template example", "prompt template", "what template", "show template", "available template"], topic: "template" },
@@ -13383,5 +13388,6 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
 <!-- everyday-pro-templates-2026-10-07 -->
 <!-- cross-device-mcp-localized-2026-10-07 -->
 <!-- cross-device-mcp-chatbot-2026-10-07 -->
+<!-- free-plan-cross-device-chat-2026-10-07 -->
 </body>
 </html>
