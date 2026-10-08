@@ -242,7 +242,7 @@ mcpGptBadge:'Coming Soon',
 mcpGptDesc:'OpenAI\'s MCP Apps marketplace is opening soon. Poly-Glot will be available on day one.',
 mcpGptSteps:'<li>Search <strong style="color:var(--text);">"Poly-Glot"</strong> in the ChatGPT app store</li><li>Click <strong style="color:var(--text);">Connect</strong> — one click setup</li><li>Start prompting with 1,000+ templates</li>',
 mcpGptTip:'💡 Bookmark this page — we\'ll update it when ChatGPT MCP goes live.'
-};
+,crossDeviceAccess:"One download. All your Apple devices. MCP too. Install Poly-Glot on iPhone, iPad, and Mac with the same Apple ID. Link the same Poly-Glot account in a supported MCP client to use the same entitlement there — no separate MCP subscription."};
 
 // ===== SPANISH =====
 T.ES={
