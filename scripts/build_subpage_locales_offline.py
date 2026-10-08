@@ -42,7 +42,9 @@ def main():
             'Privacy Policy']
     only=os.environ.get('PG_ONLY_LOCALE')
     if only and only not in LANG:raise ValueError('Unsupported locale '+only)
-    codes=['ES','NL','AR','ZH_TW'] if probe else [only] if only else list(LANG)
+    selected=os.environ.get('PG_ONLY_LOCALES')
+    codes=['ES','NL','AR','ZH_TW'] if probe else selected.split(',') if selected else [only] if only else list(LANG)
+    if any(c not in LANG for c in codes):raise ValueError('Unknown locale in group '+str(codes))
     outdir=ROOT/'assets'/'locales'/'subpages'
     outdir.mkdir(parents=True,exist_ok=True)
     (outdir/'en.json').write_text(json.dumps(en,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
