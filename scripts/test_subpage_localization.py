@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+"""Playwright smoke coverage for all 38 languages on all public subpages."""
+import asyncio, http.server, threading, os, json
+from pathlib import Path
+from playwright.async_api import async_playwright
+ROOT=Path(__file__).resolve().parents[1]
+PAGES=['connect.html','compare-ai-tools.html','multilingual-ai-workspace.html','prompt-templates.html','mcp-integrations.html','privacy-and-pricing.html','privacy.html','terms.html','support.html','share.html','seo-setup.html','linkedin.html','linkedin-mcp-2026.html']
+CODES=['EN','ES','FR','DE','IT','PT','NL','RU','ZH','ZH_TW','JA','KO','AR','HI','BN','TR','PL','SV','NO','DA','FI','EL','HE','ID','MS','TH','VI','UK','CS','RO','HU','SK','HR','CA','AF','SW','HA','AM']
+class Handler(http.server.SimpleHTTPRequestHandler):
+ def log_message(self,*args):pass
+async def main():
+ os.chdir(ROOT)
+ server=http.server.ThreadingHTTPServer(('127.0.0.1',8765),Handler)
+ threading.Thread(target=server.serve_forever,daemon=True).start()
+ failures=[]
+ async with async_playwright() as p:
+  browser=await p.chromium.launch(headless=True,args=['--no-sandbox'])
+  context=await browser.new_context()
+  page=await context.new_page()
+  for code in CODES:
+   for path in PAGES:
+    url='http://127.0.0.1:8765/'+path+'?lang='+code
+    await page.goto(url,wait_until='networkidle',timeout=30000)
+    try:
+     await page.wait_for_function('window._pgSecondaryLocaleAudit && window._pgSecondaryLocaleAudit.language==='+json.dumps(code),timeout=7000)
+     if code!='EN':
+      await page.wait_for_function('window._pgSecondaryLocaleAudit && window._pgSecondaryLocaleAudit.complete',timeout=15000)
+    except Exception:pass
+    data=await page.evaluate('''() => ({audit:window._pgSecondaryLocaleAudit||null,locale:window._pgI18n?.curLang?.(),dir:document.documentElement.dir,flagCount:window._pgI18n?.LANGS?.length})''')
+    audit=data['audit']
+    if data['locale']!=code:failures.append((path,code,'language selection not restored',data))
+    if data['flagCount']!=38:failures.append((path,code,'not all flags',data))
+    if not audit or code!='EN' and audit['missing']:
+     failures.append((path,code,'missing translations',{'sample':audit['missing'][:8] if audit else [],'count':len(audit['missing']) if audit else 'unknown'}))
+    if code in ('AR','HE') and data['dir']!='rtl':failures.append((path,code,'RTL layout',data))
+    print(code,path,'OK' if not failures or failures[-1][0:2]!=(path,code) else 'FAIL',flush=True)
+  await browser.close()
+ server.shutdown()
+ report={'checked':len(CODES)*len(PAGES),'failures':failures}
+ (ROOT/'localization-browser-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+ print(json.dumps({'checked':report['checked'],'failures':len(failures),'examples':failures[:10]},ensure_ascii=False))
+ if failures:raise SystemExit(1)
+if __name__=='__main__':asyncio.run(main())
