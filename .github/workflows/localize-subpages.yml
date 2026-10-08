@@ -9,7 +9,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: translate-secondary
+  group: translate-secondary-${{ github.sha }}
   cancel-in-progress: true
 jobs:
   translate:
