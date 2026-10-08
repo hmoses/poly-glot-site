@@ -1,0 +1,13 @@
+/* Poly-Glot motion system — progressive enhancement, no hidden default state. */
+@media (prefers-reduced-motion: no-preference) {
+  .pg-float-in {
+    animation: pg-section-rise .82s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes pg-section-rise {
+    from { opacity:.78; transform:translate3d(0,20px,0); }
+    to { opacity:1; transform:translate3d(0,0,0); }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pg-float-in { animation:none!important; }
+}
