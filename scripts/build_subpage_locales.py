@@ -52,21 +52,22 @@ def main():
         marker="\n\n◈◈◈\n\n"
         groups=[];group=[];length=0
         for term in todo:
-            if group and (len(group)>=12 or length+len(term)+len(marker)>3500):
+            if group and (len(group)>=24 or length+len(term)+len(marker)>4300):
                 groups.append(group);group=[];length=0
             group.append(term);length+=len(term)+len(marker)
         if group:groups.append(group)
         def run_one(term):
             local_translator=GoogleTranslator(source='en',target=target)
-            for attempt in range(5):
+            for attempt in range(7):
                 try:
                     value=local_translator.translate(term)
                     if value is not None and value.strip():return term,value.strip()
                 except Exception as exc:
-                    if attempt==4:print(f'FAILED {code}: {term[:60]}: {exc}',flush=True)
-                    else:time.sleep(min(30,2**attempt))
+                    if attempt==6:print(f'FAILED {code}: {term[:60]}: {exc}',flush=True)
+                    else:time.sleep(min(90,3**attempt))
             return term,None
         def run_group(group):
+            time.sleep(1.5) # Stay below shared Google translation rate limits.
             if len(group)==1:
                 term,value=run_one(group[0]);return {term:value} if value else {}
             joined=marker.join(group)
@@ -77,7 +78,7 @@ def main():
                     return dict(zip(group,[x.strip() for x in split]))
             except Exception:pass
             return {k:v for k,v in (run_one(term) for term in group) if v}
-        with ThreadPoolExecutor(max_workers=5) as pool:
+        with ThreadPoolExecutor(max_workers=1) as pool:
             for n,future in enumerate(as_completed([pool.submit(run_group,g) for g in groups]),1):
                 translations.update(future.result())
                 if n%15==0:
