@@ -137,7 +137,7 @@ saveCompare:"\uD83D\uDD00 Compare Mode \u00b7 9 AIs \u00b7 38 languages \u00b7 O
 saveTrial:"3-day free trial \u00b7 1 free send every rolling 24 hours after \u00b7 Cancel anytime",
 saveTrA:"On-Device History & Settings",saveTrB:"Prompts Go to Your Chosen AI Provider",saveTrC:"Fully Localized \u2014 38 Languages",
 // Templates
-tplEye:"\uD83D\uDCDA Template Library",tplH:"1,000+ templates. Every category.",tplSub:"From marketing copy to code reviews, from lesson plans to legal drafts. Find the right prompt in seconds.",
+tplEye:"\uD83D\uDCDA Template Library",tplH:"1,000+ templates. Every category.",tplSub:"From meal planning, budgeting, travel, and home projects to resumes, business, coding, and more. Find the right prompt in seconds.",
 // Pricing
 prEye:"\uD83D\uDCB0 Pricing",prH:"Start free. Upgrade when ready.",prSub:"3-day free trial \u2014 everything unlocked. All 1,000+ templates, Compare Mode, unlimited sends. After trial: 1 free send every rolling 24 hours. Pro for unlimited access.",
 prTier1:"Free",prName1:"Free Forever",prDesc1:"3-day full-access trial included · then Free stays $0",prCTA1:"Download Free",
@@ -1992,7 +1992,7 @@ if(saved){if(saved==="ZH-TW")saved="ZH_TW";var L=LANGS.find(function(l){return l
 }
 
 // Expose
-window._pgI18n={gt:gt,curLang:function(){return curLang;},LANGS:LANGS,setLang:setLang};
+window._pgI18n={gt:gt,curLang:function(){return curLang;},LANGS:LANGS,setLang:setLang,dictionary:T};
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
