@@ -29,4 +29,4 @@ Compare Mode is unlocked during the 3-day full-access trial and locks afterward 
 
 - [Official product site](https://hmoses.github.io/poly-glot-site/)
 - [App Store](https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12)
-- [MCP setup](https://hmoses.github.io/poly-glot-site/connect.html)
+- [MCP setup](https://hmoses.github.io/poly-glot-site/#connect)
