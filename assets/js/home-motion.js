@@ -5,7 +5,7 @@ if(reduced&&reduced.matches||!window.requestAnimationFrame)return;
 const boot=()=>{
 const unique=sel=>[...new Set([...document.querySelectorAll(sel)])];
 const sections=unique('body > section,main > section,.section,#knowledge-center');
-const cards=unique('.feature-card,.template-card,.pricing-card,.faq-item,.guide-card,main.wrap article,.duo-exact-figure,.inline-response-row,.inline-prompt-block,.ai-provider-badge,.inline-provider-row,.trust-item,.category-card,.featured-template-card,.category-tile,.pg-comparison-panel,.all-categories-head,.template-categories-head,.demo-device-card,.cross-device-access,.platform-pill,.gallery-grid > .gallery-item,.gallery-grid > .gallery-card,.gallery-grid > .gallery-phone,.gallery-grid > .gallery-ipad,.gallery-grid > .gallery-mac');
+const cards=unique('.pg-mcp-motion-card,#connect a[href*="mcp.so/servers"],#connect a[href*="glama.ai/mcp"],#connect a[href*="huggingface.co/spaces"],.feature-card,.template-card,.pricing-card,.faq-item,.guide-card,main.wrap article,.duo-exact-figure,.inline-response-row,.inline-prompt-block,.ai-provider-badge,.inline-provider-row,.trust-item,.category-card,.featured-template-card,.category-tile,.pg-comparison-panel,.all-categories-head,.template-categories-head,.demo-device-card,.cross-device-access,.platform-pill,.gallery-grid > .gallery-item,.gallery-grid > .gallery-card,.gallery-grid > .gallery-phone,.gallery-grid > .gallery-ipad,.gallery-grid > .gallery-mac');
 const headings=unique('.section-title,.section-eyebrow,.section-sub,main.wrap > h1,main.wrap > .lead,#knowledge-center h2,#iphone-duo .duo-kicker,#iphone-duo #duo-title,#iphone-duo .duo-copy,#faq .section-title,#faq .section-eyebrow,#faq .section-sub');
 const safe=e=>!e.closest('.nav,.nav-links,.modal,[role="dialog"],.phone-screen,.pg-phone-screen,.hero-phone-mock');
 const S=sections.filter(safe),C=cards.filter(safe),H=headings.filter(safe);
@@ -28,7 +28,7 @@ if('IntersectionObserver' in window){
 }
 
 // Animate containers, not their nested badges, to avoid competing transforms.
-const outerCards=C.filter(e=>e.matches('.pg-comparison-panel,.inline-response-row,.featured-template-card,.category-tile') || !C.some(parent=>parent!==e&&parent.contains(e)));
+const outerCards=C.filter(e=>e.matches('.pg-mcp-motion-card,.pg-comparison-panel,.inline-response-row,.featured-template-card,.category-tile') || !C.some(parent=>parent!==e&&parent.contains(e)));
 S.forEach(e=>e.classList.add('pg-motion-section'));outerCards.forEach(e=>e.classList.add('pg-motion-card'));H.forEach(e=>e.classList.add('pg-motion-item'));
 let raf=0;
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
