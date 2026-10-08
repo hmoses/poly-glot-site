@@ -34,3 +34,11 @@ Poly-Glot's MCP server exposes 15 tools for template search and retrieval, promp
 ## Citation guidance
 
 Use "Poly-Glot AI Workspace" as the canonical product name. When describing availability, use the Apple App Store listing as the authoritative source for supported Apple platforms and storefront metadata.
+
+## Topic guides and RAG-readable versions
+
+- [compare ai tools](https://hmoses.github.io/poly-glot-site/compare-ai-tools.html) — [Markdown source](https://hmoses.github.io/poly-glot-site/knowledge/compare-ai-tools.md)
+- [multilingual ai workspace](https://hmoses.github.io/poly-glot-site/multilingual-ai-workspace.html) — [Markdown source](https://hmoses.github.io/poly-glot-site/knowledge/multilingual-ai-workspace.md)
+- [prompt templates](https://hmoses.github.io/poly-glot-site/prompt-templates.html) — [Markdown source](https://hmoses.github.io/poly-glot-site/knowledge/prompt-templates.md)
+- [mcp integrations](https://hmoses.github.io/poly-glot-site/mcp-integrations.html) — [Markdown source](https://hmoses.github.io/poly-glot-site/knowledge/mcp-integrations.md)
+- [privacy and pricing](https://hmoses.github.io/poly-glot-site/privacy-and-pricing.html) — [Markdown source](https://hmoses.github.io/poly-glot-site/knowledge/privacy-and-pricing.md)
