@@ -13505,7 +13505,7 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
 @media(max-width:640px){
 .nav{z-index:20000!important}
 .nav-links#pg-mobile-menu{display:none!important}
-.nav-links#pg-mobile-menu.show-mobile{display:flex!important;position:absolute!important;top:100%!important;left:0!important;right:0!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;max-height:calc(100dvh - 64px)!important;overflow-y:auto!important;padding:12px 20px 20px!important;background:#08091a!important;border-bottom:1px solid rgba(125,211,252,.3)!important;box-shadow:0 20px 35px rgba(0,0,0,.45)!important;z-index:20001!important}
+.nav-links#pg-mobile-menu.show-mobile{display:flex!important;position:fixed!important;top:64px!important;left:0!important;right:0!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;max-height:calc(100dvh - 64px)!important;overflow-y:auto!important;padding:12px 20px 20px!important;background:#08091a!important;border-bottom:1px solid rgba(125,211,252,.3)!important;box-shadow:0 20px 35px rgba(0,0,0,.45)!important;z-index:2147483646!important}
 .nav-links#pg-mobile-menu.show-mobile li{display:block!important;width:100%!important}
 .nav-links#pg-mobile-menu.show-mobile a{display:block!important;padding:13px 9px!important;min-height:44px!important;font-size:16px!important;color:#e8ecf4!important}
 .nav-mobile-toggle{position:relative!important;z-index:20002!important;min-width:44px!important;min-height:44px!important;touch-action:manipulation!important}
@@ -13516,6 +13516,8 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
 (function(){
  const btn=document.querySelector('.nav-mobile-toggle'),menu=document.getElementById('pg-mobile-menu');
  if(!btn||!menu)return;
+ // Portal the dropdown out of the navbar to avoid clipping/stacking on iOS.
+ document.body.appendChild(menu);
  function setOpen(open){menu.classList.toggle('show-mobile',open);btn.setAttribute('aria-expanded',String(open));btn.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');btn.textContent=open?'×':'☰'}
  btn.addEventListener('click',function(event){event.preventDefault();event.stopPropagation();setOpen(!menu.classList.contains('show-mobile'))});
  menu.addEventListener('click',function(event){if(event.target.closest('a'))setOpen(false)});
