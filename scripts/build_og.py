@@ -4,7 +4,7 @@ from pathlib import Path
 import math
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 root=Path(__file__).resolve().parents[1]
-out=root/"assets/img/polyglot-linkedin-mcp-parrot-2026-v5.png"
+out=root/"assets/img/polyglot-linkedin-mcp-parrot-2026-v6.png"
 logo=root/"assets/img/icon-256.png"
 W,H=1200,630
 im=Image.new("RGB",(W,H)); p=im.load()
@@ -54,23 +54,35 @@ def grad_text(x,y,label,size,start=(217,137,245),end=(66,172,255),heavy=True):
         for yy in range(gr.height):
             pix[xx,yy]=(*color,255)
     im.paste(gr,(x,y),mask)
-icon=Image.open(logo).convert("RGBA").resize((71,71),Image.Resampling.LANCZOS)
-mask=Image.new("L",(71,71))
-ImageDraw.Draw(mask).rounded_rectangle((0,0,70,70),radius=14,fill=255)
-im.paste(icon,(58,56),mask)
+# Social card layout follows the supplied banner, using the canonical parrot app icon.
+icon=Image.open(logo).convert("RGBA").resize((162,162),Image.Resampling.LANCZOS)
+mask=Image.new("L",(162,162))
+ImageDraw.Draw(mask).rounded_rectangle((0,0,161,161),radius=30,fill=255)
+im.paste(icon,(70,88),mask)
 d=ImageDraw.Draw(im)
-d.rounded_rectangle((58,56,129,127),radius=14,outline=(86,179,255,180),width=2)
-d.text((147,62),"Poly-Glot",font=font(52,True),fill=(252,253,255,255))
-grad_text(57,154,"AI Workspace",76)
+d.rounded_rectangle((70,88,232,250),radius=30,outline=(102,87,255,220),width=4)
+d.rounded_rectangle((73,91,229,247),radius=28,outline=(40,170,255,170),width=2)
+d.text((252,98),"Poly-Glot",font=font(78,True),fill=(255,255,255,255))
+grad_text(251,193,"AI Workspace",67)
 prefix="Compare answers from "
-d.text((60,282),prefix,font=font(40,True),fill=(248,249,255,255))
-grad_text(60+int(d.textlength(prefix,font=font(40,True))),282,"9 AIs",40)
-d.text((60,352),"One prompt. Multiple perspectives. Better decisions.",font=font(25),fill=(192,198,218,255))
-grad_text(60,469,"38 languages",25)
-d.text((267,468),"·",font=font(27,True),fill=(170,177,204,255))
-grad_text(297,469,"1,000+ templates",25,start=(84,198,253),end=(74,149,255))
-d.text((539,468),"·",font=font(27,True),fill=(170,177,204,255))
-d.text((569,469),"iPhone, iPad, Mac & MCP",font=font(23,True),fill=(248,248,255,255))
+d.text((73,286),prefix,font=font(38,True),fill=(255,255,255,255))
+grad_text(73+int(d.textlength(prefix,font=font(38,True))),286,"9 AIs.",38)
+d.text((75,354),"One prompt. Multiple perspectives. Better decisions.",font=font(24),fill=(187,193,211,255))
+# Feature row with icon-led labels.
+grad_text(76,428,"38 languages",23)
+d.text((308,428),"|",font=font(25),fill=(127,133,164,255))
+grad_text(333,428,"1,000+ templates",23,start=(75,200,255),end=(77,150,255))
+d.text((587,428),"|",font=font(25),fill=(127,133,164,255))
+grad_text(620,428,"MCP",23,start=(206,131,245),end=(138,115,255))
+# Apple device availability: symbols are graphic indicators, not hyperlinks.
+d.rounded_rectangle((79,495,103,534),radius=5,outline=(251,252,255,255),width=3)
+d.ellipse((88,529,94,532),fill=(250,250,255,255))
+d.rounded_rectangle((124,496,171,531),radius=4,outline=(251,252,255,255),width=3)
+d.rounded_rectangle((189,500,248,532),radius=3,outline=(251,252,255,255),width=3)
+d.line((184,535,254,535),fill=(251,252,255,255),width=3)
+d.line((286,492,286,541),fill=(114,116,153,255),width=2)
+d.text((313,486),"iPhone, iPad & Mac",font=font(22,True),fill=(251,251,255,255))
+d.text((313,519),"with MCP",font=font(20,True),fill=(251,251,255,255))
 out.parent.mkdir(parents=True,exist_ok=True)
 im.convert("RGB").save(out,optimize=True,compress_level=8)
 print("Rendered",out,"with official app icon")
