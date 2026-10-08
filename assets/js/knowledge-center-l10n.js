@@ -18,7 +18,7 @@ function apply(){
  words("mcpEcoH",c),
  words("ftPriv",c)+" · "+words("ftPrice",c)
  ].map(function(text,i){return text?text+" →":originalLinks[i];});
- links.forEach(function(el,i){if(el&&el.textContent!==translated[i]){el.textContent=translated[i];el.setAttribute("aria-label",translated[i].replace(/\\s*[→←]\\s*$/,""));}});
+ links.forEach(function(el,i){if(el&&el.textContent!==translated[i]){el.textContent=translated[i];el.setAttribute("aria-label",translated[i].replace(/\s*[→←]\s*$/,""));}});
  var section=document.getElementById("knowledge-center");
  if(section){section.setAttribute("dir",(c==="AR"||c==="HE")?"rtl":"ltr");section.setAttribute("aria-label",v[0]);}
 }
