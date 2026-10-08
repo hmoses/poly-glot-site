@@ -5,10 +5,10 @@ if(reduced&&reduced.matches||!window.requestAnimationFrame)return;
 const boot=()=>{
 const unique=sel=>[...new Set([...document.querySelectorAll(sel)])];
 const sections=unique('body > section,main > section,.section,#knowledge-center');
-const cards=unique('.feature-card,.template-card,.pricing-card,.faq-item,.guide-card,main.wrap article,.showcase-inline-section,.duo-exact-figure,.inline-response-row,.inline-prompt-block,.inline-price-item,.ai-provider-badge,.inline-provider-row,.trust-item,.category-card');
+const cards=unique('.feature-card,.template-card,.pricing-card,.faq-item,.guide-card,main.wrap article,.showcase-inline-section,.duo-exact-figure,.inline-response-row,.inline-prompt-block,.inline-price-item,.ai-provider-badge,.inline-provider-row,.trust-item,.category-card,.featured-template-card,.category-tile,.pg-comparison-panel,.all-categories-head,.template-categories-head');
 const headings=unique('.section-title,.section-eyebrow,.section-sub,main.wrap > h1,main.wrap > .lead,#knowledge-center h2,#iphone-duo .duo-kicker,#iphone-duo #duo-title,#iphone-duo .duo-copy,#faq .section-title,#faq .section-eyebrow,#faq .section-sub');
 const safe=e=>!e.closest('.nav,.nav-links,.modal,[role="dialog"],.phone-screen,.pg-phone-screen,.hero-phone-mock');
-const S=sections.filter(safe),C=cards.filter(safe).filter(e=>!e.closest('.pg-motion-card')),H=headings.filter(safe);
+const S=sections.filter(safe),C=cards.filter(safe),H=headings.filter(safe);
 const faqItems=unique('#faq .faq-item');
 // Animate containers, not their nested badges, to avoid competing transforms.
 const outerCards=C.filter(e=>!C.some(parent=>parent!==e&&parent.contains(e)));
