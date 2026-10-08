@@ -74,11 +74,28 @@ function localizeToolDescriptions(code){
 function localizeTraditionalChineseTags(code){
  if(code!=="ZH_TW")return;
  document.querySelectorAll("[data-i18n]").forEach(function(el){
-  var t=gt(el.getAttribute("data-i18n"),code);if(!t)return;
-  var toggle=el.querySelector(".toggle"),check=el.querySelector(".ck,.check");
-  if(el.textContent!==t){el.textContent=t;if(check){el.insertBefore(check,el.firstChild);el.insertBefore(document.createTextNode(" "),check.nextSibling);}if(toggle)el.appendChild(toggle);}
+  var translated=gt(el.getAttribute("data-i18n"),code);
+  if(!translated)return;
+  /* Preserve icons, toggles, checkmarks, buttons, and their event handlers.
+     The base i18n engine owns complex markup; only replace plain text nodes. */
+  if(!el.children.length){
+   if(el.textContent!==translated)el.textContent=translated;
+   return;
+  }
+  var textNodes=Array.from(el.childNodes).filter(function(n){return n.nodeType===3&&n.nodeValue.trim();});
+  if(textNodes.length===1){
+   var node=textNodes[0],raw=node.nodeValue;
+   var leading=(raw.match(/^\\s*/)||[""])[0],trailing=(raw.match(/\\s*$/)||[""])[0];
+   if(node.nodeValue!==leading+translated+trailing)node.nodeValue=leading+translated+trailing;
+  }
  });
- document.querySelectorAll("[data-i18n-html]").forEach(function(el){var t=gt(el.getAttribute("data-i18n-html"),code);if(t&&el.innerHTML!==t)el.innerHTML=t;});
+ document.querySelectorAll("[data-i18n-html]").forEach(function(el){
+  var translated=gt(el.getAttribute("data-i18n-html"),code);
+  if(!translated)return;
+  /* HTML-bearing strings are controlled by the primary i18n renderer.
+     Do not replace child elements or live event handlers here. */
+  if(!el.children.length&&el.textContent!==translated&&!/[<>]/.test(translated))el.textContent=translated;
+ });
 }
 /* Safely reuse native and chat lexicons for shared pricing, CTA and footer labels. */
 (function(){
