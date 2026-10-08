@@ -1772,6 +1772,16 @@ Object.keys(FREE_MODEL_PATCH).forEach(function(code){
 });
 })();
 
+// ===== FREE PLAN LABEL OVERRIDE — ALL LOCALES =====
+(function(){
+Object.keys(T).forEach(function(code){
+  if(!T[code]) return;
+  // Legacy locale packs called the $0 card "Trial". The product has an ongoing
+  // Free plan after the 3-day full-access trial, so keep the card labeled Free.
+  T[code].prName1 = T[code].prTier1 || "Free";
+});
+})();
+
 // ===== GETTER =====
 function gt(k,lang){var duoKey=(lang==="ZH_TW"?"ZH-TW":lang);return(DUO[duoKey]&&DUO[duoKey][k])||(T[lang]&&T[lang][k])||(DUO.EN&&DUO.EN[k])||T.EN[k]||'';}
 
