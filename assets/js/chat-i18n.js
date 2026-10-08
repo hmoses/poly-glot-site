@@ -17,7 +17,7 @@ var TOPICS = {};
 
 TOPICS.EN = {
 _browse:"📋 Browse all topics…",
-_whatIs:"What is Poly-Glot?",_pricing:"Pricing",_whichAIs:"Which AIs?",_howWorks:"How it works",
+_whatIs:"What is Poly-Glot?",_pricing:"Pricing",_whichAIs:"Which AIs?",_howWorks:"How it works",_freePlan:"Free plan",
 _trial:"Free trial",_afterTrial:"After trial",_compare:"Compare Mode",_templates:"Templates",
 _categories:"Template categories",_languages:"Languages",_appLang:"App language",_outputLang:"Output language",
 _voice:"Voice input",_devices:"Devices",_crossDevice:"One Download: Apple Devices + MCP",_privacy:"Privacy",_download:"Download",_cancel:"Cancel",

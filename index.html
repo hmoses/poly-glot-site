@@ -2787,6 +2787,11 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 }
 </style>
 
+<style id="platforms-cross-device-style">
+.cross-device-access-note{margin:14px auto 0;max-width:880px;padding:12px 16px;border:1px solid rgba(125,211,252,.16);border-radius:12px;background:rgba(125,211,252,.055);color:var(--text-muted);font-size:.86rem;line-height:1.55;text-align:center}
+.cross-device-access-note strong{color:var(--text);font-weight:800}
+@media(max-width:640px){.cross-device-access-note{margin-top:12px;padding:11px 12px;font-size:.79rem;line-height:1.5}}
+</style>
 </head>
 <body>
 
@@ -2978,6 +2983,10 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
       <div class="platform-universal-note" style="margin-top:16px;text-align:center;color:var(--text-muted);font-size:.88rem;line-height:1.65;">
         <strong style="color:var(--text);">One download. All your Apple devices. MCP too.</strong><br>
         Download Poly-Glot once with the same Apple ID to use it on iPhone, iPad, and Mac. Your Poly-Glot entitlement also carries into supported MCP clients after you connect/link your Poly-Glot account — no separate MCP subscription.
+      </div>
+      <div class="cross-device-access-note" data-i18n="crossDeviceAccess">
+        <strong>One download. All your Apple devices. MCP too.</strong>
+        Install Poly-Glot on iPhone, iPad, and Mac with the same Apple ID. Link the same Poly-Glot account in a supported MCP client to use the same entitlement there — no separate MCP subscription.
       </div>
     </div>
   </div>
@@ -5473,7 +5482,7 @@ function _demoStart() {
 </script>
 
 <!-- Chat i18n — loads BEFORE the chat widget so translations are available -->
-<script src="assets/js/chat-i18n.js?v=2026-10-07-v2"></script>
+<script src="assets/js/chat-i18n.js?v=2026-10-07-v3"></script>
 
 <!-- ===== POLY-GLOT MCP CHAT WIDGET v4 — FULLY LOCALIZED ===== -->
 <div id="pgChat-bubble" onclick="pgChat.toggle()" title="Ask Poly-Glot AI anything">
@@ -5752,7 +5761,7 @@ function _demoStart() {
 
     "device": "Poly-Glot AI Workspace runs on **iPhone, iPad, and Mac**.\n\n📱 **One App Store download / Apple entitlement works across your Apple devices** when you use the same Apple ID.\n\n🔌 **MCP is included in the same Poly-Glot entitlement model:** connect/link your Poly-Glot account in a supported MCP client to use the same access there. MCP is a connection, not another app download.\n\nYou do not need a separate Poly-Glot subscription for each Apple device or a separate MCP subscription.",
 
-    "cross device": "**One download. All your Apple devices. MCP too.**\n\n📱 Download Poly-Glot from the App Store and use the same Apple ID on **iPhone, iPad, and Mac**. The same Apple purchase/entitlement applies across those devices.\n\n🔌 **MCP:** in a supported MCP client, connect/link your Poly-Glot account so the **same Poly-Glot entitlement** can be resolved for MCP access. MCP is not a second download and does not require a separate MCP subscription.\n\nA compatible MCP client and account linking are still required.",
+    "cross device": "**One download. All your Apple devices. MCP too.**\n\n📱 Install Poly-Glot on **iPhone, iPad, and Mac** using the same Apple ID. The same Apple purchase/entitlement applies across those devices.\n\n🔌 **MCP:** link the same Poly-Glot account in a supported MCP client so the same entitlement can be resolved for MCP access. MCP does not require a separate Poly-Glot subscription.\n\nYou still install the app on each Apple device, and a compatible MCP client plus account linking are required.",
 
     "private": "**Poly-Glot keeps app history and settings on your device.**\n\n🎤 **Voice input:** Poly-Glot uses on-device Apple speech recognition when available. If on-device recognition fails, the app may fall back to Apple's server-based speech recognition.\n\n🤖 **AI prompts:** when you choose to send a prompt, it goes to the AI provider you selected so that provider can respond. That provider's privacy terms apply to submitted prompts.\n\nPoly-Glot does not claim that sent prompts always stay on-device.\n\n**Privacy Policy:** [View Full Policy](https://hmoses.github.io/poly-glot-site/privacy.html)",
 
@@ -5772,7 +5781,9 @@ function _demoStart() {
 
     "trial": "**3-Day Full-Access Trial**\n\nThe trial starts on your **first qualifying Send**.\n\nDuring the trial:\n- Ask Any AI\n- All 1,000+ templates\n- Compare Mode\n- All input methods\n- 38 languages\n\nAfter the trial:\n- Free templates remain available\n- Ask Any AI and Free templates share **one single-AI Send every rolling 24 hours**\n- Pro templates and Compare Mode lock until Pro\n\nThe trial does not automatically convert to a paid subscription.",
 
-    "free plan": "**Free Plan — $0**\n\nPoly-Glot starts with a **3-day full-access trial**. After the trial, you can stay on the Free plan for $0.\n\nFree includes:\n- 25 Featured Free Templates\n- 1 shared single-AI Send every rolling 24 hours across Ask Any AI and Free templates\n- All 9 supported AI providers for that single-AI Send\n- Type, Paste, Import, Scan (iOS), and Dictate\n\nPro templates, Compare Mode, and unlimited sends require Pro after the trial.",\n\n    "after trial": "**After the 3-day trial:**\n\nFree users keep access to Free templates and can use **one shared single-AI Send every rolling 24 hours** across Ask Any AI and Free templates.\n\nLocked after trial until Pro:\n- Pro templates\n- Compare Mode\n- Unlimited sends\n\n**Pro Monthly:** $9.99/mo\n**Pro Annual:** $79.99/yr",
+    "free plan": "**Free Plan — $0**\n\nPoly-Glot starts with a **3-day full-access trial**. After the trial, you can stay on Free for $0.\n\nFree includes:\n- 25 Featured Free Templates\n- 1 shared single-AI Send every rolling 24 hours across Ask Any AI and Free templates\n- All 9 supported AI providers for that single-AI Send\n- Type, Paste, Import, Scan (iOS), and Dictate\n\n**One download / entitlement across Apple devices:** install Poly-Glot on iPhone, iPad, and Mac using the same Apple ID.\n\n**MCP:** link the same Poly-Glot account in a supported MCP client to use the same entitlement there. No separate MCP subscription is required.\n\nPro templates, Compare Mode, and unlimited sends require Pro after the trial.",
+
+    "after trial": "**After the 3-day trial:**\n\nFree users keep access to Free templates and can use **one shared single-AI Send every rolling 24 hours** across Ask Any AI and Free templates.\n\nLocked after trial until Pro:\n- Pro templates\n- Compare Mode\n- Unlimited sends\n\n**Pro Monthly:** $9.99/mo\n**Pro Annual:** $79.99/yr",
 
     "api": "**No API keys needed!** 🎉\n\nPoly-Glot works by routing your prompts to AI apps' **free web tiers** directly:\n\n1. You type/speak your prompt\n2. Poly-Glot copies it to your clipboard\n3. The selected AI opens instantly\n4. Some AIs (ChatGPT, Perplexity, Grok) auto-fill your prompt\n5. Others require a quick paste\n\nYou **don't need** to pay for:\n- ChatGPT Plus ($20/mo)\n- Claude Pro ($20/mo)\n- Gemini Advanced ($20/mo)\n- Copilot Pro ($20/mo)\n\nThat's $80+/mo saved. Poly-Glot gives you all of them for $9.99/mo.",
 
@@ -7046,7 +7057,7 @@ function _demoStart() {
 <!-- ===== END GLOBAL IMAGE + DEVICE LIGHTBOX ===== -->
 
 <!-- Global i18n — 38 languages, same flags as the app -->
-<script src="assets/js/i18n.js?v=2026-10-07-v4"></script>
+<script src="assets/js/i18n.js?v=2026-10-07-v5"></script>
 <script src="assets/js/device-ui-i18n-clean.js?v=2026-10-07-1605"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
