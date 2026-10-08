@@ -1,24 +1,19 @@
 /* Connect page: bind the actual hero and introduction to locale changes. */
 (function(){"use strict";
 if(!/connect\.html$/.test(location.pathname))return;
-var HU=[
-"Kapcsolja össze a Poly-Glotot az MCP-ökoszisztémával",
-"Használja ugyanazt az éles Poly-Glot MCP-kiszolgálót a kompatibilis kliensekben, több mint 1000 promptsablonnal, 15 eszközzel, 38 nyelvvel és összehasonlító móddal.",
-"🌐 Mi az a Poly-Glot?",
-"A Poly-Glot AI Workspace többnyelvű mesterségesintelligencia-munkaterület, amely jobb promptok létrehozását, többnyelvű munkát és vezető AI-asszisztensek válaszainak összehasonlítását teszi lehetővé. Több mint 1000 promptsablont, 38 nyelvet, összehasonlító módot és fejlesztőknek szánt MCP-eszközöket kínál.",
-"Az alkalmazás Apple-eszközökön érhető el. A Poly-Glot MCP-kiszolgáló ugyanezeket a prompt- és nyelvi eszközöket elérhetővé teszi kompatibilis AI-asszisztensekben, például a Claude-ban és a ChatGPT-ben."
-];
-var baseline,els;
-function setup(){els=[document.querySelector(".hero h1"),document.querySelector(".hero p"),document.querySelector(".about-card")?.previousElementSibling,document.querySelectorAll(".about-card > p")[0],document.querySelectorAll(".about-card > p")[1]];if(els.some(function(e){return !e;}))return;baseline=els.map(function(e){return e.innerHTML;});apply();}
+var VI=["Kết nối Poly-Glot với hệ sinh thái MCP","Sử dụng cùng một máy chủ MCP Poly-Glot đang hoạt động với các ứng dụng khách tương thích, hơn 1.000 mẫu câu lệnh, 15 công cụ, 38 ngôn ngữ và Chế độ so sánh.","🌐 Poly-Glot là gì?","Poly-Glot AI Workspace là không gian làm việc AI đa ngôn ngữ giúp bạn tạo câu lệnh tốt hơn, làm việc bằng nhiều ngôn ngữ và so sánh câu trả lời từ các trợ lý AI hàng đầu trong một quy trình. Ứng dụng có hơn 1.000 mẫu câu lệnh, hỗ trợ 38 ngôn ngữ, Chế độ so sánh và các công cụ MCP dành cho nhà phát triển.","Ứng dụng có trên thiết bị Apple. Máy chủ MCP Poly-Glot cũng đưa các công cụ tạo câu lệnh và ngôn ngữ vào các trợ lý AI tương thích như Claude và ChatGPT. Dùng các liên kết bên dưới để khám phá sản phẩm, cài ứng dụng hoặc xem mã nguồn công khai.","🔌 MCP là gì?","MCP (Model Context Protocol) cho phép các trợ lý AI và công cụ phát triển tương thích kết nối với công cụ bên ngoài. Poly-Glot dùng máy chủ MCP từ xa qua Streamable HTTP. Khi kết nối, bạn có thể tìm mẫu, xây dựng câu lệnh, làm việc với ngôn ngữ và chuẩn bị so sánh.","Khả năng tương thích của ứng dụng khách MCP","🌐 Khám phá Poly-Glot"," Xem trên App Store","⌘ Xem mã nguồn trên GitHub","📚 Sổ đăng ký MCP chính thức","🔌 Danh sách MCP.so","🧩 Danh sách Glama MCP","🤗 Hugging Face Space"];
+var HU=["Kapcsolja össze a Poly-Glotot az MCP-ökoszisztémával","Használja ugyanazt az éles Poly-Glot MCP-kiszolgálót kompatibilis kliensekben, több mint 1000 promptsablonnal, 15 eszközzel, 38 nyelvvel és összehasonlító móddal.","🌐 Mi az a Poly-Glot?","A Poly-Glot AI Workspace többnyelvű AI-munkaterület, amely segít jobb promptokat készíteni, több nyelven dolgozni és összehasonlítani a vezető AI-asszisztensek válaszait. Több mint 1000 promptsablont, 38 nyelvet, összehasonlító módot és fejlesztői MCP-eszközöket kínál.","Az alkalmazás Apple-eszközökre érhető el. A Poly-Glot MCP-kiszolgáló a promptkészítő és nyelvi eszközöket olyan kompatibilis AI-asszisztensekhez is eljuttatja, mint a Claude és a ChatGPT. Az alábbi hivatkozásokon felfedezheti a terméket, telepítheti az alkalmazást vagy megtekintheti a nyilvános megvalósítást.","🔌 Mi az az MCP?","Az MCP (Model Context Protocol) lehetővé teszi, hogy kompatibilis AI-asszisztensek és fejlesztői eszközök külső eszközökhöz csatlakozzanak. A Poly-Glot távoli Streamable HTTP MCP-kiszolgálót használ. Csatlakozás után sablonokat kereshet, promptokat építhet, nyelvi munkafolyamatokat használhat és összehasonlításokat készíthet elő.","MCP-kliens kompatibilitás","🌐 Poly-Glot felfedezése"," Megtekintés az App Store-ban","⌘ Forráskód megtekintése a GitHubon","📚 Hivatalos MCP-nyilvántartás","🔌 MCP.so-listázás","🧩 Glama MCP-listázás","🤗 Hugging Face Space"];
+var baseline,els,more,moreBase;
+function setup(){els=[document.querySelector(".hero h1"),document.querySelector(".hero p"),document.querySelector(".about-card")?.previousElementSibling,document.querySelectorAll(".about-card > p")[0],document.querySelectorAll(".about-card > p")[1]];if(els.some(function(e){return !e;}))return;baseline=els.map(function(e){return e.innerHTML;});more=[document.querySelectorAll(".section-title")[1],document.querySelectorAll(".section-sub")[0],document.querySelector(".guide-card h3"),...document.querySelectorAll(".about-links a")];moreBase=more.map(function(e){return e?e.innerHTML:null;});apply();}
 function apply(){if(!els)return;var api=window._pgI18n,lang=api?.curLang?.()||"EN";
-if(lang==="EN"){els.forEach(function(e,n){e.innerHTML=baseline[n];});return;}
-var copy=lang==="HU"?HU:null;
+if(lang==="EN"){els.forEach(function(e,n){e.innerHTML=baseline[n];});if(more)more.forEach(function(e,n){if(e&&moreBase[n]!=null)e.innerHTML=moreBase[n];});return;}
+var copy=lang==="HU"?HU:lang==="VI"?VI:null;
 var mcp=window._pgMcpSetupCopy&&window._pgMcpSetupCopy[lang];
 var headline=copy?copy[0]:(mcp&&mcp[0])||api.gt("mcpH",lang);
 var description=copy?copy[1]:(mcp&&mcp[1])||api.gt("mcpSub",lang);
 if(headline)els[0].textContent=headline;
 if(description)els[1].textContent=description;
-if(copy){[2,3,4].forEach(function(n){els[n].textContent=copy[n];});}
+if(copy){[2,3,4].forEach(function(n){els[n].textContent=copy[n];});more.forEach(function(e,n){if(e&&copy[n+5])e.textContent=copy[n+5];});}
 else {var what=api.gt("fq1q",lang),intro=api.gt("fq1a",lang);if(what)els[2].textContent=what;if(intro)els[3].textContent=intro;}
 var rtl=lang==="AR"||lang==="HE";els.forEach(function(e){e.setAttribute("dir",rtl?"rtl":"auto");});
 }
