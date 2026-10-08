@@ -44,7 +44,11 @@ function registerAll(){
   });
  });
 }
+var pgFeedbackLocales={"ES":["Copiar","Copiado"],"FR":["Copier","Copié"],"DE":["Kopieren","Kopiert"],"IT":["Copia","Copiato"],"PT":["Copiar","Copiado"],"NL":["Kopiëren","Gekopieerd"],"RU":["Копировать","Скопировано"],"ZH":["复制","已复制"],"ZH_TW":["複製","已複製"],"JA":["コピー","コピーしました"],"KO":["복사","복사됨"],"AR":["نسخ","تم النسخ"],"HI":["कॉपी करें","कॉपी किया गया"],"BN":["কপি করুন","কপি হয়েছে"],"TR":["Kopyala","Kopyalandı"],"PL":["Kopiuj","Skopiowano"],"SV":["Kopiera","Kopierat"],"NO":["Kopier","Kopiert"],"DA":["Kopiér","Kopieret"],"FI":["Kopioi","Kopioitu"],"EL":["Αντιγραφή","Αντιγράφηκε"],"HE":["העתק","הועתק"],"ID":["Salin","Tersalin"],"MS":["Salin","Disalin"],"TH":["คัดลอก","คัดลอกแล้ว"],"VI":["Sao chép","Đã sao chép"],"UK":["Копіювати","Скопійовано"],"CS":["Kopírovat","Zkopírováno"],"RO":["Copiază","Copiat"],"HU":["Másolás","Másolva"],"SK":["Kopírovať","Skopírované"],"HR":["Kopiraj","Kopirano"],"CA":["Copia","Copiat"],"AF":["Kopieer","Gekopieer"],"SW":["Nakili","Imenakiliwa"],"HA":["Kwafi","An kwafa"],"AM":["ቅዳ","ተቀድቷል"]};
 function translate(term,lang){
+ if(pgFeedbackLocales[lang]&&(term==="Copy"||term==="Copied!"||term==="✓ Copied!")){
+  var word=pgFeedbackLocales[lang][term==="Copy"?0:1];return term.charAt(0)==="✓"?"✓ "+word+(lang==="EN"?"!":""):word+(term==="Copied!"?"!":"");
+ }
  if(lang==="EN")return term;
  var extra=(window._pgSecondaryExact&&window._pgSecondaryExact[lang]);
  if(lang==="VI"&&(!extra||!Object.prototype.hasOwnProperty.call(extra,term)))extra=exactVI;
