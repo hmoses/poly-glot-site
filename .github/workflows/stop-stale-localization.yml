@@ -37,3 +37,5 @@ jobs:
               except urllib.error.HTTPError as exc:
                   print('Cancel request:',run['id'],exc.code,flush=True)
           PY
+
+# Cancel superseded offline translations after introducing short-label fallback.
