@@ -23,7 +23,7 @@ The product describes a three-day full-access trial, with availability subject t
 
 ## What happens when the trial ends?
 
-A limited free option remains, currently described as 25 featured templates and one single-AI send per rolling 24 hours. Pro unlocks additional functionality.
+After the trial, 25 featured free templates and one shared single-AI Send every rolling 24 hours remain available at no cost. Compare Mode and Pro templates lock unless you subscribe to Pro.
 
 ## Further information
 
