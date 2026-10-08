@@ -1863,7 +1863,7 @@ LANGS.forEach(function(L){
   if(!T[code])T[code]={};
   if(code!=="EN"){
     var ecosystem=(T[code].mcpEcoEye||T.EN.mcpEcoEye||"MCP Ecosystem");
-    T[code].mcpH="Poly-Glot · "+ecosystem.replace(/^[^\\p{L}\\p{N}]+/u,"").trim();
+    T[code].mcpH="Poly-Glot · "+ecosystem.replace(/^[^\p{L}\p{N}]+/u,"").trim();
     if(intro[code])T[code].mcpSub=intro[code];
   }
 });
