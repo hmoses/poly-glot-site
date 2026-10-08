@@ -4,7 +4,7 @@ from pathlib import Path
 import math
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 root=Path(__file__).resolve().parents[1]
-out=root/"assets/img/polyglot-og-mcp-2026.png"
+out=root/"assets/img/polyglot-linkedin-mcp-parrot-2026-v4.png"
 logo=root/"assets/img/icon-256.png"
 W,H=1200,630
 im=Image.new("RGB",(W,H)); p=im.load()
