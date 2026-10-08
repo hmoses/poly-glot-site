@@ -29,7 +29,7 @@ function registerAll(){
  while(n=walker.nextNode()){
   if(!eligible(n)||allOrigins.has(n))continue;
   var raw=n.nodeValue,term=norm(raw);
-  if(!term||!/[A-Za-z]/.test(term)||/^https?:|^[{}[\\]"':,./\\\\0-9+_=-]+$/.test(term))continue;
+  if(!term||!/[A-Za-z]/.test(term)||/^https?:/i.test(term))continue;
   allOrigins.set(n,{raw:raw,term:term});
   allNodes.push(n);
  }
