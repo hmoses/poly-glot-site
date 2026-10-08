@@ -2901,6 +2901,16 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 }
 @media (prefers-reduced-motion:reduce){.inline-pricing-row>.pg-price-reveal{opacity:1!important;transform:none!important;transition:none!important}}
 </style>
+
+<style id="pg-phone-occlusion-fix">
+/* Keep hero trust copy above device in document flow, but never render it through device artwork. */
+.hero .trust-row{z-index:1!important;position:relative!important}
+.hero .trust-item{z-index:auto!important}
+.hero-device-stack{position:relative!important;z-index:25!important;isolation:isolate!important}
+.hero-device-stack .hero-phone-mock{z-index:30!important;isolation:isolate!important;background:#000!important;overflow:hidden!important}
+.hero-device-stack .hero-phone-mock .phone-screen{background:#0d0f1a!important;isolation:isolate!important}
+@media(max-width:760px){.hero .trust-row{margin-bottom:28px!important}.hero-device-stack{margin-top:16px!important}}
+</style>
 </head>
 <body>
 
