@@ -1,13 +1,9 @@
-/* Poly-Glot motion system — progressive enhancement, no hidden default state. */
+/* Poly-Glot floating content reveals — progressive enhancement. */
 @media (prefers-reduced-motion: no-preference) {
-  .pg-float-in {
-    animation: pg-section-rise .82s cubic-bezier(.22,1,.36,1) both;
-  }
-  @keyframes pg-section-rise {
-    from { opacity:.78; transform:translate3d(0,20px,0); }
-    to { opacity:1; transform:translate3d(0,0,0); }
+  .pg-motion-reveal { animation: pg-float-reveal 1.05s cubic-bezier(.16,1,.3,1) both; animation-delay:var(--pg-delay,0ms); }
+  @keyframes pg-float-reveal {
+    from { opacity:.3; transform:translate3d(0,48px,0) scale(.975); filter:blur(3px); }
+    to { opacity:1; transform:translate3d(0,0,0) scale(1); filter:blur(0); }
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .pg-float-in { animation:none!important; }
-}
+@media (prefers-reduced-motion: reduce) { .pg-motion-reveal { animation:none!important; } }
