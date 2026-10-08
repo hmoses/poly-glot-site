@@ -26,6 +26,17 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check Pillow
           python scripts/build_og.py
+      - name: Verify new social preview exists and is LinkedIn sized
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          path = Path("assets/img/polyglot-linkedin-mcp-parrot-2026-v4.png")
+          assert path.is_file() and path.stat().st_size > 20_000, "Social preview PNG missing or empty"
+          with Image.open(path) as im:
+              assert im.format == "PNG" and im.size == (1200, 630), f"Unexpected preview: {im.format} {im.size}"
+          print(f"Verified: {path} ({path.stat().st_size:,} bytes)")
+          PY
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
