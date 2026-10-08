@@ -5,11 +5,28 @@ if(reduced&&reduced.matches||!window.requestAnimationFrame)return;
 const boot=()=>{
 const unique=sel=>[...new Set([...document.querySelectorAll(sel)])];
 const sections=unique('body > section,main > section,.section,#knowledge-center');
-const cards=unique('.feature-card,.template-card,.pricing-card,.faq-item,.guide-card,main.wrap article,.duo-exact-figure,.inline-response-row,.inline-prompt-block,.inline-price-item,.ai-provider-badge,.inline-provider-row,.trust-item,.category-card,.featured-template-card,.category-tile,.pg-comparison-panel,.all-categories-head,.template-categories-head');
+const cards=unique('.feature-card,.template-card,.pricing-card,.faq-item,.guide-card,main.wrap article,.duo-exact-figure,.inline-response-row,.inline-prompt-block,.ai-provider-badge,.inline-provider-row,.trust-item,.category-card,.featured-template-card,.category-tile,.pg-comparison-panel,.all-categories-head,.template-categories-head');
 const headings=unique('.section-title,.section-eyebrow,.section-sub,main.wrap > h1,main.wrap > .lead,#knowledge-center h2,#iphone-duo .duo-kicker,#iphone-duo #duo-title,#iphone-duo .duo-copy,#faq .section-title,#faq .section-eyebrow,#faq .section-sub');
 const safe=e=>!e.closest('.nav,.nav-links,.modal,[role="dialog"],.phone-screen,.pg-phone-screen,.hero-phone-mock');
 const S=sections.filter(safe),C=cards.filter(safe),H=headings.filter(safe);
 const faqItems=unique('#faq .faq-item');
+// Pricing comparisons use a dedicated, independent entrance reveal.
+const priceCards=unique('.inline-pricing-row > .inline-price-item').filter(safe);
+if('IntersectionObserver' in window){
+  const observer=new IntersectionObserver(entries=>{
+    for(const entry of entries){
+      if(!entry.isIntersecting)continue;
+      entry.target.classList.add('pg-price-visible');
+      observer.unobserve(entry.target);
+    }
+  },{threshold:.14,rootMargin:'0px 0px -5% 0px'});
+  priceCards.forEach((card,i)=>{
+    card.style.setProperty('--pg-price-delay',Math.min(i,1)*140+'ms');
+    card.classList.add('pg-price-reveal');
+    observer.observe(card);
+  });
+}
+
 // Animate containers, not their nested badges, to avoid competing transforms.
 const outerCards=C.filter(e=>e.matches('.pg-comparison-panel,.inline-response-row,.featured-template-card,.category-tile') || !C.some(parent=>parent!==e&&parent.contains(e)));
 S.forEach(e=>e.classList.add('pg-motion-section'));outerCards.forEach(e=>e.classList.add('pg-motion-card'));H.forEach(e=>e.classList.add('pg-motion-item'));
