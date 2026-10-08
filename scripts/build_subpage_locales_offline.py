@@ -60,6 +60,10 @@ def main():
             try:old=json.loads(target_file.read_text(encoding='utf8'))
             except ValueError:pass
         output={term:old[term] for term in en if term in old and old[term]}
+        # A lone interface shortcut/technical letter is language-neutral.
+        for term in en:
+            if re.fullmatch(r'[A-Za-z]',term):
+                output[term]=term
         todo=[term for term in en if term not in output]
         print(code,'source count',len(en),'remaining',len(todo),flush=True)
         for i in range(0,len(todo),12):
