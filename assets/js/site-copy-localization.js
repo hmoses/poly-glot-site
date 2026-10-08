@@ -69,11 +69,20 @@ function localizeToolDescriptions(code){
  var t=TOOL_DESC[code]||TOOL_DESC.EN;
  toolDescriptionNodes.forEach(function(n,i){if(!n)return;if(code==="EN")n.innerHTML=toolDescriptionHtml[i];else if(n.textContent!==t[i])n.textContent=t[i];if(code==="HE"||code==="AR")n.setAttribute("dir","auto");else n.removeAttribute("dir");});
 }
+function localizeTraditionalChineseTags(code){
+ if(code!=="ZH_TW")return;
+ document.querySelectorAll("[data-i18n]").forEach(function(el){
+  var t=gt(el.getAttribute("data-i18n"),code);if(!t)return;
+  var toggle=el.querySelector(".toggle"),check=el.querySelector(".ck,.check");
+  if(el.textContent!==t){el.textContent=t;if(check){el.insertBefore(check,el.firstChild);el.insertBefore(document.createTextNode(" "),check.nextSibling);}if(toggle)el.appendChild(toggle);}
+ });
+ document.querySelectorAll("[data-i18n-html]").forEach(function(el){var t=gt(el.getAttribute("data-i18n-html"),code);if(t&&el.innerHTML!==t)el.innerHTML=t;});
+}
 var originals=new WeakMap(), active="EN", busy=false, scheduled=false;
 var allowed=/^(?:A|SPAN|DIV|P|H1|H2|H3|H4|H5|BUTTON|LABEL|EM|STRONG|SMALL|LI)$/;
 var skip='[data-i18n], [data-i18n-html], #pgChat-window, #pgChat-bubble, .featured-template-grid, .category-constellation, .demo-device-card, .screenshot-gallery, .hero-visual, #iphone-duo, .duo-device, .pg-phone, .pg-static-ipad, .pg-mac-panel-localized, pre, code, textarea, script, style, noscript, svg, [contenteditable="true"]';
 function norm(s){return String(s||"").replace(/\s+/g," ").trim();}
-function gt(k,lang){try{return window._pgI18n.gt(k,lang)||"";}catch(e){return "";}}
+function gt(k,lang){try{return window._pgI18n.gt(k,lang==="ZH_TW"?"ZH-TW":lang)||"";}catch(e){return "";}}
 var exact={};
 function buildEnglish(){exact={};KEYS.forEach(function(k){var v=norm(gt(k,"EN"));if(v && !exact[v])exact[v]=k;});}
 function eligible(el){return el&&allowed.test(el.tagName)&&!el.closest(skip)&&!el.closest('[aria-hidden="true"]')&&el.isConnected;}
@@ -114,6 +123,7 @@ function apply(){
   localizeCompareExample(code);
   localizeFeatureTags(code);
   localizeToolDescriptions(code);
+  localizeTraditionalChineseTags(code);
   /* Use the native app's own UI translations for the live demo heading. */
   var demoHeading=document.querySelector('[data-i18n="demoAskTitle"]');
   if(demoHeading&&window._pgDeviceUI&&typeof window._pgDeviceUI._strings==="function"){
