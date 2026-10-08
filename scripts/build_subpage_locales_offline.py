@@ -77,6 +77,8 @@ def main():
                 translated=tokenizer.decode(ids,skip_special_tokens=True).strip()
                 if code=='ZH_TW' and traditional:translated=traditional.convert(translated)
                 # Do not silently replace missing machine outputs with English.
+                if not translated and (len(term)<=2 or re.fullmatch(r'[A-Z0-9._/+:-]{2,30}',term)):
+                    translated=term # A symbol, identifier or acronym needs no natural-language translation.
                 if not translated:raise ValueError(f'Empty translation: {code} {term[:80]}')
                 output[term]=translated
             if (i//12)%15==0:
