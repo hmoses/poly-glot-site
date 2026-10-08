@@ -15,7 +15,7 @@ Poly-Glot provides more than 1,000 reusable prompt templates to help people crea
 
 ## Are templates available without Pro?
 
-The current product documentation describes 25 featured free templates after the trial, while additional Pro templates require a subscription.
+After the 3-day trial, 25 featured free templates remain available. Pro templates and Compare Mode lock unless you subscribe to Pro.
 
 ## What is the free send limit?
 
