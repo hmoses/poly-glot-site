@@ -1,11 +1,12 @@
-/* Scroll-responsive floating content, with readable static fallback. */
-@media (prefers-reduced-motion: no-preference) {
-  .pg-scroll-float {
-    transform: translate3d(0,var(--pg-float-y,0px),0);
-    opacity:var(--pg-float-opacity,1);
-    will-change:transform,opacity;
-  }
+/* Poly-Glot cinematic scroll system v4: no content hidden before JS. */
+@media(prefers-reduced-motion:no-preference){
+.pg-motion-section{position:relative;isolation:isolate}
+.pg-motion-section::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:var(--pg-bg-opacity,.35);background:radial-gradient(ellipse at 75% 15%,rgba(125,211,252,.075),transparent 58%);transform:translate3d(0,var(--pg-bg-y,0px),0)}
+.pg-motion-section > *{position:relative;z-index:1}
+.pg-motion-item{transform:translate3d(0,var(--pg-item-y,0px),0) scale(var(--pg-item-scale,1));opacity:var(--pg-item-opacity,1);transition:transform .14s linear,opacity .14s linear}
+.pg-motion-card{transform:translate3d(0,var(--pg-card-y,0px),0) scale(var(--pg-card-scale,1));opacity:var(--pg-card-opacity,1);transition:transform .18s ease-out,opacity .18s ease-out}
 }
-@media (prefers-reduced-motion: reduce) {
-  .pg-scroll-float { transform:none!important;opacity:1!important;will-change:auto!important; }
+@media(prefers-reduced-motion:reduce){
+.pg-motion-item,.pg-motion-card,.pg-motion-section{transform:none!important;opacity:1!important;transition:none!important}
+.pg-motion-section::before{display:none!important}
 }
