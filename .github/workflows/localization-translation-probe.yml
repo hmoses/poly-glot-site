@@ -21,11 +21,13 @@ jobs:
           python - <<'PY'
           import time
           from deep_translator import GoogleTranslator
+          time.sleep(5)
           for code in ('es','nl','ar'):
               start=time.time()
               t=GoogleTranslator(source='en',target=code)
               try:
                   s=t.translate('Connect your AI assistant to Poly-Glot MCP.')
+                  time.sleep(1.8)
                   print(code,round(time.time()-start,2),s,flush=True)
               except Exception as e:
                   print('PROBE ERROR',code,repr(e),flush=True)
