@@ -46,7 +46,8 @@ function registerAll(){
 }
 function translate(term,lang){
  if(lang==="EN")return term;
- var extra=lang==="VI"?exactVI:(window._pgSecondaryExact&&window._pgSecondaryExact[lang]);
+ var extra=(window._pgSecondaryExact&&window._pgSecondaryExact[lang]);
+ if(lang==="VI"&&(!extra||!Object.prototype.hasOwnProperty.call(extra,term)))extra=exactVI;
  if(extra&&Object.prototype.hasOwnProperty.call(extra,term))return extra[term];
  var key=explicit[term]||lookup.get(term);
  if(key){var value=i.dictionary[lang]&&i.dictionary[lang][key];if(typeof value==="string"&&value&&!/[<>]/.test(value))return value;}
@@ -59,7 +60,7 @@ function apply(){
  allNodes.forEach(function(n){var o=allOrigins.get(n);if(!o)return;
   var value=translate(o.term,lang),target;
   if(lang==="EN"||!value)target=o.raw;
-  else{var m=o.raw.match(/^(\\s*)([\\s\\S]*?)(\\s*)$/);target=(m?m[1]:"")+value+(m?m[3]:"");}
+  else{var m=o.raw.match(/^(\s*)([\s\S]*?)(\s*)$/);target=(m?m[1]:"")+value+(m?m[3]:"");}
   if(n.nodeValue!==target)n.nodeValue=target;
  });
  allAttrs=allAttrs.filter(function(x){return x.el.isConnected;});
