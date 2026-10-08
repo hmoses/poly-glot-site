@@ -2988,6 +2988,10 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
         <strong>One download. All your Apple devices. MCP too.</strong>
         Install Poly-Glot on iPhone, iPad, and Mac with the same Apple ID. Link the same Poly-Glot account in a supported MCP client to use the same entitlement there — no separate MCP subscription.
       </div>
+      <div class="platform-access-note" style="margin:14px auto 0;max-width:900px;text-align:center;color:var(--text-muted);font-size:.82rem;line-height:1.55;">
+        <strong style="color:var(--text);">One Poly-Glot purchase/account works across iPhone, iPad, and Mac.</strong>
+        Use the same Apple ID on your Apple devices. In supported MCP clients, link the same Poly-Glot account to use that entitlement there too — no separate Poly-Glot MCP subscription.
+      </div>
     </div>
   </div>
 </section>
@@ -4381,7 +4385,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
     </div>
     <div class="pricing-grid">
       <div class="pricing-card">
-        <div class="pricing-tier" data-i18n="prTier1">Free</div>
+        <div class="pricing-tier" data-i18n="prTier1">Free Plan</div>
         <div class="pricing-name" data-i18n="prName1">Free Forever</div>
         <div class="pricing-price">$0</div>
         <div class="pricing-desc" data-i18n="prDesc1">3-day full-access trial included · then Free stays $0</div>
@@ -5482,7 +5486,7 @@ function _demoStart() {
 </script>
 
 <!-- Chat i18n — loads BEFORE the chat widget so translations are available -->
-<script src="assets/js/chat-i18n.js?v=2026-10-07-v3"></script>
+<script src="assets/js/chat-i18n.js?v=2026-10-07-v2"></script>
 
 <!-- ===== POLY-GLOT MCP CHAT WIDGET v4 — FULLY LOCALIZED ===== -->
 <div id="pgChat-bubble" onclick="pgChat.toggle()" title="Ask Poly-Glot AI anything">
@@ -5525,6 +5529,7 @@ function _demoStart() {
       <option value="Output language">Output language</option>
       <option value="Voice input">Voice input</option>
       <option value="Devices">Devices</option>
+      <option value="Cross-device access">One purchase · Devices + MCP</option>
       <option value="All devices + MCP">One Download: Apple Devices + MCP</option>
       <option value="Privacy">Privacy</option>
       <option value="Download">Download</option>
@@ -5759,7 +5764,7 @@ function _demoStart() {
 
     "template categories": "Poly-Glot has **39 template categories** spanning everyday and professional use — including Business, Coding, AI, Writing, Marketing, Sales, Education, Research, Career, Legal, Finance, Health, Cooking, Travel, DIY & Home, and more.\n\nEvery template can be used with Poly-Glot's supported languages.",
 
-    "device": "Poly-Glot AI Workspace runs on **iPhone, iPad, and Mac**.\n\n📱 **One App Store download / Apple entitlement works across your Apple devices** when you use the same Apple ID.\n\n🔌 **MCP is included in the same Poly-Glot entitlement model:** connect/link your Poly-Glot account in a supported MCP client to use the same access there. MCP is a connection, not another app download.\n\nYou do not need a separate Poly-Glot subscription for each Apple device or a separate MCP subscription.",
+    "device": "Poly-Glot AI Workspace runs on **iPhone, iPad, and Mac**.\n\n📱 **One Poly-Glot purchase/entitlement works across iPhone, iPad, and Mac** when you use the same Apple ID.\n\n🔌 **MCP is included in the same Poly-Glot entitlement model:** connect/link your Poly-Glot account in a supported MCP client to use the same access there. MCP is a connection, not another app download.\n\nYou do not need a separate Poly-Glot subscription for each Apple device or a separate MCP subscription.",
 
     "cross device": "**One download. All your Apple devices. MCP too.**\n\n📱 Install Poly-Glot on **iPhone, iPad, and Mac** using the same Apple ID. The same Apple purchase/entitlement applies across those devices.\n\n🔌 **MCP:** link the same Poly-Glot account in a supported MCP client so the same entitlement can be resolved for MCP access. MCP does not require a separate Poly-Glot subscription.\n\nYou still install the app on each Apple device, and a compatible MCP client plus account linking are required.",
 
@@ -5837,6 +5842,7 @@ function _demoStart() {
     { keys: ["how many template", "template list", "template example", "prompt template", "what template", "show template", "available template"], topic: "template" },
     { keys: ["categor", "what categories", "template type", "types of template"], topic: "template categories" },
     { keys: ["one purchase", "buy once", "all devices", "across devices", "devices and mcp", "devices + mcp", "same purchase", "same subscription across", "mcp entitlement", "mcp access across"], topic: "cross device" },
+    { keys: ["one purchase", "one download", "all devices", "across devices", "devices and mcp", "device and mcp", "same entitlement", "same subscription", "cross device", "cross-device"], topic: "cross device" },
     { keys: ["device", "iphone", "ipad", "mac ", "macos", "ios", "apple", "platform", "run on", "work on", "available on", "which device", "what device", "tablet", "laptop", "desktop", "phone"], topic: "device" },
     { keys: ["private", "privacy", "data collect", "secure", "security", "track", "collect", "spy", "gdpr", "personal data", "information collect"], topic: "private" },
     { keys: ["compare mode", "compare ai", "comparison", "multiple ai", "compare answer", "compare response", "send to multiple", "send to many"], topic: "compare" },
@@ -5848,6 +5854,7 @@ function _demoStart() {
     { keys: ["mcp", "model context protocol", "mcp server", "mcp endpoint", "mcp tool", "mcp function", "mcp api"], topic: "mcp" },
     { keys: ["free plan", "free forever", "free model", "free tier", "stay free", "free version"], topic: "free plan" },
     { keys: ["free trial", "trial", "try free", "3 day", "three day", "test it", "try it", "try before", "trial period", "trial expire", "trial end", "when does trial"], topic: "trial" },
+    { keys: ["free plan", "free model", "free forever", "stay free", "free tier", "what is free", "free version"], topic: "free plan" },
     { keys: ["after trial", "trial expire", "trial end", "trial over", "when trial end", "post trial", "without paying", "without sub"], topic: "after trial" },
     { keys: ["api key", "api", "no api", "token", "credential", "auth key", "access key"], topic: "api" },
     { keys: ["how does it work", "how it work", "how do i use", "how to use", "step by step", "walkthrough", "getting started", "get started", "tutorial", "guide", "how do i start"], topic: "how does it work" },
@@ -7057,7 +7064,7 @@ function _demoStart() {
 <!-- ===== END GLOBAL IMAGE + DEVICE LIGHTBOX ===== -->
 
 <!-- Global i18n — 38 languages, same flags as the app -->
-<script src="assets/js/i18n.js?v=2026-10-07-v5"></script>
+<script src="assets/js/i18n.js?v=2026-10-07-v4"></script>
 <script src="assets/js/device-ui-i18n-clean.js?v=2026-10-07-1605"></script>
 
 <!-- pages redeploy trigger: iphone-duo -->
