@@ -9,6 +9,9 @@ from build_subpage_locales import ROOT, LANG, extract
 from huggingface_hub import snapshot_download
 import ctranslate2
 
+# Preserve product names and technical identifiers, not English prose.
+BRAND_TERMS={'Pages','Cursor','GitHub','MCP','MCP.so','Glama','ChatGPT','Claude','Gemini','Grok','Copilot','Mistral','HuggingChat','Perplexity','Poly-Glot','Figma','App Store','iOS','macOS','JSON','HTTP','HTTPS','URL','SDK','API','CTR'}
+CHECKED={'ES':'Marcado','FR':'Coché','DE':'Markiert','IT':'Selezionato','PT':'Marcado','NL':'Aangevinkt','RU':'Отмечено','ZH':'已勾选','ZH_TW':'已勾選','JA':'チェック済み','KO':'선택됨','AR':'محدد','HI':'चिह्नित','BN':'চিহ্নিত','TR':'İşaretli','PL':'Zaznaczone','SV':'Markerad','NO':'Merket','DA':'Markeret','FI':'Valittu','EL':'Επιλεγμένο','HE':'מסומן','ID':'Dicentang','MS':'Ditandakan','TH':'เลือกแล้ว','VI':'Đã chọn','UK':'Позначено','CS':'Zaškrtnuto','RO':'Bifat','HU':'Bejelölve','SK':'Zaškrtnuté','HR':'Označeno','CA':'Marcat','AF':'Gemerk','SW':'Imechaguliwa','HA':'An zaɓa','AM':'ተመርጧል'}
 CODES={code:code.lower() for code in LANG}
 CODES.update({"ZH":"zh","ZH_TW":"zh","FIL":"tl"})
 # Traditional Chinese shares the Chinese model output, then converts script offline.
@@ -62,8 +65,9 @@ def main():
         output={term:old[term] for term in en if term in old and old[term]}
         # A lone interface shortcut/technical letter is language-neutral.
         for term in en:
-            if re.fullmatch(r'[A-Za-z]',term) or re.fullmatch(r'[A-Z0-9_-]{2,8}',term):
+            if term in BRAND_TERMS or re.fullmatch(r'[A-Za-z]',term) or re.fullmatch(r'[A-Z0-9_-]{2,8}',term):
                 output[term]=term
+        if 'Checked' in en:output['Checked']=CHECKED[code]
         todo=[term for term in en if term not in output]
         print(code,'source count',len(en),'remaining',len(todo),flush=True)
         for i in range(0,len(todo),12):
