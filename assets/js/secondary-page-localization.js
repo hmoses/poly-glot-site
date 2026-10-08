@@ -60,6 +60,8 @@ function translate(term,lang){
 function apply(){
  registerAll();
  var lang=i.curLang(),rtl=lang==="AR"||lang==="HE";
+ document.documentElement.setAttribute("dir",rtl?"rtl":"ltr");
+ if(document.body)document.body.setAttribute("dir",rtl?"rtl":"ltr");
  allNodes=allNodes.filter(function(n){return n.isConnected;});
  allNodes.forEach(function(n){var o=allOrigins.get(n);if(!o)return;
   var value=translate(o.term,lang),target;
