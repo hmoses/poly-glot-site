@@ -29,4 +29,4 @@ No. The app offers language controls, but response quality and language support 
 
 - [Official product site](https://hmoses.github.io/poly-glot-site/)
 - [App Store](https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12)
-- [MCP setup](https://hmoses.github.io/poly-glot-site/connect.html)
+- [MCP setup](https://hmoses.github.io/poly-glot-site/#connect)
