@@ -10,7 +10,7 @@ permissions:
   contents: write
 concurrency:
   group: translate-secondary
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   translate:
     runs-on: ubuntu-latest
