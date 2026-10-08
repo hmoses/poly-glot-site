@@ -20,7 +20,7 @@ _browse:"📋 Browse all topics…",
 _whatIs:"What is Poly-Glot?",_pricing:"Pricing",_whichAIs:"Which AIs?",_howWorks:"How it works",
 _trial:"Free trial",_afterTrial:"After trial",_compare:"Compare Mode",_templates:"Templates",
 _categories:"Template categories",_languages:"Languages",_appLang:"App language",_outputLang:"Output language",
-_voice:"Voice input",_devices:"Devices",_privacy:"Privacy",_download:"Download",_cancel:"Cancel",
+_voice:"Voice input",_devices:"Devices",_crossDevice:"Apple Devices + MCP",_privacy:"Privacy",_download:"Download",_cancel:"Cancel",
 _mcp:"MCP",_mcpSetup:"MCP setup",_features:"All features",_sending:"Sending prompts",_history:"Prompt history",
 _custom:"Custom prompts",_offline:"Offline use",_web:"Web version",_whoMade:"Who made it?",
 _children:"Children safety",_api:"API access",_autoFill:"Auto fill",_payment:"Payment",
@@ -70,6 +70,11 @@ Object.keys(TOPICS).forEach(function(code){
   TOPICS[code]._crossDevice=CROSS_DEVICE_TOPIC[code]||CROSS_DEVICE_TOPIC.EN;
 });
 })();
+
+// CROSS-DEVICE TOPIC FALLBACK — protocol/product names remain consistent across locales.
+Object.keys(TOPICS).forEach(function(code){
+  if(!TOPICS[code]._crossDevice) TOPICS[code]._crossDevice = "Apple Devices + MCP";
+});
 
 // =============================================
 // KB ANSWER TRANSLATIONS — per language
