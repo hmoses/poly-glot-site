@@ -1,0 +1,36 @@
+name: Stop superseded localization builds
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/stop-stale-localization.yml
+permissions:
+  actions: write
+  contents: read
+jobs:
+  cancel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel all superseded translation runs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          THIS_RUN: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import os,json,urllib.request,urllib.error
+          repo=os.environ['GH_REPO']; token=os.environ['GH_TOKEN']
+          base=f'https://api.github.com/repos/{repo}/actions/runs?per_page=100'
+          req=urllib.request.Request(base,headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json'})
+          runs=json.load(urllib.request.urlopen(req)).get('workflow_runs',[])
+          for run in runs:
+              if run['name']!='Generate 38-language secondary-page catalogs' or run['status']=='completed':continue
+              url=f"https://api.github.com/repos/{repo}/actions/runs/{run['id']}/cancel"
+              try:
+                  request=urllib.request.Request(url,data=b'',method='POST',headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json'})
+                  result=urllib.request.urlopen(request,timeout=15)
+                  print('Cancelled obsolete build:',run['id'],result.status,flush=True)
+              except urllib.error.HTTPError as exc:
+                  print('Cancel request:',run['id'],exc.code,flush=True)
+          PY
