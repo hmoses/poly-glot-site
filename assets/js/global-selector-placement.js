@@ -32,4 +32,15 @@ function place(){
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",place,{once:true});else place();
 window.addEventListener("pg:languagechange",place);
+/* Carry language in local links as well as localStorage; preserves existing hashes. */
+document.addEventListener("click",function(ev){
+ var a=ev.target.closest&&ev.target.closest("a[href]");if(!a||ev.defaultPrevented||ev.metaKey||ev.ctrlKey||ev.shiftKey||ev.altKey||a.target==="_blank"||a.hasAttribute("download"))return;
+ var href=a.getAttribute("href");if(!href||href.startsWith("#")||href.startsWith("mailto:")||href.startsWith("javascript:"))return;
+ try{
+  var url=new URL(a.href,location.href);
+  if(url.origin!==location.origin||!url.pathname.startsWith("/poly-glot-site/"))return;
+  var code=window._pgI18n&&window._pgI18n.curLang();if(code&&code!=="EN")url.searchParams.set("lang",code);else url.searchParams.delete("lang");
+  a.href=url.pathname+url.search+url.hash;
+ }catch(e){}
+},true);
 })();
