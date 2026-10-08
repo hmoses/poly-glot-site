@@ -20,7 +20,7 @@ _browse:"📋 Browse all topics…",
 _whatIs:"What is Poly-Glot?",_pricing:"Pricing",_whichAIs:"Which AIs?",_howWorks:"How it works",
 _trial:"Free trial",_afterTrial:"After trial",_compare:"Compare Mode",_templates:"Templates",
 _categories:"Template categories",_languages:"Languages",_appLang:"App language",_outputLang:"Output language",
-_voice:"Voice input",_devices:"Devices",_crossDevice:"Apple Devices + MCP",_privacy:"Privacy",_download:"Download",_cancel:"Cancel",
+_voice:"Voice input",_devices:"Devices",_crossDevice:"One Download: Apple Devices + MCP",_privacy:"Privacy",_download:"Download",_cancel:"Cancel",
 _mcp:"MCP",_mcpSetup:"MCP setup",_features:"All features",_sending:"Sending prompts",_history:"Prompt history",
 _custom:"Custom prompts",_offline:"Offline use",_web:"Web version",_whoMade:"Who made it?",
 _children:"Children safety",_api:"API access",_autoFill:"Auto fill",_payment:"Payment",
@@ -65,7 +65,7 @@ TOPICS.AM={_browse:"📋 ሁሉንም ርዕሶች ይመልከቱ…",_whatIs:"
 
 // ===== CROSS-DEVICE TOPIC PATCH =====
 (function(){
-var CROSS_DEVICE_TOPIC={"EN":"All Devices + MCP","ES":"Todos los dispositivos + MCP","FR":"Tous les appareils + MCP","DE":"Alle Geräte + MCP","IT":"Tutti i dispositivi + MCP","PT":"Todos os dispositivos + MCP","NL":"Alle apparaten + MCP","RU":"Все устройства + MCP","ZH":"所有设备 + MCP","ZH-TW":"所有裝置 + MCP","JA":"すべてのデバイス + MCP","KO":"모든 기기 + MCP","AR":"كل الأجهزة + MCP","HI":"सभी डिवाइस + MCP","BN":"সব ডিভাইস + MCP","TR":"Tüm Cihazlar + MCP","PL":"Wszystkie urządzenia + MCP","SV":"Alla enheter + MCP","NO":"Alle enheter + MCP","DA":"Alle enheder + MCP","FI":"Kaikki laitteet + MCP","EL":"Όλες οι συσκευές + MCP","HE":"כל המכשירים + MCP","ID":"Semua Perangkat + MCP","MS":"Semua Peranti + MCP","TH":"ทุกอุปกรณ์ + MCP","VI":"Mọi thiết bị + MCP","UK":"Усі пристрої + MCP","CS":"Všechna zařízení + MCP","RO":"Toate dispozitivele + MCP","HU":"Minden eszköz + MCP","SK":"Všetky zariadenia + MCP","HR":"Svi uređaji + MCP","CA":"Tots els dispositius + MCP","AF":"Alle toestelle + MCP","SW":"Vifaa vyote + MCP","HA":"Duk na'urori + MCP","AM":"ሁሉም መሣሪያዎች + MCP"};
+var CROSS_DEVICE_TOPIC={"EN":"One Download: Apple Devices + MCP","ES":"Todos los dispositivos + MCP","FR":"Tous les appareils + MCP","DE":"Alle Geräte + MCP","IT":"Tutti i dispositivi + MCP","PT":"Todos os dispositivos + MCP","NL":"Alle apparaten + MCP","RU":"Все устройства + MCP","ZH":"所有设备 + MCP","ZH-TW":"所有裝置 + MCP","JA":"すべてのデバイス + MCP","KO":"모든 기기 + MCP","AR":"كل الأجهزة + MCP","HI":"सभी डिवाइस + MCP","BN":"সব ডিভাইস + MCP","TR":"Tüm Cihazlar + MCP","PL":"Wszystkie urządzenia + MCP","SV":"Alla enheter + MCP","NO":"Alle enheter + MCP","DA":"Alle enheder + MCP","FI":"Kaikki laitteet + MCP","EL":"Όλες οι συσκευές + MCP","HE":"כל המכשירים + MCP","ID":"Semua Perangkat + MCP","MS":"Semua Peranti + MCP","TH":"ทุกอุปกรณ์ + MCP","VI":"Mọi thiết bị + MCP","UK":"Усі пристрої + MCP","CS":"Všechna zařízení + MCP","RO":"Toate dispozitivele + MCP","HU":"Minden eszköz + MCP","SK":"Všetky zariadenia + MCP","HR":"Svi uređaji + MCP","CA":"Tots els dispositius + MCP","AF":"Alle toestelle + MCP","SW":"Vifaa vyote + MCP","HA":"Duk na'urori + MCP","AM":"ሁሉም መሣሪያዎች + MCP"};
 Object.keys(TOPICS).forEach(function(code){
   TOPICS[code]._crossDevice=CROSS_DEVICE_TOPIC[code]||CROSS_DEVICE_TOPIC.EN;
 });
