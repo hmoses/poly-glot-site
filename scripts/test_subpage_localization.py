@@ -25,6 +25,15 @@ async def main():
    for path in PAGES:
     url='http://127.0.0.1:8765/'+path+'?lang='+code
     await page.goto(url,wait_until='domcontentloaded',timeout=20000)
+    if path in ('linkedin.html','linkedin-mcp-2026.html'):
+     try:
+      await page.wait_for_url(lambda url: url.path=='/' and url.query.get('lang',code)==code,timeout=10000)
+     except Exception:failures.append((path,code,'redirect did not preserve language',page.url))
+     data=await page.evaluate('''() => ({locale:window._pgI18n?.curLang?.(),flagCount:window._pgI18n?.LANGS?.length})''')
+     if data['locale']!=code or data['flagCount']!=38:
+      failures.append((path,code,'redirect locale mismatch',data))
+     print(code,path,'REDIRECT VERIFIED',flush=True)
+     continue
     try:
      await page.wait_for_function('window._pgSecondaryLocaleAudit && window._pgSecondaryLocaleAudit.language==='+json.dumps(code),timeout=7000)
      if code!='EN':
