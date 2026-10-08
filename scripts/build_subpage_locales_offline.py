@@ -4,6 +4,7 @@ SMaLL-100: MIT; model: entai2965/small100-ctranslate2.
 Model is used only during publishing; no visitor data and no model in Pages output.
 """
 import json, os, sys, pathlib, re, time
+# Source extraction must never import network-dependent translation libraries.
 from build_subpage_locales import ROOT, LANG, extract
 from huggingface_hub import snapshot_download
 import ctranslate2
