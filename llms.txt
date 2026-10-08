@@ -22,7 +22,7 @@
 ## Key pages
 
 - Home: https://hmoses.github.io/poly-glot-site/
-- MCP Setup: https://hmoses.github.io/poly-glot-site/connect.html
+- MCP Setup: https://hmoses.github.io/poly-glot-site/#connect
 - Privacy: https://hmoses.github.io/poly-glot-site/privacy.html
 - Terms: https://hmoses.github.io/poly-glot-site/terms.html
 - Support: https://hmoses.github.io/poly-glot-site/support.html
