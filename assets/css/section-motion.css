@@ -1,9 +1,11 @@
-/* Poly-Glot floating content reveals — progressive enhancement. */
+/* Scroll-responsive floating content, with readable static fallback. */
 @media (prefers-reduced-motion: no-preference) {
-  .pg-motion-reveal { animation: pg-float-reveal 1.05s cubic-bezier(.16,1,.3,1) both; animation-delay:var(--pg-delay,0ms); }
-  @keyframes pg-float-reveal {
-    from { opacity:.3; transform:translate3d(0,48px,0) scale(.975); filter:blur(3px); }
-    to { opacity:1; transform:translate3d(0,0,0) scale(1); filter:blur(0); }
+  .pg-scroll-float {
+    transform: translate3d(0,var(--pg-float-y,0px),0);
+    opacity:var(--pg-float-opacity,1);
+    will-change:transform,opacity;
   }
 }
-@media (prefers-reduced-motion: reduce) { .pg-motion-reveal { animation:none!important; } }
+@media (prefers-reduced-motion: reduce) {
+  .pg-scroll-float { transform:none!important;opacity:1!important;will-change:auto!important; }
+}
