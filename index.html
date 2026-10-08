@@ -7175,11 +7175,11 @@ function _demoStart() {
 <!-- ===== END GLOBAL IMAGE + DEVICE LIGHTBOX ===== -->
 
 <!-- Global i18n — 38 languages, same flags as the app -->
-<script src="assets/js/i18n.js?v=2026-10-08-compare-nine"></script>
+<script src="assets/js/i18n.js?v=2026-10-08-localization-38-v4"></script>
 <script src="assets/js/site-accuracy-locale-overrides.js?v=2026-10-08-facts"></script>
 <script src="assets/js/site-accuracy-all-languages.js?v=2026-10-08-complete"></script>
 <script src="assets/js/site-accuracy-final-languages.js?v=2026-10-08-complete"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=2026-10-07-1605"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=2026-10-08-syntax-l10n-v4"></script>
 <!-- Native 38-language template catalog translations; run after site i18n -->
 <script src="assets/js/catalog-locales-1.js?v=2026-10-08-catalog"></script>
 <script src="assets/js/catalog-locales-2.js?v=2026-10-08-catalog"></script>
@@ -13565,11 +13565,14 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
  if(!btn||!menu)return;
  // Portal the dropdown out of the navbar to avoid clipping/stacking on iOS.
  document.body.appendChild(menu);
- function setOpen(open){menu.classList.toggle('show-mobile',open);btn.setAttribute('aria-expanded',String(open));btn.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');btn.textContent=open?'×':'☰'}
+ const PG_MENU_LABELS={"EN":["Open navigation menu","Close navigation menu"],"ES":["Abrir menú de navegación","Cerrar menú de navegación"],"FR":["Ouvrir le menu de navigation","Fermer le menu de navigation"],"DE":["Navigationsmenü öffnen","Navigationsmenü schließen"],"IT":["Apri il menu di navigazione","Chiudi il menu di navigazione"],"PT":["Abrir menu de navegação","Fechar menu de navegação"],"NL":["Navigatiemenu openen","Navigatiemenu sluiten"],"RU":["Открыть меню навигации","Закрыть меню навигации"],"ZH":["打开导航菜单","关闭导航菜单"],"ZH_TW":["開啟導覽選單","關閉導覽選單"],"JA":["ナビゲーションメニューを開く","ナビゲーションメニューを閉じる"],"KO":["탐색 메뉴 열기","탐색 메뉴 닫기"],"AR":["فتح قائمة التنقل","إغلاق قائمة التنقل"],"HI":["नेविगेशन मेनू खोलें","नेविगेशन मेनू बंद करें"],"BN":["নেভিগেশন মেনু খুলুন","নেভিগেশন মেনু বন্ধ করুন"],"TR":["Gezinme menüsünü aç","Gezinme menüsünü kapat"],"PL":["Otwórz menu nawigacji","Zamknij menu nawigacji"],"SV":["Öppna navigeringsmenyn","Stäng navigeringsmenyn"],"NO":["Åpne navigasjonsmenyen","Lukk navigasjonsmenyen"],"DA":["Åbn navigationsmenuen","Luk navigationsmenuen"],"FI":["Avaa navigointivalikko","Sulje navigointivalikko"],"EL":["Άνοιγμα μενού πλοήγησης","Κλείσιμο μενού πλοήγησης"],"HE":["פתיחת תפריט ניווט","סגירת תפריט ניווט"],"ID":["Buka menu navigasi","Tutup menu navigasi"],"MS":["Buka menu navigasi","Tutup menu navigasi"],"TH":["เปิดเมนูนำทาง","ปิดเมนูนำทาง"],"VI":["Mở menu điều hướng","Đóng menu điều hướng"],"UK":["Відкрити меню навігації","Закрити меню навігації"],"CS":["Otevřít navigační nabídku","Zavřít navigační nabídku"],"RO":["Deschide meniul de navigare","Închide meniul de navigare"],"HU":["Navigációs menü megnyitása","Navigációs menü bezárása"],"SK":["Otvoriť navigačnú ponuku","Zavrieť navigačnú ponuku"],"HR":["Otvori navigacijski izbornik","Zatvori navigacijski izbornik"],"CA":["Obre el menú de navegació","Tanca el menú de navegació"],"AF":["Maak navigasiekieslys oop","Maak navigasiekieslys toe"],"SW":["Fungua menyu ya urambazaji","Funga menyu ya urambazaji"],"HA":["Buɗe menu na kewayawa","Rufe menu na kewayawa"],"AM":["የአሰሳ ምናሌ ክፈት","የአሰሳ ምናሌ ዝጋ"]};
+ function menuLabel(open){var lang=window._pgI18n&&window._pgI18n.curLang?window._pgI18n.curLang():"EN";var pair=PG_MENU_LABELS[lang]||PG_MENU_LABELS.EN;return pair[open?1:0]}
+ function setOpen(open){menu.classList.toggle('show-mobile',open);btn.setAttribute('aria-expanded',String(open));btn.setAttribute('aria-label',menuLabel(open));btn.textContent=open?'×':'☰'}
  btn.addEventListener('click',function(event){event.preventDefault();event.stopPropagation();setOpen(!menu.classList.contains('show-mobile'))});
  menu.addEventListener('click',function(event){if(event.target.closest('a'))setOpen(false)});
  document.addEventListener('click',function(event){if(!menu.contains(event.target)&&!btn.contains(event.target))setOpen(false)});
  document.addEventListener('keydown',function(event){if(event.key==='Escape')setOpen(false)});
+ window.addEventListener('pg:languagechange',function(){btn.setAttribute('aria-label',menuLabel(menu.classList.contains('show-mobile')))});
 })();
 </script>
 <script defer src="assets/js/home-motion.js?v=12"></script>
