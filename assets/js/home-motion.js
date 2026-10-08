@@ -22,9 +22,9 @@ s.style.setProperty('--pg-bg-opacity',(.18+progress*.44).toFixed(2));
 }
 for(const e of H){const r=e.getBoundingClientRect();if(r.bottom< -120||r.top>vh+160)continue;
 const entering=clamp((vh*.94-r.top)/(vh*.5),0,1);const smooth=entering*entering*(3-2*entering);
-e.style.setProperty('--pg-item-y',((1-smooth)*64).toFixed(1)+'px');
-e.style.setProperty('--pg-item-scale',(.955+.045*smooth).toFixed(3));
-e.style.setProperty('--pg-item-opacity',(.38+.62*smooth).toFixed(3));
+e.style.setProperty('--pg-item-y',((1-smooth)*10).toFixed(1)+'px');
+e.style.setProperty('--pg-item-scale',(.995+.005*smooth).toFixed(3));
+e.style.setProperty('--pg-item-opacity',(.85+.15*smooth).toFixed(3));
 }
 for(const [i,e] of C.entries()){const r=e.getBoundingClientRect();if(r.bottom< -120||r.top>vh+200)continue;
 const faqIndex=faqItems.indexOf(e);
