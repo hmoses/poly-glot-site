@@ -12,7 +12,7 @@ var mapping={
 var file=location.pathname.split("/").pop(),config=mapping[file];if(!config)return;
 var linked=["sc1H","f5","tplH","mcpH","prH"];
 var base=null;
-function set(el,key,lang){if(!el||!key)return;var val=I.gt(key,lang);if(val)el.textContent=val.replace(/^[^\\p{L}\\p{N}]+/u,"").trim();}
+function set(el,key,lang){if(!el||!key)return;var val=I.gt(key,lang);if(val)el.textContent=val.trim();}
 function apply(){
 var lang=I.curLang(),rtl=(lang==="AR"||lang==="HE");
 document.documentElement.lang=lang==="ZH_TW"?"zh-Hant":lang.toLowerCase().replace("_","-");
@@ -31,6 +31,6 @@ if(!en){set(document.querySelector(".related h2"),"ftProd",lang);set(document.qu
 else{document.querySelector(".related h2").textContent="Explore related topics";document.querySelector(".eyebrow").textContent="Poly-Glot knowledge center";}
 document.querySelector("section[aria-label]")?.setAttribute("aria-label",en?"Frequently asked questions":I.gt("fqH",lang));
 }
-function start(){apply();window.addEventListener("pg:languagechange",apply);}
+function start(){var picker=document.getElementById("pgGlobalLangPicker"),header=document.querySelector("header .wrap");if(picker&&header)header.appendChild(picker);apply();window.addEventListener("pg:languagechange",apply);}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});else start();
 })();
