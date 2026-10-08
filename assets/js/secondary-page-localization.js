@@ -69,6 +69,7 @@ function apply(){
  var missing=[],seen=new Set();
  allNodes.forEach(function(n){var o=allOrigins.get(n);if(!o||!o.term||seen.has(o.term))return;seen.add(o.term);if(lang!=="EN"&&!translate(o.term,lang))missing.push(o.term);});
  window._pgSecondaryLocaleAudit={language:lang,page:location.pathname,total:seen.size,missing:missing,complete:missing.length===0};
+ document.dispatchEvent(new CustomEvent("pg:localization-audited",{detail:window._pgSecondaryLocaleAudit}));
 
 }
 /* Use the homepage language engine as the only source of locale state. */
