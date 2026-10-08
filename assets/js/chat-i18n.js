@@ -84,6 +84,16 @@ Object.keys(TOPICS).forEach(function(code){
 });
 })();
 
+// ===== NEW TOPIC LABELS: FREE PLAN + CROSS-DEVICE/MCP =====
+(function(){
+var X={"EN":["Free plan","One Download: Apple Devices + MCP"],"ES":["Plan gratis","Una descarga: dispositivos Apple + MCP"],"FR":["Offre gratuite","Un téléchargement : appareils Apple + MCP"],"DE":["Kostenloser Plan","Ein Download: Apple-Geräte + MCP"],"IT":["Piano gratuito","Un download: dispositivi Apple + MCP"],"PT":["Plano grátis","Um download: dispositivos Apple + MCP"],"NL":["Gratis abonnement","Eén download: Apple-apparaten + MCP"],"RU":["Бесплатный план","Одна загрузка: устройства Apple + MCP"],"ZH":["免费方案","一次下载：Apple 设备 + MCP"],"ZH-TW":["免費方案","一次下載：Apple 裝置 + MCP"],"JA":["無料プラン","1回のダウンロード：Appleデバイス + MCP"],"KO":["무료 플랜","한 번 다운로드: Apple 기기 + MCP"],"AR":["الخطة المجانية","تنزيل واحد: أجهزة Apple + MCP"],"HI":["मुफ़्त प्लान","एक डाउनलोड: Apple डिवाइस + MCP"],"BN":["ফ্রি প্ল্যান","এক ডাউনলোড: Apple ডিভাইস + MCP"],"TR":["Ücretsiz plan","Tek indirme: Apple cihazları + MCP"],"PL":["Plan bezpłatny","Jedno pobranie: urządzenia Apple + MCP"],"SV":["Gratisplan","En nedladdning: Apple-enheter + MCP"],"NO":["Gratisplan","Én nedlasting: Apple-enheter + MCP"],"DA":["Gratis abonnement","Én download: Apple-enheder + MCP"],"FI":["Ilmainen paketti","Yksi lataus: Apple-laitteet + MCP"],"EL":["Δωρεάν πλάνο","Μία λήψη: συσκευές Apple + MCP"],"HE":["תוכנית חינמית","הורדה אחת: מכשירי Apple + MCP"],"ID":["Paket gratis","Satu unduhan: perangkat Apple + MCP"],"MS":["Pelan percuma","Satu muat turun: peranti Apple + MCP"],"TH":["แผนฟรี","ดาวน์โหลดครั้งเดียว: อุปกรณ์ Apple + MCP"],"VI":["Gói miễn phí","Một lần tải xuống: thiết bị Apple + MCP"],"UK":["Безкоштовний план","Одне завантаження: пристрої Apple + MCP"],"CS":["Bezplatný plán","Jedno stažení: zařízení Apple + MCP"],"RO":["Plan gratuit","O descărcare: dispozitive Apple + MCP"],"HU":["Ingyenes csomag","Egy letöltés: Apple-eszközök + MCP"],"SK":["Bezplatný plán","Jedno stiahnutie: zariadenia Apple + MCP"],"HR":["Besplatni plan","Jedno preuzimanje: Apple uređaji + MCP"],"CA":["Pla gratuït","Una descàrrega: dispositius Apple + MCP"],"AF":["Gratis plan","Een aflaai: Apple-toestelle + MCP"],"SW":["Mpango wa bure","Upakuaji mmoja: vifaa vya Apple + MCP"],"HA":["Tsarin kyauta","Saukarwa guda ɗaya: na'urorin Apple + MCP"],"AM":["ነፃ ዕቅድ","አንድ ጊዜ ማውረድ፦ የApple መሣሪያዎች + MCP"]};
+Object.keys(X).forEach(function(code){
+  TOPICS[code]=TOPICS[code]||{};
+  TOPICS[code]._freePlan=X[code][0];
+  TOPICS[code]._crossDevice=X[code][1];
+});
+})();
+
 // =============================================
 // KB ANSWER TRANSLATIONS — per language
 // Keys match the English KB keys in the chatbot.
