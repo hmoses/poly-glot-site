@@ -80,6 +80,34 @@ function localizeTraditionalChineseTags(code){
  });
  document.querySelectorAll("[data-i18n-html]").forEach(function(el){var t=gt(el.getAttribute("data-i18n-html"),code);if(t&&el.innerHTML!==t)el.innerHTML=t;});
 }
+/* Safely reuse native and chat lexicons for shared pricing, CTA and footer labels. */
+(function(){
+ var i=window._pgI18n, d=i&&i.dictionary;if(!d)return;
+ (i.LANGS||[]).forEach(function(l){
+   if(l.code==="EN")return;
+   var c=l.code,t=d[c]||(d[c]={}),e=d.EN||{};
+   var loc=window._pgChatI18n&&window._pgChatI18n.getTopics?window._pgChatI18n.getTopics(c):{},
+       native=window._pgDeviceUI&&window._pgDeviceUI._strings?window._pgDeviceUI._strings(c):{},
+       catalog=window._pgCatalogLocales&&window._pgCatalogLocales[c],p=catalog&&catalog.p||{};
+   function put(k,v){if(v&&(!t[k]||t[k]===e[k]))t[k]=v;}
+   put("prCTA2",t.prCTA1);put("prCTA3",t.prCTA1);
+   put("sc2Tag",native.compare?"🔀 "+native.compare:null);
+   put("pf2c",t.sc2Tag);
+   put("mcpCopyBtn",native.copy);
+   var suffix=t.ftTpl||loc._templates||"Templates",send=native.send||"Send";
+   put("pf1a","25 "+(String(p.free||"").replace(/^[^\\p{L}\\p{N}]+/u,"").trim()||"Free")+" "+suffix);
+   put("pf1b","1 "+send+" · AI / 24 h");
+   put("pf1c","9 AI");put("pf1d","5 · "+(loc._custom||"Input"));
+   put("pf2a","1,000+ "+suffix);put("pf2d",(loc._support||"Support")+" +");
+   put("pf3c","$6.67 / mo");put("prName2","Pro");
+   put("ftFeat",loc._features);put("ftTpl",loc._templates);put("ftPrice",loc._pricing);
+   put("ftPriv",loc._privacy);put("ftSupp",loc._support);
+   put("ftPrivL",loc._privacy);put("ftSuppL",loc._support);
+   put("ftConnect","🔌 MCP");
+   put("ftTag",t.heroSub);
+   put("ftCopy","© 2026 Poly-Glot AI");
+ });
+})();
 var originals=new WeakMap(), active="EN", busy=false, scheduled=false;
 var allowed=/^(?:A|SPAN|DIV|P|H1|H2|H3|H4|H5|BUTTON|LABEL|EM|STRONG|SMALL|LI)$/;
 var skip='[data-i18n], [data-i18n-html], #pgChat-window, #pgChat-bubble, .featured-template-grid, .category-constellation, .demo-device-card, .screenshot-gallery, .hero-visual, #iphone-duo, .duo-device, .pg-phone, .pg-static-ipad, .pg-mac-panel-localized, pre, code, textarea, script, style, noscript, svg, [contenteditable="true"]';
