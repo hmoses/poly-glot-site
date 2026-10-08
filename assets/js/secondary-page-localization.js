@@ -75,6 +75,17 @@ function apply(){
 /* Use the homepage language engine as the only source of locale state. */
 window.addEventListener("pg:languagechange",function(){apply();});
 window.addEventListener("pageshow",function(){apply();});
+/* Localize content added later by page scripts, while avoiding observer loops. */
+var mutationPending=false;
+if(typeof MutationObserver!=="undefined"&&document.documentElement){
+ var observer=new MutationObserver(function(changes){
+  if(!changes.some(function(change){return change.addedNodes&&change.addedNodes.length>0;}))return;
+  if(mutationPending)return;
+  mutationPending=true;
+  setTimeout(function(){mutationPending=false;apply();},0);
+ });
+ observer.observe(document.documentElement,{childList:true,subtree:true});
+}
 window.addEventListener("DOMContentLoaded",function(){apply();});
 
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",apply,{once:true});else apply();
