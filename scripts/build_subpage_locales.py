@@ -44,27 +44,42 @@ def main():
             try:prior=json.loads(path.read_text(encoding='utf8'))
             except ValueError:pass
         translations={s:prior[s] for s in terms if s in prior and prior[s] and prior[s]!=s}
-        translator=GoogleTranslator(source='en',target=target)
         from concurrent.futures import ThreadPoolExecutor, as_completed
         todo=[term for term in terms if term not in translations]
+        marker="\n\n◈◈◈\n\n"
+        groups=[];group=[];length=0
+        for term in todo:
+            if group and (len(group)>=12 or length+len(term)+len(marker)>3500):
+                groups.append(group);group=[];length=0
+            group.append(term);length+=len(term)+len(marker)
+        if group:groups.append(group)
         def run_one(term):
             local_translator=GoogleTranslator(source='en',target=target)
             for attempt in range(5):
                 try:
                     value=local_translator.translate(term)
-                    if value is not None and value.strip():
-                        return term,value.strip()
+                    if value is not None and value.strip():return term,value.strip()
                 except Exception as exc:
-                    if attempt==4: print(f'FAILED {code}: {term[:60]}: {exc}',flush=True)
+                    if attempt==4:print(f'FAILED {code}: {term[:60]}: {exc}',flush=True)
                     else:time.sleep(min(30,2**attempt))
             return term,None
+        def run_group(group):
+            if len(group)==1:
+                term,value=run_one(group[0]);return {term:value} if value else {}
+            joined=marker.join(group)
+            try:
+                value=GoogleTranslator(source='en',target=target).translate(joined)
+                split=value.split("◈◈◈") if value else []
+                if len(split)==len(group) and all(x.strip() for x in split):
+                    return dict(zip(group,[x.strip() for x in split]))
+            except Exception:pass
+            return {k:v for k,v in (run_one(term) for term in group) if v}
         with ThreadPoolExecutor(max_workers=5) as pool:
-            for n,future in enumerate(as_completed([pool.submit(run_one,term) for term in todo]),1):
-                term,value=future.result()
-                if value is not None:translations[term]=value
-                if n%80==0:
+            for n,future in enumerate(as_completed([pool.submit(run_group,g) for g in groups]),1):
+                translations.update(future.result())
+                if n%15==0:
                     path.write_text(json.dumps(translations,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
-                    print(code,n,'/',len(todo),flush=True)
+                    print(code,n,'/',len(groups),'groups',flush=True)
         path.write_text(json.dumps(translations,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
         unfilled=[t for t in terms if t not in translations]
         if unfilled:missing[code]=unfilled
