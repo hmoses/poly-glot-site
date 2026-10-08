@@ -14,10 +14,10 @@ concurrency:
 jobs:
   translate:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 65
     strategy:
       fail-fast: false
-      max-parallel: 8
+      max-parallel: 1
       matrix:
         code: ["ES","FR","DE","IT","PT","NL","RU","ZH","ZH_TW","JA","KO","AR","HI","BN","TR","PL","SV","NO","DA","FI","EL","HE","ID","MS","TH","VI","UK","CS","RO","HU","SK","HR","CA","AF","SW","HA","AM"]
     steps:
