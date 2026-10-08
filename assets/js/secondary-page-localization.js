@@ -66,7 +66,11 @@ function apply(){
  document.querySelectorAll("main,article,footer,.card,.guide-card,.about-card").forEach(function(el){el.setAttribute("dir",rtl?"rtl":"ltr");});
  document.documentElement.setAttribute("data-pg-secondary-locale",lang);
 }
-window.addEventListener("pg:languagechange",apply);
+/* Use the homepage language engine as the only source of locale state. */
+window.addEventListener("pg:languagechange",function(){apply();});
+window.addEventListener("pageshow",function(){apply();});
+window.addEventListener("DOMContentLoaded",function(){apply();});
+
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",apply,{once:true});else apply();
 window._pgSecondaryLocalization={apply:apply,translatedNodes:function(){return allNodes.length;},coverage:function(){var lang=i.curLang(),translated=0;allNodes.forEach(function(n){var o=allOrigins.get(n);if(o&&translate(o.term,lang))translated++;});return {lang:lang,total:allNodes.length,translated:translated,missing:allNodes.length-translated};}};
 })();
