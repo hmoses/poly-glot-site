@@ -31,7 +31,7 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           from PIL import Image
-          path = Path("assets/img/polyglot-linkedin-mcp-parrot-2026-v5.png")
+          path = Path("assets/img/polyglot-linkedin-mcp-parrot-2026-v6.png")
           assert path.is_file() and path.stat().st_size > 20_000, "Social preview PNG missing or empty"
           with Image.open(path) as im:
               assert im.format == "PNG" and im.size == (1200, 630), f"Unexpected preview: {im.format} {im.size}"
