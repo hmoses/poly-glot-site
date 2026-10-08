@@ -1,4 +1,5 @@
 name: Stop superseded localization builds
+# Preserve the newest 37-job offline translation run.
 on:
   workflow_dispatch:
   push:
