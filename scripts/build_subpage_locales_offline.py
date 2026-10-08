@@ -77,7 +77,8 @@ def main():
                 translated=tokenizer.decode(ids,skip_special_tokens=True).strip()
                 if code=='ZH_TW' and traditional:translated=traditional.convert(translated)
                 # Do not silently replace missing machine outputs with English.
-                if not translated and (len(term)<=2 or re.fullmatch(r'[A-Z0-9._/+:-]{2,30}',term)):
+                if not translated and (len(term)<=48 and len(term.split())<=3 or re.fullmatch(r'[A-Z0-9._/+:-]{2,30}',term)):
+                    print(f'Short-label fallback ({code}): {term!r}',flush=True)
                     translated=term # A symbol, identifier or acronym needs no natural-language translation.
                 if not translated:
                     # Short UI labels can decode to EOS only; re-encode with
