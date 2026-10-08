@@ -23,10 +23,10 @@ Not necessarily. A client must support the appropriate MCP transport and authent
 
 ## Where can I find the configuration instructions?
 
-See the Poly-Glot MCP connection guide for supported client setup and endpoint information.
+See the MCP setup section on the Poly-Glot homepage for the production endpoint and integration overview.
 
 ## Further information
 
 - [Official product site](https://hmoses.github.io/poly-glot-site/)
 - [App Store](https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12)
-- [MCP setup](https://hmoses.github.io/poly-glot-site/connect.html)
+- [MCP setup](https://hmoses.github.io/poly-glot-site/#connect)
