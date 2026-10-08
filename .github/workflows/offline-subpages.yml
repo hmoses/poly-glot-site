@@ -1,0 +1,90 @@
+name: Offline 38-language localization build
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/build_subpage_locales_offline.py
+      - .github/workflows/offline-subpages.yml
+permissions:
+  contents: write
+concurrency:
+  group: offline-localization-${{ github.sha }}
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        include:
+          - group: 1
+            codes: "ES,FR,DE,IT,PT,NL,RU,ZH,ZH_TW"
+          - group: 2
+            codes: "JA,KO,AR,HI,BN,TR,PL,SV,NO"
+          - group: 3
+            codes: "DA,FI,EL,HE,ID,MS,TH,VI,UK"
+          - group: 4
+            codes: "CS,RO,HU,SK,HR,CA,AF,SW,HA,AM"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install MIT-compatible offline translation dependencies
+        run: |
+          python -m pip install --disable-pip-version-check beautifulsoup4 ctranslate2 "transformers>=4.40,<5" sentencepiece "huggingface_hub[hf_xet]" opencc-python-reimplemented
+      - name: Translate locale group without Google rate limits
+        env:
+          PG_ONLY_LOCALES: ${{ matrix.codes }}
+          HF_HUB_DISABLE_TELEMETRY: "1"
+        run: python scripts/build_subpage_locales_offline.py
+      - name: Upload translation catalogs
+        uses: actions/upload-artifact@v4
+        with:
+          name: offline-catalogs-${{ matrix.group }}
+          path: assets/locales/subpages/*.json
+          retention-days: 3
+  publish:
+    needs: generate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: offline-catalogs-*
+          path: assets/locales/subpages
+          merge-multiple: true
+      - name: Verify every visible source entry has a translation in all 37 locales
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('assets/locales/subpages')
+          codes=["es","fr","de","it","pt","nl","ru","zh","zh_tw","ja","ko","ar","hi","bn","tr","pl","sv","no","da","fi","el","he","id","ms","th","vi","uk","cs","ro","hu","sk","hr","ca","af","sw","ha","am"]
+          source=set(json.loads((root/'en.json').read_text(encoding='utf8')))
+          assert len(source)>50, 'English extraction is unexpectedly small'
+          for code in codes:
+              path=root/(code+'.json')
+              assert path.is_file(),f'No catalog for {code}'
+              data=json.loads(path.read_text(encoding='utf8'))
+              missing=source-set(data)
+              assert not missing,f'{code} has {len(missing)} missing translations'
+              assert all(isinstance(data[key],str) and data[key].strip() for key in source),f'{code}: empty output'
+          (root/'report.json').write_text(json.dumps({'languages':38,'source_strings':len(source),'missing':{},'method':'SMaLL-100 offline MIT'},indent=2)+'\n',encoding='utf8')
+          print(f'COMPLETE: {len(source)} distinct strings x 38 languages',flush=True)
+          PY
+      - name: Publish verified catalogs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/locales/subpages
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish complete offline 38-language subpage catalogs"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
