@@ -53,6 +53,12 @@ function localizeCompareExample(code){
  var loc=DEMO_TRANSLATIONS[code]||DEMO_TRANSLATIONS.EN;
  demoNodes.forEach(function(n,i){if(!n)return;if(code==="EN"){if(n.innerHTML!==demoHTML[i])n.innerHTML=demoHTML[i];}else if(n.textContent!==loc[i])n.textContent=loc[i];if(code==="HE"||code==="AR")n.setAttribute("dir","auto");else n.removeAttribute("dir");});
 }
+function localizeFeatureTags(code){
+ var items=document.querySelectorAll(".feature-primary-tags span");
+ var langs=window._pgCatalogLocales||{}, pills=(langs[code]&&langs[code].p)||{};
+ var names=["Writing","Coding","Marketing","Education","Business"], keys=["writing","coding","marketing","school","money"];
+ items.forEach(function(el,i){var x=(code!=="EN"&&pills[keys[i]])?String(pills[keys[i]]).replace(/^[^\\p{L}\\p{N}]+/u,"").trim():names[i];if(x&&el.textContent!==x)el.textContent=x;});
+}
 var originals=new WeakMap(), active="EN", busy=false, scheduled=false;
 var allowed=/^(?:A|SPAN|DIV|P|H1|H2|H3|H4|H5|BUTTON|LABEL|EM|STRONG|SMALL|LI)$/;
 var skip='[data-i18n], [data-i18n-html], #pgChat-window, #pgChat-bubble, .featured-template-grid, .category-constellation, .demo-device-card, .screenshot-gallery, .hero-visual, #iphone-duo, .duo-device, .pg-phone, .pg-static-ipad, .pg-mac-panel-localized, pre, code, textarea, script, style, noscript, svg, [contenteditable="true"]';
@@ -96,6 +102,7 @@ function apply(){
   localizeTrialAndFaq(code);
   localizeMenu(code);
   localizeCompareExample(code);
+  localizeFeatureTags(code);
   document.documentElement.setAttribute("data-site-copy-language",code);
  }finally{busy=false;}
 }
