@@ -24,8 +24,11 @@ jobs:
           base=f'https://api.github.com/repos/{repo}/actions/runs?per_page=100'
           req=urllib.request.Request(base,headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json'})
           runs=json.load(urllib.request.urlopen(req)).get('workflow_runs',[])
-          for run in runs:
-              if run['name']!='Generate 38-language secondary-page catalogs' or run['status']=='completed':continue
+          active=[r for r in runs if r['name']=='Generate 38-language secondary-page catalogs' and r['status']!='completed']
+          newest=max((r['id'] for r in active),default=-1)
+          print('Keeping newest translation run:',newest,flush=True)
+          for run in active:
+              if run['id']==newest:continue
               url=f"https://api.github.com/repos/{repo}/actions/runs/{run['id']}/cancel"
               try:
                   request=urllib.request.Request(url,data=b'',method='POST',headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json'})
