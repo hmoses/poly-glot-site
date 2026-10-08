@@ -3,7 +3,7 @@
 Requires: pip install beautifulsoup4 deep-translator
 Never sends visitor content; translates only published site copy during a build.
 """
-import json, re, time, pathlib, sys
+import json, re, time, pathlib, sys, os
 from bs4 import BeautifulSoup, NavigableString
 from deep_translator import GoogleTranslator
 ROOT=pathlib.Path(__file__).resolve().parents[1]
@@ -37,7 +37,10 @@ def main():
     source=dest/'en.json';source.write_text(json.dumps(terms,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
     print('Unique English source strings:',len(terms),flush=True)
     missing={}
-    for code,target in LANG.items():
+    only=os.environ.get('PG_ONLY_LOCALE')
+    if only and only not in LANG:raise SystemExit('Unknown language code '+only)
+    targets={only:LANG[only]} if only else LANG
+    for code,target in targets.items():
         path=dest/(code.lower()+'.json')
         prior={}
         if path.exists():
@@ -84,6 +87,10 @@ def main():
         unfilled=[t for t in terms if t not in translations]
         if unfilled:missing[code]=unfilled
         print(code,'complete',len(translations),'/',len(terms),flush=True)
+    if only and missing:
+        print('Translation gaps:',{k:len(v) for k,v in missing.items()},flush=True)
+        sys.exit(1)
+    if only:return
     report={'languages':len(LANG),'source_strings':len(terms),'missing':missing}
     (dest/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
     if missing:
