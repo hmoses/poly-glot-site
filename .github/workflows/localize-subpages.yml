@@ -48,5 +48,7 @@ jobs:
           git add assets/locales/subpages
           if ! git diff --cached --quiet; then
             git commit -m "Publish 37 complete static subpage translation catalogs"
-            git push
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
           fi
