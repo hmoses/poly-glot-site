@@ -57,7 +57,7 @@ function localizeFeatureTags(code){
  var items=document.querySelectorAll(".feature-primary-tags span");
  var langs=window._pgCatalogLocales||{}, pills=(langs[code]&&langs[code].p)||{};
  var names=["Writing","Coding","Marketing","Education","Business"], keys=["writing","coding","marketing","school","money"];
- items.forEach(function(el,i){var x=(code!=="EN"&&pills[keys[i]])?String(pills[keys[i]]).replace(/^[^\\p{L}\\p{N}]+/u,"").trim():names[i];if(x&&el.textContent!==x)el.textContent=x;});
+ items.forEach(function(el,i){var x=(code!=="EN"&&pills[keys[i]])?String(pills[keys[i]]).replace(/^[^\p{L}\p{N}]+/u,"").trim():names[i];if(x&&el.textContent!==x)el.textContent=x;});
 }
 var originals=new WeakMap(), active="EN", busy=false, scheduled=false;
 var allowed=/^(?:A|SPAN|DIV|P|H1|H2|H3|H4|H5|BUTTON|LABEL|EM|STRONG|SMALL|LI)$/;
