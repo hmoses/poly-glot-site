@@ -63,9 +63,9 @@ def main():
                 term,value=future.result()
                 if value is not None:translations[term]=value
                 if n%80==0:
-                    path.write_text(json.dumps(translations,ensure_ascii=False,indent=2)+'\\n',encoding='utf8')
+                    path.write_text(json.dumps(translations,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
                     print(code,n,'/',len(todo),flush=True)
-        path.write_text(json.dumps(translations,ensure_ascii=False,indent=2)+'\\n',encoding='utf8')
+        path.write_text(json.dumps(translations,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
         unfilled=[t for t in terms if t not in translations]
         if unfilled:missing[code]=unfilled
         print(code,'complete',len(translations),'/',len(terms),flush=True)
