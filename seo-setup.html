@@ -225,13 +225,22 @@ function copyText(el){
     setTimeout(function(){el.innerHTML=orig;el.style.borderColor='';},1200);
   });
 }
+window.addEventListener("pg:secondarycatalogready",updateProgress);
+window.addEventListener("pg:languagechange",updateProgress);
 function updateProgress(){
   var boxes=document.querySelectorAll('.check input[type="checkbox"]');
   var checked=0;
   boxes.forEach(function(b){if(b.checked)checked++;});
   var pct=Math.round((checked/boxes.length)*100);
   document.getElementById('progressFill').style.width=pct+'%';
-  document.getElementById('progressText').textContent=checked+' / '+boxes.length+' complete';
+  var locale=window._pgI18n&&window._pgI18n.curLang()||'EN';
+  var translated=window._pgSecondaryExact&&window._pgSecondaryExact[locale]&&window._pgSecondaryExact[locale]['0 / 10 complete'];
+  var progress=checked+' / '+boxes.length+' complete';
+  if(locale!=='EN'&&translated){
+    var suffix=translated.replace(/^[\\s\\p{N}\\/\\-:]+/u,'').trim();
+    if(suffix)progress=checked+' / '+boxes.length+' '+suffix;
+  }
+  document.getElementById('progressText').textContent=progress;
   try{localStorage.setItem('pg_seo_checks',JSON.stringify(Array.from(boxes).map(function(b){return b.checked;})));}catch(e){}
 }
 (function(){
