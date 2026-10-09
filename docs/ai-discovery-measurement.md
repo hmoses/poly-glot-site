@@ -9,19 +9,19 @@ Property measurement ID: `G-MECD55W2RG`. The homepage already had Google tag + `
 The five SEO/AEO knowledge-center HTML pages now use the same Google tag: `compare-ai-tools.html`, `multilingual-ai-workspace.html`, `prompt-templates.html`, `mcp-integrations.html`, `privacy-and-pricing.html`. Each automatically emits GA4 `page_view`.
 
 `assets/js/discovery-analytics.js` is shared by the homepage and these five pages. It emits:
-- `ai_referral_visit` when an external referring domain or a recognized `utm_source` identifies an AI assistant; parameters `ai_source`, `ai_detection` (referrer/utm), `page_path`, `content_group`.
+- `ai_referral_landing` when an external referring domain or a recognized `utm_source` identifies an AI assistant; parameters `ai_provider`, `ai_detection` (referrer/utm), `page_path`, `content_group`.
 - `app_store_click` on each knowledge page's App Store links; preserves the existing homepage's event without duplicating it.
 - `ai_assisted_app_store_click` on App Store links if a recognizable AI source referred that visitor, including subsequent internal pages within the same browser tab/session.
 
-Recognized sources: ChatGPT, Perplexity, Claude, Gemini, Copilot, Grok, Mistral, Poe, You.com, Meta AI, DuckDuckGo AI, and Phind. Other referrals stay unknown; do not falsely attribute Google searches/AI Overviews to Gemini. Some AI clients suppress the `Referer` header, so these are **known-attributed visits**, not all AI-origin traffic.
+Recognized sources: ChatGPT, Perplexity, Claude, Gemini, Copilot, Grok, Mistral, Poe, You.com, Meta AI, DuckDuckGo AI, and Phind. Ordinary Bing search and generic X visits are not counted as Copilot or Grok referrals. Other referrals stay unknown; do not falsely attribute Google searches/AI Overviews to Gemini. Some AI clients suppress the `Referer` header, so these are **known-attributed visits**, not all AI-origin traffic.
 
 Only the provider label, attribution method, page path, and link information are sent as event parameters; no prompts or full referring URLs are tracked by this script. The existing Google tag still has its own privacy/consent considerations. `sessionStorage` attribution is optional and fails safely where unavailable.
 
 ### Set up GA4 reporting (property administrator action)
 
-1. In GA4 **Admin > Data display > Custom definitions**, add **event-scoped custom dimensions** for `ai_source`, `ai_detection`, `content_group`, and `page_path`. Do not create event-scoped dimensions for reserved GA4 parameters.
-2. Use **Reports > Realtime** (and DebugView if enabled) to verify a knowledge page's `page_view`, `app_store_click`, and a test `ai_referral_visit` from `?utm_source=chatgpt&utm_medium=ai`. A simulated visit counts as test traffic in a production property unless excluded.
-3. In **Explore**, break down `ai_referral_visit` and `ai_assisted_app_store_click` by `ai_source` and landing page. Compare against all `page_view` and `app_store_click` events. GA4 custom dimensions may take 24–48 hours to populate reports.
+1. In GA4 **Admin > Data display > Custom definitions**, add **event-scoped custom dimensions** for `ai_provider`, `ai_detection`, `content_group`, and `page_path`. Do not create event-scoped dimensions for reserved GA4 parameters.
+2. Use **Reports > Realtime** (and DebugView if enabled) to verify a knowledge page's `page_view`, `app_store_click`, and a test `ai_referral_landing` from `?utm_source=chatgpt&utm_medium=ai`. A simulated visit counts as test traffic in a production property unless excluded.
+3. In **Explore**, break down `ai_referral_landing` and `ai_assisted_app_store_click` by `ai_provider` and landing page. Compare against all `page_view` and `app_store_click` events. GA4 custom dimensions may take 24–48 hours to populate reports.
 4. In **Reports > Acquisition > Traffic acquisition**, separately inspect session source/medium for `chatgpt.com / referral`, `perplexity.ai / referral`, etc., and tracked UTM campaigns. AI-source parameters provide an additional explicit channel, not a replacement for source/medium.
 5. If tracking app-store conversions as key events, mark **only** `app_store_click` as the primary click conversion. Do not also mark the AI-assisted subset as a key event and sum both (double-counting).
 
