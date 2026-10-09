@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - .github/workflows/stop-stale-localization.yml
+  # Keep only the newest active offline localization release build.
 permissions:
   actions: write
   contents: read
