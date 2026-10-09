@@ -2076,8 +2076,30 @@ document.head.appendChild(css);
 // ===== INIT =====
 function init(){
 buildPicker();tagAll();
-var saved;try{var q=new URLSearchParams(location.search).get('lang');saved=q&&LANGS.some(function(x){return x.code===q.toUpperCase();})?q.toUpperCase():localStorage.getItem('pgLang');}catch(e){try{saved=localStorage.getItem('pgLang');}catch(_){}}
-if(saved){if(saved==="ZH-TW")saved="ZH_TW";var L=LANGS.find(function(l){return l.code===saved;});if(L)setLang(L.code,L.flag);}else{document.documentElement.setAttribute("dir","ltr");}
+// Locale priority: explicit URL > remembered visitor selection > browser preferences > English.
+// Browser language is a better privacy-preserving default than geographic IP lookup.
+function supportedLocale(input){
+ if(!input)return null;
+ var tag=String(input).trim().replace(/_/g,"-").toUpperCase();
+ if(tag==="ZH-TW"||tag==="ZH-HK"||tag==="ZH-MO"||tag.startsWith("ZH-HANT"))return "ZH_TW";
+ if(tag==="ZH-CN"||tag==="ZH-SG"||tag.startsWith("ZH-HANS"))return "ZH";
+ var code=tag.split("-")[0];
+ if(code==="NB"||code==="NN")code="NO";
+ if(code==="IW")code="HE";
+ if(code==="IN")code="ID";
+ return LANGS.some(function(l){return l.code===code;})?code:null;
+}
+var chosen=null;
+try{chosen=supportedLocale(new URLSearchParams(location.search).get("lang"));}catch(e){}
+if(!chosen){try{chosen=supportedLocale(localStorage.getItem("pgLang"));}catch(e){}}
+if(!chosen){
+ var preferred=[];
+ try{preferred=Array.isArray(navigator.languages)&&navigator.languages.length?navigator.languages:[navigator.language];}catch(e){}
+ for(var i=0;i<preferred.length&&!chosen;i++)chosen=supportedLocale(preferred[i]);
+}
+var selected=chosen||"EN";
+var selectedEntry=LANGS.find(function(l){return l.code===selected;})||LANGS[0];
+setLang(selectedEntry.code,selectedEntry.flag);
 }
 
 // Expose
