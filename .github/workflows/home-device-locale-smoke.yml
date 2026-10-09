@@ -56,6 +56,11 @@ jobs:
                           page.evaluate('(lang)=>window._pgI18n.setLang(lang.code,lang.flag)',lang)
                           page.wait_for_function('(code)=>window._pgI18n.curLang()===code && document.documentElement.getAttribute("data-device-ui-lang")===code',arg=code,timeout=15000)
                           page.wait_for_timeout(160)
+                          replies=page.evaluate('(code)=>window._pgMacDemoResponses?.[code]',code)
+                          assert replies and len(replies)==2 and all(replies),f'{code}: missing localized Mac demonstration responses'
+                          if code!='EN':
+                              en=page.evaluate('window._pgMacDemoResponses?.EN')
+                              assert replies!=en,f'{code}: demonstration responses still in English'
                           actual=page.evaluate('''() => {
                             const code=window._pgI18n.curLang(),s=window._pgDeviceUI._strings(code);
                             return {
@@ -76,6 +81,7 @@ jobs:
                           if code!='EN':
                               assert actual['langName']!='English',f'{code}: output selector still in English'
                           if code=='FR':
+                              assert 'chauffage' in replies[0].lower(),f'FR: example email was not translated: {replies}'
                               assert actual['langName']=='Français',f'FR: expected Français: {actual}'
                               assert 'Découvrez' in actual['demoHeading'],f'FR: unexpected demo heading: {actual}'
                           if code in ('FR','JA','AR','EN'):
@@ -84,7 +90,7 @@ jobs:
                                   page.wait_for_timeout(50)
                                   text=page.locator('#macTabLabel').inner_text()
                                   assert page.evaluate('(key)=>window._pgDeviceUI._strings(window._pgI18n.curLang())[key]',key) in text,f'{code}/{tab}: caption did not follow tab: {text}'
-                      print('PASS: 38 language changes, Mac labels, native names, demo headings, and 4-tab reversibility')
+                      print('PASS: 38 language changes, localized AI demo responses, Mac labels, native names, demo headings, and 4-tab reversibility')
                   except Exception:
                       page.locator('#gallery-mac').scroll_into_view_if_needed()
                       page.screenshot(path='localization-smoke/failed-mac.png')
