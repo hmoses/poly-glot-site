@@ -1,0 +1,21 @@
+name: Diagnose missing first translation token
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/probe_small100_prefix.py
+      - .github/workflows/probe-small100-prefix.yml
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check ctranslate2 "transformers>=4.40,<5" sentencepiece "huggingface_hub[hf_xet]" opencc-python-reimplemented
+      - run: python scripts/probe_small100_prefix.py
