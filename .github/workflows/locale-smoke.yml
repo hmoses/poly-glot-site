@@ -41,6 +41,8 @@ jobs:
                           result=await page.evaluate("() => ({lang:window._pgI18n?.curLang?.(),flagCount:window._pgI18n?.LANGS?.length,audit:window._pgSecondaryLocaleAudit,dir:document.documentElement.dir})")
                           a=result['audit'] or {}
                           print(code,path,'missing',len(a.get('missing',[])),'sample',a.get('missing',[])[:12],'flagCount',result['flagCount'],'dir',result['dir'],flush=True)
+                          assert result['flagCount']==38 and result['lang']==code, f'Picker mismatch: {code} {path}'
+                          assert not a.get('missing',[]), f'Untranslated text on {path} in {code}: {a.get("missing",[])[:15]}'
                   await b.close()
           asyncio.run(run())
           srv.shutdown()
