@@ -1951,6 +1951,9 @@ try{window.dispatchEvent(new CustomEvent('pg:languagechange',{detail:{code:code,
 (function syncDeviceSurfaces(selectedCode){
   var tries=0;
   function run(){
+    /* An older language switch must never overwrite a newer selection.
+       Stop its delayed device refreshes as soon as the global locale changes. */
+    if(selectedCode!==curLang)return;
     tries++;
     try{
       if(window._pgDeviceUI&&typeof window._pgDeviceUI.apply==='function'){
