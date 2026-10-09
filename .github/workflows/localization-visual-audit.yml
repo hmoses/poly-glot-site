@@ -6,6 +6,7 @@ on:
     paths:
       - assets/locales/subpages/**
       - connect.html
+      - assets/js/secondary-page-localization.js
       - .github/workflows/localization-visual-audit.yml
 permissions:
   contents: read
