@@ -16,6 +16,10 @@ permissions:
 jobs:
   qa:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: ["EN,ES,FR,DE,IT,PT,NL,RU,ZH,ZH_TW","JA,KO,AR,HI,BN,TR,PL,SV,NO,DA","FI,EL,HE,ID,MS,TH,VI,UK,CS","RO,HU,SK,HR,CA,AF,SW,HA,AM"]
     timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
@@ -27,12 +31,14 @@ jobs:
           python -m pip install --disable-pip-version-check playwright
           python -m playwright install --with-deps chromium
       # Verify all 494 page/language combinations against the published locale catalog source.
-      - name: Test all 494 language-page combinations
+      - name: Test localized page and language shard
+        env:
+          PG_LANG_SHARD: ${{ matrix.shard }}
         run: python scripts/test_subpage_localization.py
       - name: Archive failures and coverage
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: localization-browser-report
+          name: localization-browser-report-${{ strategy.job-index }}
           path: localization-browser-report.json
           if-no-files-found: ignore
