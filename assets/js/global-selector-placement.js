@@ -52,6 +52,7 @@ var pgEnglishSourceReady=fetch(new URL("assets/locales/subpages/en.json",locatio
    if(!Array.isArray(source))throw Error("Invalid English source catalog");
    window._pgEnglishSourceSet=new Set(source);
    window._pgSecondaryLocalization?.apply();
+   window.dispatchEvent(new CustomEvent("pg:secondarycatalogready",{detail:{language:lang}}));
  })
  .catch(function(e){console.warn("Poly-Glot source catalog:",e.message);});
 var pgLocaleRequests={};
