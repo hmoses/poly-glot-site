@@ -45,6 +45,10 @@ jobs:
                           print(code,path,'missing',len(a.get('missing',[])),'sample',a.get('missing',[])[:12],'flagCount',result['flagCount'],'dir',result['dir'],flush=True)
                           assert result['flagCount']==38 and result['lang']==code, f'Picker mismatch: {code} {path}'
                           assert not a.get('missing',[]), f'Untranslated text on {path} in {code}: {a.get("missing",[])[:15]}'
+                          if code=='ES' and path=='prompt-templates.html':
+                              title=await page.locator('main h1').inner_text()
+                              assert title=='Plantillas de prompts de IA y acceso Gratis frente a Pro',title
+                              print('Human-edited Spanish guide heading PASSED',flush=True)
                           if code=='NL' and path=='connect.html':
                               await page.evaluate('''() => {window._pgCopied=null;Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:(text)=>{window._pgCopied=text;return Promise.resolve()}}})}''')
                               await page.locator('.code-block .copy-btn').nth(1).click()
