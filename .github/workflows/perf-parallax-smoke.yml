@@ -1,0 +1,28 @@
+name: Site performance and subpage parallax smoke
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - '**/*.html'
+      - 'assets/css/section-motion.css'
+      - 'assets/js/section-motion.js'
+      - 'scripts/test_perf_parallax.py'
+      - '.github/workflows/perf-parallax-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Verify localized subpages, mobile layout, parallax and reduced motion
+        run: python scripts/test_perf_parallax.py
