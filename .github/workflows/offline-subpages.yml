@@ -75,7 +75,7 @@ jobs:
               'Terms of Use':('condiciones','términos'),
           }
           for source_text,expected_starts in regressions.items():
-              actual=es.get(source_text,'').strip(' \\u201c\\u201d"').lower()
+              actual=es.get(source_text,'').strip(' “ ”"').lower()
               assert any(actual.startswith(x) for x in expected_starts),f'Damaged Spanish translation for {source_text}: {actual!r}'
           print('Known first-word truncation regressions: PASS',flush=True)
           print(f'COMPLETE: {len(source)} distinct strings x 38 languages',flush=True)
