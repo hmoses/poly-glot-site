@@ -639,12 +639,16 @@ function localizeMacSecondaryTabs(S,M,c){
    if(c==="EN"){if(layer)layer.remove();}
    else{
      if(!layer){layer=document.createElement("div");layer.className="pg-mac-panel-localized";template.appendChild(layer);}
-     var scratch=document.createElement("div");
-     scratch.innerHTML=localizedScreenMarkup("templates",S,M,"mac");
-     var body=scratch.querySelector(".pg-real-body");
-     if(body){
-       body.querySelectorAll(".pg-real-template-card b").forEach(function(el,i){el.textContent=localizedTitle(i)});
-       layer.replaceChildren(body);
+     /* Rebuild only for a different locale, not on every tab click or retry. */
+     if(layer.dataset.pgMacPanelLocale!==c || !layer.querySelector(".pg-real-body")){
+       var scratch=document.createElement("div");
+       scratch.innerHTML=localizedScreenMarkup("templates",S,M,"mac");
+       var body=scratch.querySelector(".pg-real-body");
+       if(body){
+         body.querySelectorAll(".pg-real-template-card b").forEach(function(el,i){el.textContent=localizedTitle(i)});
+         layer.replaceChildren(body);
+       }
+       layer.dataset.pgMacPanelLocale=c;
      }
      layer.lang=c==="ZH_TW"?"zh-Hant":c.toLowerCase();
      layer.dir=c==="AR"||c==="HE"?"rtl":"ltr";
@@ -711,7 +715,8 @@ function localizeMacSecondaryTabs(S,M,c){
 function apply(code){
  var c=norm(code||current()),S=strings(c),M=meta(c);
  document.documentElement.setAttribute("data-device-ui-lang",c);
- document.querySelectorAll(".pg-device-static-localized,.pg-mac-panel-localized").forEach(function(el){el.remove()});
+ /* Keep the already-localized Mac template layer mounted across same-language tab changes. */
+ document.querySelectorAll(".pg-device-static-localized").forEach(function(el){el.remove()});
 
  /* Mac is rendered first so no legacy localization path can visibly win. */
  try{macOverlay(S,M,c)}catch(e){console.error("Poly-Glot Mac localization:",e)}
