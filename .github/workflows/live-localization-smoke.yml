@@ -1,0 +1,45 @@
+name: Live published localization smoke
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/live-localization-smoke.yml
+permissions:
+  contents: read
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Check published website's translations and flags
+        run: |
+          python - <<'PY'
+          import asyncio
+          from playwright.async_api import async_playwright
+          BASE='https://hmoses.github.io/poly-glot-site/'
+          CASES=[('NL','connect.html'),('AR','prompt-templates.html'),('JA','terms.html'),('ES','seo-setup.html'),('VI','privacy.html'),('FR','mcp-integrations.html'),('HE','privacy-and-pricing.html')]
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch(headless=True,args=['--no-sandbox'])
+                  page=await browser.new_page(viewport={'width':390,'height':844})
+                  for code,path in CASES:
+                      response=await page.goto(BASE+path+'?lang='+code,wait_until='domcontentloaded',timeout=45000)
+                      assert response and response.ok, f'{path}: HTTP failure'
+                      await page.wait_for_function('(c)=>window._pgI18n?.curLang?.()===c&&Boolean(window._pgSecondaryExact?.[c])',arg=code,timeout=30000)
+                      await page.wait_for_function('(c)=>window._pgSecondaryLocaleAudit?.language===c&&window._pgSecondaryLocaleAudit?.complete===true',arg=code,timeout=12000)
+                      d=await page.evaluate('''()=>({flags:window._pgI18n.LANGS.length,locale:window._pgI18n.curLang(),missing:window._pgSecondaryLocaleAudit.missing,dir:document.documentElement.dir})''')
+                      assert d['flags']==38 and d['locale']==code and not d['missing'], f'{path}/{code}: {d}'
+                      if code in ('AR','HE'):assert d['dir']=='rtl', f'RTL incorrect: {path}'
+                      print('LIVE PASS',code,path,'38 flags; no missing strings',flush=True)
+                  await browser.close()
+          asyncio.run(main())
+          PY
