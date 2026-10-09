@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[1]
 CAT=ROOT/'assets/locales/subpages'
 CAND=ROOT/'quality-candidates'
 LANGS=('es','fr','de','it','pt','nl','ru')
-BRANDS=('Poly-Glot','ChatGPT','Claude','Gemini','Grok','Perplexity','Copilot','Mistral','HuggingChat','DuckDuckGo','Cursor','Glama','MCP.so','GitHub','Neon')
+BRANDS=('Poly-Glot','ChatGPT','Claude','Gemini','Grok','Perplexity','Copilot','Mistral','HuggingChat','DuckDuckGo','Cursor','Glama','MCP.so','GitHub','Neon','Apple','App Store','iOS','macOS','MCP','HTTPS','HTTP','JSON','Pro')
 NEG={
  'es':r'\b(?:no|ning[uú]n|ni|nunca|sin)\b',
  'fr':r'\b(?:ne|pas|aucun|sans|jamais|ni)\b',
