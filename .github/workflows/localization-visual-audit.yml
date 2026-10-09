@@ -41,6 +41,9 @@ jobs:
                           await page.goto('http://127.0.0.1:8869/'+path+'?lang='+code,wait_until='domcontentloaded')
                           await page.wait_for_function('(c)=>Boolean(window._pgSecondaryExact?.[c])',arg=code,timeout=15000)
                           await page.wait_for_timeout(500)
+                          if width==390:
+                              overflowing=await page.evaluate("""() => Array.from(document.querySelectorAll('*')).filter(el => {let r=el.getBoundingClientRect();return r.width>0 && r.right>window.innerWidth+3 && getComputedStyle(el).position!=='fixed'}).slice(0,12).map(el => ({tag:el.tagName,cls:String(el.className||'').slice(0,70),right:Math.round(el.getBoundingClientRect().right),width:Math.round(el.getBoundingClientRect().width),text:(el.textContent||'').trim().slice(0,45)}))""")
+                              if overflowing:print('OVERFLOW',code,path,overflowing,flush=True)
                           await page.screenshot(path='localization-visuals/'+code+'-'+path.replace('.html','')+'-'+str(width)+'.png',full_page=True)
                           audit=await page.evaluate('window._pgSecondaryLocaleAudit')
                           assert audit and not audit['missing'],f'Missing copy in {code} {path}: {audit}'
