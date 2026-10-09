@@ -58,10 +58,8 @@ def main():
         tokenizer.tgt_lang=language
         prefix=[tokenizer.lang_code_to_token[language]]
         target_file=outdir/(code.lower()+'.json')
+        # Force regeneration: previously published catalogs lost the first token.
         old={}
-        if target_file.exists():
-            try:old=json.loads(target_file.read_text(encoding='utf8'))
-            except ValueError:pass
         output={term:old[term] for term in en if term in old and old[term]}
         # A lone interface shortcut/technical letter is language-neutral.
         for term in en:
@@ -77,7 +75,13 @@ def main():
                 token_batch,target_prefix=[prefix]*len(batch),
                 beam_size=1,max_decoding_length=384)
             for term,result in zip(batch,translations):
-                ids=tokenizer.convert_tokens_to_ids(result.hypotheses[0][1:])
+                hypothesis=result.hypotheses[0]
+                # CTranslate2 may omit the requested prefix in hypotheses.
+                # Discard it only when it is actually present; otherwise [1:]
+                # corrupts the first translated word.
+                if hypothesis and hypothesis[0]==prefix[0]:
+                    hypothesis=hypothesis[1:]
+                ids=tokenizer.convert_tokens_to_ids(hypothesis)
                 translated=tokenizer.decode(ids,skip_special_tokens=True).strip()
                 if code=='ZH_TW' and traditional:translated=traditional.convert(translated)
                 # Do not silently replace missing machine outputs with English.
@@ -90,7 +94,9 @@ def main():
                     retry=term.rstrip('.!?')+'.'
                     retry_tokens=tokenizer.convert_ids_to_tokens(tokenizer.encode(retry))
                     result2=translator.translate_batch([retry_tokens],target_prefix=[prefix],beam_size=3,max_decoding_length=384)[0]
-                    retry_ids=tokenizer.convert_tokens_to_ids(result2.hypotheses[0][1:])
+                    retry_hyp=result2.hypotheses[0]
+                    if retry_hyp and retry_hyp[0]==prefix[0]:retry_hyp=retry_hyp[1:]
+                    retry_ids=tokenizer.convert_tokens_to_ids(retry_hyp)
                     translated=tokenizer.decode(retry_ids,skip_special_tokens=True).strip().rstrip('.。।')
                 if not translated:raise ValueError(f'Empty translation after retry: {code} {term[:80]}')
                 output[term]=translated
