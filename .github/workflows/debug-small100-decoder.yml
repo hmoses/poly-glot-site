@@ -1,4 +1,4 @@
-name: Diagnose offline translation decoder
+name: Diagnose M2M100 translation quality
 on:
   workflow_dispatch:
   push:
@@ -10,35 +10,33 @@ permissions:
 jobs:
   inspect:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: python -m pip install --disable-pip-version-check ctranslate2 "transformers>=4.40,<5" sentencepiece "huggingface_hub[hf_xet]"
-      - name: Compare raw hypotheses and decoding variations
+      - name: Compare M2M100 translations against damaged SMaLL100 examples
         run: |
           python - <<'PY'
-          import sys
           from pathlib import Path
           from huggingface_hub import snapshot_download
+          from transformers import M2M100Tokenizer
           import ctranslate2
-          p=Path('/tmp/small100-debug')
-          snapshot_download(repo_id='entai2965/small100-ctranslate2',local_dir=str(p),allow_patterns=['model.bin','config.json','sentencepiece.bpe.model','shared_vocabulary.json','special_tokens_map.json','tokenization_small100.py','tokenizer_config.json','vocab.json'])
-          sys.path.insert(0,str(p))
-          from tokenization_small100 import SMALL100Tokenizer
-          tok=SMALL100Tokenizer.from_pretrained(str(p))
-          tok.tgt_lang='es'
-          prefix=[tok.lang_code_to_token['es']]
+          p=Path('/tmp/pg-m2m100-debug')
+          snapshot_download(repo_id='gn64/M2M100_418M_CTranslate2',local_dir=str(p),allow_patterns=['model.bin','config.json','sentencepiece.bpe.model','shared_vocabulary.json'])
+          tokenizer=M2M100Tokenizer.from_pretrained('facebook/m2m100_418M')
+          tokenizer.src_lang='en'
+          prefix=[tokenizer.lang_code_to_token['es']]
           trans=ctranslate2.Translator(str(p),device='cpu',compute_type='int8')
-          for source in ['"Add Site"','"Add property"','"Build me a LinkedIn post prompt"','Privacy Policy','Checked','Pages','Connect your AI assistant to Poly-Glot MCP.']:
-              inp=tok.convert_ids_to_tokens(tok.encode(source))
-              res=trans.translate_batch([inp],target_prefix=[prefix],beam_size=2,max_decoding_length=200)[0]
-              raw=res.hypotheses[0]
-              print('SOURCE:',repr(source),flush=True)
-              print('PREFIX:',repr(prefix),flush=True)
-              print('HYPOTHESIS:',repr(raw[:15]),flush=True)
-              print('ALL:',repr(tok.decode(tok.convert_tokens_to_ids(raw),skip_special_tokens=True)),flush=True)
-              print('DROP:',repr(tok.decode(tok.convert_tokens_to_ids(raw[1:]),skip_special_tokens=True)),flush=True)
+          sources=['"Add Site"','"Add property"','"Build me a LinkedIn post prompt"','Privacy Policy','Terms of Use','Checked','Pages','Connect your AI assistant to Poly-Glot MCP.']
+          batch=[tokenizer.convert_ids_to_tokens(tokenizer.encode(s)) for s in sources]
+          results=trans.translate_batch(batch,target_prefix=[prefix]*len(sources),beam_size=3,max_decoding_length=200)
+          for source,result in zip(sources,results):
+              hyp=result.hypotheses[0]
+              if hyp and hyp[0]==prefix[0]:hyp=hyp[1:]
+              translated=tokenizer.decode(tokenizer.convert_tokens_to_ids(hyp),skip_special_tokens=True)
+              print('SOURCE:',source,flush=True)
+              print('TARGET:',translated,flush=True)
           PY
