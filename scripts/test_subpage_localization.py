@@ -40,7 +40,8 @@ async def main():
      await page.wait_for_function('window._pgSecondaryLocaleAudit && window._pgSecondaryLocaleAudit.language==='+json.dumps(code),timeout=7000)
      if code!='EN':
       await page.wait_for_function('(code) => Boolean(window._pgSecondaryExact && window._pgSecondaryExact[code])',arg=code,timeout=15000)
-      await page.wait_for_function('(code) => window._pgSecondaryLocaleAudit && window._pgSecondaryLocaleAudit.language === code && window._pgSecondaryLocaleAudit.complete',arg=code,timeout=12000)
+      await page.wait_for_function('(code) => window._pgSecondaryLocaleAudit && window._pgSecondaryLocaleAudit.language === code',arg=code,timeout=4000)
+      await page.wait_for_timeout(100) # Allow catalog-driven apply() to settle.
     except Exception:pass
     data=await page.evaluate('''() => ({audit:window._pgSecondaryLocaleAudit||null,locale:window._pgI18n?.curLang?.(),dir:document.documentElement.dir,flagCount:window._pgI18n?.LANGS?.length})''')
     audit=data['audit']
