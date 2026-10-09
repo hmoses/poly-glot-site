@@ -10,3 +10,16 @@
 .pg-motion-item,.pg-motion-card,.pg-motion-section{transform:none!important;opacity:1!important;transition:none!important}
 .pg-motion-section::before{display:none!important}
 }
+
+/* Subpage mobile localization: variable-length translations must not collide.
+ * Keep landing-page animations unchanged; stabilize compact knowledge guides. */
+@media(max-width:650px){
+  main.wrap article.pg-motion-card,
+  main .guide-card.pg-motion-card,
+  main.wrap .pg-motion-item,
+  main .pg-motion-item {
+    transform:none!important;
+    opacity:1!important;
+    transition:none!important;
+  }
+}
