@@ -35,7 +35,7 @@ for i in range(0,len(keys),8):
   val=val.strip()
   good=bool(val and len(val)>min(8,len(term)*0.25) and len(val)<len(term)*3 and val!=term)
   # Preserve exact numeric entitlements and section-specific values.
-  nums=re.findall(r'\\d+(?:[.,]\\d+)*',term)
+  nums=re.findall(r'\d+(?:[.,]\\d+)*',term)
   for n in nums:
    if n not in val and n.replace(',','.') not in val:good=False
   if good:
@@ -44,7 +44,7 @@ for i in range(0,len(keys),8):
  if i%64==0:print(CODE,i,'/',len(keys),'accepted',accepted,'rejected',rejected,flush=True)
 dest=ROOT/'quality-candidates'
 dest.mkdir(exist_ok=True)
-(dest/(CODE.lower()+'.json')).write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\\n',encoding='utf8')
+(dest/(CODE.lower()+'.json')).write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 print(CODE,'COMPLETE candidate',accepted,'accepted',rejected,'fallback','of',len(keys),flush=True)
 for k in ['Privacy Policy','Terms of Use','The app is available for Apple devices.','By using Poly-Glot AI Workspace, you agree to these terms.','We do not collect, store, or transmit any personal information. The App operates entirely on-device. No user data, prompts, or usage information is sent to any server.']:
  if k in result:print(CODE,'SAMPLE',repr(k),repr(result[k]),flush=True)
