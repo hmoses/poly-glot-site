@@ -81,9 +81,21 @@ function norm(code){
   if(code==="ZH_HANS"||code==="ZH_CN")return "ZH";
   return code;
 }
+/* Display the active language in its own writing system, rather than in English. */
+var NATIVE_LANGUAGE_NAMES={
+  EN:"English",ES:"Español",FR:"Français",DE:"Deutsch",IT:"Italiano",PT:"Português",
+  NL:"Nederlands",RU:"Русский",ZH:"简体中文",ZH_TW:"繁體中文",JA:"日本語",KO:"한국어",
+  AR:"العربية",HI:"हिन्दी",BN:"বাংলা",TR:"Türkçe",PL:"Polski",SV:"Svenska",
+  NO:"Norsk",DA:"Dansk",FI:"Suomi",EL:"Ελληνικά",HE:"עברית",ID:"Bahasa Indonesia",
+  MS:"Bahasa Melayu",TH:"ไทย",VI:"Tiếng Việt",UK:"Українська",CS:"Čeština",
+  RO:"Română",HU:"Magyar",SK:"Slovenčina",HR:"Hrvatski",CA:"Català",
+  AF:"Afrikaans",SW:"Kiswahili",HA:"Hausa",AM:"አማርኛ",FIL:"Filipino"
+};
 function meta(code){
   var n=norm(code),m=APP_LANGS.find(function(x){return x.code===n});
-  return m||{code:n,name:n,flag:"🌐"};
+  /* Preserve existing flags and codes, localize only the visible language name. */
+  return m ? {code:m.code,name:NATIVE_LANGUAGE_NAMES[n]||m.name,flag:m.flag} :
+    {code:n,name:NATIVE_LANGUAGE_NAMES[n]||n,flag:"🌐"};
 }
 function strings(code){
   var n=norm(code),c=CORE[n]||CORE.EN,e=EXTRA[n]||EXTRA.EN,x=DEVICE_EXTRA[n]||DEVICE_EXTRA.EN;
