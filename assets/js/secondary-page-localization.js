@@ -146,6 +146,22 @@ function apply(){
  /* Report actual translation coverage; a visible selector is not proof of completion. */
  var missing=[],seen=new Set();
  allNodes.forEach(function(n){var o=allOrigins.get(n);if(!o||!o.term||seen.has(o.term))return;seen.add(o.term);if(lang!=="EN"&&!translate(o.term,lang))missing.push(o.term);});
+ /* Audit every localized attribute as well as the document title. The public
+    page must not quietly pass while its buttons or screen-reader labels stay English. */
+ allAttrs.forEach(function(a){
+   if(!a.el.isConnected||!a.term)return;
+   var label="["+a.a+"] "+a.term;
+   if(seen.has(label))return;
+   seen.add(label);
+   if(lang!=="EN"&&!translate(a.term,lang))missing.push(label);
+ });
+ if(originalDocumentTitle){
+   var titleLabel="[document-title] "+originalDocumentTitle;
+   if(!seen.has(titleLabel)){
+     seen.add(titleLabel);
+     if(lang!=="EN"&&!translate(originalDocumentTitle,lang))missing.push(titleLabel);
+   }
+ }
  allAttrs.forEach(function(x){if(!x.term||seen.has(x.term))return;seen.add(x.term);if(lang!=="EN"&&!translate(x.term,lang))missing.push(x.a+": "+x.term);});
  window._pgSecondaryLocaleAudit={language:lang,page:location.pathname,total:seen.size,missing:missing,complete:missing.length===0};
  document.dispatchEvent(new CustomEvent("pg:localization-audited",{detail:window._pgSecondaryLocaleAudit}));
