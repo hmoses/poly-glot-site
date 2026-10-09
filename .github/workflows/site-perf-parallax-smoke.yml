@@ -1,0 +1,35 @@
+name: Site load and parallax smoke
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - perf/sitewide-fast-loading-20261009
+    paths:
+      - '*.html'
+      - 'assets/css/section-motion.css'
+      - 'assets/js/section-motion.js'
+      - 'scripts/test_site_perf_motion.py'
+      - '.github/workflows/site-perf-parallax-smoke.yml'
+  pull_request:
+    paths:
+      - '*.html'
+      - 'assets/css/section-motion.css'
+      - 'assets/js/section-motion.js'
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Playwright
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Verify mobile, desktop, localization and scroll effects
+        run: python scripts/test_site_perf_motion.py
