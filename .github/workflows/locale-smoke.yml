@@ -45,6 +45,15 @@ jobs:
                           print(code,path,'missing',len(a.get('missing',[])),'sample',a.get('missing',[])[:12],'flagCount',result['flagCount'],'dir',result['dir'],flush=True)
                           assert result['flagCount']==38 and result['lang']==code, f'Picker mismatch: {code} {path}'
                           assert not a.get('missing',[]), f'Untranslated text on {path} in {code}: {a.get("missing",[])[:15]}'
+                          if code=='NL' and path=='connect.html':
+                              await page.evaluate('''() => {window._pgCopied=null;Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:(text)=>{window._pgCopied=text;return Promise.resolve()}}})}''')
+                              await page.locator('.code-block .copy-btn').nth(1).click()
+                              copied=await page.evaluate('window._pgCopied')
+                              assert copied and 'Kopiëren' not in copied and 'Copy' not in copied,copied
+                              data=json.loads(copied)
+                              assert data['mcpServers']['poly-glot']['url'].endswith('/mcp'),data
+                              print('MCP JSON clipboard PASSED in Dutch',flush=True)
+
                   await b.close()
           asyncio.run(run())
           srv.shutdown()
