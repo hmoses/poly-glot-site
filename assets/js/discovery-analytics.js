@@ -1,93 +1,77 @@
-/* Poly-Glot AI-discovery attribution. No prompt, email, or full referring URL is collected. */
+/* Poly-Glot knowledge-center GA4 and AI referral tracking. No cookies beyond standard GA4. */
 (function () {
   'use strict';
-  if (window.__pgDiscoveryAnalytics) return;
-  window.__pgDiscoveryAnalytics = true;
-  var pagePath = window.location.pathname;
-  var knowledgePage = /\/(?:compare-ai-tools|multilingual-ai-workspace|prompt-templates|mcp-integrations|privacy-and-pricing)\.html$/.test(pagePath);
-  var contentGroup = knowledgePage ? 'knowledge_center' : 'site';
-  var storageKey = 'pg_ai_referral_source_v1';
-  function sourceFromHost(host, path) {
-    host = (host || '').toLowerCase().replace(/^www\./, '');
-    path = (path || '').toLowerCase();
-    function matches(domain) { return host === domain || host.endsWith('.' + domain); }
-    if (matches('chatgpt.com') || host === 'chat.openai.com') return 'chatgpt';
-    if (matches('perplexity.ai')) return 'perplexity';
-    if (matches('claude.ai')) return 'claude';
-    if (host === 'gemini.google.com') return 'gemini';
-    if (host === 'copilot.microsoft.com' || (matches('bing.com') && path.indexOf('/chat') === 0)) return 'copilot';
-    if (matches('grok.com')) return 'grok';
-    if (host === 'chat.mistral.ai') return 'mistral';
-    if (matches('poe.com')) return 'poe';
-    if (matches('you.com')) return 'you';
-    if (matches('meta.ai')) return 'meta_ai';
-    if (matches('duck.ai') || (matches('duckduckgo.com') && path.indexOf('/duckai') === 0)) return 'duckduckgo_ai';
-    if (matches('phind.com')) return 'phind';
+  var measurementId = 'G-MECD55W2RG';
+  if (window.__polyglotDiscoveryAnalytics) return;
+  window.__polyglotDiscoveryAnalytics = true;
+  var providers = [
+    ['chatgpt', /(^|\.)chatgpt\.com$|(^|\.)chat\.openai\.com$/],
+    ['perplexity', /(^|\.)perplexity\.ai$/],
+    ['copilot', /(^|\.)copilot\.microsoft\.com$|(^|\.)bing\.com$/],
+    ['gemini', /(^|\.)gemini\.google\.com$/],
+    ['claude', /(^|\.)claude\.ai$/],
+    ['grok', /(^|\.)grok\.com$|(^|\.)x\.com$/],
+    ['you_com', /(^|\.)you\.com$/],
+    ['poe', /(^|\.)poe\.com$/],
+    ['phind', /(^|\.)phind\.com$/],
+    ['meta_ai', /(^|\.)meta\.ai$/]
+  ];
+  function providerFor(host) {
+    host = (host || '').toLowerCase();
+    for (var i = 0; i < providers.length; i++) {
+      if (providers[i][1].test(host)) return providers[i][0];
+    }
     return '';
   }
-  function sourceFromCampaign(raw) {
-    var key = (raw || '').toLowerCase().replace(/[^a-z0-9]/g, '');
-    var known = {
-      chatgpt: 'chatgpt', openaichat: 'chatgpt', perplexity: 'perplexity',
-      claude: 'claude', gemini: 'gemini', copilot: 'copilot', bingchat: 'copilot',
-      grok: 'grok', mistral: 'mistral', poe: 'poe', youcom: 'you',
-      metaai: 'meta_ai', duckduckgoai: 'duckduckgo_ai', duckai: 'duckduckgo_ai',
-      phind: 'phind'
-    };
-    return known[key] || '';
+  function getReferrerHost() {
+    try { return new URL(document.referrer).hostname; } catch (_) { return ''; }
   }
-  function send(eventName, params) {
-    if (typeof window.gtag === 'function') window.gtag('event', eventName, params);
+  function send(event, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', event, params);
   }
-  var source = '';
-  var detection = '';
-  var externalReferrer = false;
-  try {
-    var campaign = new URL(window.location.href).searchParams.get('utm_source');
-    source = sourceFromCampaign(campaign);
-    if (source) detection = 'utm';
-  } catch (err) {}
-  try {
-    if (document.referrer) {
-      var referringUrl = new URL(document.referrer);
-      externalReferrer = referringUrl.origin !== window.location.origin;
-      if (!source && externalReferrer) {
-        source = sourceFromHost(referringUrl.hostname, referringUrl.pathname);
-        if (source) detection = 'referrer';
+  function init() {
+    var externalTag = document.querySelector('script[src*="googletagmanager.com/gtag/js?id=' + measurementId + '"]');
+    if (!externalTag) {
+      window.dataLayer = window.dataLayer || [];
+      if (typeof window.gtag !== 'function') {
+        window.gtag = function () { window.dataLayer.push(arguments); };
+      }
+      window.gtag('js', new Date());
+      window.gtag('config', measurementId);
+      var tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
+      document.head.appendChild(tag);
+    }
+    var referrer = getReferrerHost();
+    var aiProvider = providerFor(referrer);
+    if (!aiProvider) {
+      var params = new URLSearchParams(location.search);
+      if (params.get('utm_medium') === 'ai' && /^[a-z0-9_-]{2,40}$/i.test(params.get('utm_source') || '')) {
+        aiProvider = params.get('utm_source').toLowerCase();
       }
     }
-  } catch (err) {}
-  var carried = '';
-  try {
-    if (source) window.sessionStorage.setItem(storageKey, source);
-    else if (externalReferrer) window.sessionStorage.removeItem(storageKey);
-    else carried = window.sessionStorage.getItem(storageKey) || '';
-  } catch (err) {}
-  var attributedSource = source || carried;
-  if (source) {
-    send('ai_referral_visit', {
-      ai_source: source, ai_detection: detection,
-      page_path: pagePath, content_group: contentGroup
-    });
-  }
-  document.addEventListener('click', function (event) {
-    var target = event.target;
-    var link = target && typeof target.closest === 'function' ? target.closest('a[href]') : null;
-    if (!link) return;
-    var url;
-    try { url = new URL(link.href, window.location.href); } catch (err) { return; }
-    if (url.hostname !== 'apps.apple.com') return;
-    var details = {
-      link_url: url.href,
-      link_text: (link.textContent || '').trim().slice(0, 50),
-      page_path: pagePath,
-      content_group: contentGroup
-    };
-    // The homepage already has its own app_store_click handler. Never count it twice.
-    if (knowledgePage) send('app_store_click', details);
-    if (attributedSource) {
-      details.ai_source = attributedSource;
-      send('ai_assisted_app_store_click', details);
+    if (aiProvider) {
+      try { sessionStorage.setItem('pg_ai_source', aiProvider); } catch (_) {}
+      send('ai_referral_landing', { ai_provider: aiProvider, landing_page: location.pathname, transport_type: 'beacon' });
     }
-  }, false);
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a) return;
+      var target;
+      try { target = new URL(a.href, location.href); } catch (_) { return; }
+      if (target.hostname !== 'apps.apple.com') return;
+      // The homepage already sends app_store_click; retain its existing handler.
+      var onHomepage = location.pathname === '/poly-glot-site/' || location.pathname === '/poly-glot-site/index.html';
+      if (!onHomepage) {
+        send('app_store_click', { link_url: target.href, link_text: (a.textContent || '').trim().slice(0, 50), page_path: location.pathname, transport_type: 'beacon' });
+      }
+      var assistedSource = '';
+      try { assistedSource = sessionStorage.getItem('pg_ai_source') || ''; } catch (_) {}
+      if (assistedSource) {
+        send('ai_assisted_app_store_click', { ai_provider: assistedSource, page_path: location.pathname, transport_type: 'beacon' });
+      }
+    }, false);
+  }
+  init();
 })();
