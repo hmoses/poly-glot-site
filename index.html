@@ -2937,6 +2937,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
       <div id="pgLangSlot"></div>
     </div>
     <ul class="nav-links" id="pg-mobile-menu">
+      <li><a id="pg-home-menu-link" href="#hero">Home</a></li>
       <li><a href="#screenshots">Screenshots</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#apps" data-i18n="sc2Tag">🔀 Compare Mode</a></li>
@@ -2955,7 +2956,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 </nav>
 
 <!-- ===== HERO ===== -->
-<section class="hero">
+<section class="hero" id="hero">
   <div class="container">
     <div class="hero-inner">
       <div class="hero-content">
@@ -13720,5 +13721,14 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
  .nav .nav-mobile-toggle{margin-left:auto!important}
 }
 </style>
+
+<script id="pg-home-menu-labels">
+(function(){
+ var labels={EN:"Home",ES:"Inicio",FR:"Accueil",DE:"Startseite",IT:"Home",PT:"Início",NL:"Home",RU:"Главная",ZH:"首页",ZH_TW:"首頁",JA:"ホーム",KO:"홈",AR:"الرئيسية",HI:"होम",BN:"হোম",TR:"Ana Sayfa",PL:"Strona główna",SV:"Hem",NO:"Hjem",DA:"Hjem",FI:"Etusivu",EL:"Αρχική",HE:"דף הבית",ID:"Beranda",MS:"Laman Utama",TH:"หน้าแรก",VI:"Trang chủ",UK:"Головна",CS:"Úvod",RO:"Acasă",HU:"Főoldal",SK:"Domov",HR:"Početna",CA:"Inici",AF:"Tuis",SW:"Nyumbani",HA:"Gida",AM:"መነሻ"};
+ function apply(){var a=document.getElementById("pg-home-menu-link");if(!a)return;var code=window._pgI18n&&window._pgI18n.curLang?window._pgI18n.curLang():"EN";a.textContent=labels[code]||labels.EN;}
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",apply);else apply();
+ window.addEventListener("pg:languagechange",apply);
+})();
+</script>
 </body>
 </html>
