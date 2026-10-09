@@ -1,0 +1,61 @@
+name: Verify localized MCP and App Store links
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/test-nav-i18n.yml
+      - assets/js/i18n.js
+      - assets/js/secondary-page-localization.js
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser test dependencies
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Verify Japanese navigation links and other locales
+        run: |
+          python - <<'PY'
+          import asyncio,http.server,threading,os
+          from playwright.async_api import async_playwright
+          from pathlib import Path
+          root=Path.cwd()
+          class Quiet(http.server.SimpleHTTPRequestHandler):
+            def log_message(self,*args):pass
+          server=http.server.ThreadingHTTPServer(('127.0.0.1',9007),Quiet)
+          threading.Thread(target=server.serve_forever,daemon=True).start()
+          async def main():
+            async with async_playwright() as p:
+              browser=await p.chromium.launch(headless=True,args=['--no-sandbox'])
+              page=await browser.new_page()
+              for code in ('JA','FR','NL','AR'):
+                await page.goto('http://127.0.0.1:9007/prompt-templates.html?lang='+code,wait_until='domcontentloaded')
+                await page.wait_for_function('(lang) => window._pgI18n?.curLang?.()===lang',arg=code,timeout=15000)
+                mcp=page.locator('header nav a[href="./#connect"]')
+                store=page.locator('header nav a[href*="apps.apple.com"]')
+                await page.wait_for_function('''(lang) => {
+                  const x=document.querySelector('header nav a[href="./#connect"]');
+                  const y=document.querySelector('header nav a[href*="apps.apple.com"]');
+                  return x&&y&&x.textContent.trim()!== 'MCP Setup'&&x.textContent.trim()!== '🔌 MCP Ecosystem'&&y.textContent.trim()!== 'App Store';
+                }''',arg=code,timeout=15000)
+                print(code,'MCP label:',await mcp.inner_text(),'Store label:',await store.inner_text(),flush=True)
+                if code=='JA':
+                  assert 'エコシステム' in await mcp.inner_text()
+                  assert 'App Storeで入手' == (await store.inner_text()).strip()
+                assert 'id6804499285' in await store.get_attribute('href')
+              await page.goto('http://127.0.0.1:9007/index.html?lang=JA',wait_until='domcontentloaded')
+              await page.wait_for_function('''() => document.querySelector('[data-i18n="ftConnect"]')?.textContent?.includes('エコシステム')''',timeout=15000)
+              print('Homepage MCP footer link:',await page.locator('[data-i18n="ftConnect"]').first.inner_text(),flush=True)
+              await browser.close()
+          try:asyncio.run(main())
+          finally:server.shutdown()
+          PY
