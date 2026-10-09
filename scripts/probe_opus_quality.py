@@ -6,7 +6,7 @@ print('Loading',model_id,flush=True)
 tok=MarianTokenizer.from_pretrained(model_id)
 m=MarianMTModel.from_pretrained(model_id).eval()
 phrases=['Explore related topics','Connect from other supported MCP clients','Terms of Use','Privacy Policy','Compare AI Tools with Poly-Glot','Do I need to subscribe to use Poly-Glot?','The app is available for Apple devices.']
-for code in ['es','fr','de','ar','ja']:
+for code in ['spa','fra','deu','ara','jpn']:
  for term in phrases:
   text='>>'+code+'<< '+term
   ids=tok([text],return_tensors='pt',padding=True,truncation=True)
