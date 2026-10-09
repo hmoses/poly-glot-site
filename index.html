@@ -5036,6 +5036,13 @@ function _siteDemoStart() {
   var prompt=(_animS&&_animS.promptExample)||'Write a polite email to my landlord asking to fix the heater before winter.';
   var resp1Text="Subject: Heating Repair Request\n\nDear [Landlord],\n\nI hope this message finds you well. As winter approaches, I wanted to bring to your attention that the heater in my unit hasn't been functioning properly.\n\nWould it be possible to have it inspected and repaired before the cold weather sets in?\n\nThank you for your time.\nBest regards";
   var resp2Text="Hi [Landlord],\n\nI hope you're doing well! I wanted to reach out about the heater in my apartment — it hasn't been working reliably lately.\n\nWith winter coming up, I'd really appreciate it if we could get it looked at soon.\n\nHappy to coordinate a time that works for you.\n\nAppreciate your help!\nWarm regards";
+  /* Use localized sample replies; keep the original English replies as a safe fallback.
+     This changes only the example text, not animation timing or provider behavior. */
+  var _demoReplies=(window._pgMacDemoResponses||{})[_animLang];
+  if(_demoReplies&&_demoReplies.length===2){
+    resp1Text=_demoReplies[0];
+    resp2Text=_demoReplies[1];
+  }
   /* Phase 1: Type prompt */
   var ci = 0;
   var t0 = setTimeout(function() {
@@ -7181,6 +7188,7 @@ function _demoStart() {
 <script src="assets/js/site-accuracy-all-languages.js?v=2026-10-08-complete"></script>
 <script src="assets/js/site-accuracy-final-languages.js?v=2026-10-08-complete"></script>
 <script src="assets/js/device-ui-i18n-clean.js?v=20261008-mac-tabs-no-flicker-r2"></script>
+<script src="assets/js/mac-demo-responses-locales.js?v=20261008-all38-email-examples1"></script>
 <!-- Native 38-language template catalog translations; run after site i18n -->
 <script src="assets/js/catalog-locales-1.js?v=2026-10-08-catalog"></script>
 <script src="assets/js/catalog-locales-2.js?v=2026-10-08-catalog"></script>
