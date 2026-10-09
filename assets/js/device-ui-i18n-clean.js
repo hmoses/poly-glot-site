@@ -333,32 +333,25 @@ function macOverlay(S,M,c){
      var sp=btn.querySelector("span");
      if(sp)sp.textContent=["✏️ Ask Any AI","📋 Templates","📖 How to Use","🕐 History"][i];
    });
-   return;
+   /* Continue below so every Mac screen field is restored in English. */
+ } else {
+   if(stage){
+     stage.style.removeProperty("display");
+     stage.style.removeProperty("visibility");
+     stage.style.removeProperty("opacity");
+     stage.style.removeProperty("pointer-events");
+   }
+   /* One localized badge covers the English badge baked into the image. */
+   var badge=document.createElement("div");
+   badge.className="pg-mac-badge-localized";
+   badge.textContent=M.flag+" "+M.code.replace("_","-");
+   host.appendChild(badge);
+   var labels=["✏️ "+S.ask,"📋 "+S.templates,"📖 "+S.how,"🕐 "+S.history];
+   tabs.forEach(function(btn,i){
+     var sp=btn.querySelector("span");
+     if(sp)sp.textContent=labels[i];
+   });
  }
-
- if(stage){
-   stage.style.removeProperty("display");
-   stage.style.removeProperty("visibility");
-   stage.style.removeProperty("opacity");
-   stage.style.removeProperty("pointer-events");
- }
-
- /* One localized language badge covers the baked EN badge. */
- var badge=document.createElement("div");
- badge.className="pg-mac-badge-localized";
- badge.textContent=M.flag+" "+M.code.replace("_","-");
- host.appendChild(badge);
-
- var labels=[
-   "✏️ "+S.ask,
-   "📋 "+S.templates,
-   "📖 "+S.how,
-   "🕐 "+S.history
- ];
- tabs.forEach(function(btn,i){
-   var sp=btn.querySelector("span");
-   if(sp)sp.textContent=labels[i];
- });
 
  if(body){
    var title=body.querySelector(".mac-native-ask-title");
