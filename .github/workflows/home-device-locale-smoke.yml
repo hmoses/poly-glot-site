@@ -8,6 +8,7 @@ on:
       - index.html
       - assets/js/i18n.js
       - assets/js/device-ui-i18n-clean.js
+      - assets/js/mac-demo-responses-locales.js
       - .github/workflows/home-device-locale-smoke.yml
 
 permissions:
