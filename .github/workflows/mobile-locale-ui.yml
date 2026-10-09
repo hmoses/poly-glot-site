@@ -1,0 +1,37 @@
+name: Mobile localized UI regression
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - assets/css/mobile-localization-fit.css
+      - assets/js/secondary-nav-locales.js
+      - scripts/test_mobile_locale_layout.py
+      - .github/workflows/mobile-locale-ui.yml
+permissions:
+  contents: read
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Check French Japanese Arabic Hebrew and mobile controls
+        run: python scripts/test_mobile_locale_layout.py
+      - name: Save screenshots and UI results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: poly-glot-mobile-localized-ui
+          path: |
+            mobile-locale-report.json
+            mobile-locale-fr.png
+            mobile-locale-ja.png
+          if-no-files-found: ignore
