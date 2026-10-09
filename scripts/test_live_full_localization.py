@@ -23,7 +23,7 @@ async def main():
                     response=await page.goto(target,wait_until='domcontentloaded',timeout=35000)
                     assert response and response.ok, 'HTTP response failed'
                     if path.startswith('linkedin'):
-                        await page.wait_for_url(lambda x:x.path.endswith('/poly-glot-site/') or x.path.endswith('/poly-glot-site'),timeout=18000)
+                        await page.wait_for_url(lambda x: str(x).split('?',1)[0].rstrip('/').endswith('/poly-glot-site'),timeout=18000)
                         await page.wait_for_function('(c)=>window._pgI18n?.curLang?.()===c',arg=code,timeout=20000)
                         data=await page.evaluate('''()=>({locale:window._pgI18n?.curLang?.(),flags:window._pgI18n?.LANGS?.length})''')
                         assert data['flags']==38 and data['locale']==code, f'redirect locale: {data}'
