@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - .github/workflows/locale-smoke.yml
+      - assets/js/secondary-page-localization.js
+      - assets/js/global-selector-placement.js
 permissions:
   contents: read
 jobs:
