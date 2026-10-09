@@ -55,7 +55,7 @@ async def main():
             static_home=(ROOT/'index.html').read_text()
             assert static_home.count('loading="lazy" decoding="async" fetchpriority="low"')>=7
             assert await home.locator('img.duo-exact-image[src="assets/img/iphone-duo-simulator.jpg"]').count()==1
-            assert await home.locator('link[href="assets/css/section-motion.css?v=8"]').count()==1
+            assert await home.locator('link[href="assets/css/section-motion.css?v=7"]').count()==1
             await home.evaluate("switchGallery('mac')")
             assert await home.locator('#gallery-mac').count()==1
             await home.evaluate("window._pgI18n.setLang('EN','🇺🇸')")

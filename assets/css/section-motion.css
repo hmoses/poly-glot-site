@@ -19,3 +19,8 @@ body.pg-subpage-motion.pg-motion-document > :not(script):not(style){position:rel
 .pg-motion-item,.pg-motion-card,.pg-motion-section{transform:none!important;opacity:1!important;transition:none!important}
 .pg-motion-section::before,body.pg-motion-document::before{display:none!important}
 }
+
+/* Full-size homepage FAQ reveals need enough room for variable-length RTL copy. */
+@media(max-width:650px){
+  .pg-subpage-motion main.wrap article.pg-motion-card { margin-block:32px; }
+}
