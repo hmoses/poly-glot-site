@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Offline commercial-compatible 38-language catalog generation.
-SMaLL-100: MIT; model: entai2965/small100-ctranslate2.
-Model is used only during publishing; no visitor data and no model in Pages output.
+"""Build commercial-compatible static catalogs with MIT-licensed M2M100.
+Model: gn64/M2M100_418M_CTranslate2 (based on facebook/m2m100_418M).
+Only shipped catalogs reach Pages; visitor text never reaches a translator.
 """
 import json, os, sys, pathlib, re, time
 # Source extraction must never import network-dependent translation libraries.
@@ -25,15 +25,13 @@ def main():
     start=time.monotonic()
     print('Downloading MIT-licensed offline translation model...',flush=True)
     snapshot_download(
-        repo_id='entai2965/small100-ctranslate2',
+        repo_id='gn64/M2M100_418M_CTranslate2',
         local_dir=str(path),
-        allow_patterns=['model.bin','config.json','sentencepiece.bpe.model',
-                        'shared_vocabulary.json','special_tokens_map.json',
-                        'tokenization_small100.py','tokenizer_config.json','vocab.json'],
+        allow_patterns=['model.bin','config.json','sentencepiece.bpe.model','shared_vocabulary.json'],
     )
-    sys.path.insert(0,str(path))
-    from tokenization_small100 import SMALL100Tokenizer
-    tokenizer=SMALL100Tokenizer.from_pretrained(str(path))
+    from transformers import M2M100Tokenizer
+    tokenizer=M2M100Tokenizer.from_pretrained('facebook/m2m100_418M')
+    tokenizer.src_lang='en'
     translator=ctranslate2.Translator(str(path),device='cpu',compute_type='int8',
                                        inter_threads=2,intra_threads=2)
     print('Offline model loaded in',round(time.monotonic()-start,1),'seconds',flush=True)
@@ -55,7 +53,7 @@ def main():
     traditional=OpenCC('s2t') if OpenCC else None
     for code in codes:
         language=CODES[code]
-        tokenizer.tgt_lang=language
+        tokenizer.src_lang='en'
         prefix=[tokenizer.lang_code_to_token[language]]
         target_file=outdir/(code.lower()+'.json')
         # Force regeneration: previously published catalogs lost the first token.
