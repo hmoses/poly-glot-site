@@ -121,6 +121,15 @@ function apply(){
  allAttrs.forEach(function(x){var value=translate(x.term,lang);var target=value||x.value;if(x.el.getAttribute(x.a)!==target)x.el.setAttribute(x.a,target);});
  document.querySelectorAll("main,article,footer,.card,.guide-card,.about-card").forEach(function(el){el.setAttribute("dir",rtl?"rtl":"ltr");});
  var pageTitle=translate(originalDocumentTitle,lang);
+ /* Build localized browser titles from already-curated page headings.
+    Keep the official product name byte-for-byte intact. */
+ if(lang!=="EN"&&originalDocumentTitle){
+  var heading=document.querySelector("main h1,h1");
+  var canonicalSuffix=originalDocumentTitle.endsWith(" | Poly-Glot AI Workspace")?" | Poly-Glot AI Workspace":originalDocumentTitle.endsWith(" - Poly-Glot AI Workspace")?" - Poly-Glot AI Workspace":"";
+  if(heading&&canonicalSuffix){
+   pageTitle=heading.textContent.trim()+canonicalSuffix;
+  }
+ }
  if(originalDocumentTitle&&document.title!==(pageTitle||originalDocumentTitle))document.title=pageTitle||originalDocumentTitle;
  document.documentElement.setAttribute("data-pg-secondary-locale",lang);
  /* Report actual translation coverage; a visible selector is not proof of completion. */
