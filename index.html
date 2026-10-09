@@ -7180,7 +7180,7 @@ function _demoStart() {
 <script src="assets/js/site-accuracy-locale-overrides.js?v=2026-10-08-facts"></script>
 <script src="assets/js/site-accuracy-all-languages.js?v=2026-10-08-complete"></script>
 <script src="assets/js/site-accuracy-final-languages.js?v=2026-10-08-complete"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=2026-10-08-syntax-l10n-v4"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=2026-10-08-mac-tab-transition-fr1"></script>
 <!-- Native 38-language template catalog translations; run after site i18n -->
 <script src="assets/js/catalog-locales-1.js?v=2026-10-08-catalog"></script>
 <script src="assets/js/catalog-locales-2.js?v=2026-10-08-catalog"></script>
@@ -13606,5 +13606,41 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
 </script>
 <script defer src="assets/js/home-motion.js?v=12"></script>
 <link rel="stylesheet" href="assets/css/mobile-localization-fit.css?v=20261008-fr-ja-layout-1">
+
+<style id="pg-mobile-localization-transitions">
+/* The caption follows the selected live Mac tab, even with longer translations. */
+#gallery-mac #macTabLabel {
+  max-width:min(100%,680px);
+  margin:16px auto 0!important;
+  padding-inline:12px;
+  line-height:1.5;
+  white-space:normal;
+  overflow-wrap:break-word;
+  word-break:normal;
+  hyphens:auto;
+  box-sizing:border-box;
+}
+/* Keep translated demo headings readable and clear of the floating chat launcher. */
+@media(max-width:640px){
+  #gallery-mac #macTabLabel {
+    font-size:clamp(.76rem,3.2vw,.92rem)!important;
+    padding-inline:16px;
+    min-height:2.7em;
+    text-align:center;
+  }
+  #demo .section-title[data-i18n="demoH"] {
+    box-sizing:border-box;
+    max-width:100%;
+    margin-inline:auto;
+    padding-inline:14px 56px;
+    font-size:clamp(1.45rem,5.8vw,2.2rem)!important;
+    line-height:1.22!important;
+    white-space:normal!important;
+    overflow-wrap:normal;
+    word-break:normal;
+    text-wrap:balance;
+  }
+}
+</style>
 </body>
 </html>
