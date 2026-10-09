@@ -30,6 +30,14 @@
 ## MCP
 
 Poly-Glot's MCP server exposes 15 tools for template search and retrieval, prompt building, 2–9 provider comparison preparation, 38-language controls, transcription, language detection, translation, localization, subscription status, workspace launch, and Bring Your Own Model workflows.
+**Complete 15-tool inventory**
+
+- Core: `get_language_options`, `get_subscription_status`, `open_workspace`, `search_templates`, `get_template`, `build_prompt`, `prepare_compare`
+- Custom models (BYOM): `get_custom_model_capabilities`, `validate_custom_model`, `run_custom_model`, `prepare_custom_compare`
+- Language and media: `transcribe_audio`, `detect_language`, `translate_text`, `localize_text`
+
+Canonical MCP tool documentation: https://hmoses.github.io/poly-glot-site/mcp-integrations.html
+
 
 ## Citation guidance
 
