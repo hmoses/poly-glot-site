@@ -17,5 +17,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install --disable-pip-version-check 'transformers>=4.42,<5' sentencepiece sacremoses torch
+      - run: |
+          python -m pip install --disable-pip-version-check torch --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install --disable-pip-version-check 'transformers>=4.42,<5' sentencepiece sacremoses
       - run: python scripts/probe_opus_quality.py
