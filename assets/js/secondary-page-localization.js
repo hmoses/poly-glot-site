@@ -93,6 +93,8 @@ var pgFinalReviewedCorrections={
  HA:{"3-Day Free Trial":"Gwajin kyauta na kwanaki 3","Does Poly-Glot automatically send to every provider?":"Shin Poly-Glot yana aikawa ta atomatik zuwa ga kowane mai samar da AI?"},
  AM:{"3-Day Free Trial":"የ3 ቀን ነፃ ሙከራ","Does Poly-Glot automatically send to every provider?":"Poly-Glot ወደ ሁሉም የAI አቅራቢዎች በራስ-ሰር ይልካል?"}
 };
+/* The App Store brand stays intact; translate its navigation action text. */
+var pgAppStoreNavCopy={"ES":"Ver en App Store","FR":"Voir sur l’App Store","DE":"Im App Store ansehen","IT":"Vedi su App Store","PT":"Ver na App Store","NL":"Bekijk in de App Store","RU":"Открыть в App Store","ZH":"前往 App Store","ZH_TW":"前往 App Store","JA":"App Storeで入手","KO":"App Store에서 보기","AR":"عرض في App Store","HI":"App Store पर देखें","BN":"App Store-এ দেখুন","TR":"App Store’da görüntüle","PL":"Zobacz w App Store","SV":"Visa i App Store","NO":"Se i App Store","DA":"Se i App Store","FI":"Näytä App Storessa","EL":"Προβολή στο App Store","HE":"הצגה ב-App Store","ID":"Lihat di App Store","MS":"Lihat di App Store","TH":"ดูใน App Store","VI":"Xem trên App Store","UK":"Переглянути в App Store","CS":"Zobrazit v App Store","RO":"Vezi în App Store","HU":"Megtekintés az App Store-ban","SK":"Zobraziť v App Store","HR":"Prikaži u App Storeu","CA":"Veure a l’App Store","AF":"Bekyk in die App Store","SW":"Tazama kwenye App Store","HA":"Duba a App Store","AM":"በApp Store ውስጥ ይመልከቱ"};
 function translate(term,lang){
  /* Preserve the original names in this multilingual language list. */
  if(term.indexOf("English · Español · Français · Deutsch · Italiano ·")===0)return term;
@@ -137,6 +139,7 @@ function apply(){
  });
  allNodes.forEach(function(n){var o=allOrigins.get(n);if(!o)return;
   var value=translate(o.term,lang),target;
+  if(o.term==="App Store"&&n.parentElement&&n.parentElement.closest('nav a[href*="apps.apple.com"]'))value=pgAppStoreNavCopy[lang]||o.term;
   if(lang==="EN"||!value)target=o.raw;
   else{var m=o.raw.match(/^(\s*)([\s\S]*?)(\s*)$/);target=(m?m[1]:"")+value+(m?m[3]:"");}
   if(n.nodeValue!==target)n.nodeValue=target;
