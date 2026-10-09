@@ -46,6 +46,14 @@ document.addEventListener("click",function(ev){
 /* Load static per-language copy for ALL secondary page surfaces.
  * The published translation catalogs are generated at build time; no visitor text
  * is sent to a translation service. */
+var pgEnglishSourceReady=fetch(new URL("assets/locales/subpages/en.json",location.href),{cache:"force-cache"})
+ .then(function(r){if(!r.ok)throw Error("English catalog unavailable");return r.json();})
+ .then(function(source){
+   if(!Array.isArray(source))throw Error("Invalid English source catalog");
+   window._pgEnglishSourceSet=new Set(source);
+   window._pgSecondaryLocalization?.apply();
+ })
+ .catch(function(e){console.warn("Poly-Glot source catalog:",e.message);});
 var pgLocaleRequests={};
 function pgLoadSecondaryLocale(){
  var i=window._pgI18n;if(!i)return;
