@@ -15,7 +15,7 @@ function discover(){
   sections=unique('header.hero,main > section,body > section,.section,#knowledge-center,body > main,body > .wrap,body > .container')
    .filter(safe)
    .filter(e=>!(e.matches('main,body > .wrap,body > .container')&&e.querySelector(':scope > section')));
-  const candidates=unique('main.wrap article,.guide-card,.about-card,.info-box,.feature-card,.template-card,.pricing-card,.faq-item,.done-box,.wrap .step,.container > .card,body > .card#card')
+  const candidates=unique('main.wrap article,.guide-card,.about-card,.info-box,.feature-card,.template-card,.pricing-card,.faq-item,.done-box,.wrap .step,.container > .card,.grid > .card,.funnel-step,.link-box,body > .card#card')
    .filter(safe);
   // The homepage excludes nested motion cards to avoid conflicting transforms.
   cards=candidates.filter(e=>!candidates.some(parent=>parent!==e&&parent.contains(e)));

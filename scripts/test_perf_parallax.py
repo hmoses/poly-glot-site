@@ -32,6 +32,12 @@ async def main():
         screens = [i for i in images if 'assets/img/screenshots/' in i or 'class="mac-reference-base"' in i or 'class="duo-exact-image' in i]
         assert len(screens) == 7 and all('loading="lazy"' in i and 'fetchpriority="low"' in i for i in screens)
 
+        # Subpage motion must use the homepage's exact reveal amplitudes.
+        home_motion = (ROOT / 'assets/js/home-motion.js').read_text()
+        page_motion = (ROOT / 'assets/js/section-motion.js').read_text()
+        for signature in ["((.5-progress)*54)", "((1-smooth)*10)", "isFAQ?22:54"]:
+            assert signature in page_motion, f"Subpage motion drifted from homepage: {signature}"
+        assert "((.5-progress)*54)" in home_motion and "((1-smooth)*10)" in home_motion
         async with async_playwright() as p:
             browser = await p.chromium.launch(headless=True, args=["--no-sandbox"])
             for width, height, language in [(1280, 900, "ES"), (390, 844, "AR")]:
