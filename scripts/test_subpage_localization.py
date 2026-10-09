@@ -7,6 +7,12 @@ ROOT=Path(__file__).resolve().parents[1]
 CATALOGS=ROOT/'assets'/'locales'/'subpages'
 PAGES=['connect.html','compare-ai-tools.html','multilingual-ai-workspace.html','prompt-templates.html','mcp-integrations.html','privacy-and-pricing.html','privacy.html','terms.html','support.html','share.html','seo-setup.html','linkedin.html','linkedin-mcp-2026.html']
 CODES=['EN','ES','FR','DE','IT','PT','NL','RU','ZH','ZH_TW','JA','KO','AR','HI','BN','TR','PL','SV','NO','DA','FI','EL','HE','ID','MS','TH','VI','UK','CS','RO','HU','SK','HR','CA','AF','SW','HA','AM']
+# Parallel QA shards retain full 38-language coverage while cutting build time.
+PG_LANG_SHARD=os.environ.get('PG_LANG_SHARD','').strip()
+if PG_LANG_SHARD:
+ requested=set(PG_LANG_SHARD.split(','))
+ assert requested.issubset(CODES),f'Unsupported QA languages: {requested-set(CODES)}'
+ CODES=[code for code in CODES if code in requested]
 class Handler(http.server.SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
 async def main():
