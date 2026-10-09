@@ -658,6 +658,36 @@ function localizeMacSecondaryTabs(S,M,c){
    history.dir=c==="AR"||c==="HE"?"rtl":"ltr";
    history.setAttribute("aria-label",S.history);
  }
+ /* The How to Use tab animates; localize its static chrome without changing
+    providers, animation timing, or the generated demonstration responses. */
+ var demo=gallery.querySelector("#macScreen-howtouse");
+ if(demo){
+   var send=demo.querySelector("#siteDemo-SendBtn");
+   if(send)send.textContent=c==="EN"?"Send to AI":S.send;
+   var select=demo.querySelector("#siteDemo-P2 > div:nth-child(2)");
+   if(select)select.textContent=c==="EN"?"Choose AI":(S.compareSelect||S.compare);
+   var mode=demo.querySelector("#siteDemo-P2 > div:nth-child(3) > span");
+   if(mode)mode.textContent="🔀 "+(c==="EN"?"Compare Mode":S.compare);
+   var sendSelected=demo.querySelector("#siteDemo-SendAll");
+   if(sendSelected&&sendSelected.firstChild&&sendSelected.firstChild.nodeType===3)
+     sendSelected.firstChild.nodeValue=(c==="EN"?"Send to Selected":(S.compareSend||S.send))+" (";
+   var messages=demo.querySelectorAll(".siteDemo-AI > div:nth-child(2) > div:nth-child(2)");
+   messages.forEach(function(el,i){
+     if(c==="EN")el.textContent=i===0||i===3?"Prompt auto-filled":"Paste prompt";
+     else if(c==="FR")el.textContent=i===0||i===3?"Prompt inséré automatiquement":"Coller le prompt";
+     else el.textContent=i===0||i===3?(S.typeLine||S.ask):(S.paste||"");
+   });
+   var title=demo.querySelector("#siteDemo-P3 > div:first-child");
+   if(title)title.textContent="🔀 "+(c==="EN"?"Compare Mode":S.compare)+" — 2 AI";
+   var foot=demo.querySelector("#siteDemo-P3 > div:last-child");
+   if(foot)foot.textContent=c==="EN"?"⬆ Compare and pick the best answer":"⬆ "+(S.compareHelp||S.compare);
+   if(demo.dataset.pgDemoLocale!==c){
+     demo.dataset.pgDemoLocale=c;
+     if(demo.classList.contains("active")&&typeof window._siteDemoStart==="function"){
+       try{window._siteDemoStart()}catch(e){}
+     }
+   }
+ }
 }
 
 function apply(code){
