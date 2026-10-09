@@ -4,7 +4,7 @@ Model: gn64/M2M100_418M_CTranslate2 (based on facebook/m2m100_418M).
 Only shipped catalogs reach Pages; visitor text never reaches a translator.
 """
 import json, os, sys, pathlib, re, time
-# Source extraction must never import network-dependent translation libraries.
+# Extract only visitor-visible content; HTML comments are not localizable UI.\n# Source extraction must never import network-dependent translation libraries.
 from build_subpage_locales import ROOT, LANG, extract
 from huggingface_hub import snapshot_download
 import ctranslate2
