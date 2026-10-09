@@ -374,6 +374,24 @@ function macOverlay(S,M,c){
    });
  }
 
+ /* Keep the visible labels and accessible names in the same locale.
+    Only the UI chrome is translated; saved user prompts retain their own text. */
+ var tabKeys=[S.ask,S.templates,S.how,S.history];
+ tabs.forEach(function(btn,i){
+   if(tabKeys[i])btn.setAttribute("aria-label",tabKeys[i]);
+ });
+ host.setAttribute("aria-label",tabKeys.filter(Boolean).join(" · "));
+ var nav=host.querySelector(".mac-reference-hotspots");
+ if(nav)nav.setAttribute("aria-label",tabKeys.filter(Boolean).join(" · "));
+ var templatesScreen=host.querySelector("#macScreen-templates");
+ if(templatesScreen){
+   templatesScreen.setAttribute("aria-label",S.templates+" — Mac");
+   var img=templatesScreen.querySelector("img");
+   if(img)img.setAttribute("alt",S.templates+" — Mac");
+ }
+ var historyScreen=host.querySelector("#macScreen-history");
+ if(historyScreen)historyScreen.setAttribute("aria-label",S.history+" — Mac");
+
  if(body){
    var title=body.querySelector(".mac-native-ask-title");
    if(title)title.textContent="🤔 "+S.ask;
