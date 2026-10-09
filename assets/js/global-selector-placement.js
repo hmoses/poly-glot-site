@@ -43,6 +43,22 @@ document.addEventListener("click",function(ev){
   a.href=url.pathname+url.search+url.hash;
  }catch(e){}
 },true);
+/* Smooth cross-page navigation without delaying links or hiding content. */
+(function(){
+ if(document.getElementById("pgSmoothTransitions"))return;
+ var style=document.createElement("style");style.id="pgSmoothTransitions";
+ style.textContent="@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}body{animation:pgPageEnter .22s ease-out both}@keyframes pgPageEnter{from{opacity:.72;transform:translateY(3px)}to{opacity:1;transform:none}}a,button{transition:background-color .16s ease,color .16s ease,border-color .16s ease,box-shadow .16s ease} }@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto!important}body{animation:none!important}}";
+ document.head.appendChild(style);
+ if("startViewTransition" in document){
+  document.addEventListener("click",function(e){
+   var a=e.target.closest?.("a[href]");if(!a||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||a.target==="_blank"||a.hasAttribute("download"))return;
+   try{var u=new URL(a.href,location.href);if(u.origin!==location.origin||u.pathname!==location.pathname||!u.hash)return;
+    var target=document.getElementById(decodeURIComponent(u.hash.slice(1)));if(!target)return;
+    // Native anchor scrolling stays in control; CSS smooth scrolling handles motion.
+   }catch(_){}
+  },false);
+ }
+})();
 /* Load static per-language copy for ALL secondary page surfaces.
  * The published translation catalogs are generated at build time; no visitor text
  * is sent to a translation service. */
