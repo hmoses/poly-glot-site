@@ -17,6 +17,10 @@ def extract():
         for node in soup.find_all(string=True):
             if isinstance(node,Comment):continue # HTML comments never render to visitors
             if any(p.name in SKIP or p.has_attr('data-no-translate') for p in node.parents): continue
+            # MCP JSON examples are rendered in div.code-block rather than <code>.
+            # Keep real button text inside those blocks, but never translate syntax.
+            code_ancestors=[p for p in node.parents if {'code-block','hljs','language-json'} & set(p.get('class',[]))]
+            if code_ancestors and not node.find_parent('button'):continue
             text=normalize(str(node))
             if not text or not re.search('[A-Za-z]',text) or re.match(r'^(https?://|www\.|[\\{\\}\[\\];=]+$)',text):continue
             if len(text)>4500: continue
