@@ -82,9 +82,9 @@ function translate(term,lang){
  /* Legal headings and shared navigation labels have curated homepage translations. */
  var known=explicit[term];
  if(known){var curated=i.dictionary[lang]&&i.dictionary[lang][known];if(typeof curated==="string"&&curated&&!/[<>]/.test(curated))return curated;}
- if(extra&&Object.prototype.hasOwnProperty.call(extra,term))return extra[term];
  var key=lookup.get(term);
  if(key){var value=i.dictionary[lang]&&i.dictionary[lang][key];if(typeof value==="string"&&value&&!/[<>]/.test(value))return value;}
+ if(extra&&Object.prototype.hasOwnProperty.call(extra,term))return extra[term];
  return null; // Preserve intentional brand names if untranslated.
 }
 function apply(){
