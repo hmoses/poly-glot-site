@@ -47,3 +47,9 @@ jobs:
             git rebase origin/main
             git push origin HEAD:main
           fi
+      - name: Deploy updated catalogs and run complete localization browser QA
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run pages.yml --ref main
+          gh workflow run test-subpage-localization.yml --ref main
