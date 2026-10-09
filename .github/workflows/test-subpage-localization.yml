@@ -7,6 +7,10 @@ on:
       - assets/locales/subpages/**
       - scripts/test_subpage_localization.py
       - seo-setup.html
+      - assets/js/secondary-page-localization.js
+      - assets/js/global-selector-placement.js
+      - connect.html
+      - '*.html'
       - .github/workflows/test-subpage-localization.yml
 concurrency:
   group: all-locale-browser-qa-${{ github.ref }}
