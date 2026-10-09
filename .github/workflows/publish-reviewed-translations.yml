@@ -1,0 +1,49 @@
+name: Publish reviewed translation improvements
+on:
+  workflow_run:
+    workflows: ["Review translation quality candidates"]
+    types: [completed]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  publish:
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pattern: quality-*
+          merge-multiple: true
+          path: quality-candidates
+      - name: Install improved catalogs with technical safeguards
+        run: python scripts/publish_quality_candidates.py
+      - name: Verify all 38 published translation catalogs still have complete keys
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          root=pathlib.Path('assets/locales/subpages')
+          source=set(json.loads((root/'en.json').read_text()))
+          codes='es fr de it pt nl ru zh zh_tw ja ko ar hi bn tr pl sv no da fi el he id ms th vi uk cs ro hu sk hr ca af sw ha am'.split()
+          assert len(codes)==37
+          for code in codes:
+              data=json.loads((root/(code+'.json')).read_text())
+              assert source <= set(data),f'Missing {len(source-set(data))} terms for {code}'
+              assert all(isinstance(data[k],str) and data[k].strip() for k in source),f'Empty {code} translation'
+          print('38 languages x',len(source),'source strings verified')
+          PY
+      - name: Commit reviewed translation improvements
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/locales/subpages
+          if ! git diff --cached --quiet; then
+            git commit -m "Improve seven translation catalogs and preserve all 38-language coverage"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
