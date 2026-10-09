@@ -16,6 +16,14 @@ Poly-Glot MCP is a Model Context Protocol integration exposing structured tools 
 ## How many MCP tools are available?
 
 The current Poly-Glot integration documentation describes 15 MCP tools.
+**Complete 15-tool inventory**
+
+- Core: `get_language_options`, `get_subscription_status`, `open_workspace`, `search_templates`, `get_template`, `build_prompt`, `prepare_compare`
+- Custom models (BYOM): `get_custom_model_capabilities`, `validate_custom_model`, `run_custom_model`, `prepare_custom_compare`
+- Language and media: `transcribe_audio`, `detect_language`, `translate_text`, `localize_text`
+
+Canonical MCP tool documentation: https://hmoses.github.io/poly-glot-site/mcp-integrations.html
+
 
 ## Can any AI assistant connect to Poly-Glot MCP?
 
