@@ -59,7 +59,7 @@ function pgLoadSecondaryLocale(){
    return response.json();
  }).then(function(dict){
    if(!dict||typeof dict!=="object"||Array.isArray(dict))throw Error("Invalid locale catalog");
-   window._pgSecondaryExact[lang]=Object.assign({},window._pgSecondaryExact[lang]||{},dict);
+   window._pgSecondaryExact[lang]=Object.assign({},dict,window._pgSecondaryExact[lang]||{}); // Preserve curated translations over generated equivalents
    window._pgSecondaryLocalization?.apply();
  }).catch(function(err){delete pgLocaleRequests[lang];console.warn("Poly-Glot secondary locale:",err.message);});
 }
