@@ -234,12 +234,8 @@ function updateProgress(){
   var pct=Math.round((checked/boxes.length)*100);
   document.getElementById('progressFill').style.width=pct+'%';
   var locale=window._pgI18n&&window._pgI18n.curLang()||'EN';
-  var translated=window._pgSecondaryExact&&window._pgSecondaryExact[locale]&&window._pgSecondaryExact[locale]['0 / 10 complete'];
-  var progress=checked+' / '+boxes.length+' complete';
-  if(locale!=='EN'&&translated){
-    var suffix=translated.replace(/^[\p{N}\s\/:-]+/u,'').trim();
-    if(suffix)progress=checked+' / '+boxes.length+' '+suffix;
-  }
+  var completeLabel=({"ES":"completado","FR":"terminés","DE":"abgeschlossen","IT":"completati","PT":"concluídos","NL":"voltooid","RU":"выполнено","ZH":"已完成","ZH_TW":"已完成","JA":"完了","KO":"완료","AR":"مكتمل","HI":"पूर्ण","BN":"সম্পন্ন","TR":"tamamlandı","PL":"ukończono","SV":"slutförda","NO":"fullført","DA":"fuldført","FI":"valmiina","EL":"ολοκληρώθηκαν","HE":"הושלמו","ID":"selesai","MS":"selesai","TH":"เสร็จสิ้น","VI":"hoàn tất","UK":"виконано","CS":"dokončeno","RO":"finalizate","HU":"kész","SK":"dokončené","HR":"dovršeno","CA":"completats","AF":"voltooi","SW":"zimekamilika","HA":"an kammala","AM":"ተጠናቋል"})[locale]||'complete';
+  var progress=checked+' / '+boxes.length+' '+completeLabel;
   document.getElementById('progressText').textContent=progress;
   try{localStorage.setItem('pg_seo_checks',JSON.stringify(Array.from(boxes).map(function(b){return b.checked;})));}catch(e){}
 }
