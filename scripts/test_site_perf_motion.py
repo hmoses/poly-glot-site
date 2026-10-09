@@ -26,8 +26,8 @@ async def main():
                     await page.wait_for_timeout(220)
                     result=await page.evaluate("""() => ({
                       motion:document.body.classList.contains('pg-subpage-motion'),
-                      styles:[...document.querySelectorAll('link[rel=stylesheet]')].some(x=>x.href.includes('section-motion.css?v=7')),
-                      runtime:[...document.scripts].some(x=>x.src.includes('section-motion.js?v=7')),
+                      styles:[...document.querySelectorAll('link[rel=stylesheet]')].some(x=>x.href.includes('section-motion.css?v=8')),
+                      runtime:[...document.scripts].some(x=>x.src.includes('section-motion.js?v=8')),
                       lang:window._pgI18n.curLang(),
                       count:window._pgI18n.LANGS.length,
                       head:Array.from(document.querySelectorAll('.pg-motion-item')).length,
@@ -42,6 +42,11 @@ async def main():
                     assert not errors,(path,errors[:5])
                     print('PASS',width,path,'motion',result['section'],result['card'],result['head'],flush=True)
                 await page.close()
+            analytics=await browser.new_page(viewport={'width':390,'height':844})
+            await analytics.goto('http://127.0.0.1:8878/go/stats/',wait_until='domcontentloaded')
+            await analytics.wait_for_function("document.body.classList.contains('pg-subpage-motion')")
+            assert await analytics.locator('.grid > .card.pg-motion-card').count()>=1
+            await analytics.close()
             home=await browser.new_page(viewport={'width':390,'height':844})
             await home.goto('http://127.0.0.1:8878/?lang=FR',wait_until='domcontentloaded')
             await home.wait_for_function("Boolean(window._pgI18n?.LANGS?.length === 38 && window.switchGallery)",timeout=35000)
