@@ -1,0 +1,103 @@
+name: Home device localization smoke test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - assets/js/i18n.js
+      - assets/js/device-ui-i18n-clean.js
+      - .github/workflows/home-device-locale-smoke.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: device-locale-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  localization:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Chromium and Playwright
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Check all languages and reversible Mac tab changes
+        run: |
+          python - <<'PY'
+          import http.server,threading
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          class Handler(http.server.SimpleHTTPRequestHandler):
+              def log_message(self,*args): pass
+          server=http.server.ThreadingHTTPServer(('127.0.0.1',8877),Handler)
+          threading.Thread(target=server.serve_forever,daemon=True).start()
+          Path('localization-smoke').mkdir(exist_ok=True)
+          try:
+              with sync_playwright() as p:
+                  browser=p.chromium.launch(headless=True,args=['--no-sandbox'])
+                  page=browser.new_page(viewport={'width':390,'height':844},device_scale_factor=1)
+                  page.goto('http://127.0.0.1:8877/?lang=FR',wait_until='domcontentloaded')
+                  page.wait_for_function('Boolean(window._pgI18n?.setLang && window._pgDeviceUI?._strings && document.querySelector("#macScreen-askanyai .mac-native-ask-title"))',timeout=30000)
+                  supported=page.evaluate('window._pgDeviceUI.appLanguages.map(x=>({code:x.code,flag:x.flag}))')
+                  assert len(supported)==38,f'Expected 38 supported locales, got {len(supported)}'
+                  try:
+                      for lang in supported:
+                          code=lang['code']
+                          page.evaluate('(lang)=>window._pgI18n.setLang(lang.code,lang.flag)',lang)
+                          page.wait_for_function('(code)=>window._pgI18n.curLang()===code && document.documentElement.getAttribute("data-device-ui-lang")===code',arg=code,timeout=15000)
+                          page.wait_for_timeout(160)
+                          actual=page.evaluate('''() => {
+                            const code=window._pgI18n.curLang(),s=window._pgDeviceUI._strings(code);
+                            return {
+                              heading:document.querySelector('#macScreen-askanyai .mac-native-ask-title')?.textContent?.trim(),
+                              langName:document.querySelector('#macScreen-askanyai .mac-response-select strong')?.textContent?.trim(),
+                              tabs:Array.from(document.querySelectorAll('#gallery-mac .mac-reference-tab')).map(x=>x.getAttribute('aria-label')),
+                              expectedTabs:[s.ask,s.templates,s.how,s.history],
+                              caption:document.querySelector('#macTabLabel')?.textContent?.trim(),
+                              expectedHeading:'🤔 '+s.ask,
+                              demoHeading:document.querySelector('#demo [data-i18n="demoH"]')?.textContent?.trim(),
+                              expectedDemoHeading:window._pgI18n.gt('demoH',code)
+                            };
+                          }''')
+                          assert actual['heading']==actual['expectedHeading'],f'{code}: Mac heading not localized: {actual}'
+                          assert actual['tabs']==actual['expectedTabs'],f'{code}: Mac tab labels not localized: {actual}'
+                          assert actual['caption'],f'{code}: missing Mac caption'
+                          assert actual['demoHeading']==actual['expectedDemoHeading'],f'{code}: demo title not localized: {actual}'
+                          if code!='EN':
+                              assert actual['langName']!='English',f'{code}: output selector still in English'
+                          if code=='FR':
+                              assert actual['langName']=='Français',f'FR: expected Français: {actual}'
+                              assert 'Découvrez' in actual['demoHeading'],f'FR: unexpected demo heading: {actual}'
+                          if code in ('FR','JA','AR','EN'):
+                              for tab,key in [('templates','templates'),('howtouse','how'),('history','history'),('askanyai','ask')]:
+                                  page.evaluate('(t)=>switchMacTab(t)',tab)
+                                  page.wait_for_timeout(50)
+                                  text=page.locator('#macTabLabel').inner_text()
+                                  assert page.evaluate('(key)=>window._pgDeviceUI._strings(window._pgI18n.curLang())[key]',key) in text,f'{code}/{tab}: caption did not follow tab: {text}'
+                      print('PASS: 38 language changes, Mac labels, native names, demo headings, and 4-tab reversibility')
+                  except Exception:
+                      page.locator('#gallery-mac').scroll_into_view_if_needed()
+                      page.screenshot(path='localization-smoke/failed-mac.png')
+                      raise
+                  finally:
+                      browser.close()
+          finally:
+              server.shutdown()
+          PY
+      - name: Upload failure screenshot
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: home-localization-failure
+          path: localization-smoke/*.png
+          if-no-files-found: ignore
