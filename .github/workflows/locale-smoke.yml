@@ -57,6 +57,9 @@ jobs:
                               data=json.loads(copied)
                               assert data['mcpServers']['poly-glot']['url'].endswith('/mcp'),data
                               print('MCP JSON clipboard PASSED in Dutch',flush=True)
+                              hero=await page.locator('header.hero h1').inner_text()
+                              assert 'Verbind Poly-Glot met het' in hero and 'MCP-ecosysteem' in hero,hero
+                              print('Curated Dutch MCP hero PASSED',flush=True)
 
                   await page.set_viewport_size({'width':390,'height':844})
                   await page.goto('http://127.0.0.1:8671/prompt-templates.html?lang=AR',wait_until='domcontentloaded')
