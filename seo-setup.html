@@ -237,7 +237,7 @@ function updateProgress(){
   var translated=window._pgSecondaryExact&&window._pgSecondaryExact[locale]&&window._pgSecondaryExact[locale]['0 / 10 complete'];
   var progress=checked+' / '+boxes.length+' complete';
   if(locale!=='EN'&&translated){
-    var suffix=translated.replace(/^[\\s\\p{N}\\/\\-:]+/u,'').trim();
+    var suffix=translated.replace(/^[\p{N}\s\/:-]+/u,'').trim();
     if(suffix)progress=checked+' / '+boxes.length+' '+suffix;
   }
   document.getElementById('progressText').textContent=progress;
