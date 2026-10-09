@@ -1,4 +1,5 @@
 name: Stop superseded localization builds
+# Keep the newest fully protected M2M100 catalog run.
 # Retain newest visible-content-only M2M100 build.
 # Prioritize the verified MIT M2M100 offline catalog run.
 # Preserve the newest 37-job offline translation run.
