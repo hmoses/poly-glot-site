@@ -17,7 +17,7 @@ jobs:
     timeout-minutes: 300
     strategy:
       fail-fast: false
-      max-parallel: 10
+      max-parallel: 8
       matrix:
         code: ["ES","FR","DE","IT","PT","NL","RU","ZH","ZH_TW","JA","KO","AR","HI","BN","TR","PL","SV","NO","DA","FI","EL","HE","ID","MS","TH","VI","UK","CS","RO","HU","SK","HR","CA","AF","SW","HA","AM"]
     steps:
@@ -25,10 +25,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install MIT-compatible offline translation dependencies
+      - name: Install M2M100 MIT-compatible translation dependencies
         run: |
           python -m pip install --disable-pip-version-check beautifulsoup4 deep-translator ctranslate2 "transformers>=4.40,<5" sentencepiece "huggingface_hub[hf_xet]" opencc-python-reimplemented
-      - name: Translate locale group without Google rate limits
+      - name: Translate locale group with the tested MIT M2M100 model
         env:
           PG_ONLY_LOCALE: ${{ matrix.code }}
           HF_HUB_DISABLE_TELEMETRY: "1"
@@ -66,7 +66,18 @@ jobs:
               missing=source-set(data)
               assert not missing,f'{code} has {len(missing)} missing translations'
               assert all(isinstance(data[key],str) and data[key].strip() for key in source),f'{code}: empty output'
-          (root/'report.json').write_text(json.dumps({'languages':38,'source_strings':len(source),'missing':{},'method':'SMaLL-100 offline MIT'},indent=2)+'\n',encoding='utf8')
+          (root/'report.json').write_text(json.dumps({'languages':38,'source_strings':len(source),'missing':{},'method':'M2M100 418M offline MIT'},indent=2)+'\n',encoding='utf8')
+          es=json.loads((root/'es.json').read_text(encoding='utf8'))
+          regressions={
+              '"Add Site"':('añadir','agregar'),
+              '"Add property"':('añadir','agregar'),
+              'Privacy Policy':('política',),
+              'Terms of Use':('condiciones','términos'),
+          }
+          for source_text,expected_starts in regressions.items():
+              actual=es.get(source_text,'').strip(' \\u201c\\u201d"').lower()
+              assert any(actual.startswith(x) for x in expected_starts),f'Damaged Spanish translation for {source_text}: {actual!r}'
+          print('Known first-word truncation regressions: PASS',flush=True)
           print(f'COMPLETE: {len(source)} distinct strings x 38 languages',flush=True)
           PY
       - name: Publish verified catalogs
