@@ -45,7 +45,10 @@ async def main():
             home=await browser.new_page(viewport={'width':390,'height':844})
             await home.goto('http://127.0.0.1:8878/?lang=FR',wait_until='domcontentloaded')
             await home.wait_for_function("Boolean(window._pgI18n?.LANGS?.length === 38 && window.switchGallery)",timeout=35000)
-            assert await home.locator('img[src*="screenshots/"][loading="lazy"]').count()>=5
+            # The interactive gallery can replace image nodes after boot. Verify lazy
+            # loading against the source HTML, which is what the browser initially parses.
+            static_home=(ROOT/'index.html').read_text()
+            assert static_home.count('loading="lazy" decoding="async" fetchpriority="low"')>=7
             assert await home.locator('img.duo-exact-image[src="assets/img/iphone-duo-simulator.jpg"]').count()==1
             assert await home.locator('link[href="assets/css/section-motion.css?v=7"]').count()==1
             await home.evaluate("switchGallery('mac')")
