@@ -61,7 +61,7 @@ def main():
         output={term:old[term] for term in en if term in old and old[term]}
         # A lone interface shortcut/technical letter is language-neutral.
         for term in en:
-            if term in BRAND_TERMS or re.fullmatch(r'[A-Za-z]',term) or re.fullmatch(r'[A-Z0-9_-]{2,8}',term):
+            if term in BRAND_TERMS or re.fullmatch(r'[A-Za-z]',term) or re.fullmatch(r'[A-Z0-9_-]{2,8}',term) or re.fullmatch(r'=+\s*[A-Z0-9 _/+-]+\s*=+',term):
                 output[term]=term
         if 'Checked' in en:output['Checked']=CHECKED[code]
         todo=[term for term in en if term not in output]
