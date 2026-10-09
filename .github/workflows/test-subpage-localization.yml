@@ -6,6 +6,7 @@ on:
     paths:
       - assets/locales/subpages/**
       - scripts/test_subpage_localization.py
+      - seo-setup.html
       - .github/workflows/test-subpage-localization.yml
 permissions:
   contents: read
