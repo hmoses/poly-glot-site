@@ -1,0 +1,39 @@
+name: Test higher-quality offline locale model
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/test-m2m-quality.yml
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check ctranslate2 "transformers>=4.40,<5" sentencepiece "huggingface_hub[hf_xet]"
+      - name: Compare terminology in legal and MCP examples
+        run: |
+          python - <<'PY'
+          import tempfile
+          import ctranslate2
+          from huggingface_hub import snapshot_download
+          from transformers import AutoTokenizer
+          path=tempfile.mkdtemp(prefix='m2m100-')
+          snapshot_download(repo_id='entai2965/m2m100-418M-ctranslate2',local_dir=path)
+          tokenizer=AutoTokenizer.from_pretrained(path)
+          tokenizer.src_lang='en'
+          translator=ctranslate2.Translator(path,device='cpu',compute_type='int8')
+          items=['Privacy Policy','Terms of Use','What happens when the trial ends?','After the 3-day trial, 25 featured free templates remain available.','Open Cursor → Customize → MCPs','Connect Poly-Glot Across the','How many MCP tools are available?','Compare Mode is unlocked during the 3-day full-access trial and locks afterward unless you subscribe to Pro.']
+          batch=[tokenizer.convert_ids_to_tokens(tokenizer.encode(x)) for x in items]
+          for code in ['es','nl','ja','ar']:
+              result=translator.translate_batch(batch,target_prefix=[[tokenizer.lang_code_to_token[code]]]*len(batch),beam_size=3,max_decoding_length=384)
+              print('LANGUAGE',code,flush=True)
+              for src,res in zip(items,result):
+                  val=tokenizer.decode(tokenizer.convert_tokens_to_ids(res.hypotheses[0][1:]),skip_special_tokens=True)
+                  print(repr(src),'->',repr(val),flush=True)
+          PY
