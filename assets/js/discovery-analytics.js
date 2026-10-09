@@ -7,7 +7,7 @@
   var providers = [
     ['chatgpt', /(^|\.)chatgpt\.com$|(^|\.)chat\.openai\.com$/],
     ['perplexity', /(^|\.)perplexity\.ai$/],
-    ['copilot', /(^|\.)copilot\.microsoft\.com$|(^|\.)bing\.com$/],
+    ['copilot', /(^|\.)copilot\.microsoft\.com$/],
     ['gemini', /(^|\.)gemini\.google\.com$/],
     ['claude', /(^|\.)claude\.ai$/],
     ['grok', /(^|\.)grok\.com$|(^|\.)x\.com$/],
