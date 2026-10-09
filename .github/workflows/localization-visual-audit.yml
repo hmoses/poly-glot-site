@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - assets/locales/subpages/**
+      - connect.html
       - .github/workflows/localization-visual-audit.yml
 permissions:
   contents: read
