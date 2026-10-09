@@ -78,7 +78,7 @@ function translate(term,lang){
  if(pgManuallyReviewedPhrases[lang]&&Object.prototype.hasOwnProperty.call(pgManuallyReviewedKeys,term))return pgManuallyReviewedPhrases[lang][pgManuallyReviewedKeys[term]];
  if(term===pgPrivacyEnglish&&pgCuratedPrivacyStatement[lang])return pgCuratedPrivacyStatement[lang];
  if(pgCuratedGuideTitles[lang]&&Object.prototype.hasOwnProperty.call(pgGuideTitleKeys,term))return pgCuratedGuideTitles[lang][pgGuideTitleKeys[term]];
- if(term==="App Store")return term;
+ if(term==="App Store"||term==="Poly-Glot AI Workspace")return term;
  if(pgCuratedSubpagePhrases[lang]&&Object.prototype.hasOwnProperty.call(pgCuratedSubpageKeys,term))return pgCuratedSubpagePhrases[lang][pgCuratedSubpageKeys[term]];
  /* MCP configuration literals must remain byte-for-byte copyable. */
  if(/^\s*"[^"]+"\s*:\s*\{/.test(term)||/^\s*\{\s*"[^"]+"\s*:/.test(term))return term;
