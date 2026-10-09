@@ -39,7 +39,7 @@ async def main():
             print('PASS',code,tab,data['caption'][:70],flush=True)
         await check('FR','askanyai','Demandez')
         await check('FR','templates','Modèles')
-        await check('FR','howtouse','utilis')
+        await check('FR','howtouse','Mode')
         await check('FR','history','Histor')
         heading=page.locator('#demo .section-title[data-i18n="demoH"]')
         await heading.scroll_into_view_if_needed()
