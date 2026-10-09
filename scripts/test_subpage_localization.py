@@ -51,6 +51,19 @@ async def main():
      failures.append((path,code,'missing translations',{'sample':audit['missing'][:8] if audit else [],'count':len(audit['missing']) if audit else 'unknown'}))
     if code in ('AR','HE') and data['dir']!='rtl':failures.append((path,code,'RTL layout',data))
     print(code,path,'OK' if not failures or failures[-1][0:2]!=(path,code) else 'FAIL',flush=True)
+  # Exercise a dynamically changing counter on every localized subpage.
+  for code in CODES:
+   await page.goto('http://127.0.0.1:8765/seo-setup.html?lang='+code,wait_until='domcontentloaded')
+   if code!='EN':
+    await page.wait_for_function('(c) => !!window._pgSecondaryExact?.[c]',arg=code,timeout=15000)
+    await page.wait_for_timeout(150)
+   box=page.locator('.check input[type="checkbox"]').first
+   if await box.count():
+    await box.set_checked(True)
+    label=(await page.locator('#progressText').inner_text()).strip()
+    if not label or (code!='EN' and label.lower().endswith(' complete')):
+     failures.append(('seo-setup.html',code,'dynamic progress label untranslated',label))
+    print('DYNAMIC',code,label,flush=True)
   # The selector must persist on an actual internal navigation, not only query URLs.
   for code in ('ES','AR','HE','VI','ZH_TW'):
    await page.goto('http://127.0.0.1:8765/compare-ai-tools.html?lang='+code,wait_until='domcontentloaded')
