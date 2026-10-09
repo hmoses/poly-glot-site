@@ -28,7 +28,7 @@ async def main():
         html = (ROOT / "index.html").read_text()
         assert 'no-cache, no-store, must-revalidate' not in html
         assert 'raw.githubusercontent.com/hmoses/poly-glot-site/966834' not in html
-        images = re.findall(r'<img\\b[^>]*>', html, flags=re.I)
+        images = re.findall(r'<img\b[^>]*>', html, flags=re.I)
         screens = [i for i in images if 'assets/img/screenshots/' in i or 'class="mac-reference-base"' in i or 'class="duo-exact-image' in i]
         assert len(screens) == 7 and all('loading="lazy"' in i and 'fetchpriority="low"' in i for i in screens)
 
