@@ -44,6 +44,16 @@ async def main():
       await page.wait_for_timeout(100) # Allow catalog-driven apply() to settle.
     except Exception:pass
     data=await page.evaluate('''() => ({audit:window._pgSecondaryLocaleAudit||null,locale:window._pgI18n?.curLang?.(),dir:document.documentElement.dir,flagCount:window._pgI18n?.LANGS?.length})''')
+    # High-value human-curated strings must not regress to garbled English source.
+    if code!='EN' and path in ('terms.html','prompt-templates.html','connect.html'):
+     if path=='terms.html':
+      locator=page.get_by_text('By using Poly-Glot AI Workspace, you agree to these terms.',exact=True)
+     elif path=='prompt-templates.html':
+      locator=page.get_by_text('What are Poly-Glot prompt templates?',exact=True)
+     else:
+      locator=page.get_by_text('Open Cursor → Customize → MCPs',exact=True)
+     if await locator.count():
+      failures.append((path,code,'curated translation missing or overridden',str(await locator.first.inner_text())))
     audit=data['audit']
     if data['locale']!=code:failures.append((path,code,'language selection not restored',data))
     if data['flagCount']!=38:failures.append((path,code,'not all flags',data))
