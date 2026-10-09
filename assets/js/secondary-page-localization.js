@@ -46,7 +46,24 @@ function registerAll(){
 }
 var pgFeedbackLocales={"ES":["Copiar","Copiado"],"FR":["Copier","Copié"],"DE":["Kopieren","Kopiert"],"IT":["Copia","Copiato"],"PT":["Copiar","Copiado"],"NL":["Kopiëren","Gekopieerd"],"RU":["Копировать","Скопировано"],"ZH":["复制","已复制"],"ZH_TW":["複製","已複製"],"JA":["コピー","コピーしました"],"KO":["복사","복사됨"],"AR":["نسخ","تم النسخ"],"HI":["कॉपी करें","कॉपी किया गया"],"BN":["কপি করুন","কপি হয়েছে"],"TR":["Kopyala","Kopyalandı"],"PL":["Kopiuj","Skopiowano"],"SV":["Kopiera","Kopierat"],"NO":["Kopier","Kopiert"],"DA":["Kopiér","Kopieret"],"FI":["Kopioi","Kopioitu"],"EL":["Αντιγραφή","Αντιγράφηκε"],"HE":["העתק","הועתק"],"ID":["Salin","Tersalin"],"MS":["Salin","Disalin"],"TH":["คัดลอก","คัดลอกแล้ว"],"VI":["Sao chép","Đã sao chép"],"UK":["Копіювати","Скопійовано"],"CS":["Kopírovat","Zkopírováno"],"RO":["Copiază","Copiat"],"HU":["Másolás","Másolva"],"SK":["Kopírovať","Skopírované"],"HR":["Kopiraj","Kopirano"],"CA":["Copia","Copiat"],"AF":["Kopieer","Gekopieer"],"SW":["Nakili","Imenakiliwa"],"HA":["Kwafi","An kwafa"],"AM":["ቅዳ","ተቀድቷል"]};
 var pgSharedShortUI={"ES":["Enviar","Pegar","y","o"],"FR":["Envoyer","Coller","et","ou"],"DE":["Senden","Einfügen","und","oder"],"IT":["Invia","Incolla","e","o"],"PT":["Enviar","Colar","e","ou"],"NL":["Verzenden","Plakken","en","of"],"RU":["Отправить","Вставить","и","или"],"ZH":["发送","粘贴","和","或"],"ZH_TW":["傳送","貼上","和","或"],"JA":["送信","貼り付け","と","または"],"KO":["보내기","붙여넣기","및","또는"],"AR":["إرسال","لصق","و","أو"],"HI":["भेजें","चिपकाएँ","और","या"],"BN":["পাঠান","পেস্ট করুন","এবং","অথবা"],"TR":["Gönder","Yapıştır","ve","veya"],"PL":["Wyślij","Wklej","i","lub"],"SV":["Skicka","Klistra in","och","eller"],"NO":["Send","Lim inn","og","eller"],"DA":["Send","Indsæt","og","eller"],"FI":["Lähetä","Liitä","ja","tai"],"EL":["Αποστολή","Επικόλληση","και","ή"],"HE":["שליחה","הדבקה","ו","או"],"ID":["Kirim","Tempel","dan","atau"],"MS":["Hantar","Tampal","dan","atau"],"TH":["ส่ง","วาง","และ","หรือ"],"VI":["Gửi","Dán","và","hoặc"],"UK":["Надіслати","Вставити","і","або"],"CS":["Odeslat","Vložit","a","nebo"],"RO":["Trimite","Lipește","și","sau"],"HU":["Küldés","Beillesztés","és","vagy"],"SK":["Odoslať","Prilepiť","a","alebo"],"HR":["Pošalji","Zalijepi","i","ili"],"CA":["Envia","Enganxa","i","o"],"AF":["Stuur","Plak","en","of"],"SW":["Tuma","Bandika","na","au"],"HA":["Aika","Manna","da","ko"],"AM":["ላክ","ለጥፍ","እና","ወይም"]};
+/* Some legacy page scripts replace DOM nodes with already-localized copy.
+ * Recognize catalog output so it is not reclassified as untranslated English. */
+var pgLocalizedSets={};
+function alreadyLocalized(term,lang){
+ if(lang==="EN")return false;
+ var catalog=window._pgSecondaryExact&&window._pgSecondaryExact[lang];
+ if(!catalog)return false;
+ var cached=pgLocalizedSets[lang];
+ if(!cached||cached.catalog!==catalog){
+  var words=new Set(Object.values(catalog).filter(function(v){return typeof v==="string";}));
+  var dict=i.dictionary[lang]||{};
+  Object.keys(dict).forEach(function(k){if(typeof dict[k]==="string")words.add(dict[k]);});
+  cached=pgLocalizedSets[lang]={catalog:catalog,values:words};
+ }
+ return cached.values.has(term);
+}
 function translate(term,lang){
+ if(alreadyLocalized(term,lang))return term;
  if(pgSharedShortUI[lang]){var labels={"Send":0,"Paste":1,"and":2,"or":3,", and":2,", or":3};if(Object.prototype.hasOwnProperty.call(labels,term)){var result=pgSharedShortUI[lang][labels[term]];return term.charAt(0)===","?", "+result:result;}}
 
  if(pgFeedbackLocales[lang]&&(term==="Copy"||term==="Copied!"||term==="✓ Copied!")){
