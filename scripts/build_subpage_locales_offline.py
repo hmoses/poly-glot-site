@@ -10,7 +10,7 @@ from huggingface_hub import snapshot_download
 import ctranslate2
 
 # Preserve product names and technical identifiers, not English prose.
-BRAND_TERMS={'Pages','Cursor','GitHub','MCP','MCP.so','Glama','ChatGPT','Claude','Gemini','Grok','Copilot','Mistral','HuggingChat','Perplexity','Poly-Glot','Figma','App Store','iOS','macOS','JSON','HTTP','HTTPS','URL','SDK','API','CTR','🤗 Hugging Face Space'}
+BRAND_TERMS={'🤗 Hugging Face Space','Hugging Face Space','Pages','Cursor','GitHub','MCP','MCP.so','Glama','ChatGPT','Claude','Gemini','Grok','Copilot','Mistral','HuggingChat','Perplexity','Poly-Glot','Figma','App Store','iOS','macOS','JSON','HTTP','HTTPS','URL','SDK','API','CTR','🤗 Hugging Face Space'}
 CHECKED={'ES':'Marcado','FR':'Coché','DE':'Markiert','IT':'Selezionato','PT':'Marcado','NL':'Aangevinkt','RU':'Отмечено','ZH':'已勾选','ZH_TW':'已勾選','JA':'チェック済み','KO':'선택됨','AR':'محدد','HI':'चिह्नित','BN':'চিহ্নিত','TR':'İşaretli','PL':'Zaznaczone','SV':'Markerad','NO':'Merket','DA':'Markeret','FI':'Valittu','EL':'Επιλεγμένο','HE':'מסומן','ID':'Dicentang','MS':'Ditandakan','TH':'เลือกแล้ว','VI':'Đã chọn','UK':'Позначено','CS':'Zaškrtnuto','RO':'Bifat','HU':'Bejelölve','SK':'Zaškrtnuté','HR':'Označeno','CA':'Marcat','AF':'Gemerk','SW':'Imechaguliwa','HA':'An zaɓa','AM':'ተመርጧል'}
 BRAND_TERMS.add('Hugging Face Space')
 def split_display_prefix(term):
