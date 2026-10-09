@@ -13730,5 +13730,13 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
  window.addEventListener("pg:languagechange",apply);
 })();
 </script>
+<script id="pg-app-preview-locales">
+(function(){
+ var names={EN:"App Preview",ES:"Vista previa de la app",FR:"Aperçu de l’application",DE:"App-Vorschau",IT:"Anteprima dell’app",PT:"Prévia do app",NL:"Appvoorbeeld",RU:"Предпросмотр приложения",ZH:"应用预览",ZH_TW:"App 預覽",JA:"アプリのプレビュー",KO:"앱 미리보기",AR:"معاينة التطبيق",HI:"ऐप पूर्वावलोकन",BN:"অ্যাপ প্রিভিউ",TR:"Uygulama Önizlemesi",PL:"Podgląd aplikacji",SV:"Appförhandsvisning",NO:"Appforhåndsvisning",DA:"App-forhåndsvisning",FI:"Sovelluksen esikatselu",EL:"Προεπισκόπηση εφαρμογής",HE:"תצוגה מקדימה של האפליקציה",ID:"Pratinjau Aplikasi",MS:"Pratonton Aplikasi",TH:"ตัวอย่างแอป",VI:"Xem trước ứng dụng",UK:"Попередній перегляд застосунку",CS:"Náhled aplikace",RO:"Previzualizarea aplicației",HU:"Alkalmazás előnézete",SK:"Ukážka aplikácie",HR:"Pregled aplikacije",CA:"Vista prèvia de l’app",AF:"Programvoorskou",SW:"Muhtasari wa Programu",HA:"Samfotin Manhaja",AM:"የመተግበሪያ ቅድመ እይታ"};
+ function apply(){var language=window._pgI18n?.curLang?.()||"EN",value=names[language]||names.EN;var nav=document.getElementById("pg-app-preview-nav");if(nav)nav.textContent=value;var heading=document.querySelector('#screenshots [data-i18n="ssH"]');if(heading)heading.textContent=value;}
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",apply);else apply();
+ window.addEventListener("pg:languagechange",function(){requestAnimationFrame(apply)});
+})();
+</script>
 </body>
 </html>
