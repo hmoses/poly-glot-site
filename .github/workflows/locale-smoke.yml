@@ -58,6 +58,15 @@ jobs:
                               assert data['mcpServers']['poly-glot']['url'].endswith('/mcp'),data
                               print('MCP JSON clipboard PASSED in Dutch',flush=True)
 
+                  await page.set_viewport_size({'width':390,'height':844})
+                  await page.goto('http://127.0.0.1:8671/prompt-templates.html?lang=AR',wait_until='domcontentloaded')
+                  await page.wait_for_function("Boolean(window._pgSecondaryExact?.AR)",timeout=15000)
+                  await page.wait_for_timeout(400)
+                  cards=await page.locator('main article').evaluate_all("(nodes) => nodes.map(n => ({top:n.getBoundingClientRect().top,bottom:n.getBoundingClientRect().bottom}))")
+                  assert len(cards)==4,cards
+                  for idx in range(1,len(cards)):
+                      assert cards[idx]['top']>=cards[idx-1]['bottom']+8, f'Arabic mobile FAQ cards overlap: {cards}'
+                  print('Arabic 390px card spacing PASSED',flush=True)
                   await b.close()
           asyncio.run(run())
           srv.shutdown()
