@@ -5816,7 +5816,10 @@ function _demoStart() {
 
 /* Mobile */
 @media (max-width: 480px) {
-  #pgChat-window { width: calc(100vw - 16px); right: 8px; bottom: 8px; max-height: calc(100vh - 80px); height: calc(100vh - 80px); border-radius: 16px; }
+  #pgChat-window { width: calc(100vw - 16px); right: 8px; top: max(8px, env(safe-area-inset-top, 0px)); bottom: auto; height: min(680px, calc(100dvh - 20px - env(safe-area-inset-top, 0px))); max-height: calc(100dvh - 20px - env(safe-area-inset-top, 0px)); border-radius: 16px; }
+  #pgChat-window.pgChat-keyboard-open { height: var(--pgChat-available-height, 60dvh); max-height: var(--pgChat-available-height, 60dvh); }
+  #pgChat-messages { min-height: 0; overscroll-behavior: contain; }
+  #pgChat-input { font-size: 16px; }
   #pgChat-bubble { bottom: 16px; right: 16px; width: 56px; height: 56px; }
   #pgChat-logo { width: 34px; height: 34px; }
 }
@@ -6131,8 +6134,12 @@ function _demoStart() {
       if (this.isOpen) {
         win.classList.add('open');
         bubble.style.display = 'none';
+        var msgs = document.getElementById('pgChat-messages');
+        if (msgs) msgs.scrollTop = 0;
+        // Opening the chat should show its header and first message, not launch
+        // the iOS keyboard and jump to the bottom of the conversation.
         var inp = document.getElementById('pgChat-input');
-        if (inp) inp.focus();
+        if (inp && window.matchMedia('(min-width: 481px)').matches) inp.focus();
       } else {
         win.classList.remove('open');
         bubble.style.display = 'flex';
@@ -6214,6 +6221,36 @@ function _demoStart() {
       }, delay);
     }
   };
+
+  // iOS visual viewport: keep the header and messages above the software keyboard.
+  (function() {
+    if (!window.visualViewport) return;
+    var viewport = window.visualViewport;
+    var input = document.getElementById('pgChat-input');
+    var chat = document.getElementById('pgChat-window');
+    if (!input || !chat) return;
+    function adjust() {
+      if (window.innerWidth > 480 || !chat.classList.contains('open')) {
+        chat.classList.remove('pgChat-keyboard-open');
+        chat.style.removeProperty('--pgChat-available-height');
+        return;
+      }
+      var keyboardOpen = document.activeElement === input && viewport.height < window.innerHeight - 120;
+      chat.classList.toggle('pgChat-keyboard-open', keyboardOpen);
+      if (keyboardOpen) {
+        var top = Math.max(8, viewport.offsetTop + 8);
+        chat.style.top = top + 'px';
+        chat.style.setProperty('--pgChat-available-height', Math.max(200, viewport.height - 20) + 'px');
+      } else {
+        chat.style.removeProperty('top');
+        chat.style.removeProperty('--pgChat-available-height');
+      }
+    }
+    viewport.addEventListener('resize', adjust, {passive:true});
+    viewport.addEventListener('scroll', adjust, {passive:true});
+    input.addEventListener('focus', adjust);
+    input.addEventListener('blur', adjust);
+  })();
 
   // SECURITY: Input event handler (prevent paste bombs)
   var chatInput = document.getElementById('pgChat-input');
