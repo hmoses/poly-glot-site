@@ -10,10 +10,12 @@
     ['copilot', /(^|\.)copilot\.microsoft\.com$/],
     ['gemini', /(^|\.)gemini\.google\.com$/],
     ['claude', /(^|\.)claude\.ai$/],
-    ['grok', /(^|\.)grok\.com$|(^|\.)x\.com$/],
+    ['grok', /(^|\.)grok\.com$/],
     ['you_com', /(^|\.)you\.com$/],
     ['poe', /(^|\.)poe\.com$/],
     ['phind', /(^|\.)phind\.com$/],
+    ['mistral', /^chat\.mistral\.ai$/],
+    ['duckduckgo_ai', /(^|\.)duck\.ai$/],
     ['meta_ai', /(^|\.)meta\.ai$/]
   ];
   function providerFor(host) {
