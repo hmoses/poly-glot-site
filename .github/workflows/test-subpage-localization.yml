@@ -22,7 +22,7 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check playwright
           python -m playwright install --with-deps chromium
-      # Re-run after the shared runtime recognizes already-translated dynamic nodes.
+      # Verify all 494 page/language combinations against the published locale catalog source.
       - name: Test all 494 language-page combinations
         run: python scripts/test_subpage_localization.py
       - name: Archive failures and coverage
