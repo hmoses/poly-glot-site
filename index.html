@@ -4892,42 +4892,38 @@ function toggleFaq(el) {
 }
 
 /* ===== GALLERY TABS ===== */
-/* Warm iPhone/iPad gallery assets before the user taps the platform tabs. */
-(function preloadDeviceGalleryAssets(){
-  var sources = [
-    'assets/img/icon-128.png',
-    'assets/img/screenshots/iphone-2-templates.png',
-    'assets/img/screenshots/iphone-3-howtouse.png',
-    'assets/img/screenshots/ipad-2-templates.png',
-    'assets/img/screenshots/ipad-3-howtouse.png'
-  ];
-  sources.forEach(function(src){
-    var img = new Image();
-    img.decoding = 'async';
-    img.fetchPriority = 'high';
-    img.src = src;
-    if (img.decode) img.decode().catch(function(){});
-  });
-
-  function decodeExisting(){
-    document.querySelectorAll('#gallery-iphone img,#gallery-ipad img').forEach(function(img){
-      img.loading = 'eager';
-      img.fetchPriority = 'high';
-      if (img.decode) img.decode().catch(function(){});
+/* Fetch gallery screenshots only when the visitor approaches the gallery or chooses a tab.
+ * Preserve fast device switching without downloading 4 large screenshots at page startup. */
+(function prepareDeviceGalleryAssets(){
+  function warm(platform){
+    var panel=document.getElementById('gallery-'+platform);
+    if(!panel)return;
+    panel.querySelectorAll('img[loading="lazy"]').forEach(function(img){
+      img.loading='eager';
+      img.fetchPriority='auto';
+      if(img.decode)img.decode().catch(function(){});
     });
   }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', decodeExisting, {once:true});
-  } else {
-    decodeExisting();
+  window._pgWarmGalleryImages=warm;
+  var tabs=document.querySelector('.gallery-tabs');
+  if(tabs&&'IntersectionObserver' in window){
+    var observer=new IntersectionObserver(function(entries){
+      if(entries.some(function(entry){return entry.isIntersecting;})){
+        warm('iphone');
+        observer.disconnect();
+      }
+    },{rootMargin:'500px 0px'});
+    observer.observe(tabs);
   }
 })();
+
 
 function switchGallery(platform) {
   document.querySelectorAll('.gallery-panel').forEach(function(p){ p.classList.remove('active'); });
   document.querySelectorAll('.gallery-tab').forEach(function(t){ t.classList.remove('active'); });
   var panel = document.getElementById('gallery-' + platform);
   if (panel) panel.classList.add('active');
+  if (panel && window._pgWarmGalleryImages) window._pgWarmGalleryImages(platform);
 
   document.querySelectorAll('.gallery-tab').forEach(function(t){
     var click = t.getAttribute('onclick') || '';
