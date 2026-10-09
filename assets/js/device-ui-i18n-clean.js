@@ -293,6 +293,11 @@ function staticScreens(S,M,c){
 function macOverlay(S,M,c){
  var host=document.querySelector("#gallery-mac .mac-reference-interactive");
  if(!host)return;
+ /* Re-render only after the actual language changes, not on every tab click
+    or delayed i18n retry. This prevents flicker and preserves tab transitions. */
+ if(host.getAttribute("data-pg-mac-locale")===c &&
+    (c==="EN" || host.querySelector(".pg-mac-badge-localized")))return;
+ host.setAttribute("data-pg-mac-locale",c);
 
  /* Use the real HTML Mac panel for localized UI. This keeps one clean renderer
     instead of drawing translated text on top of the baked English screenshot. */
@@ -424,7 +429,19 @@ function siteLabels(S,M,c){
   if(hint)hint.textContent="👇 "+S.ask+" · "+S.templates+" · "+S.how+" · "+S.history;
 
   var macLabel=document.getElementById("macTabLabel");
-  if(macLabel)macLabel.textContent=S.ask+" — "+S.typeLine;
+  if(macLabel){
+    var selected=document.querySelector("#gallery-mac .mac-reference-tab.active");
+    var tab=selected&&selected.id?selected.id.replace("macTab-",""):"askanyai";
+    var captions={
+      askanyai:S.ask+" — "+S.typeLine,
+      templates:S.templates,
+      howtouse:S.how+" — "+(S.howWorks||S.how),
+      history:S.history+" — "+(S.recent||S.history)
+    };
+    macLabel.textContent=captions[tab]||captions.askanyai;
+    macLabel.setAttribute("lang",c==="ZH_TW"?"zh-Hant":c.toLowerCase());
+    macLabel.setAttribute("dir",(c==="HE"||c==="AR")?"rtl":"ltr");
+  }
 
   document.querySelectorAll("#gallery-iphone .gallery-label,#gallery-ipad .gallery-label").forEach(function(el){
     var t=(el.getAttribute("data-en")||el.textContent||"").trim();
