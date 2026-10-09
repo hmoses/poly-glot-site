@@ -544,7 +544,12 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 <script>
 function copyCode(btn) {
   const block = btn.parentElement;
-  const text = block.textContent.replace('Copy','').replace('Copied!','').trim();
+  // Clone only the code, never the localized Copy button text.
+  // Preserve <br> as line breaks so MCP JSON remains copyable.
+  const source = block.cloneNode(true);
+  source.querySelectorAll('button').forEach(button => button.remove());
+  source.querySelectorAll('br').forEach(br => br.replaceWith(document.createTextNode('\n')));
+  const text = source.textContent.replace(/\u00a0/g, ' ').trim();
   navigator.clipboard.writeText(text).then(() => {
     btn.textContent = 'Copied!';
     btn.classList.add('copied');
