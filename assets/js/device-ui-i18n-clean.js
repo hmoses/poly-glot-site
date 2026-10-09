@@ -603,6 +603,63 @@ function heroMacTextOverlay(S,M,c){
     '<span class="pg-hm send">'+S.send+'</span>';
 }
 
+
+/* Render the Mac's secondary screens in the same locale as Ask Any AI. */
+function localizeMacSecondaryTabs(S,M,c){
+ var gallery=document.getElementById("gallery-mac");if(!gallery)return;
+ function localizedTitle(i){
+   var key="tc"+((i%9)+1)+"t",v="",en="";
+   try{if(window._pgI18n&&window._pgI18n.gt){
+     v=window._pgI18n.gt(key,c)||"";
+     en=window._pgI18n.gt(key,"EN")||"";
+   }}catch(e){}
+   return v&&(c==="EN"||v!==en)?v:S.templates+" "+(i+1);
+ }
+ var template=gallery.querySelector("#macScreen-templates");
+ if(template){
+   var layer=template.querySelector(".pg-mac-panel-localized");
+   if(c==="EN"){if(layer)layer.remove();}
+   else{
+     if(!layer){layer=document.createElement("div");layer.className="pg-mac-panel-localized";template.appendChild(layer);}
+     var scratch=document.createElement("div");
+     scratch.innerHTML=localizedScreenMarkup("templates",S,M,"mac");
+     var body=scratch.querySelector(".pg-real-body");
+     if(body){
+       body.querySelectorAll(".pg-real-template-card b").forEach(function(el,i){el.textContent=localizedTitle(i)});
+       layer.replaceChildren(body);
+     }
+     layer.lang=c==="ZH_TW"?"zh-Hant":c.toLowerCase();
+     layer.dir=c==="AR"||c==="HE"?"rtl":"ltr";
+   }
+   template.setAttribute("aria-label",S.templates);
+ }
+ var history=gallery.querySelector("#macScreen-history");
+ if(history){
+   var header=history.querySelector(".mac-history-heading");
+   var note=history.querySelector(".mac-history-note");
+   if(header)header.textContent=c==="EN"?"Prompt History":(S.promptHistory||S.history);
+   if(note)note.textContent=c==="EN"?"Your recent prompts & favorites":S.recent;
+   var pills=history.querySelectorAll(".mac-history-pill");
+   if(pills[0])pills[0].textContent=c==="EN"?"All":S.all;
+   if(pills[1])pills[1].textContent=c==="EN"?"Clear":S.clear;
+   var titles=["Ask Any AI","Ask Any AI","Interview Coach","Resume Optimizer","Ask Any AI","Translation","Code Explainer","Meeting Summary","API Documentation","Release Notes","Content Strategy","Localization QA"];
+   var samples=["Test","Write a polite email to my landlord asking to fix the heater.","Prepare {{name}} for a {{job_title}} interview at {{company}}.","Improve this resume for a senior technical writer role.","Compare the best AI tools for developer documentation.","Translate this product description into French and Arabic.","Explain this JavaScript function in plain English.","Summarize these meeting notes into decisions and action items.","Draft a concise API quickstart from this OpenAPI spec.","Turn these engineering commits into customer-facing release notes.","Create an information architecture for this Help Center.","Review this localized UI copy for clarity and consistency."];
+   var localized=[S.promptIntro,S.promptExample,S.compareHelp,S.typeLine,S.promptExample,S.promptIntro,S.howWorks,S.recent,S.typeLine,S.compareHelp,S.changesMenus,S.responds];
+   history.querySelectorAll(".mac-history-card").forEach(function(card,i){
+     var title=card.querySelector(".mac-history-card-title"),body=card.querySelector(".mac-history-text");
+     if(title)title.textContent=c==="EN"?(titles[i]||S.ask):((i===0||i===1||i===4)?S.ask:localizedTitle(i));
+     if(body)body.textContent=c==="EN"?(samples[i]||""):(localized[i]||S.promptExample);
+     card.querySelectorAll(".mac-history-btn").forEach(function(btn){
+       if(btn.classList.contains("copy"))btn.textContent=c==="EN"?"Copy":S.copy;
+       else if(!btn.classList.contains("del"))btn.textContent=c==="EN"?"Re-edit":S.reedit;
+     });
+   });
+   history.lang=c==="ZH_TW"?"zh-Hant":c.toLowerCase();
+   history.dir=c==="AR"||c==="HE"?"rtl":"ltr";
+   history.setAttribute("aria-label",S.history);
+ }
+}
+
 function apply(code){
  var c=norm(code||current()),S=strings(c),M=meta(c);
  document.documentElement.setAttribute("data-device-ui-lang",c);
@@ -623,6 +680,7 @@ function apply(code){
  syncPlainBadges(S,M);
  syncAllTabLabels(S,M);
  siteLabels(S,M,c);
+ localizeMacSecondaryTabs(S,M,c);
  languageDemoOverlay(S,M,c);
  duo(S,M,c);
 }
