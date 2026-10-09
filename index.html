@@ -6003,10 +6003,65 @@ function _demoStart() {
     return null;
   }
 
+  // Attach direct guides to the resolved answer, preserving the selected language.
+  var chatGuidePages = {
+    compare: ['compare-ai-tools.html', '_compare', 'Compare AI tools'],
+    templates: ['prompt-templates.html', '_templates', 'Prompt templates'],
+    languages: ['multilingual-ai-workspace.html', '_languages', 'Languages'],
+    pricing: ['privacy-and-pricing.html', '_pricing', 'Privacy and pricing'],
+    privacy: ['privacy.html', '_privacy', 'Privacy policy'],
+    mcp: ['mcp-integrations.html', '_mcp', 'MCP integrations'],
+    setup: ['connect.html', '_mcpSetup', 'MCP setup'],
+    support: ['support.html', '_support', 'Support'],
+    terms: ['terms.html', '_disclaimer', 'Terms of use']
+  };
+  var chatTopicGuides = {
+    'what is poly-glot': ['compare', 'templates'],
+    'how much': ['pricing'], 'free plan': ['pricing'], trial: ['pricing'],
+    'after trial': ['pricing'], cancel: ['pricing', 'support'], payment: ['pricing'],
+    'which ai': ['compare'], compare: ['compare'], differ: ['compare'],
+    template: ['templates'], 'template categories': ['templates'], custom: ['templates'],
+    language: ['languages'], 'app language': ['languages'], 'output language': ['languages'],
+    private: ['privacy'], safe: ['privacy'], children: ['privacy', 'terms'],
+    mcp: ['mcp', 'setup'], 'mcp setup': ['setup', 'mcp'],
+    'cross device': ['pricing', 'mcp'], device: ['support'], download: ['support'],
+    voice: ['privacy', 'support'], support: ['support'], disclaimer: ['terms'],
+    'how does it work': ['templates', 'compare'], feature: ['templates', 'compare'],
+    api: ['compare'], send: ['support'], 'auto fill': ['support'],
+    history: ['support'], offline: ['support'], web: ['support'],
+    'prompt studio': ['support'], 'who made': ['support']
+  };
+  function answerWithGuides(topic) {
+    var lang = _chatLang();
+    var chat = window._pgChatI18n;
+    var localized = chat && chat.KBL && chat.KBL[lang] && chat.KBL[lang][topic];
+    var answer = localized || KB[topic] || KB['what is poly-glot'];
+    var labels = chat && chat.getTopics ? chat.getTopics(lang) : {};
+    var links = (chatTopicGuides[topic] || []).map(function(key) {
+      var guide = chatGuidePages[key];
+      // Existing policy links already provide the destination.
+      if (answer.indexOf('/' + guide[0]) !== -1) return '';
+      var url = 'https://hmoses.github.io/poly-glot-site/' + guide[0] + '?lang=' + encodeURIComponent(lang);
+      return '[' + (labels[guide[1]] || guide[2]) + '](' + url + ')';
+    }).filter(Boolean);
+    return answer + (links.length ? '\n\n' + links.join('\n') : '');
+  }
+
   function findAnswer(q) {
     // SECURITY: Sanitize input before processing
-    if (typeof q !== 'string') return KB["what is poly-glot"];
+    if (typeof q !== 'string') return answerWithGuides('what is poly-glot');
     q = q.toLowerCase().trim().slice(0, 500);
+
+    // Specific intents must win over broad provider, device, and pricing keywords.
+    if (/\bmcp\b|model context protocol|claude desktop/.test(q)) {
+      if (/connect|setup|set up|config|install|add |claude desktop/.test(q)) return answerWithGuides('mcp setup');
+      if (!/entitlement|across|purchase|subscription/.test(q)) return answerWithGuides('mcp');
+    }
+    if (/compare|comparison|versus|\bvs\b/.test(q)) return answerWithGuides('compare');
+    if (/cancel|refund|unsubscribe/.test(q)) return answerWithGuides('cancel');
+    if (/privacy|private|personal data/.test(q)) return answerWithGuides('private');
+    if (/terms of|terms and|legal notice/.test(q)) return answerWithGuides('disclaimer');
+    if (/template/.test(q)) return answerWithGuides(/categor/.test(q) ? 'template categories' : 'template');
 
     // Keyword matching — KB answers are English-only; responses are the same regardless of language
     // (Product facts are universal — numbers, AI names, URLs, pricing don't change)
@@ -6014,9 +6069,7 @@ function _demoStart() {
       for (var j = 0; j < matchRules[i].keys.length; j++) {
         if (q.indexOf(matchRules[i].keys[j]) !== -1) {
           var topic = matchRules[i].topic;
-          var lang = _chatLang();
-          var localized = window._pgChatI18n && window._pgChatI18n.KBL && window._pgChatI18n.KBL[lang] && window._pgChatI18n.KBL[lang][topic];
-          return localized || KB[topic] || KB["what is poly-glot"];
+          return answerWithGuides(topic);
         }
       }
     }
