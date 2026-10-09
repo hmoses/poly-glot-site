@@ -83,7 +83,20 @@ var pgSubscriptionQuestion={
  JA:"Poly-Glotを利用するにはサブスクリプションが必要ですか？",
  AR:"هل أحتاج إلى اشتراك لاستخدام Poly-Glot؟"
 };
+/* Curated corrections for machine-translation false friends in key UI copy. */
+var pgFinalReviewedCorrections={
+ ES:{"3-Day Free Trial":"Prueba gratuita de 3 días","Does Poly-Glot automatically send to every provider?":"¿Poly-Glot envía automáticamente a todos los proveedores?"},
+ FR:{"3-Day Free Trial":"Essai gratuit de 3 jours"},
+ VI:{"3-Day Free Trial":"Dùng thử miễn phí 3 ngày"},
+ ZH_TW:{"3-Day Free Trial":"免費試用 3 天"},
+ AR:{"3-Day Free Trial":"تجربة مجانية لمدة 3 أيام"},
+ HA:{"3-Day Free Trial":"Gwajin kyauta na kwanaki 3","Does Poly-Glot automatically send to every provider?":"Shin Poly-Glot yana aikawa ta atomatik zuwa ga kowane mai samar da AI?"},
+ AM:{"3-Day Free Trial":"የ3 ቀን ነፃ ሙከራ","Does Poly-Glot automatically send to every provider?":"Poly-Glot ወደ ሁሉም የAI አቅራቢዎች በራስ-ሰር ይልካል?"}
+};
 function translate(term,lang){
+ /* Preserve the original names in this multilingual language list. */
+ if(term.indexOf("English · Español · Français · Deutsch · Italiano ·")===0)return term;
+ if(pgFinalReviewedCorrections[lang]&&Object.prototype.hasOwnProperty.call(pgFinalReviewedCorrections[lang],term))return pgFinalReviewedCorrections[lang][term];
  if(term==="Do I need to subscribe to use Poly-Glot?"&&pgSubscriptionQuestion[lang])return pgSubscriptionQuestion[lang];
  if(lang==="VI"&&Object.prototype.hasOwnProperty.call(exactVI,term))return exactVI[term];
  if(pgManuallyReviewedPhrases[lang]&&Object.prototype.hasOwnProperty.call(pgManuallyReviewedKeys,term))return pgManuallyReviewedPhrases[lang][pgManuallyReviewedKeys[term]];
