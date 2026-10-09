@@ -49,6 +49,11 @@ async def main():
         assert dims['scroll']<=dims['client']+4,dims
         await page.evaluate("window._pgI18n.setLang('EN','🇺🇸')")
         await check('EN','askanyai','Ask Any AI')
+        mac_title=await page.locator('#macScreen-askanyai .mac-native-ask-title').text_content()
+        mac_help=await page.locator('#macScreen-askanyai .mac-native-help-lines>div').first.text_content()
+        assert 'Ask Any AI' in mac_title,(mac_title,mac_help)
+        assert 'Type' in mac_help,(mac_title,mac_help)
+        print('PASS EN Mac preview text restored after French',flush=True)
         await page.evaluate("window._pgI18n.setLang('FR','🇫🇷')")
         await check('FR','templates','Modèles')
         assert not errors,errors[:6]
