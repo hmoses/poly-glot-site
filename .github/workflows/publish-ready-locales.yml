@@ -17,56 +17,50 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
-      - name: Select each language's own artifact, never overwrite with stale copies
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
+      - name: Retrieve each language artifact using GitHub's supported downloader
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 37864340955
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pattern: offline-catalogs-*
+          merge-multiple: false
+          path: /tmp/polyglot-language-artifacts
+      - name: Select one verified catalog from each artifact
         run: |
           python - <<'PY'
-          import io,json,os,urllib.request,zipfile
+          import json
           from pathlib import Path
-          repo=os.environ['GH_REPO']
           root=Path('assets/locales/subpages')
           root.mkdir(parents=True,exist_ok=True)
-          run_id='37864340955'
-          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],
-                   'Accept':'application/vnd.github+json',
-                   'User-Agent':'polyglot-localization-publisher'}
-          def get(url):
-              req=urllib.request.Request(url,headers=headers)
-              return urllib.request.urlopen(req,timeout=65).read()
-          response=json.loads(get('https://api.github.com/repos/'+repo+'/actions/runs/'+run_id+'/artifacts?per_page=100'))
-          available={a['name'].removeprefix('offline-catalogs-').lower():a for a in response['artifacts'] if a['name'].startswith('offline-catalogs-') and not a['expired']}
-          print('Completed language artifacts:',len(available),sorted(available),flush=True)
-          assert len(available)>=30,'Too few language artifacts to publish safely'
+          archived=sorted(Path('/tmp/polyglot-language-artifacts').glob('offline-catalogs-*'))
+          print('Downloaded artifacts',len(archived),flush=True)
+          assert len(archived)>=30,'Too few language artifacts to publish safely'
           refreshed=[]
           source=None
-          for code,artifact in sorted(available.items()):
-              blob=get(artifact['archive_download_url'])
-              with zipfile.ZipFile(io.BytesIO(blob)) as z:
-                  names=z.namelist()
-                  file=next((n for n in names if n.split('/')[-1]==code+'.json'),None)
-                  assert file, 'Missing own catalog in '+artifact['name']
-                  value=json.loads(z.read(file))
-                  assert isinstance(value,dict) and value,'Empty catalog '+code
-                  (root/(code+'.json')).write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
-                  if source is None:
-                      english=next((n for n in names if n.split('/')[-1]=='en.json'),None)
-                      assert english,'English source not in artifact'
-                      source=json.loads(z.read(english))
-                  refreshed.append(code)
+          for folder in archived:
+              code=folder.name.removeprefix('offline-catalogs-').lower()
+              matches=list(folder.rglob(code+'.json'))
+              assert matches,'Missing own catalog in '+folder.name
+              value=json.loads(matches[0].read_text(encoding='utf8'))
+              assert isinstance(value,dict) and value,'Empty catalog '+code
+              (root/(code+'.json')).write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+              if source is None:
+                  enfiles=list(folder.rglob('en.json'))
+                  assert enfiles,'English catalog not in artifact'
+                  source=json.loads(enfiles[0].read_text(encoding='utf8'))
+              refreshed.append(code)
           (root/'en.json').write_text(json.dumps(source,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
           all_codes=['es','fr','de','it','pt','nl','ru','zh','zh_tw','ja','ko','ar','hi','bn','tr','pl','sv','no','da','fi','el','he','id','ms','th','vi','uk','cs','ro','hu','sk','hr','ca','af','sw','ha','am']
           for code in all_codes:
-              f=root/(code+'.json')
-              assert f.exists(),'Missing catalog '+code
-              data=json.loads(f.read_text(encoding='utf8'))
-              missing=set(source)-set(data)
-              assert not missing,code+' incomplete: '+str(len(missing))
-              assert all(isinstance(data[k],str) and data[k].strip() for k in source),code+' contains empty strings'
+              file=root/(code+'.json')
+              assert file.is_file(),'Missing locale '+code
+              values=json.loads(file.read_text(encoding='utf8'))
+              missing=set(source)-set(values)
+              assert not missing,code+' missing '+str(len(missing))+' entries'
+              assert all(isinstance(values[k],str) and values[k].strip() for k in source),code+' has empty values'
           pending=sorted(set(all_codes)-set(refreshed))
           (root/'report.json').write_text(json.dumps({'languages':38,'source_strings':len(source),'missing':{},'model':'M2M100','new_catalogs':refreshed,'pending_model_refresh':pending},ensure_ascii=False,indent=2)+'\n',encoding='utf8')
-          print('VALIDATED: 38 languages,',len(source),'English strings,',len(refreshed),'fresh model catalogs, pending',pending,flush=True)
+          print('VALIDATED',len(source),'strings,',len(refreshed),'new locales, pending',pending,flush=True)
           PY
       - name: Commit safe release
         run: |
