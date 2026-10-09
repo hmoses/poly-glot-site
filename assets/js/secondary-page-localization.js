@@ -31,6 +31,7 @@ function registerAll(){
   if(!eligible(n)||allOrigins.has(n))continue;
   var raw=n.nodeValue,term=norm(raw);
   if(!term||!/[A-Za-z]/.test(term)||/^https?:/i.test(term))continue;
+  if(window._pgEnglishSourceSet&&!window._pgEnglishSourceSet.has(term))continue;
   allOrigins.set(n,{raw:raw,term:term});
   allNodes.push(n);
  }
@@ -85,14 +86,18 @@ function apply(){
  var lang=i.curLang(),rtl=lang==="AR"||lang==="HE";
  document.documentElement.setAttribute("dir",rtl?"rtl":"ltr");
  if(document.body)document.body.setAttribute("dir",rtl?"rtl":"ltr");
- allNodes=allNodes.filter(function(n){return n.isConnected;});
+ allNodes=allNodes.filter(function(n){
+  var o=allOrigins.get(n),source=window._pgEnglishSourceSet;
+  if(!n.isConnected||(source&&o&&!source.has(o.term))){allOrigins.delete(n);return false;}
+  return true;
+ });
  allNodes.forEach(function(n){var o=allOrigins.get(n);if(!o)return;
   var value=translate(o.term,lang),target;
   if(lang==="EN"||!value)target=o.raw;
   else{var m=o.raw.match(/^(\s*)([\s\S]*?)(\s*)$/);target=(m?m[1]:"")+value+(m?m[3]:"");}
   if(n.nodeValue!==target)n.nodeValue=target;
  });
- allAttrs=allAttrs.filter(function(x){return x.el.isConnected;});
+ allAttrs=allAttrs.filter(function(x){return x.el.isConnected&&(!window._pgEnglishSourceSet||window._pgEnglishSourceSet.has(x.term));});
  allAttrs.forEach(function(x){var value=translate(x.term,lang);var target=value||x.value;if(x.el.getAttribute(x.a)!==target)x.el.setAttribute(x.a,target);});
  document.querySelectorAll("main,article,footer,.card,.guide-card,.about-card").forEach(function(el){el.setAttribute("dir",rtl?"rtl":"ltr");});
  var pageTitle=translate(originalDocumentTitle,lang);
