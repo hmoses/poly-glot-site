@@ -91,6 +91,9 @@ var NATIVE_LANGUAGE_NAMES={
   RO:"Română",HU:"Magyar",SK:"Slovenčina",HR:"Hrvatski",CA:"Català",
   AF:"Afrikaans",SW:"Kiswahili",HA:"Hausa",AM:"አማርኛ",FIL:"Filipino"
 };
+/* Render selected language name in the selected language (not English). */
+var PG_NATIVE_LANGUAGE_NAMES={"EN":"English","ES":"Español","FR":"Français","DE":"Deutsch","IT":"Italiano","PT":"Português","NL":"Nederlands","RU":"Русский","ZH":"简体中文","ZH_TW":"繁體中文","JA":"日本語","KO":"한국어","AR":"العربية","HI":"हिन्दी","BN":"বাংলা","TR":"Türkçe","PL":"Polski","SV":"Svenska","NO":"Norsk","DA":"Dansk","FI":"Suomi","EL":"Ελληνικά","HE":"עברית","ID":"Bahasa Indonesia","MS":"Bahasa Melayu","TH":"ไทย","VI":"Tiếng Việt","UK":"Українська","CS":"Čeština","RO":"Română","HU":"Magyar","SK":"Slovenčina","HR":"Hrvatski","CA":"Català","AF":"Afrikaans","SW":"Kiswahili","HA":"Hausa","AM":"አማርኛ","FIL":"Filipino"};
+function localizedLanguageName(M){return PG_NATIVE_LANGUAGE_NAMES[norm(M.code)]||M.name||M.code;}
 function meta(code){
   var n=norm(code),m=APP_LANGS.find(function(x){return x.code===n});
   /* Preserve existing flags and codes, localize only the visible language name. */
@@ -308,7 +311,13 @@ function macOverlay(S,M,c){
  /* Re-render only after the actual language changes, not on every tab click
     or delayed i18n retry. This prevents flicker and preserves tab transitions. */
  if(host.getAttribute("data-pg-mac-locale")===c &&
-    (c==="EN" || host.querySelector(".pg-mac-badge-localized")))return;
+    (c==="EN" || host.querySelector(".pg-mac-badge-localized"))){
+   /* Fast path is safe only if the rendered name and heading match this locale.
+      Otherwise repair the screen without depending on a new language-change event. */
+   var value=host.querySelector("#macScreen-askanyai .mac-response-select strong");
+   var heading=host.querySelector("#macScreen-askanyai .mac-native-ask-title");
+   if(value&&heading&&value.textContent===localizedLanguageName(M)&&heading.textContent==="🤔 "+S.ask)return;
+ }
  host.setAttribute("data-pg-mac-locale",c);
 
  /* Use the real HTML Mac panel for localized UI. This keeps one clean renderer
@@ -386,7 +395,7 @@ function macOverlay(S,M,c){
      var spans=sel.querySelectorAll("span");
      var strong=sel.querySelector("strong");
      if(spans[0])spans[0].textContent=M.flag;
-     if(strong)strong.textContent=M.name||M.code;
+     if(strong)strong.textContent=localizedLanguageName(M);
    }
 
    var kids=body.children;
@@ -586,7 +595,7 @@ function heroMacTextOverlay(S,M,c){
     '<span class="pg-hm help h3">🌐 '+S.outputLang+' ⬇️ '+S.responds+'</span>'+
     '<span class="pg-hm help h4">🔀 '+S.compare+': '+S.compareHelp+'</span>'+
     '<span class="pg-hm output">🌐 '+S.outputLabel+'</span>'+
-    '<span class="pg-hm select">'+M.flag+' '+(M.name||M.code)+'　▼</span>'+
+    '<span class="pg-hm select">'+M.flag+' '+(localizedLanguageName(M))+'　▼</span>'+
     '<span class="pg-hm prompt">'+S.promptIntro+'<br><br>'+S.promptExample+'</span>'+
     '<span class="pg-hm action paste">📋 '+S.paste+'</span>'+
     '<span class="pg-hm action imp">📄 '+S.import+'</span>'+
