@@ -47,15 +47,24 @@
     }
     var referrer = getReferrerHost();
     var aiProvider = providerFor(referrer);
-    if (!aiProvider) {
-      var params = new URLSearchParams(location.search);
-      if (params.get('utm_medium') === 'ai' && /^[a-z0-9_-]{2,40}$/i.test(params.get('utm_source') || '')) {
-        aiProvider = params.get('utm_source').toLowerCase();
-      }
+    var detection = aiProvider ? 'referrer' : '';
+    try {
+      var source = (new URLSearchParams(location.search).get('utm_source') || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+      var knownSources = {
+        chatgpt:'chatgpt', openaichat:'chatgpt', perplexity:'perplexity',
+        claude:'claude', copilot:'copilot', bingchat:'copilot',
+        gemini:'gemini', grok:'grok', mistral:'mistral',
+        duckduckgoai:'duckduckgo_ai', duckai:'duckduckgo_ai',
+        youcom:'you_com', poe:'poe', phind:'phind', metaai:'meta_ai'
+      };
+      if (knownSources[source]) { aiProvider = knownSources[source]; detection = 'utm'; }
+    } catch (_) {}
+    if (!aiProvider && referrer && referrer !== location.hostname) {
+      try { sessionStorage.removeItem('pg_ai_source'); } catch (_) {}
     }
     if (aiProvider) {
       try { sessionStorage.setItem('pg_ai_source', aiProvider); } catch (_) {}
-      send('ai_referral_landing', { ai_provider: aiProvider, landing_page: location.pathname, transport_type: 'beacon' });
+      send('ai_referral_landing', { ai_provider: aiProvider, ai_detection: detection, landing_page: location.pathname, page_path: location.pathname, transport_type: 'beacon' });
     }
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a[href]');
