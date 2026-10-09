@@ -4,7 +4,7 @@ Requires: pip install beautifulsoup4 deep-translator
 Never sends visitor content; translates only published site copy during a build.
 """
 import json, re, time, pathlib, sys, os
-from bs4 import BeautifulSoup, NavigableString
+from bs4 import BeautifulSoup, NavigableString, Comment
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 PAGES=['connect.html','compare-ai-tools.html','multilingual-ai-workspace.html','prompt-templates.html','mcp-integrations.html','privacy-and-pricing.html','privacy.html','terms.html','support.html','share.html','seo-setup.html','linkedin.html','linkedin-mcp-2026.html']
 LANG={'ES':'es','FR':'fr','DE':'de','IT':'it','PT':'pt','NL':'nl','RU':'ru','ZH':'zh-CN','ZH_TW':'zh-TW','JA':'ja','KO':'ko','AR':'ar','HI':'hi','BN':'bn','TR':'tr','PL':'pl','SV':'sv','NO':'no','DA':'da','FI':'fi','EL':'el','HE':'iw','ID':'id','MS':'ms','TH':'th','VI':'vi','UK':'uk','CS':'cs','RO':'ro','HU':'hu','SK':'sk','HR':'hr','CA':'ca','AF':'af','SW':'sw','HA':'ha','AM':'am'}
@@ -15,6 +15,7 @@ def extract():
     for page in PAGES:
         soup=BeautifulSoup((ROOT/page).read_text(encoding='utf8'),'html.parser')
         for node in soup.find_all(string=True):
+            if isinstance(node,Comment):continue # HTML comments never render to visitors
             if any(p.name in SKIP or p.has_attr('data-no-translate') for p in node.parents): continue
             text=normalize(str(node))
             if not text or not re.search('[A-Za-z]',text) or re.match(r'^(https?://|www\.|[\\{\\}\[\\];=]+$)',text):continue
