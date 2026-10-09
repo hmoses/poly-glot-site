@@ -122,6 +122,7 @@ function apply(){
  /* Report actual translation coverage; a visible selector is not proof of completion. */
  var missing=[],seen=new Set();
  allNodes.forEach(function(n){var o=allOrigins.get(n);if(!o||!o.term||seen.has(o.term))return;seen.add(o.term);if(lang!=="EN"&&!translate(o.term,lang))missing.push(o.term);});
+ allAttrs.forEach(function(x){if(!x.term||seen.has(x.term))return;seen.add(x.term);if(lang!=="EN"&&!translate(x.term,lang))missing.push(x.a+": "+x.term);});
  window._pgSecondaryLocaleAudit={language:lang,page:location.pathname,total:seen.size,missing:missing,complete:missing.length===0};
  document.dispatchEvent(new CustomEvent("pg:localization-audited",{detail:window._pgSecondaryLocaleAudit}));
 
