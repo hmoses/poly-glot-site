@@ -55,8 +55,11 @@ function translate(term,lang){
  if(lang==="EN")return term;
  var extra=(window._pgSecondaryExact&&window._pgSecondaryExact[lang]);
  if(lang==="VI"&&(!extra||!Object.prototype.hasOwnProperty.call(extra,term)))extra=exactVI;
+ /* Legal headings and shared navigation labels have curated homepage translations. */
+ var known=explicit[term];
+ if(known){var curated=i.dictionary[lang]&&i.dictionary[lang][known];if(typeof curated==="string"&&curated&&!/[<>]/.test(curated))return curated;}
  if(extra&&Object.prototype.hasOwnProperty.call(extra,term))return extra[term];
- var key=explicit[term]||lookup.get(term);
+ var key=lookup.get(term);
  if(key){var value=i.dictionary[lang]&&i.dictionary[lang][key];if(typeof value==="string"&&value&&!/[<>]/.test(value))return value;}
  return null; // Preserve intentional brand names if untranslated.
 }
