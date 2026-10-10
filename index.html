@@ -2927,6 +2927,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 
 <script defer src="assets/js/discovery-analytics.js?v=20261009-1"></script>
 <link rel="stylesheet" href="assets/css/code-copy.css?v=20261010-copy2">
+<link rel="stylesheet" href="assets/css/mcp-connect-panel.css?v=20261010-connect-redesign1">
 </head>
 <body>
 
@@ -4638,25 +4639,65 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
         </div>
       </div>
 
-      <div style="background:linear-gradient(135deg,rgba(125,211,252,.06),rgba(167,139,250,.06));border:1px solid rgba(125,211,252,.18);border-radius:14px;padding:20px;margin:0 0 18px;">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-          <div style="flex:1;min-width:260px;">
-            <div style="font-size:1rem;font-weight:800;color:var(--text);margin-bottom:7px;">Connect Poly-Glot from supported MCP clients</div>
-            <div class="pg-mcp-intro-grid" data-pg-mcp-intro-grid data-no-translate style="display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:10px;margin:0 0 13px;">
-              <div style="padding:12px 13px;background:rgba(125,211,252,.045);border:1px solid rgba(125,211,252,.13);border-radius:10px;"><p data-pg-claude-l10n="introServer" style="color:var(--text-muted);font-size:.84rem;line-height:1.55;margin:0;"><strong style="color:var(--text);">One server.</strong> Every directory lists the same Poly-Glot MCP endpoint.</p></div>
-              <div style="padding:12px 13px;background:rgba(125,211,252,.045);border:1px solid rgba(125,211,252,.13);border-radius:10px;"><p data-pg-claude-l10n="introClient" style="color:var(--text-muted);font-size:.84rem;line-height:1.55;margin:0;"><strong style="color:var(--text);">Compatible clients.</strong> Your AI client must support remote Streamable HTTP MCP.</p></div>
-              <div style="padding:12px 13px;background:rgba(125,211,252,.045);border:1px solid rgba(125,211,252,.13);border-radius:10px;"><p data-pg-claude-l10n="introConnect" style="color:var(--text-muted);font-size:.84rem;line-height:1.55;margin:0;"><strong style="color:var(--text);">Connect.</strong> Add the URL below, name it Poly-Glot, and approve tool access.</p></div>
-            </div>
-            <div data-pg-code-block class="pg-code-snippet" style="font-family:'Fira Code',monospace;font-size:.72rem;color:#7dd3fc;background:rgba(2,6,23,.55);border:1px solid rgba(125,211,252,.12);border-radius:9px;padding:11px 12px;"><code class="pg-code-snippet-content" data-no-translate>https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp</code><button type="button" data-pg-copy-button data-no-translate class="pg-code-copy">Copy</button></div>
+      <!-- MCP connection: responsive, full-width workflow panel -->
+      <section class="pg-mcp-connect-panel" aria-labelledby="pg-mcp-connect-title">
+        <div class="pg-mcp-connect-head">
+          <div class="pg-mcp-connect-heading">
+            <div id="pg-mcp-connect-title" class="pg-mcp-connect-title">Connect Poly-Glot from supported MCP clients</div>
+            <p class="pg-mcp-connect-summary" data-pg-claude-l10n="introServer">One server. All directories list the same production Poly-Glot MCP server.</p>
           </div>
-          <a href="mcp-integrations.html" style="display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;padding:10px 15px;border-radius:10px;background:rgba(125,211,252,.10);border:1px solid rgba(125,211,252,.24);color:#7dd3fc;text-decoration:none;font-size:.82rem;font-weight:800;">Explore MCP integrations →</a> <a href="mcp-integrations.html#mcp-troubleshooting" data-pg-claude-trouble-link aria-label="MCP troubleshooting guide" style="display:inline-flex;vertical-align:middle;align-items:center;justify-content:space-between;gap:13px;max-width:100%;margin:8px 0 0;padding:10px 13px;border:1px solid rgba(125,211,252,.24);border-radius:11px;background:rgba(125,211,252,.045);color:#7dd3fc;text-decoration:none;line-height:1.45;white-space:normal;"><span style="display:flex;flex-direction:column;align-items:flex-start;gap:2px;"><strong data-pg-claude-l10n="troubleTitle" style="font-size:.85rem;color:var(--text);font-weight:750;">MCP troubleshooting</strong><span data-pg-claude-l10n="troubleDesc" style="font-size:.76rem;color:var(--text-muted);">Connections · Sign-in · Tools · Free trial</span></span><span aria-hidden="true" style="font-size:1.1rem;line-height:1;">↗</span></a>
+          <span class="pg-mcp-connect-transport">Streamable HTTP</span>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:14px;">
-          <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:11px 12px;"><div style="font-size:.72rem;font-weight:800;color:var(--text);margin-bottom:3px;">1. Choose your MCP client</div><div style="font-size:.75rem;color:var(--text-muted);line-height:1.5;">Open the client's MCP, Connectors, Tools, or Integrations settings.</div></div>
-          <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:11px 12px;"><div style="font-size:.72rem;font-weight:800;color:var(--text);margin-bottom:3px;">2. Add the remote server</div><div style="font-size:.75rem;color:var(--text-muted);line-height:1.5;">Paste the Poly-Glot MCP endpoint and save it as <strong style="color:var(--text);">Poly-Glot</strong>.</div></div>
-          <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:11px 12px;"><div style="font-size:.72rem;font-weight:800;color:var(--text);margin-bottom:3px;">3. Approve & use the tools</div><div style="font-size:.75rem;color:var(--text-muted);line-height:1.5;">Allow tool access, then search templates, build prompts, prepare comparisons, and use the available Poly-Glot MCP tools.</div></div>
+        <p class="pg-mcp-connect-compat" data-pg-claude-l10n="introClient">Compatible clients. Your AI client must support remote Streamable HTTP MCP.</p>
+
+        <div class="pg-mcp-endpoint-wrap">
+          <div class="pg-mcp-endpoint-meta">
+            <span class="pg-mcp-endpoint-label" data-pg-claude-l10n="endpointLabel">Production MCP URL — use this exact HTTPS address</span>
+            <span class="pg-mcp-endpoint-protocol" aria-hidden="true">HTTPS · /mcp</span>
+          </div>
+          <div data-pg-code-block class="pg-code-snippet pg-mcp-endpoint-copy">
+            <code class="pg-code-snippet-content" data-no-translate dir="ltr">https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp</code>
+            <button type="button" data-pg-copy-button data-no-translate class="pg-code-copy">Copy</button>
+          </div>
         </div>
-      </div>
+
+        <div class="pg-mcp-connect-steps" data-pg-mcp-steps style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+          <div class="pg-mcp-connect-step">
+            <span class="pg-mcp-connect-num" aria-hidden="true">01</span>
+            <div class="pg-mcp-connect-step-body">
+              <div class="pg-mcp-connect-step-title">1. Choose your MCP client</div>
+              <div class="pg-mcp-connect-step-text">Open the client's MCP, Connectors, Tools, or Integrations settings.</div>
+            </div>
+          </div>
+          <div class="pg-mcp-connect-step">
+            <span class="pg-mcp-connect-num" aria-hidden="true">02</span>
+            <div class="pg-mcp-connect-step-body">
+              <div class="pg-mcp-connect-step-title">2. Add the remote server</div>
+              <div class="pg-mcp-connect-step-text">Paste the Poly-Glot MCP endpoint and save it as Poly-Glot.</div>
+            </div>
+          </div>
+          <div class="pg-mcp-connect-step">
+            <span class="pg-mcp-connect-num" aria-hidden="true">03</span>
+            <div class="pg-mcp-connect-step-body">
+              <div class="pg-mcp-connect-step-title">3. Approve &amp; use the tools</div>
+              <div class="pg-mcp-connect-step-text">Allow tool access, then search templates, build prompts, prepare comparisons, and use the available Poly-Glot MCP tools.</div>
+            </div>
+          </div>
+        </div>
+
+        <nav class="pg-mcp-connect-links" aria-label="MCP setup resources">
+          <a class="pg-mcp-connect-action" href="mcp-integrations.html">
+            <span>Explore MCP integrations →</span>
+          </a>
+          <a class="pg-mcp-connect-action" href="mcp-integrations.html#mcp-troubleshooting" data-pg-claude-trouble-link aria-label="MCP troubleshooting guide">
+            <span>
+              <strong class="pg-mcp-connect-trouble-title" data-pg-claude-l10n="troubleTitle">MCP troubleshooting</strong>
+              <span class="pg-mcp-connect-trouble-desc" data-pg-claude-l10n="troubleDesc" style="display:block;">Connections · Sign-in · Tools · Free trial</span>
+            </span>
+            <span class="pg-mcp-connect-arrow" aria-hidden="true">↗</span>
+          </a>
+        </nav>
+      </section>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;">
         <a class="pg-mcp-motion-card" href="https://registry.modelcontextprotocol.io/?q=poly-glot-ai-workspace" target="_blank" rel="noopener" style="display:block;background:var(--bg-surface);border:1px solid rgba(125,211,252,0.10);border-radius:12px;padding:20px;text-decoration:none;">
