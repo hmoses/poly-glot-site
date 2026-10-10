@@ -1,0 +1,61 @@
+name: Verify live MCP endpoint and published technical pages
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/live-mcp-docs.yml'
+      - 'assets/locales/mcp-technical/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  live-parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Verify production MCP health metadata and remote connection details
+        run: |
+          python - <<'PY'
+          import json,urllib.request
+          url='https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/'
+          req=urllib.request.Request(url,headers={'Accept':'application/json','User-Agent':'PolyGlot-MCP-Documentation-QA/1.0'})
+          with urllib.request.urlopen(req,timeout=22) as response:
+              assert response.status==200,response.status
+              status=json.load(response)
+          print('Production health',json.dumps({k:status.get(k) for k in ('status','version','endpoint','tools','templates','freeTemplates','supportedLanguages','trial')},ensure_ascii=False),flush=True)
+          assert status.get('status')=='ok',status
+          assert status.get('tools')==15,('Production tool count mismatch',status.get('tools'))
+          assert status.get('supportedLanguages')==38,status
+          assert status.get('endpoint')=='/mcp',status
+          assert status.get('templates',0)>=1000,status
+          assert status.get('freeTemplates')==25,status
+          assert status.get('trial',{}).get('days')==3,status
+          assert status.get('trial',{}).get('autoConverts') is False,status
+          print('PASS live MCP server reports correct source contract',flush=True)
+          PY
+      - name: Verify published pages and representative translated technical catalogs
+        run: |
+          python - <<'PY'
+          import json,urllib.request
+          base='https://hmoses.github.io/poly-glot-site/'
+          pages=['','connect.html','mcp-integrations.html','terms.html','privacy.html',
+                 'privacy-and-pricing.html','compare-ai-tools.html','prompt-templates.html','multilingual-ai-workspace.html','llms.txt']
+          for page in pages:
+              req=urllib.request.Request(base+page,headers={'User-Agent':'PolyGlot-Public-Site-QA/1.0','Cache-Control':'no-cache'})
+              with urllib.request.urlopen(req,timeout=22) as r:
+                  assert r.status==200,(page,r.status)
+                  data=r.read().decode('utf8')
+              if page!='llms.txt':
+                  assert len(data)>2000,(page,len(data))
+                  assert 'Poly-Glot' in data,page
+              print('PASS published',page or 'homepage',len(data),flush=True)
+          for lang in ('nl','ar','ja','ha','am'):
+              req=urllib.request.Request(base+'assets/locales/mcp-technical/'+lang+'.json',
+                          headers={'User-Agent':'PolyGlot-Public-Site-QA/1.0','Cache-Control':'no-cache'})
+              with urllib.request.urlopen(req,timeout=22) as r:
+                  assert r.status==200,(lang,r.status)
+                  d=json.load(r)
+              assert len(d['strings'])==37,(lang,len(d['strings']))
+              assert d['strings']['chatIntro'].strip(),lang
+              print('PASS live technical locale',lang,'37 claims',flush=True)
+          PY
