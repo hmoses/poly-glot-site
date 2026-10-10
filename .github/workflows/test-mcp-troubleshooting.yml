@@ -46,7 +46,7 @@ jobs:
                        el.dataset.mcpTranslation === (lang==="EN"?"english":"complete");
                   }''',timeout=19000)
                   assert guide.locator('[data-mcp-tr="title"]').count()==1
-                  assert guide.get_attribute('data-mcp-translation-count')=='46', (lang,guide.get_attribute('data-mcp-translation-count'))
+                  assert guide.get_attribute('data-mcp-translation-count')==('0' if lang=='EN' else '46'), (lang,guide.get_attribute('data-mcp-translation-count'))
                   assert guide.locator('[data-mcp-tr="quick1"] strong').count()==1
                   assert guide.locator('[data-mcp-tr="quick4"] code').count()==3
                   assert guide.locator('[data-mcp-tr="error7Body"] code').count()==4
