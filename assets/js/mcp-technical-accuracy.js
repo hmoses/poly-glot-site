@@ -21,6 +21,9 @@ function render(code,strings){
  elements.forEach(function(el){
   var key=el.getAttribute("data-pg-tech");
   var translation=strings&&strings[key];
+  // The FAQ responses are assembled from the native MCP troubleshooting locale
+  // by claude-guide-locales.js; never overwrite them with English fallback.
+  if(code!=="EN"&&(key==="mcpIntro"||key==="mcpCount")&&window._pgClaudeGuide){ok++;return;}
   var usable=typeof translation==="string"&&translation.trim().length>0;
   var next=usable?translation:EN[key];
   if(typeof next==="string"&&el.textContent!==next)el.textContent=next;
