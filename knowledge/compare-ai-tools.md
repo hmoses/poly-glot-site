@@ -11,7 +11,7 @@ Compare responses from supported AI assistants in Poly-Glot AI Workspace, includ
 
 ## How does Poly-Glot compare ChatGPT and Claude?
 
-Poly-Glot lets you prepare the same prompt for selected AI assistants and compare their responses. It does not merge providers into one model or guarantee identical response behavior.
+Poly-Glot prepares one consistent prompt for the providers you select. The app supports comparing their separate responses where the external services and client workflow allow it. The MCP `prepare_compare` tool stages prompts and provider instructions; it does not automatically invoke models or collect responses.
 
 ## Which AI assistants are supported?
 
@@ -19,7 +19,7 @@ Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, Hug
 
 ## Does Poly-Glot automatically send to every provider?
 
-No. You choose the providers and follow the available sending workflow. The external AI services handle their own responses.
+No. You choose which AI providers to use. In an MCP client, `prepare_compare` generates a comparison plan rather than executing provider requests. Sending, displaying, and comparing actual answers depend on the chosen app or client and each provider.
 
 ## Can I compare AI answers for free?
 
