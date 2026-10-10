@@ -50,7 +50,7 @@ function apply(){
  var code=language(),generation=++serial;
  if(code==="EN"){render(code,EN);return;}
  load(code).then(function(v){if(generation===serial&&language()===code)render(code,v);}).catch(function(e){
-  if(generation===serial&&language()===code)render(code,EN);
+  if(generation===serial&&language()===code)render(code,{});
   console.warn("Poly-Glot technical locale unavailable:",e.message);
  });
 }
