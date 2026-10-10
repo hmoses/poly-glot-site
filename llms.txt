@@ -27,6 +27,16 @@
 - Terms: https://hmoses.github.io/poly-glot-site/terms.html
 - Support: https://hmoses.github.io/poly-glot-site/support.html
 
+## AI retrieval and developer documentation
+
+- Canonical Poly-Glot MCP setup and troubleshooting: https://hmoses.github.io/poly-glot-site/mcp-integrations.html
+- Machine-readable, RAG-friendly documentation: https://hmoses.github.io/poly-glot-site/knowledge/mcp-integrations.md
+- Official Claude remote MCP custom connector setup: https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp
+- Claude setup (individual accounts): Customize → Connectors → + Add → Add custom connector. Name it Poly-Glot and use the documented production MCP endpoint.
+- Claude tool invocation: Enable Poly-Glot using + → Connectors in a chat, then request `search_templates`, `build_prompt`, `get_subscription_status`, or `prepare_compare` by name.
+- Important limitation: `prepare_compare` stages a shared prompt and provider destinations; it does not automatically call external AI models, open a live response comparison, or retrieve provider answers. `open_workspace` opens the template interface where supported by the client.
+- Account behavior: Browsing and `search_templates` are read-only. `build_prompt` and `prepare_compare` are Send actions. Premium features require verified trial or Pro authorization.
+
 ## MCP
 
 Poly-Glot's MCP server exposes 15 tools for template search and retrieval, prompt building, 2–9 provider comparison preparation, 38-language controls, transcription, language detection, translation, localization, subscription status, workspace launch, and Bring Your Own Model workflows.
