@@ -1,0 +1,87 @@
+name: Mac App Preview tab CTA localization smoke
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'assets/js/mac-preview-tab-cta.js'
+      - 'assets/js/device-ui-i18n-clean.js'
+      - 'assets/js/device-ui-i18n.js'
+      - 'assets/js/device-app-localization-runtime.js'
+      - '.github/workflows/test-mac-preview-tab-cta.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Verify Mac preview click-tabs CTA for all supported languages
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 >/tmp/pg-mac-cta.log 2>&1 &
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          base='http://127.0.0.1:8765/index.html'
+          codes='EN ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM'.split()
+          with sync_playwright() as p:
+            browser=p.chromium.launch(headless=True)
+            for width,height,device in [(1280,900,'desktop'),(390,844,'mobile')]:
+              context=browser.new_context(viewport={'width':width,'height':height},reduced_motion='reduce')
+              page=context.new_page()
+              errors=[]
+              page.on('pageerror',lambda e:errors.append(str(e)))
+              page.goto(base+'?lang=EN',wait_until='domcontentloaded')
+              page.wait_for_function("""() => window._pgMacPreviewTabCTA &&
+                window._pgDeviceUI && window._pgI18n &&
+                document.querySelector('#macTabHint span')?.textContent.includes('Click the tabs to view:')""",timeout=25000)
+              assert page.locator('#gallery-mac.gallery-panel.active').count()==1,(device,'Mac must be default')
+              cta=page.locator('#macTabHint span')
+              assert 'Ask Any AI · Templates · How to Use · History' in cta.text_content(),(device,cta.text_content())
+              assert cta.is_visible(),device
+              assert page.locator('#gallery-mac .mac-reference-tab').count()==4
+              for code in codes:
+                flag='🌐'
+                page.evaluate("([code,flag]) => window._pgI18n.setLang(code,flag)",[code,flag])
+                page.wait_for_function("""code=>{
+                  const c=window._pgMacPreviewTabCTA, el=document.querySelector('#macTabHint span');
+                  const strings=window._pgDeviceUI._strings(code);
+                  return window._pgI18n.curLang()===code &&
+                         document.documentElement.dataset.deviceUiLang===code &&
+                         el && el.textContent===c.text(strings,code) &&
+                         el.textContent.includes(c.invitations[code]);
+                }""",arg=code,timeout=20000)
+                actual=cta.text_content()
+                assert actual.startswith('👇 '),(device,code,actual)
+                assert ' · ' in actual,(device,code,actual)
+                assert len(actual)<280,(device,code,'CTA too long',actual)
+                assert cta.get_attribute('dir')==('rtl' if code in ['AR','HE'] else 'ltr'),(device,code,'direction')
+                # Changing language must not remove the "click the tabs" instruction.
+                page.wait_for_timeout(55)
+                assert actual==cta.text_content(),(device,code,'hint overwritten after localization')
+              page.evaluate("window._pgI18n.setLang('EN','🇺🇸')")
+              page.wait_for_function("document.querySelector('#macTabHint span').textContent.includes('Click the tabs to view:')")
+              for tag,target in [('templates','macScreen-templates'),('howtouse','macScreen-howtouse'),('history','macScreen-history'),('askanyai','macScreen-askanyai')]:
+                page.evaluate("(tag)=>window.switchMacTab(tag)",tag)
+                assert page.locator('#'+target+'.active').count()==1,(device,tag,'tab failed')
+                assert 'Click the tabs to view' in cta.text_content(),(device,tag,'CTA disappeared')
+              metrics=cta.evaluate("""el=>{
+                const r=el.getBoundingClientRect(), parent=el.parentElement.getBoundingClientRect();
+                const css=getComputedStyle(el);
+                return {width:r.width,height:r.height,parent:parent.width,whiteSpace:css.whiteSpace,overflow:css.overflow};
+              }""")
+              assert metrics['width']<=metrics['parent']+4,(device,'CTA wider than viewport',metrics)
+              assert metrics['overflow']!='hidden',(device,'CTA clipped',metrics)
+              assert not errors,(device,'browser JavaScript exceptions',errors[:8])
+              print('PASS',device,'38 languages, click-tabs CTA, Mac preview switching, RTL and no text clipping',flush=True)
+              context.close()
+            browser.close()
+          PY
