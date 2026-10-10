@@ -34,5 +34,34 @@
     if(!hint.hasAttribute('data-mac-preview-cta'))hint.setAttribute('data-mac-preview-cta','');
     return true;
   }
-  window._pgMacPreviewTabCTA={text,apply,currentLang,invitations};
+  // Other device renderers may refresh after the language selector. Keep the
+  // instruction as the single source of truth without re-triggering mutations
+  // when the translated text is already correct.
+  let observed=null;
+  let observer=null;
+  function refresh(){
+    const l=currentLang();
+    const strings=window._pgDeviceUI&&typeof window._pgDeviceUI._strings==='function'
+      ? window._pgDeviceUI._strings(l) : {};
+    apply(strings,l);
+  }
+  function install(){
+    const hint=document.querySelector('#macTabHint span');
+    if(!hint)return;
+    if(observed!==hint){
+      if(observer)observer.disconnect();
+      observer=new MutationObserver(refresh);
+      observer.observe(hint,{characterData:true,childList:true,subtree:true});
+      observed=hint;
+    }
+    refresh();
+  }
+  window._pgMacPreviewTabCTA={text,apply,currentLang,invitations,refresh};
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});
+  else install();
+  window.addEventListener('pg:languagechange',()=>{
+    refresh();
+    setTimeout(refresh,70);
+  });
+  window.addEventListener('pageshow',install);
 })();
