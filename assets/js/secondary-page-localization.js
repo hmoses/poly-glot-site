@@ -13,7 +13,7 @@ function scan(){
 if(!document.body)return;
 var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),node;
 while(node=walker.nextNode()){
- if(original.has(node)||!node.parentElement||node.parentElement.closest("script,style,noscript,pre,code,textarea,svg,#pgGlobalLangDD,#pgGlobalLangPicker,[data-i18n],[data-i18n-html]"))continue;
+ if(original.has(node)||!node.parentElement||node.parentElement.closest("script,style,noscript,pre,code,textarea,svg,#mcp-troubleshooting,#pgGlobalLangDD,#pgGlobalLangPicker,[data-i18n],[data-i18n-html]"))continue;
  var value=norm(node.nodeValue),key=explicit[value]||lookup.get(value);
  if(!key)continue;
  original.set(node,{text:node.nodeValue,key:key});entries.push(node);
@@ -36,7 +36,7 @@ function registerAll(){
   allNodes.push(n);
  }
  document.querySelectorAll("[aria-label],[title],[placeholder],[alt]").forEach(function(el){
-  if(el.closest("#pgGlobalLangDD,#pgGlobalLangPicker,[data-no-translate]"))return;
+  if(el.closest("#mcp-troubleshooting,#pgGlobalLangDD,#pgGlobalLangPicker,[data-no-translate]"))return;
   ["aria-label","title","placeholder","alt"].forEach(function(a){
    var value=el.getAttribute(a),term=norm(value);if(!term)return;
    var key=a+"|"+term;
