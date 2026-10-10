@@ -33,6 +33,26 @@ Not necessarily. A client must support the appropriate MCP transport and authent
 
 See the MCP setup section on the Poly-Glot homepage for the production endpoint and integration overview.
 
+## How to connect Poly-Glot to Claude
+
+For **Claude Pro or Max**, open **Customize → Connectors → + Add → Add custom connector**. Name the connector **Poly-Glot**, enter the production remote MCP URL `https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp`, review authentication, and finish adding it. For Team or Enterprise workspaces, an authorized owner may need to add the connector under organization settings first. In a Claude conversation, select **+ → Connectors** and enable Poly-Glot.
+
+**Official source:** https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp
+
+## How to invoke Poly-Glot MCP tools in Claude
+
+Claude can choose eligible connected MCP tools from a natural-language conversation. Mention the tool by name if you want a specific action, then review any approval prompts. Here are copyable examples:
+
+1. **Read-only template discovery:** "Use Poly-Glot's search_templates tool to find LinkedIn templates for AI productivity."
+2. **Prompt creation (Send action):** "Find an accessible LinkedIn template in Poly-Glot and use build_prompt to create a prompt about AI productivity. Ask for missing template values."
+3. **Comparison preparation (Send action; active trial or Pro):** "Use Poly-Glot's prepare_compare tool to prepare this LinkedIn post prompt for ChatGPT, Claude, and Gemini."
+4. **Subscription status (read-only):** "Use Poly-Glot's get_subscription_status tool to show what features my account can access."
+5. **Open template browser (read-only):** "Use Poly-Glot's open_workspace tool to browse available templates."
+
+**Important distinction:** `search_templates`, `get_template`, `get_language_options`, and `get_subscription_status` are read-only. `build_prompt` and `prepare_compare` are Send actions and require the applicable server-side account entitlement. `prepare_compare` returns a prepared prompt, provider destinations and usage instructions; it **does not** automatically call ChatGPT, Claude or Gemini, does **not** collect their responses, and does **not** guarantee that a graphical workspace opens. A separate `open_workspace` call opens the Poly-Glot template-browser resource where supported by the client, not live multi-model results.
+
+**Illustrative result, not a live execution:** "Poly-Glot prepared your prompt for ChatGPT, Claude, and Gemini. To compare answers, follow each provider's instructions and submit the prompt through an available client workflow."
+
 ## Further information
 
 - [Official product site](https://hmoses.github.io/poly-glot-site/)
@@ -59,7 +79,7 @@ See the MCP setup section on the Poly-Glot homepage for the production endpoint 
 ### Client-specific troubleshooting
 
 - **ChatGPT:** Check whether the Apps/custom MCP configuration is available for your plan/workspace. Configure the production endpoint, approve authorization, scan tools and enable/select the created app in a chat. Official details: https://help.openai.com/en/articles/12584461-developer-mode-and-full-mcp-connectors-in-chatgpt
-- **Claude / Claude Desktop:** Use **Settings → Connectors → Add custom connector** and the remote URL. Enable it in the chat tools menu. Do not put the hosted remote connector into Claude Desktop's local stdio JSON configuration. Official guide: https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp
+- **Claude / Claude Desktop:** On an individual Pro or Max plan, use **Customize → Connectors → + Add → Add custom connector** and the production remote MCP URL. In chat use **+ → Connectors** to enable Poly-Glot. Team and Enterprise connectors may first require an administrator to add the remote connector under organization settings. Do not place this remote endpoint in Claude Desktop's local stdio JSON configuration. Official guide: https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp
 - **Cursor:** Add a remote HTTP MCP server in MCP settings. Enable the server, approve tools, then refresh the tool list.
 - **Goose:** Configure a remote Streamable HTTP MCP extension, enable it and restart the session if discovery is stale.
 - **VS Code:** Use an MCP-capable version/extension, configure an HTTP remote server, confirm workspace trust and tool approval.
