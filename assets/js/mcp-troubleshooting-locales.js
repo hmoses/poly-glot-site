@@ -32,6 +32,9 @@ function setLanguage(code,dict){
  items.forEach(function(item){
   var strings=dict&&dict[item.key],usable=Array.isArray(strings)&&strings.length===item.nodes.length&&strings.every(function(t){return typeof t==="string"&&!!t.trim();});
   if(usable)completed++;
+  // Current Claude setup is rendered by the dedicated 38-language guide.
+  // Keep it in coverage accounting but do not overwrite the current UI path.
+  if(item.key==="clientClaude"&&window._pgClaudeGuide)return;
   item.nodes.forEach(function(node,i){
    var raw=original.get(node);
    if(raw==null)return;
