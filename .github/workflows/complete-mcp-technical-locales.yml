@@ -1,0 +1,104 @@
+name: Fast preservation-first MCP technical locale completion
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/complete-mcp-technical-locales.yml'
+      - 'scripts/complete_mcp_technical_locales_fast.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mcp-technical-locales-fast
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        include:
+          - shard: a
+            languages: ES,FR,DE,IT,PT,NL
+          - shard: b
+            languages: RU,ZH,ZH_TW,JA,KO,AR
+          - shard: c
+            languages: HI,BN,TR,PL,SV,NO
+          - shard: d
+            languages: DA,FI,EL,HE,ID,MS
+          - shard: e
+            languages: TH,VI,UK,CS,RO,HU
+          - shard: f
+            languages: SK,HR,CA,AF,SW,HA,AM
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Translate missing statements while retaining existing localizations
+        env:
+          PG_TECH_LOCALES: ${{ matrix.languages }}
+        run: python scripts/complete_mcp_technical_locales_fast.py
+      - name: Assemble localized shard
+        env:
+          PG_TECH_LOCALES: ${{ matrix.languages }}
+        run: |
+          mkdir -p /tmp/polyglot-fast-locales
+          for code in ${PG_TECH_LOCALES//,/ }; do
+            cp "assets/locales/mcp-technical/${code,,}.json" /tmp/polyglot-fast-locales/
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: polyglot-fast-${{ matrix.shard }}
+          path: /tmp/polyglot-fast-locales/*.json
+          if-no-files-found: error
+  publish:
+    needs: generate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: polyglot-fast-*
+          path: assets/locales/mcp-technical
+          merge-multiple: true
+      - name: Verify every locale and preserve all original key values
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from urllib import request
+          dest=Path('assets/locales/mcp-technical')
+          en=json.loads((dest/'en.json').read_text(encoding='utf8'))['strings']
+          assert len(en)==37
+          languages="ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM".split()
+          assert len(languages)==37
+          for lang in languages:
+              p=dest/(lang.lower()+'.json')
+              assert p.is_file(),lang
+              d=json.loads(p.read_text(encoding='utf8'))
+              assert d.get('language')==lang
+              assert set(d['strings'])==set(en),(lang,'missing key')
+              for key,value in d['strings'].items():
+                  assert isinstance(value,str) and value.strip() and len(value)<1200,(lang,key)
+                  for tool in ('prepare_compare','transcribe_audio','get_language_options','search_templates'):
+                      if tool in en[key]:assert tool in value,(lang,key,tool)
+              assert d['strings']['chatIntro']!=en['chatIntro'],lang
+              print('PASS',lang,len(d['strings']),'localized claims',flush=True)
+          PY
+      - name: Publish approved complete locale files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/locales/mcp-technical
+          if ! git diff --cached --quiet; then
+            git commit -m "Complete 38-language technical facts while preserving 21 existing translated claims"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
