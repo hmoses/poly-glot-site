@@ -1,0 +1,83 @@
+name: MCP connect panel responsive and localization smoke
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'assets/css/mcp-connect-panel.css'
+      - 'assets/js/mcp-setup-localization.js'
+      - 'assets/js/claude-guide-locales.js'
+      - 'assets/js/code-copy.js'
+      - '.github/workflows/test-mcp-panel-layout.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Chromium and Playwright
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Validate desktop, tablet, phone, Copy, and locale switch
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 >/tmp/pg-mcp-layout.log 2>&1 &
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          URL = "http://127.0.0.1:8765/?lang=EN#connect"
+          ENDPOINT = "https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp"
+          with sync_playwright() as p:
+              browser = p.chromium.launch(headless=True)
+              page = browser.new_page()
+              page.on("pageerror", lambda e: print("BROWSER ERROR", str(e), flush=True))
+              for width in (1440, 820, 390):
+                  page.set_viewport_size({"width":width,"height":860})
+                  page.goto(URL, wait_until="domcontentloaded")
+                  page.wait_for_function("window._pgMcpSetupLocale?.ready?.() === true", timeout=25000)
+                  panel = page.locator(".pg-mcp-connect-panel")
+                  panel.scroll_into_view_if_needed()
+                  assert panel.count()==1
+                  assert page.locator(".pg-mcp-connect-step").count()==3
+                  assert page.locator(".pg-mcp-connect-action").count()==2
+                  assert page.locator(".pg-mcp-endpoint-copy code").inner_text().strip()==ENDPOINT
+                  dims = page.evaluate("""() => {
+                    const panel=document.querySelector('.pg-mcp-connect-panel');
+                    const code=panel.querySelector('.pg-mcp-endpoint-copy code');
+                    const btn=panel.querySelector('.pg-mcp-endpoint-copy button');
+                    const pa=panel.getBoundingClientRect(),ca=code.getBoundingClientRect(),ba=btn.getBoundingClientRect();
+                    return {
+                      viewport:innerWidth,panelLeft:pa.left,panelRight:pa.right,
+                      codeLeft:ca.left,codeRight:ca.right,codeTop:ca.top,codeBottom:ca.bottom,
+                      btnLeft:ba.left,btnRight:ba.right,btnTop:ba.top,btnBottom:ba.bottom,
+                      columns:getComputedStyle(panel.querySelector('.pg-mcp-connect-steps')).gridTemplateColumns.split(' ').length
+                    };
+                  }""")
+                  assert dims["panelLeft"]>=-1 and dims["panelRight"]<=dims["viewport"]+1,dims
+                  assert dims["codeLeft"]>=dims["panelLeft"] and dims["codeRight"]<=dims["panelRight"]+1,dims
+                  assert dims["btnLeft"]>=dims["panelLeft"] and dims["btnRight"]<=dims["panelRight"]+1,dims
+                  separated = (dims["codeBottom"]<=dims["btnTop"]+1 or dims["btnBottom"]<=dims["codeTop"]+1 or dims["codeRight"]<=dims["btnLeft"]+1 or dims["btnRight"]<=dims["codeLeft"]+1)
+                  assert separated,dims
+                  assert dims["columns"]==(1 if width==390 else 3),dims
+                  assert "1." not in page.locator(".pg-mcp-connect-step-title").first.inner_text()
+                  print("PASS responsive layout",width,dims["columns"],flush=True)
+              page.set_viewport_size({"width":1280,"height":850})
+              for lang in ("EN","ES","NL","ZH_TW"):
+                  page.goto("http://127.0.0.1:8765/?lang="+lang+"#connect",wait_until="domcontentloaded")
+                  page.wait_for_function("window._pgMcpSetupLocale?.ready?.() === true",timeout=25000)
+                  page.wait_for_function("document.documentElement.dataset.pgClaudeGuideLanguage===new URL(location.href).searchParams.get('lang')",timeout=25000)
+                  heading=page.locator("#pg-mcp-connect-title").inner_text()
+                  label=page.locator("[data-pg-claude-l10n='endpointLabel']").inner_text()
+                  assert heading.strip() and label.strip()
+                  if lang!="EN":
+                      assert heading!="Connect Poly-Glot from supported MCP clients",(lang,heading)
+                      assert label!="Production MCP URL — use this exact HTTPS address",(lang,label)
+                  assert page.locator(".pg-mcp-connect-step-title").count()==3
+                  print("PASS localization",lang,flush=True)
+              browser.close()
+          PY
