@@ -441,7 +441,10 @@ function macOverlay(S,M,c){
  }
 
  var hint=document.querySelector("#macTabHint span");
- if(hint)hint.textContent="👇 "+S.ask+" · "+S.templates+" · "+S.how+" · "+S.history;
+ if(hint){
+   if(window._pgMacPreviewTabCTA)window._pgMacPreviewTabCTA.apply(S);
+   else hint.textContent="👇 Click the tabs to view: "+S.ask+" · "+S.templates+" · "+S.how+" · "+S.history;
+ }
 }
 function syncPlainBadges(S,M){
   roots().forEach(function(root){
