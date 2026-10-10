@@ -65,6 +65,37 @@
       <li data-mcp-tr="quick4"><strong>Run a read-only test first.</strong> Ask your client to use <code>get_language_options</code> or <code>search_templates</code>; then use <code>get_subscription_status</code> to check trial and Pro availability.</li>
     </ol>
   </div>
+<section id="claude-tools-guide-support" data-pg-claude-guide data-no-translate style="margin:0 0 28px;border:1px solid rgba(125,211,252,.24);border-radius:15px;background:linear-gradient(145deg,rgba(125,211,252,.055),rgba(15,23,42,.15));overflow:hidden;">
+ <details style="width:100%;">
+  <summary style="display:flex;align-items:center;gap:12px;padding:20px 23px;cursor:pointer;font-size:1.03rem;font-weight:700;line-height:1.4;color:var(--text);list-style-position:inside;">
+   <span aria-hidden="true" style="color:#7dd3fc;font-size:1.25rem;">⌘</span><span data-pg-claude-l10n="guideTitle">How to invoke Poly-Glot tools in Claude</span>
+   <span aria-hidden="true" style="margin-inline-start:auto;color:#7dd3fc;">⌄</span>
+  </summary>
+  <div style="padding:0 22px 23px;">
+   <p data-pg-claude-l10n="guideIntro" style="font-size:.9rem;line-height:1.7;color:var(--text-muted);margin:3px 0 17px;">In a Claude chat, click + → Connectors, enable Poly-Glot, then ask Claude to use a named tool. Review and approve tool requests when prompted.</p>
+   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:13px;margin-bottom:16px;">
+    <article style="padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--bg-surface);">
+     <h4 data-pg-claude-l10n="browseTitle" style="font-size:.92rem;margin:0 0 12px;color:var(--text);">1. Discover templates (read-only)</h4>
+     <div class="pg-code-snippet" data-pg-code-block style="background:#0d0f1a;border:1px solid var(--border);border-radius:9px;padding:12px;line-height:1.5;font-size:.83rem;color:#7dd3fc;overflow-wrap:anywhere;"><code class="pg-code-snippet-content" data-pg-claude-l10n="browsePrompt">Use Poly-Glot's search_templates tool to find LinkedIn templates for AI productivity.</code><button type="button" class="pg-code-copy" data-pg-copy-button data-no-translate>Copy</button></div>
+    </article>
+    <article style="padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--bg-surface);">
+     <h4 data-pg-claude-l10n="buildTitle" style="font-size:.92rem;margin:0 0 12px;color:var(--text);">2. Build a prompt (Send action)</h4>
+     <div class="pg-code-snippet" data-pg-code-block style="background:#0d0f1a;border:1px solid var(--border);border-radius:9px;padding:12px;line-height:1.5;font-size:.83rem;color:#7dd3fc;overflow-wrap:anywhere;"><code class="pg-code-snippet-content" data-pg-claude-l10n="buildPrompt">Find an accessible LinkedIn template in Poly-Glot and use build_prompt to write about AI productivity.</code><button type="button" class="pg-code-copy" data-pg-copy-button data-no-translate>Copy</button></div>
+    </article>
+    <article style="padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--bg-surface);">
+     <h4 data-pg-claude-l10n="compareTitle" style="font-size:.92rem;margin:0 0 12px;color:var(--text);">3. Prepare a comparison (trial or Pro)</h4>
+     <div class="pg-code-snippet" data-pg-code-block style="background:#0d0f1a;border:1px solid var(--border);border-radius:9px;padding:12px;line-height:1.5;font-size:.83rem;color:#7dd3fc;overflow-wrap:anywhere;"><code class="pg-code-snippet-content" data-pg-claude-l10n="comparePrompt">Use Poly-Glot's prepare_compare tool to prepare this prompt for ChatGPT, Claude, and Gemini.</code><button type="button" class="pg-code-copy" data-pg-copy-button data-no-translate>Copy</button></div>
+    </article>
+   </div>
+   <div style="background:rgba(125,211,252,.055);border-radius:10px;padding:14px 15px;">
+    <p data-pg-claude-l10n="guideNote" style="color:var(--text-muted);font-size:.83rem;line-height:1.65;margin:0 0 9px;">Searching templates is read-only. build_prompt and prepare_compare are Send actions; Compare Mode requires an active trial or Pro. prepare_compare returns a prompt and destinations, not completed AI responses.</p>
+    <strong data-pg-claude-l10n="resultLabel" style="font-size:.84rem;color:var(--text);">Illustrative Claude response — not a live result</strong>
+    <p data-pg-claude-l10n="resultText" style="font-size:.86rem;color:var(--text-muted);line-height:1.6;margin:5px 0 0;">Poly-Glot prepared your prompt for ChatGPT, Claude, and Gemini. It has not opened the workspace or generated any model responses. Use the returned destinations to send the prompt and compare answers.</p>
+   </div>
+   <p style="margin:14px 0 0;font-size:.82rem;"><a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp" target="_blank" rel="noopener noreferrer" data-pg-claude-l10n="docsLabel" style="color:#7dd3fc;text-decoration:underline;">Read Claude's official connector instructions ↗</a></p>
+  </div>
+ </details>
+</section>
   <div class="mcp-client-guide" aria-labelledby="mcp-clients-title">
     <h3 id="mcp-clients-title" data-mcp-tr="clientsTitle">Troubleshooting by MCP client</h3>
     <div class="mcp-client-grid">
@@ -98,5 +129,5 @@
   </div>
   <p class="mcp-trouble-links"><strong data-mcp-tr="supportTitle">Still need help?</strong> <span data-mcp-tr="supportBody">Share your MCP client, transport type, tool name, exact error code and approximate time—never passwords or API keys.</span> <a href="support.html" data-mcp-tr="supportLink">Contact Poly-Glot support →</a> <a href="./#connect" data-mcp-tr="setupLink">View setup and compatibility →</a> <a href="knowledge/mcp-integrations.md" data-mcp-tr="markdownLink">Read the RAG-friendly Markdown guide →</a></p>
 </section>
-<section class="related"><h2>Explore related topics</h2><a href="compare-ai-tools.html">Compare AI Tools with Poly-Glot</a> <a href="multilingual-ai-workspace.html">Multilingual AI Workspace: 38 Languages</a> <a href="prompt-templates.html">AI Prompt Templates and Free vs Pro Access</a> <a href="mcp-integrations.html">Poly-Glot MCP Integrations for AI Clients</a> <a href="privacy-and-pricing.html">Poly-Glot Privacy, Free Trial and Pricing</a></section></main><footer><div class="wrap">© 2026 Poly-Glot AI Workspace · <a href="./">Home</a> · <a href="terms.html">Terms</a></div></footer><script defer src="assets/js/mcp-technical-accuracy.js?v=20261010-tech-v4"></script><script defer src="assets/js/code-copy.js?v=20261010-copy2"></script>
+<section class="related"><h2>Explore related topics</h2><a href="compare-ai-tools.html">Compare AI Tools with Poly-Glot</a> <a href="multilingual-ai-workspace.html">Multilingual AI Workspace: 38 Languages</a> <a href="prompt-templates.html">AI Prompt Templates and Free vs Pro Access</a> <a href="mcp-integrations.html">Poly-Glot MCP Integrations for AI Clients</a> <a href="privacy-and-pricing.html">Poly-Glot Privacy, Free Trial and Pricing</a></section></main><footer><div class="wrap">© 2026 Poly-Glot AI Workspace · <a href="./">Home</a> · <a href="terms.html">Terms</a></div></footer><script defer src="assets/js/mcp-technical-accuracy.js?v=20261010-tech-v4"></script><script defer src="assets/js/claude-guide-locales.js?v=20261010-claude-guide1"></script><script defer src="assets/js/code-copy.js?v=20261010-copy2"></script>
 </body></html>
