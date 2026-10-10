@@ -42,10 +42,10 @@ function apply(lang,bundle){
   guideTitle:phrase("title",isLocalized?string(tr.toolsTitle):localized.EN.title),
   guideIntro:isLocalized?string(tr.quick3)+" "+string(tr.quick4):"In a Claude chat, select + → Connectors, enable Poly-Glot, and ask for a tool by name. Approve access when prompted.",
   browseTitle:isLocalized?string(tr.groupCore):"1. Search templates (read-only)",
-  browsePrompt:isLocalized?(d.mcpEx1||string(tr.quick4)):"Use Poly-Glot's search_templates tool to find LinkedIn templates for AI productivity.",
+  browsePrompt:isLocalized?string(tr.quick4):"Use Poly-Glot's search_templates tool to find LinkedIn templates for AI productivity.",
   buildTitle:isLocalized?string(tr.groupCore)+" · build_prompt":"2. Build a prompt (Send action)",
   buildPrompt:isLocalized?(d.mcpEx1||string(tr.toolsIntro)):"Find an accessible LinkedIn template in Poly-Glot and use build_prompt to write about AI productivity.",
-  compareTitle:isLocalized?string(tr.groupCustom)+" · prepare_compare":"3. Prepare comparison (trial or Pro)",
+  compareTitle:isLocalized?string(tr.toolsTitle)+" · prepare_compare":"3. Prepare comparison (trial or Pro)",
   comparePrompt:isLocalized?"prepare_compare: "+(d.mcpEx2||string(tr.toolsIntro)):"Use Poly-Glot's prepare_compare tool to prepare this prompt for ChatGPT, Claude, and Gemini.",
   guideNote:isLocalized?string(tr.error5Body)+" "+string(tech.compareExample):"Searching templates is read-only. build_prompt and prepare_compare are Send actions; Compare Mode requires an active trial or Pro. prepare_compare returns a prompt and destinations, not completed AI responses.",
   resultLabel:isLocalized?(d.mcpExH||string(tr.toolsTitle)):"Illustrative Claude response — not a live result",
@@ -81,6 +81,19 @@ function apply(lang,bundle){
    [tr.quick2,tr.quick3].map(string).filter(Boolean).join(" "),
    string(tr.setupLink)
   ]:[];
+  // Dedicated reviewed FAQ answers for the Traditional Chinese storefront.
+  if(lang==="ZH_TW"){
+   translated[0]="Poly-Glot 提供託管式 Streamable HTTP MCP（模型上下文協定）伺服器，可搜尋範本、建立提示詞、準備 AI 比較、連接自訂模型（BYOM）、處理語言與音訊，以及查詢訂閱狀態。唯讀查詢不會啟動試用；傳送操作與受限工具會由伺服器驗證存取權限。";
+   translated[1]="目前的 Poly-Glot MCP 伺服器提供 15 種工具：7 種核心工具、4 種自訂模型（BYOM）工具，以及 4 種語言與音訊工具。工具是否出現取決於用戶端的 MCP 支援與權限；部分操作需要經過驗證的有效試用或 Pro 訂閱。";
+   translated[2]="不是所有 AI 助理都能連接。用戶端必須支援遠端 Streamable HTTP MCP，並能完成連線、授權及工具權限設定。";
+   translated[3]="請參閱 Poly-Glot 首頁的 MCP 設定區域，取得正式版端點網址、相容性說明與整合指南。";
+  }
+  if(lang==="ZH"){
+   translated[0]="Poly-Glot 提供托管式 Streamable HTTP MCP（模型上下文协议）服务器，用于搜索模板、构建提示词、准备 AI 比较、自定义模型（BYOM）、语言与音频处理以及查看订阅状态。只读操作不会启动试用；发送操作和受限工具由服务器验证权限。";
+   translated[1]="当前 Poly-Glot MCP 服务器提供 15 个工具：7 个核心工具、4 个自定义模型（BYOM）工具，以及 4 个语言与音频工具。工具是否可用取决于客户端支持和权限；部分操作要求已验证的有效试用或 Pro 订阅。";
+   translated[2]="并非所有 AI 助手都能连接。客户端必须支持远程 Streamable HTTP MCP，并完成身份验证和工具授权。";
+   translated[3]="请查看 Poly-Glot 首页的 MCP 设置区域，获取正式版端点、兼容性和接入说明。";
+  }
   faq.forEach(function(article,index){
    var p=article.querySelector(":scope > p");if(!p)return;
    if(!original.has(p))original.set(p,p.textContent);
