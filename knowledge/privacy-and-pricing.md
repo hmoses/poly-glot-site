@@ -11,19 +11,19 @@ Direct answers about Poly-Glot AI Workspace privacy, third-party providers, free
 
 ## Does Poly-Glot store my conversations?
 
-Poly-Glot describes app history and settings as stored on-device. Prompts you submit are handled by the external AI provider you select, which has its own privacy practices.
+App history and settings can remain on-device. Submitted prompts go to the selected AI provider, while remote MCP requests pass through the Poly-Glot server. The MCP service verifies entitlements and records operational usage metadata; processing providers have their own privacy policies.
 
 ## What happens to voice input?
 
-Voice input uses on-device speech recognition where supported. Review the current product privacy policy for device and service-specific details.
+Voice input can use on-device recognition where supported, with a server-based fallback depending on the device and settings. The MCP `transcribe_audio` tool sends supplied audio to its configured transcription provider and requires active trial or Pro access.
 
 ## How long is the full-access trial?
 
-The product describes a three-day full-access trial, with availability subject to Apple subscription eligibility and current in-app terms.
+The app-managed 3-day full-access trial begins with the first eligible Send for a verified account. It does not automatically convert into a paid Apple subscription. Starting the trial and restoring a paid subscription require appropriate account verification.
 
 ## What happens when the trial ends?
 
-After the trial, 25 featured free templates and one shared single-AI Send every rolling 24 hours remain available at no cost. Compare Mode and Pro templates lock unless you subscribe to Pro.
+After trial expiry, 25 free templates remain available, with one single-AI Send shared across free workflows every rolling 24 hours. Pro templates, Compare Mode, BYOM execution and MCP language-processing tools require an active trial or Pro; the trial itself never starts a paid subscription.
 
 ## Further information
 
