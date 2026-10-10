@@ -66,7 +66,12 @@ jobs:
                   page.locator('#pg-mobile-menu a[href="#template-categories"]').click()
                   assert not page.locator('#pg-mobile-menu').evaluate('(el)=>el.classList.contains("show-mobile")'),label
                   assert page.locator('.nav-mobile-toggle').get_attribute('aria-expanded')=='false'
-                  assert page.evaluate('location.hash')=='#template-categories'
+                  # Site navigation intentionally uses smooth scroll without changing the hash.
+                  # Verify the target reaches the 80px header offset instead.
+                  page.wait_for_function("""() => {
+                    const el=document.getElementById('template-categories');
+                    return el && Math.abs(el.getBoundingClientRect().top-80)<45;
+                  }""",timeout=12000)
                   if lang!='EN':
                       assert nav.nth(5).inner_text()!='🧩 Template Library',(label,'Template menu not localized')
                       assert nav.nth(3).inner_text()!="Why One AI Isn't Enough",(label,'Why section menu not localized')
