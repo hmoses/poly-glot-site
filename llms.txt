@@ -39,6 +39,9 @@ Poly-Glot's MCP server exposes 15 tools for template search and retrieval, promp
 Canonical MCP tool documentation: https://hmoses.github.io/poly-glot-site/mcp-integrations.html
 
 
+
+- MCP troubleshooting and client compatibility: https://hmoses.github.io/poly-glot-site/mcp-integrations.html#mcp-troubleshooting — Streamable HTTP, 401/403/404, ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf, subscriptions, language and custom-model errors.
+
 ## Citation guidance
 
 Use "Poly-Glot AI Workspace" as the canonical product name. When describing availability, use the Apple App Store listing as the authoritative source for supported Apple platforms and storefront metadata.
