@@ -3,7 +3,6 @@ on:
   push:
     branches: [main]
     paths:
-      - '.github/workflows/mcp-technical-locales.yml'
       - 'scripts/build_mcp_technical_locales.py'
   workflow_dispatch:
 permissions:
@@ -73,7 +72,7 @@ jobs:
           from pathlib import Path
           folder=Path('assets/locales/mcp-technical')
           en=json.loads((folder/'en.json').read_text(encoding='utf8'))['strings']
-          assert len(en)==21
+          assert len(en)==37
           codes="ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM".split()
           assert len(codes)==37
           for code in codes:
@@ -86,7 +85,7 @@ jobs:
               assert data['chatIntro']!=en['chatIntro'],(code,"English-only")
               for k,value in data.items():
                   assert isinstance(value,str) and value.strip() and len(value)<1200,(code,k)
-                  for t in ["get_language_options","search_templates","prepare_compare"]:
+                  for t in ["get_language_options","search_templates","prepare_compare","transcribe_audio"]:
                       if t in en[k]:assert t in value,(code,k,"tool name translated")
               assert 'https://' not in ''.join(data.values()),(code,"Unexpected endpoint rewriting")
               print("PASS",code,len(data),"technical claims",flush=True)
