@@ -295,7 +295,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     Connect to Claude
     <span class="badge badge-live">Live Now</span>
   </h2>
-  <p class="section-sub">Works with Claude.ai (Free, Pro, Team, and Enterprise plans).</p>
+  <p class="section-sub" data-pg-tech="claudeAccess">Claude custom connector availability depends on your current Claude plan, app version, and workspace permissions. Use Settings → Connectors when available.</p>
 
   <div class="guide-card">
     <h3>Desktop App (Recommended)</h3>
@@ -365,35 +365,30 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   <h2 class="section-title">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#10a37f"/><text x="12" y="16" text-anchor="middle" font-size="12" font-weight="bold" fill="white">G</text></svg>
     Connect to ChatGPT
-    <span class="badge" style="background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.25);color:#10b981">Available</span>
+    <span class="badge" style="background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.25);color:#10b981">Plan-dependent</span>
   </h2>
-  <p class="section-sub">Connect Poly-Glot to ChatGPT via MCP for direct access to 1,000+ templates.</p>
-
+  <p class="section-sub" data-pg-tech="chatIntro">Connect Poly-Glot as a remote MCP app or custom connector when supported by your ChatGPT account or workspace. Availability and authorization depend on your plan and settings.</p>
   <div class="guide-card">
-    <h3>What to expect</h3>
-    <p style="color: var(--text-muted); margin-bottom: 16px;">When the ChatGPT MCP Apps store launches, you'll be able to:</p>
+    <h3 data-pg-tech="chatHeading">Set up a compatible MCP connection</h3>
     <div class="steps">
-      <div class="step">
-        <div class="step-content">
-          <strong>Find "Poly-Glot AI Workspace" in the ChatGPT app store</strong>
-          <p>Search for "Poly-Glot" or browse the Productivity category.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-content">
-          <strong>Click "Connect" — one click setup</strong>
-          <p>No URL to copy. No configuration needed.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-content">
-          <strong>Start prompting with 1,000+ templates</strong>
-          <p>All tools work identically to the Claude integration.</p>
-        </div>
-      </div>
+      <div class="step"><div class="step-content">
+        <strong data-pg-tech="chatStep1">Check ChatGPT Apps or developer settings</strong>
+        <p data-pg-tech="chatStep1Body">Open the available Apps or custom MCP configuration in ChatGPT. Your plan, workspace, and administrator may restrict this feature.</p>
+      </div></div>
+      <div class="step"><div class="step-content">
+        <strong data-pg-tech="chatStep2">Add the production Streamable HTTP endpoint</strong>
+        <p data-pg-tech="chatStep2Body">When your account supports a custom remote MCP server, supply the exact URL below and complete any required authentication.</p>
+        <div class="code-block">https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp<button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+      </div></div>
+      <div class="step"><div class="step-content">
+        <strong data-pg-tech="chatStep3">Approve tools and verify access</strong>
+        <p data-pg-tech="chatStep3Body">Refresh discovered tools and try get_language_options or search_templates. Sign in with a verified Poly-Glot account for trial activation, Send actions, and subscription access.</p>
+      </div></div>
     </div>
     <div class="info-box">
-      <strong>💡 Want to be notified?</strong> Bookmark this page — we'll update it the moment ChatGPT MCP Apps goes live.
+      <strong data-pg-tech="chatNoteTitle">Client compatibility note</strong>
+      <span data-pg-tech="chatNoteBody">Tool access depends on the client and permissions. The embedded workspace GUI may not render in every MCP client. Poly-Glot does not promise an App Store listing or automatic one-click installation.</span>
+      <a href="mcp-integrations.html#mcp-troubleshooting" data-pg-tech="chatHelpLink">Read current ChatGPT MCP troubleshooting →</a>
     </div>
   </div>
 </section>
@@ -463,7 +458,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       </thead>
       <tbody>
         <tr><td>search_templates</td><td>Search 1,000+ templates by keyword, category, or use case</td></tr>
-        <tr><td>get_template</td><td>Get full template details with all variables</td></tr>
+        <tr><td>get_template</td><td data-pg-tech="toolGetTemplate">Get template fields; paid prompt bodies are returned only when the account is entitled</td></tr>
         <tr><td>build_prompt</td><td>Fill in a template and get a ready-to-use prompt</td></tr>
         <tr><td>prepare_compare</td><td>Stage a prompt across 2–9 AI providers for comparison</td></tr>
         <tr><td>get_language_options</td><td>List all 38 supported languages</td></tr>
@@ -506,7 +501,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <div style="margin-top: 12px;">
       <p style="color: var(--amber); font-size: 0.8rem; margin-bottom: 4px;">CLAUDE (uses prepare_compare)</p>
       <div style="background: rgba(251,191,36,0.06); border-radius: 8px; padding: 16px; color: var(--text-muted); font-size: 0.9rem;">
-        Done! I've opened the Poly-Glot workspace with your prompt staged for <strong style="color:var(--text);">ChatGPT</strong>, <strong style="color:var(--text);">Claude</strong>, and <strong style="color:var(--text);">Gemini</strong>. Click each tab to compare responses.
+        <span data-pg-tech="compareExample">The prepare_compare tool returned one prompt and a plan for ChatGPT, Claude, and Gemini. It does not automatically call those providers or collect their answers; use each selected AI and compare the results yourself.</span>
       </div>
     </div>
   </div>
@@ -518,7 +513,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   <p class="section-sub">Set your UI language, input language, and output language independently. Every template works in every language.</p>
   <div class="guide-card">
     <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 2;">
-      English · Español · Français · Deutsch · Italiano · Português · 日本語 · 한국어 · 中文(简体) · 中文(繁體) · العربية · हिन्दी · বাংলা · Türkçe · Русский · Polski · Nederlands · Svenska · Dansk · Norsk · Suomi · Čeština · Magyar · Română · Українська · Ελληνικά · עברית · ไทย · Tiếng Việt · Bahasa Indonesia · Bahasa Melayu · Català · Hrvatski · Slovenčina · Български · Lietuvių · Latviešu · Eesti
+      English · Español · Français · Deutsch · Italiano · Português · Nederlands · Русский · 简体中文 · 繁體中文 · 日本語 · 한국어 · العربية · हिन्दी · বাংলা · Türkçe · Polski · Svenska · Norsk · Dansk · Suomi · Ελληνικά · עברית · Bahasa Indonesia · Bahasa Melayu · ไทย · Tiếng Việt · Українська · Čeština · Română · Magyar · Slovenčina · Hrvatski · Català · Afrikaans · አማርኛ · Hausa · Kiswahili
     </p>
   </div>
 </section>
@@ -529,17 +524,17 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
   <div class="guide-card">
     <h3>Is it free?</h3>
-    <p style="color: var(--text-muted);">Poly-Glot includes a 3-day full-access trial. After the trial, Compare Mode and Pro templates lock unless you subscribe to Pro. The Free plan retains 25 featured templates and one shared single-AI Send every rolling 24 hours.</p>
+    <p style="color: var(--text-muted);"><span data-pg-tech="freeAnswer">The app-managed 3-day full-access trial starts on the first qualifying Send after account verification and does not automatically turn into a paid subscription. After it expires, 25 free templates and one single-AI Send per rolling 24 hours remain available; Compare Mode, BYOM, language-processing tools, and Pro templates require an active trial or Pro subscription.</span></p>
   </div>
 
   <div class="guide-card">
     <h3>Do I need the iOS/macOS app?</h3>
-    <p style="color: var(--text-muted);">No. MCP works independently — connect directly from Claude or ChatGPT. The app is optional for browsing templates visually and managing your subscription.</p>
+    <p style="color: var(--text-muted);"><span data-pg-tech="appAnswer">You can browse free MCP tools from a compatible client. Starting the trial and using restricted tools requires a verified Poly-Glot account, and Apple subscription purchase or restoration may require the native app. MCP client support and embedded GUI availability vary.</span></p>
   </div>
 
   <div class="guide-card">
     <h3>Is my data private?</h3>
-    <p style="color: var(--text-muted);">Yes. Poly-Glot doesn't store your prompts or conversations. Template data flows directly between you and your AI assistant. See our <a href="privacy.html">Privacy Policy</a>.</p>
+    <p style="color: var(--text-muted);"><span data-pg-tech="privacyAnswer">The MCP server processes tool requests and records operational usage metadata. Custom-model and audio tools can send provided content to the chosen processing provider. Do not include secrets in support requests or public logs. Review the</span> <a href="privacy.html">Privacy Policy</a>.</p>
   </div>
 
   <div class="guide-card">
@@ -552,7 +547,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
 <footer class="footer">
   <div class="container">
-    <p>© 2025 Poly-Glot AI Workspace · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="support.html">Support</a></p>
+    <p>© 2026 Poly-Glot AI Workspace · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="support.html">Support</a></p>
     <p style="margin-top: 8px;">MCP Endpoint: <code style="color: var(--accent); font-family: 'Fira Code', monospace; font-size: 0.8rem;">https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp</code></p>
   </div>
 </footer>
