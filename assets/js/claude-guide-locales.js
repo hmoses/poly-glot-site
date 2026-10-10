@@ -34,7 +34,12 @@ function apply(lang,bundle){
  var isLocalized=lang!=="EN",phrase=function(key,fallback){return base&&base[key]||fallback;};
  // For additional languages, use the existing native locale pack rather than
  // leaving an untranslated English instruction on the page.
- var card1=phrase("introServer",isLocalized?string(tr.intro):localized.EN.introServer);
+ var nativeSetup=window._pgMcpSetupCopy&&window._pgMcpSetupCopy[lang];
+ var nativeSummary=nativeSetup&&typeof nativeSetup[1]==="string"?nativeSetup[1]:"";
+ // Reuse the translated product summary (not the much longer support FAQ)
+ // for the compact connect-panel introduction in all supported languages.
+ var firstSentence=nativeSummary.match(/^[^.!。؟]+[.!。؟]/u);
+ var card1=phrase("introServer",isLocalized?(firstSentence?firstSentence[0]:nativeSummary)||string(tr.intro):localized.EN.introServer);
  var card2=phrase("introClient",isLocalized?string(tr.quick2):localized.EN.introClient);
  var card3=phrase("introConnect",isLocalized?string(tr.quick3):localized.EN.introConnect);
  var x={
