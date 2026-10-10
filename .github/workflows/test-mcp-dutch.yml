@@ -40,6 +40,14 @@ jobs:
                   return root && root.dataset.mcpActiveLanguage==='NL' && root.dataset.mcpTranslation==='complete';
               }""",timeout=20000)
               root=page.locator('#mcp-troubleshooting')
+              print('DEBUG',page.evaluate("""() => ({
+                 lang:window._pgI18n?.curLang?.(),
+                 attrs:{active:document.querySelector('#mcp-troubleshooting')?.dataset.mcpActiveLanguage,
+                        count:document.querySelector('#mcp-troubleshooting')?.dataset.mcpTranslationCount},
+                 samples:Object.fromEntries(['eyebrow','title','quickTitle','copy'].map(k=>
+                     [k,document.querySelector('[data-mcp-tr="'+k+'"]')?.textContent?.trim()])),
+                 faq:document.querySelectorAll('main article h2')[2]?.textContent
+              })"""),flush=True)
               assert root.locator('#mcp-troubleshooting-title').inner_text().startswith('Problemen met Poly-Glot MCP-verbindingen')
               assert root.locator('[data-mcp-tr="eyebrow"]').inner_text()=='Hulp bij MCP-verbindingen'
               assert root.locator('[data-mcp-tr="quickTitle"]').inner_text()=='Begin met deze vier controles'
