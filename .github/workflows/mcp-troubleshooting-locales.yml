@@ -1,0 +1,97 @@
+name: Translate and publish the MCP troubleshooting guide in 38 languages
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/mcp-troubleshooting-locales.yml'
+      - 'scripts/build_mcp_troubleshooting_locales.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mcp-troubleshooting-38
+  cancel-in-progress: false
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        code: [ES,FR,DE,IT,PT,NL,RU,ZH,ZH_TW,JA,KO,AR,HI,BN,TR,PL,SV,NO,DA,FI,EL,HE,ID,MS,TH,VI,UK,CS,RO,HU,SK,HR,CA,AF,SW,HA,AM]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Install static localization tools
+        run: python -m pip install --disable-pip-version-check beautifulsoup4 deep-translator
+      - name: Translate every MCP error and client instruction
+        env:
+          PG_MCP_LOCALE: ${{ matrix.code }}
+        run: python scripts/build_mcp_troubleshooting_locales.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mcp-troubleshooting-${{ matrix.code }}
+          path: assets/locales/mcp-troubleshooting/*.json
+          retention-days: 7
+  publish:
+    needs: translate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: mcp-troubleshooting-*
+          path: assets/locales/mcp-troubleshooting
+          merge-multiple: true
+      - name: Validate all 38 languages preserve source structure
+        run: |
+          python -m pip install --disable-pip-version-check beautifulsoup4
+          python - <<'PY'
+          from pathlib import Path
+          from bs4 import BeautifulSoup, NavigableString, Comment
+          import json
+          html=BeautifulSoup(Path('mcp-integrations.html').read_text(encoding='utf-8'),'html.parser')
+          source={}
+          for element in html.select('#mcp-troubleshooting [data-mcp-tr]'):
+              key=element['data-mcp-tr']
+              parts=[]
+              for node in element.descendants:
+                  if not isinstance(node,NavigableString) or isinstance(node,Comment):continue
+                  if any(x.name in {'code','pre','script','style','textarea','svg'} for x in node.parents):continue
+                  txt=' '.join(str(node).split())
+                  if txt:parts.append(txt)
+              if key in source:assert source[key]==parts,f'Duplicate differing label: {key}'
+              else:source[key]=parts
+          assert len(source)>=40
+          langs="ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM".split()
+          assert len(langs)==37
+          for lang in langs:
+              path=Path('assets/locales/mcp-troubleshooting')/(lang.lower()+'.json')
+              assert path.exists(),f'Missing {lang} catalog'
+              data=json.loads(path.read_text(encoding='utf-8'))
+              assert data['language']==lang
+              translations=data['strings']
+              assert set(translations)==set(source),f'{lang} missing keys'
+              assert all(isinstance(translations[k],list) and len(translations[k])==len(v) and all(isinstance(seg,str) and seg.strip() for seg in translations[k]) for k,v in source.items()),f'{lang} incomplete'
+              assert translations['title'][0]!=source['title'][0],f'{lang} untranslated title'
+              print(lang, "PASS",len(translations),'blocks')
+          print('PASS: crawlable English plus 37 complete translated static catalogs')
+          PY
+          node --check assets/js/mcp-troubleshooting-locales.js
+          node --check assets/js/section-motion.js
+      - name: Publish verified translations to main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/locales/mcp-troubleshooting/
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish complete MCP troubleshooting in 38 languages"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
