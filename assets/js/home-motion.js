@@ -8,7 +8,9 @@ const sections=unique('body > section,main > section,.section,#knowledge-center'
 const cards=unique('.pg-mcp-motion-card,#connect a[href*="mcp.so/servers"],#connect a[href*="glama.ai/mcp"],#connect a[href*="huggingface.co/spaces"],.feature-card,.template-card,.pricing-card,.faq-item,.guide-card,main.wrap article,.duo-exact-figure,.inline-response-row,.inline-prompt-block,.ai-provider-badge,.inline-provider-row,.trust-item,.category-card,.featured-template-card,.category-tile,.pg-comparison-panel,.all-categories-head,.template-categories-head,.demo-device-card,.cross-device-access,.platform-pill,.gallery-grid > .gallery-item,.gallery-grid > .gallery-card,.gallery-grid > .gallery-phone,.gallery-grid > .gallery-ipad,.gallery-grid > .gallery-mac');
 const headings=unique('.section-title,.section-eyebrow,.section-sub,main.wrap > h1,main.wrap > .lead,#knowledge-center h2,#iphone-duo .duo-kicker,#iphone-duo #duo-title,#iphone-duo .duo-copy,#faq .section-title,#faq .section-eyebrow,#faq .section-sub');
 const safe=e=>!e.closest('.nav,.nav-links,.modal,[role="dialog"],.phone-screen,.pg-phone-screen,.hero-phone-mock');
-const S=sections.filter(safe),C=cards.filter(safe),H=headings.filter(safe);
+// Each Compare Mode response card has its own entrance controller.
+ // Exclude the rows AND their nested provider badges from global card parallax.
+const S=sections.filter(safe),C=cards.filter(safe).filter(e=>!e.closest('#apps .inline-response-list')),H=headings.filter(safe);
 const faqItems=unique('#faq .faq-item');
 const mcpTools=unique('#connect .pg-mcp-tools-grid > .pg-mcp-motion-card');
 // Pricing comparisons use a dedicated, independent entrance reveal.
