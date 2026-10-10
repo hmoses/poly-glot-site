@@ -46,15 +46,19 @@ jobs:
                        el.dataset.mcpTranslation === (lang==="EN"?"english":"complete");
                   }''',timeout=19000)
                   assert guide.locator('[data-mcp-tr="title"]').count()==1
+                  assert guide.get_attribute('data-mcp-translation-count')=='46', (lang,guide.get_attribute('data-mcp-translation-count'))
+                  assert guide.locator('[data-mcp-tr="quick1"] strong').count()==1
+                  assert guide.locator('[data-mcp-tr="quick4"] code').count()==3
+                  assert guide.locator('[data-mcp-tr="error7Body"] code').count()==4
                   assert guide.locator('.mcp-client-grid article').count()==6
                   assert guide.locator('.mcp-error-guide details').count()==8
                   assert guide.locator('a[href*="support.claude.com"]').count()==1
                   assert guide.locator('code').count()>=15
                   assert guide.locator('strong').count()>=4
-                  assert guide.locator('#pgMcpTroubleEndpoint').inner_text().endswith('/mcp')
+                  assert guide.locator('#pgMcpTroubleEndpoint').text_content().strip().endswith('/mcp')
                   assert guide.get_attribute('dir')==('rtl' if lang in ('AR','HE') else 'ltr')
                   if lang!='EN':
-                      assert 'Troubleshooting Poly-Glot MCP connections, authentication and tools' not in guide.locator('#mcp-troubleshooting-title').inner_text()
+                      assert 'Troubleshooting Poly-Glot MCP connections, authentication and tools' not in guide.locator('#mcp-troubleshooting-title').text_content().strip()
                   if lang in ('EN','NL','AR','JA'):
                       assert guide.locator('.mcp-client-grid article.pg-motion-card').count()==6,lang
                       assert guide.locator('.mcp-error-guide details.pg-motion-card').count()==8,lang
@@ -62,11 +66,11 @@ jobs:
               # A genuine in-page language switch, not just URL navigation
               page.goto(source+'?lang=EN',wait_until='domcontentloaded')
               page.evaluate("window._pgI18n.setLang('NL','🇳🇱')")
-              page.wait_for_function('document.querySelector("#mcp-troubleshooting").dataset.mcpActiveLanguage==="NL"')
+              page.wait_for_function('document.querySelector("#mcp-troubleshooting").dataset.mcpActiveLanguage==="NL" && document.querySelector("#mcp-troubleshooting").dataset.mcpTranslation==="complete"')
               assert page.locator('#mcp-troubleshooting').get_attribute('data-mcp-translation')=='complete'
               page.evaluate("window._pgI18n.setLang('EN','🇺🇸')")
               page.wait_for_function('document.querySelector("#mcp-troubleshooting").dataset.mcpActiveLanguage==="EN"')
-              assert 'Troubleshooting Poly-Glot MCP' in page.locator('#mcp-troubleshooting-title').inner_text()
+              assert 'Troubleshooting Poly-Glot MCP' in page.locator('#mcp-troubleshooting-title').text_content().strip()
               assert not errors,'Browser JavaScript errors: '+str(errors[:8])
               browser.close()
           PY
