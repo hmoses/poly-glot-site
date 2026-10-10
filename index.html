@@ -4703,10 +4703,10 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
           <span data-i18n="mcpClBadge" style="display:inline-block;padding:2px 10px;border-radius:20px;font-size:0.7rem;font-weight:600;text-transform:uppercase;background:rgba(16,185,129,0.15);color:#10b981;">Live Now</span>
         </div>
         <ol data-i18n-html="mcpClSteps" style="color:var(--text-muted);font-size:0.9rem;padding-left:20px;line-height:2;">
-          <li>Open <strong style="color:var(--text);">Claude Settings → MCP Connectors</strong></li>
-          <li>Click <strong style="color:var(--text);">Add Connector</strong></li>
-          <li>Paste the URL below</li>
-          <li>Name it <strong style="color:var(--text);">"Poly-Glot"</strong> → Done!</li>
+          <li>Open <strong style="color:var(--text);">Customize → Connectors</strong> in Claude.</li>
+          <li>Click <strong style="color:var(--text);">+ Add → Add custom connector</strong>.</li>
+          <li>Enter <strong style="color:var(--text);">Poly-Glot</strong> and paste the URL below; continue and finish the setup.</li>
+          <li>In your Claude chat, select <strong style="color:var(--text);">+ → Connectors</strong> to enable Poly-Glot and approve tools.</li>
         </ol>
         <div class="pg-code-snippet" data-pg-code-block style="background:#0d0f1a;border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-top:12px;font-family:'Fira Code',monospace;font-size:0.78rem;color:#7dd3fc;line-height:1.5;">
           <code class="pg-code-snippet-content" data-no-translate>https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp</code>
@@ -4733,6 +4733,38 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
       </div>
 
     </div>
+
+<section id="claude-tools-guide" data-pg-claude-guide data-no-translate style="margin:0 0 28px;border:1px solid rgba(125,211,252,.24);border-radius:15px;background:linear-gradient(145deg,rgba(125,211,252,.055),rgba(15,23,42,.15));overflow:hidden;">
+ <details style="width:100%;">
+  <summary style="display:flex;align-items:center;gap:12px;padding:20px 23px;cursor:pointer;font-size:1.03rem;font-weight:700;line-height:1.4;color:var(--text);list-style-position:inside;">
+   <span aria-hidden="true" style="color:#7dd3fc;font-size:1.25rem;">⌘</span><span data-pg-claude-l10n="guideTitle">How to invoke Poly-Glot tools in Claude</span>
+   <span aria-hidden="true" style="margin-inline-start:auto;color:#7dd3fc;">⌄</span>
+  </summary>
+  <div style="padding:0 22px 23px;">
+   <p data-pg-claude-l10n="guideIntro" style="font-size:.9rem;line-height:1.7;color:var(--text-muted);margin:3px 0 17px;">In a Claude chat, click + → Connectors, enable Poly-Glot, then ask Claude to use a named tool. Review and approve tool requests when prompted.</p>
+   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:13px;margin-bottom:16px;">
+    <article style="padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--bg-surface);">
+     <h4 data-pg-claude-l10n="browseTitle" style="font-size:.92rem;margin:0 0 12px;color:var(--text);">1. Discover templates (read-only)</h4>
+     <div class="pg-code-snippet" data-pg-code-block style="background:#0d0f1a;border:1px solid var(--border);border-radius:9px;padding:12px;line-height:1.5;font-size:.83rem;color:#7dd3fc;overflow-wrap:anywhere;"><code class="pg-code-snippet-content" data-pg-claude-l10n="browsePrompt">Use Poly-Glot's search_templates tool to find LinkedIn templates for AI productivity.</code><button type="button" class="pg-code-copy" data-pg-copy-button data-no-translate>Copy</button></div>
+    </article>
+    <article style="padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--bg-surface);">
+     <h4 data-pg-claude-l10n="buildTitle" style="font-size:.92rem;margin:0 0 12px;color:var(--text);">2. Build a prompt (Send action)</h4>
+     <div class="pg-code-snippet" data-pg-code-block style="background:#0d0f1a;border:1px solid var(--border);border-radius:9px;padding:12px;line-height:1.5;font-size:.83rem;color:#7dd3fc;overflow-wrap:anywhere;"><code class="pg-code-snippet-content" data-pg-claude-l10n="buildPrompt">Find an accessible LinkedIn template in Poly-Glot and use build_prompt to write about AI productivity.</code><button type="button" class="pg-code-copy" data-pg-copy-button data-no-translate>Copy</button></div>
+    </article>
+    <article style="padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--bg-surface);">
+     <h4 data-pg-claude-l10n="compareTitle" style="font-size:.92rem;margin:0 0 12px;color:var(--text);">3. Prepare a comparison (trial or Pro)</h4>
+     <div class="pg-code-snippet" data-pg-code-block style="background:#0d0f1a;border:1px solid var(--border);border-radius:9px;padding:12px;line-height:1.5;font-size:.83rem;color:#7dd3fc;overflow-wrap:anywhere;"><code class="pg-code-snippet-content" data-pg-claude-l10n="comparePrompt">Use Poly-Glot's prepare_compare tool to prepare this prompt for ChatGPT, Claude, and Gemini.</code><button type="button" class="pg-code-copy" data-pg-copy-button data-no-translate>Copy</button></div>
+    </article>
+   </div>
+   <div style="background:rgba(125,211,252,.055);border-radius:10px;padding:14px 15px;">
+    <p data-pg-claude-l10n="guideNote" style="color:var(--text-muted);font-size:.83rem;line-height:1.65;margin:0 0 9px;">Searching templates is read-only. build_prompt and prepare_compare are Send actions; Compare Mode requires an active trial or Pro. prepare_compare returns a prompt and destinations, not completed AI responses.</p>
+    <strong data-pg-claude-l10n="resultLabel" style="font-size:.84rem;color:var(--text);">Illustrative Claude response — not a live result</strong>
+    <p data-pg-claude-l10n="resultText" style="font-size:.86rem;color:var(--text-muted);line-height:1.6;margin:5px 0 0;">Poly-Glot prepared your prompt for ChatGPT, Claude, and Gemini. It has not opened the workspace or generated any model responses. Use the returned destinations to send the prompt and compare answers.</p>
+   </div>
+   <p style="margin:14px 0 0;font-size:.82rem;"><a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp" target="_blank" rel="noopener noreferrer" data-pg-claude-l10n="docsLabel" style="color:#7dd3fc;text-decoration:underline;">Read Claude's official connector instructions ↗</a></p>
+  </div>
+ </details>
+</section>
 
     <!-- Tools Grid -->
     <h4 style="margin-bottom:16px;" data-i18n="mcpToolsH">15 Tools Available</h4>
@@ -4799,31 +4831,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
       </div>
     </div>
 
-    <!-- Example conversation -->
-    <div class="pg-mcp-motion-card" style="background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:24px 28px;">
-      <h4 style="margin-bottom:16px;" data-i18n="mcpExH">💬 Example Conversation</h4>
-      <div style="margin-bottom:16px;">
-        <p style="color:var(--text-muted);font-size:0.75rem;margin-bottom:2px;">YOU</p>
-        <p style="font-size:0.95rem;font-weight:500;" data-i18n="mcpEx1">"Search Poly-Glot for LinkedIn templates and build me one about AI productivity"</p>
-      </div>
-      <div style="margin-bottom:16px;">
-        <p style="color:#fbbf24;font-size:0.75rem;margin-bottom:2px;">CLAUDE → search_templates → get_template → build_prompt</p>
-        <div style="background:rgba(251,191,36,0.06);border-radius:8px;padding:14px;color:var(--text-muted);font-size:0.9rem;line-height:1.6;">
-          I found the <strong style="color:var(--text)">LinkedIn Post Writer</strong> template. Here's your prompt:<br><br>
-          <em>"Write a LinkedIn post about AI productivity tools. Professional but conversational tone. Include a CTA to comment with their favorite AI tool. Under 200 words."</em>
-        </div>
-      </div>
-      <div>
-        <p style="color:var(--text-muted);font-size:0.75rem;margin-bottom:2px;">YOU</p>
-        <p style="font-size:0.95rem;font-weight:500;" data-i18n="mcpEx2">"Now compare that across ChatGPT, Claude, and Gemini"</p>
-      </div>
-      <div style="margin-top:8px;">
-        <p style="color:#fbbf24;font-size:0.75rem;margin-bottom:2px;">CLAUDE → prepare_compare</p>
-        <div style="background:rgba(251,191,36,0.06);border-radius:8px;padding:14px;color:var(--text-muted);font-size:0.9rem;">
-          Done! I've opened the Poly-Glot workspace with your prompt staged for <strong style="color:var(--text)">ChatGPT</strong>, <strong style="color:var(--text)">Claude</strong>, and <strong style="color:var(--text)">Gemini</strong>. Click each tab to compare responses.
-        </div>
-      </div>
-    </div>
+
 
   </div>
 </section>
@@ -7279,6 +7287,7 @@ function _demoStart() {
 <script src="assets/js/site-copy-localization.js?v=2026-10-08-copy-2"></script>
 <script src="assets/js/site-mcp-setup-reuse.js?v=2026-10-08-reuse"></script>
 <script src="assets/js/site-mcp-example-translations.js?v=2026-10-08-examples"></script>
+<script src="assets/js/claude-guide-locales.js?v=20261010-claude-guide1"></script>
 <script src="assets/js/site-footer-copyright-2026.js?v=2026-10-08-year"></script>
 <!-- Translate remaining exact-match plain-text nodes across all 38 locales. -->
 <script src="assets/js/site-copy-dictionary-fallback.js?v=2026-10-08-audit1"></script>
