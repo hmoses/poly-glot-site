@@ -1,0 +1,106 @@
+/* Shared code-copy UI: buttons have their own grid cell, never cover code. */
+.pg-code-snippet,
+.code-block.pg-code-snippet {
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) auto !important;
+  align-items:start;
+  column-gap:14px;
+  row-gap:10px;
+  min-width:0;
+  max-width:100%;
+  overflow:visible !important;
+  word-break:normal !important;
+  box-sizing:border-box;
+}
+.pg-code-snippet-content {
+  display:block;
+  min-width:0;
+  max-width:100%;
+  align-self:center;
+  overflow-wrap:anywhere;
+  word-wrap:break-word;
+  word-break:break-word;
+  white-space:pre-wrap;
+  line-height:1.65;
+  user-select:text;
+}
+.pg-code-snippet-content > pre,
+.pg-code-snippet > pre {
+  margin:0 !important;
+  min-width:0 !important;
+  max-width:100% !important;
+  white-space:pre-wrap !important;
+  overflow-wrap:anywhere !important;
+  word-break:break-word !important;
+  overflow-x:auto !important;
+  font:inherit;
+}
+.pg-code-snippet .pg-code-copy,
+.code-block.pg-code-snippet .copy-btn {
+  position:static !important;
+  inset:auto !important;
+  transform:none !important;
+  float:none !important;
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+  justify-self:end;
+  gap:5px;
+  flex:0 0 auto;
+  min-width:54px;
+  max-width:100%;
+  margin:0 !important;
+  padding:7px 11px !important;
+  border:1px solid rgba(125,211,252,.22) !important;
+  border-radius:7px !important;
+  background:rgba(125,211,252,.13) !important;
+  color:#b7eaff !important;
+  font:600 12px/1.25 system-ui,-apple-system,sans-serif !important;
+  white-space:nowrap;
+  cursor:pointer;
+  box-sizing:border-box;
+}
+.pg-code-copy:hover,
+.code-block.pg-code-snippet .copy-btn:hover {background:rgba(125,211,252,.25) !important}
+.pg-code-copy:focus-visible,
+.code-block.pg-code-snippet .copy-btn:focus-visible {
+  outline:2px solid #7dd3fc;
+  outline-offset:3px;
+}
+.pg-code-copy[data-pg-copy-state="copied"] {color:#34d399 !important;border-color:rgba(52,211,153,.45) !important}
+.pg-code-copy[data-pg-copy-state="error"] {color:#fca5a5 !important;border-color:rgba(252,165,165,.45) !important}
+.pg-tool-code-row {
+  display:inline-flex;
+  max-width:100%;
+  align-items:center;
+  justify-content:flex-start;
+  gap:8px;
+  flex-wrap:wrap;
+  vertical-align:middle;
+}
+.pg-tool-code-row code {overflow-wrap:anywhere;max-width:100%;font-family:ui-monospace,Menlo,Consolas,monospace}
+.pg-tool-code-row .pg-code-copy {
+  border:1px solid rgba(125,211,252,.20);
+  background:rgba(125,211,252,.08);
+  color:#a8dfff;
+  font:600 10px/1.4 system-ui,-apple-system,sans-serif;
+  border-radius:6px;
+  padding:3px 6px;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.pg-tool-code-row .pg-code-copy:hover {background:rgba(125,211,252,.21)}
+.pg-tool-code-row .pg-code-copy:focus-visible {outline:2px solid #7dd3fc;outline-offset:2px}
+.pg-tool-code-row .pg-code-copy[data-pg-copy-state="copied"] {color:#34d399}
+@media(max-width:600px) {
+  .pg-code-snippet,.code-block.pg-code-snippet {
+    grid-template-columns:minmax(0,1fr) !important;
+  }
+  .pg-code-snippet-content {grid-column:1;grid-row:2;}
+  .pg-code-snippet .pg-code-copy,
+  .code-block.pg-code-snippet .copy-btn {
+    grid-column:1;
+    grid-row:1;
+    justify-self:end;
+  }
+}
