@@ -1,0 +1,32 @@
+name: Fast MCP page localization regression
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/test_mcp_page_complete.py'
+      - 'mcp-integrations.html'
+      - 'assets/js/mcp-technical-accuracy.js'
+      - 'assets/js/claude-guide-locales.js'
+      - 'assets/js/secondary-page-localization.js'
+      - 'assets/locales/mcp-technical/**'
+      - '.github/workflows/mcp-page-fast-locale-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Check critical locales in real browser
+        env:
+          PG_LANG_CODES: EN,ES,NL,ZH_TW,AR
+        run: python scripts/test_mcp_page_complete.py
