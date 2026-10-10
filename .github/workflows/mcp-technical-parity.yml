@@ -61,7 +61,7 @@ jobs:
           assert.equal(Object.keys(en).length,37);
           for(const page of ['index.html','connect.html','privacy.html','terms.html','privacy-and-pricing.html','compare-ai-tools.html','prompt-templates.html','multilingual-ai-workspace.html','mcp-integrations.html']){
             const html=fs.readFileSync(page,'utf8');
-            assert.ok(html.includes('assets/js/mcp-technical-accuracy.js?v=20261010-tech-v3'),page+' missing current localized corrections');
+            assert.ok(html.includes('assets/js/mcp-technical-accuracy.js?v=20261010-tech-v4'),page+' missing current localized corrections');
           }
           for(const [key,term] of [['termsPrivacy','operational metadata'],['termsCompare','does not itself'],['pricingTrial','does not automatically'],['mcpCount','15 tools'],['templatesPro','verified account'],['languagesCount','38 named']]){
             assert.ok(en[key]?.includes(term),'Missing verified technical claim '+key);
