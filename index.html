@@ -2928,6 +2928,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 <script defer src="assets/js/discovery-analytics.js?v=20261009-1"></script>
 <link rel="stylesheet" href="assets/css/code-copy.css?v=20261010-copy2">
 <link rel="stylesheet" href="assets/css/mcp-connect-panel.css?v=20261010-connect-redesign1">
+<link rel="stylesheet" href="assets/css/mcp-subscribe.css?v=20261010-sub1">
 </head>
 <body>
 
@@ -4628,6 +4629,50 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
       <h4 style="margin-bottom:8px;" data-i18n="mcpWhatH">What is MCP?</h4>
       <p style="color:var(--text-muted);font-size:0.95rem;" data-i18n="mcpWhatP" data-pg-tech="homeMcp">MCP (Model Context Protocol) lets compatible AI assistants connect to external tools. Poly-Glot exposes template discovery, prompt building, and comparison preparation. Preparing a comparison does not automatically contact the selected AI providers or retrieve their answers.</p>
     </div>
+
+    <!-- Accessible, localized MCP subscription path. Apple handles purchases; MCP only verifies linked entitlements. -->
+    <section id="pg-mcp-subscribe" aria-labelledby="pg-mcp-subscribe-heading" itemscope itemtype="https://schema.org/HowTo">
+      <div class="pg-sub-top">
+        <div>
+          <p class="pg-sub-kicker" data-pg-sub-t="eyebrow">APPLE SUBSCRIPTION · MCP ACCESS</p>
+          <h3 id="pg-mcp-subscribe-heading" itemprop="name" data-pg-sub-t="heading">How to Subscribe to Poly-Glot MCP</h3>
+          <p class="pg-sub-lead" itemprop="description" data-pg-sub-t="intro">Subscribe to Pro in the Apple app, then connect your Poly-Glot account in a compatible MCP client. No separate MCP purchase.</p>
+        </div>
+        <div class="pg-sub-plans" aria-label="Poly-Glot Pro subscription plans">
+          <span class="pg-sub-plan"><span data-i18n="prTier2">Pro Monthly</span> <strong>$9.99</strong></span>
+          <span class="pg-sub-plan"><span data-i18n="prTier3">Pro Yearly</span> <strong>$79.99</strong></span>
+        </div>
+      </div>
+      <div class="pg-sub-accordions">
+        <details name="pg-mcp-subscription-steps" open itemprop="step" itemscope itemtype="https://schema.org/HowToStep">
+          <summary><span class="pg-sub-number" aria-hidden="true">01</span><span itemprop="name" data-pg-sub-t="step1">Download the Poly-Glot app</span><span class="pg-sub-caret" aria-hidden="true">⌄</span></summary>
+          <div class="pg-sub-detail" itemprop="text"><p data-i18n="ssSub">Poly-Glot AI Workspace runs natively on Mac, iPhone &amp; iPad. Available now on the App Store.</p></div>
+        </details>
+        <details name="pg-mcp-subscription-steps" itemprop="step" itemscope itemtype="https://schema.org/HowToStep">
+          <summary><span class="pg-sub-number" aria-hidden="true">02</span><span itemprop="name" data-pg-sub-t="step2">Choose Pro and subscribe with Apple</span><span class="pg-sub-caret" aria-hidden="true">⌄</span></summary>
+          <div class="pg-sub-detail" itemprop="text">
+            <p data-pg-sub-t="purchase">In Poly-Glot, open the Pro subscription screen, select Monthly or Annual, and confirm the in-app purchase with Apple.</p>
+            <p data-i18n="prSub">Try everything free for 3 days. Pro unlocks unlimited access after the trial.</p>
+          </div>
+        </details>
+        <details name="pg-mcp-subscription-steps" itemprop="step" itemscope itemtype="https://schema.org/HowToStep">
+          <summary><span class="pg-sub-number" aria-hidden="true">03</span><span itemprop="name" data-pg-sub-t="step3">Connect and link your MCP account</span><span class="pg-sub-caret" aria-hidden="true">⌄</span></summary>
+          <div class="pg-sub-detail" itemprop="text"><p data-pg-sub-t="link">Add the Poly-Glot server in a compatible MCP client and complete its available sign-in or account-linking steps. Use the same Poly-Glot account associated with your verified Apple purchase.</p></div>
+        </details>
+        <details name="pg-mcp-subscription-steps" itemprop="step" itemscope itemtype="https://schema.org/HowToStep">
+          <summary><span class="pg-sub-number" aria-hidden="true">04</span><span itemprop="name" data-pg-sub-t="step4">Verify your Pro access</span><span class="pg-sub-caret" aria-hidden="true">⌄</span></summary>
+          <div class="pg-sub-detail" itemprop="text">
+            <p data-pg-sub-t="verify">Ask your MCP client to run the read-only tool below. If Pro is not recognized, check account linking and restore purchases in the Apple app.</p>
+            <code translate="no">get_subscription_status</code>
+          </div>
+        </details>
+      </div>
+      <div class="pg-sub-footer">
+        <a class="pg-sub-cta" href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12" target="_blank" rel="noopener noreferrer" data-app-store-auto="true"><span aria-hidden="true"></span><span data-i18n="prCTA1">Download Free</span> <span aria-hidden="true">↗</span></a>
+        <a class="pg-sub-setup" href="mcp-integrations.html#mcp-troubleshooting" data-pg-sub-t="guide">MCP setup &amp; troubleshooting ↗</a>
+      </div>
+      <p class="pg-sub-disclosure" data-i18n="fq6a">Your 3-day trial starts with the first qualifying Send and never automatically converts to a paid subscription. A verified Apple purchase is required for Pro. Free tools remain available under the current free limits.</p>
+    </section>
 
     <!-- Live MCP Listings -->
     <div id="mcp-listings" style="margin-bottom:40px;">
@@ -13807,5 +13852,6 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
 </script>
 <script defer src="assets/js/mcp-technical-accuracy.js?v=20261010-tech-v4"></script>
 <script defer src="assets/js/code-copy.js?v=20261010-copy2"></script>
+<script defer src="assets/js/mcp-subscribe-locales.js?v=20261010-sub1"></script>
 </body>
 </html>
