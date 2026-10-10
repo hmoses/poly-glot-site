@@ -25,10 +25,13 @@
     const hint=document.querySelector('#macTabHint span');
     if(!hint)return false;
     const lang=code&&invitations[code]?code:currentLang();
-    hint.textContent=text(strings,lang);
-    hint.setAttribute('lang',lang==='ZH_TW'?'zh-Hant':lang.toLowerCase());
-    hint.setAttribute('dir',isRTL(lang)?'rtl':'ltr');
-    hint.setAttribute('data-mac-preview-cta','');
+    const value=text(strings,lang);
+    if(hint.textContent!==value)hint.textContent=value;
+    const htmlLang=lang==='ZH_TW'?'zh-Hant':lang.toLowerCase();
+    if(hint.getAttribute('lang')!==htmlLang)hint.setAttribute('lang',htmlLang);
+    const direction=isRTL(lang)?'rtl':'ltr';
+    if(hint.getAttribute('dir')!==direction)hint.setAttribute('dir',direction);
+    if(!hint.hasAttribute('data-mac-preview-cta'))hint.setAttribute('data-mac-preview-cta','');
     return true;
   }
   window._pgMacPreviewTabCTA={text,apply,currentLang,invitations};
