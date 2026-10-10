@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build static, reviewed-for-structure MCP technical copy for supported languages.
+"""Build static, reviewed-for-structure MCP technical copy for supported languages (37 truth claims).
 Translation occurs only at build time, never with visitor data. Fail closed on
 missing or degraded translations, and preserve technical identifiers.
 """
@@ -32,7 +32,7 @@ def translate(text,code):
             words=re.findall(r"\w+",result.casefold())
             if len(words)>60 and len(set(words))/len(words)<.14:raise ValueError("Degenerate repeated words")
             # Never allow a technical function name to be renamed in public docs.
-            for name in ["get_language_options","search_templates","prepare_compare"]:
+            for name in ["get_language_options","search_templates","prepare_compare","transcribe_audio"]:
                 if name in text and name not in result:
                     result+=" ("+name+")"
             if "https://" in text and "https://" not in result:raise ValueError("URL modified")
