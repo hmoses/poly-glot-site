@@ -41,9 +41,17 @@ function load(code){
   if(!resp.ok)throw Error("Missing technical locale "+code+" "+resp.status);
   return resp.json();
  }).then(function(data){
-  if(!data||data.language!==code||typeof data.strings!=="object"||Object.keys(EN).some(function(k){return !data.strings[k]})){
-   throw Error("Incomplete technical locale "+code);
+  if(!data||data.language!==code||!data.strings||typeof data.strings!=="object"){
+   throw Error("Invalid technical locale "+code);
   }
+  // Locale packs are intentionally split across site features. Rejecting a
+  // valid 21-key pack because the global dictionary has 37 keys caused all
+  // privacy paragraphs to fall back to English. Validate required keys for
+  // the CURRENT page and render available translations independently.
+  var required=Array.from(document.querySelectorAll("[data-pg-tech]")).map(function(el){return el.getAttribute("data-pg-tech");}).filter(function(k){return k!=="mcpIntro"&&k!=="mcpCount";});
+  var missing=required.filter(function(k){return !data.strings[k]||!String(data.strings[k]).trim();});
+  if(missing.length)console.warn("Poly-Glot technical locale missing page keys:",code,missing.join(", "));
+  if(!Object.keys(data.strings).length)throw Error("Empty technical locale "+code);
   cache[code]=data.strings;
   return data.strings;
  });
