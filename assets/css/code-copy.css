@@ -2,10 +2,13 @@
 .pg-code-snippet,
 .code-block.pg-code-snippet {
   display:grid !important;
-  grid-template-columns:minmax(0,1fr) auto !important;
+  /* Put the control on its OWN row. Long endpoints and JSON can never run
+     underneath or into the button, at any width or language direction. */
+  grid-template-columns:minmax(0,1fr) !important;
+  grid-template-rows:auto auto !important;
   align-items:start;
-  column-gap:14px;
-  row-gap:10px;
+  row-gap:9px;
+  column-gap:0;
   min-width:0;
   max-width:100%;
   overflow:visible !important;
@@ -13,6 +16,9 @@
   box-sizing:border-box;
 }
 .pg-code-snippet-content {
+  grid-column:1 !important;
+  grid-row:2 !important;
+  width:100%;
   display:block;
   min-width:0;
   max-width:100%;
@@ -44,6 +50,8 @@
   display:inline-flex !important;
   align-items:center;
   justify-content:center;
+  grid-column:1 !important;
+  grid-row:1 !important;
   justify-self:end;
   gap:5px;
   flex:0 0 auto;
@@ -93,14 +101,5 @@
 .pg-tool-code-row .pg-code-copy:focus-visible {outline:2px solid #7dd3fc;outline-offset:2px}
 .pg-tool-code-row .pg-code-copy[data-pg-copy-state="copied"] {color:#34d399}
 @media(max-width:600px) {
-  .pg-code-snippet,.code-block.pg-code-snippet {
-    grid-template-columns:minmax(0,1fr) !important;
-  }
-  .pg-code-snippet-content {grid-column:1;grid-row:2;}
-  .pg-code-snippet .pg-code-copy,
-  .code-block.pg-code-snippet .copy-btn {
-    grid-column:1;
-    grid-row:1;
-    justify-self:end;
-  }
+  .pg-code-snippet,.code-block.pg-code-snippet {row-gap:8px;}
 }
