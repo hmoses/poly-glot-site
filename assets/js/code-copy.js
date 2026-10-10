@@ -1,10 +1,12 @@
-/* Responsive, localized Copy buttons for every block snippet and MCP tool ID.
- * Never mutate technical values or i18n source strings; always copy exact code. */
+/* Accessible, localized Copy controls for complete configuration snippets.
+ * Tool names in the 15-tool reference are identifiers, not code examples:
+ * never clutter them with unnecessary Copy buttons.
+ * Preserve exact URLs / JSON and all i18n source strings. */
 (()=>{
 'use strict';
 const copyLocales=Object.assign({EN:['Copy','Copied!']},{"ES":["Copiar","Copiado"],"FR":["Copier","Copié"],"DE":["Kopieren","Kopiert"],"IT":["Copia","Copiato"],"PT":["Copiar","Copiado"],"NL":["Kopiëren","Gekopieerd"],"RU":["Копировать","Скопировано"],"ZH":["复制","已复制"],"ZH_TW":["複製","已複製"],"JA":["コピー","コピーしました"],"KO":["복사","복사됨"],"AR":["نسخ","تم النسخ"],"HI":["कॉपी करें","कॉपी किया गया"],"BN":["কপি করুন","কপি হয়েছে"],"TR":["Kopyala","Kopyalandı"],"PL":["Kopiuj","Skopiowano"],"SV":["Kopiera","Kopierat"],"NO":["Kopier","Kopiert"],"DA":["Kopiér","Kopieret"],"FI":["Kopioi","Kopioitu"],"EL":["Αντιγραφή","Αντιγράφηκε"],"HE":["העתק","הועתק"],"ID":["Salin","Tersalin"],"MS":["Salin","Disalin"],"TH":["คัดลอก","คัดลอกแล้ว"],"VI":["Sao chép","Đã sao chép"],"UK":["Копіювати","Скопійовано"],"CS":["Kopírovat","Zkopírováno"],"RO":["Copiază","Copiat"],"HU":["Másolás","Másolva"],"SK":["Kopírovať","Skopírované"],"HR":["Kopiraj","Kopirano"],"CA":["Copia","Copiat"],"AF":["Kopieer","Gekopieer"],"SW":["Nakili","Imenakiliwa"],"HA":["Kwafi","An kwafa"],"AM":["ቅዳ","ተቀድቷል"]});
 const blocks='[data-pg-code-block], .code-block';
-const tokenSelectors='#connect .pg-mcp-tools-grid .pg-mcp-motion-card > code, .mcp-tool-list li > code, .tools-table tbody tr > td:first-child, code[data-pg-copy-token]';
+const tokenSelectors='code[data-pg-copy-token]';
 let current='EN';
 function lang(){
   const fromI18n=window._pgI18n && typeof window._pgI18n.curLang==='function' ? window._pgI18n.curLang() : '';
