@@ -11438,17 +11438,20 @@ html[data-device-ui-lang="HE"] .pg-real-tabs > *{
   direction:rtl!important;
 }
 
-/* Keep localized tab hint compact even when labels are long. */
+/* Allow the translated click-tabs CTA to wrap instead of truncating it. */
 #gallery-mac #macTabHint{
   max-width:100%!important;
-  overflow:hidden!important;
+  overflow:visible!important;
 }
 #gallery-mac #macTabHint span{
   max-width:100%!important;
   box-sizing:border-box!important;
-  white-space:nowrap!important;
-  overflow:hidden!important;
-  text-overflow:ellipsis!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  line-height:1.45!important;
 }
 </style>
 
