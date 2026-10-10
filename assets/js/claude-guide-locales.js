@@ -39,6 +39,7 @@ function apply(lang,bundle){
  var card3=phrase("introConnect",isLocalized?string(tr.quick3):localized.EN.introConnect);
  var x={
   introServer:card1,introClient:card2,introConnect:card3,
+  endpointLabel:isLocalized?string(tr.endpointLabel):"Production MCP URL — use this exact HTTPS address",
   guideTitle:phrase("title",isLocalized?string(tr.toolsTitle):localized.EN.title),
   guideIntro:isLocalized?string(tr.quick3)+" "+string(tr.quick4):"In a Claude chat, select + → Connectors, enable Poly-Glot, and ask for a tool by name. Approve access when prompted.",
   browseTitle:isLocalized?string(tr.groupCore):"1. Search templates (read-only)",
