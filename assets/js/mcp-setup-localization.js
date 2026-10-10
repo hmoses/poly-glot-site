@@ -24,10 +24,14 @@ function locate(){
  nodes[0]=find(function(el){return el.tagName==="DIV"&&txt(el.textContent)===EN[0];});
  nodes[1]=find(function(el){return el.tagName==="P"&&txt(el.textContent).indexOf("The listings below are discovery surfaces")===0;});
  nodes[2]=root.querySelector('a[href="mcp-integrations.html"]');
- var grid=find(function(el){return el.tagName==="DIV"&&el.children.length===3&&el.style.gridTemplateColumns.indexOf("180px")>=0&&el.textContent.indexOf("Choose your MCP client")>=0;});
+ var grid=root.querySelector("[data-pg-mcp-steps]")||find(function(el){return el.tagName==="DIV"&&el.children.length===3&&el.style.gridTemplateColumns.indexOf("180px")>=0&&el.textContent.indexOf("Choose your MCP client")>=0;});
  if(grid){
   var cards=grid.children;
-  [0,1,2].forEach(function(i){var kids=cards[i].children;nodes[3+i*2]=kids[0]||null;nodes[4+i*2]=kids[1]||null;});
+  [0,1,2].forEach(function(i){
+    var title=cards[i].querySelector(".pg-mcp-connect-step-title"),body=cards[i].querySelector(".pg-mcp-connect-step-text");
+    if(title&&body){nodes[3+i*2]=title;nodes[4+i*2]=body;}
+    else {var kids=cards[i].children;nodes[3+i*2]=kids[0]||null;nodes[4+i*2]=kids[1]||null;}
+  });
  }
  savedMarkup=nodes.map(function(node){return node?node.innerHTML:null;});
  // Intro is now rendered as three localized cards by claude-guide-locales.js.
@@ -39,10 +43,15 @@ function apply(){
  if(!copy||copy.length!==EN.length)return;
  nodes.forEach(function(node,i){
   if(!node)return;
+  // The redesigned steps have a separate visible number. Strip a duplicated
+  // localized ordinal while preserving the existing translated step text.
+  var target=copy[i];
+  if((i===3||i===5||i===7)&&node.classList.contains("pg-mcp-connect-step-title"))
+    target=target.replace(/^\\s*[0-9٠-٩۰-۹०-९০-৯０-９]+[.)。．:]?\\s*/, "");
   if(code==="EN"){
    if(node.innerHTML!==savedMarkup[i])node.innerHTML=savedMarkup[i];
-  }else if(node.textContent!==copy[i]){
-   node.textContent=copy[i];
+  }else if(node.textContent!==target){
+   node.textContent=target;
   }
   if(code==="AR"||code==="HE")node.setAttribute("dir","auto");else node.removeAttribute("dir");
  });
