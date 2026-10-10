@@ -2,135 +2,135 @@
   "language": "SV",
   "strings": {
     "eyebrow": [
-      "MCP-anslutningstöd"
+      "MCP-anslutningsstöd"
     ],
     "title": [
-      "Problemlösning Poly-Glot MCP-anslutningar, autentisering och verktyg"
+      "Felsökning av Poly-Glot MCP-anslutningar, autentisering och verktyg"
     ],
     "intro": [
-      "Steg för steg fixar för fjärrströmbara HTTP-anslutningar i ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf och andra kompatibla MCP-klienter. Alla kunder använder samma Poly-Glot-server, med 15 verktyg över mallar, jämförelse, anpassade modeller och språk."
+      "Steg-för-steg-fixar för fjärrströmningsbara HTTP-anslutningar i ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf och andra kompatibla MCP-klienter. Alla klienter använder samma Poly-Glot-server, med 15 verktyg för mallar, jämförelser, anpassade modeller och språk."
     ],
     "endpointLabel": [
-      "Produktion MCP URL – använd denna exakta HTTPS-adress"
+      "Produktions-MCP-URL – använd denna exakta HTTPS-adress"
     ],
     "copy": [
-      "Kopiera slutpunkten"
+      "Kopiera slutpunkt"
     ],
     "quickTitle": [
       "Börja med dessa fyra kontroller"
     ],
     "quick1": [
-      "Använd exakt server URL.",
-      "HTTPS slutpunkten ovan, inklusive",
-      "• Ange inte en Glama, MCP.so eller GitHub-direktiv URL."
+      "Använd den exakta serverns URL.",
+      "Klistra in HTTPS-slutpunkten ovan, inklusive",
+      "; klistra inte in en Glama-, MCP.so- eller GitHub-katalogadress."
     ],
     "quick2": [
-      "Välj distans Streamable HTTP.",
-      "Poly-Glot är värd: ingen npm installation, lokalhost port, eller stdio kommando krävs."
+      "Välj fjärrströmningsbar HTTP.",
+      "Välj klientens fjärranslutna HTTP MCP-alternativ. Poly-Glot är värd: ingen npm-installation, localhost-port eller stdio-kommando krävs."
     ],
     "quick3": [
-      "Tillåta och tillåta verktyg.",
-      "Fyll i alla inloggnings- eller auktoriseringsfrister, godkänn verktygstillstånd, uppdatera eller återställa servern i din klient."
+      "Auktorisera och aktivera verktyg.",
+      "Fyll i valfri inloggnings- eller auktoriseringsuppmaning, godkänn verktygsbehörigheter och uppdatera eller skanna om servern i din klient."
     ],
     "quick4": [
-      "Kör en läs-enbart test först.",
-      "Be din kund att använda",
+      "Kör ett skrivskyddat test först.",
+      "Be din klient att använda",
       "eller",
-      "· Använd sedan",
-      "För att kontrollera test och Pro tillgänglighet."
+      "; använd sedan",
+      "för att kontrollera testversion och Pro tillgänglighet."
     ],
     "clientsTitle": [
-      "Problemlösning av MCP-klienten"
+      "Felsökning av MCP-klient"
     ],
     "clientChatgpt": [
-      "Använd appen eller utvecklaren/anpassad MCP-konfiguration som finns tillgänglig för ditt konto eller arbetsyta. Lägg till den fjärrURL, slutföra alla godkännanden, skanna verktyg och välj appen i din chatt. App och utvecklaren-läge tillgänglighet varierar beroende på plan och arbetsyta tillstånd."
+      "Använd appar eller utvecklare/anpassad MCP-konfiguration som är tillgänglig för ditt konto eller arbetsyta. Lägg till fjärr-URL, slutför eventuell auktorisering, skanna verktyg och välj appen i din chatt. Tillgängligheten för appar och utvecklarläge varierar beroende på plan och arbetsytabehörigheter."
     ],
     "clientDocs": [
-      "Officiell kundhjälp"
+      "Officiell kundhjälp ↗"
     ],
     "clientClaude": [
-      "Lägg till Poly-Glot under Settings → Connectors som en anpassad fjärrkonektor. Om den inte visas i chatt, aktivera den i verktygsmenyn."
+      "Lägg till Poly-Glot under Inställningar → Anslutningar som en anpassad fjärrkontakt. Om det inte visas i chatten, aktivera det i din verktygsmeny. Fjärranslutningar konfigureras inte med den lokala Claude Desktop stdio JSON-filen."
     ],
     "clientCursor": [
-      "Öppna dina MCP-serverinställningar, lägg till en fjärrströmbar HTTP-server med slutpunkten ovan och aktivera den. Om inga verktyg listas, uppdatera MCP-serverna, godkänna tillstånd och verifiera att kunden stöder denna transport."
+      "Öppna dina MCP-serverinställningar, lägg till en fjärrströmbar HTTP-server med hjälp av slutpunkten ovan och aktivera den. Om inga verktyg är listade, uppdatera MCP-servrarna, godkänn behörigheter och verifiera att klienten stöder denna transport."
     ],
     "clientGoose": [
-      "Lägg till Poly-Glot som en fjärr MCP-utvidgning med hjälp av Streamable HTTP istället för en lokal kommandot. aktivera utvidgningen, om nödvändigt omstartar sessionen och testar ett läsbart verktyg innan du försöker Skicka eller anpassade modellverktyg."
+      "Lägg till Poly-Glot som en fjärransluten MCP-tillägg med Streamable HTTP istället för ett lokalt kommando. Aktivera tillägget, starta om sessionen om det behövs och testa ett skrivskyddat verktyg innan du försöker skicka eller anpassade modellverktyg."
     ],
     "clientVscode": [
-      "I en MCP-kapabel VS Code-inställning lägger du till URL som en HTTP-avlägsna MCP-server, inte en lokal stdio-process. Kontrollera arbetsytan förtroende och verktyg godkännanden, uppdatera sedan servern och bekräfta verktygets upptäckt."
+      "I en MCP-kompatibel VS-kodinstallation, lägg till URL:en som en HTTP-fjärr MCP-server, inte en lokal stdio-process. Kontrollera arbetsytans förtroende och verktygsgodkännanden, uppdatera sedan servern och bekräfta verktygsupptäckten."
     ],
     "clientOther": [
-      "Bekräfta din kunds version stöder fjärrströmbara HTTP MCP-server. Använd produktionsURL och aktivera dess verktyg; om din klient stöder endast stdio eller legacy SSE, kolla in dess nuvarande fjärr-MCP-dokumentation."
+      "Bekräfta att din klients version stöder fjärrströmningsbara HTTP MCP-servrar. Använd produktions-URL och aktivera dess verktyg; om din klient endast stöder stdio eller äldre SSE, se dess aktuella fjärr-MCP-dokumentation."
     ],
     "errorsTitle": [
-      "Vanliga MCP-fel och åtgärder"
+      "Vanliga MCP-fel och korrigeringar"
     ],
     "error1Title": [
-      "Server inte tillgänglig, anslutning misslyckad eller 404"
+      "Servern otillgänglig, anslutningen misslyckades eller 404"
     ],
     "error1Body": [
-      "Kontrollera den fulla",
-      "URL och fjärrtransport av HTTP. Lägg till anslutningen och försök igen. En webbläsare GET till en MCP-ändpunkt är inte ett giltigt verktygstest; kunden måste använda MCP-protokollet. Kontrollera kunden nätverk och serverhälsa-ändpunkten; missa inte en kataloglista för servern."
+      "Verifiera hela",
+      "URL och fjärr-HTTP-transport. Lägg till anslutningen igen och försök igen. En webbläsare GET till en MCP-slutpunkt är inte ett giltigt verktygstest; klienten måste använda MCP-protokollet. Kontrollera klientnätverket och serverns hälsoslutpunkt; misstag inte en kataloglista för servern."
     ],
     "error2Title": [
-      "401 Obehörig eller auktoriserad loop"
+      "401 Obehörig eller auktoriseringsslinga"
     ],
     "error2Body": [
-      "Använd kunden konto auktorisation flöde och återkoppling om sessionen löper ut. Kontrollera servern autentiseringskrav och kunden tillstånd. aldrig klistra in Apple lösenord, API tokens eller prenumerationsmottagningar i offentliga chattar, skärmdumpar eller utgivningsrapporter."
+      "Använd klientens kontoauktoriseringsflöde och återanslut om sessionen löper ut. Kontrollera serverns autentiseringskrav och klientbehörigheter. Klistra aldrig in Apple-lösenord, API-tokens eller prenumerationskvitton i offentliga chattar, skärmdumpar eller problemrapporter."
     ],
     "error3Title": [
-      "403 Förbjudet eller verktygsförbud"
+      "403 Förbjudet eller verktygstillstånd nekad"
     ],
     "error3Body": [
-      "Bekräfta att kunden har beviljat denna anslutningstillstånd att använda det begärda verktyget. Be arbetsplatsadministratören om policyer om det behövs. A 403 kan också återspegla en autentisering eller ursprungspolicy begränsning – inte nödvändigtvis en upphörande prenumeration."
+      "Bekräfta att klienten gav den här anslutaren behörighet att använda det begärda verktyget. Fråga arbetsplatsadministratören om policyer om det behövs. En 403 kan också återspegla en autentiserings- eller ursprungspolicybegränsning – inte nödvändigtvis ett utgånget abonnemang."
     ],
     "error4Title": [
-      "Inga verktyg hittade, gamla verktygslista eller verktyg inte identifierade"
+      "Inga verktyg hittades, gammal verktygslista eller verktyg känns inte igen"
     ],
     "error4Body": [
-      "Aktivera anslutningen och uppdatera eller lösa verktyg. Aktuella serverdokument 15 verktyg. Föråldrade katalogssamlingar ändrar inte det levande verktygsregistret.",
-      "Kontrollera att din MCP-klient kan upptäcka fjärrverktyg."
+      "Aktivera kontakten och uppdatera eller skanna om verktyg. Den nuvarande servern dokumenterar 15 verktyg. Föråldrade katalogsammanfattningar ändrar inte det aktiva verktygsregistret. Försök",
+      "; kontrollera att din MCP-klient kan upptäcka fjärrverktyg."
     ],
     "error5Title": [
-      "Försökan löpt ut, Pro krävs eller sända gränsen nådd"
+      "Provperioden har löpt ut, Pro krävs eller sändningsgränsen nådd"
     ],
     "error5Body": [
-      "Användning",
-      "för att kontrollera aktuell åtkomst. App-managed tre dagars provning börjar på den första kvalificerade Sänd; efter utgången, gratis åtkomst inkluderar 25 medföljande mallar och en enda AI Sänd per rulla 24 timmar. Jämför Mode, BYOM och andra Pro funktioner kräver lämplig åtkomst. För att lösa en betald åtkomst missmatch, logga in med det länkade kontot och verifiera eller återställa din Apple-prenumeration i appen."
+      "Använda",
+      "för att inspektera aktuell åtkomst. Den apphanterade tredagars provperioden börjar vid den första kvalificerande Skicka; efter utgången, gratis tillgång inkluderar 25 utvalda mallar och en enda AI-sändning per rullande 24 timmar. Jämförelseläge, BYOM och andra Pro-funktioner kräver lämplig åtkomst. För att lösa en oöverensstämmelse med betald åtkomst loggar du in med det länkade kontot och verifierar eller återställer din Apple-prenumeration i appen."
     ],
     "error6Title": [
-      "429 räntegränsen, timout, 500/502/503 eller nätverksfel"
+      "429 hastighetsgräns, timeout, 500/502/503 eller nätverksfel"
     ],
     "error6Body": [
-      "Återgå efter en kort försening och kontrollera kundens nätverk, någon proxy eller brandväggen och serverstatus. Undvik att upprepa en betald eller Skicka åtgärd tills du har kontrollerat om den föregående begäran är klar. Inkludera tid, MCP-klient och felkod i en supportförfrågan – aldrig inkludera hemligheter."
+      "Försök igen efter en kort fördröjning och kontrollera klientens nätverk, eventuell proxy eller brandvägg och serverstatus. Undvik att upprepa en betald eller skicka-åtgärd tills du har kontrollerat om den tidigare begäran slutfördes. Inkludera tiden, MCP-klienten och felkoden i en supportförfrågan – inkludera aldrig hemligheter."
     ],
     "error7Title": [
-      "Fel språk, översättning, översättning eller ljudfel"
+      "Fel språk, översättning, transkription eller ljudfel"
     ],
     "error7Body": [
-      "Användning",
-      "för att välja ett språk som stöds, kontrollera sedan in- och utspråkinställningarna.",
-      ", bekräfta ljudformat, storlek och tillstånd match verktygskraven.",
+      "Använda",
+      "för att välja ett språk som stöds och verifiera sedan språkinställningarna för inmatning och utmatning. För",
+      ", bekräfta att ljudformat, storlek och behörigheter matchar verktygskraven. Försök",
       "eller",
-      "separat för att isolera frågan."
+      "separat för att isolera problemet."
     ],
     "error8Title": [
-      "Anpassad modell (BYOM) validering eller genomförande misslyckas"
+      "Validering eller exekvering av anpassad modell (BYOM) misslyckas"
     ],
     "error8Body": [
       "Första samtalet",
-      "och sedan",
-      ". Använd en tillgänglig HTTPS-modelländpunkt, rätt adapter och modellidentifierare och ett giltigt tillfälligt certifiering. Kontrollera din modellleverantörs API-respons. Dela inte API-nycklar i loggar eller supportmeddelanden."
+      ", då",
+      ". Använd en nåbar HTTPS-modellslutpunkt, rätt adapter och modellidentifierare och en giltig tillfällig referens. Kontrollera din modellleverantörs API-svar. Dela inte API-nycklar i loggar eller supportmeddelanden."
     ],
     "toolsTitle": [
       "Vilket MCP-verktyg ska jag testa?"
     ],
     "toolsIntro": [
-      "Testa den minsta läs-enbart-operationen innan en Send-åtgärd. Dessa grupper täcker alla 15 Poly-Glot MCP-verktyg."
+      "Testa den minsta skrivskyddade operationen före en Skicka-åtgärd. Dessa grupper täcker alla 15 Poly-Glot MCP-verktyg."
     ],
     "groupCore": [
-      "Upptäckt, status och arbetsplats"
+      "Upptäckt, status och arbetsyta"
     ],
     "groupCustom": [
       "Anpassad modell / BYOM"
@@ -145,13 +145,13 @@
       "Dela din MCP-klient, transporttyp, verktygsnamn, exakt felkod och ungefärlig tid – aldrig lösenord eller API-nycklar."
     ],
     "supportLink": [
-      "Kontakt Poly-Glot stöd →"
+      "Kontakta Poly-Glot support →"
     ],
     "setupLink": [
-      "Visa inställning och kompatibilitet"
+      "Visa inställningar och kompatibilitet →"
     ],
     "markdownLink": [
-      "Läs RAG-vänlig Markdown guide →"
+      "Läs den RAG-vänliga Markdown-guiden →"
     ]
   }
 }

@@ -2,156 +2,156 @@
   "language": "TR",
   "strings": {
     "eyebrow": [
-      "MCP Bağlantı Desteği"
+      "MCP bağlantı desteği"
     ],
     "title": [
-      "Poly-Glot MCP bağlantıları, kimlik doğrulama ve araçları çözme"
+      "Poly-Glot MCP bağlantılarında, kimlik doğrulamasında ve araçlarında sorun giderme"
     ],
     "intro": [
-      "ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf ve diğer uyumlu MCP müşterilerinde uzaktan aktarılabilir HTTP bağlantıları için adım adım düzeltmeler. tüm müşteriler aynı Poly-Glot sunucusu kullanır, şablonlar, karşılaştırma, özelleştirilmiş modeller ve diller üzerinden 15 araçla."
+      "ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf ve diğer uyumlu MCP istemcilerindeki uzaktan Akışlı HTTP bağlantıları için adım adım düzeltmeler. Tüm istemciler, şablonlar, karşılaştırmalar, özel modeller ve dillerde 15 araç içeren aynı Poly-Glot sunucusunu kullanır."
     ],
     "endpointLabel": [
-      "Üretim MCP URL — bu doğru HTTPS adresi kullanın"
+      "Üretim MCP URL'si — tam olarak bu HTTPS adresini kullanın"
     ],
     "copy": [
-      "Son nokta kopyası"
+      "Uç noktayı kopyala"
     ],
     "quickTitle": [
-      "Bu dört kontrol ile başlayın."
+      "Bu dört kontrolle başlayın"
     ],
     "quick1": [
-      "Doğru server URL kullanın.",
-      "Yukarıdaki HTTPS endpoint'i ekleyin,",
-      "• Bir Glama, MCP.so veya GitHub dizin URL'sini yapıştırmayın."
+      "Tam sunucu URL'sini kullanın.",
+      "Aşağıdakiler de dahil olmak üzere HTTPS uç noktasını yukarıya yapıştırın:",
+      "; Glama, MCP.so veya GitHub dizini URL'sini yapıştırmayın."
     ],
     "quick2": [
-      "Uzak aktarılabilir HTTP seçeneğini seçin.",
-      "Poly-Glot barındırılır: npm yükleme, localhost portu veya stdio komutu gerektirmez."
+      "Uzak Akışlı HTTP'yi seçin.",
+      "İstemcinin uzak HTTP MCP seçeneğini seçin. Poly-Glot barındırılır: npm kurulumu, localhost bağlantı noktası veya stdio komutu gerekmez."
     ],
     "quick3": [
-      "Araçları yetkilendirmek ve etkinleştirmek.",
-      "Herhangi bir giriş veya yetki çabası tamamlayın, araç izinlerini onaylayın, sonra müşterinizdeki sunucuyu yenileme veya kurtarın."
+      "Araçları yetkilendirin ve etkinleştirin.",
+      "Herhangi bir oturum açma veya yetkilendirme istemini tamamlayın, araç izinlerini onaylayın ve ardından istemcinizdeki sunucuyu yenileyin veya yeniden tarayın."
     ],
     "quick4": [
-      "Öncelikle sadece okuma testi yapın.",
-      "Müşterinizin kullanmasını isteyin",
+      "Önce salt okunur bir test çalıştırın.",
+      "Müşterinizden kullanmasını isteyin",
       "veya",
-      "sonra kullanın",
-      "Test ve Pro kullanılabilirliğini kontrol etmek için."
+      "; sonra kullan",
+      "deneme ve Pro kullanılabilirliğini kontrol etmek için."
     ],
     "clientsTitle": [
-      "MCP müşterisi tarafından çözülen sorunlar"
+      "MCP istemcisi tarafından sorun giderme"
     ],
     "clientChatgpt": [
-      "Hesabınızda veya çalışma alanınızda mevcut olan Uygulamaları veya Geliştirici/Özelleştirilmiş MCP konfigürasyonunu kullanın. uzaktan URL'yi ekleyin, herhangi bir yetkiyi tamamlayın, tarama araçları ve sohbetinizde uygulama seçin. Uygulama ve Geliştirici modu mevcutluğu plan ve çalışma alanı izinlerine göre değişir."
+      "Hesabınızda veya çalışma alanınızda kullanılabilen Uygulamaları veya geliştirici/özel MCP yapılandırmasını kullanın. Uzak URL'yi ekleyin, yetkilendirmeyi tamamlayın, araçları tarayın ve sohbetinizde uygulamayı seçin. Uygulama ve geliştirici modunun kullanılabilirliği, plan ve çalışma alanı izinlerine göre değişir."
     ],
     "clientDocs": [
-      "Müşteri Yardımları"
+      "Resmi müşteri yardımı ↗"
     ],
     "clientClaude": [
-      "Poly-Glot Ayarlar → Bağlayıcılar altında özelleştirilmiş bir uzaktan bağlayıcı olarak ekleyin. sohbette görünmüyorsa, araç menüsünde etkinleştirin. uzaktan bağlayıcılar yerel Claude Desktop stdio JSON dosyasını kullanarak yapılandırılmamaktadır."
+      "Poly-Glot'ı Ayarlar → Konektörler altına özel bir uzaktan bağlayıcı olarak ekleyin. Sohbette görünmüyorsa, araçlar menünüzden etkinleştirin. Uzak bağlayıcılar yerel Claude Desktop stdio JSON dosyası kullanılarak yapılandırılmaz."
     ],
     "clientCursor": [
-      "MCP sunucunuzun ayarlarını açın, yukarıdaki son noktayı kullanarak uzaktan aktarılabilir bir HTTP sunucusu ekleyin ve etkinleştirin. eğer araçlar listelenmiyorsa, MCP sunucularını yenilemeyin, izinleri onaylayın ve müşterinin bu taşıma desteğini doğrulayın."
+      "MCP sunucusu ayarlarınızı açın, yukarıdaki uç noktayı kullanarak uzak bir Akış Yapılabilir HTTP sunucusu ekleyin ve etkinleştirin. Hiçbir araç listelenmiyorsa MCP sunucularını yenileyin, izinleri onaylayın ve istemcinin bu aktarımı desteklediğini doğrulayın."
     ],
     "clientGoose": [
-      "Poly-Glot'u uzaktan bir MCP uzantısı olarak, yerel bir komut yerine Streamable HTTP'yi kullanarak ekleyin. uzantıyı etkinleştirin, seansını gerekirse yeniden başlatın ve Gönder veya özelleştirilmiş model araçları denemeden önce sadece okuma aracını test edin."
+      "Poly-Glot'ı yerel bir komut yerine Akışlanabilir HTTP kullanarak uzak MCP uzantısı olarak ekleyin. Uzantıyı etkinleştirin, gerekirse oturumunu yeniden başlatın ve Gönder veya özel model araçlarını denemeden önce salt okunur bir aracı test edin."
     ],
     "clientVscode": [
-      "MCP-kapalı VS Kodu ayarında, URL'yi bir HTTP uzaktan MCP sunucusu olarak ekleyin, yerel bir stdio süreci değil. çalışma alanı güvenini ve araç onaylarını kontrol edin, sonra sunucuyu yenilemek ve araç keşfi doğrulamak."
+      "MCP özellikli bir VS Code kurulumunda, URL'yi yerel bir stdio işlemi olarak değil, bir HTTP uzak MCP sunucusu olarak ekleyin. Çalışma alanı güvenini ve araç onaylarını kontrol edin, ardından sunucuyu yenileyin ve araç bulmayı onaylayın."
     ],
     "clientOther": [
-      "Müşterinizin versiyonunu doğrulayın, uzaktan aktarılabilir HTTP MCP sunucularını destekler. Üretim URL'sini kullanın ve araçlarını etkinleştirin; Müşterinizin yalnızca stdio veya miras SSE'yi desteklediği takdirde, mevcut uzaktan MCP belgelerine bakın."
+      "İstemcinizin sürümünün uzak Akış Yapılabilir HTTP MCP sunucularını desteklediğini doğrulayın. Üretim URL'sini kullanın ve araçlarını etkinleştirin; istemciniz yalnızca stdio veya eski SSE'yi destekliyorsa mevcut uzak MCP belgelerine bakın."
     ],
     "errorsTitle": [
-      "MCP hataları ve düzeltmeleri"
+      "Yaygın MCP hataları ve düzeltmeleri"
     ],
     "error1Title": [
-      "Server erişilemez, bağlantı eksikliği veya 404"
+      "Sunucu kullanılamıyor, bağlantı başarısız oldu veya 404"
     ],
     "error1Body": [
-      "Tamamını kontrol edin",
-      "URL ve uzaktan HTTP taşıma. bağlantıyı yeniden ekleyin ve tekrar deneyin. bir MCP son noktasına bir tarayıcı GET geçerli bir araç testi değildir; müşterinin MCP protokolünü kullanması gerekir. müşteri ağı ve sunucunun sağlık son noktası kontrol edin; sunucunun bir dizin listesini yanıltmayın."
+      "Tamamını doğrulayın",
+      "URL ve uzaktan HTTP aktarımı. Bağlantıyı yeniden ekleyip tekrar deneyin. Bir tarayıcının MCP uç noktasına GET yapması geçerli bir araç testi değildir; istemcinin MCP protokolünü kullanması gerekir. İstemci ağını ve sunucu sağlığı uç noktasını kontrol edin; dizin listesini sunucu sanmayın."
     ],
     "error2Title": [
-      "401 Yetkisiz veya yetkisiz"
+      "401 Yetkisiz veya yetkilendirme döngüsü"
     ],
     "error2Body": [
-      "Müşterinin hesabının izin akışını kullanın ve oturum sona erdiğinde yeniden bağlanın. sunucunun kimlik doğrulama gereksinimlerini ve müşteri izinlerini kontrol edin. Apple şifresini, API tokensini veya abonelik alımlarını halka açık sohbetlere, ekran görüntüleri veya yayın raporlarına asla takmayın."
+      "Müşterinin hesap yetkilendirme akışını kullanın ve oturumun süresi dolarsa yeniden bağlanın. Sunucunun kimlik doğrulama gereksinimlerini ve istemci izinlerini kontrol edin. Apple parolalarını, API belirteçlerini veya abonelik makbuzlarını asla halka açık sohbetlere, ekran görüntülerine veya sorun raporlarına yapıştırmayın."
     ],
     "error3Title": [
       "403 Yasak veya araç izni reddedildi"
     ],
     "error3Body": [
-      "Bu konektörün talep edilen aracı kullanma izni veren müşteriye onay verin. gerekirse politikalar hakkında çalışma alanı yöneticisine sor. A 403 ayrıca bir kimlik doğrulama veya kaynak politikası kısıtlaması yansıtabilir - mutlaka bir abonelik sona ermedi."
+      "İstemcinin bu bağlayıcıya istenen aracı kullanması için izin verdiğini doğrulayın. Gerekirse çalışma alanı yöneticisinden politikalar hakkında bilgi isteyin. 403 aynı zamanda bir kimlik doğrulama veya kaynak politikası kısıtlamasını da yansıtabilir; süresi dolmuş bir abonelik olmayabilir."
     ],
     "error4Title": [
-      "Hiçbir araç bulunamadı, eski araç listesi veya araç tanımlanmadı"
+      "Hiçbir araç bulunamadı, eski araç listesi veya araç tanınmıyor"
     ],
     "error4Body": [
-      "Konektörü etkinleştirin ve araçları yenilemek veya kurtarmak. mevcut sunucunun belgeleri 15 araç. geçmiş dizin özetleri canlı araç kayıtlarını değiştirmez.",
-      "• MCP müşterinizin uzaktan araçları keşfetebileceğinden emin olun."
+      "Bağlayıcıyı etkinleştirin ve araçları yenileyin veya yeniden tarayın. Mevcut sunucu 15 aracı belgeliyor. Güncel olmayan dizin özetleri canlı araç kaydını değiştirmez. Denemek",
+      "; MCP istemcinizin uzak araçları keşfedebildiğini kontrol edin."
     ],
     "error5Title": [
-      "Sınav sona erdi, Pro gerekli veya gönderme sınırı ulaştı"
+      "Deneme süresi doldu, Pro gerekli veya gönderme sınırına ulaşıldı"
     ],
     "error5Body": [
-      "Kullanım",
-      "Mevcut erişimi kontrol etmek için. uygulama yönetilen üç günlük deneme ilk nitelikli Gönder'de başlar; sona erdikten sonra, ücretsiz erişim 25 içerir şablonlar ve tek AI Gönder 24 saat rulo başına içerir. karşılaştırma modu, BYOM ve diğer Pro özellikleri uygun erişim gerektirir. ücretli erişim hatasını çözmek için, bağlantılı hesabı ile giriş ve Apple aboneliğinizi doğrulamak veya geri yüklemek için."
+      "Kullanmak",
+      "Mevcut erişimi denetlemek için. Uygulama tarafından yönetilen üç günlük deneme, ilk uygun Gönderimde başlar; Süre sona erdikten sonra, ücretsiz erişime 25 öne çıkan şablon ve 24 saat boyunca devam eden bir tek Yapay Zeka Gönderimi dahildir. Karşılaştırma Modu, BYOM ve diğer Pro özellikleri uygun erişim gerektirir. Ücretli erişim uyuşmazlığını çözmek için bağlantılı hesapla oturum açın ve uygulamada Apple aboneliğinizi doğrulayın veya geri yükleyin."
     ],
     "error6Title": [
-      "429 oran sınırı, zaman çıkışı, 500/502/503 veya ağ hatası"
+      "429 hız sınırı, zaman aşımı, 500/502/503 veya ağ hatası"
     ],
     "error6Body": [
-      "Kısa bir gecikme sonrasında geri dönün ve müşterinin ağını, herhangi bir proxy veya itfaiye duvarını ve sunucu durumunu kontrol edin. önceki isteğin tamamlandığını kontrol edene kadar ücretli veya Gönder eylemi tekrarlamaktan kaçının. bir destek isteğinde zaman, MCP istemcisi ve hata kodu dahil edin. hiçbir zaman sırları içermez."
+      "Kısa bir gecikmeden sonra yeniden deneyin ve istemcinin ağını, proxy veya güvenlik duvarını ve sunucu durumunu kontrol edin. Önceki isteğin tamamlanıp tamamlanmadığını kontrol edene kadar ücretli veya Gönder eylemini tekrarlamaktan kaçının. Destek isteğine zamanı, MCP istemcisini ve hata kodunu ekleyin; asla gizli bilgileri eklemeyin."
     ],
     "error7Title": [
-      "Yanlış dil, çeviri, çeviri veya ses hatası"
+      "Yanlış dil, çeviri, transkripsiyon veya ses hatası"
     ],
     "error7Body": [
-      "Kullanım",
-      "Desteklenen bir dil seçmek için, daha sonra giriş ve çıkış dil ayarlarını doğrulayın.",
-      ", ses formatını, boyutunu ve izinleri eşleşen araç gereksinimlerini doğrulayın.",
+      "Kullanmak",
+      "desteklenen bir dil seçmek için giriş ve çıkış dili ayarlarını doğrulayın. İçin",
+      ", ses formatının, boyutunun ve izinlerinin araç gereksinimleriyle eşleştiğini onaylayın. Denemek",
       "veya",
-      "Bu konuyu ayrı ayrı izole etmek."
+      "Sorunu izole etmek için ayrı ayrı."
     ],
     "error8Title": [
-      "Özelleştirilmiş Model (BYOM) validasyonu veya uygulanması başarısız"
+      "Özel model (BYOM) doğrulaması veya yürütmesi başarısız oluyor"
     ],
     "error8Body": [
-      "İlk Çağrı",
-      "O zaman",
-      ". ulaşılabilir bir HTTPS model son noktası, doğru adaptör ve model tanımlayıcısı ve geçerli bir geçici kimlik kullanın. model sağlayıcınızın API yanıtını kontrol edin. loglarda veya destek mesajlarında API anahtarlarını paylaşmayın."
+      "İlk çağrı",
+      ", Daha sonra",
+      ". Erişilebilir bir HTTPS modeli uç noktası, doğru bağdaştırıcı ve model tanımlayıcı ile geçerli bir geçici kimlik bilgisi kullanın. Model sağlayıcınızın API yanıtını kontrol edin. API anahtarlarını günlüklerde veya destek mesajlarında paylaşmayın."
     ],
     "toolsTitle": [
-      "Hangi MCP Araçlarını Test Etmeliyim?"
+      "Hangi MCP aracını test etmeliyim?"
     ],
     "toolsIntro": [
-      "Bir Gönder eyleminden önce en küçük okuma-sadece işlemi test edin. Bu gruplar tüm 15 Poly-Glot MCP araçlarını kapsamaktadır."
+      "Gönder eyleminden önce en küçük salt okunur işlemi test edin. Bu gruplar 15 Poly-Glot MCP aracının tamamını kapsar."
     ],
     "groupCore": [
-      "Keşif, statü ve çalışma alanı"
+      "Keşif, durum ve çalışma alanı"
     ],
     "groupCustom": [
-      "Özelleştirilmiş Model / BYOM"
+      "Özel model / KBYM"
     ],
     "groupLanguage": [
-      "Dil ve Ses"
+      "Dil ve ses"
     ],
     "supportTitle": [
-      "Yine de yardıma mı ihtiyacınız var?"
+      "Hala yardıma mı ihtiyacınız var?"
     ],
     "supportBody": [
-      "MCP istemci, taşıma türü, araç adı, doğru hata kodu ve yaklaşık zaman paylaşın – asla şifre veya API anahtarları."
+      "MCP istemcinizi, aktarım türünü, araç adını, tam hata kodunu ve yaklaşık süreyi paylaşın; asla şifreleri veya API anahtarlarını paylaşmayın."
     ],
     "supportLink": [
-      "Poly-Glot Destek ile iletişime geçin"
+      "Poly-Glot desteğiyle iletişime geçin →"
     ],
     "setupLink": [
-      "Görüntüleme ve uyumluluk"
+      "Kurulumu ve uyumluluğu görüntüleyin →"
     ],
     "markdownLink": [
-      "RAG dostu Markdown kılavuzunu okuyun"
+      "RAG dostu Markdown kılavuzunu okuyun →"
     ]
   }
 }

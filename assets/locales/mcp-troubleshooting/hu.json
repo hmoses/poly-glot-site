@@ -2,153 +2,153 @@
   "language": "HU",
   "strings": {
     "eyebrow": [
-      "MCP csatlakozási támogatás"
+      "MCP kapcsolat támogatása"
     ],
     "title": [
-      "Probléma megoldása Poly-Glot MCP kapcsolatok, hitelesítés és eszközök"
+      "Poly-Glot MCP kapcsolatok, hitelesítés és eszközök hibaelhárítása"
     ],
     "intro": [
-      "Lépésről lépésre rögzíti a távoli Streamable HTTP kapcsolatokat a ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf és más kompatibilis MCP ügyfelek. Minden ügyfél ugyanazt a Poly-Glot szervert használja, 15 eszközzel a sablonokon, összehasonlításokon, személyre szabott modellekben és nyelvekben."
+      "Lépésről lépésre javítások távoli Streamable HTTP-kapcsolatokhoz ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf és más kompatibilis MCP-kliensekben. Minden ügyfél ugyanazt a Poly-Glot szervert használja, 15 eszközzel a sablonok, összehasonlítások, egyedi modellek és nyelvek között."
     ],
     "endpointLabel": [
-      "Gyártás MCP URL - használja ezt a pontos HTTPS címet"
+      "Gyári MCP URL – pontosan ezt a HTTPS-címet használja"
     ],
     "copy": [
-      "A végpont másolása"
+      "Végpont másolása"
     ],
     "quickTitle": [
-      "Kezdjük ezekkel a négy ellenőrzéssel"
+      "Kezdje ezzel a négy ellenőrzéssel"
     ],
     "quick1": [
-      "Használja a megfelelő URL-t.",
-      "A HTTPS végpontot a fentiek között, beleértve a",
-      "• Ne írjon be egy Glama, MCP.so vagy GitHub címkével kapcsolatos URL-t."
+      "Használja a pontos szerver URL-t.",
+      "Illessze be a fenti HTTPS-végpontot, beleértve",
+      "; ne illesszen be Glama, MCP.so vagy GitHub könyvtár URL-t."
     ],
     "quick2": [
-      "Válassza ki a távoli Streamable HTTP.",
-      "Válassza ki az ügyfél távoli HTTP MCP opcióját.A Poly-Glot tárolja: npm telepítés, localhost port vagy stdio parancs nem szükséges."
+      "Válassza a távoli Streamable HTTP lehetőséget.",
+      "Válassza ki az ügyfél távoli HTTP MCP-jét. A Poly-Glot hosztolt: nem szükséges npm install, localhost port vagy stdio parancs."
     ],
     "quick3": [
       "Az eszközök engedélyezése és engedélyezése.",
-      "Töltse ki bármely bejelentkezési vagy engedélyezési gyorsítót, jóváhagyja az eszköz engedélyeket, majd frissítse vagy frissítse a szervert az ügyfélben."
+      "Töltse ki a bejelentkezési vagy engedélyezési kéréseket, hagyja jóvá az eszközengedélyeket, majd frissítse vagy ellenőrizze újra a kiszolgálót az ügyfélben."
     ],
     "quick4": [
-      "Kezdje az olvasási tesztet először.",
-      "Kérje az ügyfelet, hogy használja",
+      "Először futtasson egy írásvédett tesztet.",
+      "Kérje meg ügyfelét, hogy használja",
       "vagy",
-      "• majd használja",
-      "Ellenőrizze a teszt és a Pro rendelkezésre állását."
+      "; majd használd",
+      "a próbaverzió és a Pro elérhetőségének ellenőrzéséhez."
     ],
     "clientsTitle": [
-      "Az MCP ügyfél problémamegoldása"
+      "Hibaelhárítás MCP kliens által"
     ],
     "clientChatgpt": [
-      "Használja az alkalmazásokat vagy a fejlesztő/kizárólagos MCP konfigurációt, amely a fiókjához vagy a munkaterülethez elérhető. Add the remote URL, complete any authorization, scan tools and select the app in your chat. App and developer-mode availability varies by plan and workplace permissions."
+      "Használja a fiókjában vagy munkaterületén elérhető alkalmazásokat vagy fejlesztői/egyéni MCP-konfigurációt. Adja hozzá a távoli URL-t, hajtsa végre az engedélyezést, a leolvasó eszközöket, és válassza ki az alkalmazást a csevegésben. Az alkalmazások és a fejlesztői módok elérhetősége a tervtől és a munkaterület-engedélyektől függően változik."
     ],
     "clientDocs": [
-      "Hivatalos ügyfél segítség"
+      "Hivatalos ügyfélszolgálat ↗"
     ],
     "clientClaude": [
-      "Add Poly-Glot a Beállítások → Kapcsolatok alatt, mint egy személyre szabott távoli csatlakozó. Ha nem jelenik meg a csevegésben, engedélyezze az eszköztár menüjében. A távoli csatlakozók nem konfigurálhatók a helyi Claude Desktop stdio JSON fájl használatával."
+      "Adja hozzá a Poly-Glot-ot a Beállítások → Csatlakozók alatt egyéni távoli csatlakozóként. Ha nem jelenik meg a csevegésben, engedélyezze az eszközök menüben. A távoli csatlakozók nem a helyi Claude Desktop stdio JSON-fájl használatával vannak konfigurálva."
     ],
     "clientCursor": [
-      "Nyissa meg az MCP szerver beállításait, adjon hozzá egy távoli Streamable HTTP szervert a fenti végpont használatával, és aktiválja azt. Ha nincs felsorolt eszköz, frissítse az MCP szervereket, jóváhagyja a engedélyeket és ellenőrizze, hogy az ügyfél támogatja ezt a szállítást."
+      "Nyissa meg az MCP-kiszolgáló beállításait, adjon hozzá egy távoli Streamable HTTP-kiszolgálót a fenti végpont segítségével, és engedélyezze azt. Ha nincsenek eszközök a listán, frissítse az MCP-kiszolgálókat, hagyja jóvá az engedélyeket, és ellenőrizze, hogy az ügyfél támogatja-e ezt az átvitelt."
     ],
     "clientGoose": [
-      "Add Poly-Glot mint távoli MCP kiterjesztés használata Streamable HTTP helyett helyi parancs. A kiterjesztés engedélyezése, újraindítása az ülés, ha szükséges, és tesztelni egy olvasási eszköz, mielőtt megpróbálja küldeni vagy személyre szabott modell eszközök."
+      "Adja hozzá a Poly-Glot-ot távoli MCP-bővítményként Streamable HTTP használatával helyi parancs helyett. Engedélyezze a bővítményt, szükség esetén indítsa újra a munkamenetet, és teszteljen egy írásvédett eszközt, mielőtt kipróbálná a Send vagy az egyéni modell eszközöket."
     ],
     "clientVscode": [
-      "Egy MCP-kapcsolható VS Kód beállítása, adja meg az URL-t, mint egy HTTP távoli MCP szerver, nem egy helyi stdio folyamat. Ellenőrizze a munkaterület megbízhatóságát és az eszköz jóváhagyását, majd frissítse meg a szervert és megerősítse az eszköz felfedezését."
+      "MCP-képes VS Code beállítás esetén az URL-címet HTTP távoli MCP-kiszolgálóként adja hozzá, ne helyi stdio-folyamatként. Ellenőrizze a munkaterület megbízhatóságát és az eszközök jóváhagyását, majd frissítse a kiszolgálót, és erősítse meg az eszköz felfedezését."
     ],
     "clientOther": [
-      "Megerősítse az ügyfél verzióját támogatja a távoli Streamable HTTP MCP szervereket. Használja a termelési URL-t és aktiválja az eszközeit; ha az ügyfél csak stdio vagy örökség SSE-t támogat, olvassa el a jelenlegi távoli MCP dokumentációt."
+      "Győződjön meg arról, hogy az ügyfél verziója támogatja a távoli Streamable HTTP MCP-kiszolgálókat. Használja a termelési URL-t, és engedélyezze annak eszközeit; ha az ügyfél csak az stdio vagy a legacy SSE-t támogatja, tekintse meg a jelenlegi távoli MCP dokumentációját."
     ],
     "errorsTitle": [
-      "Az MCP hibák és javítások"
+      "Gyakori MCP hibák és javítások"
     ],
     "error1Title": [
-      "A szerver nem elérhető, a kapcsolat nem működik, vagy 404"
+      "A szerver nem érhető el, a kapcsolat sikertelen vagy 404"
     ],
     "error1Body": [
       "Ellenőrizze a teljes",
-      "URL és távoli HTTP szállítás. Újra adja hozzá a kapcsolatot, és próbálja meg újra. A böngésző GET egy MCP végpont nem érvényes eszköz teszt; az ügyfélnek használnia kell az MCP protokollt. Ellenőrizze az ügyfél hálózatát és a szerver egészségügyi végpontját; ne tévedjen a szerver címkéjének listáján."
+      "URL és távoli HTTP átvitel. Adja hozzá újra a kapcsolatot, és próbálja újra. A böngésző GET egy MCP-végponthoz nem érvényes eszközteszt; a kliensnek az MCP protokollt kell használnia. Ellenőrizze az ügyfélhálózatot és a kiszolgáló állapotának végpontját; ne tévessze össze a címtárlistát a szerverrel."
     ],
     "error2Title": [
-      "401 Nem engedélyezett vagy engedélyezett kör"
+      "401 Jogosulatlan vagy engedélyezési hurok"
     ],
     "error2Body": [
-      "Használja az ügyfél fiók engedélyezési áramlását, és csatlakozzon újra, ha az ülés lejár. Ellenőrizze a szerver hitelesítési követelményeit és az ügyfél engedélyeit. Soha ne tegye be az Apple jelszavakat, az API tokeneket vagy az előfizetési fogadalmakat nyilvános csevegésekbe, képernyőfelvételekbe vagy kiadásjelentésekbe."
+      "Használja az ügyfél fiókjának engedélyezési folyamatát, és csatlakozzon újra, ha a munkamenet lejár. Ellenőrizze a kiszolgáló hitelesítési követelményeit és az ügyfélengedélyeket. Soha ne illesszen be Apple jelszavakat, API tokeneket vagy előfizetési nyugtákat nyilvános csevegésbe, képernyőképekbe vagy problémajelentésekbe."
     ],
     "error3Title": [
-      "403 Tilos vagy megtagadt eszköz engedély"
+      "403 Tilos vagy szerszámengedély megtagadva"
     ],
     "error3Body": [
-      "Megerősítse az ügyfélnek, aki ezt a csatlakozókat engedélyezte, hogy használja a kért eszközt. Kérdezze meg a munkaterület adminisztrációját a politikákról, ha szükséges. A 403 is tükrözheti a hitelesítést vagy a származási politika korlátozását - nem feltétlenül a lejáratú előfizetést."
+      "Erősítse meg, hogy az ügyfél engedélyezte a csatlakozási szoftvert a kért eszköz használatához. Kérdezze meg a munkaterület adminisztrátorát az irányelvekről, ha szükséges. A 403-as szám hitelesítési vagy eredetszabály-korlátozást is tükrözhet – nem feltétlenül lejárt előfizetést."
     ],
     "error4Title": [
-      "Nincs megtalálható eszközök, régi eszközök listája vagy eszköz nem ismert"
+      "Nem található szerszám, régi szerszámlista vagy eszköz nem ismerhető fel"
     ],
     "error4Body": [
-      "Kapcsolja be a csatlakozót és frissítse vagy mentse az eszközt. A jelenlegi szerver dokumentumok 15 eszközt. Az elavult katalógus összefoglalói nem változtatják meg az élő eszközök nyilvántartását. Próbálja ki",
-      "• Ellenőrizze, hogy az MCP kliens távoli eszközöket találhat."
+      "Engedélyezze a csatlakozót, és frissítse vagy újraolvassa az eszközöket. A jelenlegi szerver 15 eszközt dokumentál. Az elavult címtár-összefoglalók nem változtatják meg az élő eszköz-nyilvántartást. Megpróbál",
+      "; ellenőrizze, hogy az MCP-kliens képes-e felfedezni a távoli eszközöket."
     ],
     "error5Title": [
-      "A vizsgálat lejárta, a Pro igényelt vagy a határérték elérése"
+      "A próbaidőszak lejárt, Pro szükséges, vagy elérte a küldési korlátot"
     ],
     "error5Body": [
       "Használat",
-      "Az alkalmazás által kezelt három napos kísérlet az első minősített Küldésen kezdődik; a lejárat után a szabad hozzáférés tartalmazza a 25 megjelenített sablonokat és egy egy-AI Küldés 24 órás forgatásonként. Összehasonlító mód, BYOM és egyéb Pro funkciók megfelelő hozzáférést igényelnek. A fizetett hozzáférési hibák megoldásához jelentkezzen be a kapcsolódó fiókkal, és ellenőrizze vagy helyreállítsa az Apple előfizetését az alkalmazásban."
+      "az aktuális hozzáférés ellenőrzéséhez. Az alkalmazás által kezelt háromnapos próbaverzió az első minősített küldéskor kezdődik; A lejárat után az ingyenes hozzáférés 25 kiemelt sablont és egy egyszeri mesterséges intelligencia küldést tartalmaz 24 órán keresztül. A Compare Mode, a BYOM és más Pro funkciók megfelelő hozzáférést igényelnek. A fizetett hozzáférési eltérések megoldásához jelentkezzen be a kapcsolt fiókkal, és ellenőrizze vagy állítsa vissza Apple-előfizetését az alkalmazásban."
     ],
     "error6Title": [
-      "429 sebességkorlátozás, időtartam, 500/502/503 vagy hálózati hiba"
+      "429 sebességkorlát, időtúllépés, 500/502/503 vagy hálózati hiba"
     ],
     "error6Body": [
-      "Visszatér egy rövid késés után, és ellenőrizze az ügyfél hálózatát, bármely proxy vagy tűzfal, és a szerver állapotát. Kerülje meg a fizetett vagy küldött akció megismétlését, amíg ellenőrizze, hogy az előző kérés befejeződött-e. Tartalmazza az időt, az MCP ügyfélt és a hiba kódot egy támogatási kérésben - soha nem tartalmaz titkot."
+      "Kis késéssel próbálkozzon újra, és ellenőrizze az ügyfél hálózatát, a proxyt vagy a tűzfalat, valamint a kiszolgáló állapotát. Kerülje a fizetett vagy a küldés műveletek megismétlését mindaddig, amíg nem ellenőrizte, hogy az előző kérés befejeződött-e. A támogatási kérelemben tüntesse fel az időt, az MCP-klienst és a hibakódot – soha ne adjon meg titkokat."
     ],
     "error7Title": [
-      "helytelen nyelv, fordítás, transzkrimináció vagy hanghullám"
+      "Rossz nyelv, fordítás, átírás vagy hanghiba"
     ],
     "error7Body": [
       "Használat",
-      "a támogatott nyelv kiválasztásához, majd ellenőrizze a belépési és kimeneti nyelv beállításait.",
-      ", megerősíti az audio formátum, méret és engedélyek megfelelnek az eszköz követelményeinek.",
+      "támogatott nyelv kiválasztásához, majd ellenőrizze a beviteli és kimeneti nyelv beállításait. Mert",
+      ", ellenőrizze, hogy a hangformátum, a méret és az engedélyek megfelelnek-e az eszköz követelményeinek. Megpróbál",
       "vagy",
-      "A probléma elkülönítése."
+      "külön a probléma elkülönítése érdekében."
     ],
     "error8Title": [
-      "A személyre szabott modell (BYOM) érvényesítése vagy végrehajtása hibás"
+      "Az egyéni modell (BYOM) érvényesítése vagy végrehajtása sikertelen"
     ],
     "error8Body": [
       "Első hívás",
-      "Aztán",
-      ". Használjon elérhető HTTPS modell végpontot, a megfelelő adapter és modell azonosítót és érvényes ideiglenes hitelesítést. Ellenőrizze a modellszolgáltató API válaszát. Ne osztja meg az API kulcsokat naplókban vagy támogatási üzenetekben."
+      ", akkor",
+      ". Használjon elérhető HTTPS-modell-végpontot, a megfelelő adaptert és modellazonosítót, valamint érvényes ideiglenes hitelesítő adatokat. Ellenőrizze a modellszolgáltató API-válaszát. Ne ossza meg az API-kulcsokat naplókban vagy támogatási üzenetekben."
     ],
     "toolsTitle": [
-      "Milyen MCP eszközöket kell tesztelni?"
+      "Melyik MCP eszközt teszteljem?"
     ],
     "toolsIntro": [
-      "Próbálja ki a legkisebb olvasó-egy műveletet a Send művelet előtt.Ezek a csoportok magukban foglalják az összes 15 Poly-Glot MCP eszközöket."
+      "Tesztelje a legkisebb csak olvasható műveletet a Küldés művelet előtt. Ezek a csoportok mind a 15 Poly-Glot MCP-eszközt lefedik."
     ],
     "groupCore": [
-      "Fedezze fel, állapota és munkaterület"
+      "Felfedezés, állapot és munkaterület"
     ],
     "groupCustom": [
-      "Személyre szabott modell / BYOM"
+      "Egyedi modell / BYOM"
     ],
     "groupLanguage": [
-      "Nyelv és audio"
+      "Nyelv és hang"
     ],
     "supportTitle": [
       "Még mindig segítségre van szüksége?"
     ],
     "supportBody": [
-      "Megosztja az MCP kliensét, a szállítási típusát, az eszköz nevét, a pontos hiba kódját és a körülbelül időt – soha nem jelszavak vagy API kulcsok."
+      "Ossza meg MCP-kliensét, a szállítási típust, az eszköz nevét, a pontos hibakódot és a hozzávetőleges időt – soha ne használjon jelszavakat vagy API-kulcsokat."
     ],
     "supportLink": [
-      "Poly-Glot támogatás"
+      "Lépjen kapcsolatba a Poly-Glot ügyfélszolgálatával →"
     ],
     "setupLink": [
-      "A beállítás és a kompatibilitás megtekintése"
+      "Tekintse meg a beállítást és a kompatibilitást →"
     ],
     "markdownLink": [
       "Olvassa el a RAG-barát Markdown útmutatót →"

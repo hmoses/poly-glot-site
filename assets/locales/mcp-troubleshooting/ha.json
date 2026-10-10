@@ -2,156 +2,156 @@
   "language": "HA",
   "strings": {
     "eyebrow": [
-      "MCP ta hanyar"
+      "Tallafin haɗin MCP"
     ],
     "title": [
-      "Mafi da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da"
+      "Shirya matsala Poly-Glot MCP haɗin gwiwa, tantancewa da kayan aiki"
     ],
     "intro": [
-      "Step-by-step fixes for remote Streamable HTTP connections in ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf da kuma sauran samar da MCP client. All client uses the same Poly-Glot server, with 15 tools across templates, comparison, custom models, and languages."
+      "Gyara-mataki-mataki don hanyoyin haɗin HTTP masu rafi mai nisa a cikin ChatGPT, Claude, Cursor, Goose, Lambar VS, Windsurf da sauran abokan cinikin MCP masu jituwa. Duk abokan ciniki suna amfani da uwar garken Poly-Glot iri ɗaya, tare da kayan aikin 15 a cikin samfura, kwatance, ƙirar al'ada, da harsuna."
     ],
     "endpointLabel": [
-      "Production MCP URL — amfani da wannan tafin HTTPS address"
+      "Samar da URL na MCP - yi amfani da ainihin adireshin HTTPS"
     ],
     "copy": [
-      "Sauke da endpoint"
+      "Kwafi wurin ƙarshe"
     ],
     "quickTitle": [
-      "Za ka yi 4 tsari"
+      "Fara da waɗannan cak guda huɗu"
     ],
     "quick1": [
-      "Sauke da wani URL server.",
-      "Sauke HTTPS endpoint a kan, da kuma",
-      "; don tsaye a Glama, MCP.so ko GitHub ƙarfin URL."
+      "Yi amfani da ainihin URL ɗin uwar garken.",
+      "Manna ƙarshen HTTPS a sama, gami da",
+      "; kar a liƙa Glama, MCP.so ko adireshin adireshin GitHub."
     ],
     "quick2": [
-      "Yadda za a kan HTTP.",
-      "Salin da aka tsari da aka tsari da aka tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari"
+      "Zaɓi HTTP mai nisa mai nisa.",
+      "Zaɓi zaɓi na MCP HTTP na abokin ciniki. An shirya Poly-Glot: ba a shigar da npm, tashar mai masaukin baki, ko umarnin stdio da ake buƙata."
     ],
     "quick3": [
-      "Kayan da kuma iya aiki.",
-      "Kayan aiki da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da"
+      "Yi izini kuma kunna kayan aikin.",
+      "Kammala duk wani sa-hannun shiga ko izini, yarda da izinin kayan aiki, sannan sake sabunta ko sake duba sabar a cikin abokin cinikin ku."
     ],
     "quick4": [
-      "Kowane a kan tsaye a kan tsaye a kan.",
-      "Sanya da aka amfani",
-      "Ya da",
-      "• Kuma amfani da",
-      "da tsarin da tsarin da tsarin da tsarin."
+      "Fara gwajin karantawa kawai.",
+      "Tambayi abokin ciniki don amfani",
+      "ko",
+      "; sannan amfani",
+      "don duba gwaji da kasancewar Pro."
     ],
     "clientsTitle": [
-      "Sauke da MCP Client"
+      "Shirya matsala ta abokin ciniki na MCP"
     ],
     "clientChatgpt": [
-      "Kayan Apps ko Developer/Custom MCP configuration ta amfani da aka da aka da aka da kuma aiki. Add the remote URL, complete any authorization, scan tools and select the app in your chat. App da kuma Developer-mode ta amfani da aka da aka da aka da aka da kuma aiki."
+      "Yi amfani da ƙa'idodi ko ƙa'idodin MCP masu haɓakawa da ke samuwa ga asusunku ko filin aiki. Ƙara URL na nesa, kammala kowane izini, kayan aikin bincika kuma zaɓi ƙa'idar a cikin tattaunawar ku. Samuwar aikace-aikace da yanayin mai haɓakawa ya bambanta ta tsari da izinin sararin aiki."
     ],
     "clientDocs": [
-      "Ƙungiyar Ƙungiyar Ƙungiyar Ƙungiyar"
+      "Taimakon abokin ciniki na hukuma ↗"
     ],
     "clientClaude": [
-      "Add Poly-Glot a cikin Settings → Connectors a kan custom remote connector. Ko ne ne ne ne ne a cikin chat, iya yi a cikin wani tool menu. Remote connectors ne ne ko ne amfani da local Claude Desktop stdio JSON file."
+      "Ƙara Poly-Glot a ƙarƙashin Saituna → Masu haɗawa azaman mai haɗin nesa na al'ada. Idan bai bayyana a cikin taɗi ba, kunna shi a menu na kayan aikin ku. Ba a saita masu haɗin nesa ta amfani da fayil ɗin JSON na gida Claude Desktop stdio."
     ],
     "clientCursor": [
-      "Open your MCP server settings, add a remote Streamable HTTP server using the end point above, da kuma iya aiki. Ko da kayayyakin ne a kan kayayyakin, za a kan MCP server, za a iya da kuma za a iya da kuma za a iya da tsare da tsare da tsare."
+      "Buɗe saitunan uwar garken MCP ɗin ku, ƙara sabar HTTP mai ratsawa mai nisa ta amfani da ƙarshen ƙarshen sama, kuma kunna shi. Idan babu kayan aikin da aka jera, sabunta sabar MCP, yarda da izini kuma tabbatar da abokin ciniki yana goyan bayan wannan jigilar."
     ],
     "clientGoose": [
-      "Sauke Poly-Glot kamar m MCP tare da Streamable HTTP ko da wani loku komando. Sauke da ƙarfin, sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke."
+      "Ƙara Poly-Glot azaman tsawo na MCP mai nisa ta amfani da HTTP mai gudana maimakon umarnin gida. Kunna tsawaita, sake kunna zamansa idan ya cancanta kuma gwada kayan aikin karantawa kawai kafin gwada Aika ko kayan aikin ƙirar ƙira."
     ],
     "clientVscode": [
-      "In a MCP-capable VS Code setup, add the URL as a HTTP remote MCP server, ko a local stdio process. Check workpace trust da kuma tool approvals, da kuma za a kan server da kuma za a kan tool discovery."
+      "A cikin saitin lambar VS mai iya MCP, ƙara URL azaman sabar MCP na HTTP mai nisa, ba tsarin stdio na gida ba. Bincika amincewar filin aiki da amincewar kayan aiki, sannan sake sabunta uwar garken kuma tabbatar da gano kayan aiki."
     ],
     "clientOther": [
-      "Sa'an kudi na'urorin ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an."
+      "Tabbatar da sigar abokin cinikin ku tana goyan bayan sabar HTTP MCP mai nisa mai gudana. Yi amfani da URL ɗin samarwa kuma kunna kayan aikin sa; idan abokin ciniki yana goyan bayan stdio ko SSE na gado kawai, tuntuɓi takaddun MCP na nesa na yanzu."
     ],
     "errorsTitle": [
-      "MCP yanar da kuma yanar"
+      "Kuskuren MCP na gama gari da gyare-gyare"
     ],
     "error1Title": [
-      "Server da aka sa'an, da aka sa'an da aka sa'an ko 404"
+      "Babu uwar garken, haɗin ya kasa ko 404"
     ],
     "error1Body": [
-      "Tsarin tsarin tsarin",
-      "URL da kuma Remote HTTP transport. Re-add the connection and try again. A browser GET to a MCP endpoint ne a kan aiki test; da mu da mu da mu da mu da mu da mu da mu da mu da mu da mu da mu da mu da mu da mu."
+      "Tabbatar da cikakken",
+      "URL da jigilar HTTP mai nisa. Sake ƙara haɗin kuma gwada sake. Mai binciken GET zuwa wurin ƙarshen MCP ba ingantaccen gwajin kayan aiki bane; dole ne abokin ciniki yayi amfani da ka'idar MCP. Duba cibiyar sadarwar abokin ciniki da ƙarshen lafiyar uwar garken; kar a yi kuskuren lissafin adireshi don uwar garken."
     ],
     "error2Title": [
-      "401 Non-Authorized da kuma ƙarfin ƙarfin"
+      "401 Mara izini ko izini madauki"
     ],
     "error2Body": [
-      "Kayan aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu."
+      "Yi amfani da kwarara izinin asusun abokin ciniki kuma sake haɗawa idan zaman ya ƙare. Bincika buƙatun tabbatar da uwar garken da izini na abokin ciniki. Kar a taɓa liƙa kalmomin sirri na Apple, alamun API ko rasidun biyan kuɗi cikin taɗi na jama'a, hotunan allo ko fitar da rahotanni."
     ],
     "error3Title": [
-      "403 Tsarin da kuma aiki da kuma aiki da kuma aiki da kuma aiki da kuma aiki"
+      "403 An haramta ko izinin kayan aiki"
     ],
     "error3Body": [
-      "Sauke da aka yi amfani da wannan samfurin aiki. Sauke da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar."
+      "Tabbatar da abokin ciniki ya ba wa wannan mai haɗin izinin yin amfani da kayan aikin da aka nema. Tambayi admin na filin aiki game da manufofi idan ya cancanta. Hakanan 403 na iya yin la'akari da tabbaci ko ƙuntatawa-manufofin asali-ba dole ba biyan kuɗi da ya ƙare."
     ],
     "error4Title": [
-      "No tools found, old tool list, da kuma alama a kan da kuma ba."
+      "Babu kayan aikin da aka samo, tsohuwar lissafin kayan aiki ko kayan aiki ba a gane su ba"
     ],
     "error4Body": [
-      "Sauke da aka sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da sauke da kuma sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da da da da da da da da da da da da da da da da da da da da da da da da",
-      "; ya ce da mu MCP client yana da da da da da da da da da da da."
+      "Kunna mai haɗawa kuma sabunta ko sake duba kayan aikin. Sabar na yanzu tana tattara kayan aikin 15. Takaitattun kundin adireshi ba sa canza wurin yin rijistar kayan aiki kai tsaye. Gwada",
+      "; duba cewa abokin ciniki na MCP zai iya gano kayan aikin nesa."
     ],
     "error5Title": [
-      "Tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsin"
+      "Gwajin ya ƙare, ana buƙatar Pro ko an kai iyakar aika"
     ],
     "error5Body": [
-      "amfani",
-      "The app-managed three-day trial ya ce a cikin farko kwangarewa Sunan; a lokacin da ya ce, free access yana da 25 da kuma wani single-AI Sunan a rufe 24 hours. Comparing Mode, BYOM da sauran Pro aiki za ka iya samun ta hanyar. To solute a pay-access mismatch, sign in with the linked account and verify or restore your Apple abon in the app."
+      "Amfani",
+      "don duba shiga halin yanzu. Gwajin kwanaki uku da app ke gudanarwa yana farawa ne akan Aika cancantar farko; bayan ƙarewa, samun damar kyauta ya ƙunshi samfura masu fasali 25 da Aika-AI guda ɗaya a kowace awa 24 na mirgina. Kwatanta Yanayin, BYOM da sauran fasalulluka na Pro suna buƙatar samun dama mai dacewa. Don warware rashin daidaiton samun biyan kuɗi, shiga tare da asusun da aka haɗa kuma tabbatar ko dawo da biyan kuɗin Apple ɗin ku a cikin app ɗin."
     ],
     "error6Title": [
-      "429 rate limit, timeout, 500/502/503 ko network error"
+      "429 ƙimar iyaka, ƙarewar lokaci, 500/502/503 ko kuskuren hanyar sadarwa"
     ],
     "error6Body": [
-      "Sauke a lokacin da tsare da kuma tsare da aka tsare da aka tsare da aka tsare da aka tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare."
+      "Sake gwadawa bayan ɗan lokaci kaɗan kuma duba hanyar sadarwar abokin ciniki, kowane wakili ko Tacewar zaɓi, da matsayin uwar garken. Guji maimaita abin da aka biya ko Aika har sai kun bincika ko buƙatar da ta gabata ta cika. Haɗa lokacin, abokin ciniki na MCP da lambar kuskure a cikin buƙatun tallafi-kada a haɗa da sirri."
     ],
     "error7Title": [
-      "Sauke da kayayyakin, kayayyakin, kayayyakin ko kayayyakin kayayyakin"
+      "Ba daidai ba harshe, fassarar, kwafi ko kuskuren sauti"
     ],
     "error7Body": [
-      "amfani",
-      "za ka iya sa'an da kuma sa'an da kuma sa'an da kuma sa'an da kuma sa'an da kuma sa'an da.",
-      ", za a kan audio format, size da kuma permissions match tool ta hanyar.",
-      "Ya da",
-      "Sa'an da ƙarfin da ƙarfin da ƙarfin."
+      "Amfani",
+      "don zaɓar yare mai goyan baya, sannan tabbatar da shigarwar da saitunan harshe na fitarwa. Domin",
+      ", tabbatar da tsarin sauti, girman da izini daidai da buƙatun kayan aiki. Gwada",
+      "ko",
+      "daban don ware batun."
     ],
     "error8Title": [
-      "Custom model (BYOM) validation ko execution fiye"
+      "Samfurin al'ada (BYOM) inganci ko aiwatarwa ya gaza"
     ],
     "error8Body": [
-      "First tafiya",
-      "Kuma",
-      ". Ubangiji a kan HTTPS model endpoint, da kan adapter da model identifier, da kuma a kan al'amurorin fitar. Tsarin API yanar da model provider. Don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don"
+      "Kiran farko",
+      ", sannan",
+      ". Yi amfani da madaidaicin ƙirar HTTPS mai isa, madaidaicin adaftar da mai gano samfuri, da ingantaccen takaddun shaida na ɗan lokaci. Bincika martanin API na mai bada samfurin ku. Kar a raba maɓallan API a cikin rajistan ayyukan ko saƙon tallafi."
     ],
     "toolsTitle": [
-      "Kya'an MCP aiki za ka iya test?"
+      "Wane kayan aikin MCP zan gwada?"
     ],
     "toolsIntro": [
-      "Tsarin mai tsarin tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Ts"
+      "Gwada ƙaramin aikin karantawa kawai kafin aikin Aika. Waɗannan ƙungiyoyi sun ƙunshi duk kayan aikin MCP 15 Poly-Glot."
     ],
     "groupCore": [
-      "Sunan, status da kuma Workplace"
+      "Ganowa, matsayi da filin aiki"
     ],
     "groupCustom": [
-      "Ƙungiyar Ƙungiyar / BYOM"
+      "Tsarin al'ada / BYOM"
     ],
     "groupLanguage": [
-      "Lantarki da Audio"
+      "Harshe da sauti"
     ],
     "supportTitle": [
-      "Yadda za a iya samun tafiya?"
+      "Har yanzu kuna buƙatar taimako?"
     ],
     "supportBody": [
-      "MCP client, m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m"
+      "Raba abokin cinikin ku na MCP, nau'in sufuri, sunan kayan aiki, ainihin lambar kuskure da kusan lokaci-ba kalmar sirri ko maɓallan API ba."
     ],
     "supportLink": [
-      "Tsarin Poly-Glot Support"
+      "Tuntuɓi tallafin Poly-Glot →"
     ],
     "setupLink": [
-      "View setup da kuma samar da"
+      "Duba saitin da dacewa →"
     ],
     "markdownLink": [
-      "Read the RAG-friendly Markdown Guide →"
+      "Karanta jagorar Markdown na abokantaka na RAG →"
     ]
   }
 }

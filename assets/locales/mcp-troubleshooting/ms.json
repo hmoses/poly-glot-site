@@ -5,153 +5,153 @@
       "Sokongan sambungan MCP"
     ],
     "title": [
-      "Penyelesaian masalah Poly-Glot MCP sambungan, pengesahan dan alat"
+      "Menyelesaikan masalah sambungan, pengesahan dan alat MCP Poly-Glot"
     ],
     "intro": [
-      "Langkah demi langkah penyesuaian untuk sambungan HTTP Streamable jauh dalam ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf dan lain-lain pelanggan MCP yang kompatibel. Semua pelanggan menggunakan pelayan Poly-Glot yang sama, dengan 15 alat di seluruh templat, perbandingan, model tersuai, dan bahasa."
+      "Pembetulan langkah demi langkah untuk sambungan HTTP Boleh Strim jauh dalam ChatGPT, Claude, Kursor, Angsa, Kod VS, Windsurf dan pelanggan MCP yang serasi yang lain. Semua pelanggan menggunakan pelayan Poly-Glot yang sama, dengan 15 alatan merentas templat, perbandingan, model tersuai dan bahasa."
     ],
     "endpointLabel": [
-      "URL MCP pengeluaran — gunakan alamat HTTPS yang tepat ini"
+      "URL MCP Pengeluaran — gunakan alamat HTTPS yang tepat ini"
     ],
     "copy": [
-      "Penyelesaian Endpoint"
+      "Salin titik akhir"
     ],
     "quickTitle": [
       "Mulakan dengan empat pemeriksaan ini"
     ],
     "quick1": [
       "Gunakan URL pelayan yang tepat.",
-      "Masukkan titik akhir HTTPS di atas, termasuk",
-      "· Jangan letakkan URL direktori Glama, MCP.so atau GitHub."
+      "Tampal titik akhir HTTPS di atas, termasuk",
+      "; jangan tampal URL direktori Glama, MCP.so atau GitHub."
     ],
     "quick2": [
-      "Pilih Remote Streamable HTTP.",
-      "Pilih opsyen remote HTTP MCP klien. Poly-Glot dihoskan: tiada npm pemasangan, port localhost, atau perintah stdio diperlukan."
+      "Pilih HTTP Boleh Strim jauh.",
+      "Pilih pilihan MCP HTTP jauh klien. Poly-Glot dihoskan: tiada pemasangan npm, port localhost atau arahan stdio diperlukan."
     ],
     "quick3": [
-      "Mengaktifkan dan membolehkan alat",
-      "Menyelesaikan sebarang log masuk atau kelulusan segera, meluluskan keizinan alat, kemudian memperbaharui atau menyelesaikan pelayan dalam klien anda."
+      "Benarkan dan dayakan alatan.",
+      "Lengkapkan sebarang log masuk atau gesaan kebenaran, luluskan kebenaran alat, kemudian muat semula atau imbas semula pelayan dalam klien anda."
     ],
     "quick4": [
-      "Lakukan ujian bacaan sahaja terlebih dahulu.",
-      "Tanya pelanggan anda untuk menggunakan",
+      "Jalankan ujian baca sahaja dahulu.",
+      "Minta pelanggan anda untuk menggunakannya",
       "atau",
-      "· Kemudian gunakan",
-      "untuk memeriksa percubaan dan ketersediaan Pro."
+      "; kemudian gunakan",
+      "untuk menyemak ketersediaan percubaan dan Pro."
     ],
     "clientsTitle": [
-      "Penyelesaian masalah oleh klien MCP"
+      "Menyelesaikan masalah oleh klien MCP"
     ],
     "clientChatgpt": [
-      "Gunakan Aplikasi atau konfigurasi MCP pemaju / tersuai yang tersedia untuk akaun atau ruang kerja anda.Tambah URL jauh, lengkapkan mana-mana kebenaran, alat pemindaian dan pilih aplikasi dalam sembang anda.Penggunaan aplikasi dan mod pemaju berbeza-beza mengikut rancangan dan ruang kerja kebenaran."
+      "Gunakan Apl atau konfigurasi pembangun/MCP tersuai yang tersedia untuk akaun atau ruang kerja anda. Tambahkan URL jauh, lengkapkan sebarang kebenaran, imbas alatan dan pilih apl dalam sembang anda. Ketersediaan apl dan mod pembangun berbeza mengikut kebenaran pelan dan ruang kerja."
     ],
     "clientDocs": [
-      "Bantuan Pelanggan Pihak Berkuasa"
+      "Bantuan pelanggan rasmi ↗"
     ],
     "clientClaude": [
-      "Tambah Poly-Glot di bawah Settings → Connectors sebagai penyambung jauh yang disesuaikan.Jika ia tidak muncul dalam sembang, mengaktifkannya dalam menu alat anda. penyambung jauh tidak dikonfigurasikan menggunakan fail JSON stdio desktop lokal."
+      "Tambahkan Poly-Glot di bawah Tetapan → Penyambung sebagai penyambung jauh tersuai. Jika ia tidak muncul dalam sembang, dayakannya dalam menu alatan anda. Penyambung jauh tidak dikonfigurasikan menggunakan fail JSON stdio Desktop Claude setempat."
     ],
     "clientCursor": [
-      "Buka tetapan pelayan MCP anda, tambahkan pelayan HTTP Streamable jauh menggunakan titik akhir di atas, dan mengaktifkannya.Jika tiada alat yang disenaraikan, memperbaharui pelayan MCP, meluluskan kebenaran dan mengesahkan pelanggan menyokong pengangkutan ini."
+      "Buka tetapan pelayan MCP anda, tambah pelayan HTTP Boleh Stream jauh menggunakan titik akhir di atas dan dayakannya. Jika tiada alatan disenaraikan, muat semula pelayan MCP, luluskan kebenaran dan sahkan pelanggan menyokong pengangkutan ini."
     ],
     "clientGoose": [
-      "Tambah Poly-Glot sebagai perpanjangan MCP jauh menggunakan HTTP yang boleh dilepaskan daripada perintah tempatan.Mengaktifkan perpanjangan, memulakan semula sesi jika perlu dan menguji alat yang hanya boleh dibaca sebelum mencuba Send atau alat model tersuai."
+      "Tambahkan Poly-Glot sebagai sambungan MCP jauh menggunakan HTTP Boleh Stream dan bukannya arahan setempat. Dayakan sambungan, mulakan semula sesinya jika perlu dan uji alat baca sahaja sebelum mencuba alat Hantar atau model tersuai."
     ],
     "clientVscode": [
-      "Dalam setup MCP-capable VS Kod, tambahkan URL sebagai pelayan MCP jauh HTTP, bukan proses stdio tempatan. semak kepercayaan ruang kerja dan kelulusan alat, kemudian memperbaharui pelayan dan mengesahkan penemuan alat."
+      "Dalam persediaan Kod VS berkeupayaan MCP, tambahkan URL sebagai pelayan MCP jauh HTTP, bukan proses stdio setempat. Semak kepercayaan ruang kerja dan kelulusan alat, kemudian muat semula pelayan dan sahkan penemuan alat."
     ],
     "clientOther": [
-      "Mengesahkan versi klien anda menyokong pelayan remote Streamable HTTP MCP. Gunakan URL pengeluaran dan mengaktifkan alat-alatnya; jika klien anda menyokong hanya stdio atau warisan SSE, lihat dokumentasi remote-MCP semasa."
+      "Sahkan versi pelanggan anda menyokong pelayan MCP HTTP Boleh Stream jauh. Gunakan URL pengeluaran dan dayakan alatannya; jika pelanggan anda hanya menyokong stdio atau SSE warisan, rujuk dokumentasi jauh-MCP semasanya."
     ],
     "errorsTitle": [
-      "Kesilapan MCP dan pembetulan"
+      "Ralat dan pembetulan biasa MCP"
     ],
     "error1Title": [
-      "Server tidak tersedia, sambungan gagal atau 404"
+      "Pelayan tidak tersedia, sambungan gagal atau 404"
     ],
     "error1Body": [
-      "Semak keseluruhan",
-      "URL dan penghantaran HTTP jauh. menambah semula sambungan dan cuba lagi. sebuah pelayar GET ke titik akhir MCP bukan ujian alat yang sah; pelanggan mesti menggunakan protokol MCP. semak rangkaian pelanggan dan titik akhir kesihatan pelayan; jangan salah senarai direktori untuk pelayan."
+      "Sahkan sepenuhnya",
+      "URL dan pengangkutan HTTP jauh. Tambahkan semula sambungan dan cuba lagi. Penyemak imbas GET ke titik akhir MCP bukanlah ujian alat yang sah; pelanggan mesti menggunakan protokol MCP. Semak rangkaian pelanggan dan titik akhir kesihatan pelayan; jangan silap penyenaraian direktori untuk pelayan."
     ],
     "error2Title": [
-      "401 Tidak dibenarkan atau diluluskan"
+      "401 Gelung tanpa kebenaran atau kebenaran"
     ],
     "error2Body": [
-      "Gunakan aliran kebenaran akaun klien dan sambungkan semula jika sesi tamat tempoh. semak keperluan pengesahan pelayan dan kebenaran klien. Jangan pernah memasukkan kata laluan Apple, token API atau penerimaan langganan ke dalam sembang awam, screenshots atau laporan pengeluaran."
+      "Gunakan aliran kebenaran akaun pelanggan dan sambung semula jika sesi tamat tempoh. Semak keperluan pengesahan pelayan dan kebenaran klien. Jangan sekali-kali menampal kata laluan Apple, token API atau resit langganan ke dalam sembang awam, tangkapan skrin atau laporan isu."
     ],
     "error3Title": [
-      "403 Larangan atau permohonan alat ditolak"
+      "403 Dilarang atau kebenaran alat ditolak"
     ],
     "error3Body": [
-      "Mengesahkan pelanggan yang diberikan kebenaran penyambung ini untuk menggunakan alat yang diminta.Tanya pentadbir ruang kerja mengenai dasar jika perlu.A 403 juga boleh mencerminkan pengesahan atau pembatasan dasar asal - tidak semestinya langganan yang tamat tempoh."
+      "Sahkan pelanggan memberikan kebenaran penyambung ini untuk menggunakan alat yang diminta. Tanya pentadbir ruang kerja tentang dasar jika perlu. 403 juga mungkin mencerminkan pengehadan pengesahan atau dasar asal—tidak semestinya langganan tamat tempoh."
     ],
     "error4Title": [
-      "Tiada alat yang ditemui, senarai alat lama atau alat yang tidak dikenalpasti"
+      "Tiada alat ditemui, senarai alat lama atau alat tidak dikenali"
     ],
     "error4Body": [
-      "Mengaktifkan penyambung dan memperbaharui atau menyelamatkan alat-alat. dokumen pelayan semasa 15 alat. ringkasan direktori yang tidak lama tidak mengubah rekod alat hidup. cuba",
-      "· semak bahawa klien MCP anda boleh menemui alat jauh."
+      "Dayakan penyambung dan muat semula atau imbas semula alatan. Pelayan semasa mendokumenkan 15 alatan. Ringkasan direktori yang lapuk tidak mengubah pendaftaran alat langsung. Cubalah",
+      "; semak bahawa klien MCP anda boleh menemui alatan jauh."
     ],
     "error5Title": [
-      "Permohonan telah tamat, Pro diperlukan atau had penghantaran telah dicapai"
+      "Percubaan tamat tempoh, Pro diperlukan atau had penghantaran dicapai"
     ],
     "error5Body": [
-      "Penggunaan",
-      "untuk memeriksa akses semasa. percubaan tiga hari yang dikendalikan oleh aplikasi bermula pada yang pertama berkelayakan Send; selepas tamat tempoh, akses percuma termasuk 25 templat yang dilengkapi dan satu-AI Send per rolling 24 jam. Perbandingan Mode, BYOM dan ciri-ciri Pro lain memerlukan akses yang sesuai. Untuk menyelesaikan kesilapan akses berbayar, log masuk dengan akaun yang dikaitkan dan mengesahkan atau memulihkan langganan Apple anda dalam aplikasi."
+      "guna",
+      "untuk memeriksa akses semasa. Percubaan tiga hari yang diuruskan oleh aplikasi bermula pada Penghantaran pertama yang layak; selepas tamat tempoh, akses percuma termasuk 25 templat yang ditampilkan dan satu Hantar AI tunggal setiap rolling 24 jam. Mod Bandingkan, BYOM dan ciri Pro lain memerlukan akses yang sesuai. Untuk menyelesaikan ketidakpadanan akses berbayar, log masuk dengan akaun terpaut dan sahkan atau pulihkan langganan Apple anda dalam apl."
     ],
     "error6Title": [
-      "429 had kadar, timeout, 500/502/503 atau rangkaian ralat"
+      "Had kadar 429, tamat masa, 500/502/503 atau ralat rangkaian"
     ],
     "error6Body": [
-      "Kembali selepas keterlambatan yang singkat dan semak rangkaian klien, mana-mana proxy atau firewall, dan status pelayan. Elakkan mengulangi tindakan yang dibayar atau Hantar sehingga anda telah memeriksa sama ada permintaan terdahulu selesai. Masukkan masa, klien MCP dan kod ralat dalam permintaan sokongan—tidak pernah termasuk rahsia."
+      "Cuba semula selepas kelewatan yang singkat dan semak rangkaian pelanggan, sebarang proksi atau tembok api dan status pelayan. Elakkan daripada mengulangi tindakan berbayar atau Hantar sehingga anda menyemak sama ada permintaan sebelumnya telah selesai. Sertakan masa, klien MCP dan kod ralat dalam permintaan sokongan—jangan sekali-kali menyertakan rahsia."
     ],
     "error7Title": [
-      "Kesilapan bahasa, terjemahan, transkripsi atau audio"
+      "Ralat bahasa, terjemahan, transkripsi atau audio yang salah"
     ],
     "error7Body": [
-      "Penggunaan",
-      "untuk memilih bahasa yang disokong, kemudian mengesahkan tetapan bahasa input dan output.",
-      ", mengesahkan format audio, saiz dan keizinan memenuhi keperluan alat. cuba",
+      "guna",
+      "untuk memilih bahasa yang disokong, kemudian sahkan tetapan bahasa input dan output. Untuk",
+      ", sahkan format audio, saiz dan kebenaran sepadan dengan keperluan alat. Cubalah",
       "atau",
-      "secara berasingan untuk mengisolasi masalah ini."
+      "secara berasingan untuk mengasingkan isu tersebut."
     ],
     "error8Title": [
-      "Model Custom (BYOM) validasi atau pelaksanaan gagal"
+      "Pengesahan atau pelaksanaan model tersuai (BYOM) gagal"
     ],
     "error8Body": [
-      "Panggilan Pertama",
-      "Kemudian",
-      ". Gunakan titik akhir model HTTPS yang boleh diakses, pengenalpastian dan pengenalpastian model yang betul, dan pengesahan sementara yang sah. semak jawapan API pembekal model anda. Jangan berkongsi kunci API dalam log atau mesej sokongan."
+      "Panggilan pertama",
+      ", kemudian",
+      ". Gunakan titik akhir model HTTPS yang boleh dicapai, penyesuai dan pengecam model yang betul serta bukti kelayakan sementara yang sah. Semak respons API pembekal model anda. Jangan kongsi kunci API dalam log atau mesej sokongan."
     ],
     "toolsTitle": [
-      "Alat MCP mana yang perlu saya ujian?"
+      "Alat MCP yang manakah harus saya uji?"
     ],
     "toolsIntro": [
-      "Menguji operasi yang paling kecil sebelum tindakan Send.Kumpulan ini meliputi semua 15 alat MCP Poly-Glot."
+      "Uji operasi baca sahaja terkecil sebelum tindakan Hantar. Kumpulan ini merangkumi kesemua 15 alatan MCP Poly-Glot."
     ],
     "groupCore": [
       "Penemuan, status dan ruang kerja"
     ],
     "groupCustom": [
-      "Perbincangan / BYOM"
+      "Model tersuai / BYOM"
     ],
     "groupLanguage": [
       "Bahasa dan audio"
     ],
     "supportTitle": [
-      "Masih memerlukan bantuan?"
+      "Masih perlukan bantuan?"
     ],
     "supportBody": [
-      "Berkongsi klien MCP anda, jenis pengangkutan, nama alat, kod ralat yang tepat dan masa yang kira-kira - kata laluan atau kunci API."
+      "Kongsi klien MCP anda, jenis pengangkutan, nama alat, kod ralat tepat dan anggaran masa—tidak pernah kata laluan atau kunci API."
     ],
     "supportLink": [
-      "Hubungi sokongan Poly-Glot"
+      "Hubungi sokongan Poly-Glot →"
     ],
     "setupLink": [
-      "Lihat setup dan kompatibiliti"
+      "Lihat persediaan dan keserasian →"
     ],
     "markdownLink": [
-      "Baca panduan RAG-friendly Markdown →"
+      "Baca panduan Markdown mesra RAG →"
     ]
   }
 }

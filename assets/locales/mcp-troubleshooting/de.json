@@ -2,156 +2,156 @@
   "language": "DE",
   "strings": {
     "eyebrow": [
-      "MCP-Verbindungsunterstützung"
+      "Unterstützung für MCP-Verbindungen"
     ],
     "title": [
-      "Problemlösung Poly-Glot MCP Verbindungen, Authentifizierung und Tools"
+      "Fehlerbehebung bei Poly-Glot MCP-Verbindungen, Authentifizierung und Tools"
     ],
     "intro": [
-      "Schritt für Schritt fixieren Sie die Streamable HTTP-Verbindungen in ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf und anderen kompatiblen MCP-Clients. Alle Kunden verwenden den gleichen Poly-Glot-Server, mit 15 Werkzeugen über Vorlagen, Vergleich, benutzerdefinierte Modelle und Sprachen."
+      "Schrittweise Korrekturen für Remote-Streamable-HTTP-Verbindungen in ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf und anderen kompatiblen MCP-Clients. Alle Kunden nutzen denselben Poly-Glot-Server mit 15 Tools für Vorlagen, Vergleiche, benutzerdefinierte Modelle und Sprachen."
     ],
     "endpointLabel": [
-      "Produktion MCP URL – Verwenden Sie diese genaue HTTPS-Adresse"
+      "Produktions-MCP-URL – verwenden Sie genau diese HTTPS-Adresse"
     ],
     "copy": [
-      "Kopieren Endpoint"
+      "Endpunkt kopieren"
     ],
     "quickTitle": [
-      "Beginnen Sie mit diesen vier Prüfungen"
+      "Beginnen Sie mit diesen vier Kontrollen"
     ],
     "quick1": [
       "Verwenden Sie die genaue Server-URL.",
-      "HTTPS Endpoint oben, einschließlich",
-      "• Keine Eintragung einer Glama, MCP.so oder GitHub-Datei-URL."
+      "Fügen Sie oben den HTTPS-Endpunkt ein, einschließlich",
+      "; Fügen Sie keine Glama-, MCP.so- oder GitHub-Verzeichnis-URL ein."
     ],
     "quick2": [
-      "Wählen Sie remote Streamable HTTP aus.",
-      "Wählen Sie die Remote HTTP MCP-Option des Kunden aus. Poly-Glot wird gehostet: keine npm-Installation, lokalhost-Port oder stdio-Command erforderlich."
+      "Wählen Sie Remote Streamable HTTP.",
+      "Wählen Sie die Remote-HTTP-MCP-Option des Clients aus. Poly-Glot wird gehostet: Es ist keine NPM-Installation, kein Localhost-Port oder stdio-Befehl erforderlich."
     ],
     "quick3": [
-      "Bewusstsein und Einführung von Tools.",
-      "Befüllen Sie jede Anmeldung oder Zulassungsphase, genehmigen Sie die Toolsverträge, dann erneuern Sie oder löschen Sie den Server in Ihrem Client."
+      "Autorisieren und aktivieren Sie Tools.",
+      "Füllen Sie alle Anmelde- oder Autorisierungsaufforderungen aus, genehmigen Sie die Tool-Berechtigungen und aktualisieren oder scannen Sie dann den Server in Ihrem Client erneut."
     ],
     "quick4": [
-      "Führen Sie zuerst einen Les-Only-Test durch.",
-      "Bitte deinen Kunden, ihn zu benutzen",
+      "Führen Sie zunächst einen schreibgeschützten Test durch.",
+      "Bitten Sie Ihren Kunden, es zu verwenden",
       "oder",
-      "• dann benutzen",
-      "Prüfung und Pro Verfügbarkeit zu überprüfen."
+      "; dann verwenden",
+      "um die Test- und Pro-Verfügbarkeit zu prüfen."
     ],
     "clientsTitle": [
-      "Problemlösung durch MCP-Client"
+      "Fehlerbehebung durch MCP-Client"
     ],
     "clientChatgpt": [
-      "Verwenden Sie die Apps oder die Entwickler/Anpassung der MCP-Konfiguration, die für Ihr Konto oder Arbeitsplatz verfügbar ist. fügen Sie die entfernte URL hinzu, füllen Sie alle Genehmigungen, scannen Sie die Tools und wählen Sie die App in Ihrem Chat aus. App und Entwickler-Modus Verfügbarkeit variieren je nach Plan und Arbeitsplatz-Einstellungen."
+      "Verwenden Sie die Apps oder die Entwickler-/benutzerdefinierte MCP-Konfiguration, die für Ihr Konto oder Ihren Arbeitsbereich verfügbar ist. Fügen Sie die Remote-URL hinzu, schließen Sie alle Autorisierungen ab, scannen Sie die Tools und wählen Sie die App in Ihrem Chat aus. Die Verfügbarkeit von Apps und Entwicklermodus variiert je nach Plan und Arbeitsbereichsberechtigungen."
     ],
     "clientDocs": [
-      "Offizielle Kundenhilfe"
+      "Offizielle Kundenhilfe ↗"
     ],
     "clientClaude": [
-      "Hinzufügen Sie Poly-Glot unter Einstellungen → Connectors als anspruchsvolles Remote Connector. Wenn es nicht im Chat erscheint, aktivieren Sie es in Ihrem Toolsmenu. Remote Connectors werden nicht mit der lokalen Claude Desktop stdio JSON-Datei konfiguriert."
+      "Fügen Sie Poly-Glot unter Einstellungen → Konnektoren als benutzerdefinierten Remote-Konnektor hinzu. Wenn es nicht im Chat angezeigt wird, aktivieren Sie es in Ihrem Tools-Menü. Remote-Connectoren werden nicht mit der lokalen Claude Desktop stdio JSON-Datei konfiguriert."
     ],
     "clientCursor": [
-      "Öffnen Sie Ihre MCP-Server-Einstellungen, fügen Sie einen entfernten Streamable HTTP-Server mit dem oben genannten Endpunkt hinzu und aktivieren Sie es. Wenn keine Tools aufgeführt sind, aktualisieren Sie die MCP-Server, genehmigen Sie die Genehmigungen und überprüfen Sie, dass der Client diesen Transport unterstützt."
+      "Öffnen Sie Ihre MCP-Servereinstellungen, fügen Sie mithilfe des oben genannten Endpunkts einen Remote-Streamable-HTTP-Server hinzu und aktivieren Sie ihn. Wenn keine Tools aufgeführt sind, aktualisieren Sie die MCP-Server, genehmigen Sie die Berechtigungen und stellen Sie sicher, dass der Client diesen Transport unterstützt."
     ],
     "clientGoose": [
-      "Add Poly-Glot as a remote MCP extension using Streamable HTTP rather than a local command. Erlauben Sie die Extension, starten Sie die Session neu, wenn nötig und testen Sie ein Lesen-only-tool, bevor Sie versuchen Send oder custom-model-tools."
+      "Fügen Sie Poly-Glot als Remote-MCP-Erweiterung mithilfe von Streamable HTTP anstelle eines lokalen Befehls hinzu. Aktivieren Sie die Erweiterung, starten Sie bei Bedarf ihre Sitzung neu und testen Sie ein schreibgeschütztes Tool, bevor Sie Send- oder benutzerdefinierte Modell-Tools ausprobieren."
     ],
     "clientVscode": [
-      "In einer MCP-fähigen VS-Code-Setup fügen Sie die URL als HTTP-Remote MCP-Server hinzu, nicht als lokales Stdio-Prozess. Überprüfen Sie Arbeitsplatz-Glaubwürdigkeit und Werkzeuggenehmigungen, aktualisieren Sie dann den Server und bestätigen Sie die Werkzeugentdeckung."
+      "Fügen Sie in einem MCP-fähigen VS-Code-Setup die URL als HTTP-Remote-MCP-Server und nicht als lokalen stdio-Prozess hinzu. Überprüfen Sie die Vertrauenswürdigkeit des Arbeitsbereichs und die Tool-Genehmigungen, aktualisieren Sie dann den Server und bestätigen Sie die Tool-Erkennung."
     ],
     "clientOther": [
-      "Bestätigen Sie, dass Ihre Client-Version remote Streamable HTTP MCP-Server unterstützt. Verwenden Sie die Produktions-URL und aktivieren Sie ihre Tools; Wenn Ihr Client nur stdio oder SSE-Erbe unterstützt, lesen Sie die aktuelle remote-MCP-Dokumentation."
+      "Bestätigen Sie, dass die Version Ihres Clients Remote-Streamable-HTTP-MCP-Server unterstützt. Verwenden Sie die Produktions-URL und aktivieren Sie deren Tools. Wenn Ihr Client nur stdio oder Legacy-SSE unterstützt, konsultieren Sie die aktuelle Remote-MCP-Dokumentation."
     ],
     "errorsTitle": [
-      "MCP Fehler und Fixes"
+      "Häufige MCP-Fehler und Korrekturen"
     ],
     "error1Title": [
-      "Server nicht verfügbar, Verbindung nicht verfügbar oder 404"
+      "Server nicht verfügbar, Verbindung fehlgeschlagen oder 404"
     ],
     "error1Body": [
-      "Überprüfen Sie die Fülle",
-      "URL und HTTP Fernverkehr. erneut die Verbindung hinzufügen und versuchen Sie erneut. Ein Browser GET zu einem MCP Endpoint ist kein gültiges Tooltest; der Client muss das MCP-Protokoll verwenden. Überprüfen Sie das Client-Netzwerk und das Server-Gesundheit-Endpoint; vermischen Sie nicht eine Katalogliste für den Server."
+      "Überprüfen Sie die Vollständigkeit",
+      "URL und Remote-HTTP-Transport. Fügen Sie die Verbindung erneut hinzu und versuchen Sie es erneut. Ein Browser-GET zu einem MCP-Endpunkt ist kein gültiger Tooltest; Der Client muss das MCP-Protokoll verwenden. Überprüfen Sie das Client-Netzwerk und den Endpunkt für den Serverzustand. Verwechseln Sie eine Verzeichnisliste nicht mit dem Server."
     ],
     "error2Title": [
-      "401 Unbefugte oder Genehmigte"
+      "401 Nicht autorisiert oder Autorisierungsschleife"
     ],
     "error2Body": [
-      "Verwenden Sie den Account-Autorisierungsfluss des Kunden und rufen Sie sich neu an, wenn die Sitzung abläuft. Überprüfen Sie die Server-Authentifizierungsanforderungen und Kundenverleihungen. Keine Apple-Passwörter, API-Token oder Abonnements in öffentliche Chats, Screenshots oder Ausgabeberichte."
+      "Verwenden Sie den Kontoautorisierungsablauf des Kunden und stellen Sie die Verbindung wieder her, wenn die Sitzung abläuft. Überprüfen Sie die Authentifizierungsanforderungen und Clientberechtigungen des Servers. Fügen Sie niemals Apple-Passwörter, API-Tokens oder Abonnementbelege in öffentliche Chats, Screenshots oder Problemberichte ein."
     ],
     "error3Title": [
-      "403 Verbot oder Verweigerung der Genehmigung von Tools"
+      "403 Verboten oder Werkzeugberechtigung verweigert"
     ],
     "error3Body": [
-      "Bestätigen Sie, dass der Kunde diese Verbindungsbehörde erteilt hat, um das angeforderte Werkzeug zu verwenden. Fragen Sie den Arbeitsplatz-Administrator über die Richtlinien, falls erforderlich. A 403 kann auch eine Authentifizierung oder Ursprungsrichtlinienbegrenzung widerspiegeln - nicht unbedingt eine abgeschlossene Abonnement."
+      "Bestätigen Sie, dass der Client diesem Connector die Berechtigung zur Verwendung des angeforderten Tools erteilt hat. Fragen Sie den Arbeitsbereichsadministrator bei Bedarf nach Richtlinien. Ein 403 kann auch auf eine Authentifizierungs- oder Ursprungsrichtlinienbeschränkung hinweisen – nicht unbedingt auf ein abgelaufenes Abonnement."
     ],
     "error4Title": [
-      "Keine Tools gefunden, alte Tools oder Tools nicht erkannt"
+      "Keine Werkzeuge gefunden, alte Werkzeugliste oder Werkzeug nicht erkannt"
     ],
     "error4Body": [
-      "Aktivieren Sie den Konnektor und Erneuerung oder Rescan-Tools. Aktuelle Serverdokumente 15 Tools. Verlängte Katalog-Summar ändern nicht das Live-Tool Registry.",
-      "Überprüfen Sie, dass Ihr MCP-Client entfernte Tools entdecken kann."
+      "Aktivieren Sie den Connector und aktualisieren oder scannen Sie die Tools erneut. Der aktuelle Server dokumentiert 15 Tools. Veraltete Verzeichniszusammenfassungen ändern die Live-Tool-Registrierung nicht. Versuchen",
+      "; Überprüfen Sie, ob Ihr MCP-Client Remote-Tools erkennen kann."
     ],
     "error5Title": [
-      "Verfahrensdauer, Pro erforderlich oder Send Limit erreicht"
+      "Testversion abgelaufen, Pro erforderlich oder Sendelimit erreicht"
     ],
     "error5Body": [
-      "Gebrauch",
-      "für den aktuellen Zugriff zu überprüfen. Die app-managed dreitägige Prüfung beginnt auf der ersten qualifizierten Send; nach Ablauf, freie Zugriff enthält 25 verfügbare Templates und eine Single-AI Send pro Rolling 24 Stunden. Vergleichsmodus, BYOM und andere Pro-Funktionen erfordert angemessene Zugriff. Um eine bezahlte Zugriffsschädigung zu lösen, melden Sie sich mit dem verbundenen Konto an und überprüfen oder wiederherstellen Sie Ihre Apple-Abonnement in der app."
+      "Verwenden",
+      "um den aktuellen Zugriff zu überprüfen. Die von der App verwaltete dreitägige Testversion beginnt mit dem ersten qualifizierenden Senden. Nach Ablauf umfasst der kostenlose Zugriff 25 vorgestellte Vorlagen und einen Single-AI-Send pro fortlaufenden 24 Stunden. Vergleichsmodus, BYOM und andere Pro-Funktionen erfordern entsprechenden Zugriff. Um eine Diskrepanz zwischen kostenpflichtigem Zugriff zu beheben, melden Sie sich mit dem verknüpften Konto an und überprüfen oder stellen Sie Ihr Apple-Abonnement in der App wieder her."
     ],
     "error6Title": [
-      "429 Rate Limit, Timeout, 500/502/503 oder Netzwerkfehler"
+      "429-Ratenbegrenzung, Timeout, 500/502/503 oder Netzwerkfehler"
     ],
     "error6Body": [
-      "Rückkehr nach kurzer Verzögerung und überprüfen Sie das Netzwerk des Kunden, jede Proxy oder Firewall und den Status des Servern. Vermeiden Sie eine bezahlte oder Send-Aktion wiederholen, bis Sie überprüfen haben, ob die vorherige Anfrage abgeschlossen ist. Inkludieren Sie die Zeit, MCP-Client und Fehlercode in eine Supportanfrage - niemals Geheimnisse."
+      "Versuchen Sie es nach einer kurzen Verzögerung erneut und überprüfen Sie das Netzwerk des Clients, etwaige Proxys oder Firewalls sowie den Serverstatus. Vermeiden Sie es, eine bezahlte oder sendende Aktion zu wiederholen, bis Sie überprüft haben, ob die vorherige Anfrage abgeschlossen wurde. Geben Sie in einer Supportanfrage die Uhrzeit, den MCP-Client und den Fehlercode an – niemals Geheimnisse."
     ],
     "error7Title": [
-      "Fehler in Sprache, Übersetzung, Übersetzung oder Audiofehler"
+      "Falsche Sprache, Übersetzung, Transkription oder Audiofehler"
     ],
     "error7Body": [
-      "Gebrauch",
-      "um eine unterstützte Sprache auszuwählen, überprüfen Sie dann die Eingangs- und Ausgangssprache-Einstellungen.",
-      ", bestätigen Sie das Audioformat, Größe und Erlaubnis entsprechen Tools Anforderungen.",
+      "Verwenden",
+      "Wählen Sie eine unterstützte Sprache aus und überprüfen Sie dann die Einstellungen für die Eingabe- und Ausgabesprache. Für",
+      ", bestätigen Sie, dass das Audioformat, die Größe und die Berechtigungen den Anforderungen des Tools entsprechen. Versuchen",
       "oder",
-      "separaten, um das Problem zu isolieren."
+      "separat, um das Problem einzugrenzen."
     ],
     "error8Title": [
-      "Custom Model (BYOM) Validierung oder Ausführung fehl"
+      "Die Validierung oder Ausführung des benutzerdefinierten Modells (BYOM) schlägt fehl"
     ],
     "error8Body": [
-      "Erste Anrufe",
-      "Dann dann",
-      ". Verwenden Sie ein erreichbares HTTPS-Modell-Endpunkt, den richtigen Adapter und Modell-ID und eine gültige vorübergehende Einstellung. Überprüfen Sie die API-Reaktion Ihres Modellierers. Teilen Sie keine API-Schlüssel in Logs oder Support-Nachrichten."
+      "Erster Anruf",
+      ", Dann",
+      ". Verwenden Sie einen erreichbaren HTTPS-Modellendpunkt, den richtigen Adapter und die richtige Modellkennung sowie gültige temporäre Anmeldeinformationen. Überprüfen Sie die API-Antwort Ihres Modellanbieters. Geben Sie keine API-Schlüssel in Protokollen oder Supportnachrichten weiter."
     ],
     "toolsTitle": [
       "Welches MCP-Tool sollte ich testen?"
     ],
     "toolsIntro": [
-      "Prüfen Sie die kleinste Les-only-Betriebnahme vor einer Send-Betriebnahme. Diese Gruppen decken alle 15 Poly-Glot MCP-Tools ab."
+      "Testen Sie den kleinsten schreibgeschützten Vorgang vor einer Sendeaktion. Diese Gruppen decken alle 15 Poly-Glot MCP-Tools ab."
     ],
     "groupCore": [
-      "Entdeckung, Status und Arbeitsplatz"
+      "Entdeckung, Status und Arbeitsbereich"
     ],
     "groupCustom": [
-      "Anpassungsmodell / BYOM"
+      "Kundenspezifisches Modell / BYOM"
     ],
     "groupLanguage": [
       "Sprache und Audio"
     ],
     "supportTitle": [
-      "Sie brauchen noch Hilfe?"
+      "Brauchen Sie noch Hilfe?"
     ],
     "supportBody": [
-      "Teilen Sie Ihren MCP-Client, den Transporttyp, den Werkzeugnamen, den genauen Fehlercode und die angemessene Zeit – nie Passwörter oder API-Schlüssel."
+      "Teilen Sie Ihren MCP-Client, den Transporttyp, den Toolnamen, den genauen Fehlercode und die ungefähre Zeit mit – niemals Passwörter oder API-Schlüssel."
     ],
     "supportLink": [
-      "Kontakt Poly-Glot Unterstützung"
+      "Kontaktieren Sie den Poly-Glot-Support →"
     ],
     "setupLink": [
-      "Sehen Sie Setup und Kompatibilität"
+      "Setup und Kompatibilität anzeigen →"
     ],
     "markdownLink": [
-      "Lesen Sie den RAG-freundlichen Markdown-Guide →"
+      "Lesen Sie den RAG-freundlichen Markdown-Leitfaden →"
     ]
   }
 }

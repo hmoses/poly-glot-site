@@ -2,156 +2,156 @@
   "language": "HR",
   "strings": {
     "eyebrow": [
-      "Podrška za MCP povezivanje"
+      "MCP podrška za povezivanje"
     ],
     "title": [
-      "Rješavanje problema Poly-Glot MCP poveznica, autentifikacija i alata"
+      "Rješavanje problema Poly-Glot MCP veza, autentifikacije i alata"
     ],
     "intro": [
-      "Korak po korak popravke za daljinske HTTP poveznice u ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf i drugim kompatibilnim MCP klijentima. Svi klijenti koriste isti Poly-Glot server, s 15 alata po šablona, usporedbi, prilagođenim modelima i jezicima."
+      "Korak po korak popravci za udaljene Streamable HTTP veze u ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf i drugim kompatibilnim MCP klijentima. Svi klijenti koriste isti Poly-Glot poslužitelj, s 15 alata za različite predloške, usporedbu, prilagođene modele i jezike."
     ],
     "endpointLabel": [
-      "Proizvodnja MCP URL-a – koristite točnu HTTPS adresu"
+      "Proizvodni MCP URL — koristite točnu HTTPS adresu"
     ],
     "copy": [
-      "Kopiranje Endpoint"
+      "Kopiraj krajnju točku"
     ],
     "quickTitle": [
-      "Počnite s ovim četiri provjere"
+      "Počnite s ove četiri provjere"
     ],
     "quick1": [
-      "Koristite točan URL servera.",
-      "Priključite se HTTPS terminalu gore, uključujući i",
-      "Nemojte stavljati URL adresu glame, MCP.so ili GitHub direktora."
+      "Koristite točan URL poslužitelja.",
+      "Zalijepite HTTPS krajnju točku iznad, uključujući",
+      "; nemojte lijepiti URL imenika Glama, MCP.so ili GitHub."
     ],
     "quick2": [
-      "Izaberite daljinski HTTP.",
-      "Poly-Glot je domaćin: nema npm instalacije, lokalhost port, ili stdio zapovijed je potrebna."
+      "Odaberite Remote Streamable HTTP.",
+      "Odaberite opciju udaljenog HTTP MCP klijenta. Poly-Glot je hostiran: nije potrebna instalacija npm-a, lokalni host port ili stdio naredba."
     ],
     "quick3": [
-      "Omogućiti i omogućiti alate.",
-      "Napunite bilo koji prijavi ili odobrenje prompt, odobrite dozvole alata, a zatim osvježite ili otklonite server u vašem klijentu."
+      "Autorizirajte i omogućite alate.",
+      "Dovršite bilo koji upit za prijavu ili autorizaciju, odobrite dozvole alata, zatim osvježite ili ponovno skenirajte poslužitelj u svom klijentu."
     ],
     "quick4": [
-      "Prvo provodite test samo čitanja.",
-      "Zatražite od svog klijenta da koristi",
+      "Prvo pokrenite test samo za čitanje.",
+      "Zamolite svog klijenta da koristi",
       "ili",
-      "a zatim koristiti",
-      "provjeriti test i pro dostupnost."
+      "; zatim koristite",
+      "za provjeru dostupnosti probne i Pro verzije."
     ],
     "clientsTitle": [
-      "Rješavanje problema MCP klijenta"
+      "Rješavanje problema pomoću MCP klijenta"
     ],
     "clientChatgpt": [
-      "Koristite aplikacije ili konfiguriranje MCP razvijatelja/na raspolaganju na vaš račun ili radno mjesto. Dodajte udaljeni URL, završite bilo koju ovlast, skeniranje alata i odaberite aplikaciju u vašem razgovoru."
+      "Upotrijebite konfiguraciju aplikacija ili programera/prilagođene MCP dostupne za vaš račun ili radni prostor. Dodajte udaljeni URL, dovršite autorizaciju, alate za skeniranje i odaberite aplikaciju u svom chatu. Dostupnost aplikacija i načina rada za razvojne programere ovisi o dopuštenjima plana i radnog prostora."
     ],
     "clientDocs": [
-      "Službena pomoć klijenta"
+      "Službena pomoć klijentima ↗"
     ],
     "clientClaude": [
-      "Dodajte Poly-Glot pod Uredi → Konektori kao prilagođeni daljinski konektor. Ako se ne pojavljuje u razgovoru, omogućite ga u meniju alata. Daljinski konektori nisu konfigurirani pomoću lokalnog Claude Desktop stdio JSON datoteke."
+      "Dodajte Poly-Glot pod Postavke → Konektori kao prilagođeni daljinski konektor. Ako se ne pojavljuje u chatu, omogućite ga u izborniku alata. Udaljeni priključci nisu konfigurirani pomoću lokalne Claude Desktop stdio JSON datoteke."
     ],
     "clientCursor": [
-      "Otvorite postavke MCP servera, dodajte daljinski Streamable HTTP server pomoću gornje krajnje točke i aktivirajte ga. Ako nema alata, ažurirajte MCP servera, odobrite dozvole i provjerite da klijenti podržavaju ovaj prijevoz."
+      "Otvorite postavke MCP poslužitelja, dodajte udaljeni Streamable HTTP poslužitelj pomoću gornje krajnje točke i omogućite ga. Ako nijedan alat nije naveden, osvježite MCP poslužitelje, odobrite dopuštenja i provjerite podržava li klijent ovaj prijenos."
     ],
     "clientGoose": [
-      "Dodajte Poly-Glot kao daljinsku MCP proširenje pomoću Streamable HTTP umjesto lokalnog zapovijedi. omogućiti proširenje, ponovno pokrenuti sjednicu ako je potrebno i testirati alat za čitanje prije nego što pokušate poslati ili prilagođavati alate za modeliranje."
+      "Dodajte Poly-Glot kao udaljeno MCP proširenje koristeći Streamable HTTP umjesto lokalne naredbe. Omogućite proširenje, ponovno pokrenite njegovu sesiju ako je potrebno i testirajte alat samo za čitanje prije nego isprobate alate za slanje ili prilagođeni model."
     ],
     "clientVscode": [
-      "U nastavku MCP-capable VS Koda, dodajte URL kao HTTP daljinski MCP server, a ne lokalni stdio proces. provjerite povjerenje radnog prostora i odobrenja alata, a zatim osvježite server i potvrdite otkrivanje alata."
+      "U postavci VS koda koja podržava MCP, dodajte URL kao HTTP udaljeni MCP poslužitelj, a ne lokalni stdio proces. Provjerite povjerenje radnog prostora i odobrenja alata, zatim osvježite poslužitelj i potvrdite otkrivanje alata."
     ],
     "clientOther": [
-      "Potvrdite da verzija klijenta podržava daljinske streamable HTTP MCP servera. koristite URL proizvodnje i omogućite njegove alate; ako vaš klijenta podržava samo stdio ili legacy SSE, pročitajte njezinu trenutačnu daljinsku dokumentaciju MCP."
+      "Potvrdite da verzija vašeg klijenta podržava udaljene Streamable HTTP MCP poslužitelje. Koristite proizvodni URL i omogućite njegove alate; ako vaš klijent podržava samo stdio ili naslijeđeni SSE, pogledajte njegovu trenutnu dokumentaciju za udaljeni MCP."
     ],
     "errorsTitle": [
-      "Uobičajene MCP pogreške i ispravke"
+      "Uobičajene MCP pogreške i popravci"
     ],
     "error1Title": [
-      "Server nije dostupan, neuspjeh povezivanja ili 404"
+      "Poslužitelj nedostupan, veza nije uspjela ili 404"
     ],
     "error1Body": [
-      "Provjerite cijeli",
-      "URL i daljinski HTTP prijevoz. ponovno dodati vezu i pokušati ponovno. preglednik GET na MCP krajnjeg točke nije valjan test alata; klijenta mora koristiti MCP protokol. provjerite mrežu klijenta i krajnjeg točke zdravlja servera; nemojte pogriješiti popis direktora za server."
+      "Provjerite potpunu",
+      "URL i daljinski HTTP prijenos. Ponovno dodajte vezu i pokušajte ponovno. Preglednik GET do MCP krajnje točke nije važeći test alata; klijent mora koristiti MCP protokol. Provjerite klijentsku mrežu i krajnju točku ispravnosti poslužitelja; nemojte zamijeniti popis imenika za poslužitelj."
     ],
     "error2Title": [
-      "401 Neovlašteno ili ovlašteno"
+      "401 Neovlaštena ili autorizacijska petlja"
     ],
     "error2Body": [
-      "Koristite tok ovlaštenja računa klijenta i ponovno se povezujte ako se sjednica istekne. Provjerite zahtjeve za autentifikaciju servera i dozvole klijenta. Nikada ne prilepite Apple lozinke, tokene API-a ili primke pretplate u javne razgovore, snimke zaslona ili izvješća o izdanju."
+      "Koristite tijek autorizacije računa klijenta i ponovno se povežite ako sesija istekne. Provjerite zahtjeve poslužitelja za provjeru autentičnosti i dopuštenja klijenta. Nikada nemojte lijepiti Appleove lozinke, API tokene ili potvrde o pretplati u javne razgovore, snimke zaslona ili izvješća o problemima."
     ],
     "error3Title": [
-      "403 Zabranjeno ili odbijeno dopuštenje instrumenta"
+      "403 Zabranjeno ili dopuštenje alata odbijeno"
     ],
     "error3Body": [
-      "Potvrdite da je klijenta dodijeljeno ovlaštenje za korištenje zatražene alate. pitajte administratora radnog prostora o politikama ako je potrebno. 403 također može odražati autentifikaciju ili ograničenje politike porijekla – ne nužno istekla pretplata."
+      "Potvrdite da je klijent ovom konektoru dao dozvolu za korištenje traženog alata. Ako je potrebno, pitajte administratora radnog prostora o pravilima. 403 također može odražavati ograničenje autentifikacije ili pravila porijekla—ne nužno pretplatu koja je istekla."
     ],
     "error4Title": [
-      "Nije pronađena nijedna alata, stara lista alata ili alat nije prepoznatljiv"
+      "Alati nisu pronađeni, stari popis alata ili alat nije prepoznat"
     ],
     "error4Body": [
-      "Omogućite priključak i osvijetlite ili otklonite alate. Trenutačni server dokumenti 15 alata. Odatirani popisi direktora ne mijenjaju registar alata u životu.",
-      "Provjerite da vaš MCP klijenta može otkriti daljinske alate."
+      "Omogućite konektor i alate za osvježavanje ili ponovno skeniranje. Trenutačni poslužitelj dokumentira 15 alata. Zastarjeli sažeci imenika ne mijenjaju živi registar alata. Probati",
+      "; provjerite može li vaš MCP klijent otkriti udaljene alate."
     ],
     "error5Title": [
-      "Ispitivanje je isteklo, Pro zahtijeva ili pošiljka ograničenja dosegnuta"
+      "Probno razdoblje je isteklo, potreban je Pro ili je dostignuto ograničenje slanja"
     ],
     "error5Body": [
-      "Korištenje",
-      "provjeriti trenutni pristup. aplikacija upravlja tri dana ispit počinje na prvom kvalificiranom Slijedeći; nakon isteka, besplatan pristup uključuje 25 prikazanih šablona i jedan pojedinačni AI Slijedeći po 24 sata. usporediti način, BYOM i druge Pro značajke zahtijevaju odgovarajući pristup. da bi se riješio plaćeni pristup neuspjeh, prijavite se s povezanom računom i provjerite ili obnovite Apple pretplatu u aplikaciji."
+      "Koristiti",
+      "za pregled trenutnog pristupa. Trodnevno probno razdoblje kojim upravlja aplikacija počinje prvim slanjem koje ispunjava uvjete; nakon isteka, besplatan pristup uključuje 25 istaknutih predložaka i jedno slanje s jednom umjetnom inteligencijom za 24 sata. Način usporedbe, BYOM i druge Pro značajke zahtijevaju odgovarajući pristup. Da biste riješili neusklađenost plaćenog pristupa, prijavite se s povezanim računom i potvrdite ili obnovite svoju Apple pretplatu u aplikaciji."
     ],
     "error6Title": [
-      "429 ograničenje stope, vrijeme, 500/502/503 ili mrežna pogreška"
+      "429 ograničenje brzine, vremensko ograničenje, 500/502/503 ili mrežna pogreška"
     ],
     "error6Body": [
-      "Povratak nakon kratkog kašnjenja i provjerite mrežu klijenta, bilo koji proxy ili vatrogasni zid, i status servera. Izbjegavajte ponavljanje plaćene ili Pošaljite akciju sve dok ne provjerite je li prethodna zahtjev završena. Uključite vrijeme, MCP klijenta i kod pogreške u zahtjev za podršku – nikada ne uključite tajne."
+      "Pokušajte ponovo nakon kratke odgode i provjerite klijentovu mrežu, proxy ili vatrozid i status poslužitelja. Izbjegavajte ponavljanje radnje plaćanja ili slanja dok ne provjerite je li prethodni zahtjev ispunjen. Uključite vrijeme, MCP klijenta i šifru pogreške u zahtjev za podršku—nikad nemojte uključivati ​​tajne."
     ],
     "error7Title": [
-      "Pogrešna jezika, prevod, transcription ili audio pogreška"
+      "Pogrešan jezik, prijevod, transkripcija ili audio pogreška"
     ],
     "error7Body": [
-      "Korištenje",
-      "da biste odabrali podržani jezik, a zatim provjerite postavke jezika ulaza i izlaska.",
-      "Potvrdite audio format, veličinu i dopuštenja odgovaraju zahtjeve alata.",
+      "Koristiti",
+      "kako biste odabrali podržani jezik, zatim provjerite postavke jezika za unos i izlaz. Za",
+      ", potvrdite da audio format, veličina i dopuštenja odgovaraju zahtjevima alata. Probati",
       "ili",
-      "Odvojeno izolacija problema."
+      "zasebno kako bi se problem izolirao."
     ],
     "error8Title": [
-      "Neuspjeh validacije ili izvršenja prilagođenog modela (BYOM)"
+      "Validacija ili izvršenje prilagođenog modela (BYOM) ne uspijeva"
     ],
     "error8Body": [
       "Prvi poziv",
-      "A onda",
-      "Koristite dosegljiv HTTPS model krajnjeg točka, ispravan adapter i identifikator modela, i valjan privremeni autentifikacija. provjerite API odgovor vašeg pružatelja modela. Ne dijelite API ključeve u logovima ili porukama za podršku."
+      ", onda",
+      ". Koristite dostupnu krajnju točku HTTPS modela, ispravan adapter i identifikator modela te važeću privremenu vjerodajnicu. Provjerite API odgovor vašeg dobavljača modela. Nemojte dijeliti API ključeve u zapisima ili porukama podrške."
     ],
     "toolsTitle": [
-      "Koji MCP alat treba testirati?"
+      "Koji MCP alat trebam testirati?"
     ],
     "toolsIntro": [
-      "Test najmanje čitanje samo operacije prije poslati akciju. Ove skupine obuhvaćaju sve 15 Poly-Glot MCP alata."
+      "Testirajte najmanju operaciju samo za čitanje prije akcije slanja. Ove grupe pokrivaju svih 15 Poly-Glot MCP alata."
     ],
     "groupCore": [
-      "Otkrivanje, status i radno mjesto"
+      "Otkriće, status i radni prostor"
     ],
     "groupCustom": [
       "Prilagođeni model / BYOM"
     ],
     "groupLanguage": [
-      "jezik i audio"
+      "Jezik i zvuk"
     ],
     "supportTitle": [
       "Još uvijek trebate pomoć?"
     ],
     "supportBody": [
-      "Podijelite svoj MCP klijenta, tip prijevoza, ime alata, točan kod pogreške i približno vrijeme – nikada lozinke ili API ključeve."
+      "Podijelite svoj MCP klijent, vrstu transporta, naziv alata, točan kod pogreške i približno vrijeme—nikada lozinke ili API ključeve."
     ],
     "supportLink": [
-      "Podrška za kontakt s Poly-Glot"
+      "Kontaktirajte Poly-Glot podršku →"
     ],
     "setupLink": [
-      "Pogledajte postavke i kompatibilnost"
+      "Pogledajte postavke i kompatibilnost →"
     ],
     "markdownLink": [
-      "Pročitajte RAG-prijateljski vodič za Markdown →"
+      "Pročitajte RAG-friendly Markdown vodič →"
     ]
   }
 }

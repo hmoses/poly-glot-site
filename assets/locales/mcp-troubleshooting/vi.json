@@ -2,156 +2,156 @@
   "language": "VI",
   "strings": {
     "eyebrow": [
-      "MCP hỗ trợ kết nối"
+      "Hỗ trợ kết nối MCP"
     ],
     "title": [
-      "Giải quyết vấn đề Poly-Glot MCP kết nối, xác thực và công cụ"
+      "Khắc phục sự cố kết nối, xác thực và công cụ Poly-Glot MCP"
     ],
     "intro": [
-      "Bước sau bước sửa chữa cho các kết nối HTTP Streamable từ xa trong ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf và các khách hàng MCP tương thích khác. Tất cả khách hàng sử dụng máy chủ Poly-Glot, với 15 công cụ trên các mẫu, so sánh, mô hình tùy chỉnh, và ngôn ngữ."
+      "Các bản sửa lỗi từng bước cho các kết nối HTTP có thể phát trực tuyến từ xa trong ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf và các ứng dụng khách MCP tương thích khác. Tất cả khách hàng đều sử dụng cùng một máy chủ Poly-Glot, với 15 công cụ trên các mẫu, so sánh, mô hình tùy chỉnh và ngôn ngữ."
     ],
     "endpointLabel": [
-      "Sản xuất MCP URL — sử dụng địa chỉ HTTPS chính xác này"
+      "URL MCP sản xuất - sử dụng địa chỉ HTTPS chính xác này"
     ],
     "copy": [
-      "Bản sao Endpoint"
+      "Sao chép điểm cuối"
     ],
     "quickTitle": [
-      "Bắt đầu với 4 kiểm tra này"
+      "Bắt đầu với bốn bước kiểm tra này"
     ],
     "quick1": [
-      "Sử dụng URL server chính xác.",
-      "Chọn điểm kết thúc HTTPS ở trên, bao gồm",
-      "Đừng dán một Glama, MCP.so hoặc địa chỉ URL của GitHub."
+      "Sử dụng URL máy chủ chính xác.",
+      "Dán điểm cuối HTTPS ở trên, bao gồm",
+      "; không dán URL thư mục Glama, MCP.so hoặc GitHub."
     ],
     "quick2": [
-      "Chọn từ xa Streamable HTTP.",
-      "Chọn tùy chọn MCP HTTP từ xa của khách hàng. Poly-Glot được lưu trữ: không cần cài đặt npm, cổng localhost, hoặc lệnh stdio."
+      "Chọn HTTP có thể phát trực tuyến từ xa.",
+      "Chọn tùy chọn HTTP MCP từ xa của máy khách. Poly-Glot được lưu trữ trên máy chủ: không cần cài đặt npm, cổng localhost hoặc lệnh stdio."
     ],
     "quick3": [
-      "Tạo và kích hoạt các công cụ",
-      "Hoàn thành bất kỳ đăng nhập hoặc ủy quyền nhanh chóng, phê duyệt các quyền công cụ, sau đó làm mới hoặc giải phóng máy chủ trong khách hàng của bạn."
+      "Cho phép và kích hoạt các công cụ.",
+      "Hoàn thành mọi lời nhắc đăng nhập hoặc ủy quyền, phê duyệt quyền của công cụ, sau đó làm mới hoặc quét lại máy chủ trong ứng dụng khách của bạn."
     ],
     "quick4": [
-      "Hãy thực hiện một bài kiểm tra chỉ đọc trước.",
+      "Trước tiên hãy chạy thử nghiệm chỉ đọc.",
       "Yêu cầu khách hàng của bạn sử dụng",
       "hoặc",
-      "· Sau đó sử dụng",
-      "để kiểm tra thử nghiệm và Pro khả dụng."
+      "; sau đó sử dụng",
+      "để kiểm tra bản dùng thử và tính khả dụng của bản Pro."
     ],
     "clientsTitle": [
-      "Giải quyết vấn đề bởi MCP client"
+      "Khắc phục sự cố bằng máy khách MCP"
     ],
     "clientChatgpt": [
-      "Sử dụng các Ứng dụng hoặc cấu hình MCP tùy chỉnh có sẵn cho tài khoản hoặc không gian làm việc của bạn. Thêm URL từ xa, hoàn thành bất kỳ ủy quyền, công cụ quét và chọn Ứng dụng trong trò chuyện của bạn. Ứng dụng và chế độ phát triển có sẵn khác nhau tùy thuộc vào kế hoạch và các ủy quyền không gian làm việc."
+      "Sử dụng Ứng dụng hoặc cấu hình MCP tùy chỉnh/nhà phát triển có sẵn cho tài khoản hoặc không gian làm việc của bạn. Thêm URL từ xa, hoàn thành mọi ủy quyền, công cụ quét và chọn ứng dụng trong cuộc trò chuyện của bạn. Tính khả dụng của ứng dụng và chế độ nhà phát triển thay đổi tùy theo quyền của gói và không gian làm việc."
     ],
     "clientDocs": [
-      "Khách hàng chính thức giúp đỡ"
+      "Trợ giúp khách hàng chính thức ↗"
     ],
     "clientClaude": [
-      "Thêm Poly-Glot dưới Cài đặt → Kết nối như một kết nối từ xa tùy chỉnh. Nếu nó không xuất hiện trong trò chuyện, kích hoạt nó trong menu công cụ của bạn. Kết nối từ xa không được cấu hình bằng cách sử dụng tệp JSON của địa phương Claude Desktop stdio."
+      "Thêm Poly-Glot trong Cài đặt → Trình kết nối làm trình kết nối từ xa tùy chỉnh. Nếu nó không xuất hiện trong cuộc trò chuyện, hãy bật nó trong menu công cụ của bạn. Trình kết nối từ xa không được định cấu hình bằng tệp JSON stdio Claude Desktop cục bộ."
     ],
     "clientCursor": [
-      "Mở cài đặt máy chủ MCP của bạn, thêm một máy chủ HTTP Streamable từ xa bằng cách sử dụng điểm kết thúc ở trên, và bật nó. Nếu không có công cụ được liệt kê, hãy cập nhật máy chủ MCP, phê duyệt quyền và xác minh khách hàng hỗ trợ giao thông này."
+      "Mở cài đặt máy chủ MCP của bạn, thêm máy chủ HTTP có thể phát trực tuyến từ xa bằng cách sử dụng điểm cuối ở trên và kích hoạt nó. Nếu không có công cụ nào được liệt kê, hãy làm mới máy chủ MCP, phê duyệt quyền và xác minh máy khách hỗ trợ việc truyền tải này."
     ],
     "clientGoose": [
-      "Thêm Poly-Glot như là một phần mở rộng MCP từ xa bằng cách sử dụng Streamable HTTP thay vì một lệnh địa phương. Khả năng mở rộng, khởi động lại phiên của nó nếu cần thiết và kiểm tra một công cụ chỉ đọc trước khi thử Send hoặc tùy chỉnh mô hình công cụ."
+      "Thêm Poly-Glot làm tiện ích mở rộng MCP từ xa bằng cách sử dụng HTTP có thể phát trực tuyến thay vì lệnh cục bộ. Bật tiện ích mở rộng, khởi động lại phiên của nó nếu cần và kiểm tra công cụ chỉ đọc trước khi thử công cụ Gửi hoặc mô hình tùy chỉnh."
     ],
     "clientVscode": [
-      "Trong cài đặt MCP-capable VS Code, hãy thêm URL như một máy chủ MCP từ xa HTTP, chứ không phải là một quá trình stdio địa phương. kiểm tra sự tin cậy trong không gian làm việc và công cụ chấp thuận, sau đó làm mới máy chủ và xác nhận phát hiện công cụ."
+      "Trong thiết lập Mã VS có khả năng MCP, hãy thêm URL dưới dạng máy chủ MCP từ xa HTTP, không phải quy trình stdio cục bộ. Kiểm tra độ tin cậy của không gian làm việc và phê duyệt công cụ, sau đó làm mới máy chủ và xác nhận khám phá công cụ."
     ],
     "clientOther": [
-      "Kiểm tra phiên bản của khách hàng của bạn hỗ trợ các máy chủ MCP Streamable HTTP từ xa. Sử dụng URL sản xuất và kích hoạt công cụ của nó; nếu khách hàng của bạn chỉ hỗ trợ stdio hoặc SSE di sản, hãy xem tài liệu MCP từ xa hiện tại của nó."
+      "Xác nhận phiên bản máy khách của bạn hỗ trợ máy chủ HTTP MCP có thể phát trực tuyến từ xa. Sử dụng URL sản xuất và kích hoạt các công cụ của nó; nếu máy khách của bạn chỉ hỗ trợ stdio hoặc SSE kế thừa, hãy tham khảo tài liệu MCP từ xa hiện tại của nó."
     ],
     "errorsTitle": [
-      "MCP lỗi và sửa chữa"
+      "Các lỗi MCP thường gặp và cách khắc phục"
     ],
     "error1Title": [
-      "Server không sẵn dùng, kết nối thất bại hoặc 404"
+      "Máy chủ không khả dụng, kết nối không thành công hoặc 404"
     ],
     "error1Body": [
-      "Kiểm tra đầy đủ",
-      "URL và chuyển giao HTTP từ xa. thêm lại kết nối và thử lại. một trình duyệt GET đến một điểm kết thúc MCP không phải là một công cụ kiểm tra hợp lệ; khách hàng phải sử dụng giao thức MCP. kiểm tra mạng khách hàng và điểm kết thúc sức khỏe máy chủ; đừng nhầm một danh sách thư mục cho máy chủ."
+      "Xác minh đầy đủ",
+      "URL và truyền tải HTTP từ xa. Thêm lại kết nối và thử lại. Trình duyệt GET tới điểm cuối MCP không phải là một công cụ kiểm tra hợp lệ; khách hàng phải sử dụng giao thức MCP. Kiểm tra mạng máy khách và điểm cuối tình trạng máy chủ; đừng nhầm lẫn danh sách thư mục với máy chủ."
     ],
     "error2Title": [
-      "401 Không được ủy quyền hoặc ủy quyền"
+      "401 Vòng lặp trái phép hoặc ủy quyền"
     ],
     "error2Body": [
-      "Sử dụng dòng quyền tài khoản của khách hàng và kết nối lại nếu phiên kết thúc. kiểm tra yêu cầu xác thực của máy chủ và quyền khách hàng. Không bao giờ dán mật khẩu Apple, tokens API hoặc nhận đăng ký vào các cuộc trò chuyện công cộng, ảnh chụp màn hình hoặc báo cáo phát hành."
+      "Sử dụng luồng ủy quyền tài khoản của khách hàng và kết nối lại nếu phiên hết hạn. Kiểm tra các yêu cầu xác thực của máy chủ và quyền của máy khách. Không bao giờ dán mật khẩu Apple, mã thông báo API hoặc biên lai đăng ký vào các cuộc trò chuyện công khai, ảnh chụp màn hình hoặc báo cáo sự cố."
     ],
     "error3Title": [
-      "403 Cấm hoặc từ chối giấy phép công cụ"
+      "403 Bị cấm hoặc quyền công cụ bị từ chối"
     ],
     "error3Body": [
-      "Kiểm tra cho khách hàng được cấp phép kết nối này để sử dụng công cụ được yêu cầu.Hãy hỏi quản trị phòng làm việc về chính sách nếu cần thiết.A 403 cũng có thể phản ánh một xác thực hoặc hạn chế chính sách nguồn gốc – không nhất thiết là một đăng ký đã hết hạn."
+      "Xác nhận khách hàng đã cấp quyền kết nối này để sử dụng công cụ được yêu cầu. Hỏi quản trị viên không gian làm việc về các chính sách nếu cần. 403 cũng có thể phản ánh hạn chế về xác thực hoặc chính sách nguồn gốc—không nhất thiết là đăng ký đã hết hạn."
     ],
     "error4Title": [
-      "Không tìm thấy công cụ, danh sách công cụ cũ hoặc công cụ không được nhận ra"
+      "Không tìm thấy công cụ nào, danh sách công cụ cũ hoặc công cụ không được nhận dạng"
     ],
     "error4Body": [
-      "Khả năng kết nối và cập nhật hoặc tiết kiệm các công cụ. Tài liệu máy chủ hiện tại 15 công cụ. Tổng hợp thư mục chưa được cập nhật không thay đổi hồ sơ công cụ trực tiếp.",
-      "• Kiểm tra rằng khách hàng MCP của bạn có thể khám phá các công cụ từ xa."
+      "Kích hoạt trình kết nối và các công cụ làm mới hoặc quét lại. Máy chủ hiện tại ghi lại 15 công cụ. Tóm tắt thư mục lỗi thời không thay đổi sổ đăng ký công cụ trực tiếp. Thử",
+      "; kiểm tra xem máy khách MCP của bạn có thể khám phá các công cụ từ xa không."
     ],
     "error5Title": [
-      "Thử nghiệm hết hạn, Pro yêu cầu hoặc gửi giới hạn đạt được"
+      "Bản dùng thử đã hết hạn, yêu cầu Pro hoặc đã đạt đến giới hạn gửi"
     ],
     "error5Body": [
       "Sử dụng",
-      "để kiểm tra truy cập hiện tại. ứng dụng quản lý ba ngày thử nghiệm bắt đầu trên đầu tiên đủ điều kiện gửi; sau khi hết hạn, truy cập miễn phí bao gồm 25 mẫu có sẵn và một AI gửi mỗi vòng 24 giờ. so sánh chế độ, BYOM và các tính năng Pro khác yêu cầu truy cập thích hợp. để giải quyết một lỗi truy cập trả tiền, đăng nhập với tài khoản liên kết và xác minh hoặc khôi phục đăng ký Apple của bạn trong ứng dụng."
+      "để kiểm tra truy cập hiện tại. Bản dùng thử kéo dài ba ngày do ứng dụng quản lý bắt đầu vào lần Gửi đủ điều kiện đầu tiên; sau khi hết hạn, quyền truy cập miễn phí bao gồm 25 mẫu nổi bật và một lần Gửi AI duy nhất trong vòng 24 giờ. Chế độ so sánh, BYOM và các tính năng Pro khác yêu cầu quyền truy cập phù hợp. Để giải quyết vấn đề không khớp về quyền truy cập phải trả phí, hãy đăng nhập bằng tài khoản được liên kết và xác minh hoặc khôi phục đăng ký Apple của bạn trong ứng dụng."
     ],
     "error6Title": [
-      "429 giới hạn tỷ lệ, thời gian, lỗi 500/502/503 hoặc lỗi mạng"
+      "Giới hạn tốc độ 429, hết thời gian chờ, 500/502/503 hoặc lỗi mạng"
     ],
     "error6Body": [
-      "Trở lại sau một thời gian ngắn và kiểm tra mạng của khách hàng, bất kỳ proxy hoặc firewall, và trạng thái máy chủ. Tránh lặp lại một hành động trả tiền hoặc Gửi cho đến khi bạn đã kiểm tra xem yêu cầu trước đã hoàn thành."
+      "Hãy thử lại sau một khoảng thời gian chờ ngắn và kiểm tra mạng của khách hàng, mọi proxy hoặc tường lửa cũng như trạng thái máy chủ. Tránh lặp lại hành động đã thanh toán hoặc Gửi cho đến khi bạn kiểm tra xem yêu cầu trước đó có hoàn thành hay không. Bao gồm thời gian, ứng dụng khách MCP và mã lỗi trong yêu cầu hỗ trợ—không bao giờ bao gồm bí mật."
     ],
     "error7Title": [
-      "Lỗi ngôn ngữ, dịch, dịch hoặc âm thanh sai"
+      "Lỗi ngôn ngữ, bản dịch, phiên âm hoặc âm thanh"
     ],
     "error7Body": [
       "Sử dụng",
-      "để chọn một ngôn ngữ được hỗ trợ, sau đó kiểm tra cài đặt ngôn ngữ nhập và xuất.",
-      ", xác nhận định dạng âm thanh, kích cỡ và phép phù hợp với yêu cầu công cụ.",
+      "để chọn ngôn ngữ được hỗ trợ, sau đó xác minh cài đặt ngôn ngữ đầu vào và đầu ra. Vì",
+      ", xác nhận định dạng âm thanh, kích thước và quyền phù hợp với yêu cầu của công cụ. Thử",
       "hoặc",
       "riêng biệt để tách biệt vấn đề."
     ],
     "error8Title": [
-      "Module tùy chỉnh (BYOM) xác thực hoặc thực hiện thất bại"
+      "Xác thực hoặc thực thi mô hình tùy chỉnh (BYOM) không thành công"
     ],
     "error8Body": [
-      "cuộc gọi đầu tiên",
-      "Và sau đó",
-      ". Sử dụng điểm kết thúc mô hình HTTPS có thể truy cập, bộ định dạng và mô hình chính xác, và một xác nhận tạm thời hợp lệ. kiểm tra phản ứng API của nhà cung cấp mô hình của bạn. Không chia sẻ khóa API trong các thư ký hoặc tin nhắn hỗ trợ."
+      "Cuộc gọi đầu tiên",
+      ", sau đó",
+      ". Sử dụng điểm cuối mô hình HTTPS có thể truy cập, bộ điều hợp và mã nhận dạng mô hình chính xác cũng như thông tin xác thực tạm thời hợp lệ. Kiểm tra phản hồi API của nhà cung cấp mô hình của bạn. Không chia sẻ khóa API trong nhật ký hoặc thông báo hỗ trợ."
     ],
     "toolsTitle": [
-      "Công cụ MCP nào nên thử nghiệm?"
+      "Tôi nên kiểm tra công cụ MCP nào?"
     ],
     "toolsIntro": [
-      "Kiểm tra hoạt động nhỏ nhất chỉ đọc trước khi thực hiện một hành động gửi. Các nhóm này bao gồm tất cả 15 công cụ Poly-Glot MCP."
+      "Kiểm tra thao tác chỉ đọc nhỏ nhất trước hành động Gửi. Các nhóm này bao gồm tất cả 15 công cụ MCP Poly-Glot."
     ],
     "groupCore": [
       "Khám phá, trạng thái và không gian làm việc"
     ],
     "groupCustom": [
-      "Mô hình / BYOM"
+      "Mô hình tùy chỉnh / BYOM"
     ],
     "groupLanguage": [
-      "Ngôn ngữ và Audio"
+      "Ngôn ngữ và âm thanh"
     ],
     "supportTitle": [
-      "Anh vẫn cần giúp đỡ?"
+      "Vẫn cần trợ giúp?"
     ],
     "supportBody": [
-      "Chia sẻ khách hàng MCP của bạn, loại vận chuyển, tên công cụ, mã lỗi chính xác và thời gian gần nhất – không bao giờ mật khẩu hoặc phím API."
+      "Chia sẻ ứng dụng khách MCP, loại truyền tải, tên công cụ, mã lỗi chính xác và thời gian gần đúng—không bao giờ chia sẻ mật khẩu hoặc khóa API."
     ],
     "supportLink": [
-      "Hỗ trợ Poly-Glot"
+      "Liên hệ bộ phận hỗ trợ Poly-Glot →"
     ],
     "setupLink": [
-      "View setup and compatibility → Thiết lập và tương thích"
+      "Xem thiết lập và khả năng tương thích →"
     ],
     "markdownLink": [
-      "Đọc hướng dẫn Markdown thân thiện với RAG"
+      "Đọc hướng dẫn Markdown thân thiện với RAG →"
     ]
   }
 }

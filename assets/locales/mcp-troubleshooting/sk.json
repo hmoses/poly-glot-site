@@ -2,156 +2,156 @@
   "language": "SK",
   "strings": {
     "eyebrow": [
-      "Podpora pripojenia MCP"
+      "podpora pripojenia MCP"
     ],
     "title": [
-      "Problémové riešenie Poly-Glot MCP spojenia, autentifikácia a nástroje"
+      "Riešenie problémov s pripojeniami, autentifikáciou a nástrojmi Poly-Glot MCP"
     ],
     "intro": [
-      "Krok za krokom opravy pre diaľkové streamovateľné HTTP pripojenia v ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf a ďalších kompatibilných MCP klientov. Všetci klienti používajú rovnaký server Poly-Glot, s 15 nástrojmi v šablónoch, porovnaní, prispôsobených modeloch a jazykoch."
+      "Opravy krok za krokom pre vzdialené streamovateľné HTTP pripojenia v ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf a ďalších kompatibilných klientoch MCP. Všetci klienti používajú rovnaký server Poly-Glot s 15 nástrojmi naprieč šablónami, porovnávaním, vlastnými modelmi a jazykmi."
     ],
     "endpointLabel": [
-      "Produkcia MCP URL – používať túto presnú adresu HTTPS"
+      "Produkčná adresa URL MCP — použite presne túto adresu HTTPS"
     ],
     "copy": [
-      "Kopírovanie endpoint"
+      "Kopírovať koncový bod"
     ],
     "quickTitle": [
-      "Začnite týmto štyrmi kontrolami"
+      "Začnite týmito štyrmi kontrolami"
     ],
     "quick1": [
-      "Použite presný server URL.",
-      "Umiestnite HTTPS koniec bodu vyššie, vrátane",
-      "Nenechajte prilepiť Glama, MCP.so alebo GitHub adresy URL."
+      "Použite presnú adresu URL servera.",
+      "Prilepte vyššie uvedený koncový bod HTTPS vrátane",
+      "; nevkladajte adresu URL adresára Glama, MCP.so alebo GitHub."
     ],
     "quick2": [
-      "Vyberte možnosť Streamable HTTP.",
-      "Vyberte možnosť MCP na diaľku HTTP klienta. Poly-Glot je hostovaný: nie je potrebná inštalácia npm, lokalhost port alebo stdio príkaz."
+      "Vyberte vzdialený streamovateľný HTTP.",
+      "Vyberte vzdialenú možnosť klienta HTTP MCP. Poly-Glot je hosťovaný: nevyžaduje sa žiadna inštalácia npm, port localhost ani príkaz stdio."
     ],
     "quick3": [
-      "Povoliť a povoliť nástroje.",
-      "Vyplňte akýkoľvek sign-in alebo autorizácia okamih, schváliť nástroj povolenia, potom obnovte alebo obnovte server vo vašom klientovi."
+      "Autorizujte a povoľte nástroje.",
+      "Dokončite všetky výzvy na prihlásenie alebo autorizáciu, schváľte povolenia nástroja a potom obnovte alebo znova skontrolujte server vo svojom klientovi."
     ],
     "quick4": [
-      "Najprv si prečítajte len test.",
-      "Požiadajte svojho zákazníka, aby ho používal",
+      "Najprv spustite test iba na čítanie.",
+      "Požiadajte svojho klienta o použitie",
       "alebo",
-      "a potom používať",
-      "kontrolovať testovanie a dostupnosť Pro."
+      "; potom použite",
+      "overiť dostupnosť skúšobnej verzie a verzie Pro."
     ],
     "clientsTitle": [
-      "Problémové riešenie klientom MCP"
+      "Riešenie problémov klientom MCP"
     ],
     "clientChatgpt": [
-      "Použite aplikácie alebo konfiguráciu MCP pre vývojárov/vlastných používateľov dostupnú pre váš účet alebo pracovný priestor. Pridajte vzdialený URL, dokončte akúkoľvek autorizáciu, skenujte nástroje a vyberte aplikáciu vo vašom chat. Dostupnosť aplikácie a rozvojového režimu sa líši v závislosti od plánu a pracovného priestoru."
+      "Použite konfiguráciu aplikácií alebo vývojára/vlastnú konfiguráciu MCP dostupnú pre váš účet alebo pracovný priestor. Pridajte vzdialenú adresu URL, dokončite autorizáciu, skenujte nástroje a vyberte aplikáciu vo svojom rozhovore. Dostupnosť aplikácií a vývojárskeho režimu sa líši podľa plánu a povolení pracovného priestoru."
     ],
     "clientDocs": [
-      "Úradný klient pomôže"
+      "Oficiálna pomoc klientovi ↗"
     ],
     "clientClaude": [
-      "Pridajte Poly-Glot v časti Nastavenia → Príslušenstvo ako vlastný vzdialený konektor. Ak sa nezobrazuje v chate, aktivujte ho v menu nástrojov. Vzdialené konektory nie sú konfigurované pomocou lokálneho súboru Claude Desktop stdio JSON."
+      "Pridajte Poly-Glot v časti Nastavenia → Konektory ako vlastný vzdialený konektor. Ak sa nezobrazí v chate, povoľte ho v ponuke nástrojov. Vzdialené konektory nie sú nakonfigurované pomocou lokálneho súboru JSON Claude Desktop stdio."
     ],
     "clientCursor": [
-      "Otvorte nastavenia servera MCP, pridajte vzdialený Streamable HTTP server pomocou vyššie uvedeného koncového bodu a aktivujte ho. Ak nie sú uvedené žiadne nástroje, obnovte servery MCP, schváliť povolenia a overiť, že klient podporuje tento prenos."
+      "Otvorte nastavenia servera MCP, pridajte vzdialený server HTTP s možnosťou streamovania pomocou vyššie uvedeného koncového bodu a povoľte ho. Ak nie sú uvedené žiadne nástroje, obnovte servery MCP, schváľte povolenia a overte, či klient podporuje tento prenos."
     ],
     "clientGoose": [
-      "Pridajte Poly-Glot ako vzdialené rozšírenie MCP pomocou Streamable HTTP namiesto miestneho príkazu. Povoliť rozšírenie, znova spustiť jej reláciu v prípade potreby a testovať čitateľný nástroj predtým, ako sa pokúsite poslať alebo prispôsobené nástroje."
+      "Pridajte Poly-Glot ako vzdialené rozšírenie MCP pomocou Streamable HTTP namiesto lokálneho príkazu. Povoľte rozšírenie, v prípade potreby reštartujte jeho reláciu a pred vyskúšaním nástrojov na odosielanie alebo vlastného modelu otestujte nástroj iba na čítanie."
     ],
     "clientVscode": [
-      "V nastavení MCP-capable VS Code, pridajte URL ako HTTP vzdialený server MCP, nie miestny stdio proces. skontrolujte dôveru pracovného priestoru a schválenia nástrojov, potom obnovte server a potvrďte nástrojové objavy."
+      "V nastavení kódu VS s podporou MCP pridajte adresu URL ako vzdialený server HTTP MCP, nie ako lokálny stdio proces. Skontrolujte dôveryhodnosť pracovného priestoru a schválenie nástrojov, potom obnovte server a potvrďte zistenie nástroja."
     ],
     "clientOther": [
-      "Potvrďte verziu vášho klienta podporuje vzdialené Streamable HTTP MCP servery. Použite URL výroby a aktivujte jej nástroje; ak váš klient podporuje iba stdio alebo dedičstvo SSE, skontrolujte jej aktuálnu dokumentáciu vzdialeného MCP."
+      "Skontrolujte, či verzia vášho klienta podporuje vzdialené servery HTTP MCP s možnosťou streamovania. Použite produkčnú adresu URL a povoľte jej nástroje; ak váš klient podporuje iba štandardné alebo staršie SSE, pozrite si jeho aktuálnu dokumentáciu k vzdialenému MCP."
     ],
     "errorsTitle": [
-      "MCP chyby a opravy"
+      "Bežné chyby a opravy MCP"
     ],
     "error1Title": [
-      "Server nedostupný, pripojenie nefunguje alebo 404"
+      "Server je nedostupný, pripojenie zlyhalo alebo 404"
     ],
     "error1Body": [
-      "Skontrolujte plnú",
-      "URL a vzdialený prenos HTTP. pridať pripojenie a skúsiť znova. prehliadač GET na MCP koncové miesto nie je platný nástroj test; klient musí používať protokol MCP. skontrolovať sieť klienta a koncové miesto pre zdravie servera; nepokúšajte sa mýliť zoznam adresárov pre server."
+      "Overte úplné",
+      "URL a vzdialený prenos HTTP. Znova pridajte pripojenie a skúste to znova. GET prehliadača na koncový bod MCP nie je platným testom nástroja; klient musí používať protokol MCP. Skontrolujte sieť klienta a koncový bod zdravia servera; nepomýľte si výpis adresára so serverom."
     ],
     "error2Title": [
-      "401 Neautorizovaný alebo povolený"
+      "401 Neoprávnená alebo autorizačná slučka"
     ],
     "error2Body": [
-      "Použite tok autorizácie účtu klienta a znova sa pripojiť, ak sa relácia skončí. skontrolujte požiadavky na autentifikáciu servera a povolenia klienta. Nikdy neukladajte heslá Apple, tokeny API alebo prihlášky na predplatné do verejných chatov, snímok obrazovky alebo správy o vydaní."
+      "Použite postup autorizácie účtu klienta a znova sa pripojte, ak relácia vyprší. Skontrolujte požiadavky na autentifikáciu servera a oprávnenia klienta. Nikdy nevkladajte heslá Apple, tokeny API alebo potvrdenia o predplatnom do verejných rozhovorov, snímok obrazovky alebo správ o problémoch."
     ],
     "error3Title": [
-      "403 Zakázané alebo nástrojové povolenie odmietnuté"
+      "403 Zakázané alebo zamietnuté povolenie na používanie nástroja"
     ],
     "error3Body": [
-      "Potvrďte, že klient udelil povolenie na používanie požadovaného nástroja. požiadajte správcu pracovného priestoru o pravidlá, ak je to potrebné. 403 môže tiež odrážať autentifikáciu alebo obmedzenie pravidiel pôvodu - nie nutne predplatné skončilo."
+      "Potvrďte, že klient udelil tomuto konektoru povolenie na používanie požadovaného nástroja. V prípade potreby sa na pravidlá spýtajte správcu pracovného priestoru. 403 môže tiež odrážať obmedzenie autentifikácie alebo politiky pôvodu – nie nevyhnutne vypršanie predplatného."
     ],
     "error4Title": [
-      "Nenašli nástroje, starý zoznam nástrojov alebo nástroj nepoznaný"
+      "Nenašli sa žiadne nástroje, starý zoznam nástrojov alebo nástroj nebol rozpoznaný"
     ],
     "error4Body": [
-      "Zapnite konektor a obnovte alebo zachráňte nástroje. Aktuálne serverové dokumenty 15 nástrojov. Predčasné zoznamy adresára nezmenia registrov živých nástrojov. Skúste",
-      "Uistite sa, že váš klient MCP môže nájsť vzdialené nástroje."
+      "Povoľte konektor a obnovte alebo znova naskenujte nástroje. Aktuálny server dokumentuje 15 nástrojov. Zastarané súhrny adresárov nemenia register živých nástrojov. Skúste",
+      "; skontrolujte, či váš klient MCP dokáže objaviť vzdialené nástroje."
     ],
     "error5Title": [
-      "Trial vyprší, Pro požadované alebo odosielanie limit dosiahnutý"
+      "Skúšobná verzia vypršala, vyžaduje sa Pro alebo bol dosiahnutý limit odoslania"
     ],
     "error5Body": [
-      "Použitie",
-      "na kontrolu aktuálneho prístupu. aplikácia riadená tri dni skúšky začína na prvé kvalifikované odosielanie; po uplynutí platnosti, bezplatný prístup zahŕňa 25 šablóny a jeden AI odosielanie za 24 hodín. Porovnanie režimu, BYOM a iné Pro funkcie vyžadujú príslušný prístup. Na riešenie plateného prístupu nesúlad, prihláste sa s prepojeným účtom a overte alebo obnoviť svoj Apple predplatné v aplikácii."
+      "Použite",
+      "na kontrolu aktuálneho prístupu. Trojdňová skúšobná verzia spravovaná aplikáciou sa začína prvým oprávneným odoslaním; po uplynutí platnosti bezplatný prístup zahŕňa 25 odporúčaných šablón a jedno odoslanie pomocou AI za 24 hodín. Režim porovnávania, BYOM a ďalšie funkcie Pro vyžadujú vhodný prístup. Ak chcete vyriešiť nesúlad plateného prístupu, prihláste sa pomocou prepojeného účtu a overte alebo obnovte svoje predplatné Apple v aplikácii."
     ],
     "error6Title": [
-      "429 limit rýchlosti, časový výstup, 500/502/503 alebo sieťová chyba"
+      "429 limit rýchlosti, časový limit, 500/502/503 alebo chyba siete"
     ],
     "error6Body": [
-      "Vráťte sa po krátkom oneskorení a skontrolujte si sieť klienta, akýkoľvek proxy alebo firewall a stav servera. Vyhnite sa opakovaniu plateného alebo odosielania akcie, kým ste skontrolovali, či bola predchádzajúca žiadosť dokončená. Zahrnúť čas, MCP klient a kód chyby v žiadosti o podporu – nikdy nezahrnúť tajomstvá."
+      "Skúste to znova po krátkom oneskorení a skontrolujte sieť klienta, akýkoľvek server proxy alebo bránu firewall a stav servera. Vyhnite sa opakovaniu platenej akcie alebo akcie Odoslať, kým neskontrolujete, či bola predchádzajúca žiadosť dokončená. V žiadosti o podporu uveďte čas, klienta MCP a kód chyby – nikdy neuvádzajte tajomstvá."
     ],
     "error7Title": [
-      "Chýbajúci jazyk, preklad, transkripcia alebo zvuková chyba"
+      "Nesprávny jazyk, chyba prekladu, prepisu alebo zvuku"
     ],
     "error7Body": [
-      "Použitie",
-      "vybrať podporovaný jazyk, potom skontrolovať nastavenia jazyka vstupu a výstupu.",
-      ", potvrdiť audio formát, veľkosť a povolenia zodpovedajú nástroj požiadavky.",
+      "Použite",
+      "vyberte podporovaný jazyk a potom skontrolujte nastavenia jazyka vstupu a výstupu. Pre",
+      "potvrďte, že formát zvuku, veľkosť a povolenia zodpovedajú požiadavkám nástroja. Skúste",
       "alebo",
-      "a izolovať túto otázku."
+      "samostatne, aby sa problém izoloval."
     ],
     "error8Title": [
-      "Vlastný model (BYOM) validácia alebo neúspech vykonávania"
+      "Overenie alebo spustenie vlastného modelu (BYOM) zlyhá"
     ],
     "error8Body": [
-      "Prvý volanie",
-      "a potom",
-      ". Použite dosiahnuteľný HTTPS modelový koncový bod, správny adaptér a identifikátor modelu a platný dočasný autentifikácia. skontrolujte odpoveď API poskytovateľa modelu. Nepodieľajte kľúče API v logoch alebo podporných správach."
+      "Prvý hovor",
+      ", potom",
+      ". Použite dostupný koncový bod modelu HTTPS, správny adaptér a identifikátor modelu a platné dočasné poverenia. Skontrolujte odpoveď API vášho poskytovateľa modelu. Nezdieľajte kľúče API v protokoloch alebo správach podpory."
     ],
     "toolsTitle": [
-      "Ktorý MCP nástroj by som mal testovať?"
+      "Ktorý nástroj MCP by som mal otestovať?"
     ],
     "toolsIntro": [
-      "Vyskúšajte najmenšiu čitateľnú operáciu pred akciou Send. Tieto skupiny pokrývajú všetky 15 nástrojov Poly-Glot MCP."
+      "Pred akciou Odoslať otestujte najmenšiu operáciu iba na čítanie. Tieto skupiny pokrývajú všetkých 15 nástrojov Poly-Glot MCP."
     ],
     "groupCore": [
-      "Objavovanie, stav a pracovný priestor"
+      "Zisťovanie, stav a pracovný priestor"
     ],
     "groupCustom": [
       "Vlastný model / BYOM"
     ],
     "groupLanguage": [
-      "Jazyk a audio"
+      "Jazyk a zvuk"
     ],
     "supportTitle": [
-      "Stále potrebujete pomoc?"
+      "Potrebujete ešte pomoc?"
     ],
     "supportBody": [
-      "Zdieľajte svoj MCP klient, typ dopravy, názov nástroja, presný kód chyby a približný čas – nikdy heslá alebo kľúče API."
+      "Zdieľajte svojho klienta MCP, typ prenosu, názov nástroja, presný kód chyby a približný čas – nikdy nie heslá alebo kľúče API."
     ],
     "supportLink": [
-      "Kontaktná podpora Poly-Glot"
+      "Kontaktujte podporu Poly-Glot →"
     ],
     "setupLink": [
-      "Zobraziť nastavenie a kompatibilitu"
+      "Zobraziť nastavenie a kompatibilitu →"
     ],
     "markdownLink": [
-      "Prečítajte si RAG-priateľský Markdown sprievodca →"
+      "Prečítajte si príručku Markdown priateľskú k RAG →"
     ]
   }
 }
