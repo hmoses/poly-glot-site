@@ -30,7 +30,8 @@ function locate(){
   [0,1,2].forEach(function(i){var kids=cards[i].children;nodes[3+i*2]=kids[0]||null;nodes[4+i*2]=kids[1]||null;});
  }
  savedMarkup=nodes.map(function(node){return node?node.innerHTML:null;});
- ready=nodes.every(Boolean);
+ // Intro is now rendered as three localized cards by claude-guide-locales.js.
+ ready=nodes.every(function(node,index){return index===1||!!node;});
 }
 function apply(){
  if(!ready)return;
