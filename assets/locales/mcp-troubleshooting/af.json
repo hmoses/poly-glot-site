@@ -1,0 +1,157 @@
+{
+  "language": "AF",
+  "strings": {
+    "eyebrow": [
+      "MCP verbinding ondersteuning"
+    ],
+    "title": [
+      "Ongelukkigheidbeheersing Poly-Glot MCP-verbindings, authentikasie en gereedskap"
+    ],
+    "intro": [
+      "Step-by-step fixes vir remote Streamable HTTP verbindings in ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf en ander kompatibele MCP kliënte. Alle kliënte gebruik dieselfde Poly-Glot server, met 15 gereedskap oor templates, vergelyking, aangepaste modelle, en taal."
+    ],
+    "endpointLabel": [
+      "Produksie MCP URL — gebruik hierdie presiese HTTPS-adres"
+    ],
+    "copy": [
+      "Kopieer die eindpunt"
+    ],
+    "quickTitle": [
+      "Begin met hierdie vier koekjes"
+    ],
+    "quick1": [
+      "Gebruik die presiese server URL.",
+      "Hou die HTTPS-endpoint hierboven, waaronder:",
+      "Moenie 'n Glama, MCP.so of GitHub-direktoraat URL invoeg nie."
+    ],
+    "quick2": [
+      "Kies die afstandsstreamable HTTP.",
+      "Kies die kliënt se afstand HTTP MCP-opsie. Poly-Glot is hosted: geen npm install, localhost port, of stdio command is vereis."
+    ],
+    "quick3": [
+      "Om die instrumente te autoriseer en te versterk.",
+      "Voldoe elke aanmelings- of toestemmingspunt, goedkeuring van gereedskap toestemmings, dan verfrisse of rescan die server in jou kliënt."
+    ],
+    "quick4": [
+      "Voer 'n lees-only test eers.",
+      "Vra jou kliënt om te gebruik",
+      "Of",
+      "En dan gebruik",
+      "om die pro- en pro-versoekbaarheid te kyk."
+    ],
+    "clientsTitle": [
+      "Ongelukkigheid deur MCP kliënt"
+    ],
+    "clientChatgpt": [
+      "Gebruik die Apps of ontwerper / aangepaste MCP-konfigurasie wat beskikbaar is vir jou rekening of werkruimte. Voeg die remote URL toe, voltooi enige toestemming, skan-tools en kies die app in jou chat. App en ontwerper-modus beskikbaarheid variër afhanklik van plan en werkruimte toestemming."
+    ],
+    "clientDocs": [
+      "Offisiële kliënt help"
+    ],
+    "clientClaude": [
+      "Add Poly-Glot onder Settings → Connectors as 'n aangesigde afstandsverbinding. As dit nie in die chat voorkom nie, aktiver dit in jou gereedskapmenu. Remote-verbindings word nie met behulp van die plaaslike Claude Desktop stdio JSON-bestand konfigureer nie."
+    ],
+    "clientCursor": [
+      "Open jou MCP-server instellings, voeg 'n afstandsstreamable HTTP-server met die eindpunt hierboven, en aktiver dit. As daar geen gereedskap nie, verfriss die MCP-server, goedkeuring van toestemmings en verifiseer die kliënt ondersteun hierdie vervoer."
+    ],
+    "clientGoose": [
+      "Add Poly-Glot as 'n afstand MCP uitbreiding met behulp van 'n Streamable HTTP in plaas van 'n plaaslike bevel. Om die uitbreiding te aktiver, sy sesie indien nodig herstart en probeer 'n lees-on-tool voordat jy Send of custom-model-tools probeer."
+    ],
+    "clientVscode": [
+      "In 'n MCP-capable VS Code setup, voeg die URL as 'n HTTP remote MCP server, nie 'n plaaslike stdio proses. Check werkplek vertroue en gereedskap goedkeuring, dan verfriss die server en bevestig gereedskap ontdekking."
+    ],
+    "clientOther": [
+      "Confirm your client's version support remote Streamable HTTP MCP servers. Gebruik die produksie-URL en aktiwiseer sy gereedskap; as jou kliënt slegs stdio of legacy SSE ondersteun, raadpleeg sy huidige remote-MCP-dokumentasie."
+    ],
+    "errorsTitle": [
+      "Algemene MCP-foutes en korreksies"
+    ],
+    "error1Title": [
+      "Server ontoeganklik, verbinding misluk of 404"
+    ],
+    "error1Body": [
+      "Check die volle",
+      "URL en remote HTTP vervoer. Voer die verbinding en probeer weer. 'n browser GET na 'n MCP-endpoint is nie 'n geldig instrumentstest nie; die kliënt moet die MCP-protocol gebruik. Check die kliëntnetwerk en die server gesondheid endpoint; maak nie 'n direktorium listing vir die server."
+    ],
+    "error2Title": [
+      "401 Onbevoegde of geautoriseerde loop"
+    ],
+    "error2Body": [
+      "Gebruik die kliënt se rekening toestemmingstrom en verbind as die sesie verloop. Check die server se authenticatie vereistes en kliënt toestemmings. Never paste Apple passwords, API tokens of abonnement ontvangs in publieke chat, skermfoto's of uitgaande verslag."
+    ],
+    "error3Title": [
+      "403 Verbied of gereedskap toestemming ontken"
+    ],
+    "error3Body": [
+      "Vertroue die kliënt wat hierdie verbinders toestemming gegee het om die gevra instrument te gebruik. vra die werkruimte administrator oor beleid indien nodig. 'n 403 kan ook 'n authenticatie of oorsprong-beleid beperking weerspieël - nie noodsaaklik 'n verlengde abonnement nie."
+    ],
+    "error4Title": [
+      "Geen gereedskap gevind nie, oud gereedskapliste of gereedskap nie herken nie"
+    ],
+    "error4Body": [
+      "Om die verbinding en die gereedskap te verfrisse of te rescanner. Die huidige serverdokumente 15 gereedskap. Ouddated direktorium samels verander nie die live gereedskap registry nie. Probeer",
+      "· Check dat jou MCP kliënt remote gereedskap kan ontdek."
+    ],
+    "error5Title": [
+      "Proe is uitgestel, Pro vereis of stuur die grens bereik"
+    ],
+    "error5Body": [
+      "Gebruik",
+      "om die huidige toegang te inspekteer. die app-gehandhaafde drie-daagse proef begin op die eerste kwalifiseer Send; na die uitstel, gratis toegang omvat 25 verskafde templates en 'n enkel-AI Send per rolling 24 uur. Vergelings modus, BYOM en ander Pro-funksie vereis passende toegang. Om 'n betaal-aankoms mismatch te beëindig, registreer met die verbindte rekening en verifiseer of herstel jou Apple-abonnement in die app."
+    ],
+    "error6Title": [
+      "429 rate limit, timeout, 500/502/503 of netwerkfout"
+    ],
+    "error6Body": [
+      "Retry na 'n kort vertraging en kyk na die kliënt se netwerk, enige proxy of firewall, en die server toestand. Vermy om 'n betaalde of Send aktie te herhaal totdat jy is gecontroleer of die vorige verzoek voltooid is. Inklareer die tyd, MCP kliënt en fout code in 'n ondersteuningsverzoek - nooit geheim."
+    ],
+    "error7Title": [
+      "Die verkeerde taal, vertaling, transcriptie of audio fout"
+    ],
+    "error7Body": [
+      "Gebruik",
+      "om 'n ondersteunende taal te kies, waarna die invoer en uitvoer taal instellings te verifiseer.",
+      ", bevestig die audio-formaat, grootte en toestemming voldoen aan die gereedskap vereistes.",
+      "Of",
+      "Dit is 'n gesonderheid om die probleem te isoleer."
+    ],
+    "error8Title": [
+      "Bypassed model (BYOM) validasie of uitvoering misluk"
+    ],
+    "error8Body": [
+      "Eerste oproep",
+      "En dan",
+      ". Gebruik 'n bereikbare HTTPS model eindpunt, die korrekte adapter en model identifier, en 'n geldig tydelike akkreditasie. Check die API-reaksie van jou model provider. Doen nie API sleutels in logs of ondersteunende boodskappe."
+    ],
+    "toolsTitle": [
+      "Welke MCP-tool moet ek probeer?"
+    ],
+    "toolsIntro": [
+      "Test die kleinste lees-on-operasie voordat 'n Send-operasie. Hierdie groeps dek al die 15 Poly-Glot MCP-tools."
+    ],
+    "groupCore": [
+      "Ontdeking, status en werkruimte"
+    ],
+    "groupCustom": [
+      "Kies 'n model / byom"
+    ],
+    "groupLanguage": [
+      "taal en audio"
+    ],
+    "supportTitle": [
+      "Hoef jy nog help?"
+    ],
+    "supportBody": [
+      "Deel jou MCP kliënt, transport type, gereedskap naam, presiese foutcode en ooreenkomende tyd – nooit wachtwoorde of API sleutels."
+    ],
+    "supportLink": [
+      "Kontak Poly-Glot ondersteuning"
+    ],
+    "setupLink": [
+      "Kyk op die setup en compatibiliteit"
+    ],
+    "markdownLink": [
+      "Lees die RAG-vriendelike Markdown gids →"
+    ]
+  }
+}

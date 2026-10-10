@@ -1,0 +1,157 @@
+{
+  "language": "RO",
+  "strings": {
+    "eyebrow": [
+      "Suport pentru conexiuni MCP"
+    ],
+    "title": [
+      "rezolvarea problemelor cu conexiunile Poly-Glot MCP, autentificarea și instrumentele"
+    ],
+    "intro": [
+      "Pas cu pas, fixarea conexiunilor HTTP Streamable la distanță în ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf și alți clienți MCP compatibili. Toți clienții folosesc același server Poly-Glot, cu 15 instrumente pe șabloane, comparație, modele personalizate și limbi."
+    ],
+    "endpointLabel": [
+      "URL-ul MCP de producție – utilizați această adresă HTTPS exactă"
+    ],
+    "copy": [
+      "Copia punctului final"
+    ],
+    "quickTitle": [
+      "Începeți cu aceste patru controale"
+    ],
+    "quick1": [
+      "Folosește URL-ul exact al serverului.",
+      "Puneți punctul de final HTTPS de mai sus, inclusiv",
+      "• Nu introduceți un URL al directoriei Glama, MCP sau GitHub."
+    ],
+    "quick2": [
+      "Selectați HTTP Streamable de la distanță.",
+      "Selectați opțiunea de distanță HTTP MCP a clientului. Poly-Glot este găzduit: nu este necesară instalarea npm, port localhost sau comanda stdio."
+    ],
+    "quick3": [
+      "Autorizați și autorizați instrumentele.",
+      "Completează orice prompt de înregistrare sau autorizare, aprobă permisiunile de instrumente, apoi refresh sau rescan serverul din client."
+    ],
+    "quick4": [
+      "Începeți mai întâi un test de lectură.",
+      "Întreabă-ți clientul să folosească",
+      "sau",
+      "• Apoi utilizaţi",
+      "Verifică disponibilitatea probelor și a probelor."
+    ],
+    "clientsTitle": [
+      "Răspunsuri pentru clientul MCP"
+    ],
+    "clientChatgpt": [
+      "Utilizați aplicațiile sau configurația MCP personalizată disponibilă pentru contul dvs. sau spațiul de lucru. Adăugați URL-ul la distanță, completați orice autorizație, scanați instrumentele și selectați aplicația în chat-ul dvs. Disponibilitatea aplicației și a modului de dezvoltare variază în funcție de plan și permisiunile spațiului de lucru."
+    ],
+    "clientDocs": [
+      "Ajutorul clientului oficial"
+    ],
+    "clientClaude": [
+      "Adăugați Poly-Glot în Settings → Connectors ca un conector la distanță personalizat. dacă nu apare în chat, activați-l în meniul de instrumente. Conectorele la distanță nu sunt configurate folosind fișierul local Claude Desktop stdio JSON."
+    ],
+    "clientCursor": [
+      "Deschideți setările serverului MCP, adăugați un server HTTP Streamable la distanță folosind punctul final de mai sus și activați-l. Dacă nu sunt listate instrumente, refacți serverele MCP, aprobați permisiunile și verificați clientul susține acest transport."
+    ],
+    "clientGoose": [
+      "Adăugați Poly-Glot ca extensie MCP la distanță folosind HTTP Streamable în loc de un comandă locală. Activarea extensiei, reîncepeți sesiunea dacă este necesar și testați un instrument de citire înainte de a încerca un instrument de trimitere sau de modelare personalizată."
+    ],
+    "clientVscode": [
+      "În setarea MCP-capable VS Code, adăugați URL-ul ca un server MCP de la distanță HTTP, nu un proces stdio local. Verificați încrederea spațiului de lucru și aprobările instrumentelor, apoi refrescați serverul și confirmați descoperirea instrumentelor."
+    ],
+    "clientOther": [
+      "Confirm versiunea clientului dvs. susține serverele HTTP MCP Streamable la distanță. Utilizați URL-ul de producție și activați instrumentele sale; dacă clientul dvs. susține doar stdio sau SSE legacy, consultați documentația actuală MCP la distanță."
+    ],
+    "errorsTitle": [
+      "Erori comune și corecții MCP"
+    ],
+    "error1Title": [
+      "Serviciul nu este disponibil, conexiunea eșuată sau 404"
+    ],
+    "error1Body": [
+      "Verificați completul",
+      "URL și transport HTTP la distanță. re-a adăugat conexiunea și încercați din nou. un browser GET la un punct de terminare MCP nu este un test de instrument valabil; clientul trebuie să utilizeze protocolul MCP. verificați rețeaua clientului și punctul de terminare de sănătate al serverului; nu înșelați o listă de directorii pentru server."
+    ],
+    "error2Title": [
+      "401 Locație neautorizată sau autorizată"
+    ],
+    "error2Body": [
+      "Utilizați fluxul de autorizare a contului clientului și reîncărcați-vă dacă sesiunea expiră. Verificați cerințele de autentificare ale serverului și permisiunile clientului. Nu introduceți niciodată parolele Apple, tokenele API sau recepțiile de abonament în chat-uri publice, ecranuri sau rapoarte de emisii."
+    ],
+    "error3Title": [
+      "403 Permisul interzis sau refuzat"
+    ],
+    "error3Body": [
+      "Confirmă clientului acordat permisiunea acestui conector pentru a utiliza instrumentul solicitat. întrebați administratorul spațiului de lucru despre politicile dacă este necesar. A 403 poate reflecta, de asemenea, o autentificare sau o restricție a politicilor de origine - nu neapărat o abonare expirată."
+    ],
+    "error4Title": [
+      "Nu au fost găsite instrumente, liste vechi de instrumente sau instrumente necunoscute"
+    ],
+    "error4Body": [
+      "Activarea conectorului și refresh sau rescan instrumente. documentele serverului actuale 15 instrumente. rezumatele directoriei anterioare nu schimbă registrul de instrumente live.",
+      "verificați că clientul dvs. MCP poate descoperi instrumente la distanță."
+    ],
+    "error5Title": [
+      "Executarea procesului, cererea Pro sau limitele de expediere au ajuns"
+    ],
+    "error5Body": [
+      "Utilizarea",
+      "pentru a verifica accesul curent. încercarea de trei zile gestionată de aplicație începe la prima trimite calificată; după expirare, accesul gratuit include 25 de șablonele prezentate și un singur trimite AI pe rulare 24 de ore. Modul de comparație, BYOM și alte caracteristici Pro necesită acces adecvat. Pentru a rezolva o eroare de acces plătit, înregistrați-vă cu contul conectat și verificați sau restabiliți abonamentul Apple în aplicație."
+    ],
+    "error6Title": [
+      "429 limită de rată, timout, 500/502/503 sau eroare de rețea"
+    ],
+    "error6Body": [
+      "Retrageți după o scurtă întârziere și verificați rețeaua clientului, orice proxy sau firewall și starea serverului. Evitați repetarea unei acțiuni plătite sau trimiteți până când ați verificat dacă solicitarea anterioară a fost finalizată. Includeți timpul, clientul MCP și codul de eroare într-o cerere de suport – nu includeți niciodată secrete."
+    ],
+    "error7Title": [
+      "Limbă greșită, traducere, transcriere sau eroare audio"
+    ],
+    "error7Body": [
+      "Utilizarea",
+      "pentru a alege o limbă susținută, apoi verificați setările de limbă de intrare și de ieșire.",
+      ", confirmă formatul audio, dimensiunea și permisiunile corespund cerințelor instrumentului.",
+      "sau",
+      "separat pentru a izola problema."
+    ],
+    "error8Title": [
+      "Modul personalizat (BYOM) validarea sau executarea eșuează"
+    ],
+    "error8Body": [
+      "Primul apel",
+      "După aceea",
+      "Utilizați un punct de terminare accesibil HTTPS model, adaptorul corect și identificatorul de model și o credențială temporară valabilă. Verificați răspunsul API al furnizorului de model. Nu împărtășiți cheile API în log-uri sau mesaje de suport."
+    ],
+    "toolsTitle": [
+      "Ce instrument MCP trebuie testat?"
+    ],
+    "toolsIntro": [
+      "Testarea celei mai mici operațiuni de lectură înainte de o acțiune Send. Aceste grupuri acoperă toate 15 instrumente MCP Poly-Glot."
+    ],
+    "groupCore": [
+      "Descoperirea, starea și spațiul de lucru"
+    ],
+    "groupCustom": [
+      "Modele personalizate / BYOM"
+    ],
+    "groupLanguage": [
+      "Limbă și audio"
+    ],
+    "supportTitle": [
+      "Întotdeauna aveți nevoie de ajutor?"
+    ],
+    "supportBody": [
+      "Partajați clientul dvs. MCP, tipul de transport, numele instrumentului, codul exact de eroare și timpul aproximat – niciodata parolele sau cheile API."
+    ],
+    "supportLink": [
+      "Contactează suportul Poly-Glot"
+    ],
+    "setupLink": [
+      "Vezi setup și compatibilitate"
+    ],
+    "markdownLink": [
+      "Citiți ghidul RAG-friendly Markdown →"
+    ]
+  }
+}

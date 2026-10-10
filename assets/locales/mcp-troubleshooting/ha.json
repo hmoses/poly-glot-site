@@ -1,0 +1,157 @@
+{
+  "language": "HA",
+  "strings": {
+    "eyebrow": [
+      "MCP ta hanyar"
+    ],
+    "title": [
+      "Mafi da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da"
+    ],
+    "intro": [
+      "Step-by-step fixes for remote Streamable HTTP connections in ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf da kuma sauran samar da MCP client. All client uses the same Poly-Glot server, with 15 tools across templates, comparison, custom models, and languages."
+    ],
+    "endpointLabel": [
+      "Production MCP URL — amfani da wannan tafin HTTPS address"
+    ],
+    "copy": [
+      "Sauke da endpoint"
+    ],
+    "quickTitle": [
+      "Za ka yi 4 tsari"
+    ],
+    "quick1": [
+      "Sauke da wani URL server.",
+      "Sauke HTTPS endpoint a kan, da kuma",
+      "; don tsaye a Glama, MCP.so ko GitHub ƙarfin URL."
+    ],
+    "quick2": [
+      "Yadda za a kan HTTP.",
+      "Salin da aka tsari da aka tsari da aka tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari da tsari"
+    ],
+    "quick3": [
+      "Kayan da kuma iya aiki.",
+      "Kayan aiki da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da kuma da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da da"
+    ],
+    "quick4": [
+      "Kowane a kan tsaye a kan tsaye a kan.",
+      "Sanya da aka amfani",
+      "Ya da",
+      "• Kuma amfani da",
+      "da tsarin da tsarin da tsarin da tsarin."
+    ],
+    "clientsTitle": [
+      "Sauke da MCP Client"
+    ],
+    "clientChatgpt": [
+      "Kayan Apps ko Developer/Custom MCP configuration ta amfani da aka da aka da aka da kuma aiki. Add the remote URL, complete any authorization, scan tools and select the app in your chat. App da kuma Developer-mode ta amfani da aka da aka da aka da aka da kuma aiki."
+    ],
+    "clientDocs": [
+      "Ƙungiyar Ƙungiyar Ƙungiyar Ƙungiyar"
+    ],
+    "clientClaude": [
+      "Add Poly-Glot a cikin Settings → Connectors a kan custom remote connector. Ko ne ne ne ne ne a cikin chat, iya yi a cikin wani tool menu. Remote connectors ne ne ko ne amfani da local Claude Desktop stdio JSON file."
+    ],
+    "clientCursor": [
+      "Open your MCP server settings, add a remote Streamable HTTP server using the end point above, da kuma iya aiki. Ko da kayayyakin ne a kan kayayyakin, za a kan MCP server, za a iya da kuma za a iya da kuma za a iya da tsare da tsare da tsare."
+    ],
+    "clientGoose": [
+      "Sauke Poly-Glot kamar m MCP tare da Streamable HTTP ko da wani loku komando. Sauke da ƙarfin, sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke."
+    ],
+    "clientVscode": [
+      "In a MCP-capable VS Code setup, add the URL as a HTTP remote MCP server, ko a local stdio process. Check workpace trust da kuma tool approvals, da kuma za a kan server da kuma za a kan tool discovery."
+    ],
+    "clientOther": [
+      "Sa'an kudi na'urorin ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an ka iya sa'an."
+    ],
+    "errorsTitle": [
+      "MCP yanar da kuma yanar"
+    ],
+    "error1Title": [
+      "Server da aka sa'an, da aka sa'an da aka sa'an ko 404"
+    ],
+    "error1Body": [
+      "Tsarin tsarin tsarin",
+      "URL da kuma Remote HTTP transport. Re-add the connection and try again. A browser GET to a MCP endpoint ne a kan aiki test; da mu da mu da mu da mu da mu da mu da mu da mu da mu da mu da mu da mu da mu da mu."
+    ],
+    "error2Title": [
+      "401 Non-Authorized da kuma ƙarfin ƙarfin"
+    ],
+    "error2Body": [
+      "Kayan aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu aka'antu."
+    ],
+    "error3Title": [
+      "403 Tsarin da kuma aiki da kuma aiki da kuma aiki da kuma aiki da kuma aiki"
+    ],
+    "error3Body": [
+      "Sauke da aka yi amfani da wannan samfurin aiki. Sauke da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar da samar."
+    ],
+    "error4Title": [
+      "No tools found, old tool list, da kuma alama a kan da kuma ba."
+    ],
+    "error4Body": [
+      "Sauke da aka sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da kuma sauke da sauke da kuma sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da sauke da da da da da da da da da da da da da da da da da da da da da da da da",
+      "; ya ce da mu MCP client yana da da da da da da da da da da da."
+    ],
+    "error5Title": [
+      "Tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsarin tsin"
+    ],
+    "error5Body": [
+      "amfani",
+      "The app-managed three-day trial ya ce a cikin farko kwangarewa Sunan; a lokacin da ya ce, free access yana da 25 da kuma wani single-AI Sunan a rufe 24 hours. Comparing Mode, BYOM da sauran Pro aiki za ka iya samun ta hanyar. To solute a pay-access mismatch, sign in with the linked account and verify or restore your Apple abon in the app."
+    ],
+    "error6Title": [
+      "429 rate limit, timeout, 500/502/503 ko network error"
+    ],
+    "error6Body": [
+      "Sauke a lokacin da tsare da kuma tsare da aka tsare da aka tsare da aka tsare da aka tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare da tsare."
+    ],
+    "error7Title": [
+      "Sauke da kayayyakin, kayayyakin, kayayyakin ko kayayyakin kayayyakin"
+    ],
+    "error7Body": [
+      "amfani",
+      "za ka iya sa'an da kuma sa'an da kuma sa'an da kuma sa'an da kuma sa'an da kuma sa'an da.",
+      ", za a kan audio format, size da kuma permissions match tool ta hanyar.",
+      "Ya da",
+      "Sa'an da ƙarfin da ƙarfin da ƙarfin."
+    ],
+    "error8Title": [
+      "Custom model (BYOM) validation ko execution fiye"
+    ],
+    "error8Body": [
+      "First tafiya",
+      "Kuma",
+      ". Ubangiji a kan HTTPS model endpoint, da kan adapter da model identifier, da kuma a kan al'amurorin fitar. Tsarin API yanar da model provider. Don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don don"
+    ],
+    "toolsTitle": [
+      "Kya'an MCP aiki za ka iya test?"
+    ],
+    "toolsIntro": [
+      "Tsarin mai tsarin tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsarin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Tsin Ts"
+    ],
+    "groupCore": [
+      "Sunan, status da kuma Workplace"
+    ],
+    "groupCustom": [
+      "Ƙungiyar Ƙungiyar / BYOM"
+    ],
+    "groupLanguage": [
+      "Lantarki da Audio"
+    ],
+    "supportTitle": [
+      "Yadda za a iya samun tafiya?"
+    ],
+    "supportBody": [
+      "MCP client, m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m m"
+    ],
+    "supportLink": [
+      "Tsarin Poly-Glot Support"
+    ],
+    "setupLink": [
+      "View setup da kuma samar da"
+    ],
+    "markdownLink": [
+      "Read the RAG-friendly Markdown Guide →"
+    ]
+  }
+}

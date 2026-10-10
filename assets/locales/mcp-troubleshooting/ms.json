@@ -1,0 +1,157 @@
+{
+  "language": "MS",
+  "strings": {
+    "eyebrow": [
+      "Sokongan sambungan MCP"
+    ],
+    "title": [
+      "Penyelesaian masalah Poly-Glot MCP sambungan, pengesahan dan alat"
+    ],
+    "intro": [
+      "Langkah demi langkah penyesuaian untuk sambungan HTTP Streamable jauh dalam ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf dan lain-lain pelanggan MCP yang kompatibel. Semua pelanggan menggunakan pelayan Poly-Glot yang sama, dengan 15 alat di seluruh templat, perbandingan, model tersuai, dan bahasa."
+    ],
+    "endpointLabel": [
+      "URL MCP pengeluaran — gunakan alamat HTTPS yang tepat ini"
+    ],
+    "copy": [
+      "Penyelesaian Endpoint"
+    ],
+    "quickTitle": [
+      "Mulakan dengan empat pemeriksaan ini"
+    ],
+    "quick1": [
+      "Gunakan URL pelayan yang tepat.",
+      "Masukkan titik akhir HTTPS di atas, termasuk",
+      "· Jangan letakkan URL direktori Glama, MCP.so atau GitHub."
+    ],
+    "quick2": [
+      "Pilih Remote Streamable HTTP.",
+      "Pilih opsyen remote HTTP MCP klien. Poly-Glot dihoskan: tiada npm pemasangan, port localhost, atau perintah stdio diperlukan."
+    ],
+    "quick3": [
+      "Mengaktifkan dan membolehkan alat",
+      "Menyelesaikan sebarang log masuk atau kelulusan segera, meluluskan keizinan alat, kemudian memperbaharui atau menyelesaikan pelayan dalam klien anda."
+    ],
+    "quick4": [
+      "Lakukan ujian bacaan sahaja terlebih dahulu.",
+      "Tanya pelanggan anda untuk menggunakan",
+      "atau",
+      "· Kemudian gunakan",
+      "untuk memeriksa percubaan dan ketersediaan Pro."
+    ],
+    "clientsTitle": [
+      "Penyelesaian masalah oleh klien MCP"
+    ],
+    "clientChatgpt": [
+      "Gunakan Aplikasi atau konfigurasi MCP pemaju / tersuai yang tersedia untuk akaun atau ruang kerja anda.Tambah URL jauh, lengkapkan mana-mana kebenaran, alat pemindaian dan pilih aplikasi dalam sembang anda.Penggunaan aplikasi dan mod pemaju berbeza-beza mengikut rancangan dan ruang kerja kebenaran."
+    ],
+    "clientDocs": [
+      "Bantuan Pelanggan Pihak Berkuasa"
+    ],
+    "clientClaude": [
+      "Tambah Poly-Glot di bawah Settings → Connectors sebagai penyambung jauh yang disesuaikan.Jika ia tidak muncul dalam sembang, mengaktifkannya dalam menu alat anda. penyambung jauh tidak dikonfigurasikan menggunakan fail JSON stdio desktop lokal."
+    ],
+    "clientCursor": [
+      "Buka tetapan pelayan MCP anda, tambahkan pelayan HTTP Streamable jauh menggunakan titik akhir di atas, dan mengaktifkannya.Jika tiada alat yang disenaraikan, memperbaharui pelayan MCP, meluluskan kebenaran dan mengesahkan pelanggan menyokong pengangkutan ini."
+    ],
+    "clientGoose": [
+      "Tambah Poly-Glot sebagai perpanjangan MCP jauh menggunakan HTTP yang boleh dilepaskan daripada perintah tempatan.Mengaktifkan perpanjangan, memulakan semula sesi jika perlu dan menguji alat yang hanya boleh dibaca sebelum mencuba Send atau alat model tersuai."
+    ],
+    "clientVscode": [
+      "Dalam setup MCP-capable VS Kod, tambahkan URL sebagai pelayan MCP jauh HTTP, bukan proses stdio tempatan. semak kepercayaan ruang kerja dan kelulusan alat, kemudian memperbaharui pelayan dan mengesahkan penemuan alat."
+    ],
+    "clientOther": [
+      "Mengesahkan versi klien anda menyokong pelayan remote Streamable HTTP MCP. Gunakan URL pengeluaran dan mengaktifkan alat-alatnya; jika klien anda menyokong hanya stdio atau warisan SSE, lihat dokumentasi remote-MCP semasa."
+    ],
+    "errorsTitle": [
+      "Kesilapan MCP dan pembetulan"
+    ],
+    "error1Title": [
+      "Server tidak tersedia, sambungan gagal atau 404"
+    ],
+    "error1Body": [
+      "Semak keseluruhan",
+      "URL dan penghantaran HTTP jauh. menambah semula sambungan dan cuba lagi. sebuah pelayar GET ke titik akhir MCP bukan ujian alat yang sah; pelanggan mesti menggunakan protokol MCP. semak rangkaian pelanggan dan titik akhir kesihatan pelayan; jangan salah senarai direktori untuk pelayan."
+    ],
+    "error2Title": [
+      "401 Tidak dibenarkan atau diluluskan"
+    ],
+    "error2Body": [
+      "Gunakan aliran kebenaran akaun klien dan sambungkan semula jika sesi tamat tempoh. semak keperluan pengesahan pelayan dan kebenaran klien. Jangan pernah memasukkan kata laluan Apple, token API atau penerimaan langganan ke dalam sembang awam, screenshots atau laporan pengeluaran."
+    ],
+    "error3Title": [
+      "403 Larangan atau permohonan alat ditolak"
+    ],
+    "error3Body": [
+      "Mengesahkan pelanggan yang diberikan kebenaran penyambung ini untuk menggunakan alat yang diminta.Tanya pentadbir ruang kerja mengenai dasar jika perlu.A 403 juga boleh mencerminkan pengesahan atau pembatasan dasar asal - tidak semestinya langganan yang tamat tempoh."
+    ],
+    "error4Title": [
+      "Tiada alat yang ditemui, senarai alat lama atau alat yang tidak dikenalpasti"
+    ],
+    "error4Body": [
+      "Mengaktifkan penyambung dan memperbaharui atau menyelamatkan alat-alat. dokumen pelayan semasa 15 alat. ringkasan direktori yang tidak lama tidak mengubah rekod alat hidup. cuba",
+      "· semak bahawa klien MCP anda boleh menemui alat jauh."
+    ],
+    "error5Title": [
+      "Permohonan telah tamat, Pro diperlukan atau had penghantaran telah dicapai"
+    ],
+    "error5Body": [
+      "Penggunaan",
+      "untuk memeriksa akses semasa. percubaan tiga hari yang dikendalikan oleh aplikasi bermula pada yang pertama berkelayakan Send; selepas tamat tempoh, akses percuma termasuk 25 templat yang dilengkapi dan satu-AI Send per rolling 24 jam. Perbandingan Mode, BYOM dan ciri-ciri Pro lain memerlukan akses yang sesuai. Untuk menyelesaikan kesilapan akses berbayar, log masuk dengan akaun yang dikaitkan dan mengesahkan atau memulihkan langganan Apple anda dalam aplikasi."
+    ],
+    "error6Title": [
+      "429 had kadar, timeout, 500/502/503 atau rangkaian ralat"
+    ],
+    "error6Body": [
+      "Kembali selepas keterlambatan yang singkat dan semak rangkaian klien, mana-mana proxy atau firewall, dan status pelayan. Elakkan mengulangi tindakan yang dibayar atau Hantar sehingga anda telah memeriksa sama ada permintaan terdahulu selesai. Masukkan masa, klien MCP dan kod ralat dalam permintaan sokongan—tidak pernah termasuk rahsia."
+    ],
+    "error7Title": [
+      "Kesilapan bahasa, terjemahan, transkripsi atau audio"
+    ],
+    "error7Body": [
+      "Penggunaan",
+      "untuk memilih bahasa yang disokong, kemudian mengesahkan tetapan bahasa input dan output.",
+      ", mengesahkan format audio, saiz dan keizinan memenuhi keperluan alat. cuba",
+      "atau",
+      "secara berasingan untuk mengisolasi masalah ini."
+    ],
+    "error8Title": [
+      "Model Custom (BYOM) validasi atau pelaksanaan gagal"
+    ],
+    "error8Body": [
+      "Panggilan Pertama",
+      "Kemudian",
+      ". Gunakan titik akhir model HTTPS yang boleh diakses, pengenalpastian dan pengenalpastian model yang betul, dan pengesahan sementara yang sah. semak jawapan API pembekal model anda. Jangan berkongsi kunci API dalam log atau mesej sokongan."
+    ],
+    "toolsTitle": [
+      "Alat MCP mana yang perlu saya ujian?"
+    ],
+    "toolsIntro": [
+      "Menguji operasi yang paling kecil sebelum tindakan Send.Kumpulan ini meliputi semua 15 alat MCP Poly-Glot."
+    ],
+    "groupCore": [
+      "Penemuan, status dan ruang kerja"
+    ],
+    "groupCustom": [
+      "Perbincangan / BYOM"
+    ],
+    "groupLanguage": [
+      "Bahasa dan audio"
+    ],
+    "supportTitle": [
+      "Masih memerlukan bantuan?"
+    ],
+    "supportBody": [
+      "Berkongsi klien MCP anda, jenis pengangkutan, nama alat, kod ralat yang tepat dan masa yang kira-kira - kata laluan atau kunci API."
+    ],
+    "supportLink": [
+      "Hubungi sokongan Poly-Glot"
+    ],
+    "setupLink": [
+      "Lihat setup dan kompatibiliti"
+    ],
+    "markdownLink": [
+      "Baca panduan RAG-friendly Markdown →"
+    ]
+  }
+}

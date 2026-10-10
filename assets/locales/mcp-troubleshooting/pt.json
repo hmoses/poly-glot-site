@@ -1,0 +1,157 @@
+{
+  "language": "PT",
+  "strings": {
+    "eyebrow": [
+      "Suporte de conexão MCP"
+    ],
+    "title": [
+      "Resolução de problemas de conexões MCP Poly-Glot, autenticação e ferramentas"
+    ],
+    "intro": [
+      "Correção passo a passo para conexões remotas Streamable HTTP em ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf e outros clientes MCP compatíveis. Todos os clientes usam o mesmo servidor Poly-Glot, com 15 ferramentas em templates, comparação, modelos personalizados e idiomas."
+    ],
+    "endpointLabel": [
+      "Produção MCP URL — use este endereço HTTPS exato"
+    ],
+    "copy": [
+      "Copia do endpoint"
+    ],
+    "quickTitle": [
+      "Comece com estes quatro cheques"
+    ],
+    "quick1": [
+      "Use o URL exato do servidor.",
+      "Confira o endpoint HTTPS acima, incluindo",
+      "Não coloque um URL de diretório Glama, MCP.so ou GitHub."
+    ],
+    "quick2": [
+      "Escolha o streaming remoto do HTTP.",
+      "Selecione a opção remota do cliente HTTP MCP. Poly-Glot é hospedado: não é necessário instalar npm, port localhost ou comando stdio."
+    ],
+    "quick3": [
+      "Autorizar e habilitar ferramentas.",
+      "Complete qualquer registro ou autorização, aprova permissões de ferramentas, depois refresque ou rescata o servidor em seu cliente."
+    ],
+    "quick4": [
+      "Faça primeiro um teste de leitura.",
+      "Peça ao seu cliente que use",
+      "ou",
+      "E depois usar",
+      "Verificar a disponibilidade e a disponibilidade."
+    ],
+    "clientsTitle": [
+      "Resolução de problemas por cliente MCP"
+    ],
+    "clientChatgpt": [
+      "Use as Aplicações ou configuração MCP personalizada disponível para sua conta ou espaço de trabalho. Adicione o URL remoto, complete qualquer autorização, ferramentas de escaneamento e selecione a aplicação em seu chat. A disponibilidade da aplicação e do modo do desenvolvedor varia de acordo com o plano e as permissões do espaço de trabalho."
+    ],
+    "clientDocs": [
+      "Cliente oficial ajuda"
+    ],
+    "clientClaude": [
+      "Adicione Poly-Glot na seção Configurações → Conectadores como um conector remoto personalizado. Se não aparece no chat, habilite-o no menu de ferramentas. Conectadores remotos não são configurados usando o arquivo local Claude Desktop stdio JSON."
+    ],
+    "clientCursor": [
+      "Abra as configurações do seu servidor MCP, adicione um servidor remoto Streamable HTTP usando o ponto final acima, e habilite-o. Se não há ferramentas listadas, refresque os servidores MCP, aprova permissões e verifica que o cliente suporta esse transporte."
+    ],
+    "clientGoose": [
+      "Adicione Poly-Glot como uma extensão remota MCP usando Streamable HTTP em vez de um comando local. Ativa a extensão, reinicia a sessão se necessário e teste uma ferramenta de leitura antes de tentar Enviar ou ferramentas de modelo personalizado."
+    ],
+    "clientVscode": [
+      "Em uma configuração MCP-capable VS Code, adicione o URL como um servidor remoto MCP HTTP, não um processo stdio local. Verifique confiança de espaço de trabalho e aprovações de ferramentas, depois refresque o servidor e confirme a descoberta de ferramentas."
+    ],
+    "clientOther": [
+      "Confirmar a versão do seu cliente suporta servidores remotos Streamable HTTP MCP. Use a URL de produção e habilite as suas ferramentas; se o seu cliente só suporta estdio ou legacy SSE, consulte a sua documentação remota-MCP atual."
+    ],
+    "errorsTitle": [
+      "Erros e correções MCP comuns"
+    ],
+    "error1Title": [
+      "Servidor não disponível, conexão falha ou 404"
+    ],
+    "error1Body": [
+      "Verifique o completo",
+      "URL e transporte remoto HTTP. Re-add a conexão e tente novamente. um navegador GET para um ponto de final MCP não é um teste de ferramentas válido; o cliente deve usar o protocolo MCP. Verifique a rede do cliente e o ponto de final de saúde do servidor; não perca uma lista de diretórios para o servidor."
+    ],
+    "error2Title": [
+      "401 Lugar não autorizado ou autorizado"
+    ],
+    "error2Body": [
+      "Use o fluxo de autorização da conta do cliente e reconecte se a sessão expirar. Verifique os requisitos de autenticação do servidor e as permissões do cliente. Nunca coloque as senhas da Apple, tokens da API ou receitas de assinatura em chats públicos, capturas de tela ou relatórios de lançamento."
+    ],
+    "error3Title": [
+      "403 Permissão proibida ou recusa de ferramentas"
+    ],
+    "error3Body": [
+      "Confirme que o cliente concedeu esta permissão de conector para usar a ferramenta solicitada. Pergunte ao administrador do espaço de trabalho sobre as políticas se necessário. A 403 também pode refletir uma autenticação ou restrição da política de origem – não necessariamente uma assinatura expirada."
+    ],
+    "error4Title": [
+      "Não encontradas ferramentas, lista de ferramentas antigas ou ferramentas não reconhecidas"
+    ],
+    "error4Body": [
+      "Ativar o conector e refrescar ou resgatar ferramentas. os documentos do servidor atuais 15 ferramentas. resumos de diretório desatualizados não alteram o registo de ferramentas ao vivo.",
+      "Verifique se o seu cliente MCP pode descobrir ferramentas remotas."
+    ],
+    "error5Title": [
+      "Exame expirado, Pro requerido ou limite de envio alcançado"
+    ],
+    "error5Body": [
+      "Uso",
+      "para verificar o acesso atual. o teste de três dias gerenciado pela aplicação começa no primeiro Envio qualificado; após o término, o acesso gratuito inclui 25 templates apresentados e um single-AI Envio por rolagem 24 horas. Modo de comparação, BYOM e outras características Pro requerem acesso apropriado. Para resolver uma falha de acesso pago, inscreva-se com a conta ligada e verifica ou restaura a sua assinatura da Apple na aplicação."
+    ],
+    "error6Title": [
+      "429 limite de taxa, tempo, 500/502/503 ou erro de rede"
+    ],
+    "error6Body": [
+      "Retire após um curto atraso e verifique a rede do cliente, qualquer proxy ou firewall, e o status do servidor. Evite repetir uma ação paga ou Enviar até que você tenha verificado se a solicitação anterior foi concluída. Inclua o tempo, o cliente MCP e o código de erro em uma solicitação de suporte – nunca inclua segredos."
+    ],
+    "error7Title": [
+      "Erro de linguagem, tradução, transcrição ou áudio"
+    ],
+    "error7Body": [
+      "Uso",
+      "para selecionar uma língua suportada, verifica as configurações de idioma de entrada e de saída.",
+      ", confirma o formato de áudio, tamanho e permissões correspondem aos requisitos de ferramenta.",
+      "ou",
+      "separadamente para isolar o assunto."
+    ],
+    "error8Title": [
+      "Modelo personalizado (BYOM) validação ou execução falha"
+    ],
+    "error8Body": [
+      "Primeira chamada",
+      "Então, então",
+      "Use um endpoint de modelo HTTPS acessível, o adaptador e identificador de modelo correto e uma autenticação temporária válida. Verifique a resposta API do seu provedor de modelo. Não compartilhe chaves API em logs ou mensagens de suporte."
+    ],
+    "toolsTitle": [
+      "Qual ferramenta MCP eu devo testar?"
+    ],
+    "toolsIntro": [
+      "Teste a operação de leitura única mais pequena antes de uma ação de Envio. Estes grupos cobrem todas as ferramentas MCP de 15 Poly-Glot."
+    ],
+    "groupCore": [
+      "Descoberta, status e espaço de trabalho"
+    ],
+    "groupCustom": [
+      "Modelo personalizado / BYOM"
+    ],
+    "groupLanguage": [
+      "Língua e Áudio"
+    ],
+    "supportTitle": [
+      "Ainda precisa de ajuda?"
+    ],
+    "supportBody": [
+      "Compartilhe seu cliente MCP, tipo de transporte, nome de ferramentas, código de erro exato e tempo aproximado – nunca senhas ou chaves API."
+    ],
+    "supportLink": [
+      "Contato com o suporte Poly-Glot"
+    ],
+    "setupLink": [
+      "Ver configuração e compatibilidade"
+    ],
+    "markdownLink": [
+      "Leia o guia de Markdown RAG-friendly →"
+    ]
+  }
+}

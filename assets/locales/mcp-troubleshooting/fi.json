@@ -1,0 +1,157 @@
+{
+  "language": "FI",
+  "strings": {
+    "eyebrow": [
+      "MCP yhteyden tukeminen"
+    ],
+    "title": [
+      "Ongelmanratkaisu Poly-Glot MCP -yhteydet, todentaminen ja työkalut"
+    ],
+    "intro": [
+      "Vaiheittain korjaavat kauko-Streamable HTTP-yhteydet ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf ja muut yhteensopivat MCP-asiakkaat. Kaikki asiakkaat käyttävät samaa Poly-Glot-palvelinta, jossa on 15 työkalua mallit, vertailut, räätälöidyt mallit ja kielet."
+    ],
+    "endpointLabel": [
+      "Tuotanto MCP URL - Käytä tätä tarkkaa HTTPS-osoitetta"
+    ],
+    "copy": [
+      "Kopioi Endpoint"
+    ],
+    "quickTitle": [
+      "Aloita näillä neljällä tarkastuksella"
+    ],
+    "quick1": [
+      "Käytä tarkan palvelimen URL:n käyttöä.",
+      "HTTPS-tunnuksen päätepiste on yllä, mukaan lukien",
+      "Älä liitä Glama, MCP.so tai GitHub-direktiivin URL:tä."
+    ],
+    "quick2": [
+      "Valitse kaukainen Streamable HTTP",
+      "Valitse klientin kauko HTTP MCP-vaihtoehto. Poly-Glot on isännöity: ei npm asentaa, localhost port, tai stdio komento vaaditaan."
+    ],
+    "quick3": [
+      "Toimintojen hyväksyminen ja salliminen.",
+      "Täytä kaikki kirjautuminen tai valtuuttaminen nopeasti, hyväksy työkalun luvat, sitten päivittää tai palauttaa palvelin asiakkaan."
+    ],
+    "quick4": [
+      "Käytä ensin vain lukutapahtumaa.",
+      "Pyydä asiakkaasi käyttämään",
+      "tai",
+      "• Käytä sitten",
+      "tarkistaa testin ja Pro saatavuus."
+    ],
+    "clientsTitle": [
+      "MCP-asiakkaiden ongelmanratkaisu"
+    ],
+    "clientChatgpt": [
+      "Käytä sovelluksia tai kehittäjä/asianmukainen MCP-konfiguratio, joka on käytettävissä tilillesi tai työpisteellesi. Lisää kauko-URL, suorita kaikki valtuudet, skanna työkalut ja valitse sovellus chatissa. Sovellus ja kehittäjän tila saatavuus vaihtelevat suunnitelman ja työpisteen sallituksista riippuen."
+    ],
+    "clientDocs": [
+      "Virallinen asiakas auttaa"
+    ],
+    "clientClaude": [
+      "Lisää Poly-Glot Settings > Connectors tilatuksi etäyhteyksi. Jos se ei näy chatissa, käytä sitä työkaluvalikossa. Etäyhteyksi ei ole määritelty paikallisen Claude Desktop stdio JSON -tiedoston avulla."
+    ],
+    "clientCursor": [
+      "Avaa MCP-palvelimen asetukset, lisää etäisestä Streamable HTTP-palvelimesta yllä olevaa loppupisteen avulla ja aktivoi se. Jos työkaluja ei ole lueteltu, päivitä MCP-palvelimet, hyväksy lupia ja tarkista, että asiakas tukee tätä kuljetusta."
+    ],
+    "clientGoose": [
+      "Lisää Poly-Glot etäisenä MCP-laajennuksena Streamable HTTP: n sijaan paikallisen komennon avulla. Auttaa laajennuksen, käynnistää istunnon uudelleen tarvittaessa ja testaa vain lukutaito ennen kuin yrität lähettää tai räätälöidä mallityökaluja."
+    ],
+    "clientVscode": [
+      "MCP-kyvyttömässä VS-koodin asetuksessa lisää URL:tä HTTP:n kauko-MCP-palvelimeksi, ei paikallisesta stdio-prosessista. Tarkista työpisteen luottamus ja työkalun hyväksymät, sitten päivitä palvelin ja vahvista työkalun löytö."
+    ],
+    "clientOther": [
+      "Vahvista asiakkaan versio tukee kauko Streamable HTTP MCP -palvelimia. Käytä tuotannon URL:ää ja aktivoi sen työkalut; jos asiakkaan tuki on vain stdio tai perintö SSE, tarkista nykyinen kauko-MCP -dokumentaatio."
+    ],
+    "errorsTitle": [
+      "Yleiset MCP-virheet ja korjaukset"
+    ],
+    "error1Title": [
+      "Palvelin ei ole käytettävissä, yhteys epäonnistuu tai 404"
+    ],
+    "error1Body": [
+      "Tarkista täysi",
+      "URL ja kauko HTTP kuljetus. Lisää uudelleen yhteys ja yritä uudelleen. selaimen GET MCP-tila ei ole voimassa oleva työkalu testi; asiakkaan on käytettävä MCP-protokollaa. Tarkista asiakkaan verkko ja palvelin terveystila; älä virheitä luettelon luettelon palvelimen."
+    ],
+    "error2Title": [
+      "401 Ei-oikeutettu tai luvan myöntäminen"
+    ],
+    "error2Body": [
+      "Käytä asiakkaan tilin valtuutusvirtaa ja liitä uudelleen, jos istunto päättyy. Tarkista palvelimen todentamisvaatimukset ja asiakkaan luvat. Älä koskaan liitä Apple-salasanaita, API-tokeneja tai tilauksen vastaanottoja julkisissa keskusteluissa, näytönohjaimissa tai julkaisun raportteissa."
+    ],
+    "error3Title": [
+      "403 Kielletty tai työkalun luvan kieltäminen"
+    ],
+    "error3Body": [
+      "Vahvista asiakkaan, joka on antanut tämän liitännäisen luvan käyttää pyydettyä työkalua. Kysy työpistehallinnolta politiikoista tarvittaessa. 403 voi myös heijastaa todentamista tai alkuperäpolitiikan rajoitusta - ei välttämättä päättyneen tilauksen."
+    ],
+    "error4Title": [
+      "Ei löytynyt työkaluja, vanha työkalu luettelo tai työkalu ei tunnistettu"
+    ],
+    "error4Body": [
+      "Aktivoi liitännän ja uudistaa tai pelastaa työkalut. Nykyiset palvelimen asiakirjat 15 työkalua. Päivitetyt luettelon yhteenvedot eivät muutu elävää työkalurekisteriä. Yritä",
+      "Tarkista, että MCP-asiakas voi löytää etätoimintoja."
+    ],
+    "error5Title": [
+      "Kokeilu päättyi, Pro vaaditaan tai lähetysraja saavutetaan"
+    ],
+    "error5Body": [
+      "Käytä",
+      "tarkistaa nykyinen pääsy. sovelluksen hallinnoitu kolmen päivän kokeilu alkaa ensimmäisellä pätevällä lähetyksellä; päättymisen jälkeen ilmainen pääsy sisältää 25 esitetyn mallien ja yhden yksittäisen AI lähetyksen 24 tunnin kierrosta. Vertaile tilaa, BYOMia ja muita Pro-ominaisuuksia vaativat asianmukaista pääsyä. Maksullisen pääsyn väärinkäytön ratkaisemiseksi kirjaudu sisään linkityn tilin kanssa ja tarkista tai palauta Apple-tilauksesi sovelluksessa."
+    ],
+    "error6Title": [
+      "429-radan rajoitus, aikarajoitus, 500/502/503 tai verkkovirhe"
+    ],
+    "error6Body": [
+      "Palauta lyhyen viivästyksen jälkeen ja tarkista asiakkaan verkosto, jokainen proxy tai palomuuri ja palvelin tilanne. Vältä toistamista maksettu tai Lähetä toimenpide, kunnes olet tarkistanut, onko aiempi pyyntö suoritettu. Sisältää ajan, MCP-asiakas ja virheen koodi tukeva pyyntö - ei koskaan sisällä salaisuuksia."
+    ],
+    "error7Title": [
+      "Virheellinen kieli, käännös, käännös tai äänivirhe"
+    ],
+    "error7Body": [
+      "Käytä",
+      "valita tukema kieli, tarkista sitten sisään- ja lähtökielen asetukset.",
+      ", vahvistaa äänen muoto, koko ja sallit vastaavat työkalun vaatimukset.",
+      "tai",
+      "ja erillisesti eristää ongelma."
+    ],
+    "error8Title": [
+      "Custom Model (BYOM) -validointi tai täytäntöönpano epäonnistuu"
+    ],
+    "error8Body": [
+      "Ensimmäinen puhelu",
+      "Sitten sitten",
+      ". Käytä saavutettavaa HTTPS-mallien loppupisteitä, oikeaa adapteri- ja malliiden tunnistajaa ja voimassa olevaa väliaikaista tunnistetta. Tarkista mallipalveluntarjoajan API-vastaus. Älä jakaa API- avaimia arkistoissa tai tukiviesteissä."
+    ],
+    "toolsTitle": [
+      "Millainen MCP-työkalu minun pitäisi testata?"
+    ],
+    "toolsIntro": [
+      "Testaa pienin lukemattoman toiminnan ennen Lähetä toimintaa. Nämä ryhmät kattavat kaikki 15 Poly-Glot MCP -työkalua."
+    ],
+    "groupCore": [
+      "Tutkimus, tilanne ja työpaikka"
+    ],
+    "groupCustom": [
+      "Tyypillinen / BYOM"
+    ],
+    "groupLanguage": [
+      "Kieli ja audio"
+    ],
+    "supportTitle": [
+      "Tarvitsetko vielä apua?"
+    ],
+    "supportBody": [
+      "Jaa MCP-asiakas, kuljetus tyyppi, työkalun nimi, tarkka virhekoodi ja noin aika – koskaan salasanoja tai API-tunnuksia."
+    ],
+    "supportLink": [
+      "Yhteydenotto Poly-Glot tuki"
+    ],
+    "setupLink": [
+      "Näytä asetukset ja yhteensopivuus"
+    ],
+    "markdownLink": [
+      "Lue RAG-ystävällinen Markdown -opas →"
+    ]
+  }
+}

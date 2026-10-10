@@ -1,0 +1,157 @@
+{
+  "language": "CA",
+  "strings": {
+    "eyebrow": [
+      "Suport de connexió MCP"
+    ],
+    "title": [
+      "Resolució de problemes de connexions MCP Poly-Glot, autenticació i eines"
+    ],
+    "intro": [
+      "Fixes de pas a pas per a connexions HTTP Streamable remotes en ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf i altres clients MCP compatibles. Tots els clients utilitzen el mateix servidor Poly-Glot, amb 15 eines a través de temples, comparació, models personalitzats i llengües."
+    ],
+    "endpointLabel": [
+      "URL de producció MCP — utilitzeu aquesta adreça HTTPS exacta"
+    ],
+    "copy": [
+      "Copió de l'endpoint"
+    ],
+    "quickTitle": [
+      "Comencem amb aquests quatre controls"
+    ],
+    "quick1": [
+      "Utilitza l’URL del servidor.",
+      "Passeu el punt final HTTPS per sobre, inclòs",
+      "· No introdueixis una URL de la direcció Glama, MCP.so o GitHub."
+    ],
+    "quick2": [
+      "Selecciona el streaming remot HTTP.",
+      "Selecciona l'opció remota HTTP MCP del client. Poly-Glot és hostat: no s'ha d'instal·lar npm, port localhost o comanda stdio."
+    ],
+    "quick3": [
+      "Autoritzar i habilitar les eines.",
+      "Completeu qualsevol moment de registre o autorització, aproveu les autoritzacions d'eines, i després refresqueu o rescaneu el servidor del vostre client."
+    ],
+    "quick4": [
+      "Feu primer un test de lectura.",
+      "Demana al teu client que utilitzi",
+      "o",
+      "· Després utilitzar",
+      "Per comprovar la prova i la disponibilitat Pro."
+    ],
+    "clientsTitle": [
+      "Resolució de problemes per client MCP"
+    ],
+    "clientChatgpt": [
+      "Utilitzeu les Aplicacions o configuració MCP de desenvolupador/custom disponible al vostre compte o espai de treball. Afegeix l'URL remot, completa qualsevol autorització, fer escanejar les eines i seleccionar l'aplicació en el vostre xat."
+    ],
+    "clientDocs": [
+      "El client oficial ajuda"
+    ],
+    "clientClaude": [
+      "Afegeix Poly-Glot a la secció Configuracions → Connectors com a connector remot personalitzat. Si no apareix en el xat, habiliteu-lo en el menú d'eines. Connectors remots no es configuren utilitzant el fitxer JSON local de Claude Desktop."
+    ],
+    "clientCursor": [
+      "Obre les configuracions del servidor MCP, afegir un servidor HTTP Streamable remot utilitzant el punt final anterior, i activar-lo. Si no hi ha eines en la llista, refresca els servidors MCP, aprova les permissions i verifica el client dóna suport a aquest transport."
+    ],
+    "clientGoose": [
+      "Afegeix Poly-Glot com una extensió MCP remot utilitzant Streamable HTTP en lloc d'un comanda local. Activar l'extensió, reiniciar la seva sessió si és necessari i testar una eina de lectura abans de provar les eines d'enviament o model de manera personalitzada."
+    ],
+    "clientVscode": [
+      "En una configuració MCP-capable VS Codi, afegir l'URL com un servidor MCP remot HTTP, no un procés stdio local. comprovar la confiança de l'espai de treball i les aprovacions d'eines, després refrescar el servidor i confirmar la descoberta d'eines."
+    ],
+    "clientOther": [
+      "Confirm la versió del client suporta els servidors remots Streamable HTTP MCP. Utilitza l'URL de producció i habilita les seves eines; si el client només suporta l'estdio o l'herència SSE, consulti la seva documentació remot-MCP actual."
+    ],
+    "errorsTitle": [
+      "Errors i correccions MCP comuns"
+    ],
+    "error1Title": [
+      "El servidor no està disponible, la connexió no està disponible o 404"
+    ],
+    "error1Body": [
+      "Verificació completa",
+      "URL i transport remot HTTP. reafegeix la connexió i intenta de nou. un navegador GET a un punt final MCP no és una prova d'eines vàlides; el client ha d'utilitzar el protocol MCP. comprova la xarxa del client i el punt final de salut del servidor; no enganyeu una llista de directoris per al servidor."
+    ],
+    "error2Title": [
+      "401 Lloc no autoritzat o autoritzat"
+    ],
+    "error2Body": [
+      "Utilitzeu el flux d'autorització del compte del client i reconnectar-se si la sessió expira. comprova els requisits d'autenticitat del servidor i les autoritzacions del client. No introdueixi mai les contrasenyes d'Apple, els tokens d'API o els receptors d'abonament en xats públics, captures de pantalla o els informes d'emissió."
+    ],
+    "error3Title": [
+      "403 Permís prohibit o denegació de l'autorització d'eines"
+    ],
+    "error3Body": [
+      "Confirmeu que el client ha concedit aquest permís de connector per utilitzar l'eina sol·licitada. Pregunteu a l'administració de l'espai de treball sobre les polítiques si és necessari. A 403 també pot reflectir una autenticació o una restricció de la política d'origen - no necessàriament una subscripció expirada."
+    ],
+    "error4Title": [
+      "No es troben eines, llista d'eines velles o eines no reconegudes"
+    ],
+    "error4Body": [
+      "Aplicar el connector i refrescar o rescanar les eines. Els documents del servidor actuals són 15 eines. Les resumes de directoris desactualitzades no canvien el registre d'eines en viu.",
+      "· Verificar que el client MCP pot descobrir eines remotes."
+    ],
+    "error5Title": [
+      "Prova expirada, Pro requerida o límit d'enviament aconseguit"
+    ],
+    "error5Body": [
+      "Utilitzar",
+      "per inspeccionar l'accés actual. l'experiment de tres dies gestionat per l'aplicació comença en la primera qualificació de l'enviament; després de l'acabament, l'accés gratuït inclou 25 temàtics inclosos i un single-AI enviament per rol 24 hores. Modes de comparació, BYOM i altres característiques Pro requereixen accés adequat. per resoldre un malencapament d'accés pagat, s'inscriu amb el compte enllaçat i verifica o restaura la seva subscripció d'Apple en l'aplicació."
+    ],
+    "error6Title": [
+      "429 límit de velocitat, temps, 500/502/503 o error de xarxa"
+    ],
+    "error6Body": [
+      "Retirar-se després d'un breu retard i comprovar la xarxa del client, qualsevol proxy o firewall, i l'estat del servidor. Evitar repetir una acció pagada o enviar fins que s'hagi verificat si la sol·licitud prèvia s'ha complert. Inclou el temps, el client MCP i el codi d'error en una sol·licitud de suport - mai inclou secrets."
+    ],
+    "error7Title": [
+      "Error en llengua, traducció, transcripció o àudio"
+    ],
+    "error7Body": [
+      "Utilitzar",
+      "per triar un idioma recolzat, després comprovar les configuracions de llenguatge d'entrada i sortida.",
+      ", confirma el format d'àudio, la mida i les permissions corresponen als requisits d'eina.",
+      "o",
+      "separadament per a a aïllar el tema."
+    ],
+    "error8Title": [
+      "Models personalitzats (BYOM) de validació o execució fallida"
+    ],
+    "error8Body": [
+      "Primera trucada",
+      "I després",
+      "Utilitzeu un punt final de model HTTPS accessible, l'adaptador i identificador de model correcte, i una credencial temporal vàlida. comprova la resposta API del proveïdor de model. No comparteixi les claus API en els logs o missatges de suport."
+    ],
+    "toolsTitle": [
+      "Quin instrument MCP he de provar?"
+    ],
+    "toolsIntro": [
+      "Testeu l'operació més petita només llegida abans d'una acció de enviament. Aquests grups cobreixen totes les 15 eines de MCP Poly-Glot."
+    ],
+    "groupCore": [
+      "Descoberta, estat i espai de treball"
+    ],
+    "groupCustom": [
+      "Models / BIOM"
+    ],
+    "groupLanguage": [
+      "Llenguatge i àudio"
+    ],
+    "supportTitle": [
+      "Encara necessites ajuda?"
+    ],
+    "supportBody": [
+      "Compartir el client MCP, el tipus de transport, el nom d'eines, el codi d'error exacte i el temps aproximat - mai contrasenyes o clau d'API."
+    ],
+    "supportLink": [
+      "Contacte amb el suport Poly-Glot"
+    ],
+    "setupLink": [
+      "Veure configuració i compatibilitat"
+    ],
+    "markdownLink": [
+      "Llegeix la guia de Markdown RAG-friendly →"
+    ]
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "language": "TR",
+  "strings": {
+    "eyebrow": [
+      "MCP Bağlantı Desteği"
+    ],
+    "title": [
+      "Poly-Glot MCP bağlantıları, kimlik doğrulama ve araçları çözme"
+    ],
+    "intro": [
+      "ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf ve diğer uyumlu MCP müşterilerinde uzaktan aktarılabilir HTTP bağlantıları için adım adım düzeltmeler. tüm müşteriler aynı Poly-Glot sunucusu kullanır, şablonlar, karşılaştırma, özelleştirilmiş modeller ve diller üzerinden 15 araçla."
+    ],
+    "endpointLabel": [
+      "Üretim MCP URL — bu doğru HTTPS adresi kullanın"
+    ],
+    "copy": [
+      "Son nokta kopyası"
+    ],
+    "quickTitle": [
+      "Bu dört kontrol ile başlayın."
+    ],
+    "quick1": [
+      "Doğru server URL kullanın.",
+      "Yukarıdaki HTTPS endpoint'i ekleyin,",
+      "• Bir Glama, MCP.so veya GitHub dizin URL'sini yapıştırmayın."
+    ],
+    "quick2": [
+      "Uzak aktarılabilir HTTP seçeneğini seçin.",
+      "Poly-Glot barındırılır: npm yükleme, localhost portu veya stdio komutu gerektirmez."
+    ],
+    "quick3": [
+      "Araçları yetkilendirmek ve etkinleştirmek.",
+      "Herhangi bir giriş veya yetki çabası tamamlayın, araç izinlerini onaylayın, sonra müşterinizdeki sunucuyu yenileme veya kurtarın."
+    ],
+    "quick4": [
+      "Öncelikle sadece okuma testi yapın.",
+      "Müşterinizin kullanmasını isteyin",
+      "veya",
+      "sonra kullanın",
+      "Test ve Pro kullanılabilirliğini kontrol etmek için."
+    ],
+    "clientsTitle": [
+      "MCP müşterisi tarafından çözülen sorunlar"
+    ],
+    "clientChatgpt": [
+      "Hesabınızda veya çalışma alanınızda mevcut olan Uygulamaları veya Geliştirici/Özelleştirilmiş MCP konfigürasyonunu kullanın. uzaktan URL'yi ekleyin, herhangi bir yetkiyi tamamlayın, tarama araçları ve sohbetinizde uygulama seçin. Uygulama ve Geliştirici modu mevcutluğu plan ve çalışma alanı izinlerine göre değişir."
+    ],
+    "clientDocs": [
+      "Müşteri Yardımları"
+    ],
+    "clientClaude": [
+      "Poly-Glot Ayarlar → Bağlayıcılar altında özelleştirilmiş bir uzaktan bağlayıcı olarak ekleyin. sohbette görünmüyorsa, araç menüsünde etkinleştirin. uzaktan bağlayıcılar yerel Claude Desktop stdio JSON dosyasını kullanarak yapılandırılmamaktadır."
+    ],
+    "clientCursor": [
+      "MCP sunucunuzun ayarlarını açın, yukarıdaki son noktayı kullanarak uzaktan aktarılabilir bir HTTP sunucusu ekleyin ve etkinleştirin. eğer araçlar listelenmiyorsa, MCP sunucularını yenilemeyin, izinleri onaylayın ve müşterinin bu taşıma desteğini doğrulayın."
+    ],
+    "clientGoose": [
+      "Poly-Glot'u uzaktan bir MCP uzantısı olarak, yerel bir komut yerine Streamable HTTP'yi kullanarak ekleyin. uzantıyı etkinleştirin, seansını gerekirse yeniden başlatın ve Gönder veya özelleştirilmiş model araçları denemeden önce sadece okuma aracını test edin."
+    ],
+    "clientVscode": [
+      "MCP-kapalı VS Kodu ayarında, URL'yi bir HTTP uzaktan MCP sunucusu olarak ekleyin, yerel bir stdio süreci değil. çalışma alanı güvenini ve araç onaylarını kontrol edin, sonra sunucuyu yenilemek ve araç keşfi doğrulamak."
+    ],
+    "clientOther": [
+      "Müşterinizin versiyonunu doğrulayın, uzaktan aktarılabilir HTTP MCP sunucularını destekler. Üretim URL'sini kullanın ve araçlarını etkinleştirin; Müşterinizin yalnızca stdio veya miras SSE'yi desteklediği takdirde, mevcut uzaktan MCP belgelerine bakın."
+    ],
+    "errorsTitle": [
+      "MCP hataları ve düzeltmeleri"
+    ],
+    "error1Title": [
+      "Server erişilemez, bağlantı eksikliği veya 404"
+    ],
+    "error1Body": [
+      "Tamamını kontrol edin",
+      "URL ve uzaktan HTTP taşıma. bağlantıyı yeniden ekleyin ve tekrar deneyin. bir MCP son noktasına bir tarayıcı GET geçerli bir araç testi değildir; müşterinin MCP protokolünü kullanması gerekir. müşteri ağı ve sunucunun sağlık son noktası kontrol edin; sunucunun bir dizin listesini yanıltmayın."
+    ],
+    "error2Title": [
+      "401 Yetkisiz veya yetkisiz"
+    ],
+    "error2Body": [
+      "Müşterinin hesabının izin akışını kullanın ve oturum sona erdiğinde yeniden bağlanın. sunucunun kimlik doğrulama gereksinimlerini ve müşteri izinlerini kontrol edin. Apple şifresini, API tokensini veya abonelik alımlarını halka açık sohbetlere, ekran görüntüleri veya yayın raporlarına asla takmayın."
+    ],
+    "error3Title": [
+      "403 Yasak veya araç izni reddedildi"
+    ],
+    "error3Body": [
+      "Bu konektörün talep edilen aracı kullanma izni veren müşteriye onay verin. gerekirse politikalar hakkında çalışma alanı yöneticisine sor. A 403 ayrıca bir kimlik doğrulama veya kaynak politikası kısıtlaması yansıtabilir - mutlaka bir abonelik sona ermedi."
+    ],
+    "error4Title": [
+      "Hiçbir araç bulunamadı, eski araç listesi veya araç tanımlanmadı"
+    ],
+    "error4Body": [
+      "Konektörü etkinleştirin ve araçları yenilemek veya kurtarmak. mevcut sunucunun belgeleri 15 araç. geçmiş dizin özetleri canlı araç kayıtlarını değiştirmez.",
+      "• MCP müşterinizin uzaktan araçları keşfetebileceğinden emin olun."
+    ],
+    "error5Title": [
+      "Sınav sona erdi, Pro gerekli veya gönderme sınırı ulaştı"
+    ],
+    "error5Body": [
+      "Kullanım",
+      "Mevcut erişimi kontrol etmek için. uygulama yönetilen üç günlük deneme ilk nitelikli Gönder'de başlar; sona erdikten sonra, ücretsiz erişim 25 içerir şablonlar ve tek AI Gönder 24 saat rulo başına içerir. karşılaştırma modu, BYOM ve diğer Pro özellikleri uygun erişim gerektirir. ücretli erişim hatasını çözmek için, bağlantılı hesabı ile giriş ve Apple aboneliğinizi doğrulamak veya geri yüklemek için."
+    ],
+    "error6Title": [
+      "429 oran sınırı, zaman çıkışı, 500/502/503 veya ağ hatası"
+    ],
+    "error6Body": [
+      "Kısa bir gecikme sonrasında geri dönün ve müşterinin ağını, herhangi bir proxy veya itfaiye duvarını ve sunucu durumunu kontrol edin. önceki isteğin tamamlandığını kontrol edene kadar ücretli veya Gönder eylemi tekrarlamaktan kaçının. bir destek isteğinde zaman, MCP istemcisi ve hata kodu dahil edin. hiçbir zaman sırları içermez."
+    ],
+    "error7Title": [
+      "Yanlış dil, çeviri, çeviri veya ses hatası"
+    ],
+    "error7Body": [
+      "Kullanım",
+      "Desteklenen bir dil seçmek için, daha sonra giriş ve çıkış dil ayarlarını doğrulayın.",
+      ", ses formatını, boyutunu ve izinleri eşleşen araç gereksinimlerini doğrulayın.",
+      "veya",
+      "Bu konuyu ayrı ayrı izole etmek."
+    ],
+    "error8Title": [
+      "Özelleştirilmiş Model (BYOM) validasyonu veya uygulanması başarısız"
+    ],
+    "error8Body": [
+      "İlk Çağrı",
+      "O zaman",
+      ". ulaşılabilir bir HTTPS model son noktası, doğru adaptör ve model tanımlayıcısı ve geçerli bir geçici kimlik kullanın. model sağlayıcınızın API yanıtını kontrol edin. loglarda veya destek mesajlarında API anahtarlarını paylaşmayın."
+    ],
+    "toolsTitle": [
+      "Hangi MCP Araçlarını Test Etmeliyim?"
+    ],
+    "toolsIntro": [
+      "Bir Gönder eyleminden önce en küçük okuma-sadece işlemi test edin. Bu gruplar tüm 15 Poly-Glot MCP araçlarını kapsamaktadır."
+    ],
+    "groupCore": [
+      "Keşif, statü ve çalışma alanı"
+    ],
+    "groupCustom": [
+      "Özelleştirilmiş Model / BYOM"
+    ],
+    "groupLanguage": [
+      "Dil ve Ses"
+    ],
+    "supportTitle": [
+      "Yine de yardıma mı ihtiyacınız var?"
+    ],
+    "supportBody": [
+      "MCP istemci, taşıma türü, araç adı, doğru hata kodu ve yaklaşık zaman paylaşın – asla şifre veya API anahtarları."
+    ],
+    "supportLink": [
+      "Poly-Glot Destek ile iletişime geçin"
+    ],
+    "setupLink": [
+      "Görüntüleme ve uyumluluk"
+    ],
+    "markdownLink": [
+      "RAG dostu Markdown kılavuzunu okuyun"
+    ]
+  }
+}

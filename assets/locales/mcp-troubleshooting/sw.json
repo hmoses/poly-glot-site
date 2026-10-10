@@ -1,0 +1,157 @@
+{
+  "language": "SW",
+  "strings": {
+    "eyebrow": [
+      "Msaada wa kuunganisha MCP"
+    ],
+    "title": [
+      "Matibabu ya kutatua MCP ya Poly-Glot, uhakika na zana"
+    ],
+    "intro": [
+      "Hatua kwa hatua kuboresha kwa njia ya mbali Streamable HTTP viungo katika ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf na wengine MCP wateja. Wote wateja hutumia server hiyo ya Poly-Glot, na 15 zana kwa njia ya templates, usahihi, mifumo ya kubadilishana, na lugha."
+    ],
+    "endpointLabel": [
+      "Ujenzi wa URL ya MCP — kutumia anwani hii ya HTTPS sahihi"
+    ],
+    "copy": [
+      "Kutoa hatua ya mwisho"
+    ],
+    "quickTitle": [
+      "Kuanzisha na maswali haya ya 4"
+    ],
+    "quick1": [
+      "Kutoa URL ya server ya kweli.",
+      "Kuanzisha HTTPS endpoint hapo juu, pamoja na",
+      "Usiweka URL ya GitHub, MCP.so au GitHub."
+    ],
+    "quick2": [
+      "Tunaweza kuchagua HTTP ya mbali.",
+      "Chagua chaguo la remote HTTP MCP ya wateja. Poly-Glot ni mwenyeji: hakuna instal npm, port localhost, au msimamo wa stdio unahitajika."
+    ],
+    "quick3": [
+      "Kuwezesha na kuwezesha vifaa.",
+      "Kuanzisha wito wowote wa kujiandikisha au uhamisho, kuidhinisha uhamisho wa bidhaa, kisha kurekebisha au kuondoa mtumiaji katika mteja wako."
+    ],
+    "quick4": [
+      "Kuanzisha kwanza uchunguzi wa kusoma tu.",
+      "Tafadhali wasomaji wako kutumia",
+      "au",
+      "Baada ya kutumia",
+      "kuangalia kwa ajili ya kutafuta na Pro utaratibu."
+    ],
+    "clientsTitle": [
+      "Mchakato kwa MCP Client"
+    ],
+    "clientChatgpt": [
+      "Kutumia Maombi au muundo wa MCP wa mtengenezaji/mchakato unaofaa kwenye akaunti yako au nafasi ya kazi. Angalia URL ya mbali, kuendeleza mamlaka yoyote, zana za scan na kuchagua programu katika mazungumzo yako. Uwezekano wa App na mtengenezaji-moda huchukua kwa mipango na mamlaka ya nafasi ya kazi."
+    ],
+    "clientDocs": [
+      "Msaada wa mtumiaji"
+    ],
+    "clientClaude": [
+      "Kuongeza Poly-Glot chini ya Mipangilio → Connectors kama mkopo wa mbali maalum. Ikiwa hunaonekana katika mazungumzo, kuwezesha katika orodha yako menu. Mkopo wa mbali si kurekebishwa kwa kutumia faili ya JSON ya Claude Desktop."
+    ],
+    "clientCursor": [
+      "Kuanzisha mipangilio yako ya MCP server, kuongeza mtandao wa HTTP wa mbali na kutumia hatua ya mwisho hapo juu, na kuwezesha. Ikiwa hakuna orodha zilizotajwa, kurekebisha mtandao wa MCP, kuidhinisha mapendekezo, na kuangalia mteja anapendekeza usafiri huu."
+    ],
+    "clientGoose": [
+      "Kuongeza Poly-Glot kama uzito wa MCP kwa kutumia Streamable HTTP badala ya amri ya ndani. Kuwezesha uzito, kuanza tena sesioni yake kama inahitajika na kujaribu orodha ya kusoma tu kabla ya kujaribu Send au modeli ya kubadilishana zana."
+    ],
+    "clientVscode": [
+      "Katika MCP-capable VS Code setup, kuongeza URL kama HTTP remote MCP server, si mchakato wa stdio ya ndani. Angalia uaminifu wa nafasi ya kazi na uhakika wa bidhaa, kisha kurekebisha mtandao na kutibu ujuzi wa bidhaa."
+    ],
+    "clientOther": [
+      "Kujua toleo la wateja wako inawakilisha mtandao wa MCP wa HTTP. kutumia URL ya uzalishaji na kuwezesha zana zake; ikiwa wateja wako inawakilisha tu stdio au SSE ya utajiri, tafadhali kuangalia utaratibu wake wa MCP wa mbali."
+    ],
+    "errorsTitle": [
+      "Hatari ya kawaida ya MCP na kuboresha"
+    ],
+    "error1Title": [
+      "Usalama wa mtandao, kuhubiri haiwezekani au 404"
+    ],
+    "error1Body": [
+      "Tafadhali kuangalia kwa ajili ya",
+      "URL na usafiri wa HTTP. Kuongeza tena uhusiano na kujaribu tena. Mtandao wa browser GET kwa MCP endpoint si test ya bidhaa sahihi; mteja lazima kutumia MCP protocol. Angalia mtandao wa mteja na endpoint ya afya ya mteja; usio na makosa orodha kwa mteja."
+    ],
+    "error2Title": [
+      "401 Kwenye uamuzi au uamuzi wa uamuzi"
+    ],
+    "error2Body": [
+      "Kutumia akaunti ya akaunti ya akaunti na kuunganisha tena ikiwa mfululizo unatarajiwa. Angalia mahitaji ya uhakika wa mtandao na uhakika wa mtandao. Hakuna kuunganisha password za Apple, tokens za API au mapato ya usajili katika mazungumzo ya umma, picha za screen au ripoti za uhamisho."
+    ],
+    "error3Title": [
+      "403 Haki ya kuzuia au kuzuia ruhusa ya bidhaa"
+    ],
+    "error3Body": [
+      "Tafadhali kutafakari mteja aliyewapa upatikanaji huu wa kuunganisha kwa kutumia chombo kilichotakiwa. Tafadhali tafadhali kuomba msimamizi wa nafasi ya kazi kuhusu sera kama inahitajika. 403 inaweza pia kuonyesha uhakika au ukiukaji wa sera ya asili - si lazima msimamo wa mwisho."
+    ],
+    "error4Title": [
+      "Hakuna orodha iliyopatikana, orodha ya zamani au orodha iliyopatikana"
+    ],
+    "error4Body": [
+      "Kuwezesha kuunganisha na kurekebisha au kuokoa nyenzo. Nyenzo ya sasa ya mtumiaji ni nyenzo 15. Mkataba wa nyenzo ya muda mrefu haina mabadiliko ya rekodi ya nyenzo ya kuishi.",
+      "Uhakika kwamba mteja wako wa MCP anaweza kutafuta vifaa vya mbali."
+    ],
+    "error5Title": [
+      "Uzoefu uliopangwa, Pro inahitajika au kutuma kiwango cha kufikia"
+    ],
+    "error5Body": [
+      "matumizi ya",
+      "kuangalia upatikanaji wa sasa. programu iliyotumika mazoezi ya siku tatu huanza kwenye kwanza kutibiwa kuwasilisha; baada ya mwisho, upatikanaji wa bure inajumuisha templates 25 zilizofanywa na moja ya AI kuwasilisha kwa mzunguko wa masaa ya 24. Mifumo ya usambazaji, BYOM na faida nyingine za Pro inahitaji upatikanaji sahihi. ili kuondoa makosa ya upatikanaji, kujiandikisha na akaunti ya kuunganisha na kuangalia au kurejesha abiria yako ya Apple katika programu."
+    ],
+    "error6Title": [
+      "429 kiwango cha kiwango, wakati, 500/502/503 au makosa ya mtandao"
+    ],
+    "error6Body": [
+      "Kuondoka baada ya muda mfupi na kuangalia mtandao wa wateja, proxy au firewall, na hali ya mtandao. Kuepuka kurejesha hatua ya kulipwa au Kuwasilisha mpaka unajua kama mahitaji ya awali imefunguliwa. Kuunganisha muda, MCP client na code ya makosa katika mahitaji ya msaada—siwezi kuunganisha siri."
+    ],
+    "error7Title": [
+      "Lugha, maudhui, transcription, au sauti makosa"
+    ],
+    "error7Body": [
+      "matumizi ya",
+      "kuchagua lugha inayotumika, kisha uhakika mipangilio ya lugha ya maelekezo na maelekezo.",
+      ", kuthibitisha muundo wa sauti, ukubwa na mapendekezo yanayohusiana na mahitaji ya zana.",
+      "au",
+      "kwa ajili ya kuondoa tatizo."
+    ],
+    "error8Title": [
+      "Modeli ya kurekebisha (BYOM) ya ufanisi au ufanisi haitakuwa"
+    ],
+    "error8Body": [
+      "Maombi ya Kwanza",
+      "Baada ya hapo",
+      "Tumia mwisho wa modeli ya HTTPS inayotarajiwa, adapter sahihi na idadi ya idadi, na uhakika wa muda. Angalia majibu ya API ya mtoa huduma ya modeli yako. Usisahau nyenzo za API katika barua pepe au ujumbe wa msaada."
+    ],
+    "toolsTitle": [
+      "Mchakato gani wa MCP unapaswa kujaribu?"
+    ],
+    "toolsIntro": [
+      "Test operesheni ndogo zaidi ya kusoma tu kabla ya hatua ya Kuwasilisha. Makundi haya yanajumuisha vifaa vyote vya 15 vya Poly-Glot MCP."
+    ],
+    "groupCore": [
+      "Utafiti, hali na nafasi ya kazi"
+    ],
+    "groupCustom": [
+      "Mfumo wa Kazi / BYOM"
+    ],
+    "groupLanguage": [
+      "Lugha na sauti"
+    ],
+    "supportTitle": [
+      "Je, bado unahitaji msaada?"
+    ],
+    "supportBody": [
+      "Kuongea mteja wako wa MCP, aina ya usafiri, jina la bidhaa, code ya makosa sahihi na muda wa karibu – kamwe password au nyenzo za API."
+    ],
+    "supportLink": [
+      "Msaada wa Poly-Glot"
+    ],
+    "setupLink": [
+      "Kuona uendeshaji na usahihi →"
+    ],
+    "markdownLink": [
+      "Kusoma mwongozo wa Markdown ya RAG-friendly →"
+    ]
+  }
+}

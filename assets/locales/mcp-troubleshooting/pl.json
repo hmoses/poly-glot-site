@@ -1,0 +1,157 @@
+{
+  "language": "PL",
+  "strings": {
+    "eyebrow": [
+      "Wsparcie połączenia MCP"
+    ],
+    "title": [
+      "Rozwiązywanie problemów Polyglot MCP połączenia, autentyczność i narzędzia"
+    ],
+    "intro": [
+      "Krok po kroku korzysta z odległych połączeń Streamable HTTP w ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf i innych kompatybilnych klientach MCP. Wszyscy klienci korzystają z tego samego serwera Poly-Glot, z 15 narzędziami w różnych szablonach, porównaniu, modelach i językach."
+    ],
+    "endpointLabel": [
+      "Produkcja MCP URL — użyj tego dokładnego adresu HTTPS"
+    ],
+    "copy": [
+      "Kopiowanie endpoint"
+    ],
+    "quickTitle": [
+      "Zacznij od tych czterech kontroli"
+    ],
+    "quick1": [
+      "Użyj dokładnego serwera URL.",
+      "Ustaw punkt końcowy HTTPS powyżej, w tym",
+      "Nie wkładaj URL adresów adresowych Glama, MCP.so lub GitHub."
+    ],
+    "quick2": [
+      "Wybierz strumieniowy HTTP.",
+      "Wybierz opcję zdalnej opcji HTTP MCP klienta.Host Poly-Glot: nie ma instalacji npm, port lokalhost lub polecenie stdio jest wymagane."
+    ],
+    "quick3": [
+      "Umożliwia i umożliwia narzędzia.",
+      "Wypełnij dowolny wpis lub autoryzację, zatwierdzić uprawnienia narzędzia, a następnie odświeżyć lub odświeżyć serwer w swoim klientie."
+    ],
+    "quick4": [
+      "Najpierw przeprowadź test czytania.",
+      "Poproś klienta o użycie",
+      "lub",
+      "a następnie używać",
+      "Sprawdzanie dostępności testów i Pro."
+    ],
+    "clientsTitle": [
+      "Rozwiązywanie problemów przez klienta MCP"
+    ],
+    "clientChatgpt": [
+      "Użyj aplikacji lub konfiguracji MCP dla deweloperów/przestrzenianych dostępnych na Twoim koncie lub przestrzeni roboczej. Dodaj odległy adres URL, wypełnij wszelkie uprawnienia, narzędzia do skanowania i wybierz aplikację w czacie. Dostępność aplikacji i trybu deweloperów różni się w zależności od uprawnień planu i przestrzeni roboczej."
+    ],
+    "clientDocs": [
+      "Oficjalna pomoc klienta"
+    ],
+    "clientClaude": [
+      "Dodaj Poly-Glot pod ustawieniami → Łączniki jako przystosowany zdalny łącznik. Jeśli nie pojawia się w czacie, włączyć go w menu narzędzi."
+    ],
+    "clientCursor": [
+      "Otwórz ustawienia serwera MCP, dodaj odległy serwer Streamable HTTP za pomocą powyższego punktu końcowego i włącź go. Jeśli nie ma narzędzi, odśwież serwery MCP, zatwierdz pozwolenia i sprawdź, czy klient obsługuje ten transport."
+    ],
+    "clientGoose": [
+      "Dodaj Poly-Glot jako dalekie rozszerzenie MCP za pomocą Streamable HTTP zamiast lokalnego polecenia. włączyć rozszerzenie, ponownie uruchomić sesję, jeśli to konieczne i przetestować narzędzie do odczytu, zanim spróbuj wysłać lub przystosowane narzędzia modelu."
+    ],
+    "clientVscode": [
+      "W ustawieniu oprogramowania MCP-capable VS Code, dodaj adres URL jako serwer MCP zdalnego HTTP, a nie lokalny proces stdio. sprawdź zaufanie przestrzeni roboczej i zatwierdzenia narzędzi, a następnie odśwież serwer i potwierdź odkrycie narzędzi."
+    ],
+    "clientOther": [
+      "Potwierdź, że wersja klienta obsługuje serwery MCP Streamable HTTP na odległość. Użyj adresu URL produkcji i włączyć jej narzędzia; jeśli klient obsługuje tylko stdio lub dziedzictwo SSE, sprawdź aktualną dokumentację MCP na odległość."
+    ],
+    "errorsTitle": [
+      "Błędy i naprawy MCP"
+    ],
+    "error1Title": [
+      "Serwer nie jest dostępny, połączenie nie powiąza się lub 404"
+    ],
+    "error1Body": [
+      "Sprawdź pełną",
+      "URL i zdalny transport HTTP. ponownie dodać połączenie i spróbować ponownie. przeglądarkę GET do punktu końcowego MCP nie jest ważnym testem narzędzia; klient musi użyć protokołu MCP. Sprawdź sieć klienta i punkt końcowy serwera zdrowia; nie mylić listy katalogów dla serwera."
+    ],
+    "error2Title": [
+      "401 Nieautoryzowany lub zatwierdzony przewód"
+    ],
+    "error2Body": [
+      "Użyj przepływu uprawnień konta klienta i ponownie połączyć się, jeśli sesja wygasnie. Sprawdź wymagania weryfikacji serwera i uprawnień klienta. Nigdy nie wkładaj hasła Apple, tokenów API lub otrzymania subskrypcji do publicznych czatów, zdjęć ekranu lub raportów wydanych."
+    ],
+    "error3Title": [
+      "403 Zakaz lub odmówienie zezwolenia na narzędzie"
+    ],
+    "error3Body": [
+      "Potwierdź klientowi udzielone zezwolenie na korzystanie z żądanej narzędzia. poproś administratora przestrzeni roboczej o politykę, jeśli to konieczne. 403 może również odzwierciedlać autentyczność lub ograniczenie polityki pochodzenia – niekoniecznie wygaśnięte subskrypcje."
+    ],
+    "error4Title": [
+      "Nie znaleziono żadnych narzędzi, starych list narzędzi lub narzędzi nie rozpoznawanych"
+    ],
+    "error4Body": [
+      "Umożliwia połączenie i odświeżać lub odświeżać narzędzia. aktualne dokumenty serwera 15 narzędzi. opóźnione podsumowania dyrektywy nie zmieniają rejestru narzędzi na żywo.",
+      "Sprawdź, czy Twój klient MCP może odkryć narzędzia zdalne."
+    ],
+    "error5Title": [
+      "Próba wygaśnięta, wymagane pro lub osiągnięty limit wysyłki"
+    ],
+    "error5Body": [
+      "Używanie",
+      "do sprawdzenia bieżącego dostępu. aplikacja zarządzana trzech dni próbny rozpoczyna się na pierwszym kwalifikującym wysłanie; po upływie terminu, darmowy dostęp obejmuje 25 zawartych szablonów i jeden pojedynczy AI wysłanie za ruletkę 24 godziny. Porównaj tryb, BYOM i inne funkcje Pro wymagają odpowiedniego dostępu. Aby rozwiązać nieprawidłowość płatnego dostępu, zaloguj się z połączonym kontem i weryfikuj lub przywróć subskrypcję Apple w aplikacji."
+    ],
+    "error6Title": [
+      "429 limit stopy, czas, 500/502/503 lub błąd sieciowy"
+    ],
+    "error6Body": [
+      "Wycofać się po krótkim opóźnieniu i sprawdzić sieć klienta, jakiekolwiek proxy lub firewall i status serwera. unikać powtórzenia płatnej lub wysyłania działań, dopóki nie sprawdzisz, czy poprzednie żądanie zostało zakończone. Włącz czas, klient MCP i kod błędu w żądanie wsparcia – nigdy nie zawiera tajemnic."
+    ],
+    "error7Title": [
+      "Błąd języka, tłumaczenia, transkrypcji lub błędu audio"
+    ],
+    "error7Body": [
+      "Używanie",
+      "Aby wybrać język obsługiwany, sprawdź ustawienia języka wejścia i wyjścia.",
+      ", potwierdza format audio, rozmiar i zezwolenia odpowiadają wymaganiom narzędzia. spróbuj",
+      "lub",
+      "oddzielnie oddzielić problem."
+    ],
+    "error8Title": [
+      "Nieprawidłowość weryfikacji lub wykonania modelu przyzwoitego (BYOM)"
+    ],
+    "error8Body": [
+      "Pierwsze wezwanie",
+      "Wtedy",
+      ". Użyj dostępnego punktu końcowego modelu HTTPS, właściwego adaptera i identyfikatoru modelu oraz ważnego tymczasowego uwierzytelniania. sprawdź odpowiedź API dostawcy modelu. Nie udostępniaj kluczy API w logach lub wiadomościach wsparcia."
+    ],
+    "toolsTitle": [
+      "Jakie narzędzie MCP powinienem przetestować?"
+    ],
+    "toolsIntro": [
+      "Próbuj najmniejszą operację czytania tylko przed działaniem Send. Te grupy obejmują wszystkie 15 narzędzi MCP Poly-Glot."
+    ],
+    "groupCore": [
+      "Odkrycie, status i przestrzeń pracy"
+    ],
+    "groupCustom": [
+      "Modele / BYOM"
+    ],
+    "groupLanguage": [
+      "Język i audio"
+    ],
+    "supportTitle": [
+      "Wciąż potrzebujesz pomocy?"
+    ],
+    "supportBody": [
+      "Podziel się klientem MCP, typem transportu, nazwą narzędzia, dokładnym kodem błędu i przybliżonym czasem – nigdy hasła lub klucze API."
+    ],
+    "supportLink": [
+      "Wsparcie Pol-Glot"
+    ],
+    "setupLink": [
+      "Zobacz ustawienia i kompatybilność"
+    ],
+    "markdownLink": [
+      "Przeczytaj przewodnik RAG-przyjacielski Markdown →"
+    ]
+  }
+}
