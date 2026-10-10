@@ -47,31 +47,44 @@ function apply(lang,bundle){
   buildPrompt:isLocalized?(d.mcpEx1||string(tr.toolsIntro)):"Find an accessible LinkedIn template in Poly-Glot and use build_prompt to write about AI productivity.",
   compareTitle:isLocalized?string(tr.groupCustom)+" · prepare_compare":"3. Prepare comparison (trial or Pro)",
   comparePrompt:isLocalized?"prepare_compare: "+(d.mcpEx2||string(tr.toolsIntro)):"Use Poly-Glot's prepare_compare tool to prepare this prompt for ChatGPT, Claude, and Gemini.",
-  guideNote:isLocalized?string(tr.toolsIntro)+" "+string(tech.compareExample):"Searching templates is read-only. build_prompt and prepare_compare are Send actions; Compare Mode requires an active trial or Pro. prepare_compare returns a prompt and destinations, not completed AI responses.",
+  guideNote:isLocalized?string(tr.error5Body)+" "+string(tech.compareExample):"Searching templates is read-only. build_prompt and prepare_compare are Send actions; Compare Mode requires an active trial or Pro. prepare_compare returns a prompt and destinations, not completed AI responses.",
   resultLabel:isLocalized?(d.mcpExH||string(tr.toolsTitle)):"Illustrative Claude response — not a live result",
   resultText:isLocalized?string(tech.compareExample):"Poly-Glot prepared your prompt for ChatGPT, Claude, and Gemini. It has not opened the workspace or generated any model responses. Use the returned destinations to send the prompt and compare answers.",
   docsLabel:isLocalized?string(tr.clientDocs):"Read Claude's official connector instructions ↗",
   troubleTitle:phrase("troubleTitle",isLocalized?string(tr.errorsTitle):localized.EN.troubleTitle),
-  troubleDesc:phrase("troubleDesc",isLocalized?[tr.groupCore,tr.groupCustom,tr.groupLanguage].map(string).join(" · "):localized.EN.troubleDesc)
+  troubleDesc:phrase("troubleDesc",isLocalized?[tr.groupCore,tr.groupCustom,tr.groupLanguage].map(string).join(" · "):localized.EN.troubleDesc),
+  clientClaude:isLocalized?"Customize → Connectors → + Add → Add custom connector. "+string(tr.quick3)+" "+string(tr.quick4):"In Claude, open Customize → Connectors, select + Add → Add custom connector, enter Poly-Glot and the production URL, and approve requested permissions. Enable Poly-Glot using the + → Connectors menu in a chat."
  };
  document.querySelectorAll("[data-pg-claude-l10n]").forEach(function(el){
   var key=el.getAttribute("data-pg-claude-l10n");setText(el,x[key]);
   if(lang==="HE"||lang==="AR")el.setAttribute("dir","auto");else el.removeAttribute("dir");
  });
  var link=document.querySelector("[data-pg-claude-trouble-link]");if(link)link.setAttribute("aria-label",x.troubleTitle);
+ // Claude labels are exact application UI strings. Surrounding guidance is translated.
+ var claudeCard=document.querySelector('#mcp-troubleshooting [data-pg-claude-l10n="clientClaude"]');
+ if(claudeCard)setText(claudeCard,x.clientClaude);
+ var homeSteps=document.querySelector('[data-i18n-html="mcpClSteps"]');
+ if(homeSteps){var steps=[
+  "Customize → Connectors → + Add → Add custom connector",
+  "Poly-Glot · "+(isLocalized?string(tr.endpointLabel):"Production MCP URL") ,
+  isLocalized?string(tr.quick3):"Approve tool permissions, then in Claude chat open + → Connectors and enable Poly-Glot."
+ ];
+ var html=steps.map(function(value){return "<li>"+value.replace(/&/g,"&amp;").replace(/</g,"&lt;")+"</li>";}).join("");
+ if(homeSteps.innerHTML!==html)homeSteps.innerHTML=html;
+ }
  // FAQ is separate from the trouble-section translation runtime.
  var faq=document.querySelectorAll('main section[aria-label="Frequently asked questions"] > article');
  if(faq.length===4){
   var translated=isLocalized?[
    [tech.homeMcp,tr.intro].map(string).filter(Boolean).join(" "),
-   "15 MCP · 7 / 4 / 4. "+[tr.intro,tr.toolsIntro].map(string).filter(Boolean).join(" "),
+   "15 MCP: 7 "+string(tr.groupCore)+" · 4 "+string(tr.groupCustom)+" · 4 "+string(tr.groupLanguage)+". "+string(tr.toolsIntro),
    [tr.quick2,tr.quick3].map(string).filter(Boolean).join(" "),
    string(tr.setupLink)
   ]:[];
   faq.forEach(function(article,index){
    var p=article.querySelector(":scope > p");if(!p)return;
    if(!original.has(p))original.set(p,p.textContent);
-   if(index>1){setText(p,isLocalized?translated[index]:original.get(p));}
+   setText(p,isLocalized?translated[index]:original.get(p));
   });
  }
  document.documentElement.setAttribute("data-pg-claude-guide-language",lang);
