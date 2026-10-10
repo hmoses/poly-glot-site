@@ -291,7 +291,8 @@ function updateSiteLabels(code,S){
   /* Localize the click-to-explore hint using existing translated UI terms. */
   var hint=document.querySelector('#macTabHint span');
   if(hint){
-    hint.textContent='👇 '+(S.ask||'Ask Any AI')+' · '+(S.templates||'Templates')+' · '+(S.how||'How to Use')+' · '+(S.history||'History');
+    if(window._pgMacPreviewTabCTA)window._pgMacPreviewTabCTA.apply(S);
+    else hint.textContent='👇 Click the tabs to view: '+(S.ask||'Ask Any AI')+' · '+(S.templates||'Templates')+' · '+(S.how||'How to Use')+' · '+(S.history||'History');
   }
 }
 
