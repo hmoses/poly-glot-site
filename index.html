@@ -3952,7 +3952,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
     <!-- Mac Screenshots — Interactive Tab Viewer -->
     <div class="gallery-panel active" id="gallery-mac">
       <div id="macTabHint" style="text-align:center;margin-bottom:20px;animation:hintPulse 1.6s ease-in-out infinite">
-        <span>👇 Click the tabs below to explore the app</span>
+        <span data-mac-preview-cta>👇 Click the tabs to view: Ask Any AI · Templates · How to Use · History</span>
       </div>
 
       <div class="mac-reference-interactive" aria-label="Interactive Poly-Glot AI Workspace Mac demo">
@@ -7238,7 +7238,8 @@ function _demoStart() {
 <script src="assets/js/site-accuracy-locale-overrides.js?v=2026-10-08-facts"></script>
 <script src="assets/js/site-accuracy-all-languages.js?v=2026-10-08-complete"></script>
 <script src="assets/js/site-accuracy-final-languages.js?v=2026-10-08-complete"></script>
-<script src="assets/js/device-ui-i18n-clean.js?v=20261008-mac-tabs-no-flicker-r2"></script>
+<script src="assets/js/mac-preview-tab-cta.js?v=20261010-tabcta1"></script>
+<script src="assets/js/device-ui-i18n-clean.js?v=20261010-tabcta1"></script>
 <script src="assets/js/mac-demo-responses-locales.js?v=20261008-all38-email-examples1"></script>
 <!-- Native 38-language template catalog translations; run after site i18n -->
 <script src="assets/js/catalog-locales-1.js?v=2026-10-08-catalog"></script>
@@ -9264,9 +9265,10 @@ function _demoStart() {
   font-size:.45rem!important;
   line-height:1.08!important;
   padding:0!important;
-  white-space:nowrap!important;
-  overflow:hidden!important;
-  text-overflow:ellipsis!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
 }
 #gallery-mac #macScreen-history .mac-history-time{
   grid-column:2!important;
@@ -13226,10 +13228,14 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
     setIconText("#macTab-history span","🕐",S.history||"History");
 
     /* Mac hint: always derived from the active app localization table. */
-    setText("#macTabHint span",
-      "👇 "+(S.ask||"Ask Any AI")+" · "+(S.templates||"Templates")+" · "+
-      (S.how||"How to Use")+" · "+(S.history||"History")
-    );
+    if(window._pgMacPreviewTabCTA){
+      window._pgMacPreviewTabCTA.apply(S);
+    }else{
+      setText("#macTabHint span",
+        "👇 Click the tabs to view: "+(S.ask||"Ask Any AI")+" · "+(S.templates||"Templates")+" · "+
+        (S.how||"How to Use")+" · "+(S.history||"History")
+      );
+    }
 
     /* Mac history UI chrome */
     setText("#macScreen-history .mac-history-heading",S.promptHistory||S.history||"Prompt History");
