@@ -12,7 +12,7 @@ threading.Thread(target=server.serve_forever,daemon=True).start()
 langs=os.environ.get("PG_LANG_CODES","EN ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM").replace(","," ").split()
 def state(page):
     return page.evaluate("""() => {
-      let qs=Array.from(document.querySelectorAll('main section[aria-label="Frequently asked questions"] > article'));
+      let qs=Array.from(document.querySelectorAll('main #pg-mcp-faq > article'));
       let guide=document.querySelector('#mcp-troubleshooting');
       let claude=document.querySelector('#claude-tools-guide-support');
       return {lang:window._pgI18n?.curLang?.(),
@@ -40,7 +40,7 @@ with sync_playwright() as p:
         try:
             page.wait_for_function("""code => {
               let root=document.querySelector('#mcp-troubleshooting');
-              let faq=document.querySelectorAll('main section[aria-label="Frequently asked questions"] > article');
+              let faq=document.querySelectorAll('main #pg-mcp-faq > article');
               return window._pgI18n?.curLang?.()===code &&
                  root?.dataset.mcpActiveLanguage===code &&
                  document.documentElement.dataset.pgClaudeGuideLanguage===code &&
