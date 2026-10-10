@@ -45,6 +45,14 @@ function setLanguage(code,dict){
  root.setAttribute("data-mcp-translation",code==="EN"?"english":completed===items.length?"complete":"partial");
  root.setAttribute("data-mcp-translation-count",String(completed));
  root.setAttribute("data-mcp-active-language",code);
+ // The visible translated labels also label the endpoint group and button
+ // for screen readers; raw HTTPS configuration text is never translated.
+ var group=root.querySelector(".mcp-endpoint");
+ var endpoint=root.querySelector('[data-mcp-tr="endpointLabel"]');
+ if(group&&endpoint)group.setAttribute("aria-label",endpoint.textContent.trim());
+ var button=root.querySelector("#pgMcpTroubleCopy");
+ if(button)button.setAttribute("aria-label",button.textContent.trim());
+
 }
 function load(code){
  if(cache.has(code))return cache.get(code);
@@ -66,8 +74,8 @@ function apply(){
 }
 function copy(){
  var el=document.getElementById("pgMcpTroubleEndpoint"),message=document.getElementById("pgMcpTroubleCopyStatus");if(!el)return;
- var value=el.textContent.trim(),code=current(),labels={EN:"Copied",ES:"Copiado",FR:"Copié",DE:"Kopiert",NL:"Gekopieerd",AR:"تم النسخ",HE:"הועתק",JA:"コピーしました",KO:"복사됨",ZH:"已复制",ZH_TW:"已複製"};
- function done(ok){if(message)message.textContent=ok?(labels[code]||labels.EN):"Unable to copy automatically"; }
+ var value=el.textContent.trim(),code=current(),labels={"EN":"Copied","ES":"Copiado","FR":"Copié","DE":"Kopiert","IT":"Copiato","PT":"Copiado","NL":"Gekopieerd","RU":"Скопировано","ZH":"已复制","ZH_TW":"已複製","JA":"コピーしました","KO":"복사됨","AR":"تم النسخ","HI":"कॉपी किया गया","BN":"কপি হয়েছে","TR":"Kopyalandı","PL":"Skopiowano","SV":"Kopierat","NO":"Kopiert","DA":"Kopieret","FI":"Kopioitu","EL":"Αντιγράφηκε","HE":"הועתק","ID":"Tersalin","MS":"Disalin","TH":"คัดลอกแล้ว","VI":"Đã sao chép","UK":"Скопійовано","CS":"Zkopírováno","RO":"Copiat","HU":"Másolva","SK":"Skopírované","HR":"Kopirano","CA":"Copiat","AF":"Gekopieer","SW":"Imenakiliwa","HA":"An kwafa","AM":"ተቀድቷል"};
+ function done(ok){if(message)message.textContent=ok?(labels[code]||labels.EN):"✕ "+(document.getElementById("pgMcpTroubleCopy")?.textContent.trim()||"Copy"); }
  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(value).then(function(){done(true);},function(){done(false);});return;}
  var field=document.createElement("textarea");field.value=value;field.style.position="fixed";field.style.left="-10000px";document.body.appendChild(field);field.select();var success=false;try{success=document.execCommand("copy");}catch(_e){}field.remove();done(success);
 }
