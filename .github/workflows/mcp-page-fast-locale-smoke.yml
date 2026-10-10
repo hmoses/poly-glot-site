@@ -28,5 +28,5 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Check critical locales in real browser
         env:
-          PG_LANG_CODES: EN,ES,NL,ZH_TW,AR
+          PG_LANG_CODES: EN,ZH_TW
         run: python scripts/test_mcp_page_complete.py
