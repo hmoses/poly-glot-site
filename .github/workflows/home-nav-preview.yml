@@ -1,0 +1,80 @@
+name: Homepage menu and Mac-first preview regression
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - .github/workflows/home-nav-preview.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Test menu page order, device preview default, interaction, and translations
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 >/tmp/pg-home-nav.log 2>&1 &
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          base='http://127.0.0.1:8765/index.html'
+          expected=['#hero','#value','#apps','#why','#features','#template-categories','#screenshots','#demo','#iphone-duo','#pricing','#faq','#connect','#knowledge-center']
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              for viewport,label,lang in [({'width':1280,'height':900},'desktop','EN'),({'width':390,'height':844},'mobile','FR'),({'width':1280,'height':900},'RTL language','AR')]:
+                  context=browser.new_context(viewport=viewport,is_mobile=(label=='mobile'),reduced_motion='reduce')
+                  page=context.new_page()
+                  errors=[]
+                  page.on('pageerror',lambda e:errors.append(str(e)))
+                  page.goto(base+'?lang='+lang,wait_until='domcontentloaded')
+                  page.wait_for_function("window._pgI18n && document.getElementById('pg-mobile-menu')")
+                  nav=page.locator('#pg-mobile-menu > li > a')
+                  actual=nav.evaluate_all('(a)=>a.map(el=>el.getAttribute("href"))')
+                  assert actual==expected,(label,actual)
+                  assert all(page.locator(h).count()==1 for h in expected),(label,'Missing destination anchor')
+                  assert nav.count()==len(expected)
+                  tabs=page.locator('#screenshots .gallery-tab')
+                  assert tabs.count()==3
+                  assert tabs.evaluate_all('(els)=>els.map(el=>el.getAttribute("aria-controls"))')==['gallery-mac','gallery-iphone','gallery-ipad']
+                  assert tabs.evaluate_all('(els)=>els.map(el=>el.classList.contains("active"))')==[True,False,False]
+                  assert page.locator('#screenshots .gallery-panel.active').get_attribute('id')=='gallery-mac'
+                  assert page.locator('#screenshots .gallery-panel').evaluate_all('(els)=>els.map(el=>el.id)')==['gallery-mac','gallery-iphone','gallery-ipad']
+                  assert tabs.nth(0).get_attribute('aria-selected')=='true'
+                  assert page.locator('#gallery-mac #macTab-askanyai').count()==1
+                  # One tab changes only selected preview; Mac works again when reselected.
+                  page.evaluate("switchGallery('iphone')")
+                  assert page.locator('#screenshots .gallery-panel.active').get_attribute('id')=='gallery-iphone'
+                  assert tabs.nth(1).get_attribute('aria-selected')=='true'
+                  page.evaluate("switchGallery('ipad')")
+                  assert page.locator('#screenshots .gallery-panel.active').get_attribute('id')=='gallery-ipad'
+                  page.evaluate("switchGallery('mac')")
+                  assert page.locator('#screenshots .gallery-panel.active').get_attribute('id')=='gallery-mac'
+                  assert tabs.nth(0).get_attribute('tabindex')=='0'
+                  # Menu works after being portaled into body, and closes on item click.
+                  page.locator('.nav-mobile-toggle').click()
+                  assert page.locator('#pg-mobile-menu').evaluate('(el)=>el.classList.contains("show-mobile")'),label
+                  assert page.locator('.nav-mobile-toggle').get_attribute('aria-expanded')=='true'
+                  page.locator('#pg-mobile-menu a[href="#template-categories"]').click()
+                  assert not page.locator('#pg-mobile-menu').evaluate('(el)=>el.classList.contains("show-mobile")'),label
+                  assert page.locator('.nav-mobile-toggle').get_attribute('aria-expanded')=='false'
+                  assert page.evaluate('location.hash')=='#template-categories'
+                  if lang!='EN':
+                      assert nav.nth(5).inner_text()!='🧩 Template Library',(label,'Template menu not localized')
+                      assert nav.nth(3).inner_text()!="Why One AI Isn't Enough",(label,'Why section menu not localized')
+                      assert nav.nth(6).inner_text()!='App Preview',(label,'Preview menu not localized')
+                  if label=='mobile':
+                      assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+5'),"Mobile horizontal overflow"
+                  assert not errors,(label,'JS exceptions',errors[:5])
+                  print('PASS',label,lang,'Mac default + 13 page-order menu links + device switching + menu click',flush=True)
+                  context.close()
+              browser.close()
+          PY
