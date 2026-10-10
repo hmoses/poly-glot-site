@@ -11,11 +11,11 @@ What Poly-Glot MCP does, its tools, setup documentation and compatible client re
 
 ## What is Poly-Glot MCP?
 
-Poly-Glot MCP is a Model Context Protocol integration exposing structured tools for prompt templates, prompt creation, language features, comparison preparation, and related workspace functions.
+Poly-Glot provides a hosted Streamable HTTP Model Context Protocol server with tools for template discovery, prompt building, comparison preparation, BYOM, language and audio processing, and subscription status. Read-only discovery does not start a trial; Send and restricted tools use verified server-side entitlements.
 
 ## How many MCP tools are available?
 
-The current Poly-Glot integration documentation describes 15 MCP tools.
+The current MCP server code registers 15 tools: seven core tools, four BYOM tools, and four language and audio tools. Discovery depends on client support and permissions; some tool actions require an authenticated trial or Pro account.
 **Complete 15-tool inventory**
 
 - Core: `get_language_options`, `get_subscription_status`, `open_workspace`, `search_templates`, `get_template`, `build_prompt`, `prepare_compare`
