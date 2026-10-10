@@ -1,0 +1,158 @@
+{
+  "language": "NL",
+  "strings": {
+    "eyebrow": [
+      "Hulp bij MCP-verbindingen"
+    ],
+    "title": [
+      "Problemen met Poly-Glot MCP-verbindingen, authenticatie en tools oplossen"
+    ],
+    "intro": [
+      "Stapsgewijze oplossingen voor externe Streamable HTTP-verbindingen in ChatGPT, Claude, Cursor, Goose, VS Code, Windsurf en andere compatibele MCP-clients. Alle clients gebruiken dezelfde Poly-Glot-server met 15 tools voor sjablonen, vergelijken, aangepaste modellen en talen."
+    ],
+    "endpointLabel": [
+      "Productie-URL van de MCP-server — gebruik precies dit HTTPS-adres"
+    ],
+    "copy": [
+      "Endpoint kopiëren"
+    ],
+    "quickTitle": [
+      "Begin met deze vier controles"
+    ],
+    "quick1": [
+      "Gebruik de exacte server-URL.",
+      "Plak de bovenstaande HTTPS-URL, inclusief",
+      "; gebruik geen directorylink van Glama, MCP.so of GitHub."
+    ],
+    "quick2": [
+      "Kies externe Streamable HTTP.",
+      "Selecteer in je client de optie voor een externe MCP-server via HTTP. Poly-Glot wordt gehost: je hoeft niets met npm te installeren en hebt geen localhost-poort of stdio-opdracht nodig."
+    ],
+    "quick3": [
+      "Verleen toegang en schakel de tools in.",
+      "Voltooi eventuele aanmeld- of autorisatiestappen, keur de toolmachtigingen goed en vernieuw of scan daarna de server opnieuw in je client."
+    ],
+    "quick4": [
+      "Test eerst een alleen-lezen-tool.",
+      "Laat je client",
+      "of",
+      "gebruiken; gebruik daarna",
+      "om te controleren of je toegang hebt tot de proefperiode en Pro."
+    ],
+    "clientsTitle": [
+      "Problemen per MCP-client oplossen"
+    ],
+    "clientChatgpt": [
+      "Gebruik de Apps-instellingen of de configuratie voor ontwikkelaars/aangepaste MCP-koppelingen die beschikbaar is voor je account of werkruimte. Voeg de externe URL toe, voltooi eventuele autorisatie, laat de tools zoeken en selecteer de app in je chat. De beschikbaarheid van Apps en de ontwikkelaarsmodus hangt af van je abonnement en werkruimtemachtigingen."
+    ],
+    "clientDocs": [
+      "Officiële hulp voor deze client ↗",
+      "Officiële hulp voor deze client ↗"
+    ],
+    "clientClaude": [
+      "Voeg Poly-Glot via Instellingen → Connectors toe als aangepaste externe connector. Verschijnt deze niet in de chat, schakel de connector dan in via het toolmenu. Externe connectors stel je niet in via het lokale stdio-JSON-bestand van Claude Desktop."
+    ],
+    "clientCursor": [
+      "Open de MCP-serverinstellingen, voeg een externe Streamable HTTP-server toe met de bovenstaande URL en schakel deze in. Zie je geen tools, vernieuw dan de MCP-servers, keur de machtigingen goed en controleer of je client dit transport ondersteunt."
+    ],
+    "clientGoose": [
+      "Voeg Poly-Glot toe als externe MCP-extensie via Streamable HTTP, niet als lokale opdracht. Schakel de extensie in, start zo nodig de sessie opnieuw en test een alleen-lezen-tool voordat je een verzendactie of een tool voor aangepaste modellen gebruikt."
+    ],
+    "clientVscode": [
+      "Voeg in een VS Code-omgeving met MCP-ondersteuning de URL toe als externe MCP-server via HTTP, niet als lokaal stdio-proces. Controleer of de werkruimte wordt vertrouwd en of de tools zijn toegestaan; vernieuw daarna de server en controleer of de tools worden gevonden."
+    ],
+    "clientOther": [
+      "Controleer of jouw clientversie externe MCP-servers via Streamable HTTP ondersteunt. Gebruik de productie-URL en schakel de tools in. Ondersteunt je client alleen stdio of het oudere SSE, raadpleeg dan de actuele documentatie over externe MCP-verbindingen."
+    ],
+    "errorsTitle": [
+      "Veelvoorkomende MCP-fouten en oplossingen"
+    ],
+    "error1Title": [
+      "Server niet beschikbaar, verbinding mislukt of fout 404"
+    ],
+    "error1Body": [
+      "Controleer de volledige",
+      "URL en het externe HTTP-transport. Voeg de verbinding opnieuw toe en probeer het nogmaals. Een GET-verzoek vanuit een browser naar een MCP-endpoint is geen geldige tooltest: de client moet het MCP-protocol gebruiken. Controleer het netwerk van de client en de status van de server; verwar een directoryvermelding niet met de server zelf."
+    ],
+    "error2Title": [
+      "401 Niet geautoriseerd of autorisatie blijft terugkomen"
+    ],
+    "error2Body": [
+      "Gebruik de autorisatieprocedure van de client en maak opnieuw verbinding als de sessie is verlopen. Controleer de authenticatievereisten van de server en de clientmachtigingen. Plaats nooit Apple-wachtwoorden, API-tokens of abonnementsbewijzen in openbare chats, schermafbeeldingen of foutmeldingen."
+    ],
+    "error3Title": [
+      "403 Verboden of toegang tot tool geweigerd"
+    ],
+    "error3Body": [
+      "Controleer of de client toestemming heeft gekregen om de gevraagde tool via deze connector te gebruiken. Vraag zo nodig de werkruimtebeheerder naar het beleid. Een 403-fout kan ook worden veroorzaakt door authenticatie- of herkomstbeperkingen, en betekent niet automatisch dat je abonnement is verlopen."
+    ],
+    "error4Title": [
+      "Geen tools gevonden, verouderde toollijst of tool niet herkend"
+    ],
+    "error4Body": [
+      "Schakel de connector in en vernieuw de tools of scan ze opnieuw. De huidige serverdocumentatie beschrijft 15 tools. Verouderde samenvattingen in directory's veranderen het actuele toolregister niet. Probeer",
+      "; controleer of je MCP-client externe tools kan vinden."
+    ],
+    "error5Title": [
+      "Proefperiode verlopen, Pro vereist of verzendlimiet bereikt"
+    ],
+    "error5Body": [
+      "Gebruik",
+      "om je huidige toegang te controleren. De door de app beheerde proefperiode van drie dagen begint bij de eerste geldige verzendactie. Na afloop kun je gratis 25 geselecteerde sjablonen gebruiken en één bericht naar één AI versturen per voortschrijdende periode van 24 uur. Voor de Vergelijkmodus, BYOM en andere Pro-functies is de juiste toegang vereist. Werkt je betaalde toegang niet, meld je dan aan met het gekoppelde account en controleer of herstel je Apple-abonnement in de app."
+    ],
+    "error6Title": [
+      "429 Snelheidslimiet, time-out, 500/502/503 of netwerkfout"
+    ],
+    "error6Body": [
+      "Probeer het na een korte pauze opnieuw en controleer het netwerk van de client, eventuele proxy of firewall en de serverstatus. Herhaal geen betaalde actie of verzendactie voordat je hebt gecontroleerd of het vorige verzoek is voltooid. Vermeld bij een supportverzoek het tijdstip, de MCP-client en de foutcode, maar nooit geheime gegevens."
+    ],
+    "error7Title": [
+      "Verkeerde taal of fout bij vertalen, transcriberen of audio"
+    ],
+    "error7Body": [
+      "Gebruik",
+      "om een ondersteunde taal te kiezen en controleer daarna de invoer- en uitvoertaal. Controleer voor",
+      "of het audioformaat, de bestandsgrootte en de machtigingen aan de eisen van de tool voldoen. Probeer",
+      "of",
+      "afzonderlijk om de oorzaak te achterhalen."
+    ],
+    "error8Title": [
+      "Validatie of uitvoering van aangepast model (BYOM) mislukt"
+    ],
+    "error8Body": [
+      "Roep eerst",
+      "aan en daarna",
+      ". Gebruik een bereikbaar HTTPS-endpoint voor het model, de juiste adapter en model-ID en geldige tijdelijke inloggegevens. Controleer de API-respons van je modelprovider. Deel nooit API-sleutels in logbestanden of supportberichten."
+    ],
+    "toolsTitle": [
+      "Welke MCP-tool kan ik het beste testen?"
+    ],
+    "toolsIntro": [
+      "Test eerst de kleinst mogelijke alleen-lezen-actie, voordat je iets verstuurt. De volgende groepen bevatten alle 15 Poly-Glot MCP-tools."
+    ],
+    "groupCore": [
+      "Ontdekken, status en werkruimte"
+    ],
+    "groupCustom": [
+      "Aangepast model / BYOM"
+    ],
+    "groupLanguage": [
+      "Taal en audio"
+    ],
+    "supportTitle": [
+      "Nog hulp nodig?"
+    ],
+    "supportBody": [
+      "Vermeld je MCP-client, transporttype, toolnaam, exacte foutcode en het geschatte tijdstip, maar nooit wachtwoorden of API-sleutels."
+    ],
+    "supportLink": [
+      "Neem contact op met Poly-Glot-support →"
+    ],
+    "setupLink": [
+      "Bekijk de installatie en compatibiliteit →"
+    ],
+    "markdownLink": [
+      "Lees de Markdown-handleiding voor RAG →"
+    ]
+  }
+}
