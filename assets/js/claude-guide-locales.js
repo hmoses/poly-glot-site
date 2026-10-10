@@ -22,14 +22,15 @@ function load(lang){
  var base="assets/locales/";
  cache[lang]=Promise.all([
   fetch(base+"mcp-troubleshooting/"+lang.toLowerCase()+".json?v=20261010-2",{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("MCP locale missing");return r.json();}),
-  fetch(base+"mcp-technical/"+lang.toLowerCase()+".json?v=20261010-tech-v4",{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("Technical locale missing");return r.json();})
- ]).then(function(data){return {tr:data[0].strings,tech:data[1].strings};}).catch(function(e){delete cache[lang];console.warn("[Poly-Glot Claude guide]",e.message);return null;});
+  fetch(base+"mcp-technical/"+lang.toLowerCase()+".json?v=20261010-tech-v4",{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("Technical locale missing");return r.json();}),
+  fetch(base+"subpages/"+lang.toLowerCase()+".json?v=20261010-faq38",{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("Page locale missing");return r.json();})
+ ]).then(function(data){return {tr:data[0].strings,tech:data[1].strings,sub:data[2]};}).catch(function(e){delete cache[lang];console.warn("[Poly-Glot Claude guide]",e.message);return null;});
  return cache[lang];
 }
 var original=new WeakMap();
 function setText(el,v){if(el&&v&&el.textContent!==v)el.textContent=v;}
 function apply(lang,bundle){
- var base=localized[lang],tr=bundle&&bundle.tr||{},tech=bundle&&bundle.tech||{},
+ var base=localized[lang],tr=bundle&&bundle.tr||{},tech=bundle&&bundle.tech||{},sub=bundle&&bundle.sub||{},
  i=window._pgI18n,d=i&&i.dictionary&&i.dictionary[lang]||{};
  var isLocalized=lang!=="EN",phrase=function(key,fallback){return base&&base[key]||fallback;};
  // For additional languages, use the existing native locale pack rather than
@@ -45,6 +46,8 @@ function apply(lang,bundle){
  var x={
   introServer:card1,introClient:card2,introConnect:card3,
   endpointLabel:isLocalized?string(tr.endpointLabel):"Production MCP URL — use this exact HTTPS address",
+  privacyPolicyLink:(isLocalized?(sub["Privacy Policy"]||"Privacy Policy"):"Privacy Policy")+" ↗",
+  mcpSetupLink:isLocalized?string(tr.setupLink):"MCP setup guide ↗",
   guideTitle:phrase("title",isLocalized?string(tr.toolsTitle):localized.EN.title),
   guideIntro:isLocalized?string(tr.quick3)+" "+string(tr.quick4):"In a Claude chat, select + → Connectors, enable Poly-Glot, and ask for a tool by name. Approve access when prompted.",
   browseTitle:isLocalized?string(tr.groupCore):"1. Search templates (read-only)",
