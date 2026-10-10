@@ -11,7 +11,7 @@ Learn about Poly-Glot's 38-language interface, output language controls, and rig
 
 ## How many languages does Poly-Glot support?
 
-Poly-Glot AI Workspace supports 38 interface languages and provides output-language controls.
+Poly-Glot supports 38 named interface languages, including right-to-left Arabic and Hebrew, and independent output-language controls. MCP language detection, translation, localization and transcription are separate restricted processing tools that require an active trial or Pro subscription.
 
 ## Does Poly-Glot support Arabic and Hebrew?
 
