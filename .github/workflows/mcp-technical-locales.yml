@@ -1,0 +1,105 @@
+name: Publish MCP technical accuracy in all 38 languages
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/mcp-technical-locales.yml'
+      - 'scripts/build_mcp_technical_locales.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: polyglot-technical-accuracy-release
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        include:
+          - shard: a
+            languages: ES,FR,DE,IT,PT,NL
+          - shard: b
+            languages: RU,ZH,ZH_TW,JA,KO,AR
+          - shard: c
+            languages: HI,BN,TR,PL,SV,NO
+          - shard: d
+            languages: DA,FI,EL,HE,ID,MS
+          - shard: e
+            languages: TH,VI,UK,CS,RO,HU
+          - shard: f
+            languages: SK,HR,CA,AF,SW,HA,AM
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate localized technical claims and privacy disclosures
+        env:
+          PG_TECH_LOCALES: ${{ matrix.languages }}
+        run: python scripts/build_mcp_technical_locales.py
+      - name: Stage translated catalog files
+        env:
+          PG_TECH_LOCALES: ${{ matrix.languages }}
+        run: |
+          mkdir -p /tmp/pg-technical
+          for code in ${PG_TECH_LOCALES//,/ }; do
+            cp "assets/locales/mcp-technical/${code,,}.json" /tmp/pg-technical/
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pg-technical-${{ matrix.shard }}
+          path: /tmp/pg-technical/*.json
+          if-no-files-found: error
+          retention-days: 14
+  publish:
+    needs: generate
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pg-technical-*
+          path: assets/locales/mcp-technical
+          merge-multiple: true
+      - name: Verify all technical corrections preserved in all 38 languages
+        run: |
+          python - <<'PY'
+          import json,re
+          from pathlib import Path
+          folder=Path('assets/locales/mcp-technical')
+          en=json.loads((folder/'en.json').read_text(encoding='utf8'))['strings']
+          assert len(en)==21
+          codes="ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM".split()
+          assert len(codes)==37
+          for code in codes:
+              file=folder/(code.lower()+'.json')
+              assert file.is_file(),code
+              obj=json.loads(file.read_text(encoding='utf8'))
+              assert obj.get('language')==code,code
+              data=obj['strings']
+              assert set(data)==set(en),(code,"missing translation")
+              assert data['chatIntro']!=en['chatIntro'],(code,"English-only")
+              for k,value in data.items():
+                  assert isinstance(value,str) and value.strip() and len(value)<1200,(code,k)
+                  for t in ["get_language_options","search_templates","prepare_compare"]:
+                      if t in en[k]:assert t in value,(code,k,"tool name translated")
+              assert 'https://' not in ''.join(data.values()),(code,"Unexpected endpoint rewriting")
+              print("PASS",code,len(data),"technical claims",flush=True)
+          print("PASS all 38 technical-claim catalogs (English + 37 translations)",flush=True)
+          PY
+      - name: Publish complete catalog batch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/locales/mcp-technical
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish 38-language verified MCP technical and privacy corrections"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
