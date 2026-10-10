@@ -1847,7 +1847,7 @@ function pgApplyLoose(lang){
   var candidates=document.querySelectorAll("nav a, main p, main span, main div, main h2, main h3, main h4, main button, section p, section span, section div, section h2, section h3, section h4, section button, footer a, footer span");
   candidates.forEach(function(el){
     if(el.children.length||el.matches("[data-i18n],[data-i18n-html]"))return;
-    if(el.closest("[data-i18n],[data-i18n-html],pre,code,svg,script,style,noscript,textarea,select,#demo,#screenshots,#iphone-duo,#pgChat-widget,.phone-screen,.demo-iphone-frame"))return;
+    if(el.closest("[data-i18n],[data-i18n-html],pre,code,svg,script,style,noscript,textarea,select,#mcp-troubleshooting,#demo,#screenshots,#iphone-duo,#pgChat-widget,.phone-screen,.demo-iphone-frame"))return;
     var key=el.getAttribute("data-pg-loose-key"),orig=el.getAttribute("data-pg-loose-en");
     if(!key){
       orig=el.textContent;
