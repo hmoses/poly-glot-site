@@ -48,30 +48,30 @@ jobs:
                      [k,document.querySelector('[data-mcp-tr="'+k+'"]')?.textContent?.trim()])),
                  faq:document.querySelectorAll('main article h2')[2]?.textContent
               })"""),flush=True)
-              assert root.locator('#mcp-troubleshooting-title').inner_text().startswith('Problemen met Poly-Glot MCP-verbindingen')
-              assert root.locator('[data-mcp-tr="eyebrow"]').inner_text()=='Hulp bij MCP-verbindingen'
-              assert root.locator('[data-mcp-tr="quickTitle"]').inner_text()=='Begin met deze vier controles'
-              assert root.locator('[data-mcp-tr="copy"]').inner_text()=='Endpoint kopiëren'
+              assert root.locator('#mcp-troubleshooting-title').text_content().strip().startswith('Problemen met Poly-Glot MCP-verbindingen')
+              assert root.locator('[data-mcp-tr="eyebrow"]').text_content().strip()=='Hulp bij MCP-verbindingen'
+              assert root.locator('[data-mcp-tr="quickTitle"]').text_content().strip()=='Begin met deze vier controles'
+              assert root.locator('[data-mcp-tr="copy"]').text_content().strip()=='Endpoint kopiëren'
               assert root.locator('[data-mcp-tr="clientDocs"]').count()==2
               assert root.locator('.mcp-error-guide details').count()==8
               assert root.locator('[data-mcp-tr="error1Body"]').text_content().startswith('Controleer de volledige')
               assert root.locator('[data-mcp-tr="error8Body"]').text_content().startswith('Roep eerst')
-              assert root.locator('[data-mcp-tr="groupLanguage"]').inner_text()=='Taal en audio'
-              assert root.locator('#pgMcpTroubleEndpoint').inner_text().endswith('/mcp')
+              assert root.locator('[data-mcp-tr="groupLanguage"]').text_content().strip()=='Taal en audio'
+              assert root.locator('#pgMcpTroubleEndpoint').text_content().strip().endswith('/mcp')
               assert root.locator('code').count()>=15
               assert root.locator('.mcp-client-grid article').count()==6
               assert root.locator('.mcp-client-grid article.pg-motion-card').count()==6
               assert root.locator('.mcp-error-guide details.pg-motion-card').count()==8
               assert root.get_attribute('dir')=='ltr'
-              assert page.locator('main article h2').nth(2).inner_text()=='Kan elke AI-assistent verbinding maken met Poly-Glot MCP?'
-              assert 'Niet altijd.' in page.locator('main article').nth(2).locator('p').inner_text()
-              assert 'Waar vind ik de configuratie-instructies?' in page.locator('main article h2').nth(3).inner_text()
+              assert page.locator('main article h2').nth(2).text_content().strip()=='Kan elke AI-assistent verbinding maken met Poly-Glot MCP?'
+              assert 'Niet altijd.' in page.locator('main article').nth(2).locator('p').text_content().strip()
+              assert 'Waar vind ik de configuratie-instructies?' in page.locator('main article h2').nth(3).text_content().strip()
               page.evaluate("window._pgI18n.setLang('EN','🇺🇸')")
               page.wait_for_function("document.querySelector('#mcp-troubleshooting').dataset.mcpActiveLanguage==='EN'")
-              assert 'Troubleshooting Poly-Glot' in root.locator('#mcp-troubleshooting-title').inner_text()
+              assert 'Troubleshooting Poly-Glot' in root.locator('#mcp-troubleshooting-title').text_content().strip()
               page.evaluate("window._pgI18n.setLang('NL','🇳🇱')")
               page.wait_for_function("document.querySelector('#mcp-troubleshooting').dataset.mcpActiveLanguage==='NL' && document.querySelector('#mcp-troubleshooting').dataset.mcpTranslation==='complete'")
-              assert 'Problemen met Poly-Glot' in root.locator('#mcp-troubleshooting-title').inner_text()
+              assert 'Problemen met Poly-Glot' in root.locator('#mcp-troubleshooting-title').text_content().strip()
               assert not errors,'JavaScript exceptions: '+str(errors[:4])
               print('PASS Dutch MCP guide, FAQ, all 45 keys, 15 identifiers, error guides, Apple-style cards and language switching')
               browser.close()
