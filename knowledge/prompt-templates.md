@@ -15,7 +15,7 @@ Poly-Glot provides more than 1,000 reusable prompt templates to help people crea
 
 ## Are templates available without Pro?
 
-After the 3-day trial, 25 featured free templates remain available. Pro templates and Compare Mode lock unless you subscribe to Pro.
+There are 25 designated free templates. Browsing and searching are read-only; restricted Pro template bodies are returned only when the verified account has an active trial or Pro entitlement. After the 3-day trial, free templates remain available but Pro templates and Compare Mode lock.
 
 ## What is the free send limit?
 
@@ -23,7 +23,7 @@ After the three-day trial, the free tier offers one single-AI send per rolling 2
 
 ## Do I need to subscribe to use Poly-Glot?
 
-Not for the limited free tier. Pro unlocks additional templates, Compare Mode, and unlimited sends, subject to the latest in-app subscription terms.
+No paid subscription is required to browse or use the limited free tier. A verified account is needed to start a trial or use restricted Send actions. Pro unlocks restricted templates, Compare Mode and unlimited sends, plus eligible BYOM and MCP language-processing features.
 
 ## Further information
 
