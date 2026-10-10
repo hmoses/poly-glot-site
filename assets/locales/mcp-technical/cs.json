@@ -1,0 +1,26 @@
+{
+  "language": "CS",
+  "strings": {
+    "chatHeading": "Nastavte kompatibilní připojení MCP",
+    "claudeAccess": "Dostupnost vlastního konektoru Claude závisí na vašem aktuálním plánu Claude, verzi aplikace a oprávněních pracovního prostoru. Použijte Nastavení → Konektory, pokud jsou k dispozici.",
+    "chatIntro": "Připojte Poly-Glot jako vzdálenou aplikaci MCP nebo vlastní konektor, pokud to podporuje váš účet ChatGPT nebo pracovní prostor. Dostupnost a oprávnění závisí na vašem plánu a nastavení.",
+    "chatStep2": "Přidejte produkční koncový bod Streamable HTTP",
+    "chatStep1": "Zkontrolujte aplikace ChatGPT nebo nastavení vývojáře",
+    "chatStep1Body": "Otevřete dostupné aplikace nebo vlastní konfiguraci MCP v ChatGPT. Váš plán, pracovní prostor a správce mohou tuto funkci omezit.",
+    "chatStep2Body": "Pokud váš účet podporuje vlastní vzdálený server MCP, zadejte níže přesnou adresu URL a dokončete veškeré požadované ověření.",
+    "chatNoteTitle": "Poznámka ke kompatibilitě klienta",
+    "chatStep3": "Schvalte nástroje a ověřte přístup",
+    "chatStep3Body": "Obnovte objevené nástroje a vyzkoušejte get_language_options nebo search_templates. Přihlaste se pomocí ověřeného účtu Poly-Glot pro zkušební aktivaci, akce odesílání a přístup k předplatnému.",
+    "chatNoteBody": "Přístup k nástroji závisí na klientovi a oprávněních. Vložené grafické uživatelské rozhraní pracovního prostoru se nemusí vykreslit v každém klientovi MCP. Poly-Glot neslibuje výpis z App Store ani automatickou instalaci jedním kliknutím.",
+    "chatHelpLink": "Přečtěte si aktuální řešení problémů ChatGPT MCP →",
+    "compareExample": "Nástroj Prepare_compare vrátil jednu výzvu a plán pro ChatGPT, Claude a Gemini. Nevolá automaticky těmto poskytovatelům ani nesbírá jejich odpovědi; použijte každou vybranou AI a porovnejte výsledky sami. (prepare_compare)",
+    "toolGetTemplate": "Získejte pole šablony; placené promptní orgány se vracejí pouze tehdy, když je účet oprávněný",
+    "freeAnswer": "Třídenní zkušební verze s plným přístupem spravovaná aplikací začíná prvním oprávněným odesláním po ověření účtu a automaticky se nepromění v placené předplatné. Po jeho vypršení zůstane k dispozici 25 bezplatných šablon a jedno odeslání pomocí AI za každých 24 hodin; Režim porovnání, BYOM, nástroje pro zpracování jazyků a šablony Pro vyžadují aktivní zkušební verzi nebo předplatné Pro.",
+    "homeMcp": "MCP (Model Context Protocol) umožňuje kompatibilním asistentům umělé inteligence připojit se k externím nástrojům. Poly-Glot odhaluje zjišťování šablon, rychlé vytváření a přípravu na srovnání. Příprava srovnání automaticky nekontaktuje vybrané poskytovatele AI ani nezíská jejich odpovědi.",
+    "appAnswer": "Můžete procházet bezplatné nástroje MCP z kompatibilního klienta. Spuštění zkušební verze a používání omezených nástrojů vyžaduje ověřený účet Poly-Glot a nákup nebo obnovení předplatného Apple může vyžadovat nativní aplikaci. Podpora klienta MCP a dostupnost integrovaného grafického rozhraní se liší.",
+    "privacyAnswer": "Server MCP zpracovává požadavky na nástroje a zaznamenává metadata provozního využití. Vlastní model a zvukové nástroje mohou posílat poskytnutý obsah zvolenému poskytovateli zpracování. Nezahrnujte tajemství do požadavků na podporu nebo veřejných protokolů. Zkontrolujte",
+    "privacyServices": "Tento web používá Google Analytics a reklamní pixel TikTok. Návštěvníci webových stránek mohou mít údaje o prohlížeči a interakci zpracovávané těmito službami podle svých vlastních zásad. Poskytovatelé umělé inteligence, volitelné koncové body vlastního modelu, služby rozpoznávání řeči a poskytovatelé zvuku/přepisu mohou obsah zpracovávat, když se ho rozhodnete odeslat. Platí jejich samostatné podmínky ochrany osobních údajů.",
+    "privacyPurchases": "Apple zpracovává platby za předplatné v aplikaci. Poly-Glot může ověřit a zaznamenat stav oprávnění k předplatnému nebo identifikátory transakcí Apple za účelem určení přístupu k funkcím; údaje o platební kartě zpracovává Apple, nikoli tento web.",
+    "privacyCollection": "Historie aplikací a nastavení mohou být uloženy ve vašem zařízení. Když používáte připojené služby AI nebo vzdálený server Poly-Glot MCP, požadavky se přenášejí do vybraných služeb. Backend MCP ověřuje oprávnění účtu a zaznamenává provozní metadata, jako je použití nástrojů a chyby; Pro zkušební aktivaci a omezené akce odesílání je vyžadován přihlášený účet. Ve zprávách podpory neposílejte hesla, klíče API ani soukromá potvrzení."
+  }
+}

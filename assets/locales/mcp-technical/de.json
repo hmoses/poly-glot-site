@@ -1,0 +1,26 @@
+{
+  "language": "DE",
+  "strings": {
+    "chatHeading": "Richten Sie eine kompatible MCP-Verbindung ein",
+    "claudeAccess": "Die Verfügbarkeit des benutzerdefinierten Claude-Connectors hängt von Ihrem aktuellen Claude-Plan, Ihrer App-Version und Ihren Arbeitsbereichsberechtigungen ab. Verwenden Sie Einstellungen → Anschlüsse, sofern verfügbar.",
+    "chatIntro": "Verbinden Sie Poly-Glot als Remote-MCP-App oder benutzerdefinierten Connector, wenn dies von Ihrem ChatGPT-Konto oder Arbeitsbereich unterstützt wird. Verfügbarkeit und Autorisierung hängen von Ihrem Plan und Ihren Einstellungen ab.",
+    "chatStep1Body": "Öffnen Sie die verfügbaren Apps oder die benutzerdefinierte MCP-Konfiguration in ChatGPT. Ihr Plan, Ihr Arbeitsbereich und Ihr Administrator schränken diese Funktion möglicherweise ein.",
+    "chatStep1": "Überprüfen Sie die ChatGPT-Apps oder Entwicklereinstellungen",
+    "chatStep2": "Fügen Sie den Produktions-Streamable-HTTP-Endpunkt hinzu",
+    "chatStep3Body": "Aktualisieren Sie die erkannten Tools und probieren Sie get_lingual_options oder search_templates aus. Melden Sie sich mit einem verifizierten Poly-Glot-Konto an, um die Testversion zu aktivieren, Aktionen zu senden und auf das Abonnement zuzugreifen. (get_language_options)",
+    "chatStep2Body": "Wenn Ihr Konto einen benutzerdefinierten Remote-MCP-Server unterstützt, geben Sie unten die genaue URL an und führen Sie alle erforderlichen Authentifizierungen durch.",
+    "chatStep3": "Genehmigen Sie Tools und überprüfen Sie den Zugriff",
+    "chatNoteBody": "Der Werkzeugzugriff hängt vom Client und den Berechtigungen ab. Die eingebettete Arbeitsbereichs-GUI wird möglicherweise nicht in jedem MCP-Client gerendert. Poly-Glot verspricht keinen Eintrag im App Store oder eine automatische Ein-Klick-Installation.",
+    "chatHelpLink": "Lesen Sie die aktuelle ChatGPT MCP-Fehlerbehebung →",
+    "chatNoteTitle": "Hinweis zur Client-Kompatibilität",
+    "compareExample": "Das Prepare_Compare-Tool hat eine Eingabeaufforderung und einen Plan für ChatGPT, Claude und Gemini zurückgegeben. Diese Anbieter werden nicht automatisch angerufen oder ihre Antworten erfasst. Verwenden Sie jede ausgewählte KI und vergleichen Sie die Ergebnisse selbst. (prepare_compare)",
+    "toolGetTemplate": "Vorlagenfelder abrufen; Bezahlte Sofortguthaben werden nur dann zurückgegeben, wenn das Konto berechtigt ist",
+    "freeAnswer": "Die von der App verwaltete dreitägige Testversion mit Vollzugriff beginnt mit dem ersten qualifizierenden Versand nach der Kontobestätigung und wird nicht automatisch in ein kostenpflichtiges Abonnement umgewandelt. Nach Ablauf sind weiterhin 25 kostenlose Vorlagen und ein Single-AI-Send pro fortlaufenden 24 Stunden verfügbar; Für den Vergleichsmodus, BYOM, Sprachverarbeitungstools und Pro-Vorlagen ist eine aktive Testversion oder ein Pro-Abonnement erforderlich.",
+    "appAnswer": "Sie können kostenlose MCP-Tools von einem kompatiblen Client aus durchsuchen. Für den Start der Testversion und die Verwendung eingeschränkter Tools ist ein verifiziertes Poly-Glot-Konto erforderlich. Für den Kauf oder die Wiederherstellung eines Apple-Abonnements ist möglicherweise die native App erforderlich. Die Unterstützung des MCP-Clients und die Verfügbarkeit der eingebetteten GUI variieren.",
+    "privacyAnswer": "Der MCP-Server verarbeitet Werkzeuganfragen und zeichnet Metadaten zur betrieblichen Nutzung auf. Benutzerdefinierte Modell- und Audiotools können bereitgestellte Inhalte an den ausgewählten Verarbeitungsanbieter senden. Fügen Sie keine Geheimnisse in Supportanfragen oder öffentliche Protokolle ein. Überprüfen Sie die",
+    "privacyCollection": "Der App-Verlauf und die Einstellungen können auf Ihrem Gerät gespeichert werden. Wenn Sie verbundene KI-Dienste oder den Remote-Poly-Glot-MCP-Server nutzen, werden Anfragen an die ausgewählten Dienste übermittelt. Das MCP-Backend überprüft Kontoberechtigungen und zeichnet betriebliche Metadaten wie Tool-Nutzung und Fehler auf; Für die Testaktivierung und eingeschränkte Sendeaktionen ist ein angemeldetes Konto erforderlich. Senden Sie in Supportnachrichten keine Passwörter, API-Schlüssel oder privaten Quittungen.",
+    "homeMcp": "Mit MCP (Model Context Protocol) können kompatible KI-Assistenten eine Verbindung zu externen Tools herstellen. Poly-Glot bietet Vorlagenerkennung, schnelle Erstellung und Vergleichsvorbereitung. Durch die Vorbereitung eines Vergleichs werden die ausgewählten KI-Anbieter nicht automatisch kontaktiert oder deren Antworten abgerufen.",
+    "privacyPurchases": "Apple verarbeitet In-App-Abonnementzahlungen. Poly-Glot kann den Abonnementberechtigungsstatus oder Apple-Transaktionskennungen überprüfen und aufzeichnen, um den Funktionszugriff zu bestimmen; Zahlungskartendaten werden von Apple verarbeitet, nicht von dieser Website.",
+    "privacyServices": "Diese Website nutzt Google Analytics und einen TikTok-Werbepixel. Website-Besucher können Browser- und Interaktionsdaten verarbeiten lassen, die von diesen Diensten gemäß ihren eigenen Richtlinien verarbeitet werden. KI-Anbieter, optionale Endpunkte mit benutzerdefinierten Modellen, Spracherkennungsdienste und Audio-/Transkriptionsanbieter können Inhalte verarbeiten, wenn Sie sie senden möchten. Es gelten deren gesonderte Datenschutzbestimmungen."
+  }
+}

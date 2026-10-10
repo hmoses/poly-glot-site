@@ -1,0 +1,26 @@
+{
+  "language": "HA",
+  "strings": {
+    "chatIntro": "Haɗa Poly-Glot azaman ƙa'idar MCP mai nisa ko mai haɗawa ta al'ada lokacin da asusun ChatGPT ɗinku ke goyan bayansa ko filin aiki. Samuwar da izini sun dogara da tsarin ku da saitunanku.",
+    "chatHeading": "Saita haɗin MCP mai dacewa",
+    "claudeAccess": "Samuwar haɗin haɗin al'ada na Claude ya dogara da shirin ku na Claude na yanzu, sigar app, da izinin sararin aiki. Yi amfani da Saituna → Masu haɗawa idan akwai.",
+    "chatStep1Body": "Buɗe aikace-aikacen da ke akwai ko tsarin MCP na al'ada a cikin ChatGPT. Shirinku, filin aiki, da mai gudanarwa na iya taƙaita wannan fasalin.",
+    "chatStep2": "Ƙara wurin ƙarshen HTTP mai gudana mai gudana",
+    "chatStep1": "Duba ChatGPT Apps ko saitunan masu haɓakawa",
+    "chatStep2Body": "Lokacin da asusunku yana goyan bayan sabar MCP mai nisa na al'ada, samar da ainihin URL ɗin da ke ƙasa kuma kammala duk wani tabbaci da ake buƙata.",
+    "chatStep3Body": "Sake sabunta kayan aikin da aka gano kuma gwada samun_language_options ko search_templates. Shiga tare da ingantattun asusun Poly-Glot don kunna gwaji, Aika ayyuka, da samun shiga. (get_language_options)",
+    "chatStep3": "Yarda da kayan aikin kuma tabbatar da shiga",
+    "chatNoteBody": "Samun damar kayan aiki ya dogara da abokin ciniki da izini. GUI da aka haɗa sararin aiki bazai iya bayarwa a kowane abokin ciniki na MCP ba. Poly-Glot baya yin alƙawarin jeri na Store Store ko shigarwa ta danna sau ɗaya ta atomatik.",
+    "chatNoteTitle": "Bayanan dacewa da abokin ciniki",
+    "chatHelpLink": "Karanta matsala na ChatGPT MCP na yanzu →",
+    "toolGetTemplate": "Sami filayen samfuri; Ana mayar da gawarwakin da aka biya da sauri ne kawai lokacin da asusun ya cancanci",
+    "compareExample": "Kayan aikin shirya_compare ya dawo da sauri guda ɗaya da shirin ChatGPT, Claude, da Gemini. Ba ya kiran waɗannan masu samarwa kai tsaye ko tattara amsoshinsu; yi amfani da kowane zaɓaɓɓen AI kuma kwatanta sakamakon da kanka. (prepare_compare)",
+    "freeAnswer": "Gwajin cikakken isa na kwanaki 3 da aikace-aikacen ke farawa a farkon cancantar Aika bayan tabbatar da asusun kuma baya juyewa kai tsaye zuwa biyan kuɗi da aka biya. Bayan ya ƙare, samfuran kyauta 25 da Aika-AI guda ɗaya a kowace sa'o'i 24 masu birgima suna nan; Kwatanta Yanayin, BYOM, kayan aikin sarrafa harshe, da samfuran Pro suna buƙatar gwaji mai aiki ko biyan kuɗi na Pro.",
+    "homeMcp": "MCP (Model Context Protocol) yana ba da damar mataimakan AI masu jituwa su haɗa zuwa kayan aikin waje. Poly-Glot yana fallasa gano samfuri, ginin gaggawa, da shirye-shiryen kwatance. Shirya kwatance baya tuntuɓar masu samar da AI da aka zaɓa ta atomatik ko dawo da amsoshinsu.",
+    "privacyAnswer": "Sabar ta MCP tana aiwatar da buƙatun kayan aiki kuma tana yin rikodin metadata na amfani da aiki. Samfurin na yau da kullun da kayan aikin jiwuwa na iya aika abun ciki da aka bayar ga zaɓaɓɓen mai ba da sarrafawa. Kar a haɗa da sirrika a cikin buƙatun tallafi ko bayanan jama'a. Bitar da",
+    "appAnswer": "Kuna iya bincika kayan aikin MCP kyauta daga abokin ciniki masu jituwa. Fara gwajin da amfani da ƙayyadaddun kayan aikin yana buƙatar ingantacciyar asusun Poly-Glot, kuma siyan kuɗin Apple ko maidowa na iya buƙatar ƙa'idar ta asali. Tallafin abokin ciniki na MCP da wadatar GUI da aka haɗa sun bambanta.",
+    "privacyCollection": "Za a iya adana tarihin ƙa'ida da saitunan akan na'urarka. Lokacin da kake amfani da sabis na AI da aka haɗa ko uwar garken MCP na Poly-Glot, ana aika buƙatun zuwa sabis ɗin da aka zaɓa. MCP na baya yana tabbatar da haƙƙin asusu kuma yana yin rikodin metadata na aiki kamar amfanin kayan aiki da kurakurai; ana buƙatar asusun shiga don kunna gwaji da ƙuntataccen ayyukan Aika. Kar a ƙaddamar da kalmomin shiga, maɓallan API, ko rasidu masu zaman kansu a cikin saƙonnin tallafi.",
+    "privacyPurchases": "Apple yana aiwatar da biyan kuɗin biyan kuɗi na cikin-app. Poly-Glot na iya tantancewa da yin rikodin yanayin haƙƙin biyan kuɗi ko masu gano ma'amalar Apple don tantance damar fasalin; Apple ne ke sarrafa bayanan katin biyan kuɗi, ba ta wannan gidan yanar gizon ba.",
+    "privacyServices": "Wannan gidan yanar gizon yana amfani da Google Analytics da TikTok pixel talla. Maziyartan gidan yanar gizon suna iya samun bayanan bincike da ma'amala da waɗannan ayyuka ke sarrafa su ƙarƙashin manufofinsu. Masu ba da AI, zaɓi na zaɓi na ƙarshe na ƙirar ƙira, sabis na gane magana, da masu samar da sauti/rubutu na iya aiwatar da abun ciki lokacin da kuka zaɓi aika shi. Sharuɗɗan keɓancewar su suna aiki."
+  }
+}

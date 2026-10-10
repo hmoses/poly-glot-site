@@ -1,0 +1,26 @@
+{
+  "language": "CA",
+  "strings": {
+    "chatIntro": "Connecteu Poly-Glot com a aplicació MCP remota o connector personalitzat quan el vostre compte o espai de treball de ChatGPT ho admet. La disponibilitat i l'autorització depenen del vostre pla i configuració.",
+    "claudeAccess": "La disponibilitat del connector personalitzat de Claude depèn del vostre pla de Claude actual, la versió de l'aplicació i els permisos de l'espai de treball. Utilitzeu Configuració → Connectors quan estigui disponible.",
+    "chatHeading": "Configureu una connexió MCP compatible",
+    "chatStep1": "Comproveu les aplicacions de ChatGPT o la configuració del desenvolupador",
+    "chatStep2": "Afegiu el punt final HTTP Streamable de producció",
+    "chatStep2Body": "Quan el vostre compte admeti un servidor MCP remot personalitzat, proporcioneu l'URL exacte a continuació i completeu qualsevol autenticació necessària.",
+    "chatStep1Body": "Obriu les aplicacions disponibles o la configuració personalitzada de MCP a ChatGPT. El vostre pla, espai de treball i administrador poden restringir aquesta funció.",
+    "chatNoteTitle": "Nota de compatibilitat amb el client",
+    "chatStep3": "Aprovar eines i verificar l'accés",
+    "chatStep3Body": "Actualitzeu les eines descobertes i proveu get_language_options o search_templates. Inicieu la sessió amb un compte de Poly-Glot verificat per activar la prova, enviar accions i accedir a la subscripció.",
+    "chatHelpLink": "Llegiu la resolució de problemes actual de ChatGPT MCP →",
+    "chatNoteBody": "L'accés a l'eina depèn del client i dels permisos. És possible que la GUI de l'espai de treball incrustat no es mostri a tots els clients MCP. Poly-Glot no promet una llista d'App Store ni una instal·lació automàtica amb un sol clic.",
+    "toolGetTemplate": "Obteniu camps de plantilla; els cossos de sol·licitud pagats només es retornen quan el compte té dret",
+    "compareExample": "L'eina prepare_compare va retornar una sol·licitud i un pla per a ChatGPT, Claude i Gemini. No truca automàticament a aquests proveïdors ni recull les seves respostes; utilitzeu cada IA ​​seleccionada i compareu els resultats vosaltres mateixos.",
+    "appAnswer": "Podeu navegar per eines MCP gratuïtes des d'un client compatible. L'inici de la prova i l'ús d'eines restringides requereix un compte de Poly-Glot verificat, i la compra o restauració de la subscripció d'Apple pot requerir l'aplicació nativa. El suport del client MCP i la disponibilitat de la GUI incrustada varien.",
+    "freeAnswer": "La prova d'accés complet de 3 dies gestionada per l'aplicació comença el primer Enviament qualificat després de la verificació del compte i no es converteix automàticament en una subscripció de pagament. Després que caduqui, queden disponibles 25 plantilles gratuïtes i un únic enviament AI per 24 hores consecutives; El mode de comparació, el BYOM, les eines de processament d'idiomes i les plantilles Pro requereixen una prova activa o una subscripció Pro.",
+    "privacyCollection": "L'historial d'aplicacions i la configuració es poden emmagatzemar al vostre dispositiu. Quan utilitzeu serveis d'IA connectats o el servidor remot de Poly-Glot MCP, les sol·licituds es transmeten als serveis seleccionats. El backend de l'MCP verifica els drets del compte i registra metadades operatives, com ara l'ús d'eines i els errors; Es requereix un compte iniciat per a l'activació de prova i les accions d'enviament restringides. No envieu contrasenyes, claus API ni rebuts privats als missatges d'assistència.",
+    "homeMcp": "MCP (Model Context Protocol) permet que els assistents d'IA compatibles es connectin a eines externes. Poly-Glot exposa el descobriment de plantilles, la creació d'indicadors i la preparació de comparacions. La preparació d'una comparació no contacta automàticament amb els proveïdors d'IA seleccionats ni recupera les seves respostes.",
+    "privacyAnswer": "El servidor MCP processa les sol·licituds d'eina i registra les metadades d'ús operacional. Els models personalitzats i les eines d'àudio poden enviar el contingut proporcionat al proveïdor de processament escollit. No inclogueu secrets a les sol·licituds d'assistència ni als registres públics. Revisa el",
+    "privacyServices": "Aquest lloc web utilitza Google Analytics i un píxel publicitari de TikTok. Els visitants del lloc web poden tenir dades del navegador i d'interacció processades per aquests serveis sota les seves pròpies polítiques. Els proveïdors d'IA, els punts finals de model personalitzat opcionals, els serveis de reconeixement de veu i els proveïdors d'àudio/transcripció poden processar contingut quan decidiu enviar-lo. S'apliquen els seus termes de privadesa separats.",
+    "privacyPurchases": "Apple processa els pagaments de subscripció a l'aplicació. Poly-Glot pot verificar i registrar l'estat dels drets de subscripció o els identificadors de transaccions d'Apple per determinar l'accés a les funcions; Les dades de la targeta de pagament són gestionades per Apple, no per aquest lloc web."
+  }
+}

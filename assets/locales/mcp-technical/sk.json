@@ -1,0 +1,26 @@
+{
+  "language": "SK",
+  "strings": {
+    "chatIntro": "Pripojte Poly-Glot ako vzdialenú aplikáciu MCP alebo vlastný konektor, ak to podporuje váš účet ChatGPT alebo pracovný priestor. Dostupnosť a autorizácia závisia od vášho plánu a nastavení.",
+    "claudeAccess": "Dostupnosť vlastného konektora Claude závisí od vášho aktuálneho plánu Claude, verzie aplikácie a povolení pracovného priestoru. Použite Nastavenia → Konektory, ak sú k dispozícii.",
+    "chatHeading": "Nastavte kompatibilné pripojenie MCP",
+    "chatStep2": "Pridajte koncový bod produkčného streamovateľného HTTP",
+    "chatStep1": "Skontrolujte aplikácie ChatGPT alebo nastavenia vývojára",
+    "chatStep2Body": "Ak váš účet podporuje vlastný vzdialený server MCP, zadajte presnú webovú adresu nižšie a dokončite všetky požadované overenia.",
+    "chatStep1Body": "Otvorte dostupné aplikácie alebo vlastnú konfiguráciu MCP v ChatGPT. Váš plán, pracovný priestor a správca môžu túto funkciu obmedziť.",
+    "chatNoteTitle": "Poznámka o kompatibilite klienta",
+    "chatStep3": "Schváľte nástroje a overte prístup",
+    "chatStep3Body": "Obnovte objavené nástroje a vyskúšajte get_language_options alebo search_templates. Prihláste sa pomocou overeného účtu Poly-Glot a získajte skúšobnú aktiváciu, akcie odosielania a prístup k odberu.",
+    "chatNoteBody": "Prístup k nástroju závisí od klienta a povolení. Vložené grafické používateľské rozhranie pracovného priestoru sa nemusí vykresliť v každom klientovi MCP. Poly-Glot nesľubuje výpis z App Store ani automatickú inštaláciu jedným kliknutím.",
+    "chatHelpLink": "Prečítajte si aktuálne riešenie problémov ChatGPT MCP →",
+    "toolGetTemplate": "Získajte polia šablón; platené promptné orgány sa vrátia len vtedy, keď je účet oprávnený",
+    "appAnswer": "Môžete si prezerať bezplatné nástroje MCP z kompatibilného klienta. Spustenie skúšobnej verzie a používanie obmedzených nástrojov vyžaduje overený účet Poly-Glot a nákup alebo obnovenie predplatného Apple môže vyžadovať natívnu aplikáciu. Podpora klienta MCP a dostupnosť vstavaného grafického rozhrania sa líšia.",
+    "compareExample": "Nástroj Prepare_compare vrátil jednu výzvu a plán pre ChatGPT, Claude a Gemini. Nevolá automaticky týmto poskytovateľom ani nezbiera ich odpovede; použite každú zvolenú AI a porovnajte výsledky sami. (prepare_compare)",
+    "homeMcp": "MCP (Model Context Protocol) umožňuje kompatibilným asistentom AI pripojiť sa k externým nástrojom. Poly-Glot odhaľuje objavovanie šablón, rýchle vytváranie a prípravu na porovnanie. Príprava porovnania automaticky nekontaktuje vybraných poskytovateľov AI ani nezíska ich odpovede.",
+    "privacyAnswer": "Server MCP spracováva požiadavky na nástroje a zaznamenáva metadáta prevádzkového využitia. Vlastný model a zvukové nástroje môžu odosielať poskytnutý obsah zvolenému poskytovateľovi spracovania. Nezahŕňajte tajomstvá do žiadostí o podporu alebo verejných denníkov. Skontrolujte",
+    "privacyPurchases": "Apple spracováva platby predplatného v aplikácii. Poly-Glot môže overiť a zaznamenať stav oprávnenia na predplatné alebo identifikátory transakcií Apple na určenie prístupu k funkciám; údaje o platobnej karte spracováva spoločnosť Apple, nie táto webová stránka.",
+    "privacyCollection": "História aplikácií a nastavenia môžu byť uložené vo vašom zariadení. Keď používate pripojené služby AI alebo vzdialený server Poly-Glot MCP, požiadavky sa prenášajú do vybratých služieb. Backend MCP overuje oprávnenia účtov a zaznamenáva prevádzkové metaúdaje, ako napríklad používanie nástrojov a chyby; na skúšobnú aktiváciu a obmedzené akcie odosielania je potrebný prihlásený účet. V správach podpory neodosielajte heslá, kľúče API ani súkromné ​​potvrdenia.",
+    "freeAnswer": "Trojdňová skúšobná verzia s plným prístupom spravovaná aplikáciou sa začína prvým oprávneným odoslaním po overení účtu a automaticky sa nepremení na platené predplatné. Po jej uplynutí zostane k dispozícii 25 bezplatných šablón a jedno odoslanie pomocou AI na 24 hodín; Režim porovnávania, BYOM, nástroje na spracovanie jazyka a šablóny Pro vyžadujú aktívnu skúšobnú verziu alebo predplatné Pro.",
+    "privacyServices": "Táto webová stránka používa Google Analytics a reklamný pixel TikTok. Návštevníkom webových stránok môžu tieto služby spracovávať údaje o prehliadači a interakciách podľa ich vlastných zásad. Poskytovatelia AI, voliteľné koncové body vlastného modelu, služby rozpoznávania reči a poskytovatelia zvuku/prepisu môžu spracovávať obsah, keď sa ho rozhodnete odoslať. Platia ich samostatné podmienky ochrany osobných údajov."
+  }
+}

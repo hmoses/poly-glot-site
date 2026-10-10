@@ -1,0 +1,26 @@
+{
+  "language": "RO",
+  "strings": {
+    "chatIntro": "Conectați Poly-Glot ca aplicație MCP la distanță sau conector personalizat atunci când este acceptat de contul sau spațiul de lucru ChatGPT. Disponibilitatea și autorizarea depind de planul și setările dvs.",
+    "chatHeading": "Configurați o conexiune MCP compatibilă",
+    "chatStep1": "Verificați aplicațiile ChatGPT sau setările dezvoltatorului",
+    "claudeAccess": "Disponibilitatea conectorului personalizat Claude depinde de planul dvs. actual Claude, de versiunea aplicației și de permisiunile spațiului de lucru. Utilizați Setări → Conectori atunci când sunt disponibile.",
+    "chatStep2Body": "Când contul dvs. acceptă un server MCP la distanță personalizat, furnizați adresa URL exactă mai jos și finalizați orice autentificare necesară.",
+    "chatStep1Body": "Deschideți aplicațiile disponibile sau configurația personalizată MCP în ChatGPT. Planul, spațiul de lucru și administratorul pot restricționa această funcție.",
+    "chatStep2": "Adăugați punctul final HTTP Streamable de producție",
+    "chatStep3": "Aprobați instrumentele și verificați accesul",
+    "chatStep3Body": "Actualizați instrumentele descoperite și încercați get_language_options sau search_templates. Conectați-vă cu un cont Poly-Glot verificat pentru activarea de probă, acțiunile de trimitere și accesul la abonament.",
+    "chatNoteBody": "Accesul la instrument depinde de client și de permisiuni. Interfața grafică a spațiului de lucru încorporat poate să nu fie randată în fiecare client MCP. Poly-Glot nu promite o înregistrare în App Store sau o instalare automată cu un singur clic.",
+    "chatHelpLink": "Citiți depanarea actuală a ChatGPT MCP →",
+    "chatNoteTitle": "Notă de compatibilitate client",
+    "compareExample": "Instrumentul prepare_compare a returnat un prompt și un plan pentru ChatGPT, Claude și Gemini. Nu apelează automat acei furnizori și nu colectează răspunsurile acestora; utilizați fiecare AI selectat și comparați singur rezultatele.",
+    "toolGetTemplate": "Obțineți câmpuri șablon; corpurile prompte plătite sunt returnate numai atunci când contul este îndreptățit",
+    "freeAnswer": "Proba de acces complet de 3 zile gestionată de aplicație începe la primul Trimitere eligibil după verificarea contului și nu se transformă automat într-un abonament plătit. După ce expiră, rămân disponibile 25 de șabloane gratuite și o singură trimitere AI pe 24 de ore; Modul de comparare, BYOM, instrumentele de procesare a limbii și șabloanele Pro necesită o versiune de probă activă sau un abonament Pro.",
+    "homeMcp": "MCP (Model Context Protocol) permite asistenților AI compatibili să se conecteze la instrumente externe. Poly-Glot expune descoperirea șablonului, crearea promptă și pregătirea pentru comparație. Pregătirea unei comparații nu contactează automat furnizorii de AI selectați și nu preia răspunsurile acestora.",
+    "appAnswer": "Puteți căuta instrumente MCP gratuite de la un client compatibil. Începerea probei și utilizarea instrumentelor restricționate necesită un cont Poly-Glot verificat, iar achiziția sau restaurarea abonamentului Apple poate necesita aplicația nativă. Suportul pentru client MCP și disponibilitatea GUI încorporat variază.",
+    "privacyAnswer": "Serverul MCP procesează cererile de instrumente și înregistrează metadatele de utilizare operațională. Modelele personalizate și instrumentele audio pot trimite conținut furnizat furnizorului de procesare ales. Nu includeți secrete în cererile de asistență sau în jurnalele publice. Examinați",
+    "privacyPurchases": "Apple procesează plățile abonamentului în aplicație. Poly-Glot poate verifica și înregistra starea dreptului de abonament sau identificatorii de tranzacție Apple pentru a determina accesul la funcții; detaliile cardului de plată sunt gestionate de Apple, nu de acest site web.",
+    "privacyCollection": "Istoricul aplicațiilor și setările pot fi stocate pe dispozitivul dvs. Când utilizați servicii AI conectate sau serverul Poly-Glot MCP la distanță, solicitările sunt transmise către serviciile selectate. Backend-ul MCP verifică drepturile contului și înregistrează metadatele operaționale, cum ar fi utilizarea instrumentelor și erorile; este necesar un cont conectat pentru activarea de probă și pentru acțiunile de Trimitere restricționate. Nu trimiteți parole, chei API sau chitanțe private în mesajele de asistență.",
+    "privacyServices": "Acest site web folosește Google Analytics și un pixel publicitar TikTok. Vizitatorii site-ului web pot avea datele de browser și de interacțiune prelucrate de aceste servicii conform propriilor politici. Furnizorii AI, punctele finale opționale cu model personalizat, serviciile de recunoaștere a vorbirii și furnizorii de audio/transcripție pot procesa conținut atunci când alegeți să îl trimiteți. Se aplică termenii lor de confidențialitate separati."
+  }
+}

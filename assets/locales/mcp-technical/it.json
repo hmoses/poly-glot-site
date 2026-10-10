@@ -1,0 +1,26 @@
+{
+  "language": "IT",
+  "strings": {
+    "chatIntro": "Connetti Poly-Glot come app MCP remota o connettore personalizzato quando supportato dal tuo account ChatGPT o area di lavoro. La disponibilità e l'autorizzazione dipendono dal piano e dalle impostazioni.",
+    "claudeAccess": "La disponibilità del connettore personalizzato Claude dipende dal piano Claude attuale, dalla versione dell'app e dalle autorizzazioni dell'area di lavoro. Utilizza Impostazioni → Connettori quando disponibile.",
+    "chatHeading": "Configura una connessione MCP compatibile",
+    "chatStep1": "Controlla le app ChatGPT o le impostazioni dello sviluppatore",
+    "chatStep2": "Aggiungi l'endpoint HTTP streaming di produzione",
+    "chatStep1Body": "Apri le app disponibili o la configurazione MCP personalizzata in ChatGPT. Il tuo piano, area di lavoro e amministratore potrebbero limitare questa funzionalità.",
+    "chatStep2Body": "Quando il tuo account supporta un server MCP remoto personalizzato, fornisci l'URL esatto di seguito e completa l'eventuale autenticazione richiesta.",
+    "chatStep3Body": "Aggiorna gli strumenti rilevati e prova get_lingual_options o search_templates. Accedi con un account Poly-Glot verificato per l'attivazione di prova, le azioni di invio e l'accesso all'abbonamento. (get_language_options)",
+    "chatStep3": "Approva gli strumenti e verifica l'accesso",
+    "chatNoteTitle": "Nota sulla compatibilità del client",
+    "chatNoteBody": "L'accesso allo strumento dipende dal client e dalle autorizzazioni. La GUI dell'area di lavoro incorporata potrebbe non essere visualizzata in tutti i client MCP. Poly-Glot non promette un elenco nell'App Store o un'installazione automatica con un clic.",
+    "chatHelpLink": "Leggi l'attuale risoluzione dei problemi MCP ChatGPT →",
+    "compareExample": "Lo strumento prepare_compare ha restituito un prompt e un piano per ChatGPT, Claude e Gemini. Non chiama automaticamente tali fornitori né raccoglie le loro risposte; usa ciascuna IA selezionata e confronta tu stesso i risultati.",
+    "toolGetTemplate": "Ottieni campi modello; gli organismi tempestivi pagati vengono restituiti solo quando il conto è avente diritto",
+    "appAnswer": "Puoi sfogliare gli strumenti MCP gratuiti da un client compatibile. L'avvio della prova e l'utilizzo di strumenti limitati richiedono un account Poly-Glot verificato e l'acquisto o il ripristino dell'abbonamento Apple potrebbe richiedere l'app nativa. Il supporto del client MCP e la disponibilità della GUI incorporata variano.",
+    "freeAnswer": "La prova con accesso completo di 3 giorni gestita dall'app inizia con il primo invio idoneo dopo la verifica dell'account e non si trasforma automaticamente in un abbonamento a pagamento. Dopo la scadenza, rimangono disponibili 25 modelli gratuiti e un invio AI singolo ogni 24 ore consecutive; La modalità di confronto, BYOM, gli strumenti di elaborazione del linguaggio e i modelli Pro richiedono una prova attiva o un abbonamento Pro.",
+    "privacyAnswer": "Il server MCP elabora le richieste degli strumenti e registra i metadati di utilizzo operativo. Gli strumenti audio e modello personalizzato possono inviare il contenuto fornito al fornitore di elaborazione scelto. Non includere segreti nelle richieste di supporto o nei registri pubblici. Rivedi il",
+    "homeMcp": "MCP (Model Context Protocol) consente agli assistenti AI compatibili di connettersi a strumenti esterni. Poly-Glot espone la scoperta dei modelli, la creazione rapida e la preparazione del confronto. La preparazione di un confronto non contatta automaticamente i fornitori di IA selezionati né recupera le loro risposte.",
+    "privacyCollection": "La cronologia e le impostazioni dell'app potrebbero essere memorizzate sul tuo dispositivo. Quando utilizzi i servizi AI connessi o il server MCP Poly-Glot remoto, le richieste vengono trasmesse ai servizi selezionati. Il backend MCP verifica i diritti dell'account e registra i metadati operativi come l'utilizzo degli strumenti e gli errori; per l'attivazione di prova e le azioni di invio limitate è richiesto un account registrato. Non inviare password, chiavi API o ricevute private nei messaggi di supporto.",
+    "privacyPurchases": "Apple elabora i pagamenti degli abbonamenti in-app. Poly-Glot può verificare e registrare lo stato dei diritti di abbonamento o gli identificatori delle transazioni Apple per determinare l'accesso alle funzionalità; i dettagli della carta di pagamento sono gestiti da Apple, non da questo sito web.",
+    "privacyServices": "Questo sito web utilizza Google Analytics e un pixel pubblicitario TikTok. I visitatori del sito web potrebbero far elaborare i dati del browser e di interazione da questi servizi in base alle proprie politiche. I fornitori di intelligenza artificiale, gli endpoint opzionali con modello personalizzato, i servizi di riconoscimento vocale e i fornitori di audio/trascrizione possono elaborare il contenuto quando scegli di inviarlo. Si applicano i loro termini separati sulla privacy."
+  }
+}

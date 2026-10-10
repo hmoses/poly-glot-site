@@ -1,0 +1,26 @@
+{
+  "language": "ZH_TW",
+  "strings": {
+    "chatHeading": "設定相容的 MCP 連接",
+    "claudeAccess": "Claude 自訂連接器的可用性取決於您目前的 Claude 計劃、應用程式版本和工作區權限。如果可用，請使用設定 → 連接器。",
+    "chatIntro": "當您的 ChatGPT 帳戶或工作區支援時，將 Poly-Glot 連接為遠端 MCP 應用程式或自訂連接器。可用性和授權取決於您的計劃和設定。",
+    "chatStep1Body": "在 ChatGPT 中開啟可用的應用程式或自訂 MCP 配置。您的計劃、工作區和管理員可能會限制此功能。",
+    "chatStep2": "新增生產 Streamable HTTP 端點",
+    "chatStep1": "檢查 ChatGPT 應用程式或開發人員設置",
+    "chatStep3Body": "刷新發現的工具並嘗試 get_language_options 或 search_templates。使用經過驗證的 Poly-Glot 帳戶登入以進行試用啟動、發送操作和訂閱存取。",
+    "chatStep2Body": "當您的帳戶支援自訂遠端 MCP 伺服器時，請提供下面的確切 URL 並完成任何所需的身份驗證。",
+    "chatStep3": "批准工具並驗證存取權限",
+    "chatHelpLink": "閱讀目前 ChatGPT MCP 故障排除 →",
+    "chatNoteBody": "工具存取取決於客戶端和權限。嵌入式工作區 GUI 可能不會在每個 MCP 用戶端中呈現。 Poly-Glot 不承諾 App Store 清單或自動一鍵安裝。",
+    "chatNoteTitle": "客戶端相容性說明",
+    "toolGetTemplate": "取得模板欄位；付費提示體僅在帳戶授權時傳回",
+    "compareExample": "prepare_compare 工具傳回一個提示以及針對 ChatGPT、Claude 和 Gemini 的計劃。它不會自動致電這些提供者或收集他們的答案；使用每個選定的人工智慧並自行比較結果。",
+    "freeAnswer": "應用程式管理的 3 天完全存取試用期從帳戶驗證後第一次符合資格的發送開始，並且不會自動轉變為付費訂閱。過期後，每滾動24小時仍可使用25個免費模板和1個單AI發送；比較模式、BYOM、語言處理工具和專業版模板需要有效的試用版或專業版訂閱。",
+    "appAnswer": "您可以從相容的用戶端瀏覽免費的 MCP 工具。開始試用和使用受限工具需要經過驗證的 Poly-Glot 帳戶，並且 Apple 訂閱購買或恢復可能需要本機應用程式。 MCP 用戶端支援和嵌入式 GUI 可用性各不相同。",
+    "privacyAnswer": "MCP 伺服器處理工具請求並記錄操作使用元資料。客製化模型和音訊工具可以將提供的內容傳送到所選的處理提供者。不要在支援請求或公共日誌中包含機密。回顧",
+    "homeMcp": "MCP（模型上下文協定）允許相容的人工智慧助理連接到外部工具。 Poly-Glot 公開了範本發現、提示建置和比較準備。準備比較不會自動聯繫選定的人工智慧提供者或檢索他們的答案。",
+    "privacyPurchases": "Apple 處理應用程式內訂閱付款。 Poly-Glot 可以驗證並記錄訂閱權利狀態或 Apple 交易識別碼以確定功能存取；支付卡詳細資訊由 Apple 處理，而不是由本網站處理。",
+    "privacyServices": "網站使用 Google Analytics 和 TikTok 廣告像素。網站訪客可能會根據自己的政策使用這些服務處理的瀏覽器和互動資料。 AI 提供者、選購的自訂模型端點、語音辨識服務和音訊/轉錄提供者可能會在您選擇傳送內容時處理內容。他們單獨的隱私權條款適用。",
+    "privacyCollection": "應用程式歷史記錄和設定可能會儲存在您的裝置上。當您使用連接的 AI 服務或遠端 Poly-Glot MCP 伺服器時，請求將傳輸到選定的服務。 MCP後端驗證帳戶權限並記錄工具使用和錯誤等操作元資料；試用啟動和受限發送操作需要登入帳戶。請勿在支援訊息中提交密碼、API 金鑰或私人收據。"
+  }
+}

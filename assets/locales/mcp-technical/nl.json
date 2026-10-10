@@ -1,0 +1,26 @@
+{
+  "language": "NL",
+  "strings": {
+    "chatHeading": "Zet een compatibele MCP-verbinding op",
+    "chatIntro": "Verbind Poly-Glot als een externe MCP-app of aangepaste connector wanneer dit wordt ondersteund door uw ChatGPT-account of werkruimte. Beschikbaarheid en autorisatie zijn afhankelijk van uw abonnement en instellingen.",
+    "claudeAccess": "De beschikbaarheid van de aangepaste connector van Claude is afhankelijk van uw huidige Claude-abonnement, app-versie en werkruimtemachtigingen. Gebruik Instellingen → Connectoren indien beschikbaar.",
+    "chatStep1Body": "Open de beschikbare apps of aangepaste MCP-configuratie in ChatGPT. Uw abonnement, werkruimte en beheerder kunnen deze functie beperken.",
+    "chatStep2": "Voeg het Streamable HTTP-eindpunt voor productie toe",
+    "chatStep1": "Controleer ChatGPT Apps of ontwikkelaarsinstellingen",
+    "chatStep2Body": "Wanneer uw account een aangepaste externe MCP-server ondersteunt, geeft u hieronder de exacte URL op en voltooit u de vereiste authenticatie.",
+    "chatStep3Body": "Vernieuw de gevonden tools en probeer get_lingual_options of search_templates. Meld u aan met een geverifieerd Poly-Glot-account voor proefactivering, verzendacties en abonnementstoegang. (get_language_options)",
+    "chatNoteTitle": "Opmerking over clientcompatibiliteit",
+    "chatStep3": "Keur tools goed en verifieer de toegang",
+    "chatNoteBody": "Toegang tot het gereedschap is afhankelijk van de client en machtigingen. De geïntegreerde werkruimte-GUI wordt mogelijk niet in elke MCP-client weergegeven. Poly-Glot belooft geen App Store-vermelding of automatische installatie met één klik.",
+    "toolGetTemplate": "Sjabloonvelden ophalen; betaalde snelle lichamen worden alleen geretourneerd als de rekening recht heeft",
+    "chatHelpLink": "Lees de huidige probleemoplossing voor ChatGPT MCP →",
+    "compareExample": "De prepare_compare-tool retourneerde één prompt en een plan voor ChatGPT, Claude en Gemini. Het belt deze providers niet automatisch en verzamelt hun antwoorden niet; gebruik elke geselecteerde AI en vergelijk zelf de resultaten.",
+    "freeAnswer": "De app-beheerde proefperiode van drie dagen met volledige toegang begint bij de eerste kwalificerende Verzenden na accountverificatie en verandert niet automatisch in een betaald abonnement. Nadat deze verloopt, blijven er 25 gratis sjablonen en één enkele AI Send per voortschrijdende 24 uur beschikbaar; Voor de vergelijkingsmodus, BYOM, taalverwerkingstools en Pro-sjablonen is een actief proefabonnement of Pro-abonnement vereist.",
+    "homeMcp": "Met MCP (Model Context Protocol) kunnen compatibele AI-assistenten verbinding maken met externe tools. Poly-Glot maakt het ontdekken van sjablonen, het snel bouwen en het voorbereiden van vergelijkingen mogelijk. Bij het voorbereiden van een vergelijking wordt niet automatisch contact opgenomen met de geselecteerde AI-aanbieders of worden hun antwoorden opgevraagd.",
+    "appAnswer": "U kunt door gratis MCP-tools bladeren vanaf een compatibele client. Voor het starten van de proefperiode en het gebruik van beperkte tools is een geverifieerd Poly-Glot-account vereist, en voor de aankoop of het herstel van een Apple-abonnement is mogelijk de native app vereist. MCP-clientondersteuning en de beschikbaarheid van ingebouwde GUI variëren.",
+    "privacyAnswer": "De MCP-server verwerkt toolverzoeken en registreert metagegevens over operationeel gebruik. Op maat gemaakte modellen en audiotools kunnen de geleverde inhoud naar de gekozen verwerkingsprovider sturen. Neem geen geheimen op in ondersteuningsverzoeken of openbare logboeken. Bekijk de",
+    "privacyCollection": "App-geschiedenis en instellingen kunnen op uw apparaat worden opgeslagen. Wanneer u verbonden AI-services of de externe Poly-Glot MCP-server gebruikt, worden verzoeken verzonden naar de geselecteerde services. De MCP-backend verifieert accountrechten en registreert operationele metadata zoals toolgebruik en fouten; Voor proefactivatie en beperkte verzendacties is een ingelogd account vereist. Vermeld geen wachtwoorden, API-sleutels of privébewijzen in ondersteuningsberichten.",
+    "privacyServices": "Deze website maakt gebruik van Google Analytics en een TikTok-advertentiepixel. Websitebezoekers kunnen browser- en interactiegegevens door deze diensten laten verwerken onder hun eigen beleid. AI-providers, optionele eindpunten op maat, spraakherkenningsservices en audio-/transcriptieproviders kunnen inhoud verwerken wanneer u ervoor kiest deze te verzenden. Hun afzonderlijke privacyvoorwaarden zijn van toepassing.",
+    "privacyPurchases": "Apple verwerkt in-app-abonnementsbetalingen. Poly-Glot kan de status van abonnementsrechten of Apple-transactie-ID's verifiëren en registreren om toegang tot functies te bepalen; betaalkaartgegevens worden verwerkt door Apple, niet door deze website."
+  }
+}

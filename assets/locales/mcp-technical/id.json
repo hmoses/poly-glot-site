@@ -1,0 +1,26 @@
+{
+  "language": "ID",
+  "strings": {
+    "chatIntro": "Hubungkan Poly-Glot sebagai aplikasi MCP jarak jauh atau konektor khusus bila didukung oleh akun ChatGPT atau ruang kerja Anda. Ketersediaan dan otorisasi bergantung pada paket dan pengaturan Anda.",
+    "claudeAccess": "Ketersediaan konektor khusus Claude bergantung pada paket Claude Anda saat ini, versi aplikasi, dan izin ruang kerja. Gunakan Pengaturan → Konektor bila tersedia.",
+    "chatHeading": "Siapkan koneksi MCP yang kompatibel",
+    "chatStep2": "Tambahkan titik akhir HTTP Streamable produksi",
+    "chatStep1": "Periksa Aplikasi ChatGPT atau pengaturan pengembang",
+    "chatStep1Body": "Buka Aplikasi yang tersedia atau konfigurasi MCP khusus di ChatGPT. Paket, ruang kerja, dan administrator Anda mungkin membatasi fitur ini.",
+    "chatStep2Body": "Jika akun Anda mendukung server MCP jarak jauh khusus, berikan URL persisnya di bawah dan selesaikan semua autentikasi yang diperlukan.",
+    "chatStep3Body": "Segarkan alat yang ditemukan dan coba get_lingual_options atau search_templates. Masuk dengan akun Poly-Glot terverifikasi untuk aktivasi uji coba, Kirim tindakan, dan akses berlangganan. (get_language_options)",
+    "chatStep3": "Setujui alat dan verifikasi akses",
+    "chatNoteBody": "Akses alat bergantung pada klien dan izin. GUI ruang kerja yang tertanam mungkin tidak dirender di setiap klien MCP. Poly-Glot tidak menjanjikan daftar App Store atau instalasi satu klik otomatis.",
+    "chatNoteTitle": "Catatan kompatibilitas klien",
+    "chatHelpLink": "Baca pemecahan masalah MCP ChatGPT saat ini →",
+    "toolGetTemplate": "Dapatkan bidang templat; badan cepat yang dibayar dikembalikan hanya ketika akun berhak",
+    "compareExample": "Alat prep_compare mengembalikan satu prompt dan rencana untuk ChatGPT, Claude, dan Gemini. Layanan ini tidak secara otomatis menghubungi penyedia layanan tersebut atau mengumpulkan jawaban mereka; gunakan setiap AI yang dipilih dan bandingkan sendiri hasilnya. (prepare_compare)",
+    "freeAnswer": "Uji coba akses penuh 3 hari yang dikelola aplikasi dimulai pada Pengiriman pertama yang memenuhi syarat setelah verifikasi akun dan tidak secara otomatis berubah menjadi langganan berbayar. Setelah habis masa berlakunya, 25 templat gratis dan satu Pengiriman AI tunggal per 24 jam tetap tersedia; Mode Bandingkan, BYOM, alat pemrosesan bahasa, dan templat Pro memerlukan uji coba aktif atau langganan Pro.",
+    "homeMcp": "MCP (Model Context Protocol) memungkinkan asisten AI yang kompatibel terhubung ke alat eksternal. Poly-Glot memperlihatkan penemuan template, pembuatan cepat, dan persiapan perbandingan. Mempersiapkan perbandingan tidak secara otomatis menghubungi penyedia AI yang dipilih atau mengambil jawaban mereka.",
+    "appAnswer": "Anda dapat menelusuri alat MCP gratis dari klien yang kompatibel. Memulai uji coba dan menggunakan alat terbatas memerlukan akun Poly-Glot yang terverifikasi, dan pembelian atau pemulihan langganan Apple mungkin memerlukan aplikasi asli. Dukungan klien MCP dan ketersediaan GUI tertanam bervariasi.",
+    "privacyAnswer": "Server MCP memproses permintaan alat dan mencatat metadata penggunaan operasional. Model khusus dan alat audio dapat mengirimkan konten yang disediakan ke penyedia pemrosesan yang dipilih. Jangan sertakan rahasia dalam permintaan dukungan atau log publik. Tinjau",
+    "privacyCollection": "Riwayat dan pengaturan aplikasi mungkin disimpan di perangkat Anda. Saat Anda menggunakan layanan AI yang terhubung atau server MCP Poly-Glot jarak jauh, permintaan dikirimkan ke layanan yang dipilih. Backend MCP memverifikasi hak akun dan mencatat metadata operasional seperti penggunaan alat dan kesalahan; akun yang masuk diperlukan untuk aktivasi uji coba dan tindakan Kirim terbatas. Jangan mengirimkan kata sandi, kunci API, atau tanda terima pribadi dalam pesan dukungan.",
+    "privacyPurchases": "Apple memproses pembayaran langganan dalam aplikasi. Poly-Glot dapat memverifikasi dan mencatat status hak berlangganan atau pengidentifikasi transaksi Apple untuk menentukan akses fitur; rincian kartu pembayaran ditangani oleh Apple, bukan oleh situs web ini.",
+    "privacyServices": "Situs web ini menggunakan Google Analytics dan piksel iklan TikTok. Pengunjung situs web mungkin memiliki data browser dan interaksi yang diproses oleh layanan ini berdasarkan kebijakan mereka sendiri. Penyedia AI, titik akhir model kustom opsional, layanan pengenalan ucapan, dan penyedia audio/transkripsi dapat memproses konten saat Anda memilih untuk mengirimkannya. Ketentuan privasi terpisah berlaku."
+  }
+}

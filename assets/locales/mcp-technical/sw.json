@@ -1,0 +1,26 @@
+{
+  "language": "SW",
+  "strings": {
+    "chatIntro": "Unganisha Poly-Glot kama programu ya mbali ya MCP au kiunganishi maalum inapotumika na akaunti yako ya ChatGPT au nafasi ya kazi. Upatikanaji na uidhinishaji hutegemea mpango na mipangilio yako.",
+    "chatHeading": "Sanidi muunganisho unaolingana wa MCP",
+    "claudeAccess": "Upatikanaji wa kiunganishi maalum cha Claude unategemea mpango wako wa sasa wa Claude, toleo la programu na ruhusa za nafasi ya kazi. Tumia Mipangilio → Viunganishi vinapopatikana.",
+    "chatStep1": "Angalia Programu za ChatGPT au mipangilio ya msanidi",
+    "chatStep2": "Ongeza sehemu ya mwisho ya HTTP inayoweza kutiririka kwa uzalishaji",
+    "chatStep1Body": "Fungua Programu zinazopatikana au usanidi maalum wa MCP katika ChatGPT. Mpango wako, nafasi ya kazi na msimamizi anaweza kuwekea kikomo kipengele hiki.",
+    "chatStep3Body": "Onyesha upya zana zilizogunduliwa na ujaribu get_language_options au search_templates. Ingia ukitumia akaunti ya Poly-Glot iliyothibitishwa kwa kuwezesha majaribio, Tuma vitendo na ufikiaji wa usajili.",
+    "chatStep2Body": "Wakati akaunti yako inakubali seva maalum ya mbali ya MCP, toa URL kamili hapa chini na ukamilishe uthibitishaji wowote unaohitajika.",
+    "chatStep3": "Idhinisha zana na uthibitishe ufikiaji",
+    "chatHelpLink": "Soma utatuzi wa sasa wa ChatGPT MCP →",
+    "chatNoteTitle": "Ujumbe wa uoanifu wa mteja",
+    "chatNoteBody": "Ufikiaji wa zana unategemea mteja na ruhusa. GUI ya nafasi ya kazi iliyopachikwa haiwezi kutoa katika kila mteja wa MCP. Poly-Glot haiahidi kuorodheshwa kwa Duka la Programu au usakinishaji kiotomatiki wa mbofyo mmoja.",
+    "compareExample": "Zana ya prepare_compare ilileta kidokezo kimoja na mpango wa ChatGPT, Claude, na Gemini. Haiwaitii watoa huduma hao kiotomatiki au kukusanya majibu yao; tumia kila AI iliyochaguliwa na ulinganishe matokeo mwenyewe.",
+    "freeAnswer": "Jaribio la ufikiaji kamili la siku 3 linalodhibitiwa na programu huanza kwenye Tuma baada ya uthibitishaji wa akaunti na haligeuki kiotomatiki kuwa usajili unaolipishwa. Baada ya muda wake kuisha, violezo 25 visivyolipishwa na Tuma moja la AI kwa kila toleo la saa 24 husalia kupatikana; Linganisha Modi, BYOM, zana za kuchakata lugha na violezo vya Pro zinahitaji majaribio amilifu au usajili wa Pro.",
+    "toolGetTemplate": "Pata sehemu za template; mashirika ya haraka ya kulipwa yanarejeshwa tu wakati akaunti ina haki",
+    "appAnswer": "Unaweza kuvinjari zana za MCP bila malipo kutoka kwa mteja anayeoana. Kuanzisha jaribio na kutumia zana zilizowekewa vikwazo kunahitaji akaunti ya Poly-Glot iliyothibitishwa, na ununuzi au urejeshaji wa usajili wa Apple unaweza kuhitaji programu asili. Usaidizi wa mteja wa MCP na upatikanaji wa GUI iliyopachikwa hutofautiana.",
+    "homeMcp": "MCP (Itifaki ya Muktadha wa Muundo) huruhusu visaidizi vinavyooana vya AI kuunganishwa kwenye zana za nje. Poly-Glot hufichua ugunduzi wa violezo, ujenzi wa haraka na utayarishaji wa kulinganisha. Kutayarisha ulinganifu hakuwasiliani kiotomatiki na watoa huduma waliochaguliwa wa AI au kupata majibu yao.",
+    "privacyCollection": "Historia ya programu na mipangilio inaweza kuhifadhiwa kwenye kifaa chako. Unapotumia huduma zilizounganishwa za AI au seva ya mbali ya Poly-Glot MCP, maombi hutumwa kwa huduma zilizochaguliwa. Mazingira ya nyuma ya MCP huthibitisha haki za akaunti na kurekodi metadata ya uendeshaji kama vile utumiaji wa zana na hitilafu; akaunti iliyoingia inahitajika kwa ajili ya kuwezesha majaribio na vikwazo vya Tuma vitendo. Usiwasilishe manenosiri, funguo za API, au risiti za faragha katika ujumbe wa usaidizi.",
+    "privacyAnswer": "Seva ya MCP huchakata maombi ya zana na kurekodi metadata ya matumizi ya uendeshaji. Vifaa vya muundo maalum na sauti vinaweza kutuma maudhui yaliyotolewa kwa mtoa huduma aliyechaguliwa. Usijumuishe siri katika maombi ya usaidizi au kumbukumbu za umma. Kagua",
+    "privacyPurchases": "Apple huchakata malipo ya usajili wa ndani ya programu. Poly-Glot inaweza kuthibitisha na kurekodi hali ya ustahiki wa usajili au vitambulishi vya muamala vya Apple ili kubainisha ufikiaji wa vipengele; maelezo ya kadi ya malipo ni kubebwa na Apple, si kwa tovuti hii.",
+    "privacyServices": "Tovuti hii inatumia Google Analytics na pikseli ya utangazaji ya TikTok. Wanaotembelea tovuti wanaweza kuwa na kivinjari na data ya mwingiliano iliyochakatwa na huduma hizi chini ya sera zao. Watoa huduma za AI, vituo vya hiari vya miundo maalum, huduma za utambuzi wa usemi, na watoa huduma za sauti/nukuu wanaweza kuchakata maudhui unapochagua kuyatuma. Masharti yao tofauti ya faragha yanatumika."
+  }
+}

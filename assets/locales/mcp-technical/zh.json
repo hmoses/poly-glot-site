@@ -1,0 +1,26 @@
+{
+  "language": "ZH",
+  "strings": {
+    "chatIntro": "当您的 ChatGPT 帐户或工作区支持时，将 Poly-Glot 连接为远程 MCP 应用程序或自定义连接器。可用性和授权取决于您的计划和设置。",
+    "chatStep1": "检查 ChatGPT 应用程序或开发人员设置",
+    "chatHeading": "设置兼容的 MCP 连接",
+    "claudeAccess": "Claude 自定义连接器的可用性取决于您当前的 Claude 计划、应用程序版本和工作区权限。如果可用，请使用设置 → 连接器。",
+    "chatStep1Body": "在 ChatGPT 中打开可用的应用程序或自定义 MCP 配置。您的计划、工作区和管理员可能会限制此功能。",
+    "chatStep2Body": "当您的帐户支持自定义远程 MCP 服务器时，请提供下面的确切 URL 并完成任何所需的身份验证。",
+    "chatStep2": "添加生产 Streamable HTTP 端点",
+    "chatStep3Body": "刷新发现的工具并尝试 get_language_options 或 search_templates。使用经过验证的 Poly-Glot 帐户登录以进行试用激活、发送操作和订阅访问。",
+    "chatStep3": "批准工具并验证访问权限",
+    "chatNoteTitle": "客户端兼容性说明",
+    "chatNoteBody": "工具访问取决于客户端和权限。嵌入式工作区 GUI 可能不会在每个 MCP 客户端中呈现。 Poly-Glot 不承诺 App Store 列表或自动一键安装。",
+    "compareExample": "prepare_compare 工具返回一个提示以及针对 ChatGPT、Claude 和 Gemini 的计划。它不会自动致电这些提供商或收集他们的答案；使用每个选定的人工智能并自己比较结果。",
+    "chatHelpLink": "阅读当前 ChatGPT MCP 故障排除 →",
+    "toolGetTemplate": "获取模板字段；付费提示体仅在账户授权时返回",
+    "appAnswer": "您可以从兼容的客户端浏览免费的 MCP 工具。开始试用和使用受限工具需要经过验证的 Poly-Glot 帐户，并且 Apple 订阅购买或恢复可能需要本机应用程序。 MCP 客户端支持和嵌入式 GUI 可用性各不相同。",
+    "freeAnswer": "应用管理的 3 天完全访问试用期从帐户验证后第一次符合条件的发送开始，并且不会自动转变为付费订阅。过期后，每滚动24小时仍可使用25个免费模板和1个单AI发送；比较模式、BYOM、语言处理工具和专业版模板需要有效的试用版或专业版订阅。",
+    "homeMcp": "MCP（模型上下文协议）允许兼容的人工智能助手连接到外部工具。 Poly-Glot 公开了模板发现、提示构建和比较准备。准备比较不会自动联系选定的人工智能提供商或检索他们的答案。",
+    "privacyCollection": "应用程序历史记录和设置可能会存储在您的设备上。当您使用连接的 AI 服务或远程 Poly-Glot MCP 服务器时，请求将传输到选定的服务。 MCP后端验证账户权限并记录工具使用情况和错误等操作元数据；试用激活和受限发送操作需要登录帐户。请勿在支持消息中提交密码、API 密钥或私人收据。",
+    "privacyAnswer": "MCP 服务器处理工具请求并记录操作使用元数据。定制模型和音频工具可以将提供的内容发送到所选的处理提供商。不要在支持请求或公共日志中包含机密。回顾",
+    "privacyPurchases": "Apple 处理应用内订阅付款。 Poly-Glot 可以验证并记录订阅权利状态或 Apple 交易标识符以确定功能访问；支付卡详细信息由 Apple 处理，而不是由本网站处理。",
+    "privacyServices": "该网站使用 Google Analytics 和 TikTok 广告像素。网站访问者可能会根据自己的政策使用这些服务处理的浏览器和交互数据。 AI 提供商、可选的自定义模型端点、语音识别服务和音频/转录提供商可能会在您选择发送内容时处理内容。他们单独的隐私条款适用。"
+  }
+}

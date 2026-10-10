@@ -1,0 +1,26 @@
+{
+  "language": "TR",
+  "strings": {
+    "chatHeading": "Uyumlu bir MCP bağlantısı kurun",
+    "claudeAccess": "Claude özel bağlayıcının kullanılabilirliği mevcut Claude planınıza, uygulama sürümünüze ve çalışma alanı izinlerinize bağlıdır. Mümkün olduğunda Ayarlar → Konektörler seçeneğini kullanın.",
+    "chatIntro": "ChatGPT hesabınız veya çalışma alanınız tarafından desteklendiğinde Poly-Glot'u uzak bir MCP uygulaması veya özel bağlayıcı olarak bağlayın. Kullanılabilirlik ve yetkilendirme planınıza ve ayarlarınıza bağlıdır.",
+    "chatStep2": "Üretim Akışı Yapılabilir HTTP uç noktasını ekleyin",
+    "chatStep1": "ChatGPT Uygulamalarını veya geliştirici ayarlarını kontrol edin",
+    "chatStep1Body": "ChatGPT'de mevcut Uygulamaları veya özel MCP yapılandırmasını açın. Planınız, çalışma alanınız ve yöneticiniz bu özelliği kısıtlayabilir.",
+    "chatStep3": "Araçları onaylayın ve erişimi doğrulayın",
+    "chatStep3Body": "Keşfedilen araçları yenileyin ve get_language_options veya search_templates'i deneyin. Deneme aktivasyonu, Gönderme işlemleri ve abonelik erişimi için doğrulanmış bir Poly-Glot hesabıyla oturum açın.",
+    "chatStep2Body": "Hesabınız özel bir uzak MCP sunucusunu desteklediğinde, aşağıda tam URL'yi sağlayın ve gerekli tüm kimlik doğrulama işlemlerini tamamlayın.",
+    "chatHelpLink": "Mevcut ChatGPT MCP sorunlarını gidermeyi okuyun →",
+    "chatNoteTitle": "İstemci uyumluluk notu",
+    "chatNoteBody": "Araç erişimi istemciye ve izinlere bağlıdır. Gömülü çalışma alanı GUI'si her MCP istemcisinde oluşturulamayabilir. Poly-Glot, App Store listelemesi veya tek tıklamayla otomatik kurulum sözü vermez.",
+    "toolGetTemplate": "Şablon alanlarını alın; Ücretli acil kuruluşlar yalnızca hesaba hak kazanıldığında iade edilir",
+    "compareExample": "Hazırlık_karşılaştırma aracı, ChatGPT, Claude ve Gemini için bir bilgi istemi ve bir plan döndürdü. Bu sağlayıcıları otomatik olarak aramaz veya yanıtlarını toplamaz; seçilen her yapay zekayı kullanın ve sonuçları kendiniz karşılaştırın. (prepare_compare)",
+    "appAnswer": "Uyumlu bir istemciden ücretsiz MCP araçlarına göz atabilirsiniz. Deneme sürümünü başlatmak ve kısıtlı araçları kullanmak, doğrulanmış bir Poly-Glot hesabı gerektirir ve Apple aboneliği satın alma veya geri yükleme, yerel uygulamayı gerektirebilir. MCP istemci desteği ve yerleşik GUI kullanılabilirliği değişiklik gösterir.",
+    "freeAnswer": "Uygulama tarafından yönetilen 3 günlük tam erişim denemesi, hesap doğrulamasının ardından ilk uygun Gönderme işleminde başlar ve otomatik olarak ücretli aboneliğe dönüşmez. Süresi dolduktan sonra 25 ücretsiz şablon ve 24 saat boyunca devam eden bir tek Yapay Zeka Gönderimi kullanılabilir durumda kalır; Karşılaştırma Modu, BYOM, dil işleme araçları ve Pro şablonları, etkin bir deneme veya Pro aboneliği gerektirir.",
+    "privacyCollection": "Uygulama geçmişi ve ayarlar cihazınızda saklanabilir. Bağlı AI hizmetlerini veya uzak Poly-Glot MCP sunucusunu kullandığınızda istekler seçilen hizmetlere iletilir. MCP arka ucu, hesap yetkilerini doğrular ve araç kullanımı ve hatalar gibi operasyonel meta verileri kaydeder; Deneme aktivasyonu ve kısıtlı Gönderme işlemleri için oturum açmış bir hesap gereklidir. Destek mesajlarında şifreleri, API anahtarlarını veya özel makbuzları göndermeyin.",
+    "homeMcp": "MCP (Model Bağlam Protokolü), uyumlu AI asistanlarının harici araçlara bağlanmasını sağlar. Poly-Glot şablon keşfini, hızlı oluşturmayı ve karşılaştırma hazırlığını ortaya çıkarır. Bir karşılaştırma hazırlamak, seçilen yapay zeka sağlayıcılarıyla otomatik olarak iletişime geçmez veya onların yanıtlarını almaz.",
+    "privacyAnswer": "MCP sunucusu, araç isteklerini işler ve operasyonel kullanım meta verilerini kaydeder. Özel model ve ses araçları, sağlanan içeriği seçilen işleme sağlayıcısına gönderebilir. Destek isteklerine veya genel günlüklere sırları dahil etmeyin. Gözden geçirin",
+    "privacyPurchases": "Apple, uygulama içi abonelik ödemelerini işler. Poly-Glot, özellik erişimini belirlemek için abonelik yetki durumunu veya Apple işlem tanımlayıcılarını doğrulayabilir ve kaydedebilir; ödeme kartı ayrıntıları bu web sitesi tarafından değil, Apple tarafından işlenir.",
+    "privacyServices": "Bu web sitesi Google Analytics'i ve bir TikTok reklam pikselini kullanır. Web sitesi ziyaretçileri, bu hizmetler tarafından kendi politikaları kapsamında işlenen tarayıcı ve etkileşim verilerine sahip olabilir. Yapay zeka sağlayıcıları, isteğe bağlı özel model uç noktaları, konuşma tanıma hizmetleri ve ses/transkripsiyon sağlayıcıları, içeriği göndermeyi seçtiğinizde işleyebilir. Bunların ayrı gizlilik koşulları geçerlidir."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "language": "HU",
+  "strings": {
+    "chatIntro": "Csatlakoztassa a Poly-Glotot távoli MCP-alkalmazásként vagy egyéni csatlakozóként, ha azt ChatGPT-fiókja vagy munkaterülete támogatja. Az elérhetőség és a jogosultság a tervtől és a beállításoktól függ.",
+    "chatHeading": "Állítson be egy kompatibilis MCP-kapcsolatot",
+    "claudeAccess": "Az egyéni Claude csatlakozás elérhetősége az aktuális Claude-tervtől, az alkalmazásverziótól és a munkaterület-engedélyektől függ. Válassza a Beállítások → Csatlakozók menüpontot, ha elérhető.",
+    "chatStep1": "Ellenőrizze a ChatGPT-alkalmazásokat vagy a fejlesztői beállításokat",
+    "chatStep2": "Adja hozzá az éles Streamable HTTP-végpontot",
+    "chatStep2Body": "Ha fiókja támogatja az egyéni távoli MCP-kiszolgálót, adja meg a pontos URL-t alább, és végezze el a szükséges hitelesítést.",
+    "chatStep1Body": "Nyissa meg az elérhető alkalmazásokat vagy az egyéni MCP-konfigurációt a ChatGPT-ben. Az Ön terve, munkaterülete és rendszergazdája korlátozhatja ezt a funkciót.",
+    "chatNoteTitle": "Ügyfélkompatibilitási megjegyzés",
+    "chatStep3": "Jóváhagyja az eszközöket és ellenőrizze a hozzáférést",
+    "chatNoteBody": "Az eszköz hozzáférése az ügyféltől és az engedélyektől függ. Előfordulhat, hogy a beágyazott munkaterület grafikus felhasználói felülete nem jelenik meg minden MCP-ügyfélben. A Poly-Glot nem ígér App Store-listát vagy automatikus egykattintásos telepítést.",
+    "chatStep3Body": "Frissítse a felfedezett eszközöket, és próbálkozzon a get_language_options vagy a search_templates használatával. Jelentkezzen be ellenőrzött Poly-Glot-fiókkal a próbaverzió aktiválásához, a küldési műveletekhez és az előfizetéshez való hozzáféréshez.",
+    "chatHelpLink": "Olvassa el az aktuális ChatGPT MCP hibaelhárítást →",
+    "toolGetTemplate": "Sablonmezők beszerzése; a kifizetett prompt testeket csak akkor adják vissza, ha a számla jogosult",
+    "compareExample": "A preparat_compare eszköz egy promptot és egy tervet adott vissza a ChatGPT, Claude és Gemini számára. Nem hívja fel automatikusan ezeket a szolgáltatókat, és nem gyűjti be a válaszaikat; használja az egyes kiválasztott AI-kat, és saját maga hasonlítsa össze az eredményeket. (prepare_compare)",
+    "freeAnswer": "Az alkalmazás által kezelt, 3 napos teljes hozzáférésű próbaverzió a fiókellenőrzést követő első jogosult küldéskor kezdődik, és nem válik automatikusan fizetős előfizetéssé. A lejárat után 25 ingyenes sablon és egy egyszeri mesterséges intelligencia küldés 24 órán át gördülőnként marad elérhető; A Compare Mode, a BYOM, a nyelvi feldolgozó eszközök és a Pro-sablonok aktív próbaverziót vagy Pro-előfizetést igényelnek.",
+    "homeMcp": "Az MCP (Model Context Protocol) lehetővé teszi, hogy a kompatibilis AI-asszisztensek csatlakozzanak külső eszközökhöz. A Poly-Glot lehetővé teszi a sablonok felfedezését, a gyors összeállítást és az összehasonlítás előkészítését. Az összehasonlítás elkészítése nem veszi fel automatikusan a kapcsolatot a kiválasztott AI-szolgáltatókkal, és nem kéri le a válaszaikat.",
+    "appAnswer": "Az ingyenes MCP-eszközök között böngészhet kompatibilis kliensről. A próbaidőszak megkezdéséhez és a korlátozott eszközök használatához igazolt Poly-Glot-fiókra van szükség, az Apple-előfizetés megvásárlásához vagy visszaállításához pedig a natív alkalmazásra lehet szükség. Az MCP-kliens-támogatás és a beágyazott grafikus felület elérhetősége változó.",
+    "privacyAnswer": "Az MCP-kiszolgáló feldolgozza az eszközkérelmeket, és rögzíti az operatív használati metaadatokat. Az egyedi modell- és hangeszközök elküldhetik a megadott tartalmat a kiválasztott feldolgozási szolgáltatónak. Ne adjon meg titkokat a támogatási kérésekben vagy a nyilvános naplókban. Tekintse át a",
+    "privacyPurchases": "Az Apple feldolgozza az alkalmazáson belüli előfizetések kifizetését. A Poly-Glot ellenőrizheti és rögzítheti az előfizetési jogosultság állapotát vagy az Apple tranzakciós azonosítóit, hogy meghatározza a funkciókhoz való hozzáférést; A fizetési kártya adatait az Apple kezeli, nem ez a webhely.",
+    "privacyCollection": "Előfordulhat, hogy az alkalmazás előzményei és beállításai az eszközön tárolódnak. Ha csatlakoztatott AI-szolgáltatásokat vagy távoli Poly-Glot MCP-kiszolgálót használ, a kérések a kiválasztott szolgáltatásokhoz kerülnek továbbításra. Az MCP-háttérrendszer ellenőrzi a fiókjogosultságokat, és rögzíti a működési metaadatokat, például az eszközhasználatot és a hibákat; A próbaverzió aktiválásához és a korlátozott küldési műveletekhez bejelentkezett fiók szükséges. Ne küldjön be jelszavakat, API-kulcsokat vagy privát nyugtákat a támogatási üzenetekben.",
+    "privacyServices": "Ez a webhely a Google Analytics szolgáltatást és a TikTok hirdetési pixelt használja. A webhely látogatói böngésző- és interakciós adatokat dolgozhatnak fel ezen szolgáltatások által saját szabályzataik szerint. A mesterséges intelligencia-szolgáltatók, az opcionális egyedi modell végpontok, a beszédfelismerő szolgáltatások és a hang-/átírási szolgáltatók feldolgozhatják a tartalmat, amikor Ön elküldi azt. Külön adatvédelmi feltételeik érvényesek."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "language": "VI",
+  "strings": {
+    "chatHeading": "Thiết lập kết nối MCP tương thích",
+    "chatIntro": "Kết nối Poly-Glot dưới dạng ứng dụng MCP từ xa hoặc trình kết nối tùy chỉnh khi được tài khoản hoặc không gian làm việc ChatGPT của bạn hỗ trợ. Tính khả dụng và ủy quyền tùy thuộc vào gói và cài đặt của bạn.",
+    "claudeAccess": "Tính khả dụng của trình kết nối tùy chỉnh Claude tùy thuộc vào gói Claude, phiên bản ứng dụng và quyền không gian làm việc hiện tại của bạn. Sử dụng Cài đặt → Trình kết nối khi khả dụng.",
+    "chatStep1": "Kiểm tra ứng dụng ChatGPT hoặc cài đặt của nhà phát triển",
+    "chatStep2Body": "Khi tài khoản của bạn hỗ trợ máy chủ MCP từ xa tùy chỉnh, hãy cung cấp URL chính xác bên dưới và hoàn thành mọi xác thực được yêu cầu.",
+    "chatStep1Body": "Mở Ứng dụng có sẵn hoặc cấu hình MCP tùy chỉnh trong ChatGPT. Gói, không gian làm việc và quản trị viên của bạn có thể hạn chế tính năng này.",
+    "chatStep2": "Thêm điểm cuối HTTP có thể phát trực tuyến sản xuất",
+    "chatStep3": "Phê duyệt công cụ và xác minh quyền truy cập",
+    "chatStep3Body": "Làm mới các công cụ đã phát hiện và thử get_lingu_options hoặc search_templates. Đăng nhập bằng tài khoản Poly-Glot đã được xác minh để kích hoạt dùng thử, Gửi hành động và quyền truy cập đăng ký. (get_language_options)",
+    "chatNoteBody": "Quyền truy cập công cụ phụ thuộc vào khách hàng và quyền. GUI không gian làm việc được nhúng có thể không hiển thị trong mọi máy khách MCP. Poly-Glot không hứa hẹn sẽ có danh sách App Store hoặc cài đặt tự động bằng một cú nhấp chuột.",
+    "chatHelpLink": "Đọc khắc phục sự cố ChatGPT MCP hiện tại →",
+    "chatNoteTitle": "Lưu ý về tính tương thích của máy khách",
+    "compareExample": "Công cụ prepare_compare trả về một lời nhắc và một kế hoạch cho ChatGPT, Claude và Gemini. Nó không tự động gọi cho những nhà cung cấp đó hoặc thu thập câu trả lời của họ; sử dụng từng AI đã chọn và tự mình so sánh kết quả.",
+    "toolGetTemplate": "Nhận các trường mẫu; cơ quan nhắc nhở thanh toán chỉ được trả lại khi tài khoản có quyền",
+    "freeAnswer": "Bản dùng thử toàn quyền truy cập trong 3 ngày do ứng dụng quản lý bắt đầu vào lần Gửi đủ điều kiện đầu tiên sau khi xác minh tài khoản và không tự động chuyển thành đăng ký trả phí. Sau khi hết hạn, 25 mẫu miễn phí và một lần gửi AI duy nhất cho mỗi 24 giờ vẫn có sẵn; Chế độ so sánh, BYOM, công cụ xử lý ngôn ngữ và mẫu Pro yêu cầu bản dùng thử đang hoạt động hoặc đăng ký Pro.",
+    "homeMcp": "MCP (Giao thức bối cảnh mô hình) cho phép trợ lý AI tương thích kết nối với các công cụ bên ngoài. Poly-Glot cung cấp khả năng khám phá mẫu, xây dựng nhanh chóng và chuẩn bị so sánh. Việc chuẩn bị so sánh không tự động liên hệ với các nhà cung cấp AI đã chọn hoặc truy xuất câu trả lời của họ.",
+    "appAnswer": "Bạn có thể duyệt các công cụ MCP miễn phí từ một máy khách tương thích. Việc bắt đầu dùng thử và sử dụng các công cụ bị hạn chế yêu cầu phải có tài khoản Poly-Glot đã được xác minh và việc mua hoặc khôi phục đăng ký Apple có thể yêu cầu ứng dụng gốc. Hỗ trợ máy khách MCP và tính khả dụng của GUI nhúng khác nhau.",
+    "privacyAnswer": "Máy chủ MCP xử lý các yêu cầu công cụ và ghi lại siêu dữ liệu sử dụng hoạt động. Các công cụ âm thanh và mô hình tùy chỉnh có thể gửi nội dung được cung cấp đến nhà cung cấp xử lý đã chọn. Không đưa bí mật vào yêu cầu hỗ trợ hoặc nhật ký công khai. Xem lại",
+    "privacyPurchases": "Apple xử lý thanh toán đăng ký trong ứng dụng. Poly-Glot có thể xác minh và ghi lại trạng thái quyền đăng ký hoặc số nhận dạng giao dịch của Apple để xác định quyền truy cập tính năng; chi tiết thẻ thanh toán được xử lý bởi Apple chứ không phải bởi trang web này.",
+    "privacyCollection": "Lịch sử và cài đặt ứng dụng có thể được lưu trữ trên thiết bị của bạn. Khi bạn sử dụng các dịch vụ AI được kết nối hoặc máy chủ Poly-Glot MCP từ xa, các yêu cầu sẽ được truyền đến các dịch vụ đã chọn. Phần phụ trợ MCP xác minh các quyền của tài khoản và ghi lại siêu dữ liệu hoạt động như lỗi và cách sử dụng công cụ; cần có tài khoản đã đăng nhập để kích hoạt dùng thử và các hành động Gửi bị hạn chế. Không gửi mật khẩu, khóa API hoặc biên nhận riêng trong tin nhắn hỗ trợ.",
+    "privacyServices": "Trang web này sử dụng Google Analytics và pixel quảng cáo TikTok. Khách truy cập trang web có thể được các dịch vụ này xử lý dữ liệu trình duyệt và tương tác theo chính sách riêng của họ. Nhà cung cấp AI, điểm cuối mô hình tùy chỉnh tùy chọn, dịch vụ nhận dạng giọng nói và nhà cung cấp âm thanh/bản ghi có thể xử lý nội dung khi bạn chọn gửi nội dung đó. Các điều khoản về quyền riêng tư riêng biệt của họ được áp dụng."
+  }
+}

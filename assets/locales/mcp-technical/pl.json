@@ -1,0 +1,26 @@
+{
+  "language": "PL",
+  "strings": {
+    "chatHeading": "Skonfiguruj kompatybilne połączenie MCP",
+    "claudeAccess": "Dostępność niestandardowego łącznika Claude zależy od bieżącego planu Claude, wersji aplikacji i uprawnień obszaru roboczego. Użyj opcji Ustawienia → Złącza, jeśli są dostępne.",
+    "chatIntro": "Połącz Poly-Glot jako zdalną aplikację MCP lub niestandardowy łącznik, jeśli jest obsługiwany przez Twoje konto ChatGPT lub obszar roboczy. Dostępność i autoryzacja zależą od Twojego planu i ustawień.",
+    "chatStep1": "Sprawdź aplikacje ChatGPT lub ustawienia programisty",
+    "chatStep2": "Dodaj produkcyjny punkt końcowy HTTP Streamable",
+    "chatStep1Body": "Otwórz dostępne aplikacje lub niestandardową konfigurację MCP w ChatGPT. Twój plan, obszar roboczy i administrator mogą ograniczyć tę funkcję.",
+    "chatStep2Body": "Jeśli Twoje konto obsługuje niestandardowy zdalny serwer MCP, podaj dokładny adres URL poniżej i dokonaj wymaganego uwierzytelnienia.",
+    "chatStep3": "Zatwierdź narzędzia i zweryfikuj dostęp",
+    "chatNoteTitle": "Uwaga dotycząca zgodności klienta",
+    "chatNoteBody": "Dostęp do narzędzia zależy od klienta i uprawnień. Wbudowany interfejs GUI obszaru roboczego może nie być renderowany w każdym kliencie MCP. Poly-Glot nie obiecuje umieszczenia aplikacji w App Store ani automatycznej instalacji jednym kliknięciem.",
+    "chatStep3Body": "Odśwież odkryte narzędzia i wypróbuj get_language_options lub search_templates. Zaloguj się na zweryfikowane konto Poly-Glot, aby aktywować wersję próbną, wysyłać akcje i uzyskać dostęp do subskrypcji.",
+    "chatHelpLink": "Przeczytaj aktualne rozwiązywanie problemów ChatGPT MCP →",
+    "toolGetTemplate": "Pobierz pola szablonu; płatne treści monitów zwracane są tylko wtedy, gdy konto jest uprawnione",
+    "compareExample": "Narzędzie do przygotowania_porównania zwróciło jeden monit i plan dla ChatGPT, Claude i Gemini. Nie dzwoni automatycznie do tych dostawców ani nie zbiera ich odpowiedzi; wykorzystaj każdą wybraną sztuczną inteligencję i sam porównaj wyniki. (prepare_compare)",
+    "freeAnswer": "Zarządzany przez aplikację 3-dniowy okres próbny z pełnym dostępem rozpoczyna się wraz z pierwszą kwalifikującą się wysyłką po weryfikacji konta i nie zamienia się automatycznie w płatną subskrypcję. Po wygaśnięciu dostępnych będzie 25 bezpłatnych szablonów i jedna wysyłka z pojedynczą sztuczną inteligencją na kolejne 24 godziny; Tryb porównania, BYOM, narzędzia do przetwarzania języków i szablony Pro wymagają aktywnej wersji próbnej lub subskrypcji Pro.",
+    "appAnswer": "Możesz przeglądać bezpłatne narzędzia MCP z kompatybilnego klienta. Rozpoczęcie wersji próbnej i korzystanie z narzędzi z ograniczeniami wymaga zweryfikowanego konta Poly-Glot, a zakup lub przywrócenie subskrypcji Apple może wymagać natywnej aplikacji. Obsługa klienta MCP i dostępność wbudowanego interfejsu GUI są różne.",
+    "homeMcp": "MCP (Model Context Protocol) umożliwia kompatybilnym asystentom AI łączenie się z narzędziami zewnętrznymi. Poly-Glot umożliwia odkrywanie szablonów, szybkie budowanie i przygotowywanie porównań. Przygotowanie porównania nie wiąże się automatycznie z kontaktem z wybranymi dostawcami AI i pobieraniem od nich odpowiedzi.",
+    "privacyAnswer": "Serwer MCP przetwarza żądania narzędzi i rejestruje metadane dotyczące użytkowania operacyjnego. Narzędzia do tworzenia niestandardowych modeli i narzędzia audio mogą wysyłać dostarczone treści do wybranego dostawcy przetwarzania. Nie podawaj wpisów tajnych w żądaniach pomocy technicznej ani dziennikach publicznych. Przejrzyj",
+    "privacyCollection": "Historia aplikacji i ustawienia mogą być przechowywane na Twoim urządzeniu. Kiedy korzystasz z połączonych usług AI lub zdalnego serwera Poly-Glot MCP, żądania są przesyłane do wybranych usług. Backend MCP weryfikuje uprawnienia do kont i rejestruje metadane operacyjne, takie jak użycie narzędzi i błędy; Do aktywacji wersji próbnej i ograniczonych akcji wysyłania wymagane jest zalogowane konto. Nie przesyłaj haseł, kluczy API ani prywatnych potwierdzeń w wiadomościach pomocy technicznej.",
+    "privacyPurchases": "Apple przetwarza płatności za subskrypcję w aplikacji. Poly-Glot może weryfikować i rejestrować stan uprawnień do subskrypcji lub identyfikatory transakcji Apple w celu określenia dostępu do funkcji; dane karty płatniczej są obsługiwane przez Apple, a nie przez tę witrynę.",
+    "privacyServices": "Ta strona korzysta z Google Analytics i piksela reklamowego TikTok. Osoby odwiedzające witrynę mogą przetwarzać dane przeglądarki i interakcji przez te usługi zgodnie z ich własnymi zasadami. Dostawcy sztucznej inteligencji, opcjonalne punkty końcowe niestandardowego modelu, usługi rozpoznawania mowy oraz dostawcy dźwięku/transkrypcji mogą przetwarzać treść, jeśli zdecydujesz się ją wysłać. Obowiązują ich odrębne warunki dotyczące prywatności."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "language": "FI",
+  "strings": {
+    "chatIntro": "Yhdistä Poly-Glot MCP-etäsovelluksena tai mukautettuna liittimenä, kun ChatGPT-tilisi tai työtilasi tukee sitä. Saatavuus ja valtuutus riippuvat suunnitelmastasi ja asetuksistasi.",
+    "chatHeading": "Määritä yhteensopiva MCP-yhteys",
+    "claudeAccess": "Mukautetun Claude-liittimen saatavuus riippuu nykyisestä Claude-suunnitelmastasi, sovellusversiostasi ja työtilan käyttöoikeuksista. Valitse Asetukset → Liittimet, kun ne ovat käytettävissä.",
+    "chatStep1": "Tarkista ChatGPT-sovellukset tai kehittäjän asetukset",
+    "chatStep2": "Lisää tuotannon Streamable HTTP -päätepiste",
+    "chatStep2Body": "Kun tilisi tukee mukautettua MCP-etäpalvelinta, anna tarkka URL-osoite alla ja suorita tarvittava todennus.",
+    "chatStep1Body": "Avaa käytettävissä olevat sovellukset tai mukautetut MCP-määritykset ChatGPT:ssä. Suunnitelmasi, työtilasi ja järjestelmänvalvojasi voivat rajoittaa tätä ominaisuutta.",
+    "chatStep3": "Hyväksy työkalut ja vahvista käyttöoikeus",
+    "chatNoteTitle": "Asiakkaan yhteensopivuushuomautus",
+    "chatStep3Body": "Päivitä löydetyt työkalut ja kokeile get_language_options tai search_templates. Kirjaudu sisään vahvistetulla Poly-Glot-tilillä kokeillaksesi aktivointia, lähetystoimintoja ja tilauskäyttöä.",
+    "chatHelpLink": "Lue nykyinen ChatGPT MCP -vianmääritys →",
+    "chatNoteBody": "Työkalujen käyttöoikeus riippuu asiakkaasta ja käyttöoikeuksista. Sulautetun työtilan graafinen käyttöliittymä ei välttämättä näy jokaisessa MCP-asiakkaassa. Poly-Glot ei lupaa App Store -listausta tai automaattista asennusta yhdellä napsautuksella.",
+    "toolGetTemplate": "Hanki mallikentät; maksetut kehotteet palautetaan vain, kun tili on oikeutettu",
+    "compareExample": "Preparation_compare-työkalu palautti yhden kehotteen ja suunnitelman ChatGPT:lle, Claudelle ja Geminille. Se ei soita automaattisesti kyseisille palveluntarjoajille tai kerää heidän vastauksiaan. käytä jokaista valittua tekoälyä ja vertaa tuloksia itse. (prepare_compare)",
+    "appAnswer": "Voit selata ilmaisia ​​MCP-työkaluja yhteensopivalta asiakkaalta. Kokeilujakson aloittaminen ja rajoitettujen työkalujen käyttäminen edellyttää vahvistettua Poly-Glot-tiliä, ja Apple-tilauksen ostaminen tai palauttaminen voi vaatia alkuperäisen sovelluksen. MCP-asiakastuki ja sulautetun graafisen käyttöliittymän saatavuus vaihtelevat.",
+    "freeAnswer": "Sovelluksen hallinnoima 3 päivän täyden pääsyn kokeilujakso alkaa ensimmäisestä kelvollisesta lähetyksestä tilin vahvistamisen jälkeen, eikä se muutu automaattisesti maksulliseksi tilaukseksi. Sen umpeutumisen jälkeen käytettävissä on 25 ilmaista mallia ja yksi yhden AI-lähetys per rullaava 24 tuntia; Compare Mode, BYOM, kielenkäsittelytyökalut ja Pro-mallit vaativat aktiivisen kokeilujakson tai Pro-tilauksen.",
+    "homeMcp": "MCP (Model Context Protocol) mahdollistaa yhteensopivien AI-apulaisten yhteyden ulkoisiin työkaluihin. Poly-Glot paljastaa mallien löytämisen, nopean rakentamisen ja vertailun valmistelun. Vertailun laatiminen ei ota automaattisesti yhteyttä valittuihin tekoälyn tarjoajiin tai nouta heidän vastauksiaan.",
+    "privacyCollection": "Sovellushistoria ja asetukset voidaan tallentaa laitteellesi. Kun käytät yhdistettyjä AI-palveluita tai Poly-Glot MCP -etäpalvelinta, pyynnöt lähetetään valittuihin palveluihin. MCP-taustaohjelma tarkistaa tilien käyttöoikeudet ja tallentaa toiminnalliset metatiedot, kuten työkalun käytön ja virheet; Kokeiluaktivointiin ja rajoitettuihin lähetystoimintoihin tarvitaan kirjautunut tili. Älä lähetä salasanoja, API-avaimia tai yksityisiä kuitteja tukiviesteissä.",
+    "privacyAnswer": "MCP-palvelin käsittelee työkalupyynnöt ja tallentaa toiminnallisen käytön metatiedot. Mukautetut malli- ja äänityökalut voivat lähettää toimitetun sisällön valitulle prosessointipalveluntarjoajalle. Älä sisällytä salaisuuksia tukipyyntöihin tai julkisiin lokeihin. Tarkista",
+    "privacyPurchases": "Apple käsittelee sovelluksen sisäiset tilausmaksut. Poly-Glot voi tarkistaa ja tallentaa tilausoikeuden tilan tai Applen tapahtumatunnisteet määrittääkseen ominaisuuksien käytön; maksukorttitietoja käsittelee Apple, ei tämä verkkosivusto.",
+    "privacyServices": "Tämä sivusto käyttää Google Analyticsia ja TikTok-mainospikseliä. Verkkosivuston vierailijat voivat käsitellä selain- ja vuorovaikutustietoja näiden palveluiden omien käytäntöjensä mukaisesti. Tekoälypalveluntarjoajat, valinnaiset mukautetun mallin päätepisteet, puheentunnistuspalvelut ja äänen/transkription tarjoajat voivat käsitellä sisältöä, kun päätät lähettää sen. Niiden erilliset tietosuojaehdot ovat voimassa."
+  }
+}

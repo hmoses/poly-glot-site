@@ -1,0 +1,26 @@
+{
+  "language": "SV",
+  "strings": {
+    "chatIntro": "Anslut Poly-Glot som en fjärransluten MCP-app eller anpassad anslutning när det stöds av ditt ChatGPT-konto eller arbetsyta. Tillgänglighet och auktorisering beror på din plan och inställningar.",
+    "chatStep1": "Kontrollera ChatGPT-appar eller utvecklarinställningar",
+    "chatHeading": "Konfigurera en kompatibel MCP-anslutning",
+    "claudeAccess": "Tillgängligheten av Claude anpassade anslutningar beror på din nuvarande Claude-plan, appversion och behörigheter för arbetsyta. Använd Inställningar → Anslutningar när de är tillgängliga.",
+    "chatStep1Body": "Öppna tillgängliga appar eller anpassad MCP-konfiguration i ChatGPT. Din plan, arbetsyta och administratör kan begränsa denna funktion.",
+    "chatStep2Body": "När ditt konto stöder en anpassad fjärr-MCP-server, ange den exakta webbadressen nedan och slutför eventuell autentisering.",
+    "chatStep2": "Lägg till produktionsändpunkten Streamable HTTP",
+    "chatStep3Body": "Uppdatera upptäckta verktyg och prova get_language_options eller search_templates. Logga in med ett verifierat Poly-Glot-konto för provaktivering, skicka åtgärder och prenumerationsåtkomst.",
+    "chatStep3": "Godkänn verktyg och verifiera åtkomst",
+    "chatNoteTitle": "Anmärkning om klientkompatibilitet",
+    "chatNoteBody": "Verktygsåtkomst beror på klienten och behörigheter. Den inbäddade arbetsytans GUI kanske inte renderas i alla MCP-klienter. Poly-Glot lovar inte en App Store-listning eller automatisk installation med ett klick.",
+    "chatHelpLink": "Läs aktuell ChatGPT MCP-felsökning →",
+    "compareExample": "Verktyget prepare_compare returnerade en prompt och en plan för ChatGPT, Claude och Gemini. Den ringer inte automatiskt till dessa leverantörer eller samlar in deras svar; använd varje vald AI och jämför resultaten själv.",
+    "toolGetTemplate": "Få mallfält; betalda promptorgan återlämnas först när kontot är berättigat",
+    "freeAnswer": "Den apphanterade 3-dagars provperioden med full åtkomst startar den första kvalificerande Skicka efter kontoverifiering och förvandlas inte automatiskt till en betalprenumeration. När den löper ut finns 25 gratis mallar och en enda AI-sändning tillgängliga per rullande 24 timmar; Jämför läge, BYOM, språkbearbetningsverktyg och Pro-mallar kräver en aktiv provversion eller Pro-prenumeration.",
+    "appAnswer": "Du kan bläddra gratis MCP-verktyg från en kompatibel klient. Att starta provperioden och använda begränsade verktyg kräver ett verifierat Poly-Glot-konto, och köp eller återställning av Apple-prenumerationer kan kräva den inbyggda appen. MCP-klientstöd och tillgänglighet för inbyggt GUI varierar.",
+    "privacyAnswer": "MCP-servern bearbetar verktygsförfrågningar och registrerar metadata för operativ användning. Anpassade modell- och ljudverktyg kan skicka tillhandahållet innehåll till den valda bearbetningsleverantören. Inkludera inte hemligheter i supportförfrågningar eller offentliga loggar. Granska",
+    "homeMcp": "MCP (Model Context Protocol) låter kompatibla AI-assistenter ansluta till externa verktyg. Poly-Glot avslöjar mallupptäckt, snabb konstruktion och jämförelseförberedelser. Att förbereda en jämförelse kontaktar inte automatiskt de utvalda AI-leverantörerna eller hämtar deras svar.",
+    "privacyPurchases": "Apple behandlar prenumerationsbetalningar i appar. Poly-Glot kan verifiera och registrera prenumerationsrättigheter eller Apple-transaktionsidentifierare för att avgöra funktionsåtkomst; betalkortsuppgifter hanteras av Apple, inte av denna webbplats.",
+    "privacyCollection": "Apphistorik och inställningar kan lagras på din enhet. När du använder anslutna AI-tjänster eller den fjärranslutna Poly-Glot MCP-servern, skickas förfrågningar till de valda tjänsterna. MCP-backend verifierar kontorättigheter och registrerar operationell metadata såsom verktygsanvändning och fel; ett inloggat konto krävs för provaktivering och begränsade sändningsåtgärder. Skicka inte in lösenord, API-nycklar eller privata kvitton i supportmeddelanden.",
+    "privacyServices": "Den här webbplatsen använder Google Analytics och en TikTok-reklampixel. Webbplatsbesökare kan få webbläsar- och interaktionsdata bearbetade av dessa tjänster enligt deras egna policyer. AI-leverantörer, valfria anpassade modellslutpunkter, taligenkänningstjänster och ljud-/transkriptionsleverantörer kan bearbeta innehåll när du väljer att skicka det. Deras separata integritetsvillkor gäller."
+  }
+}

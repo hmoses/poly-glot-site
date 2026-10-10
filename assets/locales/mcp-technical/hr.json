@@ -1,0 +1,26 @@
+{
+  "language": "HR",
+  "strings": {
+    "chatIntro": "Povežite Poly-Glot kao udaljenu MCP aplikaciju ili prilagođeni konektor ako to podržava vaš ChatGPT račun ili radni prostor. Dostupnost i autorizacija ovise o vašem planu i postavkama.",
+    "claudeAccess": "Dostupnost Claude prilagođenog konektora ovisi o vašem trenutnom Claude planu, verziji aplikacije i dozvolama radnog prostora. Koristite Postavke → Konektori kada su dostupni.",
+    "chatHeading": "Postavite kompatibilnu MCP vezu",
+    "chatStep2": "Dodajte produkcijsku Streamable HTTP krajnju točku",
+    "chatStep1": "Provjerite ChatGPT aplikacije ili postavke razvojnog programera",
+    "chatStep1Body": "Otvorite dostupne aplikacije ili prilagođenu MCP konfiguraciju u ChatGPT-u. Vaš plan, radni prostor i administrator mogu ograničiti ovu značajku.",
+    "chatStep2Body": "Ako vaš račun podržava prilagođeni udaljeni MCP poslužitelj, navedite točan URL u nastavku i dovršite potrebnu provjeru autentičnosti.",
+    "chatStep3Body": "Osvježite otkrivene alate i isprobajte get_language_options ili search_templates. Prijavite se s potvrđenim Poly-Glot računom za probnu aktivaciju, radnje slanja i pristup pretplati.",
+    "chatStep3": "Odobrite alate i potvrdite pristup",
+    "chatNoteBody": "Pristup alatu ovisi o klijentu i dopuštenjima. GUI ugrađenog radnog prostora možda se neće prikazati u svakom MCP klijentu. Poly-Glot ne obećava unos u App Store ili automatsku instalaciju jednim klikom.",
+    "chatHelpLink": "Pročitajte trenutno rješavanje problema s ChatGPT MCP →",
+    "chatNoteTitle": "Napomena o kompatibilnosti klijenta",
+    "toolGetTemplate": "Nabavite polja predloška; plaćena brza tijela vraćaju se samo kada račun ima pravo",
+    "compareExample": "Alat priprave_usporedbe vratio je jedan upit i plan za ChatGPT, Claude i Gemini. Ne poziva automatski te pružatelje niti prikuplja njihove odgovore; upotrijebite svaki odabrani AI i sami usporedite rezultate. (prepare_compare)",
+    "freeAnswer": "Trodnevno probno razdoblje s punim pristupom kojim upravlja aplikacija počinje prvim slanjem koje ispunjava uvjete nakon verifikacije računa i ne pretvara se automatski u plaćenu pretplatu. Nakon što istekne, 25 besplatnih predložaka i jedno slanje s jednom umjetnom inteligencijom po tekuća 24 sata ostaju dostupni; Način usporedbe, BYOM, alati za obradu jezika i Pro predlošci zahtijevaju aktivnu probnu verziju ili Pro pretplatu.",
+    "homeMcp": "MCP (Model Context Protocol) omogućuje kompatibilnim AI pomoćnicima povezivanje s vanjskim alatima. Poly-Glot izlaže otkrivanje predložaka, brzu izradu i pripremu usporedbe. Priprema usporedbe ne kontaktira automatski odabrane pružatelje AI niti dohvaća njihove odgovore.",
+    "privacyAnswer": "MCP poslužitelj obrađuje zahtjeve alata i bilježi metapodatke o operativnoj upotrebi. Prilagođeni model i audio alati mogu slati ponuđeni sadržaj odabranom pružatelju usluga obrade. Nemojte uključivati ​​tajne u zahtjeve za podršku ili javne dnevnike. Pregledajte",
+    "appAnswer": "Možete pregledavati besplatne MCP alate s kompatibilnog klijenta. Za početak probnog razdoblja i korištenje ograničenih alata potreban je verificirani Poly-Glot račun, a kupnja ili obnova pretplate na Apple može zahtijevati izvornu aplikaciju. MCP klijentska podrška i dostupnost ugrađenog GUI-ja variraju.",
+    "privacyCollection": "Povijest i postavke aplikacija mogu biti pohranjene na vašem uređaju. Kada koristite povezane AI usluge ili udaljeni Poly-Glot MCP poslužitelj, zahtjevi se prenose odabranim uslugama. MCP pozadina provjerava ovlaštenja računa i bilježi operativne metapodatke kao što su korištenje alata i pogreške; potreban je prijavljeni račun za probnu aktivaciju i radnje ograničenog slanja. Ne šaljite lozinke, API ključeve ili privatne potvrde u porukama podrške.",
+    "privacyPurchases": "Apple obrađuje plaćanja pretplate unutar aplikacije. Poly-Glot može provjeriti i zabilježiti stanje prava na pretplatu ili Apple identifikatore transakcija kako bi odredio pristup značajkama; podatke o platnoj kartici obrađuje Apple, a ne ova web stranica.",
+    "privacyServices": "Ova web stranica koristi Google Analytics i TikTok oglasni piksel. Posjetitelji web-mjesta mogu imati podatke o pregledniku i interakciji koje te usluge obrađuju prema vlastitim pravilima. Davatelji AI-a, izborne krajnje točke prilagođenog modela, usluge prepoznavanja govora i davatelji zvuka/transkripcije mogu obrađivati ​​sadržaj kada ga odlučite poslati. Primjenjuju se njihovi zasebni uvjeti privatnosti."
+  }
+}

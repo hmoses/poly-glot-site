@@ -1,0 +1,26 @@
+{
+  "language": "DA",
+  "strings": {
+    "chatIntro": "Tilslut Poly-Glot som en ekstern MCP-app eller brugerdefineret forbindelse, når det understøttes af din ChatGPT-konto eller arbejdsområde. Tilgængelighed og godkendelse afhænger af din plan og dine indstillinger.",
+    "chatHeading": "Konfigurer en kompatibel MCP-forbindelse",
+    "claudeAccess": "Tilgængeligheden af ​​Claude tilpassede connectorer afhænger af din nuværende Claude-plan, appversion og arbejdsområdetilladelser. Brug Indstillinger → Stik, når de er tilgængelige.",
+    "chatStep1": "Tjek ChatGPT Apps eller udviklerindstillinger",
+    "chatStep2": "Tilføj produktions-streamable HTTP-slutpunktet",
+    "chatStep1Body": "Åbn de tilgængelige apps eller den tilpassede MCP-konfiguration i ChatGPT. Din plan, dit arbejdsområde og din administrator kan begrænse denne funktion.",
+    "chatStep3": "Godkend værktøjer og bekræft adgang",
+    "chatStep2Body": "Når din konto understøtter en tilpasset fjern-MCP-server, skal du angive den nøjagtige URL nedenfor og fuldføre enhver påkrævet godkendelse.",
+    "chatStep3Body": "Opdater opdagede værktøjer, og prøv get_language_options eller search_templates. Log ind med en bekræftet Poly-Glot-konto for prøveaktivering, Send-handlinger og abonnementsadgang.",
+    "chatNoteBody": "Værktøjsadgang afhænger af klienten og tilladelser. Det indlejrede arbejdsområde GUI gengives muligvis ikke i alle MCP-klienter. Poly-Glot lover ikke en App Store-fortegnelse eller automatisk et-klik installation.",
+    "chatHelpLink": "Læs den aktuelle ChatGPT MCP-fejlfinding →",
+    "chatNoteTitle": "Notat om klientkompatibilitet",
+    "compareExample": "værktøjet prepare_compare returnerede én prompt og en plan for ChatGPT, Claude og Gemini. Den ringer ikke automatisk til disse udbydere eller indsamler deres svar; brug hver valgt AI og sammenlign resultaterne selv.",
+    "freeAnswer": "Den app-administrerede 3-dages prøveperiode med fuld adgang starter ved den første kvalificerende Send efter kontobekræftelse og bliver ikke automatisk til et betalt abonnement. Når den udløber, forbliver der 25 gratis skabeloner og en enkelt AI Send pr. rullende 24 timer tilgængelige; Sammenlign tilstand, BYOM, sprogbehandlingsværktøjer og Pro-skabeloner kræver en aktiv prøveversion eller et Pro-abonnement.",
+    "toolGetTemplate": "Hent skabelonfelter; betalte prompteorganer returneres først, når kontoen er berettiget",
+    "privacyAnswer": "MCP-serveren behandler værktøjsanmodninger og registrerer metadata for operationel brug. Brugerdefinerede model- og lydværktøjer kan sende leveret indhold til den valgte behandlingsudbyder. Medtag ikke hemmeligheder i supportanmodninger eller offentlige logfiler. Gennemgå",
+    "homeMcp": "MCP (Model Context Protocol) lader kompatible AI-assistenter oprette forbindelse til eksterne værktøjer. Poly-Glot afslører skabelonopdagelse, hurtig opbygning og sammenligningsforberedelse. Udarbejdelse af en sammenligning kontakter ikke automatisk de valgte AI-udbydere eller henter deres svar.",
+    "appAnswer": "Du kan gennemse gratis MCP-værktøjer fra en kompatibel klient. Start af prøveperioden og brug af begrænsede værktøjer kræver en verificeret Poly-Glot-konto, og køb eller gendannelse af et Apple-abonnement kræver muligvis den oprindelige app. MCP-klientsupport og indlejret GUI tilgængelighed varierer.",
+    "privacyCollection": "Apphistorik og indstillinger gemmes muligvis på din enhed. Når du bruger tilsluttede AI-tjenester eller den eksterne Poly-Glot MCP-server, sendes anmodninger til de valgte tjenester. MCP-backend verificerer kontorettigheder og registrerer operationelle metadata såsom brug af værktøj og fejl; en logget ind-konto er påkrævet for prøveaktivering og begrænsede Send-handlinger. Indsend ikke adgangskoder, API-nøgler eller private kvitteringer i supportmeddelelser.",
+    "privacyPurchases": "Apple behandler abonnementsbetalinger i appen. Poly-Glot kan verificere og registrere status for abonnementsberettigelse eller Apple-transaktions-id'er for at bestemme funktionsadgang; betalingskortoplysninger håndteres af Apple, ikke af denne hjemmeside.",
+    "privacyServices": "Denne hjemmeside bruger Google Analytics og en TikTok-annonceringspixel. Besøgende på webstedet kan få browser- og interaktionsdata behandlet af disse tjenester under deres egne politikker. AI-udbydere, valgfri brugerdefinerede modelslutpunkter, talegenkendelsestjenester og lyd-/transskriptionsudbydere kan behandle indhold, når du vælger at sende det. Deres separate privatlivsvilkår gælder."
+  }
+}

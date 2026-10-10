@@ -1,0 +1,26 @@
+{
+  "language": "AF",
+  "strings": {
+    "chatHeading": "Stel 'n versoenbare MCP-verbinding op",
+    "chatIntro": "Koppel Poly-Glot as 'n afgeleë MCP-toepassing of pasgemaakte verbinding wanneer dit deur jou ChatGPT-rekening of werkspasie ondersteun word. Beskikbaarheid en magtiging hang af van jou plan en instellings.",
+    "claudeAccess": "Die beskikbaarheid van Claude-pasgemaakte verbindings hang af van jou huidige Claude-plan, programweergawe en werkspasietoestemmings. Gebruik instellings → verbindings wanneer beskikbaar.",
+    "chatStep2": "Voeg die produksiestroombare HTTP-eindpunt by",
+    "chatStep1": "Gaan ChatGPT Apps of ontwikkelaarinstellings na",
+    "chatStep1Body": "Maak die beskikbare toepassings of pasgemaakte MCP-konfigurasie in ChatGPT oop. Jou plan, werkspasie en administrateur kan hierdie kenmerk beperk.",
+    "chatStep3": "Keur nutsgoed goed en verifieer toegang",
+    "chatStep3Body": "Verfris ontdekte nutsgoed en probeer get_language_options of search_templates. Meld aan met 'n geverifieerde Poly-Glot-rekening vir proefaktivering, stuuraksies en intekeningtoegang.",
+    "chatStep2Body": "Wanneer jou rekening 'n pasgemaakte afgeleë MCP-bediener ondersteun, verskaf die presiese URL hieronder en voltooi enige vereiste stawing.",
+    "chatHelpLink": "Lees huidige ChatGPT MCP-foutsporing →",
+    "chatNoteTitle": "Kliëntversoenbaarheidsnota",
+    "chatNoteBody": "Gereedskaptoegang hang af van die kliënt en toestemmings. Die ingebedde werkspasie-GUI sal dalk nie in elke MCP-kliënt weergee nie. Poly-Glot beloof nie 'n App Store-lys of outomatiese een-klik-installasie nie.",
+    "toolGetTemplate": "Kry sjabloonvelde; betaalde vinnige liggame word slegs teruggestuur wanneer die rekening geregtig is",
+    "compareExample": "Die prepare_compare-nutsding het een opdrag en 'n plan vir ChatGPT, Claude en Gemini teruggegee. Dit bel nie outomaties daardie verskaffers of haal hul antwoorde in nie; gebruik elke geselekteerde KI en vergelyk self die resultate.",
+    "freeAnswer": "Die programbestuurde proeftydperk van 3 dae met volle toegang begin met die eerste kwalifiserende Stuur na rekeningverifikasie en verander nie outomaties in 'n betaalde intekening nie. Nadat dit verstryk het, bly 25 gratis sjablone en een enkel-AI-stuur per deurlopende 24 uur beskikbaar; Vergelykmodus, BYOM, taalverwerkingnutsmiddels en Pro-sjablone vereis 'n aktiewe proeflopie of Pro-intekening.",
+    "homeMcp": "MCP (Model Context Protocol) laat versoenbare AI-assistente aan eksterne nutsgoed koppel. Poly-Glot stel sjabloonontdekking, vinnige bou en vergelykingsvoorbereiding bloot. Die voorbereiding van 'n vergelyking kontak nie outomaties die geselekteerde KI-verskaffers of kry hul antwoorde nie.",
+    "privacyAnswer": "Die MCP-bediener verwerk nutsmiddelversoeke en teken operasionele gebruikmetadata aan. Gepasmaakte model- en oudio-nutsgoed kan verskafde inhoud na die gekose verwerkingsverskaffer stuur. Moenie geheime in ondersteuningsversoeke of publieke logboeke insluit nie. Hersien die",
+    "appAnswer": "U kan deur gratis MCP-nutsmiddels van 'n versoenbare kliënt blaai. Om die proeflopie te begin en beperkte nutsgoed te gebruik, vereis 'n geverifieerde Poly-Glot-rekening, en die aankoop of herstel van 'n Apple-intekening kan dalk die inheemse toepassing vereis. MCP-kliëntondersteuning en ingeboude GUI-beskikbaarheid verskil.",
+    "privacyCollection": "Programgeskiedenis en instellings kan op jou toestel gestoor word. Wanneer jy gekoppelde KI-dienste of die afgeleë Poly-Glot MCP-bediener gebruik, word versoeke na die geselekteerde dienste oorgedra. Die MCP-agtergrond verifieer rekeningregte en teken operasionele metadata soos gereedskapgebruik en foute aan; 'n aangemelde rekening word vereis vir proefaktivering en beperkte stuuraksies. Moenie wagwoorde, API-sleutels of private kwitansies in ondersteuningsboodskappe indien nie.",
+    "privacyPurchases": "Apple verwerk inprogram-intekeningbetalings. Poly-Glot kan intekeningregstaat of Apple-transaksie-identifiseerders verifieer en aanteken om kenmerktoegang te bepaal; betaalkaartbesonderhede word deur Apple hanteer, nie deur hierdie webwerf nie.",
+    "privacyServices": "Hierdie webwerf gebruik Google Analytics en 'n TikTok-advertensiepiksel. Webwerfbesoekers kan blaaier- en interaksiedata hê wat deur hierdie dienste onder hul eie beleide verwerk word. KI-verskaffers, opsionele pasgemaakte model-eindpunte, spraakherkenningsdienste en oudio-/transkripsieverskaffers kan inhoud verwerk wanneer jy kies om dit te stuur. Hul aparte privaatheidsbepalings is van toepassing."
+  }
+}
