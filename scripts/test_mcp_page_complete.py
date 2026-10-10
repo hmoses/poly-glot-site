@@ -9,7 +9,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def log_message(self,*args): pass
 server=http.server.ThreadingHTTPServer(("127.0.0.1",8767),Handler)
 threading.Thread(target=server.serve_forever,daemon=True).start()
-langs="EN ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM".split()
+langs=os.environ.get("PG_LANG_CODES","EN ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM").replace(","," ").split()
 def state(page):
     return page.evaluate("""() => {
       let qs=Array.from(document.querySelectorAll('main section[aria-label="Frequently asked questions"] > article'));
