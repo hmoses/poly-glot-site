@@ -62,14 +62,14 @@ jobs:
                   page.evaluate("""() => {
                       const row=document.querySelector('#apps .inline-response-row');
                       const top=row.getBoundingClientRect().top+scrollY;
-                      scrollTo(0,Math.max(0,top-innerHeight*.88));
+                      scrollTo({top:Math.max(0,top-innerHeight*.88),behavior:'instant'});
                   }""")
                   page.wait_for_timeout(350)
                   early=page.evaluate(js_sample)
-                  page.evaluate("scrollBy(0, 230)")
+                  page.evaluate("scrollBy({top:230,behavior:'instant'})")
                   page.wait_for_timeout(350)
                   mid=page.evaluate(js_sample)
-                  page.evaluate("scrollBy(0, 230)")
+                  page.evaluate("scrollBy({top:230,behavior:'instant'})")
                   page.wait_for_timeout(350)
                   late=page.evaluate(js_sample)
                   # Individual cards MUST have measurably distinct progress.
@@ -83,7 +83,7 @@ jobs:
                   assert all(v['transform']!='none' for v in mid),(label,'CSS transform not applied',mid)
                   assert not errors,(label,'Browser JavaScript errors',errors[:7])
                   # Motion is reversible on upward scroll: not a one-time entrance.
-                  page.evaluate("scrollBy(0,-230)")
+                  page.evaluate("scrollBy({top:-230,behavior:'instant'})")
                   page.wait_for_timeout(350)
                   back=page.evaluate(js_sample)
                   assert any(abs(back[i]['y']-late[i]['y'])>5 for i in range(3)),(label,'reverse motion not working',back,late)
