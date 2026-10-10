@@ -47,7 +47,7 @@ function apply(){
   // localized ordinal while preserving the existing translated step text.
   var target=copy[i];
   if((i===3||i===5||i===7)&&node.classList.contains("pg-mcp-connect-step-title"))
-    target=target.replace(/^\\s*[0-9٠-٩۰-۹०-९০-৯０-９]+[.)。．:]?\\s*/, "");
+    target=target.replace(/^\s*[0-9٠-٩۰-۹०-९০-৯０-９]+[.)。．:]?\s*/, "");
   if(code==="EN"){
    if(node.innerHTML!==savedMarkup[i])node.innerHTML=savedMarkup[i];
   }else if(node.textContent!==target){
