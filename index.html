@@ -2939,16 +2939,20 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
       </a>
       <div id="pgLangSlot"></div>
     </div>
-    <ul class="nav-links" id="pg-mobile-menu">
+    <ul class="nav-links" id="pg-mobile-menu" aria-label="Explore Poly-Glot sections">
       <li><a id="pg-home-menu-link" href="#hero">Home</a></li>
-      <li><a href="#screenshots" id="pg-app-preview-nav">App Preview</a></li>
-      <li><a href="#features">Features</a></li>
+      <li><a href="#value" data-i18n="showcaseH">✨ Already Using Free AI?</a></li>
       <li><a href="#apps" data-i18n="sc2Tag">🔀 Compare Mode</a></li>
-      <li><a href="#demo">Demo</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#knowledge-center">Guides</a></li>
-      <li><a href="#connect" style="color:#7dd3fc;font-weight:600;">🔌 Connect</a></li>
+      <li><a href="#why" data-i18n="probH">Why One AI Isn't Enough</a></li>
+      <li><a href="#features" data-i18n="navFeat">Features</a></li>
+      <li><a href="#template-categories" data-i18n="tplEye">🧩 Template Library</a></li>
+      <li><a href="#screenshots" id="pg-app-preview-nav">App Preview</a></li>
+      <li><a href="#demo" data-i18n="navDemo">Demo</a></li>
+      <li><a href="#iphone-duo">iPhone Duo</a></li>
+      <li><a href="#pricing" data-i18n="navPrice1">Pricing</a></li>
+      <li><a href="#faq" data-i18n="navFAQ">FAQ</a></li>
+      <li><a href="#connect" data-i18n="navConnect" style="color:#7dd3fc;font-weight:600;">🔌 Connect</a></li>
+      <li><a href="#knowledge-center" data-i18n="navGuides">Guides</a></li>
     </ul>
     <span class="nav-cta">
       <span class="pulse-dot" style="width:6px;height:6px;background:#10b981;border-radius:50%;animation:pulse 2s infinite"></span>
@@ -3683,13 +3687,13 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
     <h2 class="section-title" data-i18n="ssH">App Preview</h2>
     <p class="section-sub" data-i18n="ssSub">Poly-Glot AI Workspace runs natively on Mac, iPhone &amp; iPad. Available now on the App Store.</p>
 
-    <div class="gallery-tabs">
-      <div class="gallery-tab active" onclick="switchGallery('iphone')">📱 iPhone</div>
-      <div class="gallery-tab" onclick="switchGallery('ipad')">📱 iPad</div>
-      <div class="gallery-tab" onclick="switchGallery('mac')">💻 Mac</div>
+    <div class="gallery-tabs" role="tablist" aria-label="App Preview device">
+      <div class="gallery-tab active" role="tab" aria-selected="true" aria-controls="gallery-mac" tabindex="0" onclick="switchGallery('mac')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();switchGallery('mac')}">💻 Mac</div>
+      <div class="gallery-tab" role="tab" aria-selected="false" aria-controls="gallery-iphone" tabindex="-1" onclick="switchGallery('iphone')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();switchGallery('iphone')}">📱 iPhone</div>
+      <div class="gallery-tab" role="tab" aria-selected="false" aria-controls="gallery-ipad" tabindex="-1" onclick="switchGallery('ipad')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();switchGallery('ipad')}">📱 iPad</div>
     </div>
     <!-- iPhone Screenshots -->
-    <div class="gallery-panel active" id="gallery-iphone">
+    <div class="gallery-panel" id="gallery-iphone">
       <div class="gallery-grid phone-grid">
 
         <div class="gallery-item">
@@ -3945,7 +3949,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
     </div>
 
     <!-- Mac Screenshots — Interactive Tab Viewer -->
-    <div class="gallery-panel" id="gallery-mac">
+    <div class="gallery-panel active" id="gallery-mac">
       <div id="macTabHint" style="text-align:center;margin-bottom:20px;animation:hintPulse 1.6s ease-in-out infinite">
         <span>👇 Click the tabs below to explore the app</span>
       </div>
@@ -4886,6 +4890,11 @@ function toggleFaq(el) {
 /* Fetch gallery screenshots only when the visitor approaches the gallery or chooses a tab.
  * Preserve fast device switching without downloading 4 large screenshots at page startup. */
 (function prepareDeviceGalleryAssets(){
+  // Keep the DOM, reading order, and selected panel aligned with Mac → iPhone → iPad.
+  // Move existing nodes without rebuilding any Mac demo state or image elements.
+  var mac=document.getElementById('gallery-mac');
+  var iphone=document.getElementById('gallery-iphone');
+  if(mac&&iphone&&iphone.parentNode===mac.parentNode)iphone.parentNode.insertBefore(mac,iphone);
   function warm(platform){
     var panel=document.getElementById('gallery-'+platform);
     if(!panel)return;
@@ -4900,7 +4909,7 @@ function toggleFaq(el) {
   if(tabs&&'IntersectionObserver' in window){
     var observer=new IntersectionObserver(function(entries){
       if(entries.some(function(entry){return entry.isIntersecting;})){
-        warm('iphone');
+        warm('mac');
         observer.disconnect();
       }
     },{rootMargin:'500px 0px'});
@@ -4918,7 +4927,10 @@ function switchGallery(platform) {
 
   document.querySelectorAll('.gallery-tab').forEach(function(t){
     var click = t.getAttribute('onclick') || '';
-    if (click.indexOf("'" + platform + "'") !== -1) t.classList.add('active');
+    var selected=click.indexOf("'" + platform + "'") !== -1;
+    t.classList.toggle('active',selected);
+    t.setAttribute('aria-selected',String(selected));
+    t.setAttribute('tabindex',selected?'0':'-1');
   });
 }
 
