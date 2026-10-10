@@ -46,7 +46,18 @@ with sync_playwright() as p:
                  document.documentElement.dataset.pgClaudeGuideLanguage===code &&
                  faq.length===4;
             }""",arg=code,timeout=12000)
-        except Exception as e: failures.append((code,"load timeout",str(e)[:90]));continue
+        except Exception as e:
+            diagnostic=page.evaluate("""() => ({
+              requested:new URL(location.href).searchParams.get('lang'),
+              current:window._pgI18n?.curLang?.(),
+              root:document.querySelector('#mcp-troubleshooting')?.dataset,
+              html:document.documentElement.dataset,
+              faq1:document.querySelector('[data-pg-tech="mcpIntro"]')?.textContent.slice(0,120),
+              guide:document.querySelector('[data-pg-claude-l10n="guideTitle"]')?.textContent,
+              missing:window._pgSecondaryLocaleAudit?.missing?.slice(0,6)
+            })""")
+            print("TIMEOUT DIAGNOSTIC",code,json.dumps(diagnostic,ensure_ascii=False)[:3500],flush=True)
+            failures.append((code,"load timeout",str(e)[:90],diagnostic));continue
         if code!='EN':page.wait_for_timeout(120)
         x=state(page)
         if code=="EN":baseline=x
