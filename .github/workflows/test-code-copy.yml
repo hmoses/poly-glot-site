@@ -75,7 +75,16 @@ jobs:
                   assert check_blocks(page,'home'+str(width))>=2
                   assert page.locator('#connect .pg-mcp-tools-grid .pg-code-copy').count()==15
                   page.locator('[data-pg-code-block] [data-pg-copy-button]').first.click()
-                  page.wait_for_function("window.__copied?.length>=1")
+                  page.wait_for_timeout(450)
+                  print('DEBUG',width,page.evaluate("""() => ({
+                    copied:window.__copied,
+                    clipboardType:typeof navigator.clipboard?.writeText,
+                    text:window._pgCodeCopy?.value(document.querySelector('[data-pg-code-block] [data-pg-copy-button]')),
+                    status:document.querySelector('[data-pg-code-block] [data-pg-copy-button]')?.dataset.pgCopyState,
+                    code:document.querySelector('[data-pg-code-block]')?.outerHTML.slice(0,400),
+                    location:location.href
+                  })"""),flush=True)
+                  page.wait_for_function("window.__copied?.length>=1",timeout=5000)
                   assert page.evaluate('window.__copied[0]')==ENDPOINT
                   page.locator('#connect .pg-mcp-tools-grid .pg-code-copy').first.click()
                   page.wait_for_function("window.__copied?.length>=2")
