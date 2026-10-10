@@ -1,0 +1,121 @@
+name: Publish complete MCP guide localization in 38 languages (offline)
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/mcp-locales-offline.yml'
+      - 'scripts/build_mcp_locales_offline.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mcp-offline-locales-publish
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        include:
+          - group: a
+            languages: ES,FR,DE,IT,PT,RU
+          - group: b
+            languages: ZH,ZH_TW,JA,KO,AR,HI
+          - group: c
+            languages: BN,TR,PL,SV,NO,DA
+          - group: d
+            languages: FI,EL,HE,ID,MS,TH
+          - group: e
+            languages: VI,UK,CS,RO,HU,SK
+          - group: f
+            languages: HR,CA,AF,SW,HA,AM
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install offline translation engine
+        run: |
+          python -m pip install --disable-pip-version-check beautifulsoup4 ctranslate2 "transformers>=4.40,<5" sentencepiece "huggingface_hub[hf_xet]" opencc-python-reimplemented
+      - name: Generate each locale in shard using pretested MIT-compatible model
+        env:
+          PG_MCP_LOCALES: ${{ matrix.languages }}
+          HF_HUB_DISABLE_TELEMETRY: "1"
+        run: |
+          python scripts/build_mcp_locales_offline.py
+      - name: Stage only this shard's catalogs
+        env:
+          PG_MCP_LOCALES: ${{ matrix.languages }}
+        run: |
+          mkdir -p /tmp/pg-mcp-locales
+          for lang in ${PG_MCP_LOCALES//,/ }; do
+            cp "assets/locales/mcp-troubleshooting/${lang,,}.json" /tmp/pg-mcp-locales/
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pg-mcp-locales-${{ matrix.group }}
+          path: /tmp/pg-mcp-locales/*.json
+          if-no-files-found: error
+          retention-days: 14
+  publish:
+    needs: generate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pg-mcp-locales-*
+          path: assets/locales/mcp-troubleshooting
+          merge-multiple: true
+      - name: Audit 38-language catalog structure and machine output
+        run: |
+          python -m pip install --disable-pip-version-check beautifulsoup4
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from bs4 import BeautifulSoup, NavigableString, Comment
+          html=BeautifulSoup(Path("mcp-integrations.html").read_text(encoding="utf8"),"html.parser")
+          source={}
+          for element in html.select("#mcp-troubleshooting [data-mcp-tr]"):
+              key=element["data-mcp-tr"]
+              parts=[]
+              for node in element.descendants:
+                  if not isinstance(node,NavigableString) or isinstance(node,Comment):continue
+                  if any(x.name in {"code","pre","script","style","textarea","svg"} for x in node.parents):continue
+                  txt=" ".join(str(node).split())
+                  if txt:parts.append(txt)
+              if key in source:assert source[key]==parts,key
+              else:source[key]=parts
+          assert len(source)>=40,len(source)
+          langs="ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM".split()
+          assert len(langs)==37
+          for lang in langs:
+              file=Path("assets/locales/mcp-troubleshooting")/(lang.lower()+".json")
+              assert file.is_file(),"Missing "+lang
+              data=json.loads(file.read_text(encoding="utf8"))
+              assert data["language"]==lang,lang
+              output=data["strings"]
+              assert set(output)==set(source),(lang,"missing/extra keys")
+              for key,segments in source.items():
+                  answer=output[key]
+                  assert isinstance(answer,list) and len(answer)==len(segments),(lang,key,len(answer),len(segments))
+                  assert all(isinstance(x,str) and x.strip() for x in answer),(lang,key,"empty translation")
+              assert output["title"][0]!=source["title"][0],(lang,"English title")
+              print("PASS",lang,len(output),"keys",sum(map(len,output.values())),"text nodes",flush=True)
+          print("PASS all 38 language catalogs, English is source document",flush=True)
+          PY
+      - name: Publish complete static localized guides
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/locales/mcp-troubleshooting
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish all 38 MCP guide locales using offline translation"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
