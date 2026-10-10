@@ -1,0 +1,106 @@
+name: Quality-translate MCP guide in all supported languages
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/upgrade-mcp-translations.yml
+      - scripts/upgrade_mcp_translation_quality.py
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mcp-quality-translation-release
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        lang: [ES,FR,DE,IT,PT,RU,ZH,ZH_TW,JA,KO,AR,HI,BN,TR,PL,SV,NO,DA,FI,EL,HE,ID,MS,TH,VI,UK,CS,RO,HU,SK,HR,CA,AF,SW,HA,AM]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install static HTML parser
+        run: python -m pip install --disable-pip-version-check beautifulsoup4
+      - name: Generate quality-reviewed machine translation structure
+        env:
+          PG_MCP_GOOGLE_LANG: ${{ matrix.lang }}
+        run: python scripts/upgrade_mcp_translation_quality.py
+      - name: Stage this language's artifact
+        env:
+          PG_MCP_GOOGLE_LANG: ${{ matrix.lang }}
+        run: |
+          mkdir -p /tmp/mcp-translation
+          cp "assets/locales/mcp-troubleshooting/${PG_MCP_GOOGLE_LANG,,}.json" /tmp/mcp-translation/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mcp-quality-${{ matrix.lang }}
+          path: /tmp/mcp-translation/*.json
+          retention-days: 7
+          if-no-files-found: error
+  publish:
+    needs: generate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: mcp-quality-*
+          path: assets/locales/mcp-troubleshooting
+          merge-multiple: true
+      - name: Validate exactly 38 complete catalogs, preserving Dutch editorial corrections
+        run: |
+          python -m pip install --disable-pip-version-check beautifulsoup4
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from bs4 import BeautifulSoup, NavigableString, Comment
+          soup=BeautifulSoup(Path('mcp-integrations.html').read_text(encoding='utf8'),'html.parser')
+          source={}
+          for e in soup.select('#mcp-troubleshooting [data-mcp-tr]'):
+              key=e['data-mcp-tr']
+              segs=[]
+              for n in e.descendants:
+                  if not isinstance(n,NavigableString) or isinstance(n,Comment):continue
+                  if any(a.name in {'code','pre','script','style','textarea','svg'} for a in n.parents):continue
+                  x=' '.join(str(n).split())
+                  if x:segs.append(x)
+              if key in source:assert source[key]==segs,key
+              else:source[key]=segs
+          langs='ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM'.split()
+          for lang in langs:
+              path=Path('assets/locales/mcp-troubleshooting')/(lang.lower()+'.json')
+              obj=json.loads(path.read_text(encoding='utf8'))
+              t=obj['strings']
+              assert obj['language']==lang,lang
+              assert set(t)==set(source),lang
+              for key,segs in source.items():
+                  assert len(t[key])==len(segs),(lang,key)
+                  for value in t[key]:
+                      assert isinstance(value,str) and value.strip(),(lang,key)
+                      assert len(value)<1100,(lang,key,'suspicious overlong translation')
+              assert t['title'][0]!=source['title'][0],lang
+              print('PASS',lang,len(t),'guide keys',flush=True)
+          ha=json.loads(Path('assets/locales/mcp-troubleshooting/ha.json').read_text(encoding='utf8'))['strings']
+          am=json.loads(Path('assets/locales/mcp-troubleshooting/am.json').read_text(encoding='utf8'))['strings']
+          assert len(ha['title'][0])<160,'Hausa title degeneration'
+          assert len(am['title'][0])<160,'Amharic title degeneration'
+          print('PASS all 37 translated catalogs plus English, including Hausa/Amharic quality guard',flush=True)
+          PY
+      - name: Commit complete upgraded translations
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/locales/mcp-troubleshooting
+          if ! git diff --cached --quiet; then
+            git commit -m "Upgrade all 38 MCP troubleshooting locales with fluent static translations"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
