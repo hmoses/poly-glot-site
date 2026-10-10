@@ -1,0 +1,65 @@
+name: Recover completed MCP technical localization artifacts
+on:
+  workflow_run:
+    workflows:
+      - Publish MCP technical accuracy in all 38 languages
+    types: [completed]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: mcp-technical-artifact-recovery
+  cancel-in-progress: false
+jobs:
+  recover:
+    # Reuse verified translation artifacts only if the original publisher failed.
+    if: ${{ github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == github.repository && github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ github.event.workflow_run.id }}
+          pattern: pg-technical-*
+          path: assets/locales/mcp-technical
+          merge-multiple: true
+      - name: Fail closed unless the full 38-language technical translation set is valid
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('assets/locales/mcp-technical')
+          en=json.loads((root/'en.json').read_text(encoding='utf8'))['strings']
+          assert len(en)==37,('Expected 37 source-approved claims',len(en))
+          lang='ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM'.split()
+          assert len(lang)==37
+          for code in lang:
+              p=root/(code.lower()+'.json')
+              assert p.is_file(),('missing locale',code)
+              translated=json.loads(p.read_text(encoding='utf8'))
+              assert translated['language']==code,code
+              assert set(translated['strings'])==set(en),('missing/extra keys',code)
+              for key,value in translated['strings'].items():
+                  assert isinstance(value,str) and value.strip() and len(value)<1200,(code,key)
+                  for tool in ['get_language_options','search_templates','prepare_compare','transcribe_audio']:
+                      if tool in en[key]:
+                          assert tool in value,(code,key,'tool identifier modified')
+              assert translated['strings']['chatIntro']!=en['chatIntro'],('English fallback',code)
+              print('PASS',code,'37 localized technical claims',flush=True)
+          print('PASS 38 languages including English, 37 technical claims per language',flush=True)
+          PY
+      - name: Publish only validated catalogs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/locales/mcp-technical
+          if ! git diff --cached --quiet; then
+            git commit -m 'Publish validated 38-language technical corrections from completed translation artifacts'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
