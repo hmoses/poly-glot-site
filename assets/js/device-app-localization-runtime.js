@@ -234,7 +234,8 @@
     /* Hint above Mac mockup — works for every supported app language. */
     var hint=document.querySelector('#macTabHint span');
     if(hint){
-      hint.textContent='👇 '+(s.ask||'Ask Any AI')+' · '+(s.templates||'Templates')+' · '+(s.how||'How to Use')+' · '+(s.history||'History');
+      if(window._pgMacPreviewTabCTA)window._pgMacPreviewTabCTA.apply(s);
+      else hint.textContent='👇 Click the tabs to view: '+(s.ask||'Ask Any AI')+' · '+(s.templates||'Templates')+' · '+(s.how||'How to Use')+' · '+(s.history||'History');
     }
 
     /* Caption under Mac mockup. */
