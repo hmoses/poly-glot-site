@@ -86,6 +86,18 @@ See the MCP setup section on the Poly-Glot homepage for the production endpoint 
 
 When reporting a problem, include the client, transport, tool name, HTTP/error code and approximate time. Do not send passwords, API tokens, private prompts or purchase receipts in public reports. Support: https://hmoses.github.io/poly-glot-site/support.html
 
+### Verified tool behavior and account requirements
+
+- **Discovery is not a Send:** `get_language_options`, `search_templates`, `get_subscription_status`, and `get_custom_model_capabilities` are read-only. They do not start a trial or consume a free Send.
+- **An MCP connection is not a Pro subscription:** Public tool discovery and browsing can work without a paid subscription; a verified account is required for persisted trial activation and restricted Send actions. Without verified authentication, the server does not silently activate a trial or grant Pro.
+- **Comparison preparation is not model execution:** `prepare_compare` builds one canonical prompt and provider instructions. It does not automatically invoke ChatGPT, Claude, Gemini, or other built-in providers or collect their responses. Client UI support and any subsequent AI execution are separate.
+- **Trial:** The app-managed three-day trial starts on the first eligible authenticated Send, and does not itself automatically become a paid Apple subscription. Once expired, the free allowance is one single-AI Send per rolling 24 hours, shared with free-template Sends.
+- **Restricted features:** Pro template bodies, Compare Mode, BYOM endpoint validation and execution, and processing tools for translation, language detection, localization, and transcription require eligible trial or Pro access, as enforced server-side.
+- **Bring Your Own Model:** HTTPS/public-network endpoints are supported. Secrets are transient input, not a persistent Poly-Glot model vault. Custom-model execution and transcription can send supplied text/audio to the configured processing provider; users must review provider privacy terms.
+- **Client capabilities:** Tool discovery depends on remote Streamable HTTP support and configured client/workspace permissions. Not every client supports embedded MCP Apps interfaces or all tool behaviors.
+- **Verified language set:** EN, ES, FR, DE, IT, PT, NL, RU, ZH, ZH_TW, JA, KO, AR, HI, BN, TR, PL, SV, NO, DA, FI, EL, HE, ID, MS, TH, VI, UK, CS, RO, HU, SK, HR, CA, AF, SW, HA, AM. Do not substitute Bulgarian, Lithuanian, Latvian, or Estonian for actually supported languages.
+- **Authoritative repository:** https://github.com/hmoses/poly-glot-ai-workspace (especially `server.js`, `src/cross-platform-tools.js`, `entitlements.js`, `localization.js`). This public guide describes the code contract; use live server status and tool discovery when troubleshooting deployments.
+
 ### Source-of-truth notes
 
 The production MCP endpoint and live server/tool catalog determine runtime behavior. Third-party MCP directories can cache stale listings. This guide does not promise that all 15 tools or embedded GUIs work in every client or subscription plan. A client must support the relevant MCP transport and permissions.
