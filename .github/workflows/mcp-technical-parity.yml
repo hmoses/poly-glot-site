@@ -1,0 +1,121 @@
+name: Verify MCP technical source parity and 38-language browser copy
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'connect.html'
+      - 'index.html'
+      - 'privacy.html'
+      - 'mcp-integrations.html'
+      - 'knowledge/mcp-integrations.md'
+      - 'assets/js/mcp-technical-accuracy.js'
+      - 'assets/locales/mcp-technical/**'
+      - '.github/workflows/mcp-technical-parity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: hmoses/poly-glot-ai-workspace
+          path: polyglot-mcp-backend
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Audit documentation against backend tool registrations and languages
+        run: |
+          node --input-type=module - <<'JS'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          const server=fs.readFileSync('polyglot-mcp-backend/server.js','utf8');
+          const cross=fs.readFileSync('polyglot-mcp-backend/src/cross-platform-tools.js','utf8');
+          const languages=fs.readFileSync('polyglot-mcp-backend/localization.js','utf8');
+          const docs=fs.readFileSync('connect.html','utf8');
+          const en=JSON.parse(fs.readFileSync('assets/locales/mcp-technical/en.json','utf8')).strings;
+          const tools=[...server.matchAll(/registerAppTool\(server,\s*"([^"]+)"/g),...server.matchAll(/server\.registerTool\(\s*"([^"]+)"/g),...cross.matchAll(/registerTool\(\s*"([^"]+)"/g)].map(m=>m[1]);
+          assert.equal(tools.length,15,'Backend does not register 15 tools: '+tools.join(', '));
+          assert.equal(new Set(tools).size,15,'Duplicate backend tool names');
+          for(const tool of tools)assert.ok(docs.includes(tool),'Missing documented tool '+tool);
+          const roster=languages.slice(languages.indexOf('SUPPORTED_LANGUAGES'),languages.indexOf('].map',languages.indexOf('SUPPORTED_LANGUAGES')));
+          const codes=[...roster.matchAll(/\["(\w+)","[^"]+","[^"]+"\]/g)].map(m=>m[1]);
+          assert.equal(codes.length,38,'Backend language count changed');
+          assert.equal(new Set(codes).size,38);
+          assert.ok(docs.includes('https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp'));
+          assert.ok(!docs.includes('When the ChatGPT MCP Apps store launches'),'Outdated ChatGPT flow');
+          assert.ok(!docs.includes("doesn't store your prompts"),'Outdated privacy promise');
+          assert.ok(!docs.includes('Български'),'Unsupported language present');
+          assert.ok(!docs.includes('Lietuvių'),'Unsupported language present');
+          assert.ok(!docs.includes('Latviešu'),'Unsupported language present');
+          assert.ok(!docs.includes('Eesti'),'Unsupported language present');
+          assert.equal(Object.keys(en).length,21);
+          assert.ok(en.homeMcp.includes('does not automatically contact'));
+          assert.ok(en.compareExample.includes('does not automatically'));
+          assert.ok(en.freeAnswer.includes('account verification'));
+          assert.ok(en.privacyServices.includes('Google Analytics'));
+          console.log('PASS backend 15 tools',tools);
+          console.log('PASS backend 38 languages',codes);
+          console.log('PASS endpoint, auth, comparison semantics, tool gating, privacy');
+          JS
+  localized-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Chromium
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Check localized technical facts, client links and dynamic language switches
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 >/tmp/pg-technical-audit.log 2>&1 &
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          langs="EN ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM".split()
+          base='http://127.0.0.1:8765/'
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              page=browser.new_page(viewport={'width':1280,'height':900},reduced_motion='reduce')
+              for code in langs:
+                  page.goto(base+'connect.html?lang='+code,wait_until='domcontentloaded')
+                  page.wait_for_function("""c => {
+                    const root=document.documentElement;
+                    return root.dataset.pgTechnicalLanguage===c &&
+                       root.dataset.pgTechnicalL10n===(c==='EN'?'english':'complete');
+                  }""",arg=code,timeout=25000)
+                  samples=page.locator('[data-pg-tech]')
+                  assert samples.count()==17,(code,samples.count())
+                  assert page.locator('a[href="mcp-integrations.html#mcp-troubleshooting"]').count()==1
+                  assert page.locator('[data-pg-tech="chatIntro"]').inner_text().strip()
+                  assert page.locator('[data-pg-tech="freeAnswer"]').inner_text().strip()
+                  assert page.locator('table.tools-table tbody tr').count()==15
+                  if code!='EN':
+                      assert page.locator('[data-pg-tech="chatIntro"]').inner_text().strip()!='Connect Poly-Glot as a remote MCP app or custom connector when supported by your ChatGPT account or workspace. Availability and authorization depend on your plan and settings.'
+                  print('PASS translated connection guide',code,flush=True)
+              for path,count in [('privacy.html',3),('index.html',1)]:
+                  for code in ['EN','NL','AR','JA']:
+                      page.goto(base+path+'?lang='+code,wait_until='domcontentloaded')
+                      page.wait_for_function("""c => {
+                        const root=document.documentElement;
+                        return root.dataset.pgTechnicalLanguage===c &&
+                           root.dataset.pgTechnicalL10n===(c==='EN'?'english':'complete');
+                      }""",arg=code,timeout=25000)
+                      assert page.locator('[data-pg-tech]').count()==count,(path,code)
+                      assert page.locator('[data-pg-tech]').first.inner_text().strip()
+                      print('PASS',path,code,'technical accuracy',flush=True)
+              # Test switching languages without reloading the page
+              page.goto(base+'connect.html?lang=EN',wait_until='domcontentloaded')
+              page.evaluate("window._pgI18n.setLang('FR','🇫🇷')")
+              page.wait_for_function("document.documentElement.dataset.pgTechnicalLanguage==='FR' && document.documentElement.dataset.pgTechnicalL10n==='complete'")
+              page.evaluate("window._pgI18n.setLang('EN','🇺🇸')")
+              page.wait_for_function("document.documentElement.dataset.pgTechnicalLanguage==='EN' && document.documentElement.dataset.pgTechnicalL10n==='english'")
+              browser.close()
+          print('PASS all 38 guide localizations, privacy, homepage and dynamic switch',flush=True)
+          PY
