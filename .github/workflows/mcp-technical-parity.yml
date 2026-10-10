@@ -6,8 +6,14 @@ on:
       - 'connect.html'
       - 'index.html'
       - 'privacy.html'
+      - 'terms.html'
+      - 'privacy-and-pricing.html'
+      - 'compare-ai-tools.html'
+      - 'prompt-templates.html'
+      - 'multilingual-ai-workspace.html'
       - 'mcp-integrations.html'
-      - 'knowledge/mcp-integrations.md'
+      - 'knowledge/*.md'
+      - 'llms.txt'
       - 'assets/js/mcp-technical-accuracy.js'
       - 'assets/locales/mcp-technical/**'
       - '.github/workflows/mcp-technical-parity.yml'
@@ -52,7 +58,14 @@ jobs:
           assert.ok(!docs.includes('Lietuvių'),'Unsupported language present');
           assert.ok(!docs.includes('Latviešu'),'Unsupported language present');
           assert.ok(!docs.includes('Eesti'),'Unsupported language present');
-          assert.equal(Object.keys(en).length,21);
+          assert.equal(Object.keys(en).length,37);
+          for(const page of ['index.html','connect.html','privacy.html','terms.html','privacy-and-pricing.html','compare-ai-tools.html','prompt-templates.html','multilingual-ai-workspace.html','mcp-integrations.html']){
+            const html=fs.readFileSync(page,'utf8');
+            assert.ok(html.includes('assets/js/mcp-technical-accuracy.js?v=20261010-tech-v3'),page+' missing current localized corrections');
+          }
+          for(const [key,term] of [['termsPrivacy','operational metadata'],['termsCompare','does not itself'],['pricingTrial','does not automatically'],['mcpCount','15 tools'],['templatesPro','verified account'],['languagesCount','38 named']]){
+            assert.ok(en[key]?.includes(term),'Missing verified technical claim '+key);
+          }
           assert.ok(en.homeMcp.includes('does not automatically contact'));
           assert.ok(en.compareExample.includes('does not automatically'));
           assert.ok(en.freeAnswer.includes('account verification'));
@@ -99,7 +112,10 @@ jobs:
                   if code!='EN':
                       assert page.locator('[data-pg-tech="chatIntro"]').inner_text().strip()!='Connect Poly-Glot as a remote MCP app or custom connector when supported by your ChatGPT account or workspace. Availability and authorization depend on your plan and settings.'
                   print('PASS translated connection guide',code,flush=True)
-              for path,count in [('privacy.html',3),('index.html',1)]:
+              for path,count in [('privacy.html',3),('index.html',1),('terms.html',5),
+                                 ('privacy-and-pricing.html',4),('compare-ai-tools.html',2),
+                                 ('prompt-templates.html',2),('multilingual-ai-workspace.html',1),
+                                 ('mcp-integrations.html',2)]:
                   for code in ['EN','NL','AR','JA']:
                       page.goto(base+path+'?lang='+code,wait_until='domcontentloaded')
                       page.wait_for_function("""c => {
@@ -117,5 +133,5 @@ jobs:
               page.evaluate("window._pgI18n.setLang('EN','🇺🇸')")
               page.wait_for_function("document.documentElement.dataset.pgTechnicalLanguage==='EN' && document.documentElement.dataset.pgTechnicalL10n==='english'")
               browser.close()
-          print('PASS all 38 guide localizations, privacy, homepage and dynamic switch',flush=True)
+          print('PASS 38 language connection catalog and multilingual product/legal/knowledge subpages',flush=True)
           PY
