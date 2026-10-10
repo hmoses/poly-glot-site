@@ -23,7 +23,7 @@ document.querySelectorAll("[aria-label],[title],[placeholder]").forEach(function
 /* Capture all visible translatable copy, including cards, buttons, FAQ and footer.
  * Never replace executable examples, technical identifiers, or user data. */
 var allOrigins=new WeakMap(),allNodes=[],allAttrs=[],attrOrigins=new WeakMap();
-function eligible(n){var p=n.parentElement;if(!p||p.closest("script,style,noscript,pre,code,textarea,svg,#pgGlobalLangDD,#pgGlobalLangPicker,[data-i18n],[data-i18n-html],[contenteditable],[data-no-translate]"))return false;return !p.closest(".code-block,.hljs,.language-json")||!!p.closest("button");}
+function eligible(n){var p=n.parentElement;if(!p||p.closest("script,style,noscript,pre,code,textarea,svg,#mcp-troubleshooting,#pgGlobalLangDD,#pgGlobalLangPicker,[data-i18n],[data-i18n-html],[contenteditable],[data-no-translate]"))return false;return !p.closest(".code-block,.hljs,.language-json")||!!p.closest("button");}
 function registerAll(){
  if(!document.body)return;
  var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n;
