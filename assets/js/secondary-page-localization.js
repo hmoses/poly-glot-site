@@ -157,6 +157,7 @@ function apply(){
    pageTitle=heading.textContent.trim()+canonicalSuffix;
   }
  }
+ if(/\/mcp-integrations\.html$/.test(location.pathname)&&lang!=="EN"){var mcpHeading=document.querySelector("main h1");if(mcpHeading)pageTitle=mcpHeading.textContent.trim()+" | Poly-Glot";}
  if(originalDocumentTitle&&document.title!==(pageTitle||originalDocumentTitle))document.title=pageTitle||originalDocumentTitle;
  document.documentElement.setAttribute("data-pg-secondary-locale",lang);
  /* Report actual translation coverage; a visible selector is not proof of completion. */
