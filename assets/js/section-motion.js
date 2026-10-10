@@ -15,13 +15,13 @@ function discover(){
   sections=unique('header.hero,main > section,body > section,.section,#knowledge-center,body > main,body > .wrap,body > .container')
    .filter(safe)
    .filter(e=>!(e.matches('main,body > .wrap,body > .container')&&e.querySelector(':scope > section')));
-  const candidates=unique('main.wrap article,.guide-card,.about-card,.info-box,.feature-card,.template-card,.pricing-card,.faq-item,.done-box,.wrap .step,.container > .card,.grid > .card,.funnel-step,.link-box,body > .card#card')
+  const candidates=unique('main.wrap article,.mcp-troubleshoot .mcp-endpoint,.mcp-troubleshoot .mcp-steps,.mcp-troubleshoot .mcp-error-guide details,.mcp-troubleshoot .mcp-client-grid article,.guide-card,.about-card,.info-box,.feature-card,.template-card,.pricing-card,.faq-item,.done-box,.wrap .step,.container > .card,.grid > .card,.funnel-step,.link-box,body > .card#card')
    .filter(safe);
   // The homepage excludes nested motion cards to avoid conflicting transforms.
   cards=candidates.filter(e=>!candidates.some(parent=>parent!==e&&parent.contains(e)));
   headings=unique('.hero h1,.hero p,.section-title,.section-eyebrow,.section-sub,main.wrap > h1,main.wrap > .eyebrow,main.wrap > .lead,main .related > h2,body > h1,body > h2,body > p:first-of-type,body > .wrap > h1,body > .wrap > h2,body > .wrap > .sub,body > .container > h1,body > .container > .subtitle,#knowledge-center h2')
    .filter(safe);
-  faqs=unique('.faq-item,main.wrap article').filter(safe);
+  faqs=unique('.faq-item,main.wrap article,.mcp-troubleshoot .mcp-error-guide details').filter(safe);
 }
 function enable(){
  if(!document.body)return;
