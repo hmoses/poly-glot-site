@@ -1,0 +1,85 @@
+/* Poly-Glot MCP connection panel — standalone responsive design.
+   The existing endpoint, Copy behavior, locales and directory listings are unchanged. */
+.pg-mcp-connect-panel{
+  --pgc-line:rgba(125,211,252,.18);
+  position:relative;
+  overflow:hidden;
+  margin:0 0 20px;
+  padding:clamp(20px,3vw,32px);
+  border:1px solid var(--pgc-line);
+  border-radius:18px;
+  background:linear-gradient(125deg,rgba(28,38,68,.85),rgba(20,25,49,.90));
+  box-shadow:0 12px 36px rgba(0,0,0,.10);
+}
+.pg-mcp-connect-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.pg-mcp-connect-heading{min-width:0;flex:1 1 350px}
+.pg-mcp-connect-title{margin:0 0 9px;color:var(--text);font-size:clamp(1.13rem,2vw,1.4rem);line-height:1.3;font-weight:800;letter-spacing:-.015em}
+.pg-mcp-connect-summary{max-width:830px;color:var(--text-muted);font-size:.9rem;line-height:1.55;margin:0}
+.pg-mcp-connect-transport{display:inline-flex;align-items:center;gap:8px;flex:0 0 auto;margin-top:2px;padding:7px 11px;border:1px solid rgba(52,211,153,.22);background:rgba(52,211,153,.075);border-radius:100px;color:#9ceac6;font-size:.72rem;font-weight:700;white-space:nowrap;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.pg-mcp-connect-transport:before{content:"";height:7px;width:7px;flex:none;border-radius:50%;background:#34d399}
+.pg-mcp-connect-compat{margin:17px 0 18px;padding:11px 14px;border-left:3px solid #7dd3fc;background:rgba(125,211,252,.055);border-radius:0 9px 9px 0;color:var(--text-muted);font-size:.84rem;line-height:1.65;overflow-wrap:anywhere}
+.pg-mcp-endpoint-wrap{border:1px solid rgba(125,211,252,.19);border-radius:12px;background:rgba(7,12,30,.63);padding:15px 17px 14px;min-width:0}
+.pg-mcp-endpoint-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:9px}
+.pg-mcp-endpoint-label{color:#c3d2ec;font-size:.72rem;font-weight:750;letter-spacing:.02em;line-height:1.4}
+.pg-mcp-endpoint-protocol{color:#7e95b8;font-size:.7rem;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.pg-mcp-connect-panel .pg-mcp-endpoint-copy.pg-code-snippet{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) auto !important;
+  grid-template-rows:auto !important;
+  gap:16px !important;
+  align-items:center !important;
+  max-width:100%;
+  min-width:0;
+  margin:0;
+  padding:0 !important;
+  border:0 !important;
+  background:transparent !important;
+}
+.pg-mcp-connect-panel .pg-mcp-endpoint-copy .pg-code-snippet-content{
+  display:block;grid-column:1 !important;grid-row:1 !important;
+  max-width:100%;min-width:0;
+  font:500 clamp(.70rem,1.3vw,.86rem)/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;
+  color:#8dd9fb;overflow-wrap:anywhere;word-break:break-word;white-space:normal;
+}
+.pg-mcp-connect-panel .pg-mcp-endpoint-copy .pg-code-copy{
+  grid-column:2 !important;grid-row:1 !important;justify-self:end;
+  min-width:80px;padding:9px 13px !important;
+}
+.pg-mcp-connect-steps{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:12px;margin:18px 0 0;
+}
+.pg-mcp-connect-step{min-width:0;display:flex;align-items:flex-start;gap:12px;padding:16px;border-radius:12px;background:rgba(255,255,255,.026);border:1px solid rgba(255,255,255,.087)}
+.pg-mcp-connect-num{width:31px;height:31px;display:grid;place-items:center;border-radius:9px;flex:none;background:rgba(125,211,252,.105);color:#8bdcf8;font:700 .76rem/1 ui-monospace,SFMono-Regular,Consolas,monospace}
+.pg-mcp-connect-step-body{min-width:0;flex:1}
+.pg-mcp-connect-step-title{font-size:.85rem;font-weight:760;line-height:1.45;color:var(--text);margin:0 0 7px}
+.pg-mcp-connect-step-text{font-size:.79rem;line-height:1.57;color:var(--text-muted);margin:0;overflow-wrap:anywhere}
+.pg-mcp-connect-links{border-top:1px solid rgba(255,255,255,.085);display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:19px;padding-top:17px}
+.pg-mcp-connect-action{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 15px;min-width:0;text-decoration:none !important;border:1px solid rgba(125,211,252,.20);border-radius:11px;background:rgba(125,211,252,.045);color:#9ddfff;font-size:.83rem;font-weight:730;line-height:1.4;transition:background .18s,border-color .18s,transform .18s}
+.pg-mcp-connect-action:hover{background:rgba(125,211,252,.10);border-color:rgba(125,211,252,.4);transform:translateY(-1px)}
+.pg-mcp-connect-action:focus-visible{outline:2px solid #7dd3fc;outline-offset:3px}
+.pg-mcp-connect-action .pg-mcp-connect-arrow{font-size:1rem;color:#7dd3fc;flex:none}
+.pg-mcp-connect-trouble-title{color:var(--text);font-size:.85rem;font-weight:750}
+.pg-mcp-connect-trouble-desc{margin-top:3px;color:var(--text-muted);font-size:.75rem;font-weight:450;line-height:1.45}
+.pg-mcp-connect-panel [dir="rtl"]{text-align:start}
+html[dir="rtl"] .pg-mcp-connect-compat,html[data-pg-rtl="true"] .pg-mcp-connect-compat{border-left:0;border-right:3px solid #7dd3fc;border-radius:9px 0 0 9px}
+@media(max-width:850px){
+ .pg-mcp-connect-steps{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
+ .pg-mcp-connect-step{padding:13px 12px;gap:9px;flex-direction:column}
+}
+@media(max-width:650px){
+ .pg-mcp-connect-panel{padding:18px;border-radius:15px}
+ .pg-mcp-connect-head{gap:9px}
+ .pg-mcp-connect-transport{order:-1}
+ .pg-mcp-connect-compat{margin:14px 0}
+ .pg-mcp-connect-steps{grid-template-columns:1fr !important;gap:9px}
+ .pg-mcp-connect-step{flex-direction:row;padding:13px;gap:12px}
+ .pg-mcp-connect-step-title{margin:0 0 2px}
+ .pg-mcp-connect-links{grid-template-columns:1fr;gap:9px}
+ .pg-mcp-connect-panel .pg-mcp-endpoint-copy.pg-code-snippet{grid-template-columns:minmax(0,1fr) !important;grid-template-rows:auto auto !important;gap:7px !important}
+ .pg-mcp-connect-panel .pg-mcp-endpoint-copy .pg-code-copy{grid-column:1 !important;grid-row:1 !important}
+ .pg-mcp-connect-panel .pg-mcp-endpoint-copy .pg-code-snippet-content{grid-column:1 !important;grid-row:2 !important}
+ .pg-mcp-endpoint-wrap{padding:14px}
+}
+@media(prefers-reduced-motion:reduce){.pg-mcp-connect-action{transition:none}.pg-mcp-connect-action:hover{transform:none}}
