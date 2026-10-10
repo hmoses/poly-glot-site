@@ -82,7 +82,7 @@ function apply(lang,bundle){
  if(homeSteps.innerHTML!==html)homeSteps.innerHTML=html;
  }
  // FAQ is separate from the trouble-section translation runtime.
- var faq=document.querySelectorAll('main section[aria-label="Frequently asked questions"] > article');
+ var faq=document.querySelectorAll('#pg-mcp-faq > article');
  if(faq.length===4){
   var translated=isLocalized?[
    [tech.homeMcp,tr.intro].map(string).filter(Boolean).join(" "),
