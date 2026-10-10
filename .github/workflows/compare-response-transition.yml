@@ -24,71 +24,82 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check playwright
           python -m playwright install --with-deps chromium
-      - name: Verify stagger, independent cards, mobile layout and reduced motion
+      - name: Verify live scroll-linked cards on desktop and mobile
         run: |
           python -m http.server 8765 --bind 127.0.0.1 >/tmp/pg-compare.log 2>&1 &
           python - <<'PY'
           from playwright.sync_api import sync_playwright
           base='http://127.0.0.1:8765/index.html'
+          js_sample="""() => [...document.querySelectorAll('#apps .inline-response-list > .inline-response-row')].map(el=>({
+            y:parseFloat(el.style.getPropertyValue('--pg-compare-y'))||0,
+            p:parseFloat(el.style.getPropertyValue('--pg-compare-opacity'))||1,
+            top:el.getBoundingClientRect().top,
+            state:el.dataset.pgCompareState,
+            transform:getComputedStyle(el).transform,
+            opacity:parseFloat(getComputedStyle(el).opacity)
+          }))"""
           with sync_playwright() as p:
               browser=p.chromium.launch(headless=True)
-              context=browser.new_context(viewport={'width':1280,'height':900}, reduced_motion='no-preference')
-              page=context.new_page()
-              errors=[]
-              page.on('pageerror',lambda error:errors.append(str(error)))
-              page.goto(base,wait_until='domcontentloaded')
-              page.wait_for_function("window._pgCompareResponseMotion?.cards?.().length===3",timeout=15000)
-              cards=page.locator('#apps .inline-response-list > .inline-response-row')
-              assert cards.count()==3
-              assert cards.count()==page.locator('#apps .inline-response-list .pg-compare-reveal-ready').count()
-              assert not page.locator('#apps .inline-response-list .pg-motion-card').count(),'Global parallax still owns response rows'
-              assert not page.locator('#apps .inline-response-list .ai-provider-badge.pg-motion-card').count(),'Nested badge has competing parallax'
-              assert page.evaluate("window._pgCompareResponseMotion.status()")==['waiting']*3
-              page.evaluate("""() => {
-                window.__compareRevealTimes=[];
-                document.querySelectorAll('#apps .inline-response-row').forEach((el,i)=>{
-                  const observer=new MutationObserver(()=>{
-                    if(el.classList.contains('pg-compare-visible') && !window.__compareRevealTimes.some(x=>x.index===i)){
-                      window.__compareRevealTimes.push({index:i,time:performance.now()});
-                    }
-                  });
-                  observer.observe(el,{attributes:true,attributeFilter:['class']});
-                });
-              }""")
-              cards.nth(1).scroll_into_view_if_needed()
-              page.wait_for_function("window._pgCompareResponseMotion.status().every(x=>x==='visible')",timeout=12000)
-              reveals=page.evaluate("window.__compareRevealTimes")
-              assert len(reveals)==3,reveals
-              assert [x['index'] for x in reveals]==[0,1,2],reveals
-              assert reveals[1]['time']-reveals[0]['time']>=145,reveals
-              assert reveals[2]['time']-reveals[1]['time']>=145,reveals
-              page.wait_for_timeout(950)
-              assert all(x>0.99 for x in page.locator('#apps .inline-response-row').evaluate_all('(els)=>els.map(e=>Number(getComputedStyle(e).opacity))'))
-              assert not errors,'Browser JS errors: '+str(errors[:8])
-              print('PASS desktop: distinct independently timed entrances',reveals,flush=True)
-              context.close()
-
-              mobile=browser.new_context(viewport={'width':390,'height':844},is_mobile=True,device_scale_factor=2,reduced_motion='no-preference')
-              pm=mobile.new_page()
-              pm.goto(base,wait_until='domcontentloaded')
-              pm.wait_for_function("window._pgCompareResponseMotion?.cards?.().length===3",timeout=15000)
-              cm=pm.locator('#apps .inline-response-list > .inline-response-row')
-              assert cm.count()==3
-              for i in range(3):
-                  cm.nth(i).scroll_into_view_if_needed()
-                  pm.wait_for_function(f"document.querySelectorAll('#apps .inline-response-row')[{i}].classList.contains('pg-compare-visible')",timeout=10000)
-              assert pm.evaluate('document.documentElement.scrollWidth<=innerWidth+5'),"Mobile horizontal overflow"
-              print('PASS mobile: independent card entrances',flush=True)
-              mobile.close()
+              for width,height,label in [(1280,900,'desktop'),(390,844,'mobile')]:
+                  ctx=browser.new_context(viewport={'width':width,'height':height},
+                      is_mobile=(label=='mobile'),device_scale_factor=(2 if label=='mobile' else 1),
+                      reduced_motion='no-preference')
+                  page=ctx.new_page()
+                  errors=[]
+                  page.on('pageerror',lambda e:errors.append(str(e)))
+                  page.goto(base,wait_until='domcontentloaded')
+                  page.wait_for_function("window._pgCompareResponseMotion?.mode==='independent-scroll-linked-v2'",timeout=18000)
+                  cards=page.locator('#apps .inline-response-list > .inline-response-row')
+                  assert cards.count()==3
+                  assert cards.locator('.pg-motion-card').count()==0
+                  assert page.locator('#apps .inline-response-list > .pg-motion-card').count()==0
+                  assert page.locator('#apps .inline-response-list .ai-provider-badge.pg-motion-card').count()==0
+                  assert cards.evaluate_all("(els)=>els.every(el=>el.classList.contains('pg-compare-scroll-motion'))")
+                  assert page.locator('#apps .inline-response-list .ai-provider-badge').count()==3
+                  assert 'ChatGPT' in cards.nth(0).inner_text()
+                  assert 'Claude' in cards.nth(1).inner_text()
+                  assert 'Perplexity' in cards.nth(2).inner_text()
+                  page.evaluate("""() => {
+                      const row=document.querySelector('#apps .inline-response-row');
+                      const top=row.getBoundingClientRect().top+scrollY;
+                      scrollTo(0,Math.max(0,top-innerHeight*.88));
+                  }""")
+                  page.wait_for_timeout(350)
+                  early=page.evaluate(js_sample)
+                  page.evaluate("scrollBy(0, 230)")
+                  page.wait_for_timeout(350)
+                  mid=page.evaluate(js_sample)
+                  page.evaluate("scrollBy(0, 230)")
+                  page.wait_for_timeout(350)
+                  late=page.evaluate(js_sample)
+                  # Individual cards MUST have measurably distinct progress.
+                  assert len({round(v['p'],2) for v in mid})>=2,(label,'not independent',mid)
+                  assert mid[0]['p']>mid[1]['p']-0.01,(label,'first card progress',mid)
+                  assert mid[1]['p']>=mid[2]['p']-0.01,(label,'second card progress',mid)
+                  assert any(abs(late[i]['y']-mid[i]['y'])>5 for i in range(3)),(label,'cards frozen after scrolling',mid,late)
+                  assert any(abs(mid[i]['y']-early[i]['y'])>5 for i in range(3)),(label,'cards did not respond to scroll',early,mid)
+                  assert any(late[i]['p']>early[i]['p']+.15 for i in range(3)),(label,'entry not visible',early,late)
+                  assert len({round(v['y'],1) for v in mid})>=2,(label,'identical transforms',mid)
+                  assert all(v['transform']!='none' for v in mid),(label,'CSS transform not applied',mid)
+                  assert not errors,(label,'Browser JavaScript errors',errors[:7])
+                  # Motion is reversible on upward scroll: not a one-time entrance.
+                  page.evaluate("scrollBy(0,-230)")
+                  page.wait_for_timeout(350)
+                  back=page.evaluate(js_sample)
+                  assert any(abs(back[i]['y']-late[i]['y'])>5 for i in range(3)),(label,'reverse motion not working',back,late)
+                  if label=='mobile':
+                      assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+5'),"Mobile horizontal overflow"
+                  print('PASS',label,'early',early,'mid',mid,'late',late,'reverse',back,flush=True)
+                  ctx.close()
 
               reduced=browser.new_context(viewport={'width':1280,'height':900},reduced_motion='reduce')
               pr=reduced.new_page()
               pr.goto(base,wait_until='domcontentloaded')
               pr.wait_for_function("document.querySelectorAll('#apps .inline-response-row').length===3")
-              assert pr.locator('#apps .inline-response-row.pg-compare-reveal-ready').count()==0
-              assert pr.locator('#apps .inline-response-row.pg-motion-card').count()==0
+              assert pr.locator('#apps .inline-response-row.pg-compare-scroll-motion').count()==0
               assert all(abs(o-1)<.01 for o in pr.locator('#apps .inline-response-row').evaluate_all('(els)=>els.map(e=>Number(getComputedStyle(e).opacity))'))
-              print('PASS reduced motion: all content instantly visible',flush=True)
+              assert all(t=='none' for t in pr.locator('#apps .inline-response-row').evaluate_all('(els)=>els.map(e=>getComputedStyle(e).transform)'))
+              print('PASS reduced-motion cards fully visible without animation',flush=True)
               reduced.close()
               browser.close()
           PY
