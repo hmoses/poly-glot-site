@@ -33,9 +33,9 @@ jobs:
           from playwright.sync_api import sync_playwright
           import json
           ENDPOINT='https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp'
-          CLIP="""() => Object.defineProperty(navigator,'clipboard',{configurable:true,value:{
+          CLIP="""(() => Object.defineProperty(navigator,'clipboard',{configurable:true,value:{
             writeText:async text=>{(window.__copied||(window.__copied=[])).push(text);}
-          }})"""
+          }}))()"""
           def check_blocks(page,label):
               snippets=page.locator('.pg-code-snippet')
               count=snippets.count()
