@@ -1,0 +1,135 @@
+name: Verify MCP snippet Copy controls and responsive layout
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/css/code-copy.css'
+      - 'assets/js/code-copy.js'
+      - 'index.html'
+      - 'connect.html'
+      - 'mcp-integrations.html'
+      - 'seo-setup.html'
+      - '.github/workflows/test-code-copy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Chromium browser
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Verify functional Clipboard and no overlap at desktop and phone sizes
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 >/tmp/polyglot-copy-http.log 2>&1 &
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          import json
+          ENDPOINT='https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp'
+          CLIP="""() => Object.defineProperty(navigator,'clipboard',{configurable:true,value:{
+            writeText:async text=>{(window.__copied||(window.__copied=[])).push(text);}
+          }})"""
+          def check_blocks(page,label):
+              snippets=page.locator('.pg-code-snippet')
+              count=snippets.count()
+              assert count>=1,(label,'no code snippets')
+              for index in range(count):
+                  block=snippets.nth(index)
+                  button=block.locator(':scope > [data-pg-copy-button]')
+                  assert button.count()==1,(label,index,'missing or duplicate Copy button')
+                  code=block.locator(':scope > .pg-code-snippet-content')
+                  assert code.count()==1,(label,index,'no code content')
+                  assert code.inner_text().strip(),(label,index,'empty code')
+                  geometry=block.evaluate("""el=>{
+                    const c=el.querySelector(':scope > .pg-code-snippet-content').getBoundingClientRect();
+                    const b=el.querySelector(':scope > [data-pg-copy-button]').getBoundingClientRect();
+                    const overlapX=Math.max(0,Math.min(c.right,b.right)-Math.max(c.left,b.left));
+                    const overlapY=Math.max(0,Math.min(c.bottom,b.bottom)-Math.max(c.top,b.top));
+                    return {overlap:overlapX*overlapY,
+                      position:getComputedStyle(el.querySelector(':scope > [data-pg-copy-button]')).position,
+                      blockWidth:el.getBoundingClientRect().width,scrollWidth:el.scrollWidth};
+                  }""")
+                  assert geometry['overlap']<1,(label,index,'code covered by copy button',geometry)
+                  assert geometry['position']=='static',(label,index,'absolute button still used',geometry)
+                  assert geometry['scrollWidth']<=geometry['blockWidth']+3,(label,index,'content overflow',geometry)
+              return count
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              for width,height in [(1280,900),(1066,840),(390,844),(320,700)]:
+                  context=browser.new_context(viewport={'width':width,'height':height},reduced_motion='reduce')
+                  context.add_init_script(CLIP)
+                  page=context.new_page()
+                  errors=[]
+                  page.on('pageerror',lambda err:errors.append(str(err)))
+                  page.goto('http://127.0.0.1:8765/index.html?lang=EN',wait_until='domcontentloaded')
+                  page.wait_for_function("window._pgCodeCopy && document.querySelectorAll('[data-pg-code-block][data-pg-code-ready]').length===2",timeout=18000)
+                  assert page.locator('[data-pg-code-block]').count()==2
+                  assert page.locator('#connect .pg-mcp-tools-grid [data-pg-code-token]').count()==15
+                  assert check_blocks(page,'home'+str(width))>=2
+                  assert page.locator('#connect .pg-mcp-tools-grid .pg-code-copy').count()==15
+                  page.locator('[data-pg-code-block] [data-pg-copy-button]').first.click()
+                  page.wait_for_function("window.__copied?.length>=1")
+                  assert page.evaluate('window.__copied[0]')==ENDPOINT
+                  page.locator('#connect .pg-mcp-tools-grid .pg-code-copy').first.click()
+                  page.wait_for_function("window.__copied?.length>=2")
+                  assert page.evaluate('window.__copied[1]')=='search_templates'
+                  assert not errors,('home',width,errors[:6])
+                  print('PASS homepage',width,'code and Copy never overlap; URLs/tool IDs copy exactly',flush=True)
+                  context.close()
+
+              context=browser.new_context(viewport={'width':390,'height':844},reduced_motion='reduce')
+              context.add_init_script(CLIP)
+              page=context.new_page()
+              page.goto('http://127.0.0.1:8765/connect.html?lang=NL',wait_until='domcontentloaded')
+              page.wait_for_function("document.querySelectorAll('.code-block[data-pg-code-ready]').length===9",timeout=18000)
+              assert page.locator('.code-block .pg-code-copy').count()==9
+              assert page.locator('.tools-table [data-pg-code-token]').count()==15
+              check_blocks(page,'connect NL')
+              button=page.locator('.code-block .pg-code-copy').first
+              page.wait_for_function("document.querySelector('.code-block .pg-code-copy').textContent==='Kopiëren'",timeout=12000)
+              button.click()
+              page.wait_for_function("window.__copied?.length>=1")
+              assert page.evaluate('window.__copied[0]')==ENDPOINT
+              assert button.inner_text()=='Gekopieerd'
+              container=page.locator('.code-block').filter(has=page.locator('pre')).first
+              assert container.count()==1
+              container.locator('[data-pg-copy-button]').click()
+              page.wait_for_function("window.__copied?.length>=2")
+              cfg=json.loads(page.evaluate('window.__copied[1]'))
+              assert cfg['mcpServers']['poly-glot']['url']==ENDPOINT
+              page.locator('.tools-table [data-pg-code-token] [data-pg-copy-button]').first.click()
+              page.wait_for_function("window.__copied?.length>=3")
+              assert page.evaluate('window.__copied[2]')=='search_templates'
+              # Reinitialization doesn't duplicate buttons.
+              page.evaluate("window._pgCodeCopy.enhance()")
+              assert page.locator('.code-block .pg-code-copy').count()==9
+              assert page.locator('.tools-table [data-pg-code-token]').count()==15
+              print('PASS setup: all nine snippets, parsed JSON, 15 tool IDs, Dutch feedback',flush=True)
+
+              page.goto('http://127.0.0.1:8765/mcp-integrations.html?lang=EN',wait_until='domcontentloaded')
+              page.wait_for_function("document.querySelectorAll('.mcp-tool-list [data-pg-code-token]').length===15",timeout=18000)
+              page.locator('.mcp-tool-list [data-pg-copy-button]').first.click()
+              page.wait_for_function("window.__copied?.length>=1")
+              assert page.evaluate('window.__copied[0]')=='get_language_options'
+              assert page.locator('#pgMcpTroubleCopy').count()==1
+              page.locator('#pgMcpTroubleCopy').click()
+              page.wait_for_function("window.__copied?.length>=2")
+              assert page.evaluate('window.__copied[1]')==ENDPOINT
+              print('PASS MCP guide: all 15 tool IDs and existing endpoint Copy',flush=True)
+
+              page.goto('http://127.0.0.1:8765/seo-setup.html',wait_until='domcontentloaded')
+              page.wait_for_function("document.querySelectorAll('code[data-pg-copy-token]').length===4 && document.querySelectorAll('[data-pg-code-token]').length===4",timeout=18000)
+              page.locator('code[data-pg-copy-token]').nth(1).locator('xpath=..').locator('button').click()
+              page.wait_for_function("window.__copied?.length>=1")
+              assert page.evaluate('window.__copied[0]')=='<meta name="google-site-verification" content="abc123...">'
+              print('PASS SEO technical snippets: four working Copy buttons',flush=True)
+              context.close()
+              browser.close()
+          PY
