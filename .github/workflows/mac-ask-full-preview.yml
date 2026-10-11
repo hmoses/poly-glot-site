@@ -52,7 +52,7 @@ jobs:
                     children,scale:document.querySelector('#macScreen-askanyai').dataset.pgAskFit}
                 }""")
                 print(width,code,x['scale'],x['stage'],x['content'],flush=True)
-                for k in ['content',*x['children']]:
+                for k in [x['content'],*x['children']]:
                   for edge in ['top','left']:
                     assert k[edge] >= x['stage'][edge]-2,(width,code,edge,k,x['stage'])
                   for edge in ['bottom','right']:
