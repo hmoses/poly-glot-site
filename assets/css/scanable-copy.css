@@ -140,3 +140,32 @@ html { scroll-behavior: auto !important; }
   #iphone-duo .duo-exact-figure { max-height: 55vh; }
   #iphone-duo .duo-exact-image.duo-static-en { max-height: 55vh !important; }
 }
+
+/* Pricing cards size independently; free-plan details cannot stretch paid tiers. */
+#pricing .pricing-grid{
+  align-items:start !important;
+  gap:clamp(14px,2vw,24px) !important;
+}
+#pricing .pricing-grid > .pricing-card{
+  align-self:start !important;
+  height:auto !important;
+  min-height:0 !important;
+  padding:clamp(18px,2.25vw,28px) !important;
+}
+#pricing .pricing-card .pricing-features{margin-bottom:18px}
+#pricing .pricing-card .pricing-desc{margin-bottom:16px;line-height:1.65}
+#pricing .free-after-trial-disclosure{
+  padding:12px 14px !important;
+  margin:14px 0 16px !important;
+}
+#pricing .free-after-trial-disclosure #pg-post-trial-benefits{
+  font-size:.84rem !important;
+  line-height:1.6 !important;
+}
+#pricing .free-after-trial-disclosure #pg-post-trial-note{
+  font-size:.77rem !important;
+  line-height:1.55 !important;
+}
+@media(max-width:760px){
+  #pricing .pricing-grid{grid-template-columns:1fr !important;max-width:480px}
+}
