@@ -4507,7 +4507,14 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
         <div class="pricing-name" data-i18n="prName1">Free Plan</div>
         <div class="pricing-price">$0</div>
         <div class="pricing-desc" data-i18n="prDesc1">3-day full-access trial included · then stay on Free for $0 with 1 shared single-AI send every rolling 24 hours</div>
-        <p class="free-after-trial-disclosure" style="font-size:.84rem;line-height:1.55;color:#d9dff2;margin:14px 0 6px;padding:12px;border:1px solid rgba(251,191,36,.32);border-radius:8px;background:rgba(251,191,36,.065)"><strong style="color:#fbbf24">After the 3-day trial:</strong> Compare Mode and Pro templates are locked unless you subscribe. Keep 25 featured free templates and 1 shared single-AI send every rolling 24 hours for $0.</p>
+        <div class="free-after-trial-disclosure" id="pg-free-after-trial" role="note">
+          <div class="pg-post-trial-heading-row">
+            <span class="pg-post-trial-sparkle" aria-hidden="true">✦</span>
+            <h4 id="pg-post-trial-heading">Your free workspace is here to stay.</h4>
+          </div>
+          <p id="pg-post-trial-benefits">After the 3-day trial, keep creating in 38 languages with 25 featured free templates, your choice of 9 supported AIs, and one shared single-AI send every rolling 24 hours — all for $0.</p>
+          <p class="pg-post-trial-note" id="pg-post-trial-note">No automatic subscription. Compare Mode, Pro templates, and unlimited sends require Pro.</p>
+        </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
           <li data-i18n="pf1a"><span class="ck">&#10003;</span> 25 Featured Free Templates</li>
@@ -14068,5 +14075,77 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
   schedule();
 })();
 </script>
+
+<!-- Post-trial Free tier: highlight ongoing benefits before plan features. -->
+<style id="pg-post-trial-value-style-v1">
+#pricing .free-after-trial-disclosure{
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  margin:16px 0 8px;
+  padding:16px;
+  border:1px solid rgba(125,211,252,.28);
+  border-radius:14px;
+  background:linear-gradient(145deg,rgba(125,211,252,.07),rgba(167,139,250,.035));
+  color:#e8ecf4;
+  text-align:start;
+}
+#pricing .pg-post-trial-heading-row{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin-bottom:10px;
+}
+#pricing .pg-post-trial-sparkle{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 30px;
+  width:30px;
+  height:30px;
+  border-radius:10px;
+  background:rgba(125,211,252,.12);
+  color:#7dd3fc;
+  font-size:20px;
+  line-height:1;
+}
+#pricing #pg-post-trial-heading{
+  margin:0;
+  padding:0;
+  color:#f1f5ff;
+  font-size:clamp(.95rem,1.4vw,1.05rem);
+  font-weight:750;
+  line-height:1.38;
+  letter-spacing:-.015em;
+  overflow-wrap:break-word;
+}
+#pricing #pg-post-trial-benefits{
+  margin:0;
+  color:#d7e4f6;
+  font-size:.87rem;
+  line-height:1.65;
+  overflow-wrap:break-word;
+}
+#pricing #pg-post-trial-note{
+  margin:12px 0 0;
+  padding-top:10px;
+  border-top:1px solid rgba(125,211,252,.14);
+  color:#b7c7dc;
+  font-size:.77rem;
+  line-height:1.5;
+  overflow-wrap:break-word;
+}
+#pricing .free-after-trial-disclosure [dir="rtl"]{
+  direction:rtl;
+  text-align:right;
+}
+@media(max-width:640px){
+  #pricing .free-after-trial-disclosure{padding:14px;border-radius:12px}
+  #pricing #pg-post-trial-heading{font-size:1rem}
+  #pricing #pg-post-trial-benefits{font-size:.88rem;line-height:1.58}
+  #pricing #pg-post-trial-note{font-size:.79rem}
+}
+</style>
+<script defer src="assets/js/post-trial-value-locales.js?v=20261010-free-retention1"></script>
 </body>
 </html>
