@@ -4437,8 +4437,13 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
     <h2 class="section-title" data-i18n="prH">Start Free. Upgrade When Ready.</h2>
     <p class="section-sub" data-i18n="prSub">3-day free trial — everything unlocked. All 1,000+ templates, Compare Mode, unlimited sends. After trial: 1 free send every rolling 24 hours. Pro for unlimited access.</p>
     <div class="trial-trust-strip">
-      <span class="trial-trust-icon">✓</span>
-      <p data-i18n="fq6a">Poly-Glot includes a 3-day full-access trial that starts on the first qualifying Send. When it ends, Compare Mode and Pro templates lock unless you subscribe to Pro. You can still use 25 featured free templates and one shared single-AI Send every rolling 24 hours at no cost. The trial does not automatically convert to a paid subscription.</p>
+      <span class="trial-trust-icon" aria-hidden="true">✓</span>
+      <ul id="pg-trial-details" class="pg-trial-details" aria-label="Trial and free-plan details">
+        <li><span class="pg-trial-number" aria-hidden="true">01</span><p data-pg-trial-detail="trial">Poly-Glot includes a 3-day full-access trial that starts on the first qualifying Send.</p></li>
+        <li><span class="pg-trial-number" aria-hidden="true">02</span><p data-pg-trial-detail="locked">When it ends, Compare Mode and Pro templates lock unless you subscribe to Pro.</p></li>
+        <li><span class="pg-trial-number" aria-hidden="true">03</span><p data-pg-trial-detail="free">You can still use 25 featured free templates and one shared single-AI Send every rolling 24 hours at no cost.</p></li>
+        <li><span class="pg-trial-number" aria-hidden="true">04</span><p data-pg-trial-detail="billing">The trial does not automatically convert to a paid subscription.</p></li>
+      </ul>
     </div>
     <div class="pricing-grid" id="pg-pro-plans">
       <div class="pricing-card">
@@ -14227,5 +14232,22 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
 }
 </style>
 <script defer src="assets/js/value-chunks-locales.js?v=20261011-four-chunks-38"></script>
+<style id="pg-trial-details-style-v1">
+/* Pricing trial terms: short, independently scannable points. */
+#pricing .trial-trust-strip{align-items:flex-start;max-width:1050px;margin-left:auto;margin-right:auto}
+#pricing .pg-trial-details{flex:1;min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0;padding:0;list-style:none}
+#pricing .pg-trial-details li{display:flex;align-items:flex-start;gap:10px;min-width:0;padding:10px 11px;border:1px solid rgba(16,185,129,.16);border-radius:10px;background:rgba(16,185,129,.04)}
+#pricing .pg-trial-details p{margin:0;color:var(--text-muted);font-size:.84rem;line-height:1.55;overflow-wrap:break-word;text-align:start}
+#pricing .pg-trial-number{flex:0 0 26px;display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border:1px solid rgba(16,185,129,.24);border-radius:8px;color:#6ee7b7;background:rgba(16,185,129,.08);font-size:.68rem;font-weight:800;font-variant-numeric:tabular-nums}
+#pricing #pg-trial-details[dir="rtl"]{direction:rtl;text-align:right}
+@media(max-width:740px){
+ #pricing .trial-trust-strip{padding:12px 13px;gap:9px}
+ #pricing .pg-trial-details{grid-template-columns:1fr;gap:8px}
+ #pricing .pg-trial-details li{padding:9px 10px;gap:9px}
+ #pricing .pg-trial-details p{font-size:.82rem;line-height:1.56}
+}
+</style>
+<script defer src="assets/js/trial-details-locales.js?v=20261011-38"></script>
+
 </body>
 </html>
