@@ -3060,13 +3060,106 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
   </div>
 </section>
 
+<style id="pg-value-intro-readable">
+/* Compact editorial chunks; reuse the site's existing 38 translated strings. */
+#value .pg-value-intro{max-width:900px;margin:0 0 28px;text-align:start}
+#value .pg-value-promise{
+ margin:0 0 15px;color:#f3f5ff;font-size:clamp(1.03rem,2.3vw,1.20rem);
+ line-height:1.52;font-weight:750;text-wrap:pretty;
+}
+#value .pg-value-explanation{margin:0 0 22px}
+#value #pg-value-body-source{margin:0;color:var(--text-muted);font-size:.96rem;line-height:1.65}
+#value #pg-value-body-source[hidden],#value #pg-value-body-chunks[hidden]{display:none!important}
+#value .pg-value-body-chunks{
+ list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:8px 16px;max-width:900px;
+}
+#value .pg-value-body-chunks li{
+ min-width:0;padding:7px 10px 7px 13px;border-inline-start:2px solid rgba(167,139,250,.7);
+ color:#cbd4e4;font-size:.91rem;line-height:1.55;overflow-wrap:break-word;
+}
+#value .pg-value-body-chunks li:last-child{
+ color:#ddd2ff;border-inline-start-color:#a78bfa;
+}
+#value .pg-value-trial{display:grid;gap:7px}
+#value .pg-value-trial p{margin:0;max-width:850px;font-size:.95rem;line-height:1.6;text-align:start}
+#value .pg-value-trial-promise{color:#b991ff;font-weight:750}
+#value .pg-value-trial-detail{color:var(--text-muted)}
+#value .pg-value-intro[dir="rtl"]{direction:rtl}
+@media(max-width:700px){
+ #value .pg-value-body-chunks{grid-template-columns:minmax(0,1fr);gap:4px}
+ #value .pg-value-body-chunks li{padding:4px 0 5px 12px;font-size:.90rem}
+ #value .pg-value-intro{margin-bottom:22px}
+ #value .pg-value-promise{margin-bottom:12px}
+ #value .pg-value-explanation{margin-bottom:16px}
+ #value .pg-value-trial{gap:6px}
+ #value .pg-value-trial p{font-size:.91rem}
+}
+</style>
+<script id="pg-value-intro-chunk-runtime">
+(function(){
+ 'use strict';
+ var root=document.getElementById('pg-value-intro');
+ var original=document.getElementById('pg-value-body-source');
+ var list=document.getElementById('pg-value-body-chunks');
+ if(!root||!original||!list)return;
+ function splitLocalized(text){
+   var parts=[],start=0,match,re=/[,،，、፣—–]/gu;
+   while((match=re.exec(text))){
+     var at=match.index,mark=match[0],prev=text.charAt(at-1),next=text.charAt(at+1);
+     if(mark===','&&/[0-9]/.test(prev)&&/[0-9]/.test(next))continue;
+     var part=text.slice(start,at).trim();
+     if(part)parts.push(part);
+     start=at+mark.length;
+   }
+   var last=text.slice(start).trim();
+   if(last)parts.push(last);
+   return parts.length>1?parts:[text];
+ }
+ function currentLanguage(){
+   return window._pgI18n&&typeof window._pgI18n.curLang==='function'
+     ?window._pgI18n.curLang():'EN';
+ }
+ function render(){
+   var lang=currentLanguage(),text=original.textContent.trim();
+   var parts=lang==='EN'?[
+     'Build one prompt.',
+     'Use it across the AI services you already know.',
+     'Compare different perspectives in one place.',
+     'Pick the strongest result.',
+     'All in one workspace: 38 languages and 1,000+ reusable templates.'
+   ]:splitLocalized(text);
+   if(!text||!parts.length)return;
+   var frag=document.createDocumentFragment();
+   parts.forEach(function(part){var li=document.createElement('li');li.textContent=part;frag.appendChild(li)});
+   list.replaceChildren(frag);
+   root.setAttribute('dir',lang==='AR'||lang==='HE'?'rtl':'auto');
+   original.hidden=true;list.hidden=false;
+ }
+ function schedule(){requestAnimationFrame(render)}
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',schedule);
+ else schedule();
+ window.addEventListener('pg:languagechange',schedule);
+ window.addEventListener('pageshow',schedule);
+})();
+</script>
+
 <!-- ===== VALUE / PRICING COMPARISON ===== -->
 <section class="section showcase conversion-value-section" id="value">
   <div class="container">
     <div class="section-eyebrow" data-i18n="showcaseEye">💰 Pricing</div>
     <h2 class="section-title" data-i18n="showcaseH">✨ Already Using Free AI?</h2>
-    <p style="max-width:900px;margin:0 0 18px;color:var(--text-muted);font-size:1rem;line-height:1.7;text-align:left"><strong style="color:rgba(255,255,255,.94)" data-i18n="showcaseLead">Free AI gives you answers. Poly-Glot gives you options and a better way to use them.</strong> <span data-i18n="showcaseBody">Build one prompt, use it across the AI services you already know, compare different perspectives in one place, and pick the strongest result — all in one fully localized 38-language workspace with 1,000+ reusable templates.</span></p>
-    <p style="max-width:900px;margin:0 0 28px;color:var(--text-muted);font-size:1rem;line-height:1.7;text-align:left"><strong style="color:#a78bfa" data-i18n="showcaseTrial">Download free and try everything for 3 days.</strong> <span data-i18n="showcasePro">When Poly-Glot becomes part of your daily workflow, Pro unlocks unlimited sends, all templates, and Compare Mode.</span></p>
+    <div class="pg-value-intro" id="pg-value-intro">
+      <p class="pg-value-promise" data-i18n="showcaseLead">Free AI gives you answers. Poly-Glot gives you options and a better way to use them.</p>
+      <div class="pg-value-explanation">
+        <p id="pg-value-body-source" data-i18n="showcaseBody">Build one prompt, use it across the AI services you already know, compare different perspectives in one place, and pick the strongest result — all in one fully localized 38-language workspace with 1,000+ reusable templates.</p>
+        <ul id="pg-value-body-chunks" class="pg-value-body-chunks" hidden></ul>
+      </div>
+      <div class="pg-value-trial">
+        <p class="pg-value-trial-promise" data-i18n="showcaseTrial">Download free and try everything for 3 days.</p>
+        <p class="pg-value-trial-detail" data-i18n="showcasePro">When Poly-Glot becomes part of your daily workflow, Pro unlocks unlimited sends, all templates, and Compare Mode.</p>
+      </div>
+    </div>
 
     <div class="showcase-inline-section">
       <div class="platform-tag" data-i18n="sc1Tag">💰 Why use 1 AI?</div>
