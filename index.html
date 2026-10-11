@@ -14182,5 +14182,40 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
   zoom:1 !important;
 }
 </style>
+
+<style id="pg-iphone-demo-gallery-parity-v2">
+/* Mobile phone preview parity: the two animated demo phones use the same
+   physical frame width as the first iPhone in App Preview (6.9-inch Pro Max). */
+@media(max-width:768px){
+  #demo .demo-device-card.demo-device-card-ask,
+  #demo .demo-device-card.demo-device-card-lang{
+    box-sizing:border-box!important;
+    width:min(72vw,286px)!important;
+    max-width:286px!important;
+    min-width:0!important;
+    margin-inline:auto!important;
+  }
+  #demo .demo-device-card-ask .demo-iphone-frame,
+  #demo .demo-device-card-lang .demo-iphone-frame{
+    box-sizing:border-box!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    margin-inline:auto!important;
+  }
+  #demo .demo-device-card-ask .demo-phone-screen-ask,
+  #demo .demo-device-card-lang #langPhone{
+    height:auto!important;
+    max-height:none!important;
+    aspect-ratio:440 / 956!important;
+  }
+}
+/* Scroll reveal can move the cards, but must not resize their phone frames. */
+@media(prefers-reduced-motion:no-preference){
+  #demo .demo-device-card.pg-motion-card{
+    transform:translate3d(0,var(--pg-card-y,0px),0) scale(1)!important;
+  }
+}
+</style>
 </body>
 </html>
