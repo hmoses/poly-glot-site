@@ -85,3 +85,16 @@
   #pgPrivacyAnalyticsDetails { padding: 12px; }
   #pgPrivacyAnalyticsBody { font-size: .875rem; line-height: 1.85 !important; }
 }
+
+/* Compact feature bento: content-driven heights, no grid stretching. */
+#features .features-grid{align-items:start!important;grid-template-columns:minmax(260px,.88fr) minmax(0,1.72fr)!important}
+#features .feature-secondary-grid{grid-template-rows:auto!important;align-items:start!important;align-content:start!important}
+#features .feature-secondary-grid .feature-card{height:auto!important;min-height:0!important;align-self:start!important;padding:22px!important}
+#features .feature-card.feature-primary{height:auto!important;min-height:0!important;align-self:start!important;justify-content:flex-start!important;padding:26px!important}
+#features .feature-card.feature-primary::after{font-size:3rem;bottom:2px}
+#features .feature-primary-tags{margin-top:16px}
+#features .feature-secondary-grid .feature-card p{line-height:1.7}
+#features .pg-feature-privacy-link{display:inline-flex;align-items:center;margin-top:14px;font-size:.88rem;font-weight:700;color:#9ccaff;text-decoration:underline;text-underline-offset:3px;min-height:30px;align-self:flex-start}
+#features .pg-feature-privacy-link:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media(max-width:900px){#features .features-grid{grid-template-columns:1fr!important}#features .feature-card.feature-primary{min-height:0!important}}
+@media(max-width:620px){#features .feature-secondary-grid{grid-template-columns:1fr!important;grid-template-rows:auto!important}#features .feature-secondary-grid .feature-card{padding:20px!important}}

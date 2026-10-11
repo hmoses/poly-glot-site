@@ -155,7 +155,7 @@ fq1a:"Poly-Glot AI Workspace is a native app for Mac, iPhone & iPad that lets yo
 fq2q:"Where is Poly-Glot AI Workspace available?",
 fq2a:"Available now on the App Store for Mac, iPhone, and iPad. You can also connect via MCP \u2014 see the Connect section.",
 fq3q:"Is my data private?",
-fq3a:"App history and settings may stay on your device. Prompts go to your selected AI provider. Optional PostHog usage analytics does not send prompt text or AI responses; MCP processes requests and records operational metadata. See the Privacy Policy.",
+fq3a:"History and settings may stay on your device. Prompts go to your chosen AI provider. Optional app analytics tracks usage—not prompts or AI responses. MCP requests are processed remotely.",
 fq4q:"What is Compare Mode?",
 fq4a:"Compare Mode lets you send the same prompt to multiple AI providers and compare the responses in one place. Pick the best answer. Included in the free trial and Pro.",
 fq5q:"Which AI providers does Poly-Glot support?",
