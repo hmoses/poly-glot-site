@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - scripts/build_subpage_locales_offline.py
+      - scripts/build_subpage_locales.py
+      - privacy.html
       - .github/workflows/offline-subpages.yml
 permissions:
   contents: write
@@ -33,11 +35,17 @@ jobs:
           PG_ONLY_LOCALE: ${{ matrix.code }}
           HF_HUB_DISABLE_TELEMETRY: "1"
         run: python scripts/build_subpage_locales_offline.py
-      - name: Upload translation catalogs
+      - name: Package only this language's translated catalog
+        shell: bash
+        run: |
+          CODE=$(printf '%s' "${{ matrix.code }}" | tr '[:upper:]' '[:lower:]')
+          mkdir -p artifacts
+          cp "assets/locales/subpages/${CODE}.json" "artifacts/${CODE}.json"
+      - name: Upload one translated catalog
         uses: actions/upload-artifact@v4
         with:
           name: offline-catalogs-${{ matrix.code }}
-          path: assets/locales/subpages/*.json
+          path: artifacts/*.json
           retention-days: 3
   publish:
     needs: generate
@@ -50,6 +58,18 @@ jobs:
           pattern: offline-catalogs-*
           path: assets/locales/subpages
           merge-multiple: true
+      - name: Rebuild English source catalog including revised privacy policy
+        run: |
+          python -m pip install --disable-pip-version-check beautifulsoup4
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts.build_subpage_locales import extract
+          terms=extract()
+          root=Path('assets/locales/subpages')
+          (root/'en.json').write_text(json.dumps(terms,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          print('English source terms:',len(terms))
+          PY
       - name: Verify every visible source entry has a translation in all 37 locales
         run: |
           python - <<'PY'

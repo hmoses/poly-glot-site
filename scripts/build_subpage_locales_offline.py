@@ -62,8 +62,13 @@ def main():
         prefix=[tokenizer.lang_code_to_token[language]]
         target_file=outdir/(code.lower()+'.json')
         # Force regeneration: previously published catalogs lost the first token.
-        old={}
-        output={term:old[term] for term in en if term in old and old[term]}
+        # Preserve existing 38-language translations; translate only newly
+        # published policy copy and other missing strings for this release.
+        try:
+            old=json.loads(target_file.read_text(encoding='utf8')) if target_file.is_file() else {}
+        except (OSError,ValueError):
+            old={}
+        output={term:old[term] for term in en if term in old and isinstance(old[term],str) and old[term].strip()}
         # A lone interface shortcut/technical letter is language-neutral.
         for term in en:
             if term in BRAND_TERMS or re.fullmatch(r'[A-Za-z]',term) or re.fullmatch(r'[A-Z0-9_-]{2,8}',term) or re.fullmatch(r'=+\s*[A-Z0-9 _/+-]+\s*=+',term):
