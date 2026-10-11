@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - scripts/build_subpage_locales_offline.py
+      - scripts/build_subpage_locales.py
+      - privacy.html
       - .github/workflows/offline-subpages.yml
 permissions:
   contents: write
