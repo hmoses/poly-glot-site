@@ -1,0 +1,72 @@
+name: Mac Ask Any AI full-screen fit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - '.github/workflows/mac-ask-full-preview.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fit-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Playwright
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Check full Ask panel within native Mac frame
+        run: |
+          mkdir -p preview-artifacts
+          python -m http.server 8765 --bind 127.0.0.1 >/tmp/pg-preview.log 2>&1 &
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          from pathlib import Path
+          with sync_playwright() as p:
+            browser=p.chromium.launch(headless=True)
+            for width,height in [(375,812),(390,844),(430,932),(1280,900)]:
+              page=browser.new_page(viewport={'width':width,'height':height},device_scale_factor=1)
+              page.goto('http://127.0.0.1:8765/index.html?lang=EN',wait_until='domcontentloaded')
+              page.wait_for_function("""() => document.querySelector('#macScreen-askanyai')?.dataset.pgAskFit &&
+                document.querySelector('#gallery-mac .mac-reference-stage')?.clientWidth>0""",timeout=25000)
+              for code in ['EN','FR','JA','AR']:
+                page.evaluate("code=>window._pgI18n.setLang(code,'🌐')",code)
+                page.wait_for_function("code=>window._pgI18n.curLang()===code && document.documentElement.dataset.deviceUiLang===code",arg=code,timeout=20000)
+                page.evaluate("()=>window.switchMacTab('askanyai')")
+                page.wait_for_timeout(220)
+                x=page.evaluate("""() => {
+                  const stage=document.querySelector('#gallery-mac .mac-reference-stage').getBoundingClientRect();
+                  const content=document.querySelector('#macScreen-askanyai .mac-ask-body').getBoundingClientRect();
+                  const children=Array.from(document.querySelector('#macScreen-askanyai .mac-ask-body').children).map(e=>({
+                    text:e.textContent.trim().slice(0,25), top:e.getBoundingClientRect().top, bottom:e.getBoundingClientRect().bottom,
+                    left:e.getBoundingClientRect().left,right:e.getBoundingClientRect().right
+                  }));
+                  return {stage:{top:stage.top,bottom:stage.bottom,left:stage.left,right:stage.right},
+                    content:{top:content.top,bottom:content.bottom,left:content.left,right:content.right},
+                    children,scale:document.querySelector('#macScreen-askanyai').dataset.pgAskFit}
+                }""")
+                print(width,code,x['scale'],x['stage'],x['content'],flush=True)
+                for k in ['content',*x['children']]:
+                  for edge in ['top','left']:
+                    assert k[edge] >= x['stage'][edge]-2,(width,code,edge,k,x['stage'])
+                  for edge in ['bottom','right']:
+                    assert k[edge] <= x['stage'][edge]+2,(width,code,edge,k,x['stage'])
+                assert len(x['children'])>=7,(width,code,'Missing Ask controls')
+                if code=='EN':
+                  page.locator('#screenshots').screenshot(path=f'preview-artifacts/ask-{width}.png')
+              page.close()
+            browser.close()
+          PY
+      - name: Upload representative screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mac-ask-full-preview
+          path: preview-artifacts/*.png
+          if-no-files-found: ignore
