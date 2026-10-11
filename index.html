@@ -13852,5 +13852,51 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
 <script defer src="assets/js/mcp-technical-accuracy.js?v=20261010-tech-v4"></script>
 <script defer src="assets/js/code-copy.js?v=20261010-copy2"></script>
 <script defer src="assets/js/mcp-subscribe-locales.js?v=20261010-sub1"></script>
+
+<!-- iPhone App Preview layout and sticky-header anchor clearance -->
+<style id="pg-iphone-preview-layout-v1">
+@media (max-width:640px) {
+  .nav .nav-inner{box-sizing:border-box!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;grid-template-rows:auto auto!important;height:auto!important;min-height:100px!important;column-gap:10px!important;row-gap:7px!important;align-items:center!important;padding:9px 16px 10px!important;overflow:visible!important}
+  .nav .nav-inner>div:first-child{grid-column:1/-1!important;grid-row:1!important;min-width:0!important;width:100%!important;flex-shrink:1!important;justify-content:space-between!important;overflow:visible!important}
+  .nav .nav-brand{flex:1 1 auto!important;min-width:0!important;max-width:none!important;overflow:hidden!important}
+  .nav .nav-brand img{width:30px!important;height:30px!important;flex-shrink:0!important}
+  .nav .nav-brand span{font-size:clamp(.72rem,3.05vw,.88rem)!important;line-height:1.28!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+  .nav #pgLangSlot{flex:0 0 auto!important;margin-left:8px!important}
+  .nav .nav-cta{grid-column:1!important;grid-row:2!important;justify-self:start!important;align-self:center!important;max-width:min(100%,240px)!important;padding:7px 10px!important;margin:0!important;min-height:36px!important;box-sizing:border-box!important}
+  .nav .nav-cta a{font-size:.78rem!important}
+  .nav .nav-mobile-toggle{grid-column:2!important;grid-row:2!important;justify-self:end!important;align-self:center!important;min-width:44px!important;min-height:44px!important;display:grid!important;place-items:center!important;margin:0!important;line-height:1!important}
+  .nav-links#pg-mobile-menu.show-mobile{top:var(--pg-iphone-nav-height,110px)!important;max-height:calc(100dvh - var(--pg-iphone-nav-height,110px))!important}
+  section[id],#knowledge-center{scroll-margin-top:calc(var(--pg-iphone-nav-height,110px) + 14px)!important}
+  #hero{scroll-margin-top:var(--pg-iphone-nav-height,110px)!important}
+  #screenshots{scroll-margin-top:calc(var(--pg-iphone-nav-height,110px) + 18px)!important;padding-top:30px!important}
+  #screenshots .container{min-width:0;padding-inline:16px!important}
+  #screenshots .section-title{font-size:clamp(1.55rem,6vw,1.95rem)!important;line-height:1.2!important;margin:0 0 12px!important;color:#f0f4ff!important;overflow-wrap:break-word}
+  #screenshots .section-sub{color:#b8c5df!important;opacity:1!important;font-size:.95rem!important;line-height:1.56!important;margin:0 0 23px!important;overflow-wrap:break-word}
+  #screenshots .gallery-tabs{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important;overflow:visible!important;width:100%!important;margin:0 0 20px!important}
+  #screenshots .gallery-tab{display:flex!important;align-items:center!important;justify-content:center!important;min-width:0!important;min-height:46px!important;box-sizing:border-box!important;padding:9px 5px!important;margin:0!important;border-radius:12px!important;font-size:clamp(.78rem,3.35vw,.95rem)!important;line-height:1.25!important;text-align:center!important;white-space:normal!important;overflow-wrap:break-word!important;hyphens:auto}
+  #screenshots .gallery-tab.active{color:#83ddff!important}
+  #gallery-mac #macTabHint{margin:0 0 14px!important}
+  #gallery-mac #macTabHint span{display:block!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;padding:11px 13px!important;border-radius:14px!important;font-size:clamp(.73rem,3vw,.86rem)!important;font-weight:700!important;line-height:1.5!important;text-align:center!important;white-space:normal!important;overflow-wrap:break-word!important}
+  #gallery-mac .mac-reference-interactive{width:100%!important;max-width:100%!important;margin-inline:auto!important}
+  #gallery-mac #macTabLabel{color:#c7d3e8!important;opacity:1!important;font-size:.84rem!important;line-height:1.5!important;min-height:0!important;margin:12px auto 0!important;padding:0 8px!important;overflow-wrap:break-word!important}
+  #pgChat-bubble{width:48px!important;height:48px!important;right:12px!important;bottom:calc(env(safe-area-inset-bottom,0px) + 12px)!important;box-shadow:0 4px 15px rgba(124,58,237,.34)!important}
+  #pgChat-logo{width:31px!important;height:31px!important}
+  #pgChat-pulse{animation:none!important;opacity:0!important}
+  #pgChat-window{width:calc(100vw - 16px)!important;right:8px!important;bottom:calc(env(safe-area-inset-bottom,0px) + 8px)!important;height:min(620px,calc(100dvh - 95px))!important;max-height:calc(100dvh - 95px)!important}
+}
+@media (max-width:360px){#screenshots .gallery-tab{font-size:.74rem!important;padding-inline:3px!important}.nav .nav-cta{max-width:190px!important}}
+</style>
+<script id="pg-iphone-anchor-clearance-v1">
+(function(){
+  if(!window.matchMedia||!window.matchMedia('(max-width: 640px)').matches)return;
+  var nav=document.querySelector('.nav');if(!nav)return;
+  function sync(){var h=Math.ceil(nav.getBoundingClientRect().height);if(h>0)document.documentElement.style.setProperty('--pg-iphone-nav-height',h+'px')}
+  sync();
+  if(window.ResizeObserver)new ResizeObserver(sync).observe(nav);
+  window.addEventListener('resize',sync,{passive:true});
+  window.addEventListener('pg:languagechange',function(){requestAnimationFrame(sync)});
+  window.addEventListener('load',sync,{once:true});
+})();
+</script>
 </body>
 </html>
