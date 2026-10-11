@@ -3099,6 +3099,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 <script id="pg-value-intro-chunk-runtime">
 (function(){
  'use strict';
+ function boot(){
  var root=document.getElementById('pg-value-intro');
  var original=document.getElementById('pg-value-body-source');
  var list=document.getElementById('pg-value-body-chunks');
@@ -3141,6 +3142,9 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
  else schedule();
  window.addEventListener('pg:languagechange',schedule);
  window.addEventListener('pageshow',schedule);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});
+ else boot();
 })();
 </script>
 
