@@ -169,3 +169,10 @@ html { scroll-behavior: auto !important; }
 @media(max-width:760px){
   #pricing .pricing-grid{grid-template-columns:1fr !important;max-width:480px}
 }
+
+/* Restore original compact pricing card dimensions. Keep extended Free copy below the cards. */
+#pricing .pricing-grid{align-items:start!important}
+#pricing .pricing-grid>.pricing-card{height:max-content!important;min-height:0!important;align-self:start!important}
+#pricing .pg-post-trial-outside{max-width:900px;margin:20px auto 0}
+#pricing .pg-post-trial-outside .free-after-trial-disclosure{max-width:900px;margin:0!important;text-align:left;box-sizing:border-box}
+@media(max-width:760px){#pricing .pg-post-trial-outside{max-width:480px}}
