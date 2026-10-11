@@ -3229,7 +3229,8 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
         <div class="feature-card feature-private">
           <div class="icon-wrap amber">&#128274;</div>
           <h4 data-i18n="fq3q">Is my data private?</h4>
-          <p data-i18n="fq3a">App history and settings stay on your device. Voice input uses on-device speech recognition when available; if on-device recognition fails, the app may fall back to Apple's server-based speech recognition. When you send a prompt, it goes to the AI provider you selected so it can respond. Apple’s and the selected AI provider’s privacy terms apply to data processed by their services.</p>
+          <p data-i18n="fq3a">App history and settings may remain on your device. Prompts are sent to your selected AI provider. Voice recognition may use Apple’s servers if on-device recognition is unavailable. Optional, consent-based PostHog app analytics records usage events, not prompt text or AI responses. Remote MCP requests are processed by the MCP service, which logs operational metadata. See our Privacy Policy for details.</p>
+          <details id="pgPrivacyAnalyticsDetails" style="margin-top:12px;font-size:.87rem"><summary id="pgPrivacyAnalyticsSummary">Optional in-app usage analytics</summary><p id="pgPrivacyAnalyticsBody" style="margin:8px 0">Analytics is optional, and does not transmit prompt text or AI responses.</p><a href="privacy.html">Privacy Policy</a></details>
         </div>
         <div class="feature-card feature-localized">
           <div class="icon-wrap teal">&#127757;</div>
@@ -14147,5 +14148,6 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
 }
 </style>
 <script defer src="assets/js/post-trial-value-locales.js?v=20261010-free-retention1"></script>
+<script defer src="assets/js/privacy-analytics-locales.js?v=20261011-privacy-surfaces2"></script>
 </body>
 </html>

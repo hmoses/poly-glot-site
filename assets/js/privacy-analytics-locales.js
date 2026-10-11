@@ -8,10 +8,17 @@ function apply(){
  var i=window._pgI18n,code=i&&i.curLang?i.curLang():"EN";
  if(!L[code])code="EN";
  var header=document.getElementById("pgAnalyticsPolicyHeading"),body=document.getElementById("pgAnalyticsPolicyBody"),noPrompts=document.getElementById("pgAnalyticsPolicyNoPrompts");
- if(!header||!body)return;
- if(header.textContent!==L[code][0])header.textContent=L[code][0];
- if(body.textContent!==L[code][1])body.textContent=L[code][1];
+ if(!header||!body){ if(!document.getElementById("pgPrivacyAnalyticsSummary"))return; }
+ if(header&&header.textContent!==L[code][0])header.textContent=L[code][0];
+ if(body&&body.textContent!==L[code][1])body.textContent=L[code][1];
  if(noPrompts&&noPrompts.textContent!==NO_PROMPT_CONTENT[code])noPrompts.textContent=NO_PROMPT_CONTENT[code];
+ var faq=(typeof document.querySelector==="function"?document.querySelector('[data-i18n="fq3a"]'):null);
+ // Override outdated marketing locale strings that incorrectly promised no servers or tracking.
+ // Keep the richer reviewed English copy; use curated accurate native-language disclosure elsewhere.
+ if(faq && code!=="EN" && faq.textContent!==L[code][1])faq.textContent=L[code][1];
+ var extraTitle=document.getElementById("pgPrivacyAnalyticsSummary"),extraBody=document.getElementById("pgPrivacyAnalyticsBody");
+ if(extraTitle)extraTitle.textContent=L[code][0];
+ if(extraBody)extraBody.textContent=L[code][1];
  var wrapper=document.getElementById("pgAnalyticsPolicy");
  if(wrapper)wrapper.dir=code==="AR"||code==="HE"?"rtl":"ltr";
 }

@@ -13,6 +13,10 @@ Direct answers about Poly-Glot AI Workspace privacy, third-party providers, free
 
 App history and settings can remain on-device. Submitted prompts go to the selected AI provider, while remote MCP requests pass through the Poly-Glot server. The MCP service verifies entitlements and records operational usage metadata; processing providers have their own privacy policies.
 
+## Does optional analytics collect prompts or AI responses?
+
+No. With consent in iOS or macOS Settings, optional PostHog telemetry sends limited usage events but not prompt text or AI responses. Users can disable analytics in Settings. MCP operational metadata logging and website analytics/advertising pixels are separate. See the [Privacy Policy](https://hmoses.github.io/poly-glot-site/privacy.html).
+
 ## What happens to voice input?
 
 Voice input can use on-device recognition where supported, with a server-based fallback depending on the device and settings. The MCP `transcribe_audio` tool sends supplied audio to its configured transcription provider and requires active trial or Pro access.
