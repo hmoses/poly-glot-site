@@ -3071,7 +3071,25 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
     <div class="showcase-inline-section">
       <div class="platform-tag" data-i18n="sc1Tag">💰 Why use 1 AI?</div>
       <h3 data-i18n="sc1H">🔀 Compare 9 AIs — Pick the Best Answer</h3>
-      <p data-i18n="sc1P">Send the same prompt to ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, and DuckDuckGo AI. Compare answers with 🔀 Compare Mode. Fully localized in 38 languages. Start with a 3-day full-access trial, then keep using Poly-Glot with 1 free send every rolling 24 hours. Upgrade to Pro for unlimited sends, all templates, and Compare Mode.</p>
+      <ul id="pg-sc1-chunks" class="pg-sc1-chunks">
+        <li class="pg-sc1-chunk">
+          <span class="pg-sc1-icon" aria-hidden="true">🤖</span>
+          <div><p data-pg-sc1="providers">Send the same prompt to:</p>
+            <p class="pg-sc1-provider-names">ChatGPT · Claude · Gemini · Grok · Perplexity · Copilot · Mistral · HuggingChat · DuckDuckGo AI</p></div>
+        </li>
+        <li class="pg-sc1-chunk">
+          <span class="pg-sc1-icon" aria-hidden="true">🔀</span>
+          <p data-pg-sc1="compare">Compare answers with 🔀 Compare Mode. Fully localized in 38 languages.</p>
+        </li>
+        <li class="pg-sc1-chunk">
+          <span class="pg-sc1-icon" aria-hidden="true">🎁</span>
+          <p data-pg-sc1="trial">Start with a 3-day full-access trial, then keep using Poly-Glot with 1 free send every rolling 24 hours.</p>
+        </li>
+        <li class="pg-sc1-chunk">
+          <span class="pg-sc1-icon" aria-hidden="true">✨</span>
+          <p data-pg-sc1="pro">Upgrade to Pro for unlimited sends, all templates, and Compare Mode.</p>
+        </li>
+      </ul>
 
       <div class="inline-pricing-row">
         <div class="inline-price-item inline-price-competitor">
@@ -14159,5 +14177,23 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
 }
 </style>
 <script defer src="assets/js/compare-guide-locales.js?v=20261011-steps-38"></script>
+<style id="pg-sc1-chunks-styles">
+/* Short scannable value messages instead of one long block; no pricing logic changes. */
+#value .pg-sc1-chunks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;list-style:none;margin:14px 0 25px;padding:0;width:100%;max-width:1020px}
+#value .pg-sc1-chunk{display:flex;align-items:flex-start;gap:12px;min-width:0;border:1px solid rgba(125,211,252,.15);background:linear-gradient(135deg,rgba(125,211,252,.045),rgba(167,139,250,.032));border-radius:13px;padding:14px 15px;color:var(--text)}
+#value .pg-sc1-chunk .pg-sc1-icon{flex:0 0 27px;display:inline-flex;justify-content:center;align-items:center;font-size:18px;line-height:1.35}
+#value .pg-sc1-chunk>div{min-width:0}
+#value .pg-sc1-chunk p{margin:0!important;font-size:.88rem;line-height:1.55;text-align:start;color:var(--text-muted);overflow-wrap:anywhere}
+#value .pg-sc1-chunk p[data-pg-sc1="providers"]{font-weight:700;color:#d9efff;margin-bottom:5px!important}
+#value .pg-sc1-chunk .pg-sc1-provider-names{font-size:.81rem;line-height:1.6;color:#c6d3e4;overflow-wrap:normal}
+#value .pg-sc1-chunks[dir="rtl"]{direction:rtl}
+@media(max-width:690px){
+ #value .pg-sc1-chunks{grid-template-columns:1fr;gap:9px;margin:13px 0 21px}
+ #value .pg-sc1-chunk{padding:12px 13px;gap:10px;border-radius:12px}
+ #value .pg-sc1-chunk p{font-size:.85rem;line-height:1.54}
+ #value .pg-sc1-chunk .pg-sc1-provider-names{font-size:.79rem}
+}
+</style>
+<script defer src="assets/js/value-chunks-locales.js?v=20261011-four-chunks-38"></script>
 </body>
 </html>
