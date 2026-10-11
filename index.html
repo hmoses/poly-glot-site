@@ -14150,5 +14150,37 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
 </style>
 <script defer src="assets/js/post-trial-value-locales.js?v=20261010-free-retention1"></script>
 <script defer src="assets/js/privacy-analytics-locales.js?v=20261011-privacy-surfaces2"></script>
-<script defer src="assets/js/scanable-copy.js?v=20261011-readability1"></script></body>
+<script defer src="assets/js/scanable-copy.js?v=20261011-readability1"></script><style id="pg-iphone-pro-max-sizing-v1">
+/* 6.9-inch Pro Max presentation: keep the phone hardware and its app UI in sync.
+   CSS zoom participates in layout, unlike transform:scale, avoiding empty frame space. */
+:root { --pg-iphone-preview-scale: .90; }
+.hero-device-stack .hero-phone-mock,
+#gallery-iphone .iphone-device,
+#demo .demo-iphone-frame {
+  zoom: var(--pg-iphone-preview-scale) !important;
+}
+/* Pro Max 440x956 logical-point screen ratio; phone content scales with the frame. */
+#gallery-iphone .iphone-screen {
+  aspect-ratio: 440 / 956 !important;
+}
+@media (max-width:768px) {
+  .hero-phone-mock,
+  .hero-device-stack .hero-phone-mock {
+    height:auto !important;
+    max-height:none !important;
+  }
+  .hero-phone-mock .phone-screen,
+  .hero-device-stack .hero-phone-mock .phone-screen,
+  #demo .demo-phone-screen,
+  #demo #langPhone {
+    aspect-ratio:440 / 956 !important;
+  }
+}
+/* Lightbox remains full-size for comfortable inspection. */
+#pgLightboxClone > .iphone-device,
+#pgLightboxClone > .demo-iphone-frame {
+  zoom:1 !important;
+}
+</style>
+</body>
 </html>
