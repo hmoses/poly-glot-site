@@ -13898,5 +13898,175 @@ html[data-device-ui-lang="HE"] #gallery-mac #macScreen-askanyai .mac-native-help
   window.addEventListener('load',sync,{once:true});
 })();
 </script>
+
+<!-- Scale the Ask Any AI *content* to the actual Mac display, without resizing other panels. -->
+<style id="pg-mac-ask-full-fit-v1">
+/* Root prefix intentionally wins over earlier locale-specific fixed-height overrides. */
+html:root #gallery-mac #macScreen-askanyai .mac-ask-body{
+  position:absolute!important;
+  top:var(--pg-mac-ask-top,0px)!important;
+  left:var(--pg-mac-ask-left,0px)!important;
+  width:760px!important;
+  min-width:760px!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  box-sizing:border-box!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:8px!important;
+  margin:0!important;
+  padding:14px 20px!important;
+  overflow:visible!important;
+  background:#0d1117!important;
+  transform-origin:top left!important;
+  transform:scale(var(--pg-mac-ask-scale,1))!important;
+  transition:none!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-native-ask-title{
+  flex:0 0 auto!important;
+  font-size:21px!important;
+  line-height:1.2!important;
+  margin:0!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-native-help{
+  flex:0 0 auto!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  gap:12px!important;
+  align-items:start!important;
+  margin:0!important;
+  min-width:0!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-native-help-lines{
+  padding:0!important;
+  font-size:12px!important;
+  line-height:1.34!important;
+  min-width:0!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-native-help-lines > div{
+  white-space:normal!important;
+  text-overflow:clip!important;
+  overflow:visible!important;
+  overflow-wrap:break-word!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-native-how-link{
+  position:static!important;
+  align-self:start!important;
+  width:auto!important;
+  margin:0!important;
+  font-size:12px!important;
+  line-height:1.4!important;
+  white-space:nowrap!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-response-row{
+  flex:0 0 auto!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,42%)!important;
+  align-items:center!important;
+  width:100%!important;
+  gap:10px!important;
+  margin:0!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-response-label{
+  font-size:12px!important;
+  min-width:0!important;
+  white-space:normal!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-response-select{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+  font-size:12px!important;
+  padding:7px 12px!important;
+  margin:0!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(4){
+  flex:0 0 auto!important;
+  width:100%!important;
+  height:110px!important;
+  min-height:110px!important;
+  max-height:none!important;
+  box-sizing:border-box!important;
+  padding:12px 15px!important;
+  margin:0!important;
+  overflow:hidden!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(4) > div{
+  font-size:12px!important;
+  line-height:1.45!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(5){
+  flex:0 0 auto!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:8px!important;
+  width:100%!important;
+  margin:0!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(5) > div{
+  min-width:0!important;
+  padding:7px 10px!important;
+  font-size:12px!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(6){
+  flex:0 0 auto!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:12px!important;
+  width:100%!important;
+  margin:0!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(6)>div{
+  font-size:12px!important;
+}
+html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
+  flex:0 0 auto!important;
+  font-size:10px!important;
+  margin:0!important;
+}
+/* The real screen frame still performs the clip; only the interior is scaled. */
+#gallery-mac #macScreen-askanyai{
+  overflow:hidden!important;
+  contain:layout paint!important;
+}
+@media(prefers-reduced-motion:reduce){
+  html:root #gallery-mac #macScreen-askanyai .mac-ask-body{transition:none!important}
+}
+</style>
+<script id="pg-mac-ask-auto-fit-v1">
+(function(){
+  var screen=document.getElementById('macScreen-askanyai');
+  var stage=document.querySelector('#gallery-mac .mac-reference-stage');
+  var body=screen&&screen.querySelector('.mac-ask-body');
+  if(!screen||!stage||!body) return;
+  var baseWidth=760,frame=0;
+  function fit(){
+    frame=0;
+    var availableWidth=stage.clientWidth,availableHeight=stage.clientHeight;
+    if(!availableWidth||!availableHeight)return;
+    // scrollHeight is measured in untransformed layout pixels.
+    var neededHeight=Math.max(1,body.scrollHeight);
+    var scale=Math.min(1,availableWidth/baseWidth,availableHeight/(neededHeight+2));
+    if(!Number.isFinite(scale)||scale<=0)return;
+    body.style.setProperty('--pg-mac-ask-scale',scale.toFixed(5));
+    body.style.setProperty('--pg-mac-ask-left',Math.max(0,(availableWidth-baseWidth*scale)/2).toFixed(2)+'px');
+    body.style.setProperty('--pg-mac-ask-top',Math.max(0,(availableHeight-neededHeight*scale)/2).toFixed(2)+'px');
+    screen.dataset.pgAskFit=scale.toFixed(3);
+  }
+  function schedule(){if(frame)return;frame=requestAnimationFrame(fit)}
+  if(window.ResizeObserver)new ResizeObserver(schedule).observe(stage);
+  if(window.MutationObserver){
+    new MutationObserver(schedule).observe(body,{subtree:true,characterData:true,childList:true});
+  }
+  window.addEventListener('resize',schedule,{passive:true});
+  window.addEventListener('pg:languagechange',function(){schedule();setTimeout(schedule,80);setTimeout(schedule,250)});
+  window.addEventListener('load',schedule);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(schedule);
+  schedule();
+})();
+</script>
 </body>
 </html>
