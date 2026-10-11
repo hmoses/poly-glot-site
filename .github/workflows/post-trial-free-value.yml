@@ -1,0 +1,78 @@
+name: Post-trial Free value localization and mobile fit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'assets/js/post-trial-value-locales.js'
+      - '.github/workflows/post-trial-free-value.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Check complete 38-language copy and card geometry
+        run: |
+          mkdir -p artifacts
+          python -m http.server 8765 --bind 127.0.0.1 >/tmp/pg-post-trial.log 2>&1 &
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          codes="EN ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM".split()
+          with sync_playwright() as p:
+            browser=p.chromium.launch(headless=True)
+            for width,height in [(375,812),(390,844),(1280,900)]:
+              page=browser.new_page(viewport={'width':width,'height':height},reduced_motion='reduce')
+              errors=[]
+              page.on('pageerror',lambda error:errors.append(str(error)))
+              page.goto('http://127.0.0.1:8765/index.html?lang=EN',wait_until='domcontentloaded')
+              page.wait_for_function("""() => window._pgI18n && document.getElementById('pg-free-after-trial')?.dataset.localized==='EN'""",timeout=25000)
+              selected=codes if width==390 else ['EN','FR','JA','AR','HE','ZH_TW','AM']
+              for code in selected:
+                page.evaluate("(code)=>window._pgI18n.setLang(code,'🌐')",code)
+                page.wait_for_function("(code)=>document.querySelector('#pg-free-after-trial')?.dataset.localized===code",arg=code,timeout=15000)
+                data=page.evaluate("""() => {
+                  const root=document.getElementById('pg-free-after-trial');
+                  const heading=document.getElementById('pg-post-trial-heading');
+                  const benefits=document.getElementById('pg-post-trial-benefits');
+                  const note=document.getElementById('pg-post-trial-note');
+                  const outer=root.closest('.pricing-card');
+                  const r=root.getBoundingClientRect(),parent=outer.getBoundingClientRect();
+                  return {heading:heading.textContent,benefits:benefits.textContent,note:note.textContent,
+                    headingDir:heading.getAttribute('dir'),
+                    cardWidth:r.width,parentWidth:parent.width,scrollWidth:root.scrollWidth,clientWidth:root.clientWidth};
+                }""")
+                assert all(data[k].strip() for k in ['heading','benefits','note']),(width,code,'missing copy')
+                if code!='EN':
+                  assert data['heading']!='Your free workspace is here to stay.',(width,code,'English heading')
+                  assert data['note']!='No automatic subscription. Compare Mode, Pro templates, and unlimited sends require Pro.',(width,code,'English note')
+                assert data['headingDir']==('rtl' if code in ('AR','HE') else 'auto'),(width,code,'direction')
+                assert data['cardWidth']<=data['parentWidth']+1,(width,code,'card overflow',data)
+                assert data['scrollWidth']<=data['clientWidth']+2,(width,code,'content overflow',data)
+                if width==390 and code in ('EN','FR','AR'):
+                  page.locator('#pricing .pricing-card').first.screenshot(path=f'artifacts/after-trial-{code}-390.png')
+              page.evaluate("()=>window._pgI18n.setLang('EN','🇺🇸')")
+              page.wait_for_function("document.querySelector('#pg-free-after-trial')?.dataset.localized==='EN'")
+              assert page.locator('#pg-post-trial-heading').inner_text()=='Your free workspace is here to stay.'
+              assert not errors,(width,'JavaScript errors',errors[:5])
+              print('PASS',width,len(selected),'locales, translated free-trial benefits, RTL, no pricing-card overflow')
+              page.close()
+            browser.close()
+          PY
+      - name: Save screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-trial-free-card
+          path: artifacts/*.png
+          if-no-files-found: ignore
