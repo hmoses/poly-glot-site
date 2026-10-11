@@ -176,7 +176,12 @@ function apply(){
    var titleLabel="[document-title] "+originalDocumentTitle;
    if(!seen.has(titleLabel)){
      seen.add(titleLabel);
-     if(lang!=="EN"&&!translate(originalDocumentTitle,lang))missing.push(titleLabel);
+     // A localized page heading is used to build the browser title on
+     // technical subpages. Do not flag the untranslated English source title
+     // if the actual browser title is already localized.
+     var localizedBrowserTitle=document.title && document.title!==originalDocumentTitle &&
+       !document.title.startsWith("Poly-Glot MCP Setup:");
+     if(lang!=="EN"&&!translate(originalDocumentTitle,lang)&&!localizedBrowserTitle)missing.push(titleLabel);
    }
  }
  allAttrs.forEach(function(x){if(!x.term||seen.has(x.term))return;seen.add(x.term);if(lang!=="EN"&&!translate(x.term,lang))missing.push(x.a+": "+x.term);});
