@@ -98,3 +98,45 @@
 #features .pg-feature-privacy-link:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 @media(max-width:900px){#features .features-grid{grid-template-columns:1fr!important}#features .feature-card.feature-primary{min-height:0!important}}
 @media(max-width:620px){#features .feature-secondary-grid{grid-template-columns:1fr!important;grid-template-rows:auto!important}#features .feature-secondary-grid .feature-card{padding:20px!important}}
+
+/* 2026-10-11: Duo section must never trap scrolling or dominate the viewport. */
+html { scroll-behavior: auto !important; }
+#iphone-duo.duo-coming {
+  padding-block: clamp(26px, 4vw, 54px);
+  overflow: clip;
+  touch-action: pan-y;
+}
+#iphone-duo .duo-coming-inner {
+  align-items: center;
+  gap: clamp(22px, 3.2vw, 48px);
+}
+#iphone-duo .duo-exact-figure {
+  max-width: 100%;
+  max-height: min(70vh, 660px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: pan-y;
+}
+#iphone-duo .duo-exact-image.duo-static-en {
+  width: auto !important;
+  max-width: 100% !important;
+  max-height: min(70vh, 660px) !important;
+  object-fit: contain !important;
+  pointer-events: none;
+}
+#iphone-duo .duo-localized-overlay,
+#iphone-duo .duo-localized-device { pointer-events: none !important; }
+#features .feature-card,
+#features .feature-card.feature-primary,
+#features .feature-secondary-grid .feature-card {
+  max-height: none !important;
+  min-height: 0 !important;
+  height: fit-content !important;
+}
+#features .feature-secondary-grid { align-items: start !important; }
+#features .feature-card.feature-primary { justify-content: flex-start !important; }
+@media(max-width:900px){
+  #iphone-duo .duo-exact-figure { max-height: 55vh; }
+  #iphone-duo .duo-exact-image.duo-static-en { max-height: 55vh !important; }
+}
