@@ -6,7 +6,9 @@ Translations should be reviewed by a fluent reviewer for legally significant wor
 import json, os, time, re
 from pathlib import Path
 from bs4 import BeautifulSoup, NavigableString
-from deep_translator import GoogleTranslator
+from huggingface_hub import snapshot_download
+import ctranslate2
+from transformers import M2M100Tokenizer
 ROOT=Path(__file__).resolve().parents[1]
 LANG={'ES':'es','FR':'fr','DE':'de','IT':'it','PT':'pt','NL':'nl','RU':'ru','ZH':'zh-CN','ZH_TW':'zh-TW','JA':'ja','KO':'ko','AR':'ar','HI':'hi','BN':'bn','TR':'tr','PL':'pl','SV':'sv','NO':'no','DA':'da','FI':'fi','EL':'el','HE':'iw','ID':'id','MS':'ms','TH':'th','VI':'vi','UK':'uk','CS':'cs','RO':'ro','HU':'hu','SK':'sk','HR':'hr','CA':'ca','AF':'af','SW':'sw','HA':'ha','AM':'am'}
 def clean(s):return " ".join(s.split())
@@ -30,19 +32,32 @@ assert code in LANG, 'Must translate precisely one supported locale'
 path=root/(code.lower()+'.json')
 prior=json.loads(path.read_text(encoding='utf8')) if path.exists() else {}
 translation=prior.copy()
-engine=GoogleTranslator(source='en',target=LANG[code])
+from build_subpage_locales_offline import CODES
+model=Path(os.environ.get('PG_OFFLINE_MODEL','/tmp/polyglot-m2m100-privacy'))
+snapshot_download(repo_id='gn64/M2M100_418M_CTranslate2',local_dir=str(model),
+                  allow_patterns=['model.bin','config.json','sentencepiece.bpe.model','shared_vocabulary.json'])
+tokenizer=M2M100Tokenizer.from_pretrained('facebook/m2m100_418M')
+tokenizer.src_lang='en'
+translator=ctranslate2.Translator(str(model),device='cpu',compute_type='int8',inter_threads=2,intra_threads=2)
+prefix=[tokenizer.lang_code_to_token[CODES[code]]]
+traditional=None
+if code=='ZH_TW':
+    from opencc import OpenCC
+    traditional=OpenCC('s2t')
+def translate(text):
+    tokens=tokenizer.convert_ids_to_tokens(tokenizer.encode(text))
+    result=translator.translate_batch([tokens],target_prefix=[prefix],beam_size=2,max_decoding_length=512)[0]
+    output=list(result.hypotheses[0])
+    if output and output[0]==prefix[0]:output=output[1:]
+    decoded=tokenizer.decode(tokenizer.convert_tokens_to_ids(output),skip_special_tokens=True).strip()
+    if traditional:decoded=traditional.convert(decoded)
+    if not decoded:raise RuntimeError('Offline model returned empty translation for '+code+' / '+text[:80])
+    return decoded
 for original in strings:
  if original in curated[code]:
   result=curated[code][original]
  else:
-  result=None
-  for attempt in range(6):
-   try:
-    result=engine.translate(original)
-    if result and result.strip():break
-   except Exception as err:
-    print(code,'retry',attempt+1,str(err)[:120],flush=True)
-   time.sleep(min(16,2**attempt))
+  result=translate(original)
  assert isinstance(result,str) and result.strip(),f'{code}: untranslated: {original[:100]}'
  translation[original]=result.strip()
 path.write_text(json.dumps(translation,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
