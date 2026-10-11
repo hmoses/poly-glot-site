@@ -67,7 +67,7 @@ jobs:
           from scripts.build_subpage_locales import extract
           terms=extract()
           root=Path('assets/locales/subpages')
-          (root/'en.json').write_text(json.dumps(terms,ensure_ascii=False,indent=2)+'\\n',encoding='utf8')
+          (root/'en.json').write_text(json.dumps(terms,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
           print('English source terms:',len(terms))
           PY
       - name: Verify every visible source entry has a translation in all 37 locales
