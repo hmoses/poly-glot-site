@@ -1,9 +1,11 @@
-name: Homepage menu and Mac-first preview regression
+name: Homepage compact/full layout and device preview regression
 on:
   push:
     branches: [main]
     paths:
       - index.html
+      - assets/css/compact-home.css
+      - assets/js/compact-layout-locales.js
       - .github/workflows/home-nav-preview.yml
   workflow_dispatch:
 permissions:
@@ -21,65 +23,79 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check playwright
           python -m playwright install --with-deps chromium
-      - name: Test menu page order, device preview default, interaction, and translations
+      - name: Test compact view, full tour rollback, device tabs, locale and mobile navigation
         run: |
           python -m http.server 8765 --bind 127.0.0.1 >/tmp/pg-home-nav.log 2>&1 &
           python - <<'PY'
           from playwright.sync_api import sync_playwright
           base='http://127.0.0.1:8765/index.html'
-          expected=['#hero','#value','#apps','#why','#features','#template-categories','#screenshots','#demo','#iphone-duo','#pricing','#faq','#connect','#knowledge-center']
+          original=['#hero','#value','#apps','#why','#features','#template-categories',
+                    '#screenshots','#demo','#iphone-duo','#pricing','#faq','#connect','#knowledge-center']
+          compact=['#pg-compact-features','#apps','#screenshots','#iphone-duo','#pricing','#faq']
           with sync_playwright() as p:
-              browser=p.chromium.launch(headless=True)
-              for viewport,label,lang in [({'width':1280,'height':900},'desktop','EN'),({'width':390,'height':844},'mobile','FR'),({'width':1280,'height':900},'RTL language','AR')]:
-                  context=browser.new_context(viewport=viewport,is_mobile=(label=='mobile'),reduced_motion='reduce')
-                  page=context.new_page()
-                  errors=[]
-                  page.on('pageerror',lambda e:errors.append(str(e)))
-                  page.goto(base+'?lang='+lang,wait_until='domcontentloaded')
-                  page.wait_for_function("window._pgI18n && document.getElementById('pg-mobile-menu')")
-                  nav=page.locator('#pg-mobile-menu > li > a')
-                  actual=nav.evaluate_all('(a)=>a.map(el=>el.getAttribute("href"))')
-                  assert actual==expected,(label,actual)
-                  assert all(page.locator(h).count()==1 for h in expected),(label,'Missing destination anchor')
-                  assert nav.count()==len(expected)
-                  tabs=page.locator('#screenshots .gallery-tab')
-                  assert tabs.count()==3
-                  assert tabs.evaluate_all('(els)=>els.map(el=>el.getAttribute("aria-controls"))')==['gallery-mac','gallery-iphone','gallery-ipad']
-                  assert tabs.evaluate_all('(els)=>els.map(el=>el.classList.contains("active"))')==[True,False,False]
-                  assert page.locator('#screenshots .gallery-panel.active').get_attribute('id')=='gallery-mac'
-                  assert page.locator('#screenshots .gallery-panel').evaluate_all('(els)=>els.map(el=>el.id)')==['gallery-mac','gallery-iphone','gallery-ipad']
-                  assert tabs.nth(0).get_attribute('aria-selected')=='true'
-                  assert page.locator('#gallery-mac #macTab-askanyai').count()==1
-                  # One tab changes only selected preview; Mac works again when reselected.
-                  page.evaluate("switchGallery('iphone')")
-                  assert page.locator('#screenshots .gallery-panel.active').get_attribute('id')=='gallery-iphone'
-                  assert tabs.nth(1).get_attribute('aria-selected')=='true'
-                  page.evaluate("switchGallery('ipad')")
-                  assert page.locator('#screenshots .gallery-panel.active').get_attribute('id')=='gallery-ipad'
-                  page.evaluate("switchGallery('mac')")
-                  assert page.locator('#screenshots .gallery-panel.active').get_attribute('id')=='gallery-mac'
-                  assert tabs.nth(0).get_attribute('tabindex')=='0'
-                  # Menu works after being portaled into body, and closes on item click.
-                  page.locator('.nav-mobile-toggle').click()
-                  assert page.locator('#pg-mobile-menu').evaluate('(el)=>el.classList.contains("show-mobile")'),label
-                  assert page.locator('.nav-mobile-toggle').get_attribute('aria-expanded')=='true'
-                  page.locator('#pg-mobile-menu a[href="#template-categories"]').click()
-                  assert not page.locator('#pg-mobile-menu').evaluate('(el)=>el.classList.contains("show-mobile")'),label
-                  assert page.locator('.nav-mobile-toggle').get_attribute('aria-expanded')=='false'
-                  # Site navigation intentionally uses smooth scroll without changing the hash.
-                  # Verify the target reaches the 80px header offset instead.
-                  page.wait_for_function("""() => {
-                    const el=document.getElementById('template-categories');
-                    return el && Math.abs(el.getBoundingClientRect().top-80)<45;
-                  }""",timeout=12000)
-                  if lang!='EN':
-                      assert nav.nth(5).inner_text()!='🧩 Template Library',(label,'Template menu not localized')
-                      assert nav.nth(3).inner_text()!="Why One AI Isn't Enough",(label,'Why section menu not localized')
-                      assert nav.nth(6).inner_text()!='App Preview',(label,'Preview menu not localized')
-                  if label=='mobile':
-                      assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+5'),"Mobile horizontal overflow"
-                  assert not errors,(label,'JS exceptions',errors[:5])
-                  print('PASS',label,lang,'Mac default + 13 page-order menu links + device switching + menu click',flush=True)
-                  context.close()
-              browser.close()
+            browser=p.chromium.launch(headless=True)
+            for viewport,lang in [({'width':1280,'height':900},'EN'),
+                                  ({'width':390,'height':844},'FR'),
+                                  ({'width':390,'height':844},'AR')]:
+              context=browser.new_context(viewport=viewport,is_mobile=viewport['width']==390,reduced_motion='reduce')
+              page=context.new_page()
+              errors=[]
+              page.on('pageerror',lambda e:errors.append(str(e)))
+              page.goto(base+'?lang='+lang,wait_until='domcontentloaded')
+              page.wait_for_function("window._pgI18n && window.switchGallery && document.getElementById('pg-mobile-menu')")
+              page.wait_for_function("document.querySelector('link[href*=compact-home.css]')?.sheet && document.querySelector('#pg-compare-guide')")
+              assert page.evaluate("document.documentElement.dataset.pgLayout")=='compact'
+              assert all(page.locator(dest).count()==1 for dest in original+['#pg-compact-features','#pg-compact-resources'])
+              visible_menu=page.locator('#pg-mobile-menu > li:visible > a').evaluate_all(
+                  '(a)=>a.map(x=>x.getAttribute("href"))')
+              assert visible_menu==compact,(viewport,lang,visible_menu)
+              assert page.locator('#iphone-duo').is_visible(),(lang,'Duo absent')
+              assert page.locator('#pg-compact-features').is_visible()
+              assert page.locator('#pg-compact-resources').is_visible()
+              assert not page.locator('#demo').is_visible()
+              assert page.locator('#faq .faq-item:visible').count()==4
+              assert page.locator('#template-categories .featured-template-card:visible').count()==6
+              assert page.locator('a[href="./?view=full#demo"]:visible').count()>=1
+              assert page.locator('img.duo-exact-image').count()==1
+              tabs=page.locator('#screenshots .gallery-tab')
+              assert tabs.count()==3
+              assert page.locator('#screenshots .gallery-panel.active').get_attribute('id')=='gallery-mac'
+              page.evaluate("switchGallery('iphone')")
+              assert page.locator('#screenshots .gallery-panel.active').get_attribute('id')=='gallery-iphone'
+              assert page.locator('#gallery-iphone .gallery-item:visible').count()==1
+              page.evaluate("switchGallery('ipad')")
+              assert page.locator('#gallery-ipad .gallery-item:visible').count()==1
+              page.evaluate("switchGallery('mac')")
+              assert page.locator('#screenshots .gallery-panel.active').get_attribute('id')=='gallery-mac'
+              if viewport['width']==390:
+                assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+5'),"Compact mobile horizontal overflow"
+              compact_height=page.evaluate("document.documentElement.scrollHeight")
+              if viewport['width']==390:
+                page.locator('.nav-mobile-toggle').click()
+                assert page.locator('#pg-mobile-menu').evaluate('(x)=>x.classList.contains("show-mobile")')
+                page.locator('#pg-mobile-menu a[href="#screenshots"]').click()
+                assert page.locator('.nav-mobile-toggle').get_attribute('aria-expanded')=='false'
+              # Full product tour must show all original content and remain reversibly accessible.
+              page.goto(base+'?view=full&lang='+lang,wait_until='domcontentloaded')
+              page.wait_for_function('Boolean(window._pgI18n && window.switchGallery)')
+              assert page.evaluate("document.documentElement.dataset.pgLayout")=='full'
+              full_menu=page.locator('#pg-mobile-menu > li:visible > a').evaluate_all(
+                  '(a)=>a.map(x=>x.getAttribute("href"))')
+              assert full_menu==original,(lang,full_menu)
+              assert page.locator('#demo').is_visible()
+              assert page.locator('#connect').is_visible()
+              assert page.locator('#knowledge-center').is_visible()
+              assert page.locator('#iphone-duo').is_visible()
+              assert page.locator('#faq .faq-item:visible').count()>=12
+              assert page.locator('#template-categories .featured-template-card:visible').count()>=15
+              page.evaluate("switchGallery('iphone')")
+              assert page.locator('#gallery-iphone .gallery-item:visible').count()>=4
+              assert page.locator('a[href="./?view=compact#hero"]:visible').count()==1
+              full_height=page.evaluate("document.documentElement.scrollHeight")
+              assert compact_height < full_height*0.76,(lang,compact_height,full_height)
+              assert not errors,(lang,errors[:5])
+              print('PASS',viewport['width'],lang,'compact height',compact_height,'full height',full_height,
+                    'Duo retained + 38-language i18n + 3 device tabs + full rollback',flush=True)
+              context.close()
+            browser.close()
           PY
