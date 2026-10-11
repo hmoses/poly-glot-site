@@ -19,6 +19,8 @@ function apply(){
  var extraTitle=document.getElementById("pgPrivacyAnalyticsSummary"),extraBody=document.getElementById("pgPrivacyAnalyticsBody");
  if(extraTitle)extraTitle.textContent=L[code][0];
  if(extraBody)extraBody.textContent=L[code][1];
+ var accordion=document.getElementById("pgPrivacyAnalyticsDetails");
+ if(accordion)accordion.dir=(code==="AR"||code==="HE")?"rtl":"ltr";
  var wrapper=document.getElementById("pgAnalyticsPolicy");
  if(wrapper)wrapper.dir=code==="AR"||code==="HE"?"rtl":"ltr";
 }

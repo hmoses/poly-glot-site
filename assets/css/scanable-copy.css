@@ -1,0 +1,87 @@
+/* Shared, responsive readability enhancements across content pages. */
+:where(main, article, .feature-card, .guide-card) p,
+:where(main, article, .feature-card, .guide-card) li {
+  line-height: 1.78;
+  overflow-wrap: break-word;
+}
+:where(main, article, .feature-card, .guide-card) p {
+  text-wrap: pretty;
+}
+.pg-scanable-copy .pg-copy-chunk {
+  display: block;
+  line-height: 1.76;
+}
+.pg-scanable-copy .pg-copy-chunk + .pg-copy-chunk {
+  margin-top: .85em;
+}
+:where(main, article) > p,
+:where(main, article) > section > p {
+  max-width: 74ch;
+}
+@media (max-width:640px) {
+  .pg-scanable-copy .pg-copy-chunk + .pg-copy-chunk { margin-top: 1em; }
+  :where(main, article, .feature-card, .guide-card) p { line-height: 1.82; }
+}
+
+/* Homepage privacy accordion: readable on narrow and wide screens. */
+#pgPrivacyAnalyticsDetails {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  margin-top: 16px !important;
+  padding: 12px 14px;
+  border: 1px solid rgba(148, 163, 184, .28);
+  border-radius: 12px;
+  background: rgba(127, 145, 170, .07);
+  font-size: .875rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+#pgPrivacyAnalyticsSummary {
+  display: list-item;
+  cursor: pointer;
+  font-size: .9rem;
+  font-weight: 650;
+  line-height: 1.5;
+  text-wrap: pretty;
+  padding-inline-end: .5rem;
+}
+#pgPrivacyAnalyticsSummary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+#pgPrivacyAnalyticsDetails[open] #pgPrivacyAnalyticsSummary {
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(148, 163, 184, .25);
+  margin-bottom: 12px;
+}
+#pgPrivacyAnalyticsBody {
+  display: block;
+  max-width: 65ch;
+  margin: 0 0 14px !important;
+  padding: 0;
+  font-size: .86rem;
+  line-height: 1.8 !important;
+  font-weight: 400;
+  text-align: start;
+  white-space: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+#pgPrivacyAnalyticsDetails > a[href="privacy.html"] {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  margin-top: 2px;
+  font-size: .86rem;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+#pgPrivacyAnalyticsDetails[dir="rtl"] { direction: rtl; text-align: right; }
+@media(max-width:640px) {
+  #pgPrivacyAnalyticsDetails { padding: 12px; }
+  #pgPrivacyAnalyticsBody { font-size: .875rem; line-height: 1.85 !important; }
+}
