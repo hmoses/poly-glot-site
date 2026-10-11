@@ -4440,7 +4440,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
       <span class="trial-trust-icon">✓</span>
       <p data-i18n="fq6a">Poly-Glot includes a 3-day full-access trial that starts on the first qualifying Send. When it ends, Compare Mode and Pro templates lock unless you subscribe to Pro. You can still use 25 featured free templates and one shared single-AI Send every rolling 24 hours at no cost. The trial does not automatically convert to a paid subscription.</p>
     </div>
-    <div class="pricing-grid">
+    <div class="pricing-grid" id="pg-pro-plans">
       <div class="pricing-card">
         <div class="pricing-tier" data-i18n="prTier1">FREE</div>
         <div class="pricing-name" data-i18n="prName1">Free Plan</div>
@@ -4491,6 +4491,13 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
           </div>
           <p id="pg-post-trial-benefits">After the 3-day trial, keep creating in 38 languages with 25 featured free templates, your choice of 9 supported AIs, and one shared single-AI send every rolling 24 hours — all for $0.</p>
           <p class="pg-post-trial-note" id="pg-post-trial-note">No automatic subscription. Compare Mode, Pro templates, and unlimited sends require Pro.</p>
+          <div class="pg-post-trial-pro-offer">
+            <div class="pg-post-trial-pro-text">
+              <h5 id="pg-post-trial-pro-title">Go further with Pro</h5>
+              <p id="pg-post-trial-pro-copy">Unlimited sends, all 1,000+ templates, and Compare Mode—available on iPhone, iPad, and Mac with the same Apple ID.</p>
+            </div>
+            <a id="pg-post-trial-pro-cta" href="#pg-pro-plans">Compare Pro plans</a>
+          </div>
         </div>
 </div>
     <p class="pricing-access-note" style="margin:18px auto 0;max-width:860px;text-align:center;color:var(--text-muted);font-size:.84rem;line-height:1.6;" data-i18n="pricingAccessNote">Free or Pro: use the same Poly-Glot entitlement across iPhone, iPad, and Mac with the same Apple ID. Supported MCP clients can use that entitlement after Poly-Glot account linking — no separate MCP subscription.</p>
@@ -14085,8 +14092,33 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
   #pricing #pg-post-trial-benefits{font-size:.88rem;line-height:1.58}
   #pricing #pg-post-trial-note{font-size:.79rem}
 }
+
+#pricing .pg-post-trial-pro-offer{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;min-width:0;
+  margin-top:13px;padding-top:14px;border-top:1px solid rgba(125,211,252,.18)
+}
+#pricing .pg-post-trial-pro-text{min-width:0;flex:1}
+#pricing #pg-post-trial-pro-title{margin:0 0 4px;color:#e9f4ff;font-size:.99rem;line-height:1.38;font-weight:750}
+#pricing #pg-post-trial-pro-copy{margin:0;color:#c6d3e4;font-size:.85rem;line-height:1.58;overflow-wrap:break-word}
+#pricing #pg-post-trial-pro-cta{
+  flex:0 0 auto;display:inline-flex;justify-content:center;align-items:center;
+  min-height:44px;padding:10px 15px;border-radius:10px;
+  border:1px solid rgba(125,211,252,.32);background:rgba(125,211,252,.09);
+  color:#a9dfff;text-decoration:none;font-size:.86rem;font-weight:750;
+  transition:background-color .18s ease,border-color .18s ease
+}
+#pricing #pg-post-trial-pro-cta:hover,
+#pricing #pg-post-trial-pro-cta:focus-visible{background:rgba(125,211,252,.17);border-color:#7dd3fc}
+#pricing #pg-post-trial-pro-cta:focus-visible{outline:2px solid #7dd3fc;outline-offset:3px}
+#pricing #pg-pro-plans{scroll-margin-top:110px}
+#pricing .free-after-trial-disclosure:dir(rtl) .pg-post-trial-pro-offer{direction:rtl;text-align:right}
+@media(max-width:700px){
+  #pricing .pg-post-trial-pro-offer{flex-direction:column;align-items:stretch;gap:12px}
+  #pricing #pg-post-trial-pro-cta{width:100%;flex-basis:auto}
+}
+@media(prefers-reduced-motion:reduce){#pricing #pg-post-trial-pro-cta{transition:none}}
 </style>
-<script defer src="assets/js/post-trial-value-locales.js?v=20261010-free-retention1"></script>
+<script defer src="assets/js/post-trial-value-locales.js?v=20261011-free-to-pro-38"></script>
 <script defer src="assets/js/privacy-analytics-locales.js?v=20261011-privacy-surfaces2"></script>
 <script defer src="assets/js/scanable-copy.js?v=20261011-readability1"></script><style id="pg-iphone-pro-max-sizing-v1">
 /* 6.9-inch Pro Max presentation: keep the phone hardware and its app UI in sync.
