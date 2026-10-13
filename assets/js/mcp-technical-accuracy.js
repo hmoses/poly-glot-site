@@ -1,5 +1,5 @@
 /* Technical copy parity for the Poly-Glot MCP server (38 languages).
- * These 21 items are intentionally isolated from the general marketing i18n
+ * These 37 verified technical statements are intentionally isolated from the general marketing i18n
  * because incorrect outdated technical translations must never replace truth.
  * The English source is static for no-JS and search crawlers.
  */
@@ -44,17 +44,15 @@ function load(code){
   if(!data||data.language!==code||!data.strings||typeof data.strings!=="object"){
    throw Error("Invalid technical locale "+code);
   }
-  // Locale packs are intentionally split across site features. Rejecting a
-  // valid 21-key pack because the global dictionary has 37 keys caused all
-  // privacy paragraphs to fall back to English. Validate required keys for
-  // the CURRENT page and render available translations independently.
-  var required=Array.from(document.querySelectorAll("[data-pg-tech]")).map(function(el){return el.getAttribute("data-pg-tech");}).filter(function(k){return k!=="mcpIntro"&&k!=="mcpCount";});
-  var missing=required.filter(function(k){return !data.strings[k]||!String(data.strings[k]).trim();});
-  if(missing.length)console.warn("Poly-Glot technical locale missing page keys:",code,missing.join(", "));
-  if(!Object.keys(data.strings).length)throw Error("Empty technical locale "+code);
+  // Fail closed when a non-English catalog is incomplete. Every release
+  // includes all 37 translated technical statements, not the former 21-key set.
+  var missing=Object.keys(EN).filter(function(key){
+   return typeof data.strings[key]!=="string"||!data.strings[key].trim();
+  });
+  if(missing.length)throw Error("Incomplete technical locale "+code+": "+missing.join(", "));
   cache[code]=data.strings;
   return data.strings;
- });
+ }).catch(function(error){delete pending[code];throw error;});
  return pending[code];
 }
 function apply(){
