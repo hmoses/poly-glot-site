@@ -70,6 +70,9 @@ jobs:
                       }""")
                       assert box['copiedId'] and box['height']>20,(width,lang,box)
                       assert not box['overlap'],(width,lang,'tool name overlaps Copy control',box)
+                  # Tool buttons only become visible when the user expands the tools list.
+                  page.locator('#pg-mcp-tools-summary').click()
+                  assert page.locator('#pg-mcp-tools').get_attribute('open') is not None
                   tool_copy.first.locator('button').click()
                   assert page.evaluate('navigator.clipboard.readText()')=='search_templates',(width,lang,'incorrect tool copied')
                   print('PASS main MCP snippet Copy layout',width,lang,'snippets',len(data),flush=True)
