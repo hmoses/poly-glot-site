@@ -13,7 +13,7 @@ function scan(){
 if(!document.body)return;
 var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),node;
 while(node=walker.nextNode()){
- if(original.has(node)||!node.parentElement||node.parentElement.closest("script,style,noscript,pre,code,textarea,svg,#mcp-troubleshooting,#pgGlobalLangDD,#pgGlobalLangPicker,[data-i18n],[data-i18n-html]"))continue;
+ if(original.has(node)||!node.parentElement||node.parentElement.closest("script,style,noscript,pre,code,textarea,svg,#mcp-troubleshooting,#pgGlobalLangDD,#pgGlobalLangPicker,[data-i18n],[data-i18n-html],[data-pg-tech]"))continue;
  var value=norm(node.nodeValue),key=explicit[value]||lookup.get(value);
  if(!key)continue;
  original.set(node,{text:node.nodeValue,key:key});entries.push(node);
