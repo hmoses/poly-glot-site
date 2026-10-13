@@ -55,8 +55,23 @@ jobs:
                   button.click()
                   actual=page.evaluate('navigator.clipboard.readText()')
                   assert actual=='https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp',(width,lang,actual)
-                  assert page.locator('#pg-mcp-tools .pg-tool-code-row .pg-code-copy').count()==0,'Reference tool names should not be cluttered with Copy buttons'
+                  assert page.locator('#pg-mcp-tools .pg-tool-code-row .pg-code-copy').count()==15,'All tool names must be copyable'
                   assert page.locator('#pg-mcp-tools code').count()==15,'All 15 tool names remain visible'
+                  # Verify 15 buttons, full native tool ids, visible labels and card geometry.
+                  tool_copy=page.locator('#pg-mcp-tools .pg-tool-code-row')
+                  assert tool_copy.count()==15,(width,lang,'missing tool-copy controls')
+                  for card in tool_copy.all():
+                      box=card.evaluate("""el=>{
+                        const code=el.querySelector('code').getBoundingClientRect();
+                        const btn=el.querySelector('button').getBoundingClientRect();
+                        return {overlap:code.left<btn.right&&code.right>btn.left&&code.top<btn.bottom&&code.bottom>btn.top,
+                                copiedId:el.querySelector('code').textContent.trim(),
+                                height:el.parentElement.getBoundingClientRect().height};
+                      }""")
+                      assert box['copiedId'] and box['height']>20,(width,lang,box)
+                      assert not box['overlap'],(width,lang,'tool name overlaps Copy control',box)
+                  tool_copy.first.locator('button').click()
+                  assert page.evaluate('navigator.clipboard.readText()')=='search_templates',(width,lang,'incorrect tool copied')
                   print('PASS main MCP snippet Copy layout',width,lang,'snippets',len(data),flush=True)
                   context.close()
               for path in ['connect.html','mcp-integrations.html']:
