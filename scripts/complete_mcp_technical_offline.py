@@ -55,7 +55,7 @@ def process(code,source,tokenizer,translator):
             # Hausa and Amharic M2M100 often repeat when decoding long paragraphs.
             # Decode each sentence separately with a strict cap and 3-gram repetition guard.
             if code in ("HA","AM") or len(english)>420:
-                units=re.split(r'(?<=[.!?])\\s+(?=[A-Z0-9])',english)
+                units=re.split(r'(?<=[.!?])\s+(?=[A-Z0-9])',english)
                 text=" ".join(render_one(unit,limit=175) for unit in units if unit.strip())
             else:
                 text=render_one(english,limit=280)
@@ -63,7 +63,7 @@ def process(code,source,tokenizer,translator):
             if not text:raise RuntimeError((code,key,"empty translation"))
             if len(text)>max(850,len(english)*3.5):
                 raise RuntimeError((code,key,"translation too long",len(text)))
-            words=re.findall(r"\\w+",text.lower())
+            words=re.findall(r"\w+",text.lower())
             if len(words)>60 and len(set(words))/len(words)<.17:
                 raise RuntimeError((code,key,"degenerate repeated translation"))
             for token in ["get_language_options","search_templates","prepare_compare","transcribe_audio"]:
