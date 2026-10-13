@@ -41,19 +41,31 @@ def process(code,source,tokenizer,translator):
     prefix=[tokenizer.lang_code_to_token[dest]]
     convert=OpenCC("s2t") if code=="ZH_TW" else None
 
+    def render_one(text,limit=205):
+        tokens=tokenizer.convert_ids_to_tokens(tokenizer.encode(text))
+        response=translator.translate_batch([tokens],target_prefix=[prefix],beam_size=3,
+            max_decoding_length=limit,no_repeat_ngram_size=3,repetition_penalty=1.19)[0]
+        hypothesis=response.hypotheses[0]
+        if hypothesis and hypothesis[0]==prefix[0]:hypothesis=hypothesis[1:]
+        return tokenizer.decode(tokenizer.convert_tokens_to_ids(hypothesis),skip_special_tokens=True).strip()
+
     for offset in range(0,len(remaining),6):
         batch=remaining[offset:offset+6]
-        toks=[tokenizer.convert_ids_to_tokens(tokenizer.encode(v)) for _,v in batch]
-        results=translator.translate_batch(toks,target_prefix=[prefix]*len(batch),beam_size=3,max_decoding_length=460)
-        for ((key,english),translated) in zip(batch,results):
-            hyp=translated.hypotheses[0]
-            if hyp and hyp[0]==prefix[0]:hyp=hyp[1:]
-            text=tokenizer.decode(tokenizer.convert_tokens_to_ids(hyp),skip_special_tokens=True).strip()
+        for key,english in batch:
+            # Hausa and Amharic M2M100 often repeat when decoding long paragraphs.
+            # Decode each sentence separately with a strict cap and 3-gram repetition guard.
+            if code in ("HA","AM") or len(english)>420:
+                units=re.split(r'(?<=[.!?])\\s+(?=[A-Z0-9])',english)
+                text=" ".join(render_one(unit,limit=175) for unit in units if unit.strip())
+            else:
+                text=render_one(english,limit=280)
             if convert:text=convert.convert(text)
-            if not text:raise RuntimeError((code,key,"empty"))
-            if len(text)>max(950,len(english)*4):
+            if not text:raise RuntimeError((code,key,"empty translation"))
+            if len(text)>max(850,len(english)*3.5):
                 raise RuntimeError((code,key,"translation too long",len(text)))
-            # Ensure raw code identifiers are preserved exactly, never translated.
+            words=re.findall(r"\\w+",text.lower())
+            if len(words)>60 and len(set(words))/len(words)<.17:
+                raise RuntimeError((code,key,"degenerate repeated translation"))
             for token in ["get_language_options","search_templates","prepare_compare","transcribe_audio"]:
                 if token in english and token not in text:text+=" ("+token+")"
             new[key]=text
