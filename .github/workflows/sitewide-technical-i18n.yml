@@ -5,6 +5,7 @@ on:
     paths:
       - 'assets/locales/mcp-technical/**'
       - 'assets/js/mcp-technical-accuracy.js'
+      - 'assets/js/secondary-page-localization.js'
       - 'connect.html'
       - 'mcp-integrations.html'
       - 'index.html'
