@@ -20,10 +20,12 @@
     for (var i = 0; i < sentences.length; i += 2) groups.push(sentences.slice(i, i + 2).join(" ").trim());
     if (groups.length < 2) return;
     var fragment = document.createDocumentFragment();
-    groups.forEach(function (part) {
+    groups.forEach(function (part, index) {
       var line = document.createElement("span");
       line.className = "pg-copy-chunk";
-      line.textContent = part;
+      // Keep a literal separator between the visual chunks so copying text
+      // and screen-reader textContent do not join sentences as "one.Two".
+      line.textContent = part + (index < groups.length - 1 ? " " : "");
       fragment.appendChild(line);
     });
     host.replaceChildren(fragment);
