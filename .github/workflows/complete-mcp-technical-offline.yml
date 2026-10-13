@@ -1,0 +1,108 @@
+name: Complete 38-language MCP technical copy offline
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/complete_mcp_technical_offline.py
+      - .github/workflows/complete-mcp-technical-offline.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: complete-mcp-technical-offline
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        include:
+          - group: a
+            languages: ES,FR,DE,IT,PT,NL
+          - group: b
+            languages: RU,ZH,ZH_TW,JA,KO,AR
+          - group: c
+            languages: HI,BN,TR,PL,SV,NO
+          - group: d
+            languages: DA,FI,EL,HE,ID,MS
+          - group: e
+            languages: TH,VI,UK,CS,RO,HU
+          - group: f
+            languages: SK,HR,CA,AF,SW,HA,AM
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install reproducible offline translation tooling
+        run: |
+          python -m pip install --disable-pip-version-check ctranslate2 "transformers>=4.40,<5" sentencepiece "huggingface_hub[hf_xet]" opencc-python-reimplemented
+      - name: Complete missing technical translations offline
+        env:
+          PG_TECH_OFFLINE_LOCALES: ${{ matrix.languages }}
+          HF_HUB_DISABLE_TELEMETRY: '1'
+        run: python scripts/complete_mcp_technical_offline.py
+      - name: Stage only this group's completed catalogs
+        env:
+          PG_TECH_OFFLINE_LOCALES: ${{ matrix.languages }}
+        shell: bash
+        run: |
+          mkdir -p /tmp/pg-complete-technical
+          for lang in ${PG_TECH_OFFLINE_LOCALES//,/ }; do
+            cp "assets/locales/mcp-technical/${lang,,}.json" /tmp/pg-complete-technical/
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: technical-complete-${{ matrix.group }}
+          path: /tmp/pg-complete-technical/*.json
+          retention-days: 14
+          if-no-files-found: error
+  publish:
+    needs: generate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: technical-complete-*
+          path: assets/locales/mcp-technical
+          merge-multiple: true
+      - name: Validate all 38 languages and exact technical tool identifiers
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('assets/locales/mcp-technical')
+          source=json.loads((root/'en.json').read_text(encoding='utf-8'))['strings']
+          assert len(source)==37,len(source)
+          codes="ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM".split()
+          assert len(codes)==37
+          for code in codes:
+              f=root/(code.lower()+'.json')
+              obj=json.loads(f.read_text(encoding='utf-8'))
+              t=obj['strings']
+              assert obj['language']==code,code
+              assert set(t)==set(source),(code,set(source)-set(t),set(t)-set(source))
+              for key,value in t.items():
+                  assert isinstance(value,str) and value.strip() and len(value)<1200,(code,key)
+                  for token in ('get_language_options','search_templates','prepare_compare','transcribe_audio'):
+                      if token in source[key]:assert token in value,(code,key,token)
+              assert t['chatIntro']!=source['chatIntro'],('untranslated language',code)
+              print('PASS',code,'37 complete technical claims',flush=True)
+          print('PASS English plus 37 other supported languages',flush=True)
+          PY
+      - name: Publish validated translations to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/locales/mcp-technical
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish complete 37-key MCP technical translations in all 38 languages"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
