@@ -1,0 +1,40 @@
+name: Repair eight-provider subpage translations
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/repair_eight_provider_locale_keys.py'
+      - '.github/workflows/repair-eight-provider-locale-keys.yml'
+permissions:
+  contents: write
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Restore existing localized values under eight-provider text keys
+        run: python3 scripts/repair_eight_provider_locale_keys.py
+      - name: Verify preserved localized JSON and diff
+        run: |
+          python3 -m py_compile scripts/repair_eight_provider_locale_keys.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for f in Path('assets/locales/subpages').glob('*.json'):
+              json.loads(f.read_text(encoding='utf-8'))
+          print('Locale JSON valid')
+          PY
+          git diff --check
+      - name: Commit translation migrations
+        run: |
+          set -e
+          git config user.name 'Poly-Glot Release Bot'
+          git config user.email 'release@poly-glot.ai'
+          git add assets/locales/subpages/*.json
+          if git diff --cached --quiet; then echo 'No migration necessary'; exit 0; fi
+          git commit -m 'Restore localized translations for eight-provider product copy'
+          git pull --rebase origin main
+          git push origin HEAD:main
