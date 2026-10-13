@@ -4,7 +4,7 @@
   var selector = "main p, main li, .feature-card p, .guide-card p, article p, #pgAnalyticsPolicyBody, #pgPrivacyAnalyticsBody, .section-sub, body > p";
   var pending = false;
   function chunk(root) {
-    if (!root || root.closest("pre, code, script, style, nav, button, a, table, .language-list")) return;
+    if (!root || root.closest("pre, code, script, style, nav, button, a, table, .language-list, [data-pg-tech]")) return;
     var text = root.textContent.trim();
     if (text.length < 270 || root.querySelector("a, code, button, input, select, textarea, ul, ol, p, .pg-copy-chunk")) return;
     var host = root;
@@ -16,6 +16,10 @@
     if (raw.length < 270) return;
     var sentences = raw.match(/[^.!?。！？]+(?:[.!?。！？]+(?=\s|$)|$)/gu);
     if (!sentences || sentences.length < 3) return;
+    // Some machine-localized sentences omit the space after punctuation.
+    // Never chunk when the sentence matcher failed to capture every character.
+    // Otherwise a sentence can disappear from the displayed and copied text.
+    if (sentences.join("").replace(/\s+/g,"") !== raw.replace(/\s+/g,"")) return;
     var groups = [];
     for (var i = 0; i < sentences.length; i += 2) groups.push(sentences.slice(i, i + 2).join(" ").trim());
     if (groups.length < 2) return;
