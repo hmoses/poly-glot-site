@@ -1,0 +1,79 @@
+name: Verify MCP code copy controls do not cover code
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - connect.html
+      - mcp-integrations.html
+      - assets/css/code-copy.css
+      - assets/css/mcp-connect-panel.css
+      - assets/js/code-copy.js
+      - .github/workflows/mcp-code-copy-layout.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Chromium
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Verify nonoverlapping Copy buttons, correct snippets, all locales
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 >/tmp/pg-code-copy.log 2>&1 &
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              for width,lang in [(1280,'EN'),(390,'EN'),(390,'AR'),(390,'NL')]:
+                  context=browser.new_context(viewport={'width':width,'height':840},permissions=['clipboard-read','clipboard-write'],reduced_motion='reduce')
+                  page=context.new_page()
+                  page.goto(f'http://127.0.0.1:8765/index.html?lang={lang}',wait_until='domcontentloaded')
+                  page.wait_for_function("!!window._pgCodeCopy && document.querySelectorAll('#connect .pg-code-snippet[data-pg-code-ready]').length>=5",timeout=18000)
+                  data=page.locator('#connect .pg-code-snippet').evaluate_all("""blocks=>blocks.map(el=>{
+                    const code=el.querySelector('.pg-code-snippet-content');
+                    const button=el.querySelector('[data-pg-copy-button]');
+                    const c=code?.getBoundingClientRect(),b=button?.getBoundingClientRect();
+                    return {text:code?.textContent.trim(),button:!!button,
+                      below:b&&c?b.bottom<=c.top+2:false,
+                      overlap:b&&c?b.left<c.right&&b.right>c.left&&b.top<c.bottom&&b.bottom>c.top:false,
+                      grid: getComputedStyle(el).display,contentCol:getComputedStyle(code).gridColumnStart,
+                      boxOverflow:el.scrollWidth>el.clientWidth+3}
+                  })""")
+                  assert len(data)>=5,(width,lang,len(data))
+                  assert all(v['button'] and v['below'] and not v['overlap'] and v['grid']=='grid' and not v['boxOverflow'] for v in data),(width,lang,data)
+                  endpoint=page.locator('#connect .pg-mcp-endpoint-copy')
+                  button=endpoint.locator('[data-pg-copy-button]')
+                  button.click()
+                  actual=page.evaluate('navigator.clipboard.readText()')
+                  assert actual=='https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp',(width,lang,actual)
+                  assert page.locator('#pg-mcp-tools .pg-tool-code-row .pg-code-copy').count()==0,'Reference tool names should not be cluttered with Copy buttons'
+                  assert page.locator('#pg-mcp-tools code').count()==15,'All 15 tool names remain visible'
+                  print('PASS main MCP snippet Copy layout',width,lang,'snippets',len(data),flush=True)
+                  context.close()
+              for path in ['connect.html','mcp-integrations.html']:
+                  context=browser.new_context(viewport={'width':390,'height':844},permissions=['clipboard-read','clipboard-write'],reduced_motion='reduce')
+                  page=context.new_page()
+                  page.goto('http://127.0.0.1:8765/'+path+'?lang=EN',wait_until='domcontentloaded')
+                  page.wait_for_function("!!window._pgCodeCopy && document.querySelectorAll('.pg-code-snippet[data-pg-code-ready]').length>=1")
+                  snippets=page.locator('.pg-code-snippet')
+                  for idx in range(snippets.count()):
+                      el=snippets.nth(idx)
+                      data=el.evaluate("""el=>{
+                        const c=el.querySelector('.pg-code-snippet-content').getBoundingClientRect();
+                        const b=el.querySelector('.pg-code-copy').getBoundingClientRect();
+                        return {below:b.bottom<=c.top+2,overlap:b.left<c.right&&b.right>c.left&&b.top<c.bottom&&b.bottom>c.top};
+                      }""")
+                      assert data['below'] and not data['overlap'],(path,idx,data)
+                  print('PASS subpage code snippets',path,snippets.count(),flush=True)
+                  context.close()
+              browser.close()
+          PY
