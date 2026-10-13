@@ -69,8 +69,8 @@ jobs:
                   errors=[]
                   page.on('pageerror',lambda err:errors.append(str(err)))
                   page.goto('http://127.0.0.1:8765/index.html?lang=EN',wait_until='domcontentloaded')
-                  page.wait_for_function("window._pgCodeCopy && document.querySelectorAll('[data-pg-code-block][data-pg-code-ready]').length===2",timeout=18000)
-                  assert page.locator('[data-pg-code-block]').count()==2
+                  page.wait_for_function("window._pgCodeCopy && document.querySelectorAll('[data-pg-code-block][data-pg-code-ready]').length===document.querySelectorAll('[data-pg-code-block]').length && document.querySelectorAll('[data-pg-code-block]').length>=5",timeout=18000)
+                  assert page.locator('[data-pg-code-block]').count()>=5
                   assert page.locator('#connect .pg-mcp-tools-grid .pg-mcp-motion-card > code').count()==15
                   assert check_blocks(page,'home'+str(width))>=2
                   assert page.locator('#connect .pg-mcp-tools-grid .pg-code-copy').count()==0, 'Tool names should not have distracting Copy buttons'
