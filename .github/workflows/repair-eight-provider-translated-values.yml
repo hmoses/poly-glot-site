@@ -1,0 +1,54 @@
+name: Repair translated eight-provider values without replacing translations
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/repair-eight-provider-translated-values.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Correct numeric provider counts within existing translations
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          paths=sorted(Path('assets/locales/subpages').glob('*.json'))
+          assert len(paths)>=38
+          updates=0
+          bad=[]
+          for p in paths:
+              if p.name=='report.json':continue
+              obj=json.loads(p.read_text(encoding='utf-8'))
+              modified=False
+              for key,val in list(obj.items()):
+                  if not isinstance(val,str):continue
+                  # Only the new eight-provider product assertions are in scope.
+                  if not re.search(r'(?:2[–-]8|\b8\s*(?:AI|apps?|providers?)\b)',key,re.I):continue
+                  # Preserve each real translation; replace the now-obsolete count,
+                  # without rewriting the sentence or changing languages.
+                  new=re.sub(r'(?<![\d.])9(?![\d.])','8',val)
+                  if new!=val:
+                      obj[key]=new
+                      modified=True
+                      updates+=1
+                  if re.search(r'(?<![\d.])9(?![\d.])',new):
+                      bad.append((p.name,key[:65]))
+              if modified:p.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          assert not bad, bad[:5]
+          print(f'Fixed {updates} stale translated provider counts across {len(paths)-1} language resources')
+          PY
+      - name: Commit only repaired translations
+        run: |
+          git config user.name 'Poly-Glot Release Bot'
+          git config user.email 'release@poly-glot.ai'
+          git add assets/locales/subpages
+          if git diff --cached --quiet; then echo 'Translations already match eight providers'; exit 0; fi
+          git commit -m 'Fix translated nine-to-eight provider counts in product pages'
+          git pull --rebase origin main
+          git push origin HEAD:main
