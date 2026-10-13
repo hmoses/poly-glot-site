@@ -84,11 +84,16 @@ function apply(lang,bundle){
  // FAQ is separate from the trouble-section translation runtime.
  var faq=document.querySelectorAll('#pg-mcp-faq > article');
  if(faq.length===4){
+  // Use the exact verified server descriptions and the page's curated
+  // per-language FAQ answers. Generic connection tips are not a substitute
+  // for answering whether any MCP client can connect.
+  var compatibilityEN="Not necessarily. A client must support the appropriate MCP transport and authentication or connection configuration. Consult the client-specific setup instructions.";
+  var setupEN="See the MCP setup section on the Poly-Glot homepage for the production endpoint and integration overview.";
   var translated=isLocalized?[
-   [tech.homeMcp,tr.intro].map(string).filter(Boolean).join(" "),
-   "15 MCP: 7 "+string(tr.groupCore)+" · 4 "+string(tr.groupCustom)+" · 4 "+string(tr.groupLanguage)+". "+string(tr.toolsIntro),
-   [tr.quick2,tr.quick3].map(string).filter(Boolean).join(" "),
-   string(tr.setupLink)
+   string(tech.mcpIntro)||[tech.homeMcp,tr.intro].map(string).filter(Boolean).join(" "),
+   string(tech.mcpCount)||"15 MCP: 7 "+string(tr.groupCore)+" · 4 "+string(tr.groupCustom)+" · 4 "+string(tr.groupLanguage)+". "+string(tr.toolsIntro),
+   string(sub[compatibilityEN])||[tr.quick2,tr.quick3].map(string).filter(Boolean).join(" "),
+   string(sub[setupEN])||string(tr.setupLink)
   ]:[];
   // Dedicated reviewed FAQ answers for the Traditional Chinese storefront.
   if(lang==="ZH_TW"){
