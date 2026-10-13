@@ -15,7 +15,7 @@ Poly-Glot prepares one consistent prompt for the providers you select. The app s
 
 ## Which AI assistants are supported?
 
-Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.
+Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.
 
 ## Does Poly-Glot automatically send to every provider?
 
