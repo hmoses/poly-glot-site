@@ -84,7 +84,7 @@ jobs:
                               continue
                           assert actual==expected,(name,lang,key,repr(actual[:90]),repr(expected[:90]))
                       if lang in ("AR","HE"):
-                          assert page.evaluate("document.documentElement.dir")=="rtl",(name,lang,"RTL broken")
+                          assert page.evaluate("document.documentElement.dataset.pgRtl")=="true",(name,lang,"RTL language flag missing")
                       print("PASS",name,lang,len(values),"technical statements",flush=True)
               browser.close()
           PY
