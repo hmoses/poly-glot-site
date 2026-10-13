@@ -18,7 +18,8 @@ function phrase(code,which){return (copyLocales[code]||copyLocales.EN)[which];}
 function updateLabel(button){
   if(button.dataset.pgCopyState==='copied')return;
   button.textContent=phrase(current,0);
-  button.setAttribute('aria-label',phrase(current,0)+' code');
+  button.setAttribute('aria-label',phrase(current,0)+(button.dataset.pgCopyMode==='token' ? ' '+(button.closest('.pg-tool-code-row')?.querySelector('code')?.textContent||'') : ''));
+  button.setAttribute('aria-live','polite');
   button.title=phrase(current,0);
 }
 function makeButton(){
