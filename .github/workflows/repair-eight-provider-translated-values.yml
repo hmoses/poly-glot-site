@@ -25,6 +25,7 @@ jobs:
           for p in paths:
               if p.name=='report.json':continue
               obj=json.loads(p.read_text(encoding='utf-8'))
+              if not isinstance(obj,dict):continue
               modified=False
               for key,val in list(obj.items()):
                   if not isinstance(val,str):continue
