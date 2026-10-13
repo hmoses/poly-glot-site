@@ -82,7 +82,11 @@ jobs:
                           if name=="mcp-integrations.html" and lang!="EN" and key in ("mcpIntro","mcpCount"):
                               assert actual and actual!=english[key],(name,lang,key,"unlocalized fallback")
                               continue
-                          assert ' '.join(actual.split())==' '.join(expected.split()),(name,lang,key,repr(actual[:90]),repr(expected[:90]))
+                          got=' '.join(actual.split())
+                          want=' '.join(expected.split())
+                          if got!=want:
+                              print('TECH DIFF',name,lang,key,'actual=',repr(got[:1300]),'expected=',repr(want[:1300]),flush=True)
+                              raise AssertionError((name,lang,key,'rendered text differs from reviewed locale catalog'))
                       if lang in ("AR","HE"):
                           assert page.evaluate("document.documentElement.dataset.pgRtl")=="true",(name,lang,"RTL language flag missing")
                       print("PASS",name,lang,len(values),"technical statements",flush=True)
