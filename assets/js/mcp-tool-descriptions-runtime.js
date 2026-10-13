@@ -8,7 +8,8 @@ function init(){
  var root=document.getElementById("connect");if(!root)return;
  root.querySelectorAll(".pg-mcp-motion-card code").forEach(function(el){
   var name=el.textContent.trim(),i=TOOLS.indexOf(name);
-  if(i>=0){var paragraph=el.nextElementSibling;if(paragraph&&paragraph.tagName==="P")elems[i]=paragraph;}
+  if(i>=0){var wrapper=el.closest('.pg-tool-code-row'),paragraph=wrapper?wrapper.nextElementSibling:el.nextElementSibling;
+   if(paragraph&&paragraph.tagName==="P")elems[i]=paragraph;}
  });
  apply();
 }
