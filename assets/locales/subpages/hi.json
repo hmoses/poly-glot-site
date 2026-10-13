@@ -459,5 +459,12 @@
   "🔍 SEO Setup Checklist": "SEO सेटअप चेकलिस्ट",
   "🛠️ 15 Tools Available": "15 दिन के लिए उपलब्ध हैं उपकरण",
   "🧩 Connect from other supported MCP clients": "अन्य समर्थित एमसीपी ग्राहकों से कनेक्ट करें",
-  "🧩 Glama MCP Listing": "ग्लामा एमसीपी सूची"
+  "🧩 Glama MCP Listing": "ग्लामा एमसीपी सूची",
+  "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat": "क्लॉड, जुड़वां, माइक्रोसॉफ्ट कॉपिलोट, मिस्ट्राला, डिकड्यकगो, हगिंगचैट",
+  "Compare across any 2–8 providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI.": "किसी भी 2–8 प्रदाताओं के बीच तुलना करें: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, और DuckDuckGo AI।",
+  "Compare answers from 8 AIs. 38 languages. 1,000+ templates. MCP connectivity.": "9 आईएस से उत्तरों की तुलना करें. 38 भाषाओं. 1,000+ टेम्पलेट्स. एमसीपी कनेक्टिविटी.",
+  "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat. Poly-Glot does not process your prompts — it copies them to your clipboard and opens the AI you select.": "Poly-Glot AI Workspace iOS और macOS के लिए एक प्रमोट-बिल्डिंग और एआई-रूटिंग ऐप है. आप एक प्रश्न टाइप या बोलते हैं – या 1,000+ विशेषज्ञ प्रमोट टेम्पलेट्स से चुनते हैं – फिर इसे 9 एआई ऐप्स में से किसी एक को भेजें: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, या HuggingChat. Poly-Glot आपके प्रमोट को संसाधित नहीं करता है – यह उन्हें आपके क्लिपबोर्ड में कॉपी करता है और आपके द्वारा चुने गए एआई को खोलता है.",
+  "Poly-Glot AI Workspace | Compare 8 AIs and Connect MCP": "पॉली-ग्लोट एआई कार्यक्षेत्र, 9 एआई और कनेक्ट एमसीपी की तुलना करें",
+  "Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.": "Poly-Glot सूची ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, और DuckDuckGo AI. प्रदाता की उपलब्धता और क्षमताएं बदल सकती हैं.",
+  "Stage a prompt across 2–8 AI providers for comparison": "तुलना के लिए 2–8 एआई प्रदाताओं के बीच एक त्वरित स्टैंडिंग"
 }

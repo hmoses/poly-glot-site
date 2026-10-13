@@ -459,5 +459,12 @@
   "🔍 SEO Setup Checklist": "SEO Setup Checklist ile ilgili bilgiler",
   "🛠️ 15 Tools Available": "15 Yorum Yapılmış Araçlar",
   "🧩 Connect from other supported MCP clients": "Diğer desteklenen MCP müşterilerinden bağlantı",
-  "🧩 Glama MCP Listing": "Glama MCP Listesi"
+  "🧩 Glama MCP Listing": "Glama MCP Listesi",
+  "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat": "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat",
+  "Compare across any 2–8 providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI.": "Herhangi bir 2–8 sağlayıcıya karşılaştırın: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat ve DuckDuckGo AI.",
+  "Compare answers from 8 AIs. 38 languages. 1,000+ templates. MCP connectivity.": "8 Aİ'den cevapları karşılaştırın. 38 dil. 1000+ şablon. MCP bağlantısı.",
+  "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat. Poly-Glot does not process your prompts — it copies them to your clipboard and opens the AI you select.": "Poly-Glot AI Workspace, iOS ve macOS için bir prompt-building ve AI-routing uygulamasıdır. bir soru yazarsanız veya konuşursunuz - ya da 1000+ uzman prompt şablonlarından birini seçersiniz - sonra 8 AI uygulamasından birine gönderin: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo veya HuggingChat. Poly-Glot promptlerinizi işlemeyecektir - bunları kliplerinize kopyalamak ve seçtiğiniz AI'yi açmak.",
+  "Poly-Glot AI Workspace | Compare 8 AIs and Connect MCP": "Poly-Glot AI Çalışma Alanı NED 8 AIs ve Bağlayın MCP",
+  "Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.": "Poly-Glot listeleri ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat ve DuckDuckGo AI. Tedarikçi mevcutluğu ve kapasiteleri değişebilir.",
+  "Stage a prompt across 2–8 AI providers for comparison": "Karşılaştırma için 2–8 AI sağlayıcıları arasında bir hızlandırma"
 }

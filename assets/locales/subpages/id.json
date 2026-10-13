@@ -459,5 +459,12 @@
   "🔍 SEO Setup Checklist": "SEO Setup Checklist",
   "🛠️ 15 Tools Available": "15 Alat yang tersedia",
   "🧩 Connect from other supported MCP clients": "Hubungi dari klien MCP yang didukung lainnya",
-  "🧩 Glama MCP Listing": "Glama MCP Daftar"
+  "🧩 Glama MCP Listing": "Glama MCP Daftar",
+  "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat": "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat",
+  "Compare across any 2–8 providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI.": "Bandingkan di antara 2–8 penyedia: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, dan DuckDuckGo AI.",
+  "Compare answers from 8 AIs. 38 languages. 1,000+ templates. MCP connectivity.": "Bandingkan jawaban dari 8 AIS. 38 bahasa. 1.000+ template. konektivitas MCP.",
+  "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat. Poly-Glot does not process your prompts — it copies them to your clipboard and opens the AI you select.": "Poly-Glot AI Workspace adalah aplikasi prompt-building dan AI-routing untuk iOS dan macOS. Anda menaip atau berbicara pertanyaan - atau pilih dari 1.000+ template prompt pakar - kemudian kirim ke salah satu dari 9 aplikasi AI: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, atau HuggingChat. Poly-Glot tidak memproses prompt Anda - ia menyalin mereka ke papan klip Anda dan membuka AI yang Anda pilih.",
+  "Poly-Glot AI Workspace | Compare 8 AIs and Connect MCP": "Poly-Glot AI Workspace  Bandingkan 8 AI dan Sambungkan MCP",
+  "Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.": "Poly-Glot menampilkan ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, dan DuckDuckGo AI. Ketersediaan dan kemampuan penyedia dapat berubah.",
+  "Stage a prompt across 2–8 AI providers for comparison": "Meningkatkan sebuah prompt di antara 2–8 penyedia AI untuk perbandingan"
 }

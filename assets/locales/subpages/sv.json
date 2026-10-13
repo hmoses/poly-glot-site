@@ -459,5 +459,12 @@
   "🔍 SEO Setup Checklist": "SEO Setup Checklist",
   "🛠️ 15 Tools Available": "️ 15 verktyg tillgängliga",
   "🧩 Connect from other supported MCP clients": "Anslut från andra stödda MCP-klienter",
-  "🧩 Glama MCP Listing": "Glama MCP Listing"
+  "🧩 Glama MCP Listing": "Glama MCP Listing",
+  "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat": "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat",
+  "Compare across any 2–8 providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI.": "Jämför mellan alla 2–8 leverantörer: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat och DuckDuckGo AI.",
+  "Compare answers from 8 AIs. 38 languages. 1,000+ templates. MCP connectivity.": "Jämför svar från 8 AIs. 38 språk. 1000+ mallar. MCP-anslutning.",
+  "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat. Poly-Glot does not process your prompts — it copies them to your clipboard and opens the AI you select.": "Poly-Glot AI Workspace är en prompt-byggande och AI-routing app för iOS och macOS. Du skriver eller talar en fråga - eller väljer bland 1000+ expert prompt-mall - sedan skickar den till någon av 8 AI-appar: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, eller HuggingChat. Poly-Glot behandlar inte dina prompt - det kopierar dem till din klippformulär och öppnar AI du väljer.",
+  "Poly-Glot AI Workspace | Compare 8 AIs and Connect MCP": "Poly-Glot AI Workspace  Jämför 8 AI och anslut MCP",
+  "Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.": "Poly-Glot listar ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat och DuckDuckGo AI. Leverantörens tillgänglighet och kapacitet kan ändras.",
+  "Stage a prompt across 2–8 AI providers for comparison": "Starta en snabb mellan 2–8 AI-leverantörer för jämförelse"
 }

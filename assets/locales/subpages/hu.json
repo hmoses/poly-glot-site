@@ -459,5 +459,12 @@
   "🔍 SEO Setup Checklist": "SEO beállítások ellenőrzési listája",
   "🛠️ 15 Tools Available": "️ 15 eszközök elérhető",
   "🧩 Connect from other supported MCP clients": "Kapcsolat más támogatott MCP ügyfelektől",
-  "🧩 Glama MCP Listing": "Glama MCP listázás"
+  "🧩 Glama MCP Listing": "Glama MCP listázás",
+  "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat": "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat",
+  "Compare across any 2–8 providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI.": "Összehasonlítsa a 2–8 szolgáltatóink között: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat és DuckDuckGo AI.",
+  "Compare answers from 8 AIs. 38 languages. 1,000+ templates. MCP connectivity.": "Összehasonlítsa a válaszokat 8 AI. 38 nyelven. 1000+ minták. MCP kapcsolat.",
+  "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat. Poly-Glot does not process your prompts — it copies them to your clipboard and opens the AI you select.": "A Poly-Glot AI Workspace az iOS és macOS számára egy prompt-építés és AI-útmutató alkalmazás. Ön írja be vagy beszél egy kérdést - vagy válasszon 1000+ szakértői prompt sablonok közül - majd küldje el azt a 8 AI alkalmazás bármelyikére: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, vagy HuggingChat. A Poly-Glot nem dolgozza fel a prompt-eket - másolja őket a billentyűzetére és megnyitja az AI-t, amelyet kiválaszt.",
+  "Poly-Glot AI Workspace | Compare 8 AIs and Connect MCP": "Poly-Glot AI Workspace  8 AI és Connect MCP összehasonlítása",
+  "Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.": "A Poly-Glot listák a ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat és DuckDuckGo AI. A szolgáltató rendelkezésre állása és képességei változhatnak.",
+  "Stage a prompt across 2–8 AI providers for comparison": "A 2–8 AI szolgáltatókon keresztül gyorsított beállításokat készítünk összehasonlításhoz"
 }

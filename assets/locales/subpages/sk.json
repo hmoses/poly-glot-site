@@ -459,5 +459,12 @@
   "🔍 SEO Setup Checklist": "SEO nastavenie Checklist",
   "🛠️ 15 Tools Available": "️ 15 nástrojov k dispozícii",
   "🧩 Connect from other supported MCP clients": "Pripojenie od iných podporovaných klientov MCP",
-  "🧩 Glama MCP Listing": "Glama MCP zoznamovanie"
+  "🧩 Glama MCP Listing": "Glama MCP zoznamovanie",
+  "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat": "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat",
+  "Compare across any 2–8 providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI.": "Porovnajte medzi 2 až 9 poskytovateľmi: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat a DuckDuckGo AI.",
+  "Compare answers from 8 AIs. 38 languages. 1,000+ templates. MCP connectivity.": "Porovnajte odpovede z 8 AI. 38 jazykov. 1000+ šablóny. MCP konektivita.",
+  "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat. Poly-Glot does not process your prompts — it copies them to your clipboard and opens the AI you select.": "Poly-Glot AI Workspace je aplikácia pre budovanie a smerovanie AI pre iOS a macOS. zadajte alebo hovoríte otázku - alebo si vyberte z 1000+ šablóny odborníkov - a potom ho pošlite do jednej z 9 aplikácií AI: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo alebo HuggingChat. Poly-Glot neprocesuje vaše prompts - kopíruje ich do vášho kliptoru a otvára AI, ktorý si vyberáte.",
+  "Poly-Glot AI Workspace | Compare 8 AIs and Connect MCP": "Poly-Glot AI pracovný priestor  Porovnať 8 AI a Pripojiť MCP",
+  "Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.": "Poly-Glot zoznamy ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat a DuckDuckGo AI. Dostupnosť a schopnosti poskytovateľa sa môžu meniť.",
+  "Stage a prompt across 2–8 AI providers for comparison": "Stage rýchly medzi 2 – 9 poskytovateľov AI pre porovnanie"
 }

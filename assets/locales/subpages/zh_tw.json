@@ -459,5 +459,12 @@
   "🔍 SEO Setup Checklist": "SEO 設置檢查列表",
   "🛠️ 15 Tools Available": "️ 15 工具可用",
   "🧩 Connect from other supported MCP clients": "連接到其他支持的 MCP 客戶端",
-  "🧩 Glama MCP Listing": "格拉馬 MCP 列表"
+  "🧩 Glama MCP Listing": "格拉馬 MCP 列表",
+  "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat": "克勞德,雙胞胎,微軟 Mistral,DuckDuckGo,HuggingChat",
+  "Compare across any 2–8 providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI.": "比較任何 2 至 9 個供應商: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, DuckDuckGo AI。",
+  "Compare answers from 8 AIs. 38 languages. 1,000+ templates. MCP connectivity.": "比較答案 9 個 AIs. 38 種語言. 1000+ 個模板. MCP 連接性。",
+  "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat. Poly-Glot does not process your prompts — it copies them to your clipboard and opens the AI you select.": "Poly-Glot AI Workspace 是 iOS 和 macOS 的快速構建和 AI 路由應用程序. 您輸入或提問 - 或選擇 1000+ 專家快速模板 - 然後將其發送到 9 個 AI 應用程序中的任何一個: ChatGPT、Claude、Gemini、Perplexity、Grok、、Mistral、DuckDuckGo 或 HuggingChat. Poly-Glot 不會處理您的快速 - 它將其複製到您的剪輯板上,並打開您選擇的 AI。",
+  "Poly-Glot AI Workspace | Compare 8 AIs and Connect MCP": "聚合物 AI 工作空間 和 比較 9 個 AI 和 連接 MCP",
+  "Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.": "Poly-Glot 列出 ChatGPT、Claude、Gemini、Grok、Perplexity、Copilot、Mistral、HuggingChat 和 DuckDuckGo AI. 供應商可用性和能力可能會有所改變。",
+  "Stage a prompt across 2–8 AI providers for comparison": "通過 2 到 9 個 AI 供應商進行比較"
 }

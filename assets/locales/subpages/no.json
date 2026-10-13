@@ -459,5 +459,12 @@
   "🔍 SEO Setup Checklist": "SEO Setup Checklist",
   "🛠️ 15 Tools Available": "️ 15 verktøy tilgjengelig",
   "🧩 Connect from other supported MCP clients": "Koble fra andre støttet MCP-kunder",
-  "🧩 Glama MCP Listing": "Glama MCP Listing"
+  "🧩 Glama MCP Listing": "Glama MCP Listing",
+  "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat": "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat",
+  "Compare across any 2–8 providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI.": "Sammenlign over alle 2–8 leverandører: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, og DuckDuckGo AI.",
+  "Compare answers from 8 AIs. 38 languages. 1,000+ templates. MCP connectivity.": "Sammenlign svar fra 8 AIs. 38 språk. 1000+ maler. MCP-forbindelse.",
+  "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat. Poly-Glot does not process your prompts — it copies them to your clipboard and opens the AI you select.": "Poly-Glot AI Workspace er en prompt-building og AI-routing app for iOS og macOS. Du skriver eller snakker en spørsmål - eller velger fra 1000+ eksperter prompt templates - og send den til noen av 8 AI-apper: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, eller HuggingChat. Poly-Glot behandler ikke promptene dine - det kopierer dem til klippebordet ditt og åpner AI du velger.",
+  "Poly-Glot AI Workspace | Compare 8 AIs and Connect MCP": "Poly-Glot AI Workspace  Sammenlign 8 AIs og koble MCP",
+  "Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.": "Poly-Glot-lister ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat og DuckDuckGo AI. Leverandørens tilgjengelighet og kapasitet kan endres.",
+  "Stage a prompt across 2–8 AI providers for comparison": "Stadiet en prompt over 2–8 AI-leverandører for sammenligning"
 }

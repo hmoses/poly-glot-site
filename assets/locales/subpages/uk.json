@@ -459,5 +459,12 @@
   "🔍 SEO Setup Checklist": "SEO - це список перевірки",
   "🛠️ 15 Tools Available": "15 Доступні інструменти",
   "🧩 Connect from other supported MCP clients": "Підключення від інших підтримуваних клієнтів MCP",
-  "🧩 Glama MCP Listing": "Глама MCP Список"
+  "🧩 Glama MCP Listing": "Глама MCP Список",
+  "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat": "Клод, Близнюки, Mistral, DuckDuckGo, HuggingChat",
+  "Compare across any 2–8 providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI.": "Порівняйте будь-які 2–8 постачальників: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, і DuckDuckGo AI.",
+  "Compare answers from 8 AIs. 38 languages. 1,000+ templates. MCP connectivity.": "Порівняйте відповіді з 9 І. І. 38 мов. 1000+ шаблонів. MCP зв'язок.",
+  "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat. Poly-Glot does not process your prompts — it copies them to your clipboard and opens the AI you select.": "Ви записуєте або говорите питання — або вибираєте з 1000+ експертних шаблонів швидкості — а потім відправляйте його в будь-яку з 9 додатків AI: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, або HuggingChat.",
+  "Poly-Glot AI Workspace | Compare 8 AIs and Connect MCP": "Полі-Глот AI Workspace  Порівняти 8 AI і підключити MCP",
+  "Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.": "Полі-Глот перераховує ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, і DuckDuckGo AI. Доступність і можливості постачальника можуть змінюватися.",
+  "Stage a prompt across 2–8 AI providers for comparison": "Станція швидкого перегляду між 2–8 провайдерами AI для порівняння"
 }

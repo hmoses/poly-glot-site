@@ -459,5 +459,12 @@
   "🔍 SEO Setup Checklist": "Il SEO Setup Checklist",
   "🛠️ 15 Tools Available": "️ 15 strumenti disponibili",
   "🧩 Connect from other supported MCP clients": "Connessione da altri clienti MCP supportati",
-  "🧩 Glama MCP Listing": "Il segno di Glama MCP"
+  "🧩 Glama MCP Listing": "Il segno di Glama MCP",
+  "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat": "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat",
+  "Compare across any 2–8 providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI.": "Confronta tra i 2 e i 9 fornitori: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat e DuckDuckGo AI.",
+  "Compare answers from 8 AIs. 38 languages. 1,000+ templates. MCP connectivity.": "Confronta le risposte da 8 AIs. 38 lingue. 1000+ template. connettività MCP.",
+  "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat. Poly-Glot does not process your prompts — it copies them to your clipboard and opens the AI you select.": "Poly-Glot AI Workspace è un'app di costruzione e routing AI per iOS e macOS. Si digitano o parlano una domanda - o si sceglie tra 1.000+ template di prompt esperto - quindi lo inviano a una delle 9 applicazioni AI: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, o HuggingChat. Poly-Glot non trasforma i prompt - li copia al tuo clipboard e apre l'AI selezionato.",
+  "Poly-Glot AI Workspace | Compare 8 AIs and Connect MCP": "Poly-Glot AI Workspace  Compare 8 AI e MCP connessi",
+  "Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.": "Poly-Glot elenca ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat e DuckDuckGo AI. La disponibilità e le capacità del fornitore possono cambiare.",
+  "Stage a prompt across 2–8 AI providers for comparison": "Stage un rapido tra i fornitori di 2–8 AI per la confronto"
 }
