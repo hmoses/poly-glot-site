@@ -7,7 +7,7 @@
 - Product: Poly-Glot AI Workspace
 - Category: AI productivity / AI comparison workspace
 - Platforms: iPhone, iPad, Mac
-- AI providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, DuckDuckGo AI
+- AI providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, DuckDuckGo AI
 - Prompt library: 1,000+ templates
 - Languages: 38 (full UI localization and output)
 - Core feature: Compare Mode for comparing responses from multiple AI assistants
@@ -39,7 +39,7 @@
 
 ## MCP
 
-Poly-Glot's MCP server exposes 15 tools for template search and retrieval, prompt building, 2–9 provider comparison preparation, 38-language controls, transcription, language detection, translation, localization, subscription status, workspace launch, and Bring Your Own Model workflows.
+Poly-Glot's MCP server exposes 15 tools for template search and retrieval, prompt building, 2–8 provider comparison preparation, 38-language controls, transcription, language detection, translation, localization, subscription status, workspace launch, and Bring Your Own Model workflows.
 **Complete 15-tool inventory**
 
 - Core: `get_language_options`, `get_subscription_status`, `open_workspace`, `search_templates`, `get_template`, `build_prompt`, `prepare_compare`
