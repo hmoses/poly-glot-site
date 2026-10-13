@@ -88,6 +88,10 @@ jobs:
                   assert page.evaluate('window.__copied[0]')==ENDPOINT
                   assert page.locator('#connect .pg-mcp-tools-grid .pg-code-copy').count()==15
                   assert page.locator('#connect .pg-mcp-tools-grid .pg-tool-code-row > code').first.text_content().strip()=='search_templates'
+                  # Tool reference lives in a closed accessible disclosure.
+                  # Open it before checking a real user's visible Copy interaction.
+                  page.locator('#pg-mcp-tools-summary').click()
+                  assert page.locator('#pg-mcp-tools').get_attribute('open') is not None
                   page.locator('#connect .pg-mcp-tools-grid .pg-tool-code-row > [data-pg-copy-button]').first.click()
                   page.wait_for_function("window.__copied?.length>=2")
                   assert page.evaluate("window.__copied[1]")=="search_templates"
