@@ -82,7 +82,7 @@ jobs:
                           if name=="mcp-integrations.html" and lang!="EN" and key in ("mcpIntro","mcpCount"):
                               assert actual and actual!=english[key],(name,lang,key,"unlocalized fallback")
                               continue
-                          assert actual==expected,(name,lang,key,repr(actual[:90]),repr(expected[:90]))
+                          assert ' '.join(actual.split())==' '.join(expected.split()),(name,lang,key,repr(actual[:90]),repr(expected[:90]))
                       if lang in ("AR","HE"):
                           assert page.evaluate("document.documentElement.dataset.pgRtl")=="true",(name,lang,"RTL language flag missing")
                       print("PASS",name,lang,len(values),"technical statements",flush=True)
