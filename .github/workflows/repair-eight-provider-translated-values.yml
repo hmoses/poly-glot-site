@@ -30,10 +30,13 @@ jobs:
               for key,val in list(obj.items()):
                   if not isinstance(val,str):continue
                   # Only the new eight-provider product assertions are in scope.
-                  if not re.search(r'(?:2[–-]8|\b8\s*(?:AI|apps?|providers?)\b)',key,re.I):continue
+                  if not re.search(r'(?:2[–-]8|\b8\s*(?:AIs?|apps?|providers?)\b)',key,re.I) and not key.startswith('Poly-Glot lists '):continue
                   # Preserve each real translation; replace the now-obsolete count,
                   # without rewriting the sentence or changing languages.
                   new=re.sub(r'(?<![\d.])9(?![\d.])','8',val)
+                  if key.startswith('Poly-Glot lists '):
+                      new=re.sub(r'(?i)(?:,\s*|\s*[·•、，]\s*)Copilot\b', '', new)
+                      new=re.sub(r'(?i)\bCopilot\b', '', new)
                   if new!=val:
                       obj[key]=new
                       modified=True
