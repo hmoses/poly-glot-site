@@ -267,7 +267,7 @@
   "Poly-Glot includes a 3-day full-access trial. After the trial, Compare Mode and Pro templates lock unless you subscribe to Pro. The Free plan retains 25 featured templates and one shared single-AI Send every rolling 24 hours.": "Poly-Glot 包含 3 天的全程入口试验,在试验后,比较模式和 Pro 模板锁定,除非您订阅 Pro. 免费计划保留 25 个配备模板和一个共享单个 AI 发送每轮 24 小时。",
   "Poly-Glot knowledge center": "聚合物知识中心",
   "Poly-Glot lets you prepare the same prompt for selected AI assistants and compare their responses. It does not merge providers into one model or guarantee identical response behavior.": "Poly-Glot 允许您为选择的 AI 助理准备相同的速度,并比较他们的反应,它不会将供应商融入一个模型,也不会保证相同的反应行为。",
-  "Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.": "Poly-Glot 列出 ChatGPT、Claude、Gemini、Grok、Perplexity、Copilot、Mistral、HuggingChat 和 DuckDuckGo AI. 供应商可用性和能力可能会有所改变。",
+  "Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.": "Poly-Glot 列出 ChatGPT、Claude、Gemini、Grok、Perplexity、Mistral、HuggingChat 和 DuckDuckGo AI. 供应商可用性和能力可能会有所改变。",
   "Poly-Glot provides more than 1,000 reusable prompt templates to help people create structured requests for AI assistants.": "Poly-Glot 提供超过 1000 个可重复使用的快速模板,帮助人们为人工智能助理创建结构化的请求。",
   "Poly-Glot routes your prompts to third-party AI services via their free web tiers. We do not store, transmit, or process your prompts on any server. Everything stays on your device. Each AI app has its own terms and privacy policy.": "Poly-Glot 通过其免费网页第三方将您的提示转移到第三方的 AI 服务,我们不会在任何服务器上存储、传输或处理您的提示,一切都留在您的设备上,每个 AI 应用程序都有自己的条款和隐私政策。",
   "Prepare Compare Mode with built-in providers and custom models": "准备与内置供应商和自定义模型进行比较模式",
@@ -462,9 +462,9 @@
   "🧩 Glama MCP Listing": "格拉马 MCP 列表",
   "Claude, Gemini, Mistral, DuckDuckGo, HuggingChat": "克劳德,双胞胎,微软 Mistral,DuckDuckGo,HuggingChat",
   "Compare across any 2–8 providers: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI.": "比较任何 2 至 8 个供应商: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, DuckDuckGo AI。",
-  "Compare answers from 8 AIs. 38 languages. 1,000+ templates. MCP connectivity.": "比较答案 9 个 AIs. 38 种语言. 1000+ 个模板. MCP 连接性。",
+  "Compare answers from 8 AIs. 38 languages. 1,000+ templates. MCP connectivity.": "比较答案 8 个 AIs. 38 种语言. 1000+ 个模板. MCP 连接性。",
   "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat. Poly-Glot does not process your prompts — it copies them to your clipboard and opens the AI you select.": "Poly-Glot AI Workspace 是 iOS 和 macOS 的快速构建和 AI 路由应用程序. 您输入或提问 - 或选择 1000+ 专家快速模板 - 然后将其发送到 8 个 AI 应用程序中的任何一个: ChatGPT、Claude、Gemini、Perplexity、Grok、、Mistral、DuckDuckGo 或 HuggingChat. Poly-Glot 不会处理您的快速 - 它将其复制到您的剪辑板上,并打开您选择的 AI。",
-  "Poly-Glot AI Workspace | Compare 8 AIs and Connect MCP": "聚合物 AI 工作空间 和 比较 9 个 AI 和 连接 MCP",
-  "Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.": "Poly-Glot 列出 ChatGPT、Claude、Gemini、Grok、Perplexity、Copilot、Mistral、HuggingChat 和 DuckDuckGo AI. 供应商可用性和能力可能会有所改变。",
+  "Poly-Glot AI Workspace | Compare 8 AIs and Connect MCP": "聚合物 AI 工作空间 和 比较 8 个 AI 和 连接 MCP",
+  "Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI. Provider availability and capabilities may change.": "Poly-Glot 列出 ChatGPT、Claude、Gemini、Grok、Perplexity、Mistral、HuggingChat 和 DuckDuckGo AI. 供应商可用性和能力可能会有所改变。",
   "Stage a prompt across 2–8 AI providers for comparison": "通过 2 到 8 个 AI 供应商进行比较"
 }
