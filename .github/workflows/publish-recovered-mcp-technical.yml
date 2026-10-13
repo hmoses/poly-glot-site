@@ -1,0 +1,82 @@
+name: Publish recovered high-quality MCP technical translations
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/publish-recovered-mcp-technical.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: pg-mcp-technical-recover-final
+  cancel-in-progress: false
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 38326733515
+          pattern: technical-complete-*
+          path: /tmp/polyglot-improved-technical
+          merge-multiple: true
+      - name: Audit full 37-key catalogs including low-resource translations
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          old=Path("assets/locales/mcp-technical")
+          new=Path("/tmp/polyglot-improved-technical")
+          source=json.loads((old/"en.json").read_text(encoding="utf8"))["strings"]
+          codes="ES FR DE IT PT NL RU ZH ZH_TW JA KO AR HI BN TR PL SV NO DA FI EL HE ID MS TH VI UK CS RO HU SK HR CA AF SW HA AM".split()
+          assert len(source)==37 and len(codes)==37
+          assert len(list(new.glob("*.json")))==37,list(new.glob("*.json"))
+          for code in codes:
+              file=new/(code.lower()+".json")
+              result=json.loads(file.read_text(encoding="utf8"))
+              assert result["language"]==code,code
+              values=result["strings"]
+              assert set(values)==set(source),(code,"missing keys")
+              assert all(isinstance(v,str) and v.strip() and len(v)<1200 for v in values.values()),code
+              for key,value in values.items():
+                  for token in ("get_language_options","search_templates","prepare_compare","transcribe_audio"):
+                      if token in source[key]: assert token in value,(code,key,token)
+              assert values["chatIntro"]!=source["chatIntro"],code
+              print("PASS",code,flush=True)
+          for code in ("HA","AM"):
+              data=json.loads((new/(code.lower()+".json")).read_text(encoding="utf8"))["strings"]
+              assert "The website also uses analytics and advertising pixels." not in data["termsPrivacy"],(code,"untranslated English")
+              assert "Review the Privacy Policy and each provider's terms." not in data["termsPrivacy"],(code,"untranslated English")
+          print("PASS 38 languages, 37 technical claims, low-resource privacy translation checks",flush=True)
+          PY
+      - name: Publish recovered catalogs against the latest main branch safely
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/polyglot-improved-technical/*.json assets/locales/mcp-technical/
+            git add assets/locales/mcp-technical
+            if git diff --cached --quiet; then
+              echo "Recovered catalogs already published"
+              exit 0
+            fi
+            git commit -m "Publish reviewed 38-language technical corrections from completed offline builds"
+            if git push origin HEAD:main; then
+              echo "PASS recovered catalogs published"
+              exit 0
+            fi
+            echo "Concurrent GitHub edit detected, retrying on latest main: $attempt"
+          done
+          echo "Unable to publish after retries" >&2
+          exit 1
