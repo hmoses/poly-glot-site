@@ -46,7 +46,7 @@ jobs:
                   assert button.count()==1,(label,index,'missing or duplicate Copy button')
                   code=block.locator(':scope > .pg-code-snippet-content')
                   assert code.count()==1,(label,index,'no code content')
-                  assert code.inner_text().strip(),(label,index,'empty code')
+                  assert code.text_content().strip(),(label,index,'missing code text (collapsed details may be visually hidden)')
                   geometry=block.evaluate("""el=>{
                     const c=el.querySelector(':scope > .pg-code-snippet-content').getBoundingClientRect();
                     const b=el.querySelector(':scope > [data-pg-copy-button]').getBoundingClientRect();
