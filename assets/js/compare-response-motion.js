@@ -6,51 +6,36 @@
   const selector = '#apps .inline-response-list > .inline-response-row';
   const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
   const clamp = (v, low, high) => Math.min(high, Math.max(low, v));
-  let cards = [], raf = 0, last = [], states = new WeakMap(), lastFrame = 0;
+  let cards = [], raf = 0, last = [];
   const cssVars = ['--pg-compare-y','--pg-compare-scale','--pg-compare-opacity'];
   function reset() {
     if (raf) cancelAnimationFrame(raf);
-    raf = 0; states = new WeakMap(); lastFrame = 0;
+    raf = 0;
     cards.forEach(el => {
       el.classList.remove('pg-compare-scroll-motion','pg-compare-reveal-ready','pg-compare-visible','pg-compare-finished');
       cssVars.forEach(v => el.style.removeProperty(v));
       el.removeAttribute('data-pg-compare-state');
     });
   }
-  function update(now) {
-    raf = 0;
-    if (document.hidden || (reduced && reduced.matches)) return;
-    const vh = window.innerHeight || 800;
-    const dt = lastFrame ? Math.min(64, now-lastFrame) : 16.7;
-    lastFrame = now;
-    const blend = 1-Math.exp(-dt/105);
-    let unsettled = false;
-    const entryStart = vh * .90;
-    const entryEnd = vh * .29;
-    last = cards.map((el,index) => {
-      const rect = el.getBoundingClientRect();
-      const state = states.get(el) || {y:0,scale:1,opacity:1};
-      const top = rect.top-state.y;
-      const p = clamp((entryStart - top)/(entryStart-entryEnd),0,1);
-      const smooth = p*p*(3-2*p);
-      // Deliberately scroll-linked: even fully entered cards have different
-      // individual parallax positions rather than freezing after a timer.
-      const depth = clamp((top + rect.height*.5 - vh*.48)/vh, -.8, .8);
-      const y = (1-smooth)*22 + depth*17*smooth;
-      const scale = .975 + .025*smooth;
-      const opacity = .68 + .32*smooth;
-      state.y += (y-state.y)*blend;
-      state.scale += (scale-state.scale)*blend;
-      state.opacity += (opacity-state.opacity)*blend;
-      states.set(el,state);
-      if (Math.abs(y-state.y)>.08 || Math.abs(scale-state.scale)>.001 || Math.abs(opacity-state.opacity)>.002) unsettled=true;
-      el.style.setProperty('--pg-compare-y',state.y.toFixed(2)+'px');
-      el.style.setProperty('--pg-compare-scale',state.scale.toFixed(4));
-      el.style.setProperty('--pg-compare-opacity',state.opacity.toFixed(4));
-      el.setAttribute('data-pg-compare-state',p>=.999?'entered':p<=.001?'waiting':'entering');
-      return {index,progress:Number(p.toFixed(4)),y:Number(y.toFixed(2)),opacity:Number(opacity.toFixed(4))};
+  /* Scroll-event throttled only; avoid continuous animation and layout feedback. */
+  function update() {
+    raf=0;
+    if(document.hidden||(reduced&&reduced.matches))return;
+    const vh=window.innerHeight||800;
+    last=cards.map((el,index)=>{
+      const rect=el.getBoundingClientRect();
+      const oldY=parseFloat(el.style.getPropertyValue('--pg-compare-y'))||0;
+      const top=rect.top-oldY;
+      const progress=clamp((vh*.88-top)/(vh*.58),0,1);
+      const smooth=progress*progress*(3-2*progress);
+      const depth=clamp((top+rect.height*.5-vh*.48)/vh,-.8,.8);
+      const y=(1-smooth)*12+depth*12*smooth;
+      el.style.setProperty('--pg-compare-y',y.toFixed(2)+'px');
+      el.style.setProperty('--pg-compare-scale',(0.99+0.01*smooth).toFixed(4));
+      el.style.setProperty('--pg-compare-opacity',(0.88+0.12*smooth).toFixed(4));
+      el.setAttribute('data-pg-compare-state',progress>=.999?'entered':progress<=.001?'waiting':'entering');
+      return {index,progress,y,opacity:.88+.12*smooth};
     });
-    if (unsettled) schedule();
   }
   function schedule() {
     if (!raf && !(reduced && reduced.matches)) raf = requestAnimationFrame(update);
@@ -62,7 +47,7 @@
       cards: () => cards,
       status: () => cards.map(el=>el.getAttribute('data-pg-compare-state')),
       snapshot: () => last.map(item=>({...item})),
-      mode: 'independent-smoothed-scroll-linked-v3',
+      mode: 'scroll-throttled-css-eased-v4',
       update: schedule
     };
     if (reduced && reduced.matches) return;
