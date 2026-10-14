@@ -6,6 +6,7 @@
   var selectors=[
     '#pg-ios-photo-ai-site .pg-photo-motion-card',
     '#value #pg-sc1-chunks > .pg-sc1-chunk',
+    '#value .inline-pricing-row > .inline-price-item',
     '#apps #pg-compare-guide',
     '#apps .pg-compare-guide-steps > li',
     '#screenshots .gallery-grid > .gallery-item',
@@ -30,8 +31,8 @@
       var center=(r.top+r.height/2-vh/2)/Math.max(vh,1);
       var progress=clamp(center,-1,1);
       var stagger=(index%3-1)*.6;
-      var y=clamp(-progress*(mobile?8:13)+stagger,mobile?-9:-15,mobile?9:15);
-      var tilt=clamp(progress*(mobile?.35:.65),-.75,.75);
+      var y=clamp(-progress*(mobile?16:28)+stagger,mobile?-17:-29,mobile?17:29);
+      var tilt=clamp(progress*(mobile?.45:1.05),-1.1,1.1);
       card.style.setProperty('--pg-apple-card-y',y.toFixed(2)+'px');
       card.style.setProperty('--pg-apple-card-tilt',tilt.toFixed(2)+'deg');
       card.style.setProperty('--pg-apple-card-shadow',(8+(1-Math.abs(progress))*8).toFixed(1)+'px');
