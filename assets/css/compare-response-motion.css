@@ -6,7 +6,7 @@
     opacity: var(--pg-compare-opacity, 1) !important;
     transform: translate3d(0, var(--pg-compare-y, 0px), 0)
                scale(var(--pg-compare-scale, 1)) !important;
-    transition: transform .12s linear, opacity .12s linear !important;
+    transition: none !important;
     will-change: transform, opacity;
   }
 }
