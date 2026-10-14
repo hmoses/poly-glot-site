@@ -1,0 +1,25 @@
+/* Mac Photo to AI App Preview: same layout hierarchy as the native macOS 3.6 panel. */
+#gallery-mac #pgMacPhotoPreviewTrigger{cursor:pointer!important;transition:border-color .2s ease,box-shadow .2s ease}
+#gallery-mac #pgMacPhotoPreviewTrigger:hover,#gallery-mac #pgMacPhotoPreviewTrigger:focus-visible{border-color:#26e5a5!important;box-shadow:0 0 0 1px #26e5a566,0 0 14px #26e5a54d!important;outline:none}
+body.pg-mac-demo-open{overflow:hidden}
+#pgMacPhotoDemoOverlay[hidden],#pgMacDemoImage[hidden]{display:none!important}
+#pgMacPhotoDemoOverlay{position:fixed;inset:0;z-index:2147482000;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
+#pgMacPhotoDemoOverlay .pg-mac-demo-shade{position:absolute;inset:0;background:rgba(0,0,0,.76);backdrop-filter:blur(4px)}
+#pgMacPhotoDemoOverlay .pg-mac-demo-sheet{position:relative;z-index:1;width:min(100%,580px);max-height:calc(100dvh - 32px);overflow:auto;box-sizing:border-box;background:#172034;color:#fff;border:1px solid #46516a;border-radius:20px;box-shadow:0 20px 65px #0008;padding:18px;font:14px/1.5 -apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;text-align:left}
+#pgMacPhotoDemoOverlay .pg-mac-demo-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
+#pgMacDemoTitle{font-size:21px;font-weight:700;color:white}
+#pgMacDemoClose{border:0;background:transparent;color:#fff;font-size:28px;line-height:1;cursor:pointer;min-width:40px;min-height:40px}
+#pgMacDemoPrivacy{color:#c7cede;margin:10px 0}
+#pgMacDemoChoose{width:100%;background:#334155;color:#fff;border:1px solid #64748b;border-radius:11px;padding:13px;font:inherit;font-weight:700;cursor:pointer}
+#pgMacDemoFilename{color:#d4deef;margin:6px 0;font-size:12px;overflow-wrap:anywhere}
+#pgMacDemoImage{display:block;max-height:210px;width:100%;object-fit:contain;margin:12px 0;border-radius:10px;background:#090e1b}
+#pgMacPhotoDemoOverlay label{display:block;margin:12px 0 6px;font-weight:650;color:#fff}
+#pgMacDemoNotes{width:100%;box-sizing:border-box;resize:vertical;border-radius:10px;background:#0e1728;color:#fff;border:1px solid #667085;padding:12px;font:inherit;min-height:105px}
+.pg-mac-demo-instructions{padding:10px 14px;margin:12px 0;border:1px solid #526278;border-radius:10px;font-size:13px;line-height:1.5}
+#pgMacDemoInstructions{list-style:disc outside;margin:0;padding-left:18px;color:#d4deef}
+#pgMacDemoInstructions li{padding:3px 0}
+#pgMacDemoAI{width:100%;background:#243247;color:#fff;border:2px solid #26e5a5;box-shadow:0 0 0 1px #26e5a542,0 0 12px #26e5a533;border-radius:11px;padding:12px;font:inherit}
+.pg-mac-demo-action{width:100%;box-sizing:border-box;margin-top:10px;border:1px solid #64748b;border-radius:10px;background:transparent;color:#d4deef;padding:13px;font:inherit;text-align:center}
+.pg-mac-demo-ocr{width:100%;box-sizing:border-box;margin-top:10px;border:1px solid #64748b;background:#334155;border-radius:10px;color:#fff;padding:12px;text-align:center;font-weight:700}
+.pg-mac-demo-caption{font-size:11px;color:#aab8d2;margin:13px 0 0;line-height:1.4}
+@media(max-width:640px){#pgMacPhotoDemoOverlay{padding:8px}#pgMacPhotoDemoOverlay .pg-mac-demo-sheet{max-height:calc(100dvh - 16px);padding:14px;border-radius:15px}}
