@@ -1,0 +1,7 @@
+/* Universal MCP invocation: use 38-language translated client setup instructions.
+ * Client names and executable MCP tool IDs remain unchanged. */
+(function(w,d){'use strict';var defaults=[];
+function init(){var root=d.getElementById('mcp-invocation-guide');if(!root)return;root.querySelectorAll('[data-pg-invoke-client]').forEach(function(el){var p=el.querySelector('p');if(p)defaults.push({p:p,en:p.textContent,name:el.getAttribute('data-pg-invoke-client')});});apply();}
+function apply(){var i=w._pgI18n,lang=i&&typeof i.curLang==='function'?i.curLang():'EN',dict=w._pgMcpSetupCopy||{},t=dict[lang],details=w._pgClientGuideDetails||{},names=['Cursor','Goose','VS Code','Windsurf'];defaults.forEach(function(x){var ix=names.indexOf(x.name);if(lang==='EN'||!t){x.p.textContent=x.en;return;}if(ix>=0&&details[lang]&&details[lang][ix])x.p.textContent=details[lang][ix];else x.p.textContent=t[4]+' '+t[8];});var help=d.querySelector('[data-pg-invoke-help]');if(help&&t)help.textContent=t[4]+' '+t[8];}
+w.addEventListener('pg:languagechange',function(){setTimeout(apply,90);setTimeout(apply,320)});if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})(window,document);
