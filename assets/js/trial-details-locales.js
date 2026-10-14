@@ -39,7 +39,20 @@ section.innerHTML='<div style="max-width:1050px;margin:auto;display:flex;flex-wr
 hero.insertAdjacentElement('afterend',section);
 }
 var a=copy[lang()]||copy.EN;
+var p=(w.PGPhotoAILocales||{})[lang()]||(w.PGPhotoAILocales||{}).EN;
+if(p){a=[p.comingSoonLine, p.comingSoon+': '+p.ocrMeaning+' '+p.photoCompatibility, p.comingSoonTrial, p.photoPolicy];}
 [['pg-ios-photo-title',a[0]],['pg-ios-photo-copy',a[1]],['pg-ios-photo-trial',a[2]],['pg-ios-photo-privacy',a[3]]].forEach(function(p){var e=d.getElementById(p[0]);if(e&&e.textContent!==p[1])e.textContent=p[1];});
+if(p){
+ var kicker=section.querySelector('span');
+ if(kicker)kicker.textContent='📷 '+p.comingSoonLine;
+ // Existing scan is still an input method; the new photo-and-context handoff is not live.
+ var featureInput=d.querySelector('[data-i18n="f2p"]');
+ if(featureInput){
+   var note=d.getElementById('pg-photo-input-soon');
+   if(!note){note=d.createElement('p');note.id='pg-photo-input-soon';note.style.cssText='color:#c4b5fd;font-size:.9rem;font-weight:650;line-height:1.55;margin:10px 0 0';featureInput.insertAdjacentElement('afterend',note);}
+   note.textContent=p.comingSoonLine+' — '+p.photoCompatibility;
+ }
+}
 section.setAttribute('dir',lang()==='HE'||lang()==='AR'?'rtl':'ltr');
 }
 w.addEventListener('pg:languagechange',init);
