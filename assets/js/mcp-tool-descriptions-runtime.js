@@ -16,6 +16,7 @@ var EN=[
 'Run a Poly-Glot prompt against a custom model endpoint',
 'Prepare Compare Mode with built-in AI providers and custom models'
 ];
+var TITLES={"EN":"15 Tools Available","ES":"15 herramientas disponibles","FR":"15 outils disponibles","DE":"15 Tools verfügbar","IT":"15 strumenti disponibili","PT":"15 ferramentas disponíveis","NL":"15 beschikbare tools","RU":"15 доступных инструментов","ZH":"15 项可用工具","ZH_TW":"15 個可用工具","JA":"利用可能なツール 15 個","KO":"사용 가능한 도구 15개","AR":"15 أداة متاحة","HI":"15 उपकरण उपलब्ध","BN":"১৫টি টুল উপলব্ধ","TR":"15 araç mevcut","PL":"15 dostępnych narzędzi","SV":"15 tillgängliga verktyg","NO":"15 tilgjengelige verktøy","DA":"15 tilgængelige værktøjer","FI":"15 työkalua käytettävissä","EL":"15 διαθέσιμα εργαλεία","HE":"15 כלים זמינים","ID":"15 alat tersedia","MS":"15 alat tersedia","TH":"เครื่องมือที่มีให้ใช้ 15 รายการ","VI":"15 công cụ có sẵn","UK":"Доступно 15 інструментів","CS":"15 dostupných nástrojů","RO":"15 instrumente disponibile","HU":"15 elérhető eszköz","SK":"15 dostupných nástrojov","HR":"15 dostupnih alata","CA":"15 eines disponibles","AF":"15 beskikbare nutsmiddels","SW":"Zana 15 zinapatikana","HA":"Akwai kayan aiki 15","AM":"15 መሣሪያዎች ይገኛሉ"};
 var cards=[],root=null,scheduled=false,observer=null;
 function locale(){
  var i=w._pgI18n,raw=i&&typeof i.curLang==='function'?i.curLang():localStorage.getItem('pgLang')||'EN';
@@ -28,7 +29,7 @@ function lookup(code,index){
   var value=table['mcpT'+(index+1)+'d'];
   if(!value)return EN[index];
   // An obsolete translation still says 2–9 providers; the contract supports 2–8.
-  return index===3?value.replace(/2[–-]9/g,'2–8'):value;
+  return index===3?value.replace(/9/g,'8'):value;
  }
  var expanded=w._pgMcpToolCopy||{},list=expanded[code]||expanded[code.replace('_','-')];
  return list&&list[index-7]||EN[index];
@@ -60,7 +61,7 @@ function apply(){
  var header=d.getElementById('pg-mcp-tools-summary'),title=header&&header.querySelector('.pg-mcp-tools-toggle-title');
  var dictionary=w._pgI18n&&w._pgI18n.dictionary||{};
  var table=dictionary[code]||dictionary[code.replace('_','-')]||{};
- var label=code==='EN'?'15 Tools Available':table.mcpToolsH||'15 Tools Available';
+ var label=TITLES[code]||'15 Tools Available';
  if(title&&title.textContent!==label)title.textContent=label;
  root.setAttribute('dir',rtl?'rtl':'ltr');
 }
