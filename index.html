@@ -6260,6 +6260,17 @@ function _demoStart() {
     var chat = window._pgChatI18n;
     var localized = chat && chat.KBL && chat.KBL[lang] && chat.KBL[lang][topic];
     var answer = localized || KB[topic] || KB['what is poly-glot'];
+    // Localized photo-scanner answer from the product's 39-language copy.
+    // Do not imply all eight providers accept automatic image+text sharing.
+    if(topic==='photo to ai' && window.PGPhotoAILocales){
+      var pp=window.PGPhotoAILocales;
+      var photoLocale=pp[lang]||pp[String(lang).split('_')[0]]||pp.EN;
+      if(photoLocale){
+        answer='**'+photoLocale.feature+'** (iPhone / iPad)\\n\\n'+photoLocale.ocrMeaning+
+          '\\n\\n'+photoLocale.macNews+'\\n\\n'+photoLocale.providerLimit+
+          '\\n\\n'+photoLocale.privacy;
+      }
+    }
     var labels = chat && chat.getTopics ? chat.getTopics(lang) : {};
     var links = (chatTopicGuides[topic] || []).map(function(key) {
       var guide = chatGuidePages[key];
@@ -6275,6 +6286,16 @@ function _demoStart() {
     // SECURITY: Sanitize input before processing
     if (typeof q !== 'string') return answerWithGuides('what is poly-glot');
     q = q.toLowerCase().trim().slice(0, 500);
+    // Photo-to-AI queries in any of the supported interface languages.
+    var photoLocaleMatch=false,photos=window.PGPhotoAILocales||{};
+    for(var photoCode in photos){
+      var item=photos[photoCode];
+      if(item&&((item.feature&&q.indexOf(String(item.feature).toLowerCase())!==-1)||
+          (item.scanText&&q.indexOf(String(item.scanText).toLowerCase())!==-1))){
+        photoLocaleMatch=true;break;
+      }
+    }
+    if(photoLocaleMatch || /\\b(ocr|scanner|photo upload|send photo|share photo|image attachment|attach photo|scan image)\\b/.test(q))return answerWithGuides('photo to ai');
     // Photo/OCR intent precedes general provider, pricing and privacy matches.
     if ((window.PGPhotoAIIsQuestion && window.PGPhotoAIIsQuestion(q)) || /\bocr\b|optical character recognition|photo to ai/.test(q)) return answerWithGuides('photo to ai');
 
