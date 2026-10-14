@@ -20,8 +20,8 @@ Object.keys(L).forEach(function(lang){
   var tag=lang.toLowerCase().replace("_","-");
   var localeAlias={"pt":"pt-BR","zh":"zh-CN","zh-tw":"zh-TW","no":"nb-NO","he":"he-IL"};
   var iso=localeAlias[tag]||tag;
-  var displayDate;try{displayDate=new Intl.DateTimeFormat(iso,{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"}).format(new Date("2026-10-11T12:00:00Z"));}catch(_){displayDate="October 11, 2026";}
-  pack["Last updated: October 11, 2026"]=L[lang][0]+": "+displayDate;
+  var displayDate;try{displayDate=new Intl.DateTimeFormat(iso,{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"}).format(new Date("2026-10-14T12:00:00Z"));}catch(_){displayDate="October 14, 2026";}
+  pack["Last updated: October 14, 2026"]=L[lang][0]+": "+displayDate;
   pack["Poly-Glot AI Workspace is developed by Harold Moses."]=L[lang][1]+": Harold Moses.";
   pack["Email:"]=L[lang][7]+":";
  }
