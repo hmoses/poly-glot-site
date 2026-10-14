@@ -41,7 +41,11 @@ const photoSection=page.slice(start,end);
 assert(!/<a\b/i.test(photoSection),'No App Store link or button in Photo-to-AI section');
 assert(!photoSection.includes('pg-ios-photo-install'),'Retired feature-specific App Store CTA must be absent');
 assert(!feature.includes('pg-ios-photo-install'),'Localization runtime must not recreate retired App Store CTA');
-assert.equal(count(/data-pg-photo-preview-action/g,page),4,'iPhone/iPad preview actions must show Photo to AI');
+// Four iPhone/iPad actions plus the new single Mac inline action are intentional.
+assert.equal(count(/data-pg-photo-preview-action/g,page),5,'Four iPhone/iPad and one Mac preview actions must show Photo to AI');
+assert.equal(count(/class="pg-mac-photo-preview-control pg-photo-action-btn"/g,page),1,'Exactly one Mac preview Photo to AI action');
+assert(page.includes('mac-photo-preview.js?v='),'Mac Photo to AI preview interaction must load');
+assert(page.includes('mac-photo-preview.css?v='),'Mac Photo to AI preview layout must load');
 assert(preview.includes('translatedName()'),'Preview actions must use locale strings');
 assert(!/id="pg-ios-photo-title"[^>]*>[^<]*Coming soon/i.test(page),'Coming soon should only appear in the kicker');
 const m=locales.match(/var data=(\{[\s\S]*?\});\s*var cols=(\[[^\]]+\])/);
