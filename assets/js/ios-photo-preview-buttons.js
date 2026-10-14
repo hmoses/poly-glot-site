@@ -1,73 +1,71 @@
-/* iPhone/iPad product gallery: mirror the native Photo to AI entry point.
- * Renders only inside website preview devices; never adds a macOS scanner.
- * Uses the existing 38-language Photo-to-AI catalog. Images remain identified
- * as upcoming marketing previews until the App Store release is live.
+/* Website iPhone/iPad screenshots are live HTML previews, not bitmap files.
+ * Mirror the single native "Photo to AI" button in Ask Any AI only.
+ * Keep macOS, Templates, How to Use and History screens unchanged.
+ * Labels use the product's localized Photo-to-AI catalog.
  */
 (function(w,d){'use strict';
-function translation(){
-  var lang=(w._pgI18n&&typeof w._pgI18n.curLang==='function'&&w._pgI18n.curLang())
-    ||localStorage.getItem('pgLang')||navigator.language||'EN';
-  var code=String(lang).toUpperCase().replace(/-/g,'_');
-  var dict=w.PGPhotoAILocales||{};
-  return dict[code]||dict[code.split('_')[0]]||dict.EN||{};
+var selector=[
+ '.hero-phone-mock .pg-phone-action-row>div:last-child',
+ '#gallery-iphone .pg-phone-action-row>div:last-child',
+ '#gallery-ipad .ipad-redesign-actions>.ipad-redesign-action-btn:last-child',
+ '#demo .pg-phone-action-row>div:last-child'
+].join(',');
+var extras=[
+ '.hero-phone-mock .pg-photo-preview-launch',
+ '#gallery-iphone .pg-photo-preview-launch',
+ '#gallery-ipad .pg-photo-preview-launch',
+ '#demo .pg-photo-preview-launch'
+].join(',');
+function localizedFeature(){
+ var lang=(w._pgI18n&&typeof w._pgI18n.curLang==='function'&&w._pgI18n.curLang())
+   ||localStorage.getItem('pgLang')||navigator.language||'EN';
+ var code=String(lang).toUpperCase().replace(/-/g,'_');
+ var dict=w.PGPhotoAILocales||{};
+ var t=dict[code]||dict[code.split('_')[0]]||dict.EN||{};
+ return t.feature||'Photo to AI';
 }
 function render(){
-  var catalog=translation();
-  var name=catalog.feature||'Photo to AI';
-  var upcoming=catalog.comingSoon||'Coming soon';
-  var label='📸 '+name+' · '+upcoming;
-  // These are the actual iOS gallery views: Ask, Templates, How to Use,
-  // and History. The localized static panels replace legacy bitmap screenshots.
-  d.querySelectorAll('#gallery-iphone .pg-device-static-localized,#gallery-ipad .pg-device-static-localized').forEach(function(panel){
-    if(panel.querySelector('.pg-photo-preview-launch'))return;
-    var body=panel.querySelector('.pgdsl-body');
-    if(!body)return;
-    var node=d.createElement('div');
-    node.className='pg-photo-preview-launch pg-photo-preview-gallery';
-    node.setAttribute('data-no-translate','');
-    node.setAttribute('role','img');
-    node.setAttribute('aria-label',name+' — '+upcoming+' (iPhone/iPad preview)');
-    var heading=body.querySelector('.pgdsl-title');
-    if(heading)heading.insertAdjacentElement('afterend',node);
-    else body.insertBefore(node,body.firstChild);
-  });
-  // Hero, Ask Any AI, gallery, and demo are already editable UI previews.
-  // Update every visible iPhone/iPad label, without touching Mac or its images.
-  d.querySelectorAll('.hero-phone-mock .pg-photo-preview-launch,#gallery-iphone .pg-photo-preview-launch,#gallery-ipad .pg-photo-preview-launch,#demo .pg-photo-preview-launch').forEach(function(node){
-    if(node.textContent!==label)node.textContent=label;
-    node.setAttribute('aria-label',name+' — '+upcoming+' (iPhone/iPad preview)');
-  });
+ var feature=localizedFeature();
+ d.querySelectorAll(selector).forEach(function(cell){
+   // Existing previews previously rendered the separate OCR-only Scan action.
+   // Preserve the 3-button layout; this is a replacement, not a fourth button.
+   var strong=cell.querySelector('strong');
+   if(!strong)return;
+   if(!cell.hasAttribute('data-pg-photo-native-preview')){
+     cell.setAttribute('data-pg-photo-native-preview','');
+     cell.classList.add('pg-photo-action-btn');
+     strong.setAttribute('data-pg-photo-preview-action','');
+   }
+   if(strong.textContent!==feature)strong.textContent=feature;
+   cell.setAttribute('aria-label',feature+' (iPhone/iPad app preview)');
+ });
+ // Old marketing code inserted a fourth, fictitious "Coming Soon" button.
+ // Remove only those preview-only elements; keep the separate product notice.
+ d.querySelectorAll(extras).forEach(function(el){el.remove();});
 }
 function init(){
-  if(!d.getElementById('pg-ios-photo-preview-style')){
-    var style=d.createElement('style');
-    style.id='pg-ios-photo-preview-style';
-    style.textContent=[
-      '#gallery-iphone .pg-device-static-localized .pg-photo-preview-gallery,#gallery-ipad .pg-device-static-localized .pg-photo-preview-gallery{box-sizing:border-box;display:block!important;width:calc(100% - 8px);max-width:none!important;margin:5px 4px 7px!important;padding:7px 5px!important;border-radius:8px!important;text-align:center;box-shadow:0 2px 12px rgba(82,41,169,.24)}',
-      '#gallery-iphone .pg-device-static-localized .pg-photo-preview-gallery{font-size:clamp(8px,.69vw,10px)!important}',
-      '#gallery-ipad .pg-device-static-localized .pg-photo-preview-gallery{font-size:clamp(8px,.65vw,11px)!important}',
-      '#gallery-iphone .iphone-live-preview .pg-photo-preview-launch,#gallery-ipad .ipad-live-preview .pg-photo-preview-launch{box-sizing:border-box;display:block!important;min-height:24px;max-width:calc(100% - 18px)!important}',
-      '#gallery-iphone .pg-photo-preview-launch,#gallery-ipad .pg-photo-preview-launch{direction:inherit;unicode-bidi:plaintext;white-space:normal;word-break:normal;overflow-wrap:anywhere}'
-    ].join('\n');
-    (d.head||d.documentElement).appendChild(style);
-  }
-  render();
-  // Device translation bundles can rebuild the static HTML panels after load.
-  // Observe only iOS preview panels; content updates are idempotent.
-  ['gallery-iphone','gallery-ipad'].forEach(function(id){
-    var gallery=d.getElementById(id);
-    if(!gallery||!w.MutationObserver)return;
-    var scheduled=false;
-    var obs=new MutationObserver(function(){
-      if(scheduled)return;
-      scheduled=true;
-      w.setTimeout(function(){scheduled=false;render();},0);
-    });
-    obs.observe(gallery,{childList:true,subtree:true});
-  });
+ if(!d.getElementById('pg-ios-photo-action-button-style')){
+   var css=d.createElement('style');
+   css.id='pg-ios-photo-action-button-style';
+   css.textContent=[
+    '.hero-phone-mock .pg-photo-action-btn,#gallery-iphone .pg-photo-action-btn,#gallery-ipad .pg-photo-action-btn,#demo .pg-photo-action-btn{display:flex!important;align-items:center!important;justify-content:center!important;flex-wrap:wrap!important;gap:2px!important;min-width:0!important;max-width:100%!important;white-space:normal!important;text-align:center!important;line-height:1.1!important;overflow-wrap:anywhere!important}',
+    '.pg-photo-action-btn [data-pg-photo-preview-action]{display:inline-block;max-width:100%;min-width:0;line-height:1.15;overflow-wrap:anywhere}'
+   ].join('\n');
+   (d.head||d.documentElement).appendChild(css);
+ }
+ render();
+ ['gallery-iphone','gallery-ipad'].forEach(function(id){
+   var root=d.getElementById(id);
+   if(!root||!w.MutationObserver)return;
+   var queued=false;
+   new MutationObserver(function(){
+     if(queued)return;
+     queued=true;
+     w.setTimeout(function(){queued=false;render();},0);
+   }).observe(root,{childList:true,subtree:true});
+ });
 }
-if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',init);
-else init();
-w.addEventListener('pg:languagechange',render);
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',init);else init();
+w.addEventListener('pg:languagechange',function(){render();w.setTimeout(render,80);});
 w.addEventListener('pageshow',render);
 })(window,document);
