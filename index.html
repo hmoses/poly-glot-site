@@ -6266,9 +6266,9 @@ function _demoStart() {
       var pp=window.PGPhotoAILocales;
       var photoLocale=pp[lang]||pp[String(lang).split('_')[0]]||pp.EN;
       if(photoLocale){
-        answer='**'+photoLocale.feature+'** (iPhone / iPad)\\n\\n'+photoLocale.ocrMeaning+
-          '\\n\\n'+photoLocale.macNews+'\\n\\n'+photoLocale.providerLimit+
-          '\\n\\n'+photoLocale.privacy;
+        answer='**'+photoLocale.feature+'** (iPhone / iPad)\n\n'+photoLocale.ocrMeaning+
+          '\n\n'+photoLocale.macNews+'\n\n'+photoLocale.providerLimit+
+          '\n\n'+photoLocale.privacy;
       }
     }
     var labels = chat && chat.getTopics ? chat.getTopics(lang) : {};
@@ -6295,7 +6295,7 @@ function _demoStart() {
         photoLocaleMatch=true;break;
       }
     }
-    if(photoLocaleMatch || /\\b(ocr|scanner|photo upload|send photo|share photo|image attachment|attach photo|scan image)\\b/.test(q))return answerWithGuides('photo to ai');
+    if(photoLocaleMatch || /\b(ocr|scanner|photo upload|send photo|share photo|image attachment|attach photo|scan image)\b/.test(q))return answerWithGuides('photo to ai');
     // Photo/OCR intent precedes general provider, pricing and privacy matches.
     if ((window.PGPhotoAIIsQuestion && window.PGPhotoAIIsQuestion(q)) || /\bocr\b|optical character recognition|photo to ai/.test(q)) return answerWithGuides('photo to ai');
 
