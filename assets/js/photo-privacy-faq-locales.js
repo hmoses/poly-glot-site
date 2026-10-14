@@ -1,23 +1,14 @@
-/* Add localized photo privacy disclosures to both homepage privacy answers.
- * Existing FAQ translation remains in place; this uses the localized Photo-to-AI privacy text.
- */
+/* Compact localized Photo to AI privacy summary; detailed disclosures live in privacy.html. */
 (function(w,d){'use strict';
-function current(){var i=w._pgI18n;return String(i&&typeof i.curLang==='function'?i.curLang():localStorage.getItem('pgLang')||navigator.language||'EN').toUpperCase().replace(/-/g,'_');}
-function run(){
- var code=current(),all=w.PGPhotoAILocales||{},p=all[code]||all[code.split('_')[0]]||all.EN;
- if(!p)return;
- var add=p.photoPolicy||p.privacy||'';
- if(!add)return;
- d.querySelectorAll('[data-i18n="fq3a"]').forEach(function(el){
-  var old=el.dataset.pgPhotoPrivacyAppend||'';
-  var text=el.textContent||'';
-  if(old&&text.endsWith(' '+old))text=text.slice(0,-old.length-1);
-  if(code==='EN'&&text.includes('Photo to AI keeps')){el.dataset.pgPhotoPrivacyAppend='';return;}
-  if(!text.includes(add)){el.textContent=text.trim()+' '+add;el.dataset.pgPhotoPrivacyAppend=add;}
- });
+var english='Your settings stay on your device. Photos leave only when you choose to share them. See the Privacy Policy for details.';
+function apply(){
+ var i=w._pgI18n,raw=String(i&&typeof i.curLang==='function'?i.curLang():localStorage.getItem('pgLang')||navigator.language||'EN').toUpperCase().replace(/-/g,'_');
+ var p=w.PGPhotoAILocales||{},l=p[raw]||p[raw.split('_')[0]]||p.EN;
+ var summary=raw==='EN'?english:(l&&l.privacy?l.privacy:english);
+ d.querySelectorAll('[data-i18n="fq3a"]').forEach(function(e){e.textContent=summary;});
 }
-function deferRun(){setTimeout(run,60);setTimeout(run,350);}
-w.addEventListener('pg:languagechange',deferRun);
-w.addEventListener('pageshow',deferRun);
-if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',deferRun,{once:true});else deferRun();
+function rerender(){setTimeout(apply,0);setTimeout(apply,180);setTimeout(apply,600);}
+w.addEventListener('pg:languagechange',rerender);
+w.addEventListener('pageshow',rerender);
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',rerender,{once:true});else rerender();
 })(window,document);
