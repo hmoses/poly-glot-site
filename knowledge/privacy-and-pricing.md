@@ -13,6 +13,10 @@ Direct answers about Poly-Glot AI Workspace privacy, third-party providers, free
 
 App history and settings can remain on-device. Submitted prompts go to the selected AI provider, while remote MCP requests pass through the Poly-Glot server. The MCP service verifies entitlements and records operational usage metadata; processing providers have their own privacy policies.
 
+## How does Photo to AI handle my photos?
+
+On iPhone and iPad, Photo to AI uses Optical Character Recognition (OCR) to turn writing from a photo into editable text on the device. Users can take or import a photo and add optional text instructions. Poly-Glot does not upload those photos to its own server. A photo leaves the device only when the user explicitly chooses a destination from Apple's Share Sheet or manually attaches it inside a third-party AI app. Recipients may process or retain photos and instructions under their own policies. All eight Poly-Glot providers support text workflows; photo and text attachments are not guaranteed across all eight apps or their selected models. If a provider does not appear in the Share Sheet, attach the image manually within that provider if its interface allows it. Photo to AI is included during the existing three-day trial and requires Pro afterward.
+
 ## Does optional analytics collect prompts or AI responses?
 
 No. With consent in iOS or macOS Settings, optional PostHog telemetry sends limited usage events but not prompt text or AI responses. Users can disable analytics in Settings. MCP operational metadata logging and website analytics/advertising pixels are separate. See the [Privacy Policy](https://hmoses.github.io/poly-glot-site/privacy.html).
