@@ -102,129 +102,148 @@
 })(window, document);
 
 
-/* Photo-to-AI native-screen previews. Rendered as HTML rather than flattened
- * screenshots so that all 38 UI languages can update text without asset forks.
- * Illustrative preview of the released-in-source UI, not a working uploader.
+/* iPhone and iPad Photo to AI gallery previews — parity with iOS build 870.
+ * Rendered as localized HTML, not screenshots. All controls are illustrative;
+ * actual photo transfer is performed only by the installed native application.
+ * Keep iPad and iPhone stacked just like the real Photo to AI sheet.
  */
-(function(w,d) {'use strict';
-  var cssId='pg-photo-device-preview-style';
-  function lang() {
-    var a=(w._pgI18n&&typeof w._pgI18n.curLang==='function'&&w._pgI18n.curLang())||
-      localStorage.getItem('pgLang')||d.documentElement.lang||navigator.language||'EN';
-    return String(a).toUpperCase().replace(/-/g,'_');
-  }
-  function catalog() {
-    var all=w.PGPhotoAILocales||{},l=lang();
-    return all[l]||all[l.split('_')[0]]||all.EN||{};
-  }
-  function node(tag,cls,content) {
-    var e=d.createElement(tag);if(cls)e.className=cls;
-    if(content!==undefined)e.textContent=content;return e;
-  }
-  function renderFrame(device) {
-    var grid=d.querySelector('#gallery-'+device+' .gallery-grid');
-    if(!grid || d.getElementById('pg-photo-'+device+'-card'))return;
-    var card=node('div','gallery-item');card.id='pg-photo-'+device+'-card';
-    var frame=node('div',device==='iphone'?'iphone-device':'ipad-device');
-    if(device==='iphone')frame.appendChild(node('span','iphone-side-left'));
-    var screen=node('div',device==='iphone'?'iphone-screen':'ipad-screen');
-    var ui=node('div','pg-photo-ui pg-photo-ui-'+device);
-    var top=node('div','pg-photo-ui-header');
-    var brand=node('div','pg-photo-ui-brand');
-    var logo=d.createElement('img');logo.src='assets/img/icon-128.png';logo.alt='';brand.appendChild(logo);
-    brand.appendChild(node('span','', 'Poly-Glot AI Workspace'));
-    top.appendChild(brand);top.appendChild(node('span','pg-photo-ui-lang','🌐'));
-    ui.appendChild(top);
-    var tabs=node('div','pg-photo-ui-tabs');
-    ['✏️','▦','☷','◷'].forEach(function(x){tabs.appendChild(node('span','',x));});
-    ui.appendChild(tabs);
-    var body=node('div','pg-photo-ui-modal');
-    var title=node('div','pg-photo-ui-title');
-    title.appendChild(node('strong','pg-photo-l10n','Photo to AI'));
-    title.appendChild(node('span','pg-photo-ui-close','×'));body.appendChild(title);
-    body.appendChild(node('div','pg-photo-ui-privacy pg-photo-l10n','Photos leave your device only when you share them.'));
-    var layout=node('div','pg-photo-ui-layout'),left=node('div','pg-photo-ui-left'),right=node('div','pg-photo-ui-right');
-    left.appendChild(node('div','pg-photo-ui-picker pg-photo-l10n','Choose photo'));
-    left.appendChild(node('div','pg-photo-ui-camera pg-photo-l10n','Take photo'));
-    var preview=node('div','pg-photo-ui-image');
-    preview.setAttribute('aria-hidden','true');
-    preview.innerHTML='<div class="pg-photo-ui-paper"><div class="pg-photo-ui-paper-bar"></div><div class="pg-photo-ui-paper-line"></div><div class="pg-photo-ui-paper-line short"></div><div class="pg-photo-ui-paper-line"></div><div class="pg-photo-ui-paper-line short"></div></div>';
-    left.appendChild(preview);
-    right.appendChild(node('div','pg-photo-ui-context-title pg-photo-l10n','Add context (optional)'));
-    right.appendChild(node('div','pg-photo-ui-textbox','································'));
-    var actions=node('div','pg-photo-ui-buttons');
-    actions.appendChild(node('div','pg-photo-ui-scan pg-photo-l10n','Scan text (OCR)'));
-    actions.appendChild(node('div','pg-photo-ui-share pg-photo-l10n','Share with AI'));
-    right.appendChild(actions);layout.appendChild(left);layout.appendChild(right);
-    body.appendChild(layout);ui.appendChild(body);screen.appendChild(ui);
-    screen.appendChild(node('div',device==='iphone'?'iphone-home-indicator':'ipad-home-indicator'));
-    frame.appendChild(screen);card.appendChild(frame);card.appendChild(node('div','gallery-label pg-photo-l10n','Photo to AI'));
-    var first=grid.querySelector('.gallery-item');
-    if(first && first.nextSibling)grid.insertBefore(card,first.nextSibling);else grid.appendChild(card);
-  }
-  function localize(){
-    var t=catalog(),codes=['feature','privacy','choose','camera','context','scanText','share','feature'];
-    ['iphone','ipad'].forEach(function(device){
-      var card=d.getElementById('pg-photo-'+device+'-card');if(!card)return;
-      var els=card.querySelectorAll('.pg-photo-l10n');
-      els.forEach(function(el,i){
-        var key=codes[i], fallback={feature:'Photo to AI',privacy:'Photos leave your device only when you share them.',choose:'Choose photo',camera:'Take photo',context:'Add context (optional)',scanText:'Scan text',share:'Share with AI'}[key];
-        var val=t[key]||fallback;
-        if(key==='scanText')val+=' (OCR)';
-        if(el.textContent!==val)el.textContent=val;
-      });
-      card.dir=/^(AR|HE)$/.test(lang())?'rtl':'ltr';
-    });
-  }
-  function style(){
-    if(d.getElementById(cssId))return;
-    var tag=d.createElement('style');tag.id=cssId;
-    tag.textContent=
-      '.pg-photo-ui{position:absolute;inset:0;background:#0d101a;color:#f8fafc;overflow:hidden;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,sans-serif;box-sizing:border-box}' +
-      '.pg-photo-ui *{box-sizing:border-box;min-width:0;overflow-wrap:anywhere}' +
-      '.pg-photo-ui-header{display:flex;align-items:center;justify-content:space-between;padding:13% 5% 4%;font-size:clamp(6px,.7vw,10px);font-weight:750}' +
-      '.pg-photo-ui-ipad .pg-photo-ui-header{padding:3% 4% 1.8%;font-size:10px}' +
-      '.pg-photo-ui-brand{display:flex;align-items:center;gap:5px}' +
-      '.pg-photo-ui-brand img{width:17px;height:17px;border-radius:4px}' +
-      '.pg-photo-ui-tabs{display:flex;justify-content:space-around;padding:5px 8px;color:#bac4d7;border-bottom:1px solid #364153;font-size:10px}' +
-      '.pg-photo-ui-modal{margin:8px 7px 0;padding:11px 9px;background:#172034;border:1px solid #46516a;border-radius:12px;flex:1;overflow:hidden;box-shadow:0 4px 18px #0006}' +
-      '.pg-photo-ui-title{display:flex;align-items:flex-start;justify-content:space-between;gap:3px;margin-bottom:5px;font-size:clamp(10px,.9vw,14px);line-height:1.15}' +
-      '.pg-photo-ui-close{color:#b9c4d8;font-size:16px}' +
-      '.pg-photo-ui-privacy{font-size:9px;line-height:1.3;color:#aab8ce;margin-bottom:9px}' +
-      '.pg-photo-ui-layout{display:flex;flex-direction:column;gap:7px}' +
-      '.pg-photo-ui-picker,.pg-photo-ui-camera{border:1px solid #63728a;background:#334155;text-align:center;border-radius:8px;padding:6px 4px;font-size:10px;font-weight:650;margin-bottom:5px}' +
-      '.pg-photo-ui-image{height:92px;margin-top:3px;background:linear-gradient(145deg,#313c55,#0a1325);border:1px solid #4a556e;border-radius:7px;display:grid;place-items:center}' +
-      '.pg-photo-ui-paper{width:58%;height:79%;border-radius:2px;background:#e6e8ed;padding:9px 9px 2px;box-shadow:0 3px 12px #0007;transform:rotate(-3deg)}' +
-      '.pg-photo-ui-paper-bar{height:5px;width:68%;border-radius:3px;background:#495b7c;margin-bottom:8px}' +
-      '.pg-photo-ui-paper-line{height:3px;background:#aab3c4;margin:5px 0;border-radius:2px}.pg-photo-ui-paper-line.short{width:60%}' +
-      '.pg-photo-ui-context-title{font-size:9px;color:#e8edf8;font-weight:700;margin:3px 0 4px}' +
-      '.pg-photo-ui-textbox{border:1px solid #64748b;background:#0e1728;color:#899bb6;border-radius:8px;padding:8px;height:42px;font-size:10px;overflow:hidden}' +
-      '.pg-photo-ui-buttons{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:7px}' +
-      '.pg-photo-ui-scan,.pg-photo-ui-share{text-align:center;padding:8px 3px;border-radius:7px;font-size:9px;font-weight:750;line-height:1.17;border:1px solid #64748b;background:#334155}' +
-      '.pg-photo-ui-share{background:#6d28d9;border-color:#6d28d9}' +
-      '.pg-photo-ui-ipad .pg-photo-ui-modal{margin:5px 14px 12px;padding:10px 16px}' +
-      '.pg-photo-ui-ipad .pg-photo-ui-privacy{font-size:10px;margin-bottom:6px}' +
-      '.pg-photo-ui-ipad .pg-photo-ui-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:16px}' +
-      '.pg-photo-ui-ipad .pg-photo-ui-image{height:100px}' +
-      '.pg-photo-ui-ipad .pg-photo-ui-textbox{height:64px}' +
-      '.pg-photo-ui-ipad .pg-photo-ui-picker,.pg-photo-ui-ipad .pg-photo-ui-camera{font-size:11px;padding:6px}' +
-      '.pg-photo-ui-ipad .pg-photo-ui-buttons{margin-top:11px}' +
-      '.pg-photo-ui-ipad .pg-photo-ui-buttons>div{font-size:11px;padding:11px 3px}' +
-      '#pg-photo-iphone-card .pg-photo-ui-header{font-size:7px}' +
-      '#pg-photo-iphone-card .pg-photo-ui-image{height:78px}' +
-      '#pg-photo-iphone-card .pg-photo-ui-modal{margin:6px 6px 0;padding:8px}' +
-      '#pg-photo-iphone-card .pg-photo-ui-privacy{font-size:7px}' +
-      '#pg-photo-iphone-card .pg-photo-ui-picker,#pg-photo-iphone-card .pg-photo-ui-camera{font-size:8px;padding:5px}' +
-      '#pg-photo-iphone-card .pg-photo-ui-textbox{height:35px}' +
-      '#pg-photo-iphone-card .pg-photo-ui-context-title,#pg-photo-iphone-card .pg-photo-ui-buttons>div{font-size:8px}' +
-      '@media(max-width:600px){#pg-photo-ipad-card .pg-photo-ui-modal{margin:5px 9px;padding:8px}#pg-photo-ipad-card .pg-photo-ui-layout{gap:8px}#pg-photo-ipad-card .pg-photo-ui-privacy{font-size:8px}}';
-    d.head.appendChild(tag);
-  }
-  function init(){
-    style();renderFrame('iphone');renderFrame('ipad');localize();
-    w.addEventListener('pg:languagechange',localize);
-    w.addEventListener('pageshow',localize);
-    var last=lang();w.setInterval(function(){var next=lang();if(next!==last){last=next;localize();}},1800);
-  }
-  if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',init,{once:true});else init();
+(function(w,d){'use strict';
+ var styleId='pg-photo-device-preview-style';
+ function language(){
+   var raw=(w._pgI18n&&typeof w._pgI18n.curLang==='function'&&w._pgI18n.curLang())||localStorage.getItem('pgLang')||d.documentElement.lang||navigator.language||'EN';
+   return String(raw).toUpperCase().replace(/-/g,'_');
+ }
+ function catalog(){
+   var all=w.PGPhotoAILocales||{},code=language();
+   return all[code]||all[code.split('_')[0]]||all.EN||{};
+ }
+ function element(tag,cls,text){var node=d.createElement(tag);if(cls)node.className=cls;if(text!==undefined)node.textContent=text;return node;}
+ function text(node,value){if(node&&node.textContent!==value)node.textContent=value;}
+ function button(cls,key){var b=element('div','pg-photo-ui-control '+cls);b.dataset.photoKey=key;return b;}
+ function actionLabel(code,t){
+   var map=w.PGPhotoPreviewActionLabels||{};
+   var labels=map[code]||map[code.split('_')[0]]||map.EN;
+   return labels&&labels[0]||((t.share||'Share with AI')+' · '+(t.manualPhoto||'Paste photo'));
+ }
+ function renderFrame(device){
+   var grid=d.querySelector('#gallery-'+device+' .gallery-grid');
+   if(!grid||d.getElementById('pg-photo-'+device+'-card'))return;
+   var card=element('div','gallery-item');card.id='pg-photo-'+device+'-card';
+   var frame=element('div',device==='iphone'?'iphone-device':'ipad-device');
+   if(device==='iphone')frame.appendChild(element('span','iphone-side-left'));
+   var screen=element('div',device==='iphone'?'iphone-screen':'ipad-screen');
+   var ui=element('div','pg-photo-ui pg-photo-ui-'+device);
+   var header=element('div','pg-photo-ui-header');var brand=element('div','pg-photo-ui-brand');
+   var logo=element('img');logo.src='assets/img/icon-128.png';logo.alt='';brand.appendChild(logo);
+   brand.appendChild(element('span','','Poly-Glot AI Workspace'));
+   header.appendChild(brand);header.appendChild(element('span','pg-photo-ui-lang','🌐'));
+   ui.appendChild(header);
+   var tabs=element('div','pg-photo-ui-tabs');['✏️','▦','☷','◷'].forEach(function(x){tabs.appendChild(element('span','',x));});ui.appendChild(tabs);
+   var sheet=element('div','pg-photo-ui-modal');
+   var title=element('div','pg-photo-ui-title');title.appendChild(element('strong','pg-photo-ui-title-copy'));title.appendChild(element('span','pg-photo-ui-close','×'));sheet.appendChild(title);
+   sheet.appendChild(element('div','pg-photo-ui-privacy'));
+   sheet.appendChild(button('pg-photo-ui-picker','choose'));
+   sheet.appendChild(button('pg-photo-ui-camera','camera'));
+   sheet.appendChild(element('div','pg-photo-ui-context-title'));
+   var textarea=element('div','pg-photo-ui-textbox');textarea.setAttribute('aria-hidden','true');sheet.appendChild(textarea);
+   var bullets=element('div','pg-photo-ui-guidance');var list=element('ul','pg-photo-ui-bullets');bullets.appendChild(list);sheet.appendChild(bullets);
+   var providerLabel=element('div','pg-photo-ui-provider-label');sheet.appendChild(providerLabel);
+   var select=element('div','pg-photo-ui-provider-select');
+   select.appendChild(element('span','pg-photo-ui-provider-selected','ChatGPT'));
+   select.appendChild(element('span','pg-photo-ui-provider-chevron','⌄'));sheet.appendChild(select);
+   sheet.appendChild(element('div','pg-photo-ui-open-action'));
+   sheet.appendChild(element('div','pg-photo-ui-native-share'));
+   sheet.appendChild(button('pg-photo-ui-scan','scanText'));
+   ui.appendChild(sheet);
+   screen.appendChild(ui);
+   screen.appendChild(element('div',device==='iphone'?'iphone-home-indicator':'ipad-home-indicator'));
+   frame.appendChild(screen);card.appendChild(frame);
+   card.appendChild(element('div','gallery-label pg-photo-ui-card-label'));
+   var first=grid.querySelector('.gallery-item');
+   if(first&&first.nextSibling)grid.insertBefore(card,first.nextSibling);else grid.appendChild(card);
+ }
+ function localize(){
+   var t=catalog(),code=language();
+   ['iphone','ipad'].forEach(function(device){
+     var card=d.getElementById('pg-photo-'+device+'-card');if(!card)return;
+     card.dir=/^(AR|HE)$/.test(code)?'rtl':'ltr';
+     text(card.querySelector('.pg-photo-ui-title-copy'),'📷 '+(t.feature||'Photo to AI'));
+     text(card.querySelector('.pg-photo-ui-privacy'),t.photoPolicy||t.privacy||'Photos leave your device only when you share them.');
+     text(card.querySelector('.pg-photo-ui-picker'),'📷 '+(t.choose||'Choose photo'));
+     text(card.querySelector('.pg-photo-ui-camera'),'📸 '+(t.camera||'Take photo'));
+     text(card.querySelector('.pg-photo-ui-context-title'),t.context||'Add context (optional)');
+     var bullets=card.querySelector('.pg-photo-ui-bullets');
+     var lines=[(t.choose||'Choose photo')+' / '+(t.camera||'Take photo')+' · '+(t.context||'Add context (optional)'),t.manualPhoto||'Paste or attach the photo in your selected AI.',t.privacy||'Photos leave your device only when you share them.'];
+     if(bullets){bullets.replaceChildren();lines.forEach(function(line){bullets.appendChild(element('li','',line));});}
+     text(card.querySelector('.pg-photo-ui-provider-label'),t.share||'Share with AI');
+     text(card.querySelector('.pg-photo-ui-open-action'),actionLabel(code,t));
+     text(card.querySelector('.pg-photo-ui-native-share'),(t.share||'Share with AI')+' · iOS');
+     text(card.querySelector('.pg-photo-ui-scan'),(t.scanText||'Scan text')+' (OCR)');
+     text(card.querySelector('.pg-photo-ui-card-label'),t.feature||'Photo to AI');
+   });
+ }
+ function style(){
+   if(d.getElementById(styleId))return;
+   var tag=element('style');tag.id=styleId;
+   tag.textContent=`
+/* Phone and tablet previews now follow the REAL iOS Photo to AI stacked sheet.
+   No split iPad panel, placeholder paper image, or purple share button. */
+.pg-photo-ui{position:absolute;inset:0;background:#090c12;color:#f7f9fc;overflow:hidden;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;box-sizing:border-box}
+.pg-photo-ui *{box-sizing:border-box;min-width:0;overflow-wrap:anywhere}
+.pg-photo-ui-header{display:flex;align-items:center;justify-content:space-between;padding:13% 5% 3%;font-size:clamp(6px,.7vw,10px);font-weight:750;flex-shrink:0}
+.pg-photo-ui-ipad .pg-photo-ui-header{padding:3% 4% 1.8%;font-size:10px}
+.pg-photo-ui-brand{display:flex;align-items:center;gap:5px}.pg-photo-ui-brand img{width:17px;height:17px;border-radius:4px}
+.pg-photo-ui-tabs{display:flex;justify-content:space-around;padding:5px 8px;color:#bac4d7;border-bottom:1px solid #364153;font-size:10px;flex-shrink:0}
+.pg-photo-ui-modal{margin:7px 6px 0;padding:9px 8px;background:#172034;border:1px solid #46516a;border-radius:12px 12px 4px 4px;flex:1;min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#56657b transparent;box-shadow:0 4px 18px #0006}
+.pg-photo-ui-title{display:flex;align-items:center;justify-content:space-between;gap:3px;margin-bottom:7px;font-size:clamp(10px,.9vw,14px);line-height:1.15}.pg-photo-ui-close{color:white;font-size:17px;font-weight:350}
+.pg-photo-ui-privacy{color:#b9c6db;line-height:1.4;margin:0 0 10px;font-size:9px}
+.pg-photo-ui-control{text-align:center;border:1px solid #63728a;background:#334155;border-radius:7px;padding:7px 4px;font-weight:700;line-height:1.25}
+.pg-photo-ui-picker,.pg-photo-ui-camera{margin-bottom:6px;font-size:9px}
+.pg-photo-ui-context-title{font-size:10px;color:#f3f6fd;font-weight:700;margin:11px 0 5px}
+.pg-photo-ui-textbox{border:1px solid #64748b;background:#0e1728;color:#899bb6;border-radius:8px;height:55px;overflow:hidden}
+.pg-photo-ui-guidance{margin:12px 0 10px;border:1px solid #526278;border-radius:8px;padding:7px 10px;color:#d4deef;font-size:8px;line-height:1.4}
+.pg-photo-ui-bullets{margin:0;padding-left:12px;list-style:disc outside}.pg-photo-ui-bullets li{margin:3px 0}
+.pg-photo-ui-provider-label{font-size:10px;font-weight:700;margin:9px 0 5px}
+.pg-photo-ui-provider-select{display:flex;align-items:center;justify-content:space-between;background:#243247;border:2px solid #26e5a5;box-shadow:0 0 8px #26e5a533;border-radius:8px;padding:8px;color:#fff;font-size:11px;line-height:1.3}
+.pg-photo-ui-provider-chevron{font-size:13px;color:#d4deef}
+.pg-photo-ui-open-action{display:block;border:1px solid #64748b;border-radius:8px;text-align:center;background:transparent;color:#d4deef;padding:9px 5px;margin:8px 0;font-size:9px;line-height:1.3}
+.pg-photo-ui-native-share{text-align:center;text-decoration:underline;text-underline-offset:2px;color:#a7f3d0;padding:8px 4px;margin:5px 0;font-size:9px;line-height:1.3}
+.pg-photo-ui-scan{margin-top:8px;font-size:9px;padding:9px}
+.pg-photo-ui-ipad .pg-photo-ui-header{font-size:10px}
+.pg-photo-ui-ipad .pg-photo-ui-modal{margin:5px 14px 7px;padding:10px 13px;border-radius:11px;overflow-y:auto}
+.pg-photo-ui-ipad .pg-photo-ui-title{font-size:15px}.pg-photo-ui-ipad .pg-photo-ui-privacy{font-size:10px}
+.pg-photo-ui-ipad .pg-photo-ui-picker,.pg-photo-ui-ipad .pg-photo-ui-camera{font-size:11px;padding:7px}
+.pg-photo-ui-ipad .pg-photo-ui-context-title,.pg-photo-ui-ipad .pg-photo-ui-provider-label{font-size:11px}
+.pg-photo-ui-ipad .pg-photo-ui-textbox{height:57px}.pg-photo-ui-ipad .pg-photo-ui-guidance{font-size:10px}
+.pg-photo-ui-ipad .pg-photo-ui-provider-select{font-size:12px}
+.pg-photo-ui-ipad .pg-photo-ui-open-action,.pg-photo-ui-ipad .pg-photo-ui-native-share,.pg-photo-ui-ipad .pg-photo-ui-scan{font-size:11px}
+#pg-photo-iphone-card .pg-photo-ui-header{font-size:7px}
+#pg-photo-iphone-card .pg-photo-ui-modal{margin:5px 5px 0;padding:7px}
+#pg-photo-iphone-card .pg-photo-ui-privacy{font-size:7px;margin-bottom:8px}
+#pg-photo-iphone-card .pg-photo-ui-title{font-size:11px}
+#pg-photo-iphone-card .pg-photo-ui-picker,#pg-photo-iphone-card .pg-photo-ui-camera{font-size:8px;padding:6px}
+#pg-photo-iphone-card .pg-photo-ui-textbox{height:40px}
+#pg-photo-iphone-card .pg-photo-ui-guidance{font-size:7px;margin:9px 0 8px}
+#pg-photo-iphone-card .pg-photo-ui-provider-label{font-size:9px}
+#pg-photo-iphone-card .pg-photo-ui-provider-select{font-size:9px;padding:6px}
+#pg-photo-iphone-card .pg-photo-ui-open-action,#pg-photo-iphone-card .pg-photo-ui-native-share,#pg-photo-iphone-card .pg-photo-ui-scan{font-size:8px;padding:7px}
+#pg-photo-iphone-card .pg-photo-ui-context-title{font-size:8px}
+#pg-photo-iphone-card .pg-photo-ui-close{font-size:13px}
+#pg-photo-iphone-card .pg-photo-ui-bullets{padding-left:10px}
+#pg-photo-iphone-card .pg-photo-ui-modal{scrollbar-width:none}
+.pg-photo-ui[dir="rtl"],#pg-photo-iphone-card[dir="rtl"] .pg-photo-ui-modal,#pg-photo-ipad-card[dir="rtl"] .pg-photo-ui-modal{direction:rtl;text-align:right}
+#pg-photo-iphone-card[dir="rtl"] .pg-photo-ui-bullets,#pg-photo-ipad-card[dir="rtl"] .pg-photo-ui-bullets{padding-right:14px;padding-left:0}
+@media(max-width:600px){#pg-photo-ipad-card .pg-photo-ui-modal{margin:4px 8px;padding:7px}#pg-photo-ipad-card .pg-photo-ui-privacy{font-size:8px}#pg-photo-ipad-card .pg-photo-ui-guidance{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.pg-photo-ui *{scroll-behavior:auto}}
+`;
+   d.head.appendChild(tag);
+ }
+ function init(){
+   style();renderFrame('iphone');renderFrame('ipad');localize();
+   w.addEventListener('pg:languagechange',localize);
+   w.addEventListener('pg:photo-action-locales-ready',localize);
+   w.addEventListener('pageshow',localize);
+   var last=language();w.setInterval(function(){var next=language();if(next!==last){last=next;localize();}},1800);
+ }
+ if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',init);else init();
 })(window,document);

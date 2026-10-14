@@ -26,6 +26,7 @@ jobs:
         run: |
           node scripts/verify-photo-to-ai-site.mjs
           node scripts/verify-mac-photo-preview.mjs
+          node scripts/verify-ios-photo-preview-v870.mjs
       - name: Check Photo-to-AI, MCP and parallax JavaScript syntax
         run: |
           node --check assets/js/photo-to-ai-site.js
