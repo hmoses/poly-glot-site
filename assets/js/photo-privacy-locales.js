@@ -1,0 +1,21 @@
+/* Localized Photo-to-AI privacy addendum. Existing privacy and analytics wording is unchanged. */
+(function(w,d){'use strict';
+function code(){
+ var raw=(w._pgI18n&&typeof w._pgI18n.curLang==='function'&&w._pgI18n.curLang())||
+   localStorage.getItem('pgLang')||navigator.language||'EN';
+ return String(raw).toUpperCase().replace(/-/g,'_');
+}
+function apply(){
+ var all=w.PGPhotoAILocales||{},raw=code(),t=all[raw]||all[raw.split('_')[0]]||all.EN;
+ if(!t)return;
+ var title=d.getElementById('pgPhotoPolicyHeading'),ocr=d.getElementById('pgPhotoPolicyOCR'),
+     share=d.getElementById('pgPhotoPolicySharing'),wrap=d.getElementById('pgPhotoPolicy');
+ if(title)title.textContent=t.feature+' / OCR (iPhone / iPad)';
+ if(ocr)ocr.textContent=t.ocrMeaning;
+ if(share)share.textContent=t.privacy+' '+t.providerLimit;
+ if(wrap)wrap.dir=raw==='AR'||raw==='HE'?'rtl':'ltr';
+}
+w.addEventListener('pg:languagechange',apply);
+w.addEventListener('pageshow',apply);
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
+})(window,document);
