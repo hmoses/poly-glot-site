@@ -4,6 +4,8 @@ var APP='https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285';
 function strings(){var all=w.PGPhotoAILocales||{};var raw=String(localStorage.getItem('pgLang')||navigator.language||'EN').toUpperCase().replace(/-/g,'_');return all[raw]||all[raw.split('_')[0]]||all.EN||{};}
 function localize(){var t=strings();[['pg-scanner-title',t.feature],['pg-scanner-desc',t.macNews],['pg-scanner-gate',t.iosNews],['pg-scanner-privacy',t.privacy],['pg-scanner-cta',(t.feature||'Photo to AI')+' →']].forEach(function(k){var el=d.getElementById(k[0]);if(el&&k[1]&&el.textContent!==k[1])el.textContent=k[1];});}
 function render(){
+ // The localized, SEO-visible Photo-to-AI section is authoritative. Never duplicate it.
+ if(d.getElementById('pg-ios-photo-ai-site'))return;
  if(d.getElementById('pg-photo-scanner-product'))return;
  var anchor=d.getElementById('features');if(!anchor||!anchor.parentNode)return;
  var sec=d.createElement('section');sec.id='pg-photo-scanner-product';
