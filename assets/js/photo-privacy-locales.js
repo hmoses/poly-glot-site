@@ -10,12 +10,12 @@ function apply(){
  if(!t)return;
  var title=d.getElementById('pgPhotoPolicyHeading'),ocr=d.getElementById('pgPhotoPolicyOCR'),
      share=d.getElementById('pgPhotoPolicySharing'),wrap=d.getElementById('pgPhotoPolicy');
- if(title)title.textContent=t.feature+' / OCR (iPhone / iPad)';
- if(ocr)ocr.textContent=t.ocrMeaning;
- if(share)share.textContent=t.privacy+' '+t.providerLimit;
+ if(title)title.textContent=t.comingSoonLine+' / OCR';
+ if(ocr)ocr.textContent=t.comingSoon+': '+t.ocrMeaning;
+ if(share)share.textContent=t.comingSoon+': '+t.privacy+' '+t.providerLimit;
  var details=d.getElementById('pgPhotoPolicyProviders');
  if(!details&&wrap){details=d.createElement('p');details.id='pgPhotoPolicyProviders';wrap.appendChild(details);}
- if(details)details.textContent='ChatGPT · Claude · Gemini · Grok · Perplexity · Mistral: '+t.manualPhoto+' DuckDuckGo AI: '+t.duckImageModel+' HuggingChat: '+t.huggingUnavailable;
+ if(details)details.textContent=t.comingSoon+': ChatGPT · Claude · Gemini · Grok · Perplexity · Mistral: '+t.manualPhoto+' DuckDuckGo AI: '+t.duckImageModel+' HuggingChat: '+t.huggingUnavailable;
  if(wrap)wrap.dir=raw==='AR'||raw==='HE'?'rtl':'ltr';
 }
 w.addEventListener('pg:languagechange',apply);
