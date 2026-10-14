@@ -66,7 +66,7 @@ var toolDescriptionNodes=null,toolDescriptionHtml=[];
 function localizeToolDescriptions(code){
  var root=document.getElementById("connect");if(!root)return;
  if(!toolDescriptionNodes){var ids=["transcribe_audio","detect_language","translate_text","localize_text","get_custom_model_capabilities","validate_custom_model","run_custom_model","prepare_custom_compare"];
- toolDescriptionNodes=ids.map(function(id){var c=Array.from(root.querySelectorAll("code")).find(function(n){return n.textContent.trim()===id;});return c&&c.parentElement?c.parentElement.querySelector("p"):null;});
+ toolDescriptionNodes=ids.map(function(id){var c=Array.from(root.querySelectorAll("code")).find(function(n){return n.textContent.trim()===id;});return c&&c.closest(".pg-mcp-motion-card")?c.closest(".pg-mcp-motion-card").querySelector("p"):null;});
  toolDescriptionHtml=toolDescriptionNodes.map(function(n){return n?n.innerHTML:"";});}
  var t=TOOL_DESC[code]||TOOL_DESC.EN;
  toolDescriptionNodes.forEach(function(n,i){if(!n)return;if(code==="EN")n.innerHTML=toolDescriptionHtml[i];else if(n.textContent!==t[i])n.textContent=t[i];if(code==="HE"||code==="AR")n.setAttribute("dir","auto");else n.removeAttribute("dir");});
