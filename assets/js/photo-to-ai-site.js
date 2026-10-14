@@ -3,8 +3,12 @@
 var APP='https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285';
 function strings(){var all=w.PGPhotoAILocales||{};var current=(w._pgI18n&&typeof w._pgI18n.curLang==='function'&&w._pgI18n.curLang())||localStorage.getItem('pgLang')||navigator.language||'EN';var raw=String(current).toUpperCase().replace(/-/g,'_');return all[raw]||all[raw.split('_')[0]]||all.EN||{};}
 function localize(){var t=strings();[['pg-scanner-title',t.comingSoonLine||t.feature],['pg-scanner-desc',(t.ocrMeaning||'')+' '+(t.comingSoon||'Coming soon')+': '+(t.photoCompatibility||'')],['pg-scanner-gate',t.comingSoonTrial||t.locked],['pg-scanner-privacy',t.photoPolicy||t.privacy],['pg-scanner-cta','App Store · '+(t.feature||'Photo to AI')+' →'],['pg-photo-guide-title','📎 '+(t.comingSoon||'Coming soon')+' · '+(t.feature||'Photo to AI')],['pg-photo-guide-common','ChatGPT · Claude · Gemini · Grok · Perplexity · Mistral: '+(t.manualPhoto||'Attach in the AI app.')],['pg-photo-guide-duck','DuckDuckGo AI: '+(t.duckImageModel||'Image support depends on model.')],['pg-photo-guide-hug','HuggingChat: '+(t.huggingUnavailable||'Service not available.')]].forEach(function(k){var el=d.getElementById(k[0]);if(el&&k[1]&&el.textContent!==k[1])el.textContent=k[1];});
- var preview='📸 '+(t.feature||'Photo to AI')+' · '+(t.comingSoon||'Coming soon');
- Array.prototype.forEach.call(d.querySelectorAll('.pg-photo-preview-launch'),function(el){if(el.textContent!==preview)el.textContent=preview;});
+ // These are live HTML previews of the actual iOS/iPadOS action row.
+ // Replace the previous OCR-only Scan label, without inserting a fictitious fourth button.
+ var previewLabel=t.feature||'Photo to AI';
+ Array.prototype.forEach.call(d.querySelectorAll('[data-pg-photo-preview-action]'),function(el){
+   if(el.textContent!==previewLabel)el.textContent=previewLabel;
+ });
 }
 function render(){
  // The localized, SEO-visible Photo-to-AI section is authoritative. Never duplicate it.
