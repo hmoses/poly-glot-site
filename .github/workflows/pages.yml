@@ -23,7 +23,9 @@ jobs:
         with:
           node-version: '22'
       - name: Verify Photo-to-AI localization and preview parity
-        run: node scripts/verify-photo-to-ai-site.mjs
+        run: |
+          node scripts/verify-photo-to-ai-site.mjs
+          node scripts/verify-mac-photo-preview.mjs
       - name: Check Photo-to-AI, MCP and parallax JavaScript syntax
         run: |
           node --check assets/js/photo-to-ai-site.js

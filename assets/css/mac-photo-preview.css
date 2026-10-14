@@ -23,3 +23,55 @@ body.pg-mac-demo-open{overflow:hidden}
 .pg-mac-demo-ocr{width:100%;box-sizing:border-box;margin-top:10px;border:1px solid #64748b;background:#334155;border-radius:10px;color:#fff;padding:12px;text-align:center;font-weight:700}
 .pg-mac-demo-caption{font-size:11px;color:#aab8d2;margin:13px 0 0;line-height:1.4}
 @media(max-width:640px){#pgMacPhotoDemoOverlay{padding:8px}#pgMacPhotoDemoOverlay .pg-mac-demo-sheet{max-height:calc(100dvh - 16px);padding:14px;border-radius:15px}}
+
+/* Three native-sized action buttons in the Mac laptop mock.
+   Older English and translated Mac layouts used a two-column grid; this higher-
+   specificity rule corrects that layout without touching iPhone/iPad UI. */
+html #gallery-mac #macScreen-askanyai .mac-ask-body > div.pg-mac-photo-actions:nth-child(5),
+html[data-device-ui-lang] #gallery-mac #macScreen-askanyai .mac-ask-body > div.pg-mac-photo-actions:nth-child(5),
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-ask-body > div.pg-mac-photo-actions:nth-child(5) {
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  grid-auto-flow:row!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  gap:clamp(3px,.7vw,8px)!important;
+  margin:0 0 clamp(5px,.7vw,12px)!important;
+  box-sizing:border-box!important;
+  align-items:stretch!important;
+}
+html #gallery-mac #macScreen-askanyai .mac-ask-body > div.pg-mac-photo-actions:nth-child(5) > *,
+html:not([data-device-ui-lang="EN"]) #gallery-mac #macScreen-askanyai .mac-ask-body > div.pg-mac-photo-actions:nth-child(5) > * {
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  min-height:clamp(23px,2.6vw,40px)!important;
+  padding:clamp(4px,.62vw,10px)!important;
+  box-sizing:border-box!important;
+  text-align:center!important;
+  font-size:clamp(7px,.76vw,12px)!important;
+  line-height:1.25!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+}
+html #gallery-mac #macScreen-askanyai .pg-mac-photo-actions .pg-mac-photo-preview-control > strong {
+  min-width:0;
+  white-space:normal;
+  font:inherit;
+  overflow-wrap:anywhere;
+}
+html[dir="rtl"] #gallery-mac #macScreen-askanyai .pg-mac-photo-actions {
+  direction:rtl!important;
+}
+@media (max-width:650px) {
+  html #gallery-mac #macScreen-askanyai .mac-ask-body > div.pg-mac-photo-actions:nth-child(5) > * {
+    font-size:clamp(6px,1.55vw,10px)!important;
+    min-height:24px!important;
+    padding:4px 3px!important;
+  }
+}

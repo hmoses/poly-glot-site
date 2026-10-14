@@ -3007,7 +3007,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
  .category-constellation.is-collapsed .category-tile:nth-child(n+7){display:none}
 }
 </style>
-<link rel="stylesheet" href="assets/css/mac-photo-preview.css?v=20261014-mac-photo-menu">
+<link rel="stylesheet" href="assets/css/mac-photo-preview.css?v=20261014-scaled-l10n-39">
 </head>
 <body>
 
@@ -3567,8 +3567,8 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
                 <div style="background:#0d1117;border:2px solid #10b981;border-radius:10px;padding:16px 18px;min-height:160px;margin-bottom:12px;box-shadow:0 0 12px rgba(16,185,129,0.3)">
                   <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);line-height:1.6">Hi ARCHITECT! Ask Any AI anything — in your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater</div>
                 </div>
-                <!-- Action buttons -->
-                <div style="display:flex;gap:8px;margin-bottom:12px">
+                <!-- Action buttons: same three equal-width controls as macOS build 845, at every locale and preview scale. -->
+                <div class="pg-mac-photo-actions" role="group" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:12px">
                   <div style="flex:1;background:#1c2128;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px;text-align:center;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.5)">&#128203; Paste</div>
                   <div style="flex:1;background:#1c2128;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px;text-align:center;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.5)">&#128196; Import</div>
                   <div class="pg-mac-photo-preview-control pg-photo-action-btn" data-pg-photo-native-preview style="flex:1;min-width:0;background:#1c2128;border:1px solid #26e5a5;border-radius:8px;padding:10px 5px;text-align:center;font-size:0.72rem;font-weight:700;color:#fff">📷 <strong data-pg-photo-preview-action>Photo to AI</strong></div>
@@ -14598,7 +14598,7 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
 #gallery-mac #macScreen-askanyai .pg-mac-photo-preview-control strong{font-size:inherit;font-weight:750;min-width:0;}
 @media(max-width:600px){#gallery-mac #macScreen-askanyai .pg-mac-photo-preview-control{font-size:clamp(5px,.75vw,10px)!important;padding:5px 2px!important}}
 </style>
-<script defer src="assets/js/mac-photo-preview.js?v=20261014-mac-photo-menu"></script>
+<script defer src="assets/js/mac-photo-preview.js?v=20261014-scaled-l10n-39"></script>
 <script defer src="assets/js/mcp-directory-live-locales.js?v=20261014-listed-38"></script>
 <script defer src="assets/js/mcp-home-clients-locales.js?v=20261014-38"></script>
 </body>
