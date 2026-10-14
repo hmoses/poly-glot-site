@@ -31,9 +31,12 @@
       if(!r.height||r.bottom < -100||r.top>vh+100)return;
       var oldY=parseFloat(card.style.getPropertyValue('--pg-apple-card-y'))||0;
       var progress=clamp((r.top-oldY+r.height/2-vh/2)/vh,-1,1);
-      var y=clamp(-progress*(mobile?9:15)+(index%3-1)*.4,mobile?-10:-16,mobile?10:16);
+      var featured=card.matches('#value #pg-sc1-chunks > .pg-sc1-chunk, #value .inline-pricing-row > .inline-price-item');
+      var lane=featured?(Array.prototype.indexOf.call(card.parentElement.children,card)%2===0?-1:1):0;
+      var amplitude=featured?(mobile?13:23):(mobile?9:15);
+      var y=clamp(-progress*amplitude+lane*(featured?1.5:0),-amplitude-2,amplitude+2);
       card.style.setProperty('--pg-apple-card-y',y.toFixed(2)+'px');
-      card.style.setProperty('--pg-apple-card-tilt',(progress*(mobile?.2:.4)).toFixed(2)+'deg');
+      card.style.setProperty('--pg-apple-card-tilt',(progress*(featured?(mobile?.25:.62):(mobile?.2:.4))).toFixed(2)+'deg');
       card.style.setProperty('--pg-apple-card-shadow',(8+(1-Math.abs(progress))*6).toFixed(1)+'px');
     });
   }
