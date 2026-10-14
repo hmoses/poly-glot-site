@@ -6,6 +6,12 @@ const feature=read('assets/js/photo-to-ai-site.js');
 const preview=read('assets/js/ios-photo-preview-buttons.js');
 const locales=read('assets/js/photo-to-ai-locales.js');
 const trial=read('assets/js/trial-details-locales.js');
+const uploads=read('assets/js/photo-upload-locales.js');
+const motionCSS=read('assets/css/apple-card-parallax.css');
+const motionJS=read('assets/js/apple-card-parallax.js');
+const mcpRuntime=read('assets/js/mcp-tool-descriptions-runtime.js');
+const mcpPart1=read('assets/js/mcp-tool-descriptions-1.js');
+const mcpPart2=read('assets/js/mcp-tool-descriptions-2.js');
 
 function count(pattern,source){return [...source.matchAll(pattern)].length;}
 assert.equal(count(/id="pg-ios-photo-ai-site"/g,page),1,'Only one iOS photo promotion section');
@@ -47,4 +53,28 @@ for (const [lang,row] of Object.entries(values)){
   assert(row[columns.indexOf(key)]?.trim(),'Missing '+lang+'.'+key);
  }
 }
+// Changes requested for the mobile page must not break the tabbed Mac preview.
+assert.equal(count(/class="pg-photo-motion-card"/g,page),3,'All three Photo-to-AI cards require independent motion');
+for(const id of ['pg-ios-photo-upload-title','pg-ios-photo-upload-copy']){
+ assert.equal(count(new RegExp('id="'+id+'"','g'),page),1,'Missing image-upload card element '+id);
+ assert(feature.includes(id),'Image-upload card must update from selected locale');
+}
+const uploadMatch=uploads.match(/var data=(\{[\s\S]*?\});\s*var catalog=/);
+assert(uploadMatch,'Missing localized image-upload catalog');
+const uploadLanguages=JSON.parse(uploadMatch[1]);
+assert.deepEqual(Object.keys(uploadLanguages).sort(),Object.keys(values).sort(),'Photo-upload card must support every Photo-to-AI locale');
+for(const [code,copy] of Object.entries(uploadLanguages)){
+ assert(copy.length===2&&copy.every(s=>typeof s==='string'&&s.trim()),'Missing upload text in '+code);
+}
+assert(page.indexOf('id="pg-ios-photo-ai-site"')<page.indexOf('id="screenshots"'),'App Preview must follow Photo to AI');
+assert(page.indexOf('id="screenshots"')<page.indexOf('id="value"'),'App Preview must sit directly before Value section');
+assert.equal(count(/id="screenshots"/g,page),1,'App Preview cannot be duplicated');
+assert(page.includes('apple-card-parallax.js?v='),'Page must load scroll parallax');
+assert(motionCSS.includes('prefers-reduced-motion: reduce'),'Parallax must honor reduced motion');
+assert(motionJS.includes('prefers-reduced-motion: reduce'),'Parallax runtime must honor reduced motion');
+assert(page.includes('mcp-tool-descriptions-runtime.js?v=20261014-all-15-38'),'Load current tool localization code');
+assert(mcpRuntime.includes("mcpT")&&mcpRuntime.includes("get_custom_model_capabilities"),'MCP runtime must cover all 15 tool identifiers');
+const mcpCodes=(mcpPart1+mcpPart2).match(/"ZH_TW":\[/g)||[];
+assert.equal(mcpCodes.length,1,'Traditional Chinese MCP tool translations must exist');
+
 console.log('PASS: Photo to AI site — no App Store CTA in feature section, chunked copy, iPhone/iPad previews, '+Object.keys(values).length+' locales.');
