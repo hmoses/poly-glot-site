@@ -52,3 +52,15 @@
     transition: transform .18s cubic-bezier(.22,.61,.36,1),box-shadow .18s ease-out,opacity .35s ease-out;
   }
 }
+
+/* Gallery phones have one motion owner: Apple parallax, not homepage reveal or hover. */
+@media (prefers-reduced-motion: no-preference) {
+  #screenshots .gallery-grid > .gallery-item {
+    transform: translate3d(0,var(--pg-apple-card-y,0px),0) rotateX(var(--pg-apple-card-tilt,0deg)) !important;
+    transition: transform .22s cubic-bezier(.22,.61,.36,1) !important;
+    backface-visibility: hidden;
+  }
+  #screenshots .gallery-grid > .gallery-item:hover {
+    transform: translate3d(0,var(--pg-apple-card-y,0px),0) rotateX(var(--pg-apple-card-tilt,0deg)) !important;
+  }
+}
