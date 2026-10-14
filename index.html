@@ -3166,11 +3166,15 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
     <div id="pg-ios-photo-kicker" style="color:#c4b5fd;font-weight:750;font-size:.81rem;letter-spacing:.04em">📱 iPhone &amp; iPad only</div>
     <h2 id="pg-ios-photo-title" style="font-size:clamp(1.65rem,4vw,2.5rem);margin:9px 0 17px;color:#fff;line-height:1.2">Photo to AI</h2>
     <div class="pg-photo-feature-chunks" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px;margin:0 0 16px">
-      <article style="padding:15px 17px;border:1px solid rgba(167,139,250,.32);border-radius:12px;background:rgba(255,255,255,.04)">
+      <article class="pg-photo-motion-card" style="padding:15px 17px;border:1px solid rgba(167,139,250,.32);border-radius:12px;background:rgba(255,255,255,.04)">
         <h3 id="pg-ios-photo-scan-title" style="font-size:1.02rem;margin:0 0 7px;color:#f8f4ff">📷 Scan text</h3>
         <p id="pg-ios-photo-scan-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">Use OCR to turn photographed text into editable text.</p>
       </article>
-      <article style="padding:15px 17px;border:1px solid rgba(167,139,250,.32);border-radius:12px;background:rgba(255,255,255,.04)">
+      <article class="pg-photo-motion-card" style="padding:15px 17px;border:1px solid rgba(167,139,250,.32);border-radius:12px;background:rgba(255,255,255,.04)">
+        <h3 id="pg-ios-photo-upload-title" style="font-size:1.02rem;margin:0 0 7px;color:#f8f4ff">🖼️ Upload photos to AI</h3>
+        <p id="pg-ios-photo-upload-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">Take or choose a photo, then share it with a compatible AI app. If direct sharing is unsupported, attach it inside the AI app. Image limits vary by provider.</p>
+      </article>
+      <article class="pg-photo-motion-card" style="padding:15px 17px;border:1px solid rgba(167,139,250,.32);border-radius:12px;background:rgba(255,255,255,.04)">
         <h3 id="pg-ios-photo-share-title" style="font-size:1.02rem;margin:0 0 7px;color:#f8f4ff">✍️ Share photos with context</h3>
         <p id="pg-ios-photo-share-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">Take or choose a photo, add instructions, and share with compatible AI apps. Automatic delivery to every provider is not supported.</p>
       </article>
@@ -3180,6 +3184,514 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
     
   </div>
 </section>
+
+<div class="section-divider"></div>
+
+<!-- ===== SCREENSHOT GALLERY ===== -->
+<section class="section screenshot-gallery" id="screenshots">
+  <div class="container">
+    <h2 class="section-title" data-i18n="ssH">App Preview</h2>
+    <p class="section-sub" data-i18n="ssSub">Poly-Glot AI Workspace runs natively on Mac, iPhone &amp; iPad. Available now on the App Store.</p>
+
+    <div class="gallery-tabs" role="tablist" aria-label="App Preview device">
+      <div class="gallery-tab active" role="tab" aria-selected="true" aria-controls="gallery-mac" tabindex="0" onclick="switchGallery('mac')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();switchGallery('mac')}">💻 Mac</div>
+      <div class="gallery-tab" role="tab" aria-selected="false" aria-controls="gallery-iphone" tabindex="-1" onclick="switchGallery('iphone')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();switchGallery('iphone')}">📱 iPhone</div>
+      <div class="gallery-tab" role="tab" aria-selected="false" aria-controls="gallery-ipad" tabindex="-1" onclick="switchGallery('ipad')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();switchGallery('ipad')}">📱 iPad</div>
+    </div>
+    <!-- iPhone Screenshots -->
+    <div class="gallery-panel" id="gallery-iphone">
+      <div class="gallery-grid phone-grid">
+
+        <div class="gallery-item">
+          <div class="iphone-device">
+            <span class="iphone-side-left" aria-hidden="true"></span>
+            <div class="iphone-screen">
+              <div class="iphone-live-preview iphone-ask-preview">
+                <!-- Status bar -->
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px 4px;font-size:0.6rem;font-weight:700;color:#fff">
+                  <span>1:11</span>
+                  <span style="display:inline-block;width:16px;height:8px;border:1.5px solid #fff;border-radius:2px;position:relative"><span style="position:absolute;top:1.5px;left:1.5px;right:1.5px;bottom:1.5px;background:#30d158;border-radius:1px"></span></span>
+                </div>
+                <!-- App header -->
+                <div style="display:flex;align-items:center;gap:6px;padding:6px 12px 8px">
+                  <img src="assets/img/icon-128.png" alt="" style="width:22px;height:22px;border-radius:5px;cursor:default">
+                  <span style="font-size:0.65rem;font-weight:800;color:#fff">Poly-Glot AI Workspace</span>
+                  <span style="margin-left:auto;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,0.1);font-size:0.5rem;font-weight:700;color:#fff">🇺🇸 EN</span>
+                </div>
+                <!-- Tabs -->
+                <div class="iphone-ask-tabs" style="display:flex;font-size:0.5rem;font-weight:600;color:rgba(255,255,255,0.3);border-bottom:1px solid rgba(255,255,255,0.08)">
+                  <span class="iphone-ask-tab-active" style="padding:6px 8px;color:#f59e0b;border-bottom:2px solid #f59e0b">✏️ Ask Any AI</span>
+                  <span style="padding:6px 7px">📋 Templates</span>
+                  <span style="padding:6px 7px">📖 How to Use</span>
+                  <span style="padding:6px 7px">🕐 History</span>
+                </div>
+                <!-- Ask Any AI -->
+                <div class="pg-phone-ask-body pg-phone-ask-body-gallery">
+                  <div class="pg-phone-ask-title">🤔 Ask Any AI</div>
+                  <div class="pg-phone-tips">
+                    <div>✏️ Type, paste, import or talk</div>
+                    <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
+                    <div>🌐 Output Language ⬇️ AI responds in this language</div>
+                    <div>🔀 Compare Mode: send to multiple AIs</div>
+                  </div>
+                  <div class="pg-phone-output-row">
+                    <span class="pg-phone-output-label">🌐 AI will respond in:</span>
+                    <span class="pg-phone-output-select"><span>🇺🇸</span><strong>English</strong><span class="pg-phone-output-caret">⌄</span></span>
+                  </div>
+                  <div class="pg-phone-prompt-box">
+                    <div>Hi ARCHITECT! Ask Any AI anything — in your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater</div>
+                  </div>
+                  <div class="pg-phone-action-row">
+                    <div>📋 <strong>Paste</strong></div>
+                    <div>📄 <strong>Import</strong></div>
+                    <div class="pg-photo-action-btn" data-pg-photo-native-preview>📷 <strong data-pg-photo-preview-action>Photo to AI</strong></div>
+                  </div>
+                  <div class="pg-phone-talk-send">
+                    <div class="pg-phone-talk"><span class="pg-phone-mic">🎤</span><span>Talk</span></div>
+                    <div class="pg-phone-send">Send</div>
+                  </div>
+                  <div class="pg-phone-clear">🗑 Clear All</div>
+                </div>
+              </div>
+              <div class="iphone-home-indicator"></div>
+            </div>
+          </div>
+          <div class="gallery-label">Ask Any AI</div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="iphone-device">
+            <span class="iphone-side-left" aria-hidden="true"></span>
+            <div class="iphone-screen">
+              <img src="assets/img/screenshots/iphone-2-templates.png" alt="Templates on iPhone" loading="lazy" decoding="async" fetchpriority="low">
+              <div class="iphone-home-indicator"></div>
+            </div>
+          </div>
+          <div class="gallery-label">1,000+ Templates</div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="iphone-device">
+            <span class="iphone-side-left" aria-hidden="true"></span>
+            <div class="iphone-screen">
+              <img src="assets/img/screenshots/iphone-3-howtouse.png" alt="How to Use on iPhone" loading="lazy" decoding="async" fetchpriority="low">
+              <div class="iphone-home-indicator"></div>
+            </div>
+          </div>
+          <div class="gallery-label">How to Use</div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="iphone-device">
+            <span class="iphone-side-left" aria-hidden="true"></span>
+            <div class="iphone-screen history-screen">
+              <div class="history-preview" aria-label="Poly-Glot Prompt History preview">
+                <div class="hp-status"><span>3:46</span><span>▮▮▮ ◉ 50</span></div>
+                <div class="hp-head">
+                  <img src="assets/img/icon-128.png" alt="">
+                  <div><div class="hp-title">Poly-Glot AI Workspace</div><div class="hp-sub">poly-glot.ai</div></div>
+                  <div class="hp-lang">🇺🇸 EN</div>
+                </div>
+                <div class="hp-tabs"><span>✎ Ask Any AI</span><span>▦ Templates</span><span>▣ How to Use</span><span class="active">◷ History</span></div>
+                <div class="hp-body">
+                  <div class="hp-row">
+                    <div><div class="hp-h">Prompt History</div><div class="hp-note">Your recent prompts &amp; favorites</div></div>
+                    <div class="hp-actions"><span class="hp-pill">All</span><span class="hp-pill clear">Clear</span></div>
+                  </div>
+                  <div class="hp-card-grid" style="display:grid!important;grid-template-columns:1fr!important;gap:6px!important">
+                    <div class="hp-card">
+                      <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Test</div>
+                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                    </div>
+                    <div class="hp-card">
+                      <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Write a polite email to my landlord asking to fix the heater.</div>
+                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                    </div>
+                    <div class="hp-card">
+                      <span class="hp-star">☆</span><div class="hp-card-title">Interview Coach</div><div class="hp-time">9m ago</div><div class="hp-text">Prepare {{name}} for a {{job_title}} interview.</div>
+                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                    </div>
+                    <div class="hp-card">
+                      <span class="hp-star">☆</span><div class="hp-card-title">Resume Optimizer</div><div class="hp-time">12m ago</div><div class="hp-text">Improve this resume for a senior technical writer role.</div>
+                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                    </div>
+                    <div class="hp-card">
+                      <span class="hp-star">☆</span><div class="hp-card-title">API Documentation</div><div class="hp-time">18m ago</div><div class="hp-text">Draft a concise API quickstart from this OpenAPI spec.</div>
+                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                    </div>
+                    <div class="hp-card">
+                      <span class="hp-star">☆</span><div class="hp-card-title">Translation</div><div class="hp-time">24m ago</div><div class="hp-text">Translate this product description into French and Arabic.</div>
+                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="iphone-home-indicator"></div>
+            </div>
+          </div>
+          <div class="gallery-label">History</div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- iPad Screenshots -->
+    <div class="gallery-panel" id="gallery-ipad">
+      <div class="gallery-grid ipad-grid">
+
+        <div class="gallery-item">
+          <div class="ipad-device">
+            <div class="ipad-screen">
+              <div class="ipad-live-preview">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 14px 4px;font-size:0.55rem;font-weight:700;color:#fff">
+                  <span>1:11</span>
+                  <span style="display:inline-block;width:16px;height:8px;border:1.5px solid #fff;border-radius:2px;position:relative"><span style="position:absolute;top:1.5px;left:1.5px;right:1.5px;bottom:1.5px;background:#30d158;border-radius:1px"></span></span>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px;padding:4px 14px 6px">
+                  <img src="assets/img/icon-128.png" alt="" style="width:20px;height:20px;border-radius:5px;cursor:default">
+                  <span style="font-size:0.6rem;font-weight:800;color:#fff">Poly-Glot AI Workspace</span>
+                  <span style="margin-left:auto;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,0.1);font-size:0.45rem;font-weight:700;color:#fff">🇺🇸 EN</span>
+                </div>
+                <div style="display:flex;font-size:0.45rem;font-weight:600;color:rgba(255,255,255,0.3);border-bottom:1px solid rgba(255,255,255,0.08)">
+                  <span style="padding:5px 10px;color:#f59e0b;border-bottom:2px solid #f59e0b">✏️ Ask Any AI</span>
+                  <span style="padding:5px 10px">📋 Templates</span>
+                  <span style="padding:5px 10px">📖 How to Use</span>
+                  <span style="padding:5px 10px">🕐 History</span>
+                </div>
+                <div class="ipad-native-ask-head">
+                  <div class="ipad-native-ask-title">🤔 Ask Any AI</div>
+                  <div class="ipad-native-help">
+                    <div class="ipad-native-help-lines">
+                      <div>✏️ Type, paste, import or talk</div>
+                      <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
+                      <div>🌐 Output Language ⬇️ AI responds in this language</div>
+                      <div>🔀 Compare Mode: send to multiple AIs</div>
+                    </div>
+                    <a class="ipad-native-how-link" href="#demo">How it works</a>
+                  </div>
+                </div>
+                <div class="ipad-native-output-row">
+                  <span class="ipad-native-output-label">🌐 AI will respond in:</span>
+                  <span class="ipad-native-output-select"><span>🇺🇸</span><strong>English</strong><span class="ipad-native-output-caret">⌄</span></span>
+                </div>
+                <div style="margin:4px 14px;border:2px solid #10b981;border-radius:8px;padding:8px 10px;min-height:60px;background:#0d1117;box-shadow:0 0 8px rgba(16,185,129,0.3)">
+                  <div style="font-size:0.4rem;color:rgba(255,255,255,0.4);line-height:1.5">Hi ARCHITECT! Ask Any AI anything — in your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater</div>
+                </div>
+                <div class="ipad-redesign-actions">
+                  <div class="ipad-redesign-action-btn">📋 <strong>Paste</strong></div>
+                  <div class="ipad-redesign-action-btn">📄 <strong>Import</strong></div>
+                  <div class="ipad-redesign-action-btn pg-photo-action-btn" data-pg-photo-native-preview>📷 <strong data-pg-photo-preview-action>Photo to AI</strong></div>
+                </div>
+                <div class="ipad-redesign-talk-send">
+                  <div class="ipad-redesign-talk"><span class="ipad-redesign-mic">🎤</span><span>Talk</span></div>
+                  <div class="ipad-redesign-send">Send</div>
+                </div>
+                <div class="ipad-redesign-clear">🗑 Clear All</div>
+              </div>
+              <div class="ipad-home-indicator"></div>
+            </div>
+          </div>
+          <div class="gallery-label">Ask Any AI</div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="ipad-device">
+            <div class="ipad-screen">
+              <img src="assets/img/screenshots/ipad-2-templates.png" alt="Templates on iPad" loading="lazy" decoding="async" fetchpriority="low">
+              <div class="ipad-home-indicator"></div>
+            </div>
+          </div>
+          <div class="gallery-label">1,000+ Templates</div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="ipad-device">
+            <div class="ipad-screen">
+              <img src="assets/img/screenshots/ipad-3-howtouse.png" alt="How to Use on iPad" loading="lazy" decoding="async" fetchpriority="low">
+              <div class="ipad-home-indicator"></div>
+            </div>
+          </div>
+          <div class="gallery-label">How to Use</div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="ipad-device">
+            <div class="ipad-screen history-screen">
+              <div class="history-preview" aria-label="Poly-Glot Prompt History preview">
+                <div class="hp-status"><span>3:46</span><span>▮▮▮ ◉ 50</span></div>
+                <div class="hp-head">
+                  <img src="assets/img/icon-128.png" alt="">
+                  <div><div class="hp-title">Poly-Glot AI Workspace</div><div class="hp-sub">poly-glot.ai</div></div>
+                  <div class="hp-lang">🇺🇸 EN</div>
+                </div>
+                <div class="hp-tabs"><span>✎ Ask Any AI</span><span>▦ Templates</span><span>▣ How to Use</span><span class="active">◷ History</span></div>
+                <div class="hp-body">
+                  <div class="hp-row">
+                    <div><div class="hp-h">Prompt History</div><div class="hp-note">Your recent prompts &amp; favorites</div></div>
+                    <div class="hp-actions"><span class="hp-pill">All</span><span class="hp-pill clear">Clear</span></div>
+                  </div>
+                  <div class="ipad-history-card-grid"><div class="hp-card">
+                    <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Test</div>
+                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                  </div>
+                  <div class="hp-card">
+                    <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Test</div>
+                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                  </div>
+                  <div class="hp-card">
+                    <span class="hp-star">☆</span><div class="hp-card-title">Interview Coach</div><div class="hp-time">9m ago</div><div class="hp-text">You are an executive career coach. Prepare {{name}} for a {{job_title}} interview...</div>
+                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
+                  </div></div>
+                </div>
+              </div>
+              <div class="ipad-home-indicator"></div>
+            </div>
+          </div>
+          <div class="gallery-label">History</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mac Screenshots — Interactive Tab Viewer -->
+    <div class="gallery-panel active" id="gallery-mac">
+      <div id="macTabHint" style="text-align:center;margin-bottom:20px;animation:hintPulse 1.6s ease-in-out infinite">
+        <span data-mac-preview-cta>👇 Click the tabs to view: Ask Any AI · Templates · How to Use · History</span>
+      </div>
+
+      <div class="mac-reference-interactive" aria-label="Interactive Poly-Glot AI Workspace Mac demo">
+        <img class="mac-reference-base" src="assets/img/poly-glot-mac-render.jpg?v=interactive-exact-1" alt="Poly-Glot AI Workspace on MacBook" loading="lazy" decoding="async" fetchpriority="low">
+        <div class="pg-mac-full-overlay pg-mac-inline-overlay" aria-hidden="true"></div>
+
+        <div class="mac-reference-hotspots" aria-label="Mac app navigation tabs">
+          <button class="mac-reference-tab active" onclick="switchMacTab('askanyai')" id="macTab-askanyai" aria-label="Ask Any AI"><span>✏️ Ask Any AI</span></button>
+          <button class="mac-reference-tab" onclick="switchMacTab('templates')" id="macTab-templates" aria-label="Templates"><span>📋 Templates</span></button>
+          <button class="mac-reference-tab" onclick="switchMacTab('howtouse')" id="macTab-howtouse" aria-label="How to Use"><span>📖 How to Use</span></button>
+          <button class="mac-reference-tab" onclick="switchMacTab('history')" id="macTab-history" aria-label="History"><span>🕐 History</span></button>
+        </div>
+
+        <div class="mac-reference-stage">
+<div class="mac-screen-stage">
+            <div id="macScreen-askanyai" class="mac-screen-panel active" style="background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;padding:0;overflow:hidden">
+              <!-- Ask Any AI content -->
+              <div class="mac-ask-body" style="padding:24px 28px">
+                <div class="mac-native-ask-title" style="font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:8px">&#129300; Ask Any AI</div>
+                <div class="mac-native-help mac-native-help-gallery">
+                  <div class="mac-native-help-lines">
+                    <div>✏️ Type, paste, import or talk</div>
+                    <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
+                    <div>🌐 Output Language ⬇️ AI responds in this language</div>
+                    <div>🔀 Compare Mode: send to multiple AIs</div>
+                  </div>
+                  <a class="mac-native-how-link" href="#demo">How it works</a>
+                </div>
+                <div class="mac-response-row">
+                  <span class="mac-response-label">&#127760; AI will respond in:</span>
+                  <div class="mac-response-select">
+                    <span>&#127482;&#127480;</span>
+                    <strong>English</strong>
+                    <span class="mac-response-caret">&#9660;</span>
+                  </div>
+                </div>
+                <!-- Textarea -->
+                <div style="background:#0d1117;border:2px solid #10b981;border-radius:10px;padding:16px 18px;min-height:160px;margin-bottom:12px;box-shadow:0 0 12px rgba(16,185,129,0.3)">
+                  <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);line-height:1.6">Hi ARCHITECT! Ask Any AI anything — in your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater</div>
+                </div>
+                <!-- Action buttons -->
+                <div style="display:flex;gap:8px;margin-bottom:12px">
+                  <div style="flex:1;background:#1c2128;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px;text-align:center;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.5)">&#128203; Paste</div>
+                  <div style="flex:1;background:#1c2128;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px;text-align:center;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.5)">&#128196; Import</div>
+                </div>
+                <!-- Talk + Send row -->
+                <div style="display:flex;align-items:center;gap:12px">
+                  <div style="display:flex;align-items:center;gap:6px;color:rgba(255,255,255,0.4);font-size:0.72rem"><span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;font-size:0.7rem">&#127908;</span> Talk</div>
+                  <div style="margin-left:auto;padding:10px 28px;background:#10b981;color:#fff;border-radius:10px;font-size:0.8rem;font-weight:700">Send</div>
+                </div>
+                <div style="margin-top:8px;font-size:0.6rem;color:rgba(255,255,255,0.25)">&#128465; Clear All</div>
+              </div>
+            </div>
+            <div id="macScreen-templates" class="mac-screen-panel mac-template-panel" aria-label="Templates on Mac">
+              <img src="assets/img/screenshots/mac-2-templates.png" alt="Templates on Mac" loading="lazy" decoding="async" fetchpriority="low">
+            </div>
+            <!-- Interactive Demo (from latest AI Workspace app code) -->
+            <div id="macScreen-howtouse" class="mac-screen-panel" style="background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;overflow:hidden">
+              <!-- PHASE 1: Ask Any AI textarea + Send -->
+              <div id="siteDemo-P1" style="padding:18px;opacity:1;transition:opacity 0.4s">
+                <div id="siteDemo-Textarea" style="background:#1c2128;border:1.5px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;min-height:54px;font-size:13px;color:#e6edf3;line-height:1.5;white-space:pre-wrap;word-break:break-word"></div>
+                <div id="siteDemo-SendBtn" style="margin-top:12px;padding:12px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;text-align:center;opacity:0.4;transition:opacity 0.3s,transform 0.15s">Send to AI</div>
+              </div>
+              <!-- PHASE 2: AI Menu with Compare Mode -->
+              <div id="siteDemo-P2" style="position:absolute;bottom:0;left:0;right:0;background:#161b22;border-radius:16px 16px 0 0;padding:16px;transform:translateY(100%);transition:transform 0.35s ease-out;border-top:1px solid rgba(255,255,255,.08)">
+                <div style="width:32px;height:4px;background:rgba(255,255,255,.08);border-radius:2px;margin:0 auto 12px"></div>
+                <div style="text-align:center;font-size:14px;font-weight:700;margin-bottom:12px;color:#e6edf3">Choose AI</div>
+                <!-- Compare toggle -->
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#1c2128;border-radius:10px;margin-bottom:12px;border:1px solid rgba(255,255,255,.08)">
+                  <span style="font-size:13px;font-weight:600;color:#e6edf3">🔀 Compare Mode</span>
+                  <div id="siteDemo-CmpToggle" style="width:40px;height:22px;border-radius:11px;background:rgba(255,255,255,.08);transition:background 0.25s;position:relative;cursor:default">
+                    <div id="siteDemo-CmpKnob" style="width:18px;height:18px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px;transition:left 0.25s;box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
+                  </div>
+                </div>
+                <!-- AI Buttons -->
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <div class="siteDemo-AI" data-ai="chatgpt" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
+                    <div style="width:30px;height:30px;border-radius:7px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">GPT</div>
+                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">ChatGPT</div><div style="font-size:10px;color:#8b949e">Prompt auto-filled</div></div>
+                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
+                  </div>
+                  <div class="siteDemo-AI" data-ai="claude" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
+                    <div style="width:30px;height:30px;border-radius:7px;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">CLD</div>
+                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">Claude</div><div style="font-size:10px;color:#8b949e">Paste prompt</div></div>
+                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
+                  </div>
+                  <div class="siteDemo-AI" data-ai="gemini" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
+                    <div style="width:30px;height:30px;border-radius:7px;background:#4285f4;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">GEM</div>
+                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">Gemini</div><div style="font-size:10px;color:#8b949e">Paste prompt</div></div>
+                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
+                  </div>
+                  <div class="siteDemo-AI" data-ai="perplexity" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
+                    <div style="width:30px;height:30px;border-radius:7px;background:#20b2aa;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">PPX</div>
+                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">Perplexity</div><div style="font-size:10px;color:#8b949e">Prompt auto-filled</div></div>
+                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
+                  </div>
+                </div>
+                <!-- Send to Selected button -->
+                <div id="siteDemo-SendAll" style="margin-top:12px;padding:12px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border-radius:10px;font-size:14px;font-weight:700;text-align:center;opacity:0.4;transition:opacity 0.3s,transform 0.15s">Send to Selected (<span id="siteDemo-CmpCount">0</span>)</div>
+              </div>
+              <!-- PHASE 3: Dual AI Response Cards -->
+              <div id="siteDemo-P3" style="padding:18px;opacity:0;transition:opacity 0.4s;display:none">
+                <div style="font-size:12px;font-weight:700;color:#7dd3fc;margin-bottom:10px">🔀 Compare Mode — 2 AI responses</div>
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <div style="background:rgba(16,163,127,0.08);border:1px solid rgba(16,163,127,0.25);border-radius:10px;padding:12px 14px">
+                    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+                      <div style="width:22px;height:22px;border-radius:5px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">GPT</div>
+                      <span style="font-size:12px;font-weight:700;color:#10a37f">ChatGPT</span>
+                    </div>
+                    <div id="siteDemo-Resp1" style="font-size:12px;color:#8b949e;line-height:1.5;white-space:pre-wrap"></div>
+                  </div>
+                  <div style="background:rgba(217,119,6,0.08);border:1px solid rgba(217,119,6,0.25);border-radius:10px;padding:12px 14px">
+                    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+                      <div style="width:22px;height:22px;border-radius:5px;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">CLD</div>
+                      <span style="font-size:12px;font-weight:700;color:#d97706">Claude</span>
+                    </div>
+                    <div id="siteDemo-Resp2" style="font-size:12px;color:#8b949e;line-height:1.5;white-space:pre-wrap"></div>
+                  </div>
+                </div>
+                <div style="text-align:center;margin-top:12px;font-size:12px;color:#7dd3fc;font-weight:600">⬆ Compare and pick the best answer</div>
+              </div>
+            </div>
+            <div id="macScreen-history" class="mac-screen-panel mac-history-preview" aria-label="History on Mac">
+              <div class="mac-history-body">
+                <div class="mac-history-top">
+                  <div>
+                    <div class="mac-history-heading">Prompt History</div>
+                    <div class="mac-history-note">Your recent prompts &amp; favorites</div>
+                  </div>
+                  <div class="mac-history-actions">
+                    <span class="mac-history-pill">All</span>
+                    <span class="mac-history-pill clear">Clear</span>
+                  </div>
+                </div>
+                <div class="mac-history-grid" style="display:grid!important;grid-template-columns:1fr!important;gap:4px!important;align-content:start!important">
+                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Ask Any AI</div>
+                    <div class="mac-history-time">5m ago</div>
+                    <div class="mac-history-text">Test</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Ask Any AI</div>
+                    <div class="mac-history-time">5m ago</div>
+                    <div class="mac-history-text">Write a polite email to my landlord asking to fix the heater.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Interview Coach</div>
+                    <div class="mac-history-time">9m ago</div>
+                    <div class="mac-history-text">Prepare {{name}} for a {{job_title}} interview at {{company}}.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Resume Optimizer</div>
+                    <div class="mac-history-time">12m ago</div>
+                    <div class="mac-history-text">Improve this resume for a senior technical writer role.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Ask Any AI</div>
+                    <div class="mac-history-time">18m ago</div>
+                    <div class="mac-history-text">Compare the best AI tools for developer documentation.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Translation</div>
+                    <div class="mac-history-time">24m ago</div>
+                    <div class="mac-history-text">Translate this product description into French and Arabic.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Code Explainer</div>
+                    <div class="mac-history-time">31m ago</div>
+                    <div class="mac-history-text">Explain this JavaScript function in plain English.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Meeting Summary</div>
+                    <div class="mac-history-time">37m ago</div>
+                    <div class="mac-history-text">Summarize these meeting notes into decisions and action items.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">API Documentation</div>
+                    <div class="mac-history-time">42m ago</div>
+                    <div class="mac-history-text">Draft a concise API quickstart from this OpenAPI spec.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Release Notes</div>
+                    <div class="mac-history-time">49m ago</div>
+                    <div class="mac-history-text">Turn these engineering commits into customer-facing release notes.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Content Strategy</div>
+                    <div class="mac-history-time">55m ago</div>
+                    <div class="mac-history-text">Create an information architecture for this Help Center.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
+                    <span class="mac-history-star">☆</span>
+                    <div class="mac-history-card-title">Localization QA</div>
+                    <div class="mac-history-time">1h ago</div>
+                    <div class="mac-history-text">Review this localized UI copy for clarity and consistency.</div>
+                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="macTabLabel" style="text-align:center;margin-top:16px;font-size:0.82rem;color:rgba(255,255,255,0.42);font-family:'Fira Code',monospace">Ask Any AI — Type or speak, choose your AI</div>
+    </div>
+
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
 
 <!-- ===== VALUE / PRICING COMPARISON ===== -->
 <section class="section showcase conversion-value-section" id="value">
@@ -3751,511 +4263,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
   </div>
 </section>
 
-<div class="section-divider"></div>
 
-<!-- ===== SCREENSHOT GALLERY ===== -->
-<section class="section screenshot-gallery" id="screenshots">
-  <div class="container">
-    <h2 class="section-title" data-i18n="ssH">App Preview</h2>
-    <p class="section-sub" data-i18n="ssSub">Poly-Glot AI Workspace runs natively on Mac, iPhone &amp; iPad. Available now on the App Store.</p>
-
-    <div class="gallery-tabs" role="tablist" aria-label="App Preview device">
-      <div class="gallery-tab active" role="tab" aria-selected="true" aria-controls="gallery-mac" tabindex="0" onclick="switchGallery('mac')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();switchGallery('mac')}">💻 Mac</div>
-      <div class="gallery-tab" role="tab" aria-selected="false" aria-controls="gallery-iphone" tabindex="-1" onclick="switchGallery('iphone')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();switchGallery('iphone')}">📱 iPhone</div>
-      <div class="gallery-tab" role="tab" aria-selected="false" aria-controls="gallery-ipad" tabindex="-1" onclick="switchGallery('ipad')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();switchGallery('ipad')}">📱 iPad</div>
-    </div>
-    <!-- iPhone Screenshots -->
-    <div class="gallery-panel" id="gallery-iphone">
-      <div class="gallery-grid phone-grid">
-
-        <div class="gallery-item">
-          <div class="iphone-device">
-            <span class="iphone-side-left" aria-hidden="true"></span>
-            <div class="iphone-screen">
-              <div class="iphone-live-preview iphone-ask-preview">
-                <!-- Status bar -->
-                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px 4px;font-size:0.6rem;font-weight:700;color:#fff">
-                  <span>1:11</span>
-                  <span style="display:inline-block;width:16px;height:8px;border:1.5px solid #fff;border-radius:2px;position:relative"><span style="position:absolute;top:1.5px;left:1.5px;right:1.5px;bottom:1.5px;background:#30d158;border-radius:1px"></span></span>
-                </div>
-                <!-- App header -->
-                <div style="display:flex;align-items:center;gap:6px;padding:6px 12px 8px">
-                  <img src="assets/img/icon-128.png" alt="" style="width:22px;height:22px;border-radius:5px;cursor:default">
-                  <span style="font-size:0.65rem;font-weight:800;color:#fff">Poly-Glot AI Workspace</span>
-                  <span style="margin-left:auto;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,0.1);font-size:0.5rem;font-weight:700;color:#fff">🇺🇸 EN</span>
-                </div>
-                <!-- Tabs -->
-                <div class="iphone-ask-tabs" style="display:flex;font-size:0.5rem;font-weight:600;color:rgba(255,255,255,0.3);border-bottom:1px solid rgba(255,255,255,0.08)">
-                  <span class="iphone-ask-tab-active" style="padding:6px 8px;color:#f59e0b;border-bottom:2px solid #f59e0b">✏️ Ask Any AI</span>
-                  <span style="padding:6px 7px">📋 Templates</span>
-                  <span style="padding:6px 7px">📖 How to Use</span>
-                  <span style="padding:6px 7px">🕐 History</span>
-                </div>
-                <!-- Ask Any AI -->
-                <div class="pg-phone-ask-body pg-phone-ask-body-gallery">
-                  <div class="pg-phone-ask-title">🤔 Ask Any AI</div>
-                  <div class="pg-phone-tips">
-                    <div>✏️ Type, paste, import or talk</div>
-                    <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
-                    <div>🌐 Output Language ⬇️ AI responds in this language</div>
-                    <div>🔀 Compare Mode: send to multiple AIs</div>
-                  </div>
-                  <div class="pg-phone-output-row">
-                    <span class="pg-phone-output-label">🌐 AI will respond in:</span>
-                    <span class="pg-phone-output-select"><span>🇺🇸</span><strong>English</strong><span class="pg-phone-output-caret">⌄</span></span>
-                  </div>
-                  <div class="pg-phone-prompt-box">
-                    <div>Hi ARCHITECT! Ask Any AI anything — in your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater</div>
-                  </div>
-                  <div class="pg-phone-action-row">
-                    <div>📋 <strong>Paste</strong></div>
-                    <div>📄 <strong>Import</strong></div>
-                    <div class="pg-photo-action-btn" data-pg-photo-native-preview>📷 <strong data-pg-photo-preview-action>Photo to AI</strong></div>
-                  </div>
-                  <div class="pg-phone-talk-send">
-                    <div class="pg-phone-talk"><span class="pg-phone-mic">🎤</span><span>Talk</span></div>
-                    <div class="pg-phone-send">Send</div>
-                  </div>
-                  <div class="pg-phone-clear">🗑 Clear All</div>
-                </div>
-              </div>
-              <div class="iphone-home-indicator"></div>
-            </div>
-          </div>
-          <div class="gallery-label">Ask Any AI</div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="iphone-device">
-            <span class="iphone-side-left" aria-hidden="true"></span>
-            <div class="iphone-screen">
-              <img src="assets/img/screenshots/iphone-2-templates.png" alt="Templates on iPhone" loading="lazy" decoding="async" fetchpriority="low">
-              <div class="iphone-home-indicator"></div>
-            </div>
-          </div>
-          <div class="gallery-label">1,000+ Templates</div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="iphone-device">
-            <span class="iphone-side-left" aria-hidden="true"></span>
-            <div class="iphone-screen">
-              <img src="assets/img/screenshots/iphone-3-howtouse.png" alt="How to Use on iPhone" loading="lazy" decoding="async" fetchpriority="low">
-              <div class="iphone-home-indicator"></div>
-            </div>
-          </div>
-          <div class="gallery-label">How to Use</div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="iphone-device">
-            <span class="iphone-side-left" aria-hidden="true"></span>
-            <div class="iphone-screen history-screen">
-              <div class="history-preview" aria-label="Poly-Glot Prompt History preview">
-                <div class="hp-status"><span>3:46</span><span>▮▮▮ ◉ 50</span></div>
-                <div class="hp-head">
-                  <img src="assets/img/icon-128.png" alt="">
-                  <div><div class="hp-title">Poly-Glot AI Workspace</div><div class="hp-sub">poly-glot.ai</div></div>
-                  <div class="hp-lang">🇺🇸 EN</div>
-                </div>
-                <div class="hp-tabs"><span>✎ Ask Any AI</span><span>▦ Templates</span><span>▣ How to Use</span><span class="active">◷ History</span></div>
-                <div class="hp-body">
-                  <div class="hp-row">
-                    <div><div class="hp-h">Prompt History</div><div class="hp-note">Your recent prompts &amp; favorites</div></div>
-                    <div class="hp-actions"><span class="hp-pill">All</span><span class="hp-pill clear">Clear</span></div>
-                  </div>
-                  <div class="hp-card-grid" style="display:grid!important;grid-template-columns:1fr!important;gap:6px!important">
-                    <div class="hp-card">
-                      <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Test</div>
-                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
-                    </div>
-                    <div class="hp-card">
-                      <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Write a polite email to my landlord asking to fix the heater.</div>
-                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
-                    </div>
-                    <div class="hp-card">
-                      <span class="hp-star">☆</span><div class="hp-card-title">Interview Coach</div><div class="hp-time">9m ago</div><div class="hp-text">Prepare {{name}} for a {{job_title}} interview.</div>
-                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
-                    </div>
-                    <div class="hp-card">
-                      <span class="hp-star">☆</span><div class="hp-card-title">Resume Optimizer</div><div class="hp-time">12m ago</div><div class="hp-text">Improve this resume for a senior technical writer role.</div>
-                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
-                    </div>
-                    <div class="hp-card">
-                      <span class="hp-star">☆</span><div class="hp-card-title">API Documentation</div><div class="hp-time">18m ago</div><div class="hp-text">Draft a concise API quickstart from this OpenAPI spec.</div>
-                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
-                    </div>
-                    <div class="hp-card">
-                      <span class="hp-star">☆</span><div class="hp-card-title">Translation</div><div class="hp-time">24m ago</div><div class="hp-text">Translate this product description into French and Arabic.</div>
-                      <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="iphone-home-indicator"></div>
-            </div>
-          </div>
-          <div class="gallery-label">History</div>
-        </div>
-
-      </div>
-    </div>
-
-
-    <!-- iPad Screenshots -->
-    <div class="gallery-panel" id="gallery-ipad">
-      <div class="gallery-grid ipad-grid">
-
-        <div class="gallery-item">
-          <div class="ipad-device">
-            <div class="ipad-screen">
-              <div class="ipad-live-preview">
-                <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 14px 4px;font-size:0.55rem;font-weight:700;color:#fff">
-                  <span>1:11</span>
-                  <span style="display:inline-block;width:16px;height:8px;border:1.5px solid #fff;border-radius:2px;position:relative"><span style="position:absolute;top:1.5px;left:1.5px;right:1.5px;bottom:1.5px;background:#30d158;border-radius:1px"></span></span>
-                </div>
-                <div style="display:flex;align-items:center;gap:6px;padding:4px 14px 6px">
-                  <img src="assets/img/icon-128.png" alt="" style="width:20px;height:20px;border-radius:5px;cursor:default">
-                  <span style="font-size:0.6rem;font-weight:800;color:#fff">Poly-Glot AI Workspace</span>
-                  <span style="margin-left:auto;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,0.1);font-size:0.45rem;font-weight:700;color:#fff">🇺🇸 EN</span>
-                </div>
-                <div style="display:flex;font-size:0.45rem;font-weight:600;color:rgba(255,255,255,0.3);border-bottom:1px solid rgba(255,255,255,0.08)">
-                  <span style="padding:5px 10px;color:#f59e0b;border-bottom:2px solid #f59e0b">✏️ Ask Any AI</span>
-                  <span style="padding:5px 10px">📋 Templates</span>
-                  <span style="padding:5px 10px">📖 How to Use</span>
-                  <span style="padding:5px 10px">🕐 History</span>
-                </div>
-                <div class="ipad-native-ask-head">
-                  <div class="ipad-native-ask-title">🤔 Ask Any AI</div>
-                  <div class="ipad-native-help">
-                    <div class="ipad-native-help-lines">
-                      <div>✏️ Type, paste, import or talk</div>
-                      <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
-                      <div>🌐 Output Language ⬇️ AI responds in this language</div>
-                      <div>🔀 Compare Mode: send to multiple AIs</div>
-                    </div>
-                    <a class="ipad-native-how-link" href="#demo">How it works</a>
-                  </div>
-                </div>
-                <div class="ipad-native-output-row">
-                  <span class="ipad-native-output-label">🌐 AI will respond in:</span>
-                  <span class="ipad-native-output-select"><span>🇺🇸</span><strong>English</strong><span class="ipad-native-output-caret">⌄</span></span>
-                </div>
-                <div style="margin:4px 14px;border:2px solid #10b981;border-radius:8px;padding:8px 10px;min-height:60px;background:#0d1117;box-shadow:0 0 8px rgba(16,185,129,0.3)">
-                  <div style="font-size:0.4rem;color:rgba(255,255,255,0.4);line-height:1.5">Hi ARCHITECT! Ask Any AI anything — in your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater</div>
-                </div>
-                <div class="ipad-redesign-actions">
-                  <div class="ipad-redesign-action-btn">📋 <strong>Paste</strong></div>
-                  <div class="ipad-redesign-action-btn">📄 <strong>Import</strong></div>
-                  <div class="ipad-redesign-action-btn pg-photo-action-btn" data-pg-photo-native-preview>📷 <strong data-pg-photo-preview-action>Photo to AI</strong></div>
-                </div>
-                <div class="ipad-redesign-talk-send">
-                  <div class="ipad-redesign-talk"><span class="ipad-redesign-mic">🎤</span><span>Talk</span></div>
-                  <div class="ipad-redesign-send">Send</div>
-                </div>
-                <div class="ipad-redesign-clear">🗑 Clear All</div>
-              </div>
-              <div class="ipad-home-indicator"></div>
-            </div>
-          </div>
-          <div class="gallery-label">Ask Any AI</div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="ipad-device">
-            <div class="ipad-screen">
-              <img src="assets/img/screenshots/ipad-2-templates.png" alt="Templates on iPad" loading="lazy" decoding="async" fetchpriority="low">
-              <div class="ipad-home-indicator"></div>
-            </div>
-          </div>
-          <div class="gallery-label">1,000+ Templates</div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="ipad-device">
-            <div class="ipad-screen">
-              <img src="assets/img/screenshots/ipad-3-howtouse.png" alt="How to Use on iPad" loading="lazy" decoding="async" fetchpriority="low">
-              <div class="ipad-home-indicator"></div>
-            </div>
-          </div>
-          <div class="gallery-label">How to Use</div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="ipad-device">
-            <div class="ipad-screen history-screen">
-              <div class="history-preview" aria-label="Poly-Glot Prompt History preview">
-                <div class="hp-status"><span>3:46</span><span>▮▮▮ ◉ 50</span></div>
-                <div class="hp-head">
-                  <img src="assets/img/icon-128.png" alt="">
-                  <div><div class="hp-title">Poly-Glot AI Workspace</div><div class="hp-sub">poly-glot.ai</div></div>
-                  <div class="hp-lang">🇺🇸 EN</div>
-                </div>
-                <div class="hp-tabs"><span>✎ Ask Any AI</span><span>▦ Templates</span><span>▣ How to Use</span><span class="active">◷ History</span></div>
-                <div class="hp-body">
-                  <div class="hp-row">
-                    <div><div class="hp-h">Prompt History</div><div class="hp-note">Your recent prompts &amp; favorites</div></div>
-                    <div class="hp-actions"><span class="hp-pill">All</span><span class="hp-pill clear">Clear</span></div>
-                  </div>
-                  <div class="ipad-history-card-grid"><div class="hp-card">
-                    <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Test</div>
-                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
-                  </div>
-                  <div class="hp-card">
-                    <span class="hp-star">☆</span><div class="hp-card-title">Ask Any AI</div><div class="hp-time">5m ago</div><div class="hp-text">Test</div>
-                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
-                  </div>
-                  <div class="hp-card">
-                    <span class="hp-star">☆</span><div class="hp-card-title">Interview Coach</div><div class="hp-time">9m ago</div><div class="hp-text">You are an executive career coach. Prepare {{name}} for a {{job_title}} interview...</div>
-                    <div class="hp-buttons"><span class="hp-btn copy">Copy</span><span class="hp-btn">Re-edit</span><span class="hp-btn del">×</span></div>
-                  </div></div>
-                </div>
-              </div>
-              <div class="ipad-home-indicator"></div>
-            </div>
-          </div>
-          <div class="gallery-label">History</div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Mac Screenshots — Interactive Tab Viewer -->
-    <div class="gallery-panel active" id="gallery-mac">
-      <div id="macTabHint" style="text-align:center;margin-bottom:20px;animation:hintPulse 1.6s ease-in-out infinite">
-        <span data-mac-preview-cta>👇 Click the tabs to view: Ask Any AI · Templates · How to Use · History</span>
-      </div>
-
-      <div class="mac-reference-interactive" aria-label="Interactive Poly-Glot AI Workspace Mac demo">
-        <img class="mac-reference-base" src="assets/img/poly-glot-mac-render.jpg?v=interactive-exact-1" alt="Poly-Glot AI Workspace on MacBook" loading="lazy" decoding="async" fetchpriority="low">
-        <div class="pg-mac-full-overlay pg-mac-inline-overlay" aria-hidden="true"></div>
-
-        <div class="mac-reference-hotspots" aria-label="Mac app navigation tabs">
-          <button class="mac-reference-tab active" onclick="switchMacTab('askanyai')" id="macTab-askanyai" aria-label="Ask Any AI"><span>✏️ Ask Any AI</span></button>
-          <button class="mac-reference-tab" onclick="switchMacTab('templates')" id="macTab-templates" aria-label="Templates"><span>📋 Templates</span></button>
-          <button class="mac-reference-tab" onclick="switchMacTab('howtouse')" id="macTab-howtouse" aria-label="How to Use"><span>📖 How to Use</span></button>
-          <button class="mac-reference-tab" onclick="switchMacTab('history')" id="macTab-history" aria-label="History"><span>🕐 History</span></button>
-        </div>
-
-        <div class="mac-reference-stage">
-<div class="mac-screen-stage">
-            <div id="macScreen-askanyai" class="mac-screen-panel active" style="background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;padding:0;overflow:hidden">
-              <!-- Ask Any AI content -->
-              <div class="mac-ask-body" style="padding:24px 28px">
-                <div class="mac-native-ask-title" style="font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:8px">&#129300; Ask Any AI</div>
-                <div class="mac-native-help mac-native-help-gallery">
-                  <div class="mac-native-help-lines">
-                    <div>✏️ Type, paste, import or talk</div>
-                    <div>🏳️ App Language ⬆️ changes menus &amp; templates</div>
-                    <div>🌐 Output Language ⬇️ AI responds in this language</div>
-                    <div>🔀 Compare Mode: send to multiple AIs</div>
-                  </div>
-                  <a class="mac-native-how-link" href="#demo">How it works</a>
-                </div>
-                <div class="mac-response-row">
-                  <span class="mac-response-label">&#127760; AI will respond in:</span>
-                  <div class="mac-response-select">
-                    <span>&#127482;&#127480;</span>
-                    <strong>English</strong>
-                    <span class="mac-response-caret">&#9660;</span>
-                  </div>
-                </div>
-                <!-- Textarea -->
-                <div style="background:#0d1117;border:2px solid #10b981;border-radius:10px;padding:16px 18px;min-height:160px;margin-bottom:12px;box-shadow:0 0 12px rgba(16,185,129,0.3)">
-                  <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);line-height:1.6">Hi ARCHITECT! Ask Any AI anything — in your language.<br><br>Example: Write a polite email to my landlord asking to fix the heater</div>
-                </div>
-                <!-- Action buttons -->
-                <div style="display:flex;gap:8px;margin-bottom:12px">
-                  <div style="flex:1;background:#1c2128;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px;text-align:center;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.5)">&#128203; Paste</div>
-                  <div style="flex:1;background:#1c2128;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px;text-align:center;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.5)">&#128196; Import</div>
-                </div>
-                <!-- Talk + Send row -->
-                <div style="display:flex;align-items:center;gap:12px">
-                  <div style="display:flex;align-items:center;gap:6px;color:rgba(255,255,255,0.4);font-size:0.72rem"><span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;font-size:0.7rem">&#127908;</span> Talk</div>
-                  <div style="margin-left:auto;padding:10px 28px;background:#10b981;color:#fff;border-radius:10px;font-size:0.8rem;font-weight:700">Send</div>
-                </div>
-                <div style="margin-top:8px;font-size:0.6rem;color:rgba(255,255,255,0.25)">&#128465; Clear All</div>
-              </div>
-            </div>
-            <div id="macScreen-templates" class="mac-screen-panel mac-template-panel" aria-label="Templates on Mac">
-              <img src="assets/img/screenshots/mac-2-templates.png" alt="Templates on Mac" loading="lazy" decoding="async" fetchpriority="low">
-            </div>
-            <!-- Interactive Demo (from latest AI Workspace app code) -->
-            <div id="macScreen-howtouse" class="mac-screen-panel" style="background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;overflow:hidden">
-              <!-- PHASE 1: Ask Any AI textarea + Send -->
-              <div id="siteDemo-P1" style="padding:18px;opacity:1;transition:opacity 0.4s">
-                <div id="siteDemo-Textarea" style="background:#1c2128;border:1.5px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;min-height:54px;font-size:13px;color:#e6edf3;line-height:1.5;white-space:pre-wrap;word-break:break-word"></div>
-                <div id="siteDemo-SendBtn" style="margin-top:12px;padding:12px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;text-align:center;opacity:0.4;transition:opacity 0.3s,transform 0.15s">Send to AI</div>
-              </div>
-              <!-- PHASE 2: AI Menu with Compare Mode -->
-              <div id="siteDemo-P2" style="position:absolute;bottom:0;left:0;right:0;background:#161b22;border-radius:16px 16px 0 0;padding:16px;transform:translateY(100%);transition:transform 0.35s ease-out;border-top:1px solid rgba(255,255,255,.08)">
-                <div style="width:32px;height:4px;background:rgba(255,255,255,.08);border-radius:2px;margin:0 auto 12px"></div>
-                <div style="text-align:center;font-size:14px;font-weight:700;margin-bottom:12px;color:#e6edf3">Choose AI</div>
-                <!-- Compare toggle -->
-                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#1c2128;border-radius:10px;margin-bottom:12px;border:1px solid rgba(255,255,255,.08)">
-                  <span style="font-size:13px;font-weight:600;color:#e6edf3">🔀 Compare Mode</span>
-                  <div id="siteDemo-CmpToggle" style="width:40px;height:22px;border-radius:11px;background:rgba(255,255,255,.08);transition:background 0.25s;position:relative;cursor:default">
-                    <div id="siteDemo-CmpKnob" style="width:18px;height:18px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px;transition:left 0.25s;box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>
-                  </div>
-                </div>
-                <!-- AI Buttons -->
-                <div style="display:flex;flex-direction:column;gap:6px">
-                  <div class="siteDemo-AI" data-ai="chatgpt" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
-                    <div style="width:30px;height:30px;border-radius:7px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">GPT</div>
-                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">ChatGPT</div><div style="font-size:10px;color:#8b949e">Prompt auto-filled</div></div>
-                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
-                  </div>
-                  <div class="siteDemo-AI" data-ai="claude" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
-                    <div style="width:30px;height:30px;border-radius:7px;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">CLD</div>
-                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">Claude</div><div style="font-size:10px;color:#8b949e">Paste prompt</div></div>
-                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
-                  </div>
-                  <div class="siteDemo-AI" data-ai="gemini" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
-                    <div style="width:30px;height:30px;border-radius:7px;background:#4285f4;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">GEM</div>
-                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">Gemini</div><div style="font-size:10px;color:#8b949e">Paste prompt</div></div>
-                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
-                  </div>
-                  <div class="siteDemo-AI" data-ai="perplexity" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.08);background:#1c2128;transition:border-color 0.2s,background 0.2s">
-                    <div style="width:30px;height:30px;border-radius:7px;background:#20b2aa;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;color:#fff">PPX</div>
-                    <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#e6edf3">Perplexity</div><div style="font-size:10px;color:#8b949e">Prompt auto-filled</div></div>
-                    <div class="siteDemo-Check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s"></div>
-                  </div>
-                </div>
-                <!-- Send to Selected button -->
-                <div id="siteDemo-SendAll" style="margin-top:12px;padding:12px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border-radius:10px;font-size:14px;font-weight:700;text-align:center;opacity:0.4;transition:opacity 0.3s,transform 0.15s">Send to Selected (<span id="siteDemo-CmpCount">0</span>)</div>
-              </div>
-              <!-- PHASE 3: Dual AI Response Cards -->
-              <div id="siteDemo-P3" style="padding:18px;opacity:0;transition:opacity 0.4s;display:none">
-                <div style="font-size:12px;font-weight:700;color:#7dd3fc;margin-bottom:10px">🔀 Compare Mode — 2 AI responses</div>
-                <div style="display:flex;flex-direction:column;gap:8px">
-                  <div style="background:rgba(16,163,127,0.08);border:1px solid rgba(16,163,127,0.25);border-radius:10px;padding:12px 14px">
-                    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
-                      <div style="width:22px;height:22px;border-radius:5px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">GPT</div>
-                      <span style="font-size:12px;font-weight:700;color:#10a37f">ChatGPT</span>
-                    </div>
-                    <div id="siteDemo-Resp1" style="font-size:12px;color:#8b949e;line-height:1.5;white-space:pre-wrap"></div>
-                  </div>
-                  <div style="background:rgba(217,119,6,0.08);border:1px solid rgba(217,119,6,0.25);border-radius:10px;padding:12px 14px">
-                    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
-                      <div style="width:22px;height:22px;border-radius:5px;background:#d97706;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">CLD</div>
-                      <span style="font-size:12px;font-weight:700;color:#d97706">Claude</span>
-                    </div>
-                    <div id="siteDemo-Resp2" style="font-size:12px;color:#8b949e;line-height:1.5;white-space:pre-wrap"></div>
-                  </div>
-                </div>
-                <div style="text-align:center;margin-top:12px;font-size:12px;color:#7dd3fc;font-weight:600">⬆ Compare and pick the best answer</div>
-              </div>
-            </div>
-            <div id="macScreen-history" class="mac-screen-panel mac-history-preview" aria-label="History on Mac">
-              <div class="mac-history-body">
-                <div class="mac-history-top">
-                  <div>
-                    <div class="mac-history-heading">Prompt History</div>
-                    <div class="mac-history-note">Your recent prompts &amp; favorites</div>
-                  </div>
-                  <div class="mac-history-actions">
-                    <span class="mac-history-pill">All</span>
-                    <span class="mac-history-pill clear">Clear</span>
-                  </div>
-                </div>
-                <div class="mac-history-grid" style="display:grid!important;grid-template-columns:1fr!important;gap:4px!important;align-content:start!important">
-                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
-                    <span class="mac-history-star">☆</span>
-                    <div class="mac-history-card-title">Ask Any AI</div>
-                    <div class="mac-history-time">5m ago</div>
-                    <div class="mac-history-text">Test</div>
-                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
-                  </div>
-                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
-                    <span class="mac-history-star">☆</span>
-                    <div class="mac-history-card-title">Ask Any AI</div>
-                    <div class="mac-history-time">5m ago</div>
-                    <div class="mac-history-text">Write a polite email to my landlord asking to fix the heater.</div>
-                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
-                  </div>
-                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
-                    <span class="mac-history-star">☆</span>
-                    <div class="mac-history-card-title">Interview Coach</div>
-                    <div class="mac-history-time">9m ago</div>
-                    <div class="mac-history-text">Prepare {{name}} for a {{job_title}} interview at {{company}}.</div>
-                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
-                  </div>
-                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
-                    <span class="mac-history-star">☆</span>
-                    <div class="mac-history-card-title">Resume Optimizer</div>
-                    <div class="mac-history-time">12m ago</div>
-                    <div class="mac-history-text">Improve this resume for a senior technical writer role.</div>
-                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
-                  </div>
-                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
-                    <span class="mac-history-star">☆</span>
-                    <div class="mac-history-card-title">Ask Any AI</div>
-                    <div class="mac-history-time">18m ago</div>
-                    <div class="mac-history-text">Compare the best AI tools for developer documentation.</div>
-                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
-                  </div>
-                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
-                    <span class="mac-history-star">☆</span>
-                    <div class="mac-history-card-title">Translation</div>
-                    <div class="mac-history-time">24m ago</div>
-                    <div class="mac-history-text">Translate this product description into French and Arabic.</div>
-                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
-                  </div>
-                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
-                    <span class="mac-history-star">☆</span>
-                    <div class="mac-history-card-title">Code Explainer</div>
-                    <div class="mac-history-time">31m ago</div>
-                    <div class="mac-history-text">Explain this JavaScript function in plain English.</div>
-                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
-                  </div>
-                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
-                    <span class="mac-history-star">☆</span>
-                    <div class="mac-history-card-title">Meeting Summary</div>
-                    <div class="mac-history-time">37m ago</div>
-                    <div class="mac-history-text">Summarize these meeting notes into decisions and action items.</div>
-                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
-                  </div>
-                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
-                    <span class="mac-history-star">☆</span>
-                    <div class="mac-history-card-title">API Documentation</div>
-                    <div class="mac-history-time">42m ago</div>
-                    <div class="mac-history-text">Draft a concise API quickstart from this OpenAPI spec.</div>
-                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
-                  </div>
-                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
-                    <span class="mac-history-star">☆</span>
-                    <div class="mac-history-card-title">Release Notes</div>
-                    <div class="mac-history-time">49m ago</div>
-                    <div class="mac-history-text">Turn these engineering commits into customer-facing release notes.</div>
-                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
-                  </div>
-                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
-                    <span class="mac-history-star">☆</span>
-                    <div class="mac-history-card-title">Content Strategy</div>
-                    <div class="mac-history-time">55m ago</div>
-                    <div class="mac-history-text">Create an information architecture for this Help Center.</div>
-                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
-                  </div>
-                  <div class="mac-history-card" style="display:grid!important;grid-template-columns:84px 38px minmax(0,1fr) 116px 14px!important;align-items:center!important;column-gap:6px!important;min-height:30px!important;padding:5px 6px!important;border-radius:6px!important;margin:0!important">
-                    <span class="mac-history-star">☆</span>
-                    <div class="mac-history-card-title">Localization QA</div>
-                    <div class="mac-history-time">1h ago</div>
-                    <div class="mac-history-text">Review this localized UI copy for clarity and consistency.</div>
-                    <div class="mac-history-buttons"><span class="mac-history-btn copy">Copy</span><span class="mac-history-btn">Re-edit</span><span class="mac-history-btn del">×</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="macTabLabel" style="text-align:center;margin-top:16px;font-size:0.82rem;color:rgba(255,255,255,0.42);font-family:'Fira Code',monospace">Ask Any AI — Type or speak, choose your AI</div>
-    </div>
-
-
-  </div>
-</section>
 
 <div class="section-divider"></div>
 
@@ -5840,6 +5848,7 @@ function _demoStart() {
 
 <!-- Chat i18n — loads BEFORE the chat widget so translations are available -->
 <script src="assets/js/photo-to-ai-locales.js?v=20261014-ocr"></script>
+<script src="assets/js/photo-upload-locales.js?v=20261014-39-locales"></script>
 <script src="assets/js/chat-i18n.js?v=2026-10-07-free-v2"></script>
 <script src="assets/js/photo-ocr-chat.js?v=20261014-photo-live3"></script>
 
@@ -14480,7 +14489,9 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
  #connect #pg-mcp-tools .pg-mcp-tools-chevron{transition:none}
 }
 </style>
-<script src="assets/js/photo-to-ai-site.js?v=20261014-photo-chunks-v6"></script>
+<link rel="stylesheet" href="assets/css/apple-card-parallax.css?v=20261014-select-cards">
+<script defer src="assets/js/apple-card-parallax.js?v=20261014-select-cards"></script>
+<script src="assets/js/photo-to-ai-site.js?v=20261014-photo-upload-card"></script>
 <script src="assets/js/ios-photo-preview-buttons.js?v=20261014-photo-previews-v5"></script>
 </body>
 </html>
