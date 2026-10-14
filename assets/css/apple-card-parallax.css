@@ -2,16 +2,18 @@
 @media (prefers-reduced-motion: no-preference) {
   #pg-ios-photo-ai-site .pg-photo-motion-card,
   #value #pg-sc1-chunks > .pg-sc1-chunk,
+  #value .inline-pricing-row > .inline-price-item,
   #apps #pg-compare-guide,
   #apps .pg-compare-guide-steps > li,
   #screenshots .mac-reference-interactive {
     transform: translate3d(0,var(--pg-apple-card-y,0px),0) rotateX(var(--pg-apple-card-tilt,0deg));
     transform-origin: center center;
-    transition: transform .16s ease-out,box-shadow .16s ease-out;
+    transition: box-shadow .18s ease-out;
     backface-visibility: hidden;
   }
   #pg-ios-photo-ai-site .pg-photo-motion-card,
   #value #pg-sc1-chunks > .pg-sc1-chunk,
+  #value .inline-pricing-row > .inline-price-item,
   #apps #pg-compare-guide {
     box-shadow: 0 var(--pg-apple-card-shadow,8px) 28px rgba(4,8,27,.17);
   }
@@ -25,6 +27,7 @@
   }
   #pg-ios-photo-ai-site .pg-photo-feature-chunks { perspective: 1050px; }
   #value #pg-sc1-chunks,
+  #value .inline-pricing-row,
   #apps .pg-compare-guide-steps,
   #screenshots .gallery-grid { perspective: 1100px; }
   #screenshots .mac-reference-interactive { transform-style: flat; }
@@ -32,11 +35,20 @@
 @media (prefers-reduced-motion: reduce) {
   #pg-ios-photo-ai-site .pg-photo-motion-card,
   #value #pg-sc1-chunks > .pg-sc1-chunk,
+  #value .inline-pricing-row > .inline-price-item,
   #apps #pg-compare-guide,
   #apps .pg-compare-guide-steps > li,
   #screenshots .gallery-grid > .gallery-item,
   #screenshots .mac-reference-interactive {
     transform: none !important;
     transition: none !important;
+  }
+}
+
+/* Pricing cards remain scroll-linked after their initial reveal; headings stay static. */
+@media (prefers-reduced-motion: no-preference) {
+  #value .inline-pricing-row > .inline-price-item.pg-price-reveal.pg-price-visible {
+    transform: translate3d(0,var(--pg-apple-card-y,0px),0) rotateX(var(--pg-apple-card-tilt,0deg));
+    transition: box-shadow .18s ease-out,opacity .35s ease-out;
   }
 }
