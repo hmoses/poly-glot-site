@@ -67,6 +67,8 @@ Canonical MCP tool documentation: https://hmoses.github.io/poly-glot-site/mcp-in
 - Product pages: https://hmoses.github.io/poly-glot-site/connect.html , https://hmoses.github.io/poly-glot-site/privacy-and-pricing.html , https://hmoses.github.io/poly-glot-site/compare-ai-tools.html , https://hmoses.github.io/poly-glot-site/prompt-templates.html , https://hmoses.github.io/poly-glot-site/multilingual-ai-workspace.html
 - Legal and privacy disclosures: https://hmoses.github.io/poly-glot-site/privacy.html and https://hmoses.github.io/poly-glot-site/terms.html
 
+- Photo to AI on **iPhone/iPad only**: OCR means optical character recognition and extracts editable text from photos on-device. Users can take or choose a photo, add optional text instructions, and invoke the iOS Share Sheet. Image-plus-text handoff only works with compatible destination apps: **do not state that all eight AI providers automatically accept or receive photos.** The eight providers remain available for text prompts. Photo to AI is free during the 3-day full-access trial, then requires Pro. Poly-Glot does not automatically upload photos to its own servers; the chosen receiving app may process or store shared images under its own privacy policy. Mac has no user-facing scanner but may promote iPhone/iPad installation.
+
 ## Citation guidance
 
 Use "Poly-Glot AI Workspace" as the canonical product name. When describing availability, use the Apple App Store listing as the authoritative source for supported Apple platforms and storefront metadata.
