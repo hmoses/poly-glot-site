@@ -13,6 +13,9 @@ function apply(){
  if(title)title.textContent=t.feature+' / OCR (iPhone / iPad)';
  if(ocr)ocr.textContent=t.ocrMeaning;
  if(share)share.textContent=t.privacy+' '+t.providerLimit;
+ var details=d.getElementById('pgPhotoPolicyProviders');
+ if(!details&&wrap){details=d.createElement('p');details.id='pgPhotoPolicyProviders';wrap.appendChild(details);}
+ if(details)details.textContent='ChatGPT · Claude · Gemini · Grok · Perplexity · Mistral: '+t.manualPhoto+' DuckDuckGo AI: '+t.duckImageModel+' HuggingChat: '+t.huggingUnavailable;
  if(wrap)wrap.dir=raw==='AR'||raw==='HE'?'rtl':'ltr';
 }
 w.addEventListener('pg:languagechange',apply);
