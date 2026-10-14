@@ -12,42 +12,30 @@
     '#screenshots .gallery-grid > .gallery-item',
     '#screenshots .mac-reference-interactive'
   ].join(',');
-  var cards=[],visible=new Set(),observer=null,raf=0,states=new WeakMap(),lastFrame=0;
+  var cards=[],visible=new Set(),observer=null,raf=0;
   function clamp(x,lo,hi){return Math.min(hi,Math.max(lo,x));}
   function reset(){
-    states=new WeakMap();lastFrame=0;
     cards.forEach(function(card){
       card.style.removeProperty('--pg-apple-card-y');
       card.style.removeProperty('--pg-apple-card-tilt');
       card.style.removeProperty('--pg-apple-card-shadow');
     });
   }
-  function apply(now){
+  /* One rAF per scroll event. CSS handles compositor easing; no perpetual frames. */
+  function apply(){
     raf=0;if(motion.matches||d.hidden)return;
-    var dt=lastFrame?Math.min(64,now-lastFrame):16.7;lastFrame=now;
-    var blend=1-Math.exp(-dt/90),moving=false;
     var vh=w.innerHeight||800,mobile=w.innerWidth<700;
     cards.forEach(function(card,index){
       if(observer&&!visible.has(card))return;
       var r=card.getBoundingClientRect();
-      if(!r.height||r.bottom< -100||r.top>vh+100)return;
-      var state=states.get(card)||{y:0,tilt:0,shadow:8};
-      /* Undo our own transform when sampling position to prevent feedback. */
-      var center=(r.top-state.y+r.height/2-vh/2)/Math.max(vh,1);
-      var progress=clamp(center,-1,1),stagger=(index%3-1)*.6;
-      var targetY=clamp(-progress*(mobile?16:28)+stagger,mobile?-17:-29,mobile?17:29);
-      var targetTilt=clamp(progress*(mobile?.45:1.05),-1.1,1.1);
-      var targetShadow=8+(1-Math.abs(progress))*8;
-      state.y+=(targetY-state.y)*blend;
-      state.tilt+=(targetTilt-state.tilt)*blend;
-      state.shadow+=(targetShadow-state.shadow)*blend;
-      states.set(card,state);
-      if(Math.abs(targetY-state.y)>.08||Math.abs(targetTilt-state.tilt)>.015)moving=true;
-      card.style.setProperty('--pg-apple-card-y',state.y.toFixed(2)+'px');
-      card.style.setProperty('--pg-apple-card-tilt',state.tilt.toFixed(2)+'deg');
-      card.style.setProperty('--pg-apple-card-shadow',state.shadow.toFixed(1)+'px');
+      if(!r.height||r.bottom < -100||r.top>vh+100)return;
+      var oldY=parseFloat(card.style.getPropertyValue('--pg-apple-card-y'))||0;
+      var progress=clamp((r.top-oldY+r.height/2-vh/2)/vh,-1,1);
+      var y=clamp(-progress*(mobile?9:15)+(index%3-1)*.4,mobile?-10:-16,mobile?10:16);
+      card.style.setProperty('--pg-apple-card-y',y.toFixed(2)+'px');
+      card.style.setProperty('--pg-apple-card-tilt',(progress*(mobile?.2:.4)).toFixed(2)+'deg');
+      card.style.setProperty('--pg-apple-card-shadow',(8+(1-Math.abs(progress))*6).toFixed(1)+'px');
     });
-    if(moving)schedule();
   }
   function schedule(){if(!raf&&!motion.matches&&!d.hidden)raf=w.requestAnimationFrame(apply);}
   function setup(){
