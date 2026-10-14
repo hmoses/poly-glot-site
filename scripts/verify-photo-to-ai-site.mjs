@@ -12,6 +12,7 @@ const motionJS=read('assets/js/apple-card-parallax.js');
 const mcpRuntime=read('assets/js/mcp-tool-descriptions-runtime.js');
 const mcpPart1=read('assets/js/mcp-tool-descriptions-1.js');
 const mcpPart2=read('assets/js/mcp-tool-descriptions-2.js');
+const zhTwSite=read('assets/js/zh-tw-page-polish.js');
 
 function count(pattern,source){return [...source.matchAll(pattern)].length;}
 assert.equal(count(/id="pg-ios-photo-ai-site"/g,page),1,'Only one iOS photo promotion section');
@@ -76,5 +77,12 @@ assert(page.includes('mcp-tool-descriptions-runtime.js?v=20261014-all-15-38'),'L
 assert(mcpRuntime.includes("mcpT")&&mcpRuntime.includes("get_custom_model_capabilities"),'MCP runtime must cover all 15 tool identifiers');
 const mcpCodes=(mcpPart1+mcpPart2).match(/"ZH_TW":\[/g)||[];
 assert.equal(mcpCodes.length,1,'Traditional Chinese MCP tool translations must exist');
+assert(page.includes('zh-tw-page-polish.js?v='),'Traditional Chinese website completeness layer must load');
+assert.equal(count(/src="assets\/js\/mcp-tool-descriptions-runtime\.js\?v=/g,page),1,'MCP localization runtime must not load more than once');
+assert.equal(count(/src="assets\/js\/mcp-tool-descriptions-1\.js\?v=/g,page),1,'MCP locale bundle 1 must load exactly once');
+assert.equal(count(/src="assets\/js\/mcp-tool-descriptions-2\.js\?v=/g,page),1,'MCP locale bundle 2 must load exactly once');
+assert(zhTwSite.includes("mcpEcoP")&&zhTwSite.includes("mcpL5d")&&zhTwSite.includes("mcpGptSteps"),'Traditional Chinese MCP and listing copy must be complete');
+assert(zhTwSite.includes("fq3a")&&zhTwSite.includes("crossDeviceP")&&zhTwSite.includes("showcaseBody"),'Traditional Chinese FAQ, cross-device and value copy must be present');
+
 
 console.log('PASS: Photo to AI site — no App Store CTA in feature section, chunked copy, iPhone/iPad previews, '+Object.keys(values).length+' locales.');
