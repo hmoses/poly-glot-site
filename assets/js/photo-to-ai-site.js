@@ -2,10 +2,20 @@
 (function(w,d){'use strict';
 var APP='https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285';
 function strings(){var all=w.PGPhotoAILocales||{};var raw=String(localStorage.getItem('pgLang')||navigator.language||'EN').toUpperCase().replace(/-/g,'_');return all[raw]||all[raw.split('_')[0]]||all.EN||{};}
-function localize(){var t=strings();[['pg-scanner-title',t.feature],['pg-scanner-desc',t.macNews],['pg-scanner-gate',t.iosNews],['pg-scanner-privacy',t.photoPolicy||t.privacy],['pg-scanner-cta',(t.feature||'Photo to AI')+' →']].forEach(function(k){var el=d.getElementById(k[0]);if(el&&k[1]&&el.textContent!==k[1])el.textContent=k[1];});}
+function localize(){var t=strings();[['pg-scanner-title',t.feature],['pg-scanner-desc',t.macNews],['pg-scanner-gate',t.iosNews],['pg-scanner-privacy',t.photoPolicy||t.privacy],['pg-scanner-cta',(t.feature||'Photo to AI')+' →'],['pg-photo-guide-title','📎 '+(t.feature||'Photo to AI')+' · AI'],['pg-photo-guide-common','ChatGPT · Claude · Gemini · Grok · Perplexity · Mistral: '+(t.manualPhoto||'Attach in the AI app.')],['pg-photo-guide-duck','DuckDuckGo AI: '+(t.duckImageModel||'Image support depends on model.')],['pg-photo-guide-hug','HuggingChat: '+(t.huggingUnavailable||'Service not available.')]].forEach(function(k){var el=d.getElementById(k[0]);if(el&&k[1]&&el.textContent!==k[1])el.textContent=k[1];});}
 function render(){
  // The localized, SEO-visible Photo-to-AI section is authoritative. Never duplicate it.
- if(d.getElementById('pg-ios-photo-ai-site'))return;
+ var existing=d.getElementById('pg-ios-photo-ai-site');
+ if(existing){
+   if(!d.getElementById('pg-photo-ai-compatibility-guide')){
+     var panel=d.createElement('details');panel.id='pg-photo-ai-compatibility-guide';
+     panel.setAttribute('data-no-translate','');
+     panel.style.cssText='max-width:1050px;margin:16px auto 0;padding:12px 16px;border:1px solid rgba(167,139,250,.4);border-radius:12px;font-size:13px;line-height:1.65;color:#f7f4ff';
+     panel.innerHTML='<summary id="pg-photo-guide-title" style="cursor:pointer;font-weight:700">📎 Photo to AI · AI</summary><p id="pg-photo-guide-common"></p><p id="pg-photo-guide-duck"></p><p id="pg-photo-guide-hug"></p>';
+     existing.appendChild(panel);
+   }
+   localize();return;
+ }
  if(d.getElementById('pg-photo-scanner-product'))return;
  var anchor=d.getElementById('features');if(!anchor||!anchor.parentNode)return;
  var sec=d.createElement('section');sec.id='pg-photo-scanner-product';
