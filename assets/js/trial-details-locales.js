@@ -40,7 +40,7 @@ hero.insertAdjacentElement('afterend',section);
 }
 var a=copy[lang()]||copy.EN;
 var p=(w.PGPhotoAILocales||{})[lang()]||(w.PGPhotoAILocales||{}).EN;
-if(p){a=[p.comingSoonLine, p.comingSoon+': '+p.ocrMeaning+' '+p.photoCompatibility, p.comingSoonTrial, p.photoPolicy];}
+if(p){a=[p.comingSoonLine, p.ocrMeaning+' '+p.comingSoon+': '+p.photoCompatibility, p.comingSoonTrial, p.photoPolicy];}
 [['pg-ios-photo-title',a[0]],['pg-ios-photo-copy',a[1]],['pg-ios-photo-trial',a[2]],['pg-ios-photo-privacy',a[3]]].forEach(function(p){var e=d.getElementById(p[0]);if(e&&e.textContent!==p[1])e.textContent=p[1];});
 if(p){
  var kicker=section.querySelector('span');
