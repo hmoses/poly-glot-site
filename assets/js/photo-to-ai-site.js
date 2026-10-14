@@ -28,7 +28,6 @@
    set('pg-ios-photo-share-copy',t.photoCompatibility||'Take or choose a photo and add optional instructions.');
    set('pg-ios-photo-trial',t.locked||'Pro required after your 3-day trial.');
    set('pg-ios-photo-privacy',t.privacy||'Photos leave your device only when you share them.');
-   set('pg-ios-photo-install',name+' →');
    var rtl=/^(AR|HE)$/.test(language());
    section.setAttribute('dir',rtl?'rtl':'ltr');
    // iOS-only product previews: do not change Mac controls.
@@ -39,7 +38,6 @@
    var duplicate=d.getElementById('pg-photo-input-soon');if(duplicate)duplicate.remove();
  }
  function init(){
-   var cta=d.getElementById('pg-ios-photo-install');if(cta)cta.href=APP;
    render();
  }
  w.addEventListener('pg:languagechange',render);
