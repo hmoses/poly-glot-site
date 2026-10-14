@@ -2929,16 +2929,10 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 <link rel="stylesheet" href="assets/css/code-copy.css?v=20261012-tools3">
 <link rel="stylesheet" href="assets/css/mcp-connect-panel.css?v=20261012-copy-safe2">
 <link rel="stylesheet" href="assets/css/mcp-subscribe.css?v=20261010-sub1">
-<link rel="stylesheet" href="assets/css/scanable-copy.css?v=20261011-original-pricing6"><style id="pg-photo-preview-coming-soon-css">
-/* Upcoming iPhone/iPad workflow only: leave macOS previews unchanged. */
-.pg-photo-preview-launch{
- margin:5px 9px 4px!important;padding:5px 6px!important;
- border-radius:8px;border:1px solid rgba(167,139,250,.58);
- background:linear-gradient(120deg,rgba(91,33,182,.9),rgba(29,78,216,.84));
- color:#fff;text-align:center;font-size:.57rem;font-weight:750;
- line-height:1.35;overflow-wrap:anywhere;max-width:calc(100% - 18px);
-}
-#gallery-ipad .pg-photo-preview-launch{margin:4px 14px!important;font-size:.43rem;}
+<link rel="stylesheet" href="assets/css/scanable-copy.css?v=20261011-original-pricing6"><style id="pg-photo-preview-action-css">
+/* iPhone/iPad-only product previews: the native Photo to AI action replaces Scan. */
+.pg-photo-action-btn{min-width:0!important;max-width:100%!important;overflow-wrap:anywhere!important;line-height:1.15!important;text-align:center!important}
+.pg-photo-action-btn [data-pg-photo-preview-action]{min-width:0;max-width:100%;overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -3056,9 +3050,8 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
               <div class="pg-phone-action-row">
                 <div>📋 <strong>Paste</strong></div>
                 <div>📁 <strong>Import</strong></div>
-                <div>📷 <strong>Scan</strong></div>
+                <div class="pg-photo-action-btn" data-pg-photo-native-preview>📷 <strong data-pg-photo-preview-action>Photo to AI</strong></div>
               </div>
-<div class="pg-photo-preview-launch" data-no-translate>📸 Photo to AI · Coming Soon</div>
               <div class="pg-phone-talk-send">
                 <div class="pg-phone-talk"><span class="pg-phone-mic">🎤</span><span>Talk</span></div>
                 <div class="pg-phone-send">Send</div>
@@ -3805,9 +3798,8 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
                   <div class="pg-phone-action-row">
                     <div>📋 <strong>Paste</strong></div>
                     <div>📄 <strong>Import</strong></div>
-                    <div>📷 <strong>Scan</strong></div>
+                    <div class="pg-photo-action-btn" data-pg-photo-native-preview>📷 <strong data-pg-photo-preview-action>Photo to AI</strong></div>
                   </div>
-<div class="pg-photo-preview-launch" data-no-translate>📸 Photo to AI · Coming Soon</div>
                   <div class="pg-phone-talk-send">
                     <div class="pg-phone-talk"><span class="pg-phone-mic">🎤</span><span>Talk</span></div>
                     <div class="pg-phone-send">Send</div>
@@ -3943,9 +3935,8 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
                 <div class="ipad-redesign-actions">
                   <div class="ipad-redesign-action-btn">📋 <strong>Paste</strong></div>
                   <div class="ipad-redesign-action-btn">📄 <strong>Import</strong></div>
-                  <div class="ipad-redesign-action-btn">📷 <strong>Scan</strong></div>
+                  <div class="ipad-redesign-action-btn pg-photo-action-btn" data-pg-photo-native-preview>📷 <strong data-pg-photo-preview-action>Photo to AI</strong></div>
                 </div>
-<div class="pg-photo-preview-launch" data-no-translate>📸 Photo to AI · Coming Soon</div>
                 <div class="ipad-redesign-talk-send">
                   <div class="ipad-redesign-talk"><span class="ipad-redesign-mic">🎤</span><span>Talk</span></div>
                   <div class="ipad-redesign-send">Send</div>
@@ -4328,9 +4319,8 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
             <div class="pg-phone-action-row">
               <div>📋 <strong>Paste</strong></div>
               <div>📁 <strong>Import</strong></div>
-              <div>📷 <strong>Scan</strong></div>
+              <div class="pg-photo-action-btn" data-pg-photo-native-preview>📷 <strong data-pg-photo-preview-action>Photo to AI</strong></div>
             </div>
-<div class="pg-photo-preview-launch" data-no-translate>📸 Photo to AI · Coming Soon</div>
             <div class="pg-phone-talk-send">
               <div class="pg-phone-talk"><span class="pg-phone-mic">🎤</span><span>Talk</span></div>
               <div id="demoSendBtn" class="pg-phone-send" style="opacity:0.4;transition:opacity 0.3s,transform 0.15s">Send</div>
@@ -14478,7 +14468,7 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
  #connect #pg-mcp-tools .pg-mcp-tools-chevron{transition:none}
 }
 </style>
-<script src="assets/js/photo-to-ai-site.js"></script>
-<script src="assets/js/ios-photo-preview-buttons.js?v=20261014-photo-gallery"></script>
+<script src="assets/js/photo-to-ai-site.js?v=20261014-action-label"></script>
+<script src="assets/js/ios-photo-preview-buttons.js?v=20261014-photo-action-label"></script>
 </body>
 </html>
