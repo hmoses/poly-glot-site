@@ -1,0 +1,42 @@
+/* Light, Apple-inspired scroll depth for the designated product cards only. */
+@media (prefers-reduced-motion: no-preference) {
+  #pg-ios-photo-ai-site .pg-photo-motion-card,
+  #value #pg-sc1-chunks > .pg-sc1-chunk,
+  #apps #pg-compare-guide,
+  #apps .pg-compare-guide-steps > li,
+  #screenshots .mac-reference-interactive {
+    transform: translate3d(0,var(--pg-apple-card-y,0px),0) rotateX(var(--pg-apple-card-tilt,0deg));
+    transform-origin: center center;
+    transition: transform .16s ease-out,box-shadow .16s ease-out;
+    backface-visibility: hidden;
+  }
+  #pg-ios-photo-ai-site .pg-photo-motion-card,
+  #value #pg-sc1-chunks > .pg-sc1-chunk,
+  #apps #pg-compare-guide {
+    box-shadow: 0 var(--pg-apple-card-shadow,8px) 28px rgba(4,8,27,.17);
+  }
+  /* Keep the existing homepage reveal transform (and its scale) on App Preview cards. */
+  #screenshots .gallery-grid > .gallery-item.pg-motion-card {
+    transform: translate3d(0,calc(var(--pg-card-y,0px) + var(--pg-apple-card-y,0px)),0)
+      scale(var(--pg-card-scale,1)) rotateX(var(--pg-apple-card-tilt,0deg));
+  }
+  #screenshots .gallery-grid > .gallery-item:not(.pg-motion-card) {
+    transform: translate3d(0,var(--pg-apple-card-y,0px),0) rotateX(var(--pg-apple-card-tilt,0deg));
+  }
+  #pg-ios-photo-ai-site .pg-photo-feature-chunks { perspective: 1050px; }
+  #value #pg-sc1-chunks,
+  #apps .pg-compare-guide-steps,
+  #screenshots .gallery-grid { perspective: 1100px; }
+  #screenshots .mac-reference-interactive { transform-style: flat; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #pg-ios-photo-ai-site .pg-photo-motion-card,
+  #value #pg-sc1-chunks > .pg-sc1-chunk,
+  #apps #pg-compare-guide,
+  #apps .pg-compare-guide-steps > li,
+  #screenshots .gallery-grid > .gallery-item,
+  #screenshots .mac-reference-interactive {
+    transform: none !important;
+    transition: none !important;
+  }
+}
