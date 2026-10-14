@@ -8,7 +8,7 @@
   #screenshots .mac-reference-interactive {
     transform: translate3d(0,var(--pg-apple-card-y,0px),0) rotateX(var(--pg-apple-card-tilt,0deg));
     transform-origin: center center;
-    transition: box-shadow .18s ease-out;
+    transition: transform .18s cubic-bezier(.22,.61,.36,1),box-shadow .18s ease-out;
     backface-visibility: hidden;
   }
   #pg-ios-photo-ai-site .pg-photo-motion-card,
@@ -49,6 +49,6 @@
 @media (prefers-reduced-motion: no-preference) {
   #value .inline-pricing-row > .inline-price-item.pg-price-reveal.pg-price-visible {
     transform: translate3d(0,var(--pg-apple-card-y,0px),0) rotateX(var(--pg-apple-card-tilt,0deg));
-    transition: box-shadow .18s ease-out,opacity .35s ease-out;
+    transition: transform .18s cubic-bezier(.22,.61,.36,1),box-shadow .18s ease-out,opacity .35s ease-out;
   }
 }
