@@ -75,7 +75,7 @@ function apply(){
  for(const sel of Object.keys(other))d.querySelectorAll('#connect '+sel).forEach(function(el){if(el.textContent!==other[sel])el.textContent=other[sel];});
  const steps=d.querySelector('#connect [data-i18n-html="mcpGptSteps"]');
  // Replace only the ordered-list contents, avoiding repeated 1. 1. numbering.
- if(steps&&steps.getAttribute('data-pg-zh-tw-steps')!=='true'){steps.innerHTML=patch.mcpGptSteps;steps.setAttribute('data-pg-zh-tw-steps','true');}
+ if(steps&&steps.innerHTML!==patch.mcpGptSteps){steps.innerHTML=patch.mcpGptSteps;steps.setAttribute('data-pg-zh-tw-steps','true');}
  const title=d.querySelector('#pg-mcp-tools .pg-mcp-tools-toggle-title');if(title)title.textContent=patch.mcpToolsH;
  const cards=d.querySelectorAll('#pg-mcp-tools .pg-mcp-motion-card');
  if(cards.length===15){
@@ -84,7 +84,7 @@ function apply(){
  const faq=d.querySelector('#faq [data-i18n="fq3a"]');if(faq)faq.textContent=patch.fq3a;
  const buy=d.querySelector('[data-i18n="crossDeviceH"]');if(buy)buy.textContent=patch.crossDeviceH;
  const purchase=d.querySelector('[data-i18n="crossDeviceP"]');if(purchase)purchase.textContent=patch.crossDeviceP;
- const privacy=d.querySelector('#faq [data-i18n="fq3a"] + a');if(privacy&&privacy.textContent.includes('Read privacy'))privacy.textContent='閱讀隱私權詳情 →';
+ d.querySelectorAll('#features .pg-feature-privacy-link').forEach(function(privacy){if(privacy.textContent!=='閱讀隱私權詳情 →')privacy.textContent='閱讀隱私權詳情 →';privacy.setAttribute('aria-label','閱讀完整隱私權政策');});
  // Never alter brand names, MCP endpoint strings, numeric prices or code snippets.
 }
 function schedule(){if(scheduled)return;scheduled=true;w.requestAnimationFrame? w.requestAnimationFrame(apply):setTimeout(apply,0);}
