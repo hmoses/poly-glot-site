@@ -10,7 +10,7 @@ const headings=unique('.section-title,.section-eyebrow,.section-sub,main.wrap > 
 const safe=e=>!e.closest('.nav,.nav-links,.modal,[role="dialog"],.phone-screen,.pg-phone-screen,.hero-phone-mock');
 // Each Compare Mode response card has its own entrance controller.
  // Exclude the rows AND their nested provider badges from global card parallax.
-const S=sections.filter(safe),C=cards.filter(safe).filter(e=>!e.closest('#apps .inline-response-list')),H=headings.filter(safe);
+const S=sections.filter(safe),C=cards.filter(safe).filter(e=>!e.closest('#apps .inline-response-list')&&!e.closest('#screenshots .gallery-grid')),H=headings.filter(safe);
 const faqItems=unique('#faq .faq-item');
 const mcpTools=unique('#connect .pg-mcp-tools-grid > .pg-mcp-motion-card');
 // Pricing comparisons use a dedicated, independent entrance reveal.
