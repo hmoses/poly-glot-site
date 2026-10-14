@@ -24,6 +24,15 @@ jobs:
           node-version: '22'
       - name: Verify Photo-to-AI localization and preview parity
         run: node scripts/verify-photo-to-ai-site.mjs
+      - name: Check Photo-to-AI, MCP and parallax JavaScript syntax
+        run: |
+          node --check assets/js/photo-to-ai-site.js
+          node --check assets/js/photo-upload-locales.js
+          node --check assets/js/apple-card-parallax.js
+          node --check assets/js/mcp-tool-descriptions-runtime.js
+          node --check assets/js/mcp-tool-descriptions-1.js
+          node --check assets/js/mcp-tool-descriptions-2.js
+          node --check assets/js/zh-tw-page-polish.js
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
