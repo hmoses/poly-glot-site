@@ -31,7 +31,7 @@ const start=page.indexOf('id="pg-ios-photo-ai-site"');
 const end=page.indexOf('</section>',start);
 assert(start>=0 && end>start,'Missing iPhone/iPad Photo-to-AI section');
 const photoSection=page.slice(start,end);
-assert(!/<a\\b/i.test(photoSection),'No App Store link or button in Photo-to-AI section');
+assert(!/<a\b/i.test(photoSection),'No App Store link or button in Photo-to-AI section');
 assert(!photoSection.includes('pg-ios-photo-install'),'Retired feature-specific App Store CTA must be absent');
 assert(!feature.includes('pg-ios-photo-install'),'Localization runtime must not recreate retired App Store CTA');
 assert.equal(count(/data-pg-photo-preview-action/g,page),4,'iPhone/iPad preview actions must show Photo to AI');
