@@ -5015,22 +5015,20 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
         </div>
       </div>
 
-      <!-- ChatGPT Card -->
-      <div class="pg-mcp-motion-card" style="background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:28px;">
+      <!-- ChatGPT custom MCP connection: public directory submission is separate. -->
+      <div class="pg-mcp-motion-card" data-pg-chatgpt-connection style="background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:28px;">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-          <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#10a37f;color:#fff;font-weight:700;font-size:14px;">G</span>
+          <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#10a37f;color:#fff;font-weight:700;font-size:14px;">G</span>
           <h4 style="margin:0;">ChatGPT</h4>
-          <span data-i18n="mcpGptBadge" style="display:inline-block;padding:2px 10px;border-radius:20px;font-size:0.7rem;font-weight:600;text-transform:uppercase;background:rgba(251,191,36,0.15);color:#fbbf24;">Coming Soon</span>
+          <span data-pg-chat-badge style="display:inline-block;padding:2px 10px;border-radius:20px;font-size:.7rem;font-weight:600;background:rgba(16,185,129,.12);color:#10b981;">CUSTOM MCP SUPPORTED</span>
         </div>
-        <p data-i18n="mcpGptDesc" style="color:var(--text-muted);font-size:0.9rem;line-height:1.7;margin-bottom:16px;">OpenAI's MCP Apps marketplace is opening soon. Poly-Glot will be available on day one.</p>
-        <ol data-i18n-html="mcpGptSteps" style="color:var(--text-muted);font-size:0.9rem;padding-left:20px;line-height:2;">
-          <li>Search <strong style="color:var(--text);">"Poly-Glot"</strong> in the ChatGPT app store</li>
-          <li>Click <strong style="color:var(--text);">Connect</strong> — one click setup</li>
-          <li>Start prompting with 1,000+ templates</li>
+        <p data-pg-chat-description style="color:var(--text-muted);font-size:.9rem;line-height:1.7;margin-bottom:16px;">Eligible ChatGPT accounts and workspaces can connect to Poly-Glot's remote MCP server. Public ChatGPT Plugin Directory publication is a separate review process; do not assume it is listed yet.</p>
+        <ol style="color:var(--text-muted);font-size:.9rem;padding-left:20px;line-height:2;">
+          <li data-pg-chat-step="1">In an eligible ChatGPT account, open Plugins and choose Add custom MCP server.</li>
+          <li data-pg-chat-step="2">Enter the Poly-Glot production HTTPS /mcp endpoint; review permissions and create the connection.</li>
+          <li data-pg-chat-step="3">Scan and approve tools; test get_language_options or search_templates first.</li>
         </ol>
-        <div data-i18n="mcpGptTip" style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.15);border-radius:8px;padding:12px 16px;margin-top:12px;font-size:0.85rem;color:var(--text-muted);">
-          💡 Bookmark this page — we'll update it when ChatGPT MCP goes live.
-        </div>
+        <a href="https://help.openai.com/en/articles/12584461-creating-custom-mcp-apps-in-chatgpt" target="_blank" rel="noopener noreferrer" data-pg-chat-link style="display:inline-block;margin-top:12px;color:var(--accent);font-weight:700;font-size:.84rem;">Official ChatGPT custom MCP instructions ↗</a>
       </div>
 
       <!-- Compatible MCP clients; links lead to localized, client-specific installation guides. -->
