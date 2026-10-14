@@ -24,6 +24,8 @@
    set('pg-ios-photo-title',name);
    set('pg-ios-photo-scan-title','📄 '+(t.scanText||'Scan text'));
    set('pg-ios-photo-scan-copy',t.ocrMeaning||'OCR extracts editable text from pictures.');
+   set('pg-ios-photo-upload-title','🖼️ '+(t.photoUploadTitle||'Upload photos to AI'));
+   set('pg-ios-photo-upload-copy',t.photoUploadCopy||'Take or choose a photo, then share it with a compatible AI app. If sharing is unsupported, attach it in the AI app.');
    set('pg-ios-photo-share-title','✍️ '+(t.context||'Add context'));
    set('pg-ios-photo-share-copy',t.photoCompatibility||'Take or choose a photo and add optional instructions.');
    set('pg-ios-photo-trial',t.locked||'Pro required after your 3-day trial.');
