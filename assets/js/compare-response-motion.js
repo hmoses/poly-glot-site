@@ -21,8 +21,8 @@
     raf = 0;
     if (document.hidden || (reduced && reduced.matches)) return;
     const vh = window.innerHeight || 800;
-    const entryStart = vh * .94;
-    const entryEnd = vh * .23;
+    const entryStart = vh * .90;
+    const entryEnd = vh * .29;
     last = cards.map((el,index) => {
       const rect = el.getBoundingClientRect();
       const p = clamp((entryStart - rect.top)/(entryStart-entryEnd),0,1);
@@ -30,9 +30,9 @@
       // Deliberately scroll-linked: even fully entered cards have different
       // individual parallax positions rather than freezing after a timer.
       const depth = clamp((rect.top + rect.height*.5 - vh*.48)/vh, -.8, .8);
-      const y = (1-smooth)*96 + depth*24*smooth;
-      const scale = .95 + .05*smooth;
-      const opacity = .22 + .78*smooth;
+      const y = (1-smooth)*40 + depth*29*smooth;
+      const scale = .975 + .025*smooth;
+      const opacity = .68 + .32*smooth;
       el.style.setProperty('--pg-compare-y',y.toFixed(2)+'px');
       el.style.setProperty('--pg-compare-scale',scale.toFixed(4));
       el.style.setProperty('--pg-compare-opacity',opacity.toFixed(4));
