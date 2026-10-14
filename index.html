@@ -2943,54 +2943,46 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 <!-- Pages publication refresh: smooth independent card parallax 2026-10-14 -->
 
 <style id="pg-features-balanced-grid-20261014">
-/* Balanced feature bento: equal gutters, content-safe rows, clean responsive reflow. */
+/* Equal-height feature bento. Explicitly override legacy forced row heights. */
 #features .features-grid{
-  display:grid!important;
-  grid-template-columns:minmax(0,1fr) minmax(0,1.85fr)!important;
-  gap:18px!important;
-  align-items:stretch!important;
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr) minmax(0,1.85fr)!important;
+ gap:18px!important;align-items:stretch!important;
 }
 #features .feature-card.feature-primary{
-  grid-column:1!important;
-  grid-row:1!important;
-  min-height:0!important;
-  height:auto!important;
-  padding:28px!important;
-  justify-content:center!important;
+ grid-column:1!important;grid-row:1!important;
+ align-self:stretch!important;min-height:0!important;
+ height:100%!important;box-sizing:border-box!important;
+ padding:28px!important;justify-content:center!important;
 }
 #features .feature-secondary-grid{
-  grid-column:2!important;
-  grid-row:1!important;
-  display:grid!important;
-  grid-template-columns:repeat(2,minmax(0,1fr))!important;
-  grid-template-rows:auto auto!important;
-  align-items:stretch!important;
-  gap:18px!important;
-  min-width:0!important;
+ grid-column:2!important;grid-row:1!important;
+ display:grid!important;
+ grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ grid-template-rows:repeat(2,minmax(max-content,1fr))!important;
+ grid-auto-rows:minmax(max-content,1fr)!important;
+ align-items:stretch!important;gap:18px!important;min-width:0!important;
 }
-#features .feature-secondary-grid .feature-card{
-  height:auto!important;
-  min-height:0!important;
-  padding:24px!important;
-  display:flex!important;
-  flex-direction:column!important;
-  justify-content:flex-start!important;
+#features .feature-secondary-grid>.feature-card{
+ box-sizing:border-box!important;align-self:stretch!important;
+ height:100%!important;min-height:0!important;
+ padding:24px!important;
+ display:flex!important;flex-direction:column!important;
+ justify-content:flex-start!important;
 }
 #features .feature-card h4{line-height:1.3;margin-top:0}
 #features .feature-card p{line-height:1.55;overflow-wrap:break-word}
 #features .feature-private .pg-feature-privacy-link{margin-top:auto;padding-top:12px;align-self:flex-start}
 @media(max-width:900px){
-  #features .features-grid{grid-template-columns:1fr!important;gap:16px!important}
-  #features .feature-card.feature-primary,
-  #features .feature-secondary-grid{grid-column:1!important;grid-row:auto!important}
-  #features .feature-card.feature-primary{min-height:0!important;padding:26px!important}
-  #features .feature-secondary-grid{gap:16px!important}
+ #features .features-grid{grid-template-columns:1fr!important;gap:16px!important}
+ #features .feature-card.feature-primary,#features .feature-secondary-grid{grid-column:1!important;grid-row:auto!important}
+ #features .feature-card.feature-primary{min-height:0!important;height:auto!important;padding:26px!important}
+ #features .feature-secondary-grid{gap:16px!important}
 }
 @media(max-width:620px){
-  #features .feature-secondary-grid{grid-template-columns:1fr!important;grid-template-rows:auto!important;gap:12px!important}
-  #features .features-grid{gap:12px!important}
-  #features .feature-card.feature-primary,
-  #features .feature-secondary-grid .feature-card{min-height:0!important;height:auto!important;padding:20px!important}
+ #features .feature-secondary-grid{grid-template-columns:1fr!important;grid-template-rows:auto!important;grid-auto-rows:auto!important;gap:12px!important}
+ #features .features-grid{gap:12px!important}
+ #features .feature-card.feature-primary,#features .feature-secondary-grid>.feature-card{min-height:0!important;height:auto!important;padding:20px!important}
 }
 </style>
 </head>
