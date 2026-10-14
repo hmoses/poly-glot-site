@@ -5821,7 +5821,9 @@ function _demoStart() {
 </script>
 
 <!-- Chat i18n — loads BEFORE the chat widget so translations are available -->
+<script src="assets/js/photo-to-ai-locales.js?v=20261014-ocr"></script>
 <script src="assets/js/chat-i18n.js?v=2026-10-07-free-v2"></script>
+<script src="assets/js/photo-ocr-chat.js?v=20261014-ocr"></script>
 
 <!-- ===== POLY-GLOT MCP CHAT WIDGET v4 — FULLY LOCALIZED ===== -->
 <div id="pgChat-bubble" onclick="pgChat.toggle()" title="Ask Poly-Glot AI anything">
@@ -5866,6 +5868,7 @@ function _demoStart() {
       <option value="Devices">Devices</option>
       <option value="All devices + MCP">Apple Devices + MCP Access</option>
       <option value="Privacy">Privacy</option>
+      <option value="Photo to AI">📷 Photo to AI · iPhone / iPad</option>
       <option value="Download">Download</option>
       <option value="Cancel subscription">Cancel</option>
       <option value="MCP">MCP</option>
@@ -6087,6 +6090,7 @@ function _demoStart() {
   // MEGA KNOWLEDGE BASE — ALL PRODUCT INFO
   // =============================================
   var KB = {
+    "photo to ai": "**Photo to AI** is an iPhone/iPad feature. OCR (optical character recognition) extracts editable text from pictures on your device. Take or select a picture, add optional instructions, and choose an app in the iOS Share Sheet. Text prompting supports all 8 Poly-Glot providers; **image-plus-text handoff is only supported by compatible recipient apps**, not automatically by all 8. The 3-day full-access trial includes it, then Pro is required. Photos are not uploaded to Poly-Glot servers; when you select an app, that provider may process or store the image and instructions under its own privacy policy.",
 
     "what is poly-glot": "**Poly-Glot AI Workspace** is a prompt-building and AI-routing workspace for iPhone, iPad, Mac, and supported MCP clients.\n\nUse **1,000+ prompt templates**, Ask Any AI, or Compare Mode with **8 AI providers**: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI.\n\n🦜 The interface supports **38 languages**.\n\n**Key facts:**\n- No AI-provider API keys required for the Apple app handoff workflow\n- 3-day full-access trial starts on the first qualifying Send\n- $9.99/mo or $79.99/yr Pro\n- One Apple purchase/entitlement applies across iPhone, iPad, and Mac with the same Apple ID\n- The same Poly-Glot entitlement can be used in supported MCP clients after account linking",
 
@@ -6235,6 +6239,7 @@ function _demoStart() {
     terms: ['terms.html', '_disclaimer', 'Terms of use']
   };
   var chatTopicGuides = {
+    'photo to ai': ['privacy','support'],
     'what is poly-glot': ['compare', 'templates'],
     'how much': ['pricing'], 'free plan': ['pricing'], trial: ['pricing'],
     'after trial': ['pricing'], cancel: ['pricing', 'support'], payment: ['pricing'],
@@ -6270,6 +6275,8 @@ function _demoStart() {
     // SECURITY: Sanitize input before processing
     if (typeof q !== 'string') return answerWithGuides('what is poly-glot');
     q = q.toLowerCase().trim().slice(0, 500);
+    // Photo/OCR intent precedes general provider, pricing and privacy matches.
+    if ((window.PGPhotoAIIsQuestion && window.PGPhotoAIIsQuestion(q)) || /\bocr\b|optical character recognition|photo to ai/.test(q)) return answerWithGuides('photo to ai');
 
     // Specific intents must win over broad provider, device, and pricing keywords.
     if (/\bmcp\b|model context protocol|claude desktop/.test(q)) {
@@ -14434,7 +14441,6 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
  #connect #pg-mcp-tools .pg-mcp-tools-chevron{transition:none}
 }
 </style>
-<script src="assets/js/photo-to-ai-locales.js"></script>
 <script src="assets/js/photo-to-ai-site.js"></script>
 </body>
 </html>
