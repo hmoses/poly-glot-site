@@ -3008,7 +3008,31 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 }
 </style>
 <link rel="stylesheet" href="assets/css/mac-photo-preview.css?v=20261014-scaled-l10n-39">
-<style id="pg-mcp-invoke-clients-css">.pg-mcp-invoke-clients{margin:14px 0 22px}.pg-mcp-invoke-client-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.pg-mcp-invoke-client-grid>div{min-width:0;padding:14px;border:1px solid var(--border);background:var(--bg-surface);border-radius:10px}.pg-mcp-invoke-client-grid strong{color:var(--text);font-size:.88rem}.pg-mcp-invoke-client-grid p{margin:6px 0 0;color:var(--text-muted);font-size:.78rem;line-height:1.5}@media(max-width:860px){.pg-mcp-invoke-client-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){.pg-mcp-invoke-client-grid{grid-template-columns:1fr}}</style></head>
+<style id="pg-mcp-invoke-clients-css">.pg-mcp-invoke-clients{margin:14px 0 22px}.pg-mcp-invoke-client-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.pg-mcp-invoke-client-grid>div{min-width:0;padding:14px;border:1px solid var(--border);background:var(--bg-surface);border-radius:10px}.pg-mcp-invoke-client-grid strong{color:var(--text);font-size:.88rem}.pg-mcp-invoke-client-grid p{margin:6px 0 0;color:var(--text-muted);font-size:.78rem;line-height:1.5}@media(max-width:860px){.pg-mcp-invoke-client-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){.pg-mcp-invoke-client-grid{grid-template-columns:1fr}}</style><style id="pg-mcp-balanced-layout-v1">
+/* One cohesive directory section, then six equal client cards, then invocation and tools */
+#mcp-listings{--pg-mcp-gap:16px}
+#mcp-listings .pg-mcp-section-heading{margin:30px 0 15px;padding:0 2px}
+#mcp-listings .pg-mcp-section-heading h4{margin:0 0 3px;font-weight:800;font-size:1.08rem;line-height:1.4;color:var(--text)}
+#mcp-listings .pg-mcp-section-heading p{margin:0;font-size:.84rem;line-height:1.65;color:var(--text-muted)}
+#mcp-listings .pg-mcp-directory-grid{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:var(--pg-mcp-gap)!important;align-items:stretch!important}
+#mcp-listings .pg-mcp-directory-grid>a{grid-column:span 2;min-width:0;min-height:190px;display:flex!important;flex-direction:column;box-sizing:border-box;padding:20px!important;transition:transform .22s ease,border-color .22s ease}
+#mcp-listings .pg-mcp-directory-grid>a:nth-child(4),#mcp-listings .pg-mcp-directory-grid>a:nth-child(5){grid-column:span 3}
+#mcp-listings .pg-mcp-directory-grid>a:hover{transform:translateY(-3px);border-color:rgba(125,211,252,.35)!important}
+#mcp-listings .pg-mcp-directory-grid>a>div:last-child{margin-top:auto!important;padding-top:16px}
+#mcp-listings .pg-mcp-directory-grid>a>div:first-child{align-items:flex-start!important}
+#mcp-listings .pg-mcp-directory-grid>a>div:first-child>span:last-child{flex:none;white-space:nowrap}
+#mcp-listings .pg-mcp-client-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:var(--pg-mcp-gap)!important;align-items:stretch!important;margin-bottom:26px!important}
+#mcp-listings .pg-mcp-client-grid>.pg-mcp-motion-card{min-width:0!important;min-height:235px;height:100%;box-sizing:border-box;padding:22px!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important}
+#mcp-listings .pg-mcp-client-grid>.pg-mcp-motion-card .pg-code-snippet{margin-top:auto!important;max-width:100%;min-width:0}
+#mcp-listings .pg-mcp-client-grid>.pg-mcp-motion-card .pg-code-snippet code{overflow-wrap:anywhere;word-break:break-word}
+#mcp-listings .pg-mcp-client-grid>[data-pg-mcp-client] [data-pg-mcp-home-link]{margin-top:auto!important;padding-top:12px}
+#mcp-invocation-guide{margin-top:30px!important}
+#mcp-invocation-guide .pg-mcp-invoke-client-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+#mcp-invocation-guide [data-pg-invoke-client]{min-height:105px}
+@media(max-width:990px){#mcp-listings .pg-mcp-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}#mcp-listings .pg-mcp-directory-grid>a,#mcp-listings .pg-mcp-directory-grid>a:nth-child(4),#mcp-listings .pg-mcp-directory-grid>a:nth-child(5){grid-column:span 1}#mcp-listings .pg-mcp-directory-grid>a:last-child{grid-column:1/-1}#mcp-listings .pg-mcp-client-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:600px){#mcp-listings .pg-mcp-directory-grid,#mcp-listings .pg-mcp-client-grid{grid-template-columns:minmax(0,1fr)!important}#mcp-listings .pg-mcp-directory-grid>a,#mcp-listings .pg-mcp-directory-grid>a:last-child{grid-column:1}#mcp-listings .pg-mcp-directory-grid>a{min-height:0}#mcp-listings .pg-mcp-client-grid>.pg-mcp-motion-card{min-height:0}#mcp-invocation-guide .pg-mcp-invoke-client-grid{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){#mcp-listings .pg-mcp-directory-grid>a{transition:none}}
+</style></head>
 <body>
 
 <!-- ===== NAV ===== -->
@@ -4959,7 +4983,8 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
         </nav>
       </section>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;">
+      <div class="pg-mcp-section-heading"><h4 data-pg-mcp-section="directories">Discover Poly-Glot in MCP directories</h4><p data-pg-mcp-section="directoriesNote">Five public listing and discovery surfaces for the same production server.</p></div>
+      <div class="pg-mcp-directory-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;">
         <a class="pg-mcp-motion-card" href="https://registry.modelcontextprotocol.io/?q=poly-glot-ai-workspace" target="_blank" rel="noopener" style="display:block;background:var(--bg-surface);border:1px solid rgba(125,211,252,0.10);border-radius:12px;padding:20px;text-decoration:none;">
           <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;"><span style="font-weight:800;color:var(--text);">Official MCP Registry</span><span style="padding:3px 9px;border-radius:20px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);color:#10b981;font-size:.65rem;font-weight:700;">LIVE</span></div>
           <div style="font-family:'Fira Code',monospace;font-size:.69rem;color:#7dd3fc;margin-bottom:8px;word-break:break-word;">io.github.hmoses/poly-glot-ai-workspace</div>
@@ -4994,7 +5019,8 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
     </div>
 
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-bottom:32px;">
+    <div class="pg-mcp-section-heading pg-mcp-client-heading"><h4 data-pg-mcp-section="clients">Connect your AI client</h4><p data-pg-mcp-section="clientsNote">Choose a compatible MCP client to connect, approve tools, and follow its setup guide.</p></div>
+    <div class="pg-mcp-client-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-bottom:32px;">
 
       <!-- Claude Card -->
       <div class="pg-mcp-motion-card" style="background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:28px;">
@@ -14611,5 +14637,5 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
 <script defer src="assets/js/mcp-directory-live-locales.js?v=20261014-listed-38"></script>
 <script defer src="assets/js/mcp-home-clients-locales.js?v=20261014-38"></script>
 <script defer src="assets/js/mcp-chatgpt-custom-locales.js?v=20261014-current-mcp"></script>
-<script defer src="assets/js/mcp-client-guides-locales.js?v=20261014-shared38"></script><script defer src="assets/js/mcp-universal-invocation-locales.js?v=20261014-universal38"></script></body>
+<script defer src="assets/js/mcp-client-guides-locales.js?v=20261014-shared38"></script><script defer src="assets/js/mcp-universal-invocation-locales.js?v=20261014-universal38"></script><script defer src="assets/js/mcp-layout-headings-locales.js?v=20261014-layout"></script></body>
 </html>
