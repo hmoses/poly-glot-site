@@ -3227,7 +3227,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 </script>
 
 
-<!-- Localized iPhone/iPad Photo-to-AI launch; macOS does not contain a scanner. -->
+<!-- Localized cross-device Photo-to-AI; Mac uses Finder rather than a camera. -->
 <section class="section" id="pg-ios-photo-ai-site" aria-label="iPhone and iPad Photo to AI" style="padding:32px 18px 36px;background:linear-gradient(135deg,#160f2d,#151c33);color:#f7f4ff;border-top:1px solid rgba(167,139,250,.25);border-bottom:1px solid rgba(167,139,250,.25)">
   <div style="max-width:1050px;margin:auto">
     <div id="pg-ios-photo-kicker" style="color:#c4b5fd;font-weight:750;font-size:.81rem;letter-spacing:.04em">📱 iPhone &amp; iPad only</div>
@@ -3246,6 +3246,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
         <p id="pg-ios-photo-share-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">Take or choose a photo, add instructions, and share with compatible AI apps. Automatic delivery to every provider is not supported.</p>
       </article>
     </div>
+    <p id="pg-mac-photo-desktop-note" style="color:#a7f3d0;font-size:.91rem;line-height:1.55;margin:0 0 12px">💻 On Mac: choose a photo from Finder, then open an AI in your browser and paste or attach the image. No camera required.</p>
     <p id="pg-ios-photo-trial" style="font-size:.95rem;color:#e9d5ff;font-weight:700;margin:0 0 7px">Included in the 3-day trial. Pro required afterward.</p>
     <p id="pg-ios-photo-privacy" style="font-size:.82rem;line-height:1.5;color:#bac5d7;margin:0 0 16px">Photos stay on your device until you choose to share them. Receiving AI apps may process shared photos.</p>
     
@@ -3569,6 +3570,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
                 <div style="display:flex;gap:8px;margin-bottom:12px">
                   <div style="flex:1;background:#1c2128;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px;text-align:center;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.5)">&#128203; Paste</div>
                   <div style="flex:1;background:#1c2128;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px;text-align:center;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.5)">&#128196; Import</div>
+                  <div class="pg-mac-photo-preview-control pg-photo-action-btn" data-pg-photo-native-preview style="flex:1;min-width:0;background:#1c2128;border:1px solid #26e5a5;border-radius:8px;padding:10px 5px;text-align:center;font-size:0.72rem;font-weight:700;color:#fff">📷 <strong data-pg-photo-preview-action>Photo to AI</strong></div>
                 </div>
                 <!-- Talk + Send row -->
                 <div style="display:flex;align-items:center;gap:12px">
@@ -5969,7 +5971,7 @@ function _demoStart() {
       <option value="Devices">Devices</option>
       <option value="All devices + MCP">Apple Devices + MCP Access</option>
       <option value="Privacy">Privacy</option>
-      <option value="Photo to AI">📷 Photo to AI · Coming Soon · iPhone / iPad</option>
+      <option value="Photo to AI">📷 Photo to AI · Mac / iPhone / iPad</option>
       <option value="Download">Download</option>
       <option value="Cancel subscription">Cancel</option>
       <option value="MCP">MCP</option>
@@ -6191,7 +6193,7 @@ function _demoStart() {
   // MEGA KNOWLEDGE BASE — ALL PRODUCT INFO
   // =============================================
   var KB = {
-    "photo to ai": "**Photo to AI** is an iPhone/iPad feature. OCR (optical character recognition) extracts editable text from pictures on your device. Take or select a picture, add optional instructions, and choose an app in the iOS Share Sheet. Text prompting supports all 8 Poly-Glot providers; **image-plus-text handoff is only supported by compatible recipient apps**, not automatically by all 8. The 3-day full-access trial includes it, then Pro is required. Photos are not uploaded to Poly-Glot servers; when you select an app, that provider may process or store the image and instructions under its own privacy policy.",
+    "photo to ai": "**Photo to AI** is available on iPhone, iPad and Mac. On Mac, choose a photo from Finder; Poly-Glot copies the image so you can attach or paste it into a provider's free web chat. On iPhone/iPad, take or choose a photo. OCR (optical character recognition) extracts editable text from pictures on your device. Take or select a picture, add optional instructions, and choose an app in the iOS Share Sheet. Text prompting supports all 8 Poly-Glot providers; **image-plus-text handoff is only supported by compatible recipient apps**, not automatically by all 8. The 3-day full-access trial includes it, then Pro is required. Photos are not uploaded to Poly-Glot servers; when you select an app, that provider may process or store the image and instructions under its own privacy policy.",
 
     "what is poly-glot": "**Poly-Glot AI Workspace** is a prompt-building and AI-routing workspace for iPhone, iPad, Mac, and supported MCP clients.\n\nUse **1,000+ prompt templates**, Ask Any AI, or Compare Mode with **8 AI providers**: ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat, and DuckDuckGo AI.\n\n🦜 The interface supports **38 languages**.\n\n**Key facts:**\n- No AI-provider API keys required for the Apple app handoff workflow\n- 3-day full-access trial starts on the first qualifying Send\n- $9.99/mo or $79.99/yr Pro\n- One Apple purchase/entitlement applies across iPhone, iPad, and Mac with the same Apple ID\n- The same Poly-Glot entitlement can be used in supported MCP clients after account linking",
 
@@ -14569,5 +14571,10 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
 <script src="assets/js/ios-photo-preview-buttons.js?v=20261014-photo-previews-v5"></script>
 <script defer src="assets/js/zh-tw-page-polish.js?v=20261014-zh-tw-complete"></script>
 <script defer src="assets/js/photo-privacy-faq-locales.js?v=20261014-photo-privacy-faq1"></script>
+<style id="pg-mac-photo-preview-gallery-20261014">
+#gallery-mac #macScreen-askanyai .pg-mac-photo-preview-control{display:flex;gap:3px;align-items:center;justify-content:center;min-width:0!important;line-height:1.2!important;overflow-wrap:anywhere;white-space:normal;box-shadow:0 0 7px rgba(38,229,165,.16);}
+#gallery-mac #macScreen-askanyai .pg-mac-photo-preview-control strong{font-size:inherit;font-weight:750;min-width:0;}
+@media(max-width:600px){#gallery-mac #macScreen-askanyai .pg-mac-photo-preview-control{font-size:clamp(5px,.75vw,10px)!important;padding:5px 2px!important}}
+</style>
 </body>
 </html>

@@ -1,5 +1,5 @@
 /* Photo to AI product section — single localized source of truth.
- * iPhone/iPad only. App Store rollout is not assumed until verified.
+ * iPhone/iPad camera and Mac Finder use different native photo workflows.
  * OCR, photo handoff, trial, and privacy are separate scannable statements.
  */
 (function(w,d){'use strict';
@@ -20,8 +20,9 @@
    var section=d.getElementById('pg-ios-photo-ai-site');
    if(!section)return; // Never add a second promotion block.
    var t=copy(),name=t.feature||'Photo to AI';
-   set('pg-ios-photo-kicker','📷 '+(t.comingSoon||'Coming soon')+' · iPhone / iPad');
+   set('pg-ios-photo-kicker','📷 '+name+' · Mac · iPhone · iPad');
    set('pg-ios-photo-title',name);
+   set('pg-mac-photo-desktop-note','💻 Mac · '+(t.choose||'Choose photo')+' · '+(t.manualPhoto||'Paste or attach the image in the AI browser tab.'));
    set('pg-ios-photo-scan-title','📄 '+(t.scanText||'Scan text'));
    set('pg-ios-photo-scan-copy',t.ocrMeaning||'OCR extracts editable text from pictures.');
    set('pg-ios-photo-upload-title','🖼️ '+(t.photoUploadTitle||'Upload photos to AI'));
@@ -32,7 +33,7 @@
    set('pg-ios-photo-privacy',t.privacy||'Photos leave your device only when you share them.');
    var rtl=/^(AR|HE)$/.test(language());
    section.setAttribute('dir',rtl?'rtl':'ltr');
-   // iOS-only product previews: do not change Mac controls.
+   // Reuse the same 38-language Photo-to-AI label on all device previews.
    d.querySelectorAll('[data-pg-photo-preview-action]').forEach(function(x){
      if(x.textContent!==name)x.textContent=name;
    });
