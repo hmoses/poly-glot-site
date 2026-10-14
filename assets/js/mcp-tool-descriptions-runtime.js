@@ -17,6 +17,7 @@ var EN=[
 'Prepare Compare Mode with built-in AI providers and custom models'
 ];
 var TITLES={"EN":"15 Tools Available","ES":"15 herramientas disponibles","FR":"15 outils disponibles","DE":"15 Tools verfügbar","IT":"15 strumenti disponibili","PT":"15 ferramentas disponíveis","NL":"15 beschikbare tools","RU":"15 доступных инструментов","ZH":"15 项可用工具","ZH_TW":"15 個可用工具","JA":"利用可能なツール 15 個","KO":"사용 가능한 도구 15개","AR":"15 أداة متاحة","HI":"15 उपकरण उपलब्ध","BN":"১৫টি টুল উপলব্ধ","TR":"15 araç mevcut","PL":"15 dostępnych narzędzi","SV":"15 tillgängliga verktyg","NO":"15 tilgjengelige verktøy","DA":"15 tilgængelige værktøjer","FI":"15 työkalua käytettävissä","EL":"15 διαθέσιμα εργαλεία","HE":"15 כלים זמינים","ID":"15 alat tersedia","MS":"15 alat tersedia","TH":"เครื่องมือที่มีให้ใช้ 15 รายการ","VI":"15 công cụ có sẵn","UK":"Доступно 15 інструментів","CS":"15 dostupných nástrojů","RO":"15 instrumente disponibile","HU":"15 elérhető eszköz","SK":"15 dostupných nástrojov","HR":"15 dostupnih alata","CA":"15 eines disponibles","AF":"15 beskikbare nutsmiddels","SW":"Zana 15 zinapatikana","HA":"Akwai kayan aiki 15","AM":"15 መሣሪያዎች ይገኛሉ"};
+var OPEN_LISTING={"EN":"Open listing →","ES":"Abrir ficha →","FR":"Ouvrir la fiche →","DE":"Eintrag öffnen →","IT":"Apri la scheda →","PT":"Abrir lista →","NL":"Vermelding openen →","RU":"Открыть запись →","ZH":"打开条目 →","ZH_TW":"開啟目錄條目 →","JA":"掲載ページを開く →","KO":"등록 페이지 열기 →","AR":"فتح القائمة ←","HI":"लिस्टिंग खोलें →","BN":"তালিকা খুলুন →","TR":"Listeyi aç →","PL":"Otwórz wpis →","SV":"Öppna listning →","NO":"Åpne oppføring →","DA":"Åbn opslag →","FI":"Avaa listaus →","EL":"Άνοιγμα καταχώρισης →","HE":"פתיחת רישום ←","ID":"Buka daftar →","MS":"Buka senarai →","TH":"เปิดรายการ →","VI":"Mở danh sách →","UK":"Відкрити запис →","CS":"Otevřít záznam →","RO":"Deschide lista →","HU":"Bejegyzés megnyitása →","SK":"Otvoriť záznam →","HR":"Otvori popis →","CA":"Obre la fitxa →","AF":"Maak lys oop →","SW":"Fungua orodha →","HA":"Buɗe jerin →","AM":"ዝርዝሩን ክፈት →"};
 var cards=[],root=null,scheduled=false,observer=null;
 function locale(){
  var i=w._pgI18n,raw=i&&typeof i.curLang==='function'?i.curLang():localStorage.getItem('pgLang')||'EN';
@@ -63,6 +64,15 @@ function apply(){
  var table=dictionary[code]||dictionary[code.replace('_','-')]||{};
  var label=TITLES[code]||'15 Tools Available';
  if(title&&title.textContent!==label)title.textContent=label;
+ // Directory listing descriptions and CTAs use the same supported interface locales.
+ var listing=d.getElementById('mcp-listings');
+ if(listing){
+   listing.querySelectorAll('[data-i18n]').forEach(function(el){
+     var key=el.getAttribute('data-i18n');
+     var value=key==='mcpOpenL'?OPEN_LISTING[code]:(table[key]||null);
+     if(value&&el.children.length===0&&el.textContent!==value)el.textContent=value;
+   });
+ }
  root.setAttribute('dir',rtl?'rtl':'ltr');
 }
 function schedule(){
