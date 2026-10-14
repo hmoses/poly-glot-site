@@ -1,62 +1,102 @@
-/* iPhone/iPad marketing screenshots. Native iOS offers BOTH Scan (OCR)
- * and Photo to AI; do not replace Scan, and never add a macOS scanner.
- * All labels follow the shared 38-language Photo-to-AI locale catalog.
+/* iPhone and iPad product previews: reflect the native Photo to AI button.
+ * The source of translated labels is the existing 38-language Photo-to-AI catalog.
+ * Never add the control to a Mac preview or advertise a separate "coming soon" action.
  */
-(function(w,d){'use strict';
-function copy(){
- var lang=(w._pgI18n&&typeof w._pgI18n.curLang==='function'&&w._pgI18n.curLang())||
-   localStorage.getItem('pgLang')||navigator.language||'EN';
- var key=String(lang).toUpperCase().replace(/-/g,'_');
- var values=w.PGPhotoAILocales||{};
- return values[key]||values[key.split('_')[0]]||values.EN||{};
-}
-function render(){
- var t=copy();
- var title=t.feature||'Photo to AI',soon=t.comingSoon||'Coming soon';
- var name='📸 '+title+' · '+soon;
- // Templates, How to Use and History are localized HTML device images.
- // Attach a Photo to AI button within iOS screenshots only, after heading.
- d.querySelectorAll('#gallery-iphone .pg-device-static-localized,#gallery-ipad .pg-device-static-localized').forEach(function(panel){
-  if(panel.querySelector('.pg-photo-preview-launch'))return;
-  var body=panel.querySelector('.pgdsl-body');if(!body)return;
-  var action=d.createElement('div');
-  action.className='pg-photo-preview-launch pg-photo-preview-gallery';
-  action.setAttribute('data-no-translate','');
-  var heading=body.querySelector('.pgdsl-title');
-  if(heading)heading.insertAdjacentElement('afterend',action);
-  else body.insertBefore(action,body.firstChild);
- });
- // Existing Ask Any AI iOS images, home hero, and demo retain OCR Scan.
- // Only the extra Photo to AI element is localized here.
- d.querySelectorAll('.hero-phone-mock .pg-photo-preview-launch,#gallery-iphone .pg-photo-preview-launch,#gallery-ipad .pg-photo-preview-launch,#demo .pg-photo-preview-launch').forEach(function(el){
-  if(el.textContent!==name)el.textContent=name;
-  el.setAttribute('aria-label',title+' — '+soon+' (iPhone/iPad preview)');
- });
-}
-function init(){
- var css=d.getElementById('pg-ios-photo-gallery-style');
- if(!css){
-  css=d.createElement('style');css.id='pg-ios-photo-gallery-style';
-  css.textContent=[
-   '#gallery-iphone .pg-device-static-localized .pg-photo-preview-gallery,#gallery-ipad .pg-device-static-localized .pg-photo-preview-gallery{box-sizing:border-box;display:block!important;max-width:calc(100% - 12px)!important;margin:5px 6px 7px!important;padding:7px 5px!important;border-radius:8px!important;text-align:center;box-shadow:0 2px 12px rgba(82,41,169,.24)}',
-   '#gallery-iphone .pg-device-static-localized .pg-photo-preview-gallery{font-size:clamp(8px,.69vw,10px)!important}',
-   '#gallery-ipad .pg-device-static-localized .pg-photo-preview-gallery{font-size:clamp(8px,.65vw,11px)!important}',
-   '#gallery-iphone .pg-photo-preview-launch,#gallery-ipad .pg-photo-preview-launch{direction:inherit;unicode-bidi:plaintext;white-space:normal;word-break:normal;overflow-wrap:anywhere}'
-  ].join('\n');
-  (d.head||d.documentElement).appendChild(css);
- }
- render();
- ['gallery-iphone','gallery-ipad'].forEach(function(id){
-  var panel=d.getElementById(id);if(!panel||!w.MutationObserver)return;
-  var queued=false;
-  new MutationObserver(function(){
-   if(queued)return;queued=true;
-   w.setTimeout(function(){queued=false;render();},0);
-  }).observe(panel,{childList:true,subtree:true});
- });
-}
-if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',init);
-else init();
-w.addEventListener('pg:languagechange',function(){render();w.setTimeout(render,80);});
-w.addEventListener('pageshow',render);
-})(window,document);
+(function (w, d) {
+  'use strict';
+  var observerScheduled = false;
+  var lastLanguage = '';
+  function locale() {
+    var l = (w._pgI18n && typeof w._pgI18n.curLang === 'function' &&
+             w._pgI18n.curLang()) || localStorage.getItem('pgLang') ||
+             d.documentElement.lang || navigator.language || 'EN';
+    return String(l).toUpperCase().replace(/-/g, '_');
+  }
+  function translatedName() {
+    var code = locale(), all = w.PGPhotoAILocales || {};
+    var p = all[code] || all[code.split('_')[0]] || all.EN || {};
+    return p.feature || 'Photo to AI';
+  }
+  function reconcileAction(row, name) {
+    if (!row || row.children.length < 3) return;
+    var action = row.querySelector('[data-pg-photo-native-preview]') ||
+                 row.children[2];
+    if (!action) return;
+    if (!action.classList.contains('pg-photo-action-btn'))
+      action.classList.add('pg-photo-action-btn');
+    if (!action.hasAttribute('data-pg-photo-native-preview'))
+      action.setAttribute('data-pg-photo-native-preview', '');
+    var label = action.querySelector('[data-pg-photo-preview-action]') ||
+                action.querySelector('strong');
+    if (!label) {
+      action.textContent = '📷 ';
+      label = d.createElement('strong');
+      action.appendChild(label);
+    }
+    if (!label.hasAttribute('data-pg-photo-preview-action'))
+      label.setAttribute('data-pg-photo-preview-action', '');
+    if (label.textContent !== name) label.textContent = name;
+    var accessible = name + ' — iPhone/iPad app preview';
+    if (action.getAttribute('aria-label') !== accessible)
+      action.setAttribute('aria-label', accessible);
+  }
+  function render() {
+    var title = translatedName();
+    // The third action inside Ask Any AI is Photo to AI on both form factors.
+    d.querySelectorAll('.hero-phone-mock .pg-phone-action-row,' +
+                       '#gallery-iphone .pg-phone-action-row,' +
+                       '#gallery-ipad .ipad-redesign-action-row,' +
+                       '#demo .pg-phone-action-row').forEach(function (row) {
+      reconcileAction(row, title);
+    });
+    // Other previews must not show a fake, unshipped second button.
+    d.querySelectorAll('.hero-phone-mock .pg-photo-preview-launch,' +
+                       '#gallery-iphone .pg-photo-preview-launch,' +
+                       '#gallery-ipad .pg-photo-preview-launch,' +
+                       '#demo .pg-photo-preview-launch').forEach(function (node) {
+      node.remove();
+    });
+    lastLanguage = locale();
+  }
+  function schedule() {
+    if (observerScheduled) return;
+    observerScheduled = true;
+    w.setTimeout(function () {
+      observerScheduled = false;
+      render();
+    }, 0);
+  }
+  function init() {
+    if (!d.getElementById('pg-ios-photo-preview-label-style')) {
+      var style = d.createElement('style');
+      style.id = 'pg-ios-photo-preview-label-style';
+      style.textContent =
+        '.hero-phone-mock .pg-photo-action-btn,' +
+        '#gallery-iphone .pg-photo-action-btn,' +
+        '#gallery-ipad .pg-photo-action-btn,' +
+        '#demo .pg-photo-action-btn{min-width:0;overflow:hidden;text-align:center}' +
+        '.hero-phone-mock [data-pg-photo-preview-action],' +
+        '#gallery-iphone [data-pg-photo-preview-action],' +
+        '#gallery-ipad [data-pg-photo-preview-action],' +
+        '#demo [data-pg-photo-preview-action]{white-space:normal;overflow-wrap:anywhere;line-height:1.16}';
+      d.head.appendChild(style);
+    }
+    render();
+    if (w.MutationObserver) {
+      ['gallery-iphone', 'gallery-ipad', 'demo'].forEach(function (id) {
+        var root = d.getElementById(id);
+        if (!root) return;
+        new w.MutationObserver(schedule).observe(root, {
+          subtree: true, childList: true, characterData: true
+        });
+      });
+    }
+    w.setInterval(function () {
+      if (locale() !== lastLanguage) render();
+    }, 2000);
+  }
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', init, {once:true});
+  else init();
+  w.addEventListener('pg:languagechange', schedule);
+  w.addEventListener('pageshow', schedule);
+})(window, document);
