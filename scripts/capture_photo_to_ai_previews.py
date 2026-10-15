@@ -60,7 +60,7 @@ with sync_playwright() as p:
         )
         page.wait_for_timeout(200)
         for device in ('iphone', 'ipad'):
-            label = page.locator('#gallery-'+device+' [data-pg-photo-native-preview]').first.inner_text()
+            label = page.locator('#gallery-'+device+' [data-pg-photo-native-preview]').first.text_content() or ''
             assert 'Photo to AI · Coming Soon' not in label, (language,device,label)
             assert label.strip(), (language,device)
     assert page.locator('#gallery-mac .pg-mac-photo-preview-control').count() == 1, 'Missing real Mac Photo to AI preview control'
