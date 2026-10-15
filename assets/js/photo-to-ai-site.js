@@ -30,7 +30,7 @@
      if(badge.textContent!==label)badge.textContent=label;
      badge.setAttribute('aria-label',label);
    }
-   set('pg-mac-photo-desktop-note',handoff[1]||('💻 Mac · '+(t.choose||'Choose photo')+' · '+(t.manualPhoto||'Paste or attach the image in the AI browser tab.')));
+   set('pg-mac-photo-desktop-note',(handoff[1]||('💻 Mac · '+(t.choose||'Choose photo')+' · '+(t.manualPhoto||'Paste or attach the image in the AI browser tab.')))+' '+(handoff[4]||'Or right-click in the AI chat and choose Paste.'));
    set('pg-ios-photo-scan-title','📄 '+(t.scanText||'Scan text'));
    set('pg-ios-photo-scan-copy',t.ocrMeaning||'OCR extracts editable text from pictures.');
    set('pg-ios-photo-upload-title','🖼️ '+(t.photoUploadTitle||'Upload photos to AI'));
