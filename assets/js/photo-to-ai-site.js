@@ -21,6 +21,8 @@
    var section=d.getElementById('pg-ios-photo-ai-site');
    if(!section)return; // Never add a second promotion block.
    var t=copy(),name=t.feature||'Photo to AI';
+   var allHandoff=w.PGPhotoHandoffGuideLocales||{},lang=language();
+   var handoff=allHandoff[lang]||allHandoff[lang.split('_')[0]]||allHandoff.EN||[];
    set('pg-ios-photo-kicker','📷 '+name+' · Mac · iPhone · iPad');
    set('pg-ios-photo-title',name);
    var badge=d.getElementById('pg-ios-photo-soon-badge');
@@ -28,13 +30,13 @@
      if(badge.textContent!==label)badge.textContent=label;
      badge.setAttribute('aria-label',label);
    }
-   set('pg-mac-photo-desktop-note','💻 Mac · '+(t.choose||'Choose photo')+' · '+(t.manualPhoto||'Paste or attach the image in the AI browser tab.'));
+   set('pg-mac-photo-desktop-note',handoff[1]||('💻 Mac · '+(t.choose||'Choose photo')+' · '+(t.manualPhoto||'Paste or attach the image in the AI browser tab.')));
    set('pg-ios-photo-scan-title','📄 '+(t.scanText||'Scan text'));
    set('pg-ios-photo-scan-copy',t.ocrMeaning||'OCR extracts editable text from pictures.');
    set('pg-ios-photo-upload-title','🖼️ '+(t.photoUploadTitle||'Upload photos to AI'));
-   set('pg-ios-photo-upload-copy',t.photoUploadCopy||'Take or choose a photo, then share it with a compatible AI app. If sharing is unsupported, attach it in the AI app.');
+   set('pg-ios-photo-upload-copy',handoff[0]||t.photoUploadCopy||'Choose a photo, paste or attach it in the AI chat, then send.');
    set('pg-ios-photo-share-title','✍️ '+(t.context||'Add context'));
-   set('pg-ios-photo-share-copy',t.photoCompatibility||'Take or choose a photo and add optional instructions.');
+   set('pg-ios-photo-share-copy',handoff[2]||t.photoCompatibility||'Add your question or instructions beside the image in the AI chat before sending.');
    set('pg-ios-photo-trial',t.locked||'Pro required after your 3-day trial.');
    set('pg-ios-photo-privacy',t.privacy||'Photos leave your device only when you share them.');
    var rtl=/^(AR|HE)$/.test(language());
