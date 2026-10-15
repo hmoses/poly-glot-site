@@ -38,7 +38,9 @@
    set('pg-ios-photo-share-title','✍️ '+(t.context||'Add context'));
    set('pg-ios-photo-share-copy',handoff[2]||t.photoCompatibility||'Add your question or instructions beside the image in the AI chat before sending.');
    set('pg-ios-photo-trial',t.locked||'Pro required after your 3-day trial.');
-   set('pg-ios-photo-privacy',t.privacy||'Photos leave your device only when you share them.');
+   set('pg-ios-photo-privacy',t.photoPolicy||t.privacy||'Photos leave your device only when you share them. Receiving AI apps may process shared photos.');
+   set('pg-ios-photo-compatibility',handoff[3]||t.providerLimit||'Image paste or attachment depends on the AI provider.');
+   section.setAttribute('aria-label',name+' · Mac · iPhone · iPad');
    var rtl=/^(AR|HE)$/.test(language());
    section.setAttribute('dir',rtl?'rtl':'ltr');
    // Reuse the same 38-language Photo-to-AI label on all device previews.

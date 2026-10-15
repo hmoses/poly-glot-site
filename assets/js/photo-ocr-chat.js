@@ -5,7 +5,16 @@ function pack(lang){var a=w.PGPhotoAILocales||{};return a[lang]||a[lang.split("_
 function install(){
  var all=w.PGPhotoAILocales||{},chat=w._pgChatI18n;if(!chat||!chat.KBL)return;
  for(var lang of Object.keys(all)){var p=all[lang];var c=lang==="ZH_TW"?"ZH-TW":lang;
-  var answer="**📷 "+p.feature+" · iPhone / iPad**\n\n"+p.ocrMeaning+"\n\n"+p.photoCompatibility+"\n\n"+p.locked+"\n\n"+p.photoPolicy+"\n\n**ChatGPT · Claude · Gemini · Grok · Perplexity · Mistral**\n"+p.manualPhoto+"\n\n**DuckDuckGo AI**\n"+p.duckImageModel+"\n\n**HuggingChat**\n"+p.huggingUnavailable;
+  var guides=w.PGPhotoHandoffGuideLocales||{},h=guides[lang]||guides[lang.split("_")[0]];
+  var ios=h&&h[0]||p.photoUploadCopy||p.manualPhoto;
+  var mac=h&&h[1]||p.manualPhoto;
+  var context=h&&h[2]||p.context;
+  var compatibility=h&&h[3]||p.providerLimit;
+  var answer="**📷 "+p.feature+" · Mac · iPhone · iPad**\n\n"+
+    p.ocrMeaning+"\n\n**📱 iPhone / iPad**\n"+ios+
+    "\n\n**💻 Mac**\n"+mac+
+    "\n\n"+context+"\n\n"+compatibility+
+    "\n\n"+p.photoPolicy+"\n\n"+p.locked;
   if(!chat.KBL[c])chat.KBL[c]={};
   chat.KBL[c]["photo to ai"]=answer;
   if(c!==lang){if(!chat.KBL[lang])chat.KBL[lang]={};chat.KBL[lang]["photo to ai"]=answer;}

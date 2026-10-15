@@ -7,6 +7,8 @@ const preview=read('assets/js/ios-photo-preview-buttons.js');
 const locales=read('assets/js/photo-to-ai-locales.js');
 const trial=read('assets/js/trial-details-locales.js');
 const uploads=read('assets/js/photo-upload-locales.js');
+const handoff=read('assets/js/photo-handoff-guide-locales.js');
+const chatPhoto=read('assets/js/photo-ocr-chat.js');
 const motionCSS=read('assets/css/apple-card-parallax.css');
 const motionJS=read('assets/js/apple-card-parallax.js');
 const mcpRuntime=read('assets/js/mcp-tool-descriptions-runtime.js');
@@ -20,6 +22,10 @@ assert.equal(count(/id="pg-ios-photo-title"/g,page),1,'Only one Photo-to-AI head
 assert.equal(count(/id="pg-photo-input-soon"/g,page),0,'No duplicate text inside Multiple Input Options');
 assert(!trial.includes('2026 Photo-to-AI product announcement'),'Trial localization must not render a second promo');
 assert(page.includes('photo-to-ai-site.js?v='),'Product feature localization must load');
+assert(page.includes('id="pg-ios-photo-compatibility"'),'Provider compatibility note must remain');
+assert(feature.includes('pg-ios-photo-compatibility'),'Provider note must update in every locale');
+assert(chatPhoto.includes('PGPhotoHandoffGuideLocales'),'Chat KB must include localized Mac and iOS steps');
+assert(page.includes('pg-ios-photo-soon-badge'),'Coming Soon badge must be preserved');
 assert(page.includes('ios-photo-preview-buttons.js?v='),'iOS device preview updater must load');
 assert(page.includes('pg-photo-feature-chunks'),'Feature details must be chunked');
 
@@ -70,6 +76,13 @@ const uploadLanguages=JSON.parse(uploadMatch[1]);
 assert.deepEqual(Object.keys(uploadLanguages).sort(),Object.keys(values).sort(),'Photo-upload card must support every Photo-to-AI locale');
 for(const [code,copy] of Object.entries(uploadLanguages)){
  assert(copy.length===2&&copy.every(s=>typeof s==='string'&&s.trim()),'Missing upload text in '+code);
+}
+const hStart=handoff.indexOf('w.PGPhotoHandoffGuideLocales=')+'w.PGPhotoHandoffGuideLocales='.length;
+const hRows=JSON.parse(handoff.slice(hStart,handoff.indexOf(';',hStart)));
+assert.equal(Object.keys(hRows).length,38,'Expected exactly 38 website handoff languages');
+for(const [lang,steps] of Object.entries(hRows)){
+ assert.equal(steps.length,4,'Four translated handoff fields required: '+lang);
+ assert(steps.every(x=>typeof x==='string'&&x.trim()),'Empty translated handoff field: '+lang);
 }
 assert(page.indexOf('id="pg-ios-photo-ai-site"')<page.indexOf('id="screenshots"'),'App Preview must follow Photo to AI');
 assert(page.indexOf('id="screenshots"')<page.indexOf('id="value"'),'App Preview must sit directly before Value section');
