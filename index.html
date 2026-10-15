@@ -2942,45 +2942,51 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 </style>
 <!-- Pages publication refresh: smooth independent card parallax 2026-10-14 -->
 
-<style id="pg-features-balanced-grid-20261014">
-/* One true five-card grid: no independent nested row calculations. */
+<style id="pg-features-compact-content-v20261014">
+/* Content-sized features, no stretched grid rows or fixed-height mobile cards. */
 #features .features-grid{
- display:grid!important;
- grid-template-columns:repeat(3,minmax(0,1fr))!important;
- grid-template-rows:repeat(2,minmax(min-content,auto))!important;
- gap:18px!important;
- align-items:stretch!important;
+ display:grid!important;grid-template-columns:minmax(260px,.88fr) minmax(0,1.62fr)!important;
+ grid-template-rows:auto!important;align-items:start!important;align-content:start!important;
+ gap:16px!important;
 }
-#features .feature-secondary-grid{display:contents!important}
 #features .feature-card.feature-primary{
- grid-column:1!important;grid-row:1 / span 2!important;
- height:100%!important;min-height:0!important;
- align-self:stretch!important;box-sizing:border-box!important;
- padding:28px!important;justify-content:center!important;
+ grid-column:1!important;grid-row:1!important;align-self:start!important;
+ height:auto!important;min-height:0!important;max-height:none!important;
+ box-sizing:border-box!important;padding:26px!important;
+ justify-content:flex-start!important;
+}
+#features .feature-secondary-grid{
+ grid-column:2!important;grid-row:1!important;display:grid!important;
+ grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ grid-template-rows:auto!important;grid-auto-rows:min-content!important;
+ align-items:start!important;align-content:start!important;gap:14px!important;
+ min-width:0!important;
 }
 #features .feature-secondary-grid>.feature-card{
- height:100%!important;min-height:0!important;
- box-sizing:border-box!important;align-self:stretch!important;
- padding:24px!important;display:flex!important;
- flex-direction:column!important;justify-content:flex-start!important;
+ grid-column:auto!important;grid-row:auto!important;align-self:start!important;
+ height:auto!important;min-height:0!important;max-height:none!important;
+ box-sizing:border-box!important;padding:20px!important;
+ display:flex!important;flex-direction:column!important;justify-content:flex-start!important;
 }
-#features .feature-secondary-grid>.feature-card:nth-child(1){grid-column:2!important;grid-row:1!important}
-#features .feature-secondary-grid>.feature-card:nth-child(2){grid-column:3!important;grid-row:1!important}
-#features .feature-secondary-grid>.feature-card:nth-child(3){grid-column:2!important;grid-row:2!important}
-#features .feature-secondary-grid>.feature-card:nth-child(4){grid-column:3!important;grid-row:2!important}
-#features .feature-card h4{line-height:1.3;margin-top:0}
-#features .feature-card p{line-height:1.55;overflow-wrap:break-word}
-#features .feature-private .pg-feature-privacy-link{margin-top:auto;padding-top:12px;align-self:flex-start}
-@media(max-width:900px){
- #features .features-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:auto!important;gap:16px!important}
- #features .feature-card.feature-primary{grid-column:1 / -1!important;grid-row:auto!important;height:auto!important;min-height:0!important;padding:26px!important}
- #features .feature-secondary-grid>.feature-card{grid-column:auto!important;grid-row:auto!important;min-height:0!important;height:100%!important}
+#features .feature-card p{line-height:1.58!important;color:#c5cee1!important;overflow-wrap:break-word}
+#features .section-sub{color:#a9b5cb!important}
+#features .feature-private .pg-feature-privacy-link{margin-top:14px!important;padding-top:0!important;align-self:flex-start!important}
+@media(max-width:1024px){
+ #features .features-grid{grid-template-columns:minmax(0,1fr)!important;gap:12px!important}
+ #features .feature-card.feature-primary{grid-column:1!important;grid-row:auto!important}
+ #features .feature-secondary-grid{
+  grid-column:1!important;grid-row:auto!important;
+  grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto!important;
+  grid-auto-rows:min-content!important;gap:12px!important;
+ }
+ #features .feature-secondary-grid>.feature-card{
+  grid-column:1!important;grid-row:auto!important;
+  width:100%!important;min-height:0!important;height:auto!important;align-self:start!important;
+  padding:18px 20px!important;
+ }
+ #features .feature-card.feature-primary{padding:20px!important}
 }
-@media(max-width:620px){
- #features .features-grid{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto!important;gap:12px!important}
- #features .feature-card.feature-primary,
- #features .feature-secondary-grid>.feature-card{grid-column:1!important;grid-row:auto!important;min-height:0!important;height:auto!important;padding:20px!important}
-}
+@media(prefers-reduced-motion:reduce){#features .feature-card{transition:none!important}}
 </style>
 
 <style id="pg-category-balanced-20261014">
@@ -3036,7 +3042,60 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 #pg-ios-photo-ai-site .pg-photo-headline-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:9px 0 17px}
 #pg-ios-photo-ai-site .pg-photo-soon-badge{display:inline-flex;align-items:center;justify-content:center;max-width:100%;white-space:normal;padding:6px 12px;border-radius:999px;border:1px solid rgba(251,191,36,.44);background:rgba(251,191,36,.12);color:#fbbf24;font-size:.72rem;line-height:1.25;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
 @media(max-width:520px){#pg-ios-photo-ai-site .pg-photo-headline-row{gap:8px}#pg-ios-photo-ai-site .pg-photo-soon-badge{font-size:.67rem;padding:5px 9px}}
-</style><style id="pg-mac-photo-howto-style">#pg-ios-photo-ai-site .pg-mac-photo-howto{display:flex;align-items:flex-start;gap:16px;padding:15px 18px;border:1px solid rgba(52,211,153,.25);border-radius:13px;background:rgba(16,185,129,.065);margin:2px 0 14px}#pg-ios-photo-ai-site .pg-mac-photo-howto-title{flex:none;min-width:76px;font-size:.88rem;line-height:1.6;font-weight:800;color:#a7f3d0}@media(max-width:600px){#pg-ios-photo-ai-site .pg-mac-photo-howto{display:block;padding:14px 15px}#pg-ios-photo-ai-site .pg-mac-photo-howto-title{display:block;margin-bottom:5px}}</style><style id="pg-photo-paste-help-css">
+</style><style id="pg-mac-photo-howto-style">
+#pg-ios-photo-ai-site .pg-mac-photo-howto{
+ display:flex;align-items:flex-start;gap:18px;padding:18px 20px;
+ border:1px solid rgba(52,211,153,.25);border-radius:13px;
+ background:rgba(16,185,129,.065);margin:16px 0 14px;min-width:0;
+}
+#pg-ios-photo-ai-site .pg-mac-photo-howto-title{
+ flex:none;min-width:76px;font-size:.9rem;line-height:1.6;font-weight:800;color:#a7f3d0;
+}
+#pg-ios-photo-ai-site .pg-mac-photo-body{min-width:0;flex:1}
+#pg-ios-photo-ai-site .pg-mac-photo-steps{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:10px 14px;margin:0;padding:0;list-style:none;counter-reset:macstep;
+}
+#pg-ios-photo-ai-site .pg-mac-photo-steps li{
+ counter-increment:macstep;position:relative;min-width:0;
+ margin:0;padding:11px 12px 11px 43px;
+ background:rgba(8,22,28,.37);border:1px solid rgba(167,243,208,.14);
+ border-radius:10px;color:#dcfce7;font-size:.88rem;line-height:1.56;
+ overflow-wrap:break-word;
+}
+#pg-ios-photo-ai-site .pg-mac-photo-steps li::before{
+ content:counter(macstep);position:absolute;inset-inline-start:11px;top:12px;
+ display:inline-flex;align-items:center;justify-content:center;
+ width:23px;height:23px;border-radius:50%;background:rgba(52,211,153,.14);
+ color:#a7f3d0;font-size:.76rem;font-weight:800;
+}
+#pg-ios-photo-ai-site .pg-mac-photo-rightclick{
+ margin:12px 0 0!important;color:#b8f5d3;font-size:.83rem;line-height:1.55;
+}
+#pg-ios-photo-ai-site .pg-photo-disclosure-grid{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:10px;margin:0 0 18px;align-items:start;
+}
+#pg-ios-photo-ai-site .pg-photo-disclosure{
+ margin:0!important;padding:12px 14px;border-radius:10px;
+ border:1px solid rgba(148,163,184,.22);background:rgba(148,163,184,.055);
+ font-size:.82rem;line-height:1.58;min-width:0;overflow-wrap:break-word;
+ color:#c9d5e9;
+}
+#pg-ios-photo-ai-site .pg-photo-disclosure-access{
+ color:#eedaff;font-weight:700;border-color:rgba(192,132,252,.3);
+ background:rgba(192,132,252,.065);
+}
+@media(max-width:800px){
+ #pg-ios-photo-ai-site .pg-mac-photo-howto{display:block;padding:15px}
+ #pg-ios-photo-ai-site .pg-mac-photo-howto-title{display:block;margin-bottom:10px}
+ #pg-ios-photo-ai-site .pg-mac-photo-steps{grid-template-columns:minmax(0,1fr)}
+ #pg-ios-photo-ai-site .pg-photo-disclosure-grid{grid-template-columns:minmax(0,1fr);gap:8px}
+}
+[dir="rtl"] #pg-ios-photo-ai-site .pg-mac-photo-steps li{
+ padding-inline-start:43px;padding-inline-end:12px;text-align:start;
+}
+</style><style id="pg-photo-paste-help-css">
 #pg-ios-photo-ai-site .pg-photo-paste-hint{display:flex;align-items:center;gap:6px;margin:10px 0 0;padding-top:9px;border-top:1px solid rgba(167,139,250,.22);color:#c7d2fe;font-size:.79rem;line-height:1.5;font-weight:650}
 #pg-ios-photo-ai-site .pg-photo-paste-hint:before{content:"↳";color:#a78bfa;font-size:.94rem}
 #pg-ios-photo-ai-site .pg-mac-photo-howto{margin-top:16px}
@@ -3279,10 +3338,23 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
         <p id="pg-ios-photo-share-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">Add your question or instructions beside the image in the AI chat before sending.</p>
       </article>
     </div>
-    <aside class="pg-mac-photo-howto" aria-label="Mac Photo to AI steps"><strong class="pg-mac-photo-howto-title">💻 Mac</strong><p id="pg-mac-photo-desktop-note" style="color:#d4f9e7;font-size:.91rem;line-height:1.65;margin:0">Mac: Choose a photo in Poly-Glot using Finder, then select an AI. Poly-Glot copies the image and opens the AI website in a browser tab. Click the chat and press ⌘V to paste, or use the image attachment button to choose the photo from Finder. Then send.</p></aside>
-    <p id="pg-ios-photo-trial" style="font-size:.95rem;color:#e9d5ff;font-weight:700;margin:0 0 7px">Included in the 3-day trial. Pro required afterward.</p>
-    <p id="pg-ios-photo-privacy" style="font-size:.82rem;line-height:1.5;color:#bac5d7;margin:0 0 5px">Photos leave your device only when you share them. Receiving AI apps may process shared photos.</p>
-    <p id="pg-ios-photo-compatibility" style="font-size:.82rem;line-height:1.5;color:#bac5d7;margin:0 0 16px">Image paste or attachment depends on the AI provider.</p>
+    <aside class="pg-mac-photo-howto" aria-label="Mac Photo to AI steps">
+      <strong class="pg-mac-photo-howto-title">💻 Mac</strong>
+      <div class="pg-mac-photo-body">
+        <ol id="pg-mac-photo-steps" class="pg-mac-photo-steps">
+          <li>Choose a photo in Poly-Glot using Finder, then select an AI.</li>
+          <li>Poly-Glot copies the image and opens the AI website in a browser tab.</li>
+          <li>Click the chat and press ⌘V to paste, or use the AI's image attachment button to select the photo from Finder.</li>
+          <li>Then send.</li>
+        </ol>
+        <p class="pg-mac-photo-rightclick" id="pg-mac-photo-rightclick">Or right-click in the AI chat and choose Paste.</p>
+      </div>
+    </aside>
+    <div class="pg-photo-disclosure-grid">
+      <p class="pg-photo-disclosure pg-photo-disclosure-access" id="pg-ios-photo-trial">Pro required after your 3-day trial.</p>
+      <p class="pg-photo-disclosure pg-photo-disclosure-privacy" id="pg-ios-photo-privacy">Photos leave your device only when you share them. When you share a photo, the selected app can process or store it under its own privacy policy.</p>
+      <p class="pg-photo-disclosure pg-photo-disclosure-compat" id="pg-ios-photo-compatibility">Image paste or attachment depends on the AI provider.</p>
+    </div>
     
   </div>
 </section>
@@ -14634,7 +14706,7 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
 <link rel="stylesheet" href="assets/css/apple-card-parallax.css?v=20261014-gallery-single-controller-6">
 <script defer src="assets/js/apple-card-parallax.js?v=20261014-feature-pricing-5"></script>
 <script src="assets/js/photo-handoff-guide-locales.js?v=20261014-mac-rightclick-38"></script>
-<script src="assets/js/photo-to-ai-site.js?v=20261014-mac-rightclick-38"></script>
+<script src="assets/js/photo-to-ai-site.js?v=20261014-mac-chunked-38"></script>
 <script src="assets/js/ios-photo-preview-buttons.js?v=20261014-native-stacked-870"></script>
 <script defer src="assets/js/zh-tw-page-polish.js?v=20261014-zh-tw-complete"></script>
 <script defer src="assets/js/photo-privacy-faq-locales.js?v=20261014-photo-privacy-faq1"></script>
