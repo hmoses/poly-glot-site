@@ -88,9 +88,13 @@ const hStart=handoff.indexOf('w.PGPhotoHandoffGuideLocales=')+'w.PGPhotoHandoffG
 const hRows=JSON.parse(handoff.slice(hStart,handoff.indexOf(';',hStart)));
 assert.equal(Object.keys(hRows).length,38,'Expected exactly 38 website handoff languages');
 for(const [lang,steps] of Object.entries(hRows)){
- assert.equal(steps.length,4,'Four translated handoff fields required: '+lang);
+ assert.equal(steps.length,5,'Five translated handoff fields required (including Mac right-click): '+lang);
  assert(steps.every(x=>typeof x==='string'&&x.trim()),'Empty translated handoff field: '+lang);
 }
+assert.equal(count(/id="pg-mac-photo-steps"/g,page),1,'Mac Photo to AI steps must render as one numbered list');
+assert.equal(count(/id="pg-mac-photo-rightclick"/g,page),1,'Right-click Paste instruction must have its own localized line');
+assert(feature.includes('renderMacSteps(handoff,lang,t)'),'Mac numbered steps must use the localized handoff catalog');
+assert(page.includes('pg-features-compact-content-v20261014'),'Mobile features must use content-sized cards');
 assert(page.indexOf('id="pg-ios-photo-ai-site"')<page.indexOf('id="screenshots"'),'App Preview must follow Photo to AI');
 assert(page.indexOf('id="screenshots"')<page.indexOf('id="value"'),'App Preview must sit directly before Value section');
 assert.equal(count(/id="screenshots"/g,page),1,'App Preview cannot be duplicated');
