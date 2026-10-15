@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const read=(path)=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 const page=read('index.html');
+const privacyPage=read('privacy.html');
+const photoPrivacyRuntime=read('assets/js/photo-ocr-policy-locales.js');
 const feature=read('assets/js/photo-to-ai-site.js');
 const preview=read('assets/js/ios-photo-preview-buttons.js');
 const locales=read('assets/js/photo-to-ai-locales.js');
@@ -17,7 +19,12 @@ const mcpPart2=read('assets/js/mcp-tool-descriptions-2.js');
 const zhTwSite=read('assets/js/zh-tw-page-polish.js');
 
 function count(pattern,source){return [...source.matchAll(pattern)].length;}
-assert.equal(count(/id="pg-ios-photo-ai-site"/g,page),1,'Only one iOS photo promotion section');
+assert.equal(count(/id="pg-ios-photo-ai-site"/g,page),1,'Only one Photo to AI promotion section');
+assert.equal(count(/id="pgPhotoPrivacyPolicy"/g,privacyPage),1,'Only one Photo to AI privacy section');
+assert(!privacyPage.includes('id="pgPhotoPolicy"'),'Retired redundant privacy warnings must be absent');
+assert(privacyPage.includes('photo-handoff-guide-locales.js?v='),'Privacy page must load the 38-language handoff catalog');
+assert(photoPrivacyRuntime.includes('PGPhotoHandoffGuideLocales'),'Privacy page must use cross-platform localized guidance');
+assert(privacyPage.includes('Poly-Glot does not automatically upload photos'),'English privacy text must not promise automatic image uploads');
 assert.equal(count(/id="pg-ios-photo-title"/g,page),1,'Only one Photo-to-AI heading');
 assert.equal(count(/id="pg-photo-input-soon"/g,page),0,'No duplicate text inside Multiple Input Options');
 assert(!trial.includes('2026 Photo-to-AI product announcement'),'Trial localization must not render a second promo');
