@@ -3032,6 +3032,10 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 @media(max-width:990px){#mcp-listings .pg-mcp-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}#mcp-listings .pg-mcp-directory-grid>a,#mcp-listings .pg-mcp-directory-grid>a:nth-child(4),#mcp-listings .pg-mcp-directory-grid>a:nth-child(5){grid-column:span 1}#mcp-listings .pg-mcp-directory-grid>a:last-child{grid-column:1/-1}#connect .pg-mcp-client-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:600px){#mcp-listings .pg-mcp-directory-grid,#connect .pg-mcp-client-grid{grid-template-columns:minmax(0,1fr)!important}#mcp-listings .pg-mcp-directory-grid>a,#mcp-listings .pg-mcp-directory-grid>a:last-child{grid-column:1}#mcp-listings .pg-mcp-directory-grid>a{min-height:0}#connect .pg-mcp-client-grid>.pg-mcp-motion-card{min-height:0}#mcp-invocation-guide .pg-mcp-invoke-client-grid{grid-template-columns:minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){#mcp-listings .pg-mcp-directory-grid>a{transition:none}}
+</style><style id="pg-photo-coming-soon-badge-style">
+#pg-ios-photo-ai-site .pg-photo-headline-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:9px 0 17px}
+#pg-ios-photo-ai-site .pg-photo-soon-badge{display:inline-flex;align-items:center;justify-content:center;max-width:100%;white-space:normal;padding:6px 12px;border-radius:999px;border:1px solid rgba(251,191,36,.44);background:rgba(251,191,36,.12);color:#fbbf24;font-size:.72rem;line-height:1.25;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+@media(max-width:520px){#pg-ios-photo-ai-site .pg-photo-headline-row{gap:8px}#pg-ios-photo-ai-site .pg-photo-soon-badge{font-size:.67rem;padding:5px 9px}}
 </style></head>
 <body>
 
@@ -3256,7 +3260,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 <section class="section" id="pg-ios-photo-ai-site" aria-label="iPhone and iPad Photo to AI" style="padding:32px 18px 36px;background:linear-gradient(135deg,#160f2d,#151c33);color:#f7f4ff;border-top:1px solid rgba(167,139,250,.25);border-bottom:1px solid rgba(167,139,250,.25)">
   <div style="max-width:1050px;margin:auto">
     <div id="pg-ios-photo-kicker" style="color:#c4b5fd;font-weight:750;font-size:.81rem;letter-spacing:.04em">📱 iPhone &amp; iPad only</div>
-    <h2 id="pg-ios-photo-title" style="font-size:clamp(1.65rem,4vw,2.5rem);margin:9px 0 17px;color:#fff;line-height:1.2">Photo to AI</h2>
+    <div class="pg-photo-headline-row"><h2 id="pg-ios-photo-title" style="font-size:clamp(1.65rem,4vw,2.5rem);margin:0;color:#fff;line-height:1.2">Photo to AI</h2><span id="pg-ios-photo-soon-badge" class="pg-photo-soon-badge" role="status" aria-label="Coming Soon">Coming Soon</span></div>
     <div class="pg-photo-feature-chunks" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px;margin:0 0 16px">
       <article class="pg-photo-motion-card" style="padding:15px 17px;border:1px solid rgba(167,139,250,.32);border-radius:12px;background:rgba(255,255,255,.04)">
         <h3 id="pg-ios-photo-scan-title" style="font-size:1.02rem;margin:0 0 7px;color:#f8f4ff">📷 Scan text</h3>
