@@ -17,6 +17,29 @@
    var e=d.getElementById(id);if(e&&value&&e.textContent!==value)e.textContent=value;
  }
  var comingSoon={"EN":"Coming Soon","ES":"Próximamente","FR":"Bientôt disponible","DE":"Demnächst","IT":"Prossimamente","PT":"Em breve","NL":"Binnenkort","RU":"Скоро","ZH":"即将推出","ZH_TW":"即將推出","JA":"近日公開","KO":"출시 예정","AR":"قريبًا","HI":"जल्द आ रहा है","BN":"শীঘ্রই আসছে","TR":"Yakında","PL":"Wkrótce","SV":"Kommer snart","NO":"Kommer snart","DA":"Kommer snart","FI":"Tulossa pian","EL":"Σύντομα","HE":"בקרוב","ID":"Segera hadir","MS":"Akan datang","TH":"เร็ว ๆ นี้","VI":"Sắp ra mắt","UK":"Незабаром","CS":"Již brzy","RO":"În curând","HU":"Hamarosan","SK":"Už čoskoro","HR":"Uskoro","CA":"Properament","AF":"Binnekort","SW":"Inakuja hivi karibuni","HA":"Yana nan tafe","AM":"በቅርቡ"};
+ function renderMacSteps(handoff,lang,t){
+   // Chunk the existing localized sentences; never replace a translation with English.
+   var raw=String(handoff[1]||('Mac: '+(t.choose||'Choose photo')+'. '+(t.manualPhoto||'Paste or attach the image in the AI browser tab.')));
+   var steps=[];
+   if(w.Intl&&Intl.Segmenter){
+     try{steps=Array.from(new Intl.Segmenter(lang.replace('_','-'),{granularity:'sentence'}).segment(raw),function(x){return x.segment.trim();}).filter(Boolean);}
+     catch(err){steps=[];}
+   }
+   if(steps.length<2)steps=raw.split(/(?<=[.!?。！？])\\s+/u).filter(Boolean);
+   // Thai writing usually omits sentence punctuation; split at existing words.
+   if(steps.length<2&&lang==='TH')steps=raw.split(/(?=จากนั้น Poly-Glot)|(?=คลิกช่องแชต)/).map(function(x){return x.trim();}).filter(Boolean);
+   if(steps.length<2)steps=[raw];
+   var list=d.getElementById('pg-mac-photo-steps');
+   if(list){
+     list.replaceChildren();
+     steps.forEach(function(step){
+       var li=d.createElement('li');
+       li.textContent=step.replace(/^Mac\\s*[:：]\\s*/i,'');
+       list.appendChild(li);
+     });
+   }
+   set('pg-mac-photo-rightclick',handoff[4]||'Or right-click in the AI chat and choose Paste.');
+ }
  function render(){
    var section=d.getElementById('pg-ios-photo-ai-site');
    if(!section)return; // Never add a second promotion block.
@@ -30,7 +53,7 @@
      if(badge.textContent!==label)badge.textContent=label;
      badge.setAttribute('aria-label',label);
    }
-   set('pg-mac-photo-desktop-note',(handoff[1]||('💻 Mac · '+(t.choose||'Choose photo')+' · '+(t.manualPhoto||'Paste or attach the image in the AI browser tab.')))+' '+(handoff[4]||'Or right-click in the AI chat and choose Paste.'));
+   renderMacSteps(handoff,lang,t);
    set('pg-ios-photo-scan-title','📄 '+(t.scanText||'Scan text'));
    set('pg-ios-photo-scan-copy',t.ocrMeaning||'OCR extracts editable text from pictures.');
    set('pg-ios-photo-upload-title','🖼️ '+(t.photoUploadTitle||'Upload photos to AI'));
