@@ -7,7 +7,7 @@ function install(){
  for(var lang of Object.keys(all)){var p=all[lang];var c=lang==="ZH_TW"?"ZH-TW":lang;
   var guides=w.PGPhotoHandoffGuideLocales||{},h=guides[lang]||guides[lang.split("_")[0]];
   var ios=h&&h[0]||p.photoUploadCopy||p.manualPhoto;
-  var mac=h&&h[1]||p.manualPhoto;
+  var mac=(h&&h[1]||p.manualPhoto)+' '+(h&&h[4]||'Or right-click in the AI chat and choose Paste.');
   var context=h&&h[2]||p.context;
   var compatibility=h&&h[3]||p.providerLimit;
   var answer="**📷 "+p.feature+" · Mac · iPhone · iPad**\n\n"+
