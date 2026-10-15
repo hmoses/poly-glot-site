@@ -6,9 +6,12 @@ function lang(){var i=w._pgI18n;return String(i&&typeof i.curLang==="function"?i
 function pack(){var all=w.PGPhotoAILocales||{};var c=lang();return all[c]||all[c.split("_")[0]]||all.EN;}
 function apply(){var p=pack();if(!p)return;
  var h=d.getElementById("pgPhotoPrivacyHeading"),a=d.getElementById("pgPhotoPrivacyOCR"),b=d.getElementById("pgPhotoPrivacyTransfer"),c=d.getElementById("pgPhotoPrivacyTrial");
- if(h)h.textContent="📷 "+p.comingSoonLine;
+ if(h)h.textContent="📷 "+p.feature+" · Mac · iPhone · iPad · "+p.comingSoon;
  if(a)a.textContent=p.ocrMeaning;
- if(b)b.textContent=p.comingSoon+": "+p.photoCompatibility+" "+p.photoPolicy+" "+p.manualPhoto+" "+p.duckImageModel+" "+p.huggingUnavailable;
+ if(b){var guides=w.PGPhotoHandoffGuideLocales||{},code=lang(),steps=guides[code]||guides[code.split("_")[0]]||guides.EN||[];
+  b.textContent=[steps[0]||p.photoUploadCopy,steps[1]||p.manualPhoto,p.photoPolicy,steps[3]||p.providerLimit].filter(Boolean).join(" ");
+  var section=d.getElementById("pgPhotoPrivacyPolicy");if(section)section.setAttribute("dir",/^(AR|HE)$/.test(code)?"rtl":"ltr");
+ }
  if(c)c.textContent=p.comingSoonTrial;
 }
 w.addEventListener("pg:languagechange",apply);
