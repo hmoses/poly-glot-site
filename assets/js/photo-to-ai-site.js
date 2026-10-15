@@ -16,12 +16,18 @@
  function set(id,value){
    var e=d.getElementById(id);if(e&&value&&e.textContent!==value)e.textContent=value;
  }
+ var comingSoon={"EN":"Coming Soon","ES":"Próximamente","FR":"Bientôt disponible","DE":"Demnächst","IT":"Prossimamente","PT":"Em breve","NL":"Binnenkort","RU":"Скоро","ZH":"即将推出","ZH_TW":"即將推出","JA":"近日公開","KO":"출시 예정","AR":"قريبًا","HI":"जल्द आ रहा है","BN":"শীঘ্রই আসছে","TR":"Yakında","PL":"Wkrótce","SV":"Kommer snart","NO":"Kommer snart","DA":"Kommer snart","FI":"Tulossa pian","EL":"Σύντομα","HE":"בקרוב","ID":"Segera hadir","MS":"Akan datang","TH":"เร็ว ๆ นี้","VI":"Sắp ra mắt","UK":"Незабаром","CS":"Již brzy","RO":"În curând","HU":"Hamarosan","SK":"Už čoskoro","HR":"Uskoro","CA":"Properament","AF":"Binnekort","SW":"Inakuja hivi karibuni","HA":"Yana nan tafe","AM":"በቅርቡ"};
  function render(){
    var section=d.getElementById('pg-ios-photo-ai-site');
    if(!section)return; // Never add a second promotion block.
    var t=copy(),name=t.feature||'Photo to AI';
    set('pg-ios-photo-kicker','📷 '+name+' · Mac · iPhone · iPad');
    set('pg-ios-photo-title',name);
+   var badge=d.getElementById('pg-ios-photo-soon-badge');
+   if(badge){var label=comingSoon[language()]||comingSoon[language().split('_')[0]]||comingSoon.EN;
+     if(badge.textContent!==label)badge.textContent=label;
+     badge.setAttribute('aria-label',label);
+   }
    set('pg-mac-photo-desktop-note','💻 Mac · '+(t.choose||'Choose photo')+' · '+(t.manualPhoto||'Paste or attach the image in the AI browser tab.'));
    set('pg-ios-photo-scan-title','📄 '+(t.scanText||'Scan text'));
    set('pg-ios-photo-scan-copy',t.ocrMeaning||'OCR extracts editable text from pictures.');
