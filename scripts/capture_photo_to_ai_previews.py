@@ -23,8 +23,8 @@ with sync_playwright() as p:
     errors = []
     page.on('pageerror', lambda exc: errors.append(str(exc)))
     page.goto(BASE, wait_until='domcontentloaded', timeout=40000)
-    page.wait_for_selector('#gallery-ipad [data-pg-photo-native-preview]', timeout=30000)
-    page.wait_for_selector('#gallery-iphone [data-pg-photo-native-preview]', timeout=30000)
+    page.wait_for_selector('#gallery-ipad [data-pg-photo-native-preview]', state='attached', timeout=30000)
+    page.wait_for_selector('#gallery-iphone [data-pg-photo-native-preview]', state='attached', timeout=30000)
     assert page.locator('#pg-ios-photo-soon-badge').inner_text().strip(), 'Missing Coming Soon feature badge'
     for device in ('iphone', 'ipad'):
         page.evaluate(f"switchGallery('{device}')")
