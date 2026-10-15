@@ -25,7 +25,7 @@
      try{steps=Array.from(new Intl.Segmenter(lang.replace('_','-'),{granularity:'sentence'}).segment(raw),function(x){return x.segment.trim();}).filter(Boolean);}
      catch(err){steps=[];}
    }
-   if(steps.length<2)steps=raw.split(/(?<=[.!?。！？])\\s+/u).filter(Boolean);
+   if(steps.length<2)steps=raw.split(/(?<=[.!?。！？])\s+/u).filter(Boolean);
    // Thai writing usually omits sentence punctuation; split at existing words.
    if(steps.length<2&&lang==='TH')steps=raw.split(/(?=จากนั้น Poly-Glot)|(?=คลิกช่องแชต)/).map(function(x){return x.trim();}).filter(Boolean);
    if(steps.length<2)steps=[raw];
@@ -34,7 +34,7 @@
      list.replaceChildren();
      steps.forEach(function(step){
        var li=d.createElement('li');
-       li.textContent=step.replace(/^Mac\\s*[:：]\\s*/i,'');
+       li.textContent=step.replace(/^Mac\s*[:：]\s*/i,'');
        list.appendChild(li);
      });
    }
