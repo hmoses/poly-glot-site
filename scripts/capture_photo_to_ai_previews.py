@@ -23,30 +23,28 @@ with sync_playwright() as p:
     errors = []
     page.on('pageerror', lambda exc: errors.append(str(exc)))
     page.goto(BASE, wait_until='domcontentloaded', timeout=40000)
-    page.wait_for_function(
-        "window._pgI18n && document.querySelector('#gallery-ipad .pg-device-static-localized')",
-        timeout=30000,
-    )
+    page.wait_for_selector('#gallery-ipad [data-pg-photo-native-preview]', timeout=30000)
+    page.wait_for_selector('#gallery-iphone [data-pg-photo-native-preview]', timeout=30000)
+    assert page.locator('#pg-ios-photo-soon-badge').inner_text().strip(), 'Missing Coming Soon feature badge'
     for device in ('iphone', 'ipad'):
         page.evaluate(f"switchGallery('{device}')")
         page.locator('#gallery-'+device).scroll_into_view_if_needed()
         page.wait_for_function(
             """device => {
               const panel=document.getElementById('gallery-'+device);
-              return panel && panel.querySelectorAll('.pg-photo-preview-launch').length>=3;
+              return panel && panel.querySelectorAll('[data-pg-photo-native-preview]').length>=1;
             }""",
             arg=device,
             timeout=12000,
         )
         items = page.locator('#gallery-'+device+' .gallery-item')
         assert items.count() >= 3, f'{device}: missing gallery cards'
+        action = items.first.locator('[data-pg-photo-native-preview]')
+        assert action.count() == 1, f'{device}: expected one native Photo to AI action in Ask Any AI'
+        assert 'photo to ai' in action.first.inner_text().lower(), f'{device}: wrong feature label'
+        assert page.locator('#gallery-'+device+' .pg-photo-preview-launch').count() == 0, 'Duplicate legacy preview controls'
         for idx, section in ((0, 'ask'), (1, 'templates'), (2, 'how-to-use')):
             item = items.nth(idx)
-            expected = item.locator('.pg-photo-preview-launch')
-            assert expected.count() > 0, f'{device} {section}: no new feature control'
-            text = expected.first.inner_text().lower()
-            assert 'photo to ai' in text, f'{device} {section}: wrong feature label {text}'
-            assert 'coming soon' in text, f'{device} {section}: feature release status not accurate'
             device_el = item.locator('.iphone-device' if device=='iphone' else '.ipad-device')
             out = DEST / f'photo-to-ai-{device}-{section}-preview.png'
             device_el.screenshot(path=str(out), animations='disabled', timeout=20000)
@@ -62,13 +60,14 @@ with sync_playwright() as p:
         )
         page.wait_for_timeout(200)
         for device in ('iphone', 'ipad'):
-            label = page.locator('#gallery-'+device+' .pg-photo-preview-launch').first.inner_text()
+            label = page.locator('#gallery-'+device+' [data-pg-photo-native-preview]').first.inner_text()
             assert 'Photo to AI · Coming Soon' not in label, (language,device,label)
             assert label.strip(), (language,device)
-    assert page.locator('#gallery-mac .pg-photo-preview-launch').count() == 0, 'Mac got an iOS photo button'
+    assert page.locator('#gallery-mac .pg-mac-photo-preview-control').count() == 1, 'Missing real Mac Photo to AI preview control'
+    assert page.locator('#gallery-mac .pg-photo-preview-launch').count() == 0, 'Mac got a fake iOS-only photo button'
     # Page already reports third-party/CDN network errors in some CI runs;
     # fail on regressions that explicitly affect this new preview.
     relevant = [e for e in errors if 'ios-photo-preview-buttons.js' in e]
     assert not relevant, relevant
-    print('PASS: 6 real website previews with localized Photo to AI control, Mac unchanged')
+    print('PASS: six authentic gallery screenshots, one native photo action per iOS/iPad gallery, correct Mac control, and localized captions')
     browser.close()
