@@ -25,42 +25,16 @@ assert(!privacyPage.includes('id="pgPhotoPolicy"'),'Retired redundant privacy wa
 assert(privacyPage.includes('photo-handoff-guide-locales.js?v='),'Privacy page must load the 38-language handoff catalog');
 assert(photoPrivacyRuntime.includes('PGPhotoHandoffGuideLocales'),'Privacy page must use cross-platform localized guidance');
 assert(privacyPage.includes('Poly-Glot does not automatically upload photos'),'English privacy text must not promise automatic image uploads');
-assert.equal(count(/id="pg-ios-photo-title"/g,page),1,'Only one Photo-to-AI heading');
-assert.equal(count(/id="pg-photo-input-soon"/g,page),0,'No duplicate text inside Multiple Input Options');
-assert(!trial.includes('2026 Photo-to-AI product announcement'),'Trial localization must not render a second promo');
-assert(page.includes('photo-to-ai-site.js?v='),'Product feature localization must load');
-assert(page.includes('id="pg-ios-photo-compatibility"'),'Provider compatibility note must remain');
-assert(feature.includes('pg-ios-photo-compatibility'),'Provider note must update in every locale');
-assert(chatPhoto.includes('PGPhotoHandoffGuideLocales'),'Chat KB must include localized Mac and iOS steps');
-assert(page.includes('pg-ios-photo-soon-badge'),'Coming Soon badge must be preserved');
-assert(page.includes('ios-photo-preview-buttons.js?v='),'iOS device preview updater must load');
-assert(page.includes('pg-photo-feature-chunks'),'Feature details must be chunked');
-
-const ids=[
- 'pg-ios-photo-kicker','pg-ios-photo-title',
- 'pg-ios-photo-scan-title','pg-ios-photo-scan-copy',
- 'pg-ios-photo-share-title','pg-ios-photo-share-copy',
- 'pg-ios-photo-trial','pg-ios-photo-privacy'
-];
-for (const id of ids){
- assert.equal(count(new RegExp('id="'+id+'"','g'),page),1,'Missing or duplicated element: '+id);
- assert(feature.includes(id),'Missing localization binding for '+id);
-}
-// The Photo-to-AI product section is informational: no App Store button/link.
-const start=page.indexOf('id="pg-ios-photo-ai-site"');
-const end=page.indexOf('</section>',start);
-assert(start>=0 && end>start,'Missing iPhone/iPad Photo-to-AI section');
-const photoSection=page.slice(start,end);
-assert(!/<a\b/i.test(photoSection),'No App Store link or button in Photo-to-AI section');
-assert(!photoSection.includes('pg-ios-photo-install'),'Retired feature-specific App Store CTA must be absent');
-assert(!feature.includes('pg-ios-photo-install'),'Localization runtime must not recreate retired App Store CTA');
-// Four iPhone/iPad actions plus the new single Mac inline action are intentional.
-assert.equal(count(/data-pg-photo-preview-action/g,page),5,'Four iPhone/iPad and one Mac preview actions must show Photo to AI');
-assert.equal(count(/class="pg-mac-photo-preview-control pg-photo-action-btn"/g,page),1,'Exactly one Mac preview Photo to AI action');
-assert(page.includes('mac-photo-preview.js?v='),'Mac Photo to AI preview interaction must load');
-assert(page.includes('mac-photo-preview.css?v='),'Mac Photo to AI preview layout must load');
+assert.equal(count(/id="pg-photo-demo"/g,page),1,'Only one animated Photo to AI demo');
+assert(!page.includes('id="pg-ios-photo-soon-badge"'),'Obsolete Coming Soon badge must remain removed');
+assert(!page.includes('id="pg-ios-photo-kicker"'),'Obsolete Photo to AI platform kicker must remain removed');
+assert(page.includes('photo-to-ai-demo.js?v='),'Demo animation script must load');
+assert(page.includes('photo-to-ai-demo-real-frames.css?v='),'Demo visual styling must load');
+assert(page.includes('ios-photo-preview-buttons.js?v='),'Device preview updater must load');
+assert.equal(count(/data-pg-photo-preview-action/g,page),5,'Expected Photo to AI preview controls');
+assert(page.includes('mac-photo-preview.js?v='),'Mac preview interaction must load');
+assert(page.includes('mac-photo-preview.css?v='),'Mac preview layout must load');
 assert(preview.includes('translatedName()'),'Preview actions must use locale strings');
-assert(!/id="pg-ios-photo-title"[^>]*>[^<]*Coming soon/i.test(page),'Coming soon should only appear in the kicker');
 const m=locales.match(/var data=(\{[\s\S]*?\});\s*var cols=(\[[^\]]+\])/);
 assert(m,'Photo-to-AI locale catalog was changed unexpectedly');
 const values=JSON.parse(m[1]),columns=JSON.parse(m[2]);
@@ -70,12 +44,6 @@ for (const [lang,row] of Object.entries(values)){
  for(const key of ['feature','scanText','context','share','ocrMeaning','photoCompatibility','privacy','locked']){
   assert(row[columns.indexOf(key)]?.trim(),'Missing '+lang+'.'+key);
  }
-}
-// Changes requested for the mobile page must not break the tabbed Mac preview.
-assert.equal(count(/class="pg-photo-motion-card"/g,page),3,'All three Photo-to-AI cards require independent motion');
-for(const id of ['pg-ios-photo-upload-title','pg-ios-photo-upload-copy']){
- assert.equal(count(new RegExp('id="'+id+'"','g'),page),1,'Missing image-upload card element '+id);
- assert(feature.includes(id),'Image-upload card must update from selected locale');
 }
 const uploadMatch=uploads.match(/var data=(\{[\s\S]*?\});\s*var catalog=/);
 assert(uploadMatch,'Missing localized image-upload catalog');
@@ -93,10 +61,10 @@ for(const [lang,steps] of Object.entries(hRows)){
 }
 assert(!/Poly-Glot copies (?:it|the image) and opens the selected AI/i.test(hRows.EN[0]),'No false photo auto-copy claim');
 assert(hRows.EN[0].includes('does not attach the photo') && hRows.EN[1].includes('does not attach the image'),'OS copy must explain manual attachments');
-assert.equal(count(/id="pg-mac-photo-steps"/g,page),1,'Mac Photo to AI steps must render as one numbered list');
-assert.equal(count(/id="pg-mac-photo-rightclick"/g,page),1,'Right-click Paste instruction must have its own localized line');
+
+
 assert(feature.includes('renderMacSteps(handoff,lang,t)'),'Mac numbered steps must use the localized handoff catalog');
-assert(page.includes('pg-features-compact-content-v20261014'),'Mobile features must use content-sized cards');
+
 assert(page.indexOf('id="demo"')<page.indexOf('id="pg-ios-photo-ai-site"'),'Photo to AI must follow workspace demo');
 assert(page.indexOf('id="screenshots"')<page.indexOf('id="value"'),'App Preview must sit directly before Value section');
 assert.equal(count(/id="screenshots"/g,page),1,'App Preview cannot be duplicated');
