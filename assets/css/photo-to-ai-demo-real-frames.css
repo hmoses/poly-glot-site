@@ -65,3 +65,6 @@
   transform:translateX(-50%);background:#000;border-radius:999px;
   z-index:25;pointer-events:none;
 }
+
+/* Clean black Dynamic Island covers recording indicator in all demo screenshot frames. */
+#pg-ios-photo-ai-site .pg-photo-phone-screen::after{content:"";position:absolute;top:2.15%;left:50%;transform:translateX(-50%);width:37%;height:4.15%;border-radius:999px;background:#000;z-index:25;pointer-events:none}
