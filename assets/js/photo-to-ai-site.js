@@ -57,7 +57,7 @@
    set('pg-ios-photo-scan-title','📄 '+(t.scanText||'Scan text'));
    set('pg-ios-photo-scan-copy',t.ocrMeaning||'OCR extracts editable text from pictures.');
    set('pg-ios-photo-upload-title','🖼️ '+(t.photoUploadTitle||'Upload photos to AI'));
-   set('pg-ios-photo-upload-copy',handoff[0]||t.photoUploadCopy||'Choose a photo, paste or attach it in the AI chat, then send.');
+   set('pg-ios-photo-upload-copy',handoff[0]||t.photoUploadCopy||'Open the AI and paste your instructions, then separately attach the photo.');
    set('pg-ios-photo-share-title','✍️ '+(t.context||'Add context'));
    set('pg-ios-photo-share-copy',handoff[2]||t.photoCompatibility||'Add your question or instructions beside the image in the AI chat before sending.');
    set('pg-ios-photo-trial',t.locked||'Pro required after your 3-day trial.');

@@ -85,12 +85,14 @@ for(const [code,copy] of Object.entries(uploadLanguages)){
  assert(copy.length===2&&copy.every(s=>typeof s==='string'&&s.trim()),'Missing upload text in '+code);
 }
 const hStart=handoff.indexOf('w.PGPhotoHandoffGuideLocales=')+'w.PGPhotoHandoffGuideLocales='.length;
-const hRows=JSON.parse(handoff.slice(hStart,handoff.indexOf(';',hStart)));
-assert.equal(Object.keys(hRows).length,38,'Expected exactly 38 website handoff languages');
+const hRows=JSON.parse(handoff.slice(hStart,handoff.lastIndexOf('};')+1));
+assert.deepEqual(Object.keys(hRows).sort(),Object.keys(values).sort(),'Handoff guidance must cover every supported website locale');
 for(const [lang,steps] of Object.entries(hRows)){
  assert.equal(steps.length,5,'Five translated handoff fields required (including Mac right-click): '+lang);
  assert(steps.every(x=>typeof x==='string'&&x.trim()),'Empty translated handoff field: '+lang);
 }
+assert(!/Poly-Glot copies (?:it|the image) and opens the selected AI/i.test(hRows.EN[0]),'No false photo auto-copy claim');
+assert(hRows.EN[0].includes('does not attach the photo') && hRows.EN[1].includes('does not attach the image'),'OS copy must explain manual attachments');
 assert.equal(count(/id="pg-mac-photo-steps"/g,page),1,'Mac Photo to AI steps must render as one numbered list');
 assert.equal(count(/id="pg-mac-photo-rightclick"/g,page),1,'Right-click Paste instruction must have its own localized line');
 assert(feature.includes('renderMacSteps(handoff,lang,t)'),'Mac numbered steps must use the localized handoff catalog');

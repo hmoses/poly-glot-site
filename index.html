@@ -4670,11 +4670,11 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
       </article>
       <article class="pg-photo-motion-card" style="padding:15px 17px;border:1px solid rgba(167,139,250,.32);border-radius:12px;background:rgba(255,255,255,.04)">
         <h3 id="pg-ios-photo-upload-title" style="font-size:1.02rem;margin:0 0 7px;color:#f8f4ff">🖼️ Paste or attach photos</h3>
-        <p id="pg-ios-photo-upload-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">Choose or take a photo. Poly-Glot copies it and opens the selected AI. Tap and hold in the chat to Paste, or use the image attachment button, then send.</p>
+        <p id="pg-ios-photo-upload-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">On iPhone or iPad, take or choose a photo and add optional instructions. Open the selected AI to copy the instructions; the photo is not attached automatically. Paste the instructions, then return to Poly-Glot to copy the photo or attach a saved image. Send when ready.</p>
       </article>
       <article class="pg-photo-motion-card" style="padding:15px 17px;border:1px solid rgba(167,139,250,.32);border-radius:12px;background:rgba(255,255,255,.04)">
         <h3 id="pg-ios-photo-share-title" style="font-size:1.02rem;margin:0 0 7px;color:#f8f4ff">✍️ Share photos with context</h3>
-        <p id="pg-ios-photo-share-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">Add your question or instructions beside the image in the AI chat before sending.</p>
+        <p id="pg-ios-photo-share-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">Add context (optional) in Poly-Glot before opening an AI. Your instructions and photo are copied separately.</p>
       </article>
     </div>
     <aside class="pg-mac-photo-howto" aria-label="Mac Photo to AI steps">
@@ -4682,9 +4682,9 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
       <div class="pg-mac-photo-body">
         <ol id="pg-mac-photo-steps" class="pg-mac-photo-steps">
           <li>Choose a photo in Poly-Glot using Finder, then select an AI.</li>
-          <li>Poly-Glot copies the image and opens the AI website in a browser tab.</li>
-          <li>Click the chat and press ⌘V to paste, or use the AI's image attachment button to select the photo from Finder.</li>
-          <li>Then send.</li>
+          <li>Poly-Glot copies your instructions, if entered, and opens the AI website in a browser tab without attaching the image.</li>
+          <li>Paste the instructions using ⌘V or right-click → Paste, then attach the original photo from Finder. You can also return to Poly-Glot, choose Copy Photo, and paste the image if supported.</li>
+          <li>Click Send only when the instructions and photo are ready.</li>
         </ol>
         <p class="pg-mac-photo-rightclick" id="pg-mac-photo-rightclick">Or right-click in the AI chat and choose Paste.</p>
       </div>
@@ -6079,10 +6079,10 @@ function _demoStart() {
 </script>
 
 <!-- Chat i18n — loads BEFORE the chat widget so translations are available -->
-<script src="assets/js/photo-to-ai-locales.js?v=20261014-ocr"></script>
-<script src="assets/js/photo-upload-locales.js?v=20261014-paste-attach-39"></script>
+<script src="assets/js/photo-to-ai-locales.js?v=20261015-native-handoff-v2"></script>
+<script src="assets/js/photo-upload-locales.js?v=20261015-native-handoff-v2"></script>
 <script src="assets/js/chat-i18n.js?v=2026-10-07-free-v2"></script>
-<script src="assets/js/photo-ocr-chat.js?v=20261014-mac-rightclick-38"></script>
+<script src="assets/js/photo-ocr-chat.js?v=20261015-native-handoff-v2"></script>
 
 <!-- ===== POLY-GLOT MCP CHAT WIDGET v4 — FULLY LOCALIZED ===== -->
 <div id="pgChat-bubble" onclick="pgChat.toggle()" title="Ask Poly-Glot AI anything">
@@ -14723,8 +14723,8 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
 </style>
 <link rel="stylesheet" href="assets/css/apple-card-parallax.css?v=20261014-gallery-single-controller-6">
 <script defer src="assets/js/apple-card-parallax.js?v=20261014-feature-pricing-5"></script>
-<script src="assets/js/photo-handoff-guide-locales.js?v=20261014-mac-rightclick-38"></script>
-<script src="assets/js/photo-to-ai-site.js?v=20261014-mac-chunked-38"></script>
+<script src="assets/js/photo-handoff-guide-locales.js?v=20261015-native-handoff-v2"></script>
+<script src="assets/js/photo-to-ai-site.js?v=20261015-native-handoff-v2"></script>
 <script src="assets/js/ios-photo-preview-buttons.js?v=20261014-native-stacked-870"></script>
 <script defer src="assets/js/zh-tw-page-polish.js?v=20261014-zh-tw-complete"></script>
 <script defer src="assets/js/photo-privacy-faq-locales.js?v=20261014-photo-privacy-faq1"></script>
