@@ -25,7 +25,9 @@ with sync_playwright() as p:
     page.goto(BASE, wait_until='domcontentloaded', timeout=40000)
     page.wait_for_selector('#gallery-ipad [data-pg-photo-native-preview]', state='attached', timeout=30000)
     page.wait_for_selector('#gallery-iphone [data-pg-photo-native-preview]', state='attached', timeout=30000)
-    assert page.locator('#pg-ios-photo-soon-badge').inner_text().strip(), 'Missing Coming Soon feature badge'
+    # The product owner retired the standalone Coming Soon section.
+    # Preserve gallery previews without resurrecting the removed badge.
+    assert page.locator('#pg-ios-photo-soon-badge').count() == 0, 'Retired Coming Soon badge returned'
     for device in ('iphone', 'ipad'):
         page.evaluate(f"switchGallery('{device}')")
         page.locator('#gallery-'+device).scroll_into_view_if_needed()
