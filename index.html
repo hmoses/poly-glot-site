@@ -3099,7 +3099,9 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 #pg-ios-photo-ai-site .pg-photo-paste-hint{display:flex;align-items:center;gap:6px;margin:10px 0 0;padding-top:9px;border-top:1px solid rgba(167,139,250,.22);color:#c7d2fe;font-size:.79rem;line-height:1.5;font-weight:650}
 #pg-ios-photo-ai-site .pg-photo-paste-hint:before{content:"↳";color:#a78bfa;font-size:.94rem}
 #pg-ios-photo-ai-site .pg-mac-photo-howto{margin-top:16px}
-</style></head>
+</style><link rel="stylesheet" href="assets/css/photo-to-ai-demo.css?v=restored20261016">
+<link rel="stylesheet" href="assets/css/photo-to-ai-demo-real-frames.css?v=restored20261016">
+</head>
 <body>
 
 <!-- ===== NAV ===== -->
@@ -3320,44 +3322,7 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 
 
 <!-- Localized cross-device Photo-to-AI; Mac uses Finder rather than a camera. 38-language handoff and refreshed preview assets verified. -->
-<section class="section" id="pg-ios-photo-ai-site" aria-label="Photo to AI on Mac, iPhone and iPad" style="padding:32px 18px 36px;background:linear-gradient(135deg,#160f2d,#151c33);color:#f7f4ff;border-top:1px solid rgba(167,139,250,.25);border-bottom:1px solid rgba(167,139,250,.25)">
-  <div style="max-width:1050px;margin:auto">
-    <div id="pg-ios-photo-kicker" style="color:#c4b5fd;font-weight:750;font-size:.81rem;letter-spacing:.04em">📷 Photo to AI · Mac · iPhone · iPad</div>
-    <div class="pg-photo-headline-row"><h2 id="pg-ios-photo-title" style="font-size:clamp(1.65rem,4vw,2.5rem);margin:0;color:#fff;line-height:1.2">Photo to AI</h2><span id="pg-ios-photo-soon-badge" class="pg-photo-soon-badge" role="status" aria-label="Coming Soon">Coming Soon</span></div>
-    <div class="pg-photo-feature-chunks" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px;margin:0 0 16px">
-      <article class="pg-photo-motion-card" style="padding:15px 17px;border:1px solid rgba(167,139,250,.32);border-radius:12px;background:rgba(255,255,255,.04)">
-        <h3 id="pg-ios-photo-scan-title" style="font-size:1.02rem;margin:0 0 7px;color:#f8f4ff">📷 Scan text</h3>
-        <p id="pg-ios-photo-scan-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">Use OCR to turn photographed text into editable text.</p>
-      </article>
-      <article class="pg-photo-motion-card" style="padding:15px 17px;border:1px solid rgba(167,139,250,.32);border-radius:12px;background:rgba(255,255,255,.04)">
-        <h3 id="pg-ios-photo-upload-title" style="font-size:1.02rem;margin:0 0 7px;color:#f8f4ff">🖼️ Paste or attach photos</h3>
-        <p id="pg-ios-photo-upload-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">Choose or take a photo. Poly-Glot copies it and opens the selected AI. Tap and hold in the chat to Paste, or use the image attachment button, then send.</p>
-      </article>
-      <article class="pg-photo-motion-card" style="padding:15px 17px;border:1px solid rgba(167,139,250,.32);border-radius:12px;background:rgba(255,255,255,.04)">
-        <h3 id="pg-ios-photo-share-title" style="font-size:1.02rem;margin:0 0 7px;color:#f8f4ff">✍️ Share photos with context</h3>
-        <p id="pg-ios-photo-share-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">Add your question or instructions beside the image in the AI chat before sending.</p>
-      </article>
-    </div>
-    <aside class="pg-mac-photo-howto" aria-label="Mac Photo to AI steps">
-      <strong class="pg-mac-photo-howto-title">💻 Mac</strong>
-      <div class="pg-mac-photo-body">
-        <ol id="pg-mac-photo-steps" class="pg-mac-photo-steps">
-          <li>Choose a photo in Poly-Glot using Finder, then select an AI.</li>
-          <li>Poly-Glot copies the image and opens the AI website in a browser tab.</li>
-          <li>Click the chat and press ⌘V to paste, or use the AI's image attachment button to select the photo from Finder.</li>
-          <li>Then send.</li>
-        </ol>
-        <p class="pg-mac-photo-rightclick" id="pg-mac-photo-rightclick">Or right-click in the AI chat and choose Paste.</p>
-      </div>
-    </aside>
-    <div class="pg-photo-disclosure-grid">
-      <p class="pg-photo-disclosure pg-photo-disclosure-access" id="pg-ios-photo-trial">Pro required after your 3-day trial.</p>
-      <p class="pg-photo-disclosure pg-photo-disclosure-privacy" id="pg-ios-photo-privacy">Photos leave your device only when you share them. When you share a photo, the selected app can process or store it under its own privacy policy.</p>
-      <p class="pg-photo-disclosure pg-photo-disclosure-compat" id="pg-ios-photo-compatibility">Image paste or attachment depends on the AI provider.</p>
-    </div>
-    
-  </div>
-</section>
+
 
 <div class="section-divider"></div>
 
@@ -4693,6 +4658,59 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
     </div>
   </div>
 </section>
+
+<section class="section" id="pg-ios-photo-ai-site" aria-label="Photo to AI on Mac, iPhone and iPad" style="padding:32px 18px 36px;background:linear-gradient(135deg,#160f2d,#151c33);color:#f7f4ff;border-top:1px solid rgba(167,139,250,.25);border-bottom:1px solid rgba(167,139,250,.25)">
+  <div style="max-width:1050px;margin:auto">
+    <div id="pg-ios-photo-kicker" style="color:#c4b5fd;font-weight:750;font-size:.81rem;letter-spacing:.04em">📷 Photo to AI · Mac · iPhone · iPad</div>
+    <div class="pg-photo-headline-row"><h2 id="pg-ios-photo-title" style="font-size:clamp(1.65rem,4vw,2.5rem);margin:0;color:#fff;line-height:1.2">Photo to AI</h2><span id="pg-ios-photo-soon-badge" class="pg-photo-soon-badge" role="status" aria-label="Coming Soon">Coming Soon</span></div>
+    <div class="pg-photo-feature-chunks" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px;margin:0 0 16px">
+      <article class="pg-photo-motion-card" style="padding:15px 17px;border:1px solid rgba(167,139,250,.32);border-radius:12px;background:rgba(255,255,255,.04)">
+        <h3 id="pg-ios-photo-scan-title" style="font-size:1.02rem;margin:0 0 7px;color:#f8f4ff">📷 Scan text</h3>
+        <p id="pg-ios-photo-scan-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">Use OCR to turn photographed text into editable text.</p>
+      </article>
+      <article class="pg-photo-motion-card" style="padding:15px 17px;border:1px solid rgba(167,139,250,.32);border-radius:12px;background:rgba(255,255,255,.04)">
+        <h3 id="pg-ios-photo-upload-title" style="font-size:1.02rem;margin:0 0 7px;color:#f8f4ff">🖼️ Paste or attach photos</h3>
+        <p id="pg-ios-photo-upload-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">Choose or take a photo. Poly-Glot copies it and opens the selected AI. Tap and hold in the chat to Paste, or use the image attachment button, then send.</p>
+      </article>
+      <article class="pg-photo-motion-card" style="padding:15px 17px;border:1px solid rgba(167,139,250,.32);border-radius:12px;background:rgba(255,255,255,.04)">
+        <h3 id="pg-ios-photo-share-title" style="font-size:1.02rem;margin:0 0 7px;color:#f8f4ff">✍️ Share photos with context</h3>
+        <p id="pg-ios-photo-share-copy" style="font-size:.94rem;line-height:1.58;color:#d8dfef;margin:0">Add your question or instructions beside the image in the AI chat before sending.</p>
+      </article>
+    </div>
+    <aside class="pg-mac-photo-howto" aria-label="Mac Photo to AI steps">
+      <strong class="pg-mac-photo-howto-title">💻 Mac</strong>
+      <div class="pg-mac-photo-body">
+        <ol id="pg-mac-photo-steps" class="pg-mac-photo-steps">
+          <li>Choose a photo in Poly-Glot using Finder, then select an AI.</li>
+          <li>Poly-Glot copies the image and opens the AI website in a browser tab.</li>
+          <li>Click the chat and press ⌘V to paste, or use the AI's image attachment button to select the photo from Finder.</li>
+          <li>Then send.</li>
+        </ol>
+        <p class="pg-mac-photo-rightclick" id="pg-mac-photo-rightclick">Or right-click in the AI chat and choose Paste.</p>
+      </div>
+    </aside>
+    <div class="pg-photo-disclosure-grid">
+      <p class="pg-photo-disclosure pg-photo-disclosure-access" id="pg-ios-photo-trial">Pro required after your 3-day trial.</p>
+      <p class="pg-photo-disclosure pg-photo-disclosure-privacy" id="pg-ios-photo-privacy">Photos leave your device only when you share them. When you share a photo, the selected app can process or store it under its own privacy policy.</p>
+      <p class="pg-photo-disclosure pg-photo-disclosure-compat" id="pg-ios-photo-compatibility">Image paste or attachment depends on the AI provider.</p>
+    </div>
+    
+  </div>
+
+<div id="pg-photo-demo" class="pg-photo-live-demo" aria-label="Animated Photo to AI demonstration">
+      <div class="pg-photo-demo-head"><h3>📸 Photo to AI · In action</h3><span>Photo to AI workflow · Choose photo · Describe · Share with ChatGPT</span></div>
+      <div class="pg-photo-phone" role="region" aria-label="Illustrative iPhone workflow">
+        <div class="pg-photo-phone-screen"><div class="pg-demo-stage-viewport"><img class="pg-demo-real-frame" src="assets/img/photo-demo/frame-01.jpg" alt="Real Poly-Glot Ask Any AI iPhone screen" loading="eager"></div><span class="pg-photo-tap" aria-hidden="true"></span></div>
+      </div>
+      <div class="pg-photo-demo-controls">
+        <div class="pg-photo-demo-progress" aria-label="Demo progress"><span data-pg-progress></span></div>
+        <p class="pg-photo-demo-caption" aria-live="polite" data-pg-demo-caption>Start on Ask Any AI. Tap Photo to AI.</p>
+        <div class="pg-photo-demo-buttons"><button type="button" data-pg-demo-replay>↻ Replay Demo</button><button type="button" data-pg-demo-pause aria-pressed="false">Ⅱ Pause</button></div>
+      </div>
+      <p class="pg-photo-demo-disclaimer">Illustrative animated demo. AI text is an example, not a live response. Photo sharing requires the user to paste or attach the image in a supported provider.</p>
+    </div>
+</section>
+
 
 <div class="section-divider"></div>
 
@@ -14719,5 +14737,6 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
 <script defer src="assets/js/mcp-directory-live-locales.js?v=20261014-listed-38"></script>
 <script defer src="assets/js/mcp-home-clients-locales.js?v=20261014-38"></script>
 <script defer src="assets/js/mcp-chatgpt-custom-locales.js?v=20261014-current-mcp"></script>
-<script defer src="assets/js/mcp-client-guides-locales.js?v=20261014-shared38"></script><script defer src="assets/js/mcp-universal-invocation-locales.js?v=20261014-universal38"></script><script defer src="assets/js/mcp-layout-headings-locales.js?v=20261014-layout"></script></body>
+<script defer src="assets/js/mcp-client-guides-locales.js?v=20261014-shared38"></script><script defer src="assets/js/mcp-universal-invocation-locales.js?v=20261014-universal38"></script><script defer src="assets/js/mcp-layout-headings-locales.js?v=20261014-layout"></script><script defer src="assets/js/photo-to-ai-demo.js?v=restored20261016"></script>
+</body>
 </html>

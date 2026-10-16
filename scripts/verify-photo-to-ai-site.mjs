@@ -95,7 +95,7 @@ assert.equal(count(/id="pg-mac-photo-steps"/g,page),1,'Mac Photo to AI steps mus
 assert.equal(count(/id="pg-mac-photo-rightclick"/g,page),1,'Right-click Paste instruction must have its own localized line');
 assert(feature.includes('renderMacSteps(handoff,lang,t)'),'Mac numbered steps must use the localized handoff catalog');
 assert(page.includes('pg-features-compact-content-v20261014'),'Mobile features must use content-sized cards');
-assert(page.indexOf('id="pg-ios-photo-ai-site"')<page.indexOf('id="screenshots"'),'App Preview must follow Photo to AI');
+assert(page.indexOf('id="demo"')<page.indexOf('id="pg-ios-photo-ai-site"'),'Photo to AI must follow workspace demo');
 assert(page.indexOf('id="screenshots"')<page.indexOf('id="value"'),'App Preview must sit directly before Value section');
 assert.equal(count(/id="screenshots"/g,page),1,'App Preview cannot be duplicated');
 assert(page.includes('apple-card-parallax.js?v='),'Page must load scroll parallax');

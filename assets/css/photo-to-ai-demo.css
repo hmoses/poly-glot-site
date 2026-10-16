@@ -1,0 +1,145 @@
+/* Photo to AI animated phone demo — centered, responsive, and reduced-motion aware. */
+#pg-ios-photo-ai-site .pg-photo-live-demo{margin:32px auto 0;padding:22px;border:1px solid rgba(125,211,252,.22);border-radius:22px;background:radial-gradient(ellipse at 52% 20%,rgba(64,69,131,.19),transparent 65%),#0b0e1c;text-align:center;max-width:1050px}
+#pg-ios-photo-ai-site .pg-photo-demo-head h3{font-size:clamp(1.3rem,3vw,2rem);color:#7dd3fc;margin:0 0 8px}
+#pg-ios-photo-ai-site .pg-photo-demo-head span{color:#bbc7e3;font-size:.88rem}
+#pg-ios-photo-ai-site .pg-photo-phone{width:min(100%,360px);aspect-ratio:390/790;margin:23px auto 15px;border-radius:54px;background:#030406;border:5px solid #444752;padding:10px;box-shadow:0 20px 45px rgba(0,0,0,.43);box-sizing:border-box;text-align:left}
+#pg-ios-photo-ai-site .pg-photo-phone-screen{height:100%;position:relative;overflow:hidden;border-radius:41px;background:#191a30;color:#fff;padding:12px 15px 18px;box-sizing:border-box}
+#pg-ios-photo-ai-site .pg-photo-phone-status{display:flex;justify-content:space-between;font-size:10px;font-weight:750;opacity:.85;padding:0 8px 14px}
+#pg-ios-photo-ai-site .pg-photo-phone-app{display:flex;justify-content:space-between;gap:6px;align-items:center;font-size:10px;font-weight:800;padding:0 0 14px}
+#pg-ios-photo-ai-site .pg-phone-app-lang{background:#2d2948;padding:5px;border-radius:6px;color:#c4b5fd}
+#pg-ios-photo-ai-site .pg-photo-phone-tabs{display:flex;gap:5px;justify-content:space-between;padding:9px 0;border-block:1px solid #35324f;color:#d1c9e6;font-size:9px}
+#pg-ios-photo-ai-site .pg-photo-phone-content{padding:17px 0 0;display:grid;gap:11px}
+#pg-ios-photo-ai-site .pg-photo-phone-stage{font-size:16px;font-weight:800;color:#a4dfff}
+#pg-ios-photo-ai-site .pg-photo-phone-photo{background:#f6f8fe;color:#283651;padding:12px;border-radius:9px;display:grid;gap:7px;box-shadow:0 7px 18px rgba(0,0,0,.2);font-size:10px;line-height:1.4}
+#pg-ios-photo-ai-site .pg-photo-phone-photo span{font-weight:800;border-bottom:1px solid #ced6e7;padding-bottom:5px}
+#pg-ios-photo-ai-site .pg-photo-phone-photo strong{font-size:11px}
+#pg-ios-photo-ai-site .pg-photo-phone-photo small{font-size:10px}
+#pg-ios-photo-ai-site .pg-photo-phone-ocr{padding:7px 9px;border-radius:7px;background:rgba(16,185,129,.12);color:#6ee7b7;font-size:10px;font-weight:800}
+#pg-ios-photo-ai-site .pg-photo-phone-control{display:flex;justify-content:space-between;gap:10px;border:1px solid #45415f;padding:9px;border-radius:9px;background:#23233d;color:#cfd4ee;font-size:10px}
+#pg-ios-photo-ai-site .pg-photo-phone-control strong{color:#a5f3fc}
+#pg-ios-photo-ai-site .pg-photo-phone-prompt{padding:10px 11px;background:#292149;border:1px solid #51348b;border-radius:11px;font-size:11px;line-height:1.55;color:#e6defc}
+#pg-ios-photo-ai-site .pg-photo-phone-provider{display:flex;justify-content:space-between;align-items:center;background:#0c9b82;border-radius:8px;padding:9px 11px;color:white;font-size:11px;font-weight:800}
+#pg-ios-photo-ai-site .pg-photo-phone-provider small{font-size:9px;font-weight:500}
+#pg-ios-photo-ai-site .pg-photo-phone-result{background:#25253f;border:1px solid #3b3a58;border-radius:11px;padding:11px;font-size:11px;color:#d6d9e9;line-height:1.5}
+#pg-ios-photo-ai-site .pg-photo-phone-note{font-size:10px;color:#a6b5d2;line-height:1.4}
+#pg-ios-photo-ai-site .pg-photo-phone-home{height:5px;width:35%;background:#606078;position:absolute;bottom:9px;left:32.5%;border-radius:10px}
+#pg-ios-photo-ai-site .pg-photo-phone-content>[data-pg-ocr],#pg-ios-photo-ai-site .pg-photo-phone-content>[data-pg-global],#pg-ios-photo-ai-site .pg-photo-phone-content>[data-pg-output],#pg-ios-photo-ai-site .pg-photo-phone-content>[data-pg-prompt],#pg-ios-photo-ai-site .pg-photo-phone-content>[data-pg-provider],#pg-ios-photo-ai-site .pg-photo-phone-content>[data-pg-result],#pg-ios-photo-ai-site .pg-photo-phone-content>[data-pg-note]{opacity:0;transform:translateY(11px);transition:opacity .45s ease,transform .45s ease}
+#pg-ios-photo-ai-site .pg-photo-phone-content>.pg-demo-shown{opacity:1;transform:translateY(0)}
+#pg-ios-photo-ai-site .pg-photo-tap{position:absolute;width:23px;height:23px;border:3px solid white;background:rgba(255,255,255,.21);border-radius:50%;box-shadow:0 0 0 5px rgba(255,255,255,.14);top:49%;left:55%;opacity:0;pointer-events:none}
+#pg-ios-photo-ai-site .pg-photo-tap.pg-demo-click{animation:pgPhotoTap .7s ease forwards}
+@keyframes pgPhotoTap{0%{transform:scale(1.3);opacity:0}35%{transform:scale(.85);opacity:1}100%{transform:scale(1.3);opacity:0}}
+#pg-ios-photo-ai-site .pg-photo-demo-controls{max-width:430px;margin:auto}
+#pg-ios-photo-ai-site .pg-photo-demo-progress{height:4px;border-radius:6px;background:#37364e;overflow:hidden}
+#pg-ios-photo-ai-site .pg-photo-demo-progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,#a78bfa,#38bdf8);transition:width .5s ease}
+#pg-ios-photo-ai-site .pg-photo-demo-caption{color:#e2e8f0;font-size:.92rem;min-height:40px;line-height:1.5;margin:13px 0 8px}
+#pg-ios-photo-ai-site .pg-photo-demo-buttons{display:flex;gap:12px;justify-content:center}
+#pg-ios-photo-ai-site .pg-photo-demo-buttons button{border:1px solid #514674;background:#201c37;border-radius:10px;color:#c4b5fd;padding:9px 16px;font:inherit;font-weight:750;cursor:pointer}
+#pg-ios-photo-ai-site .pg-photo-demo-disclaimer{margin:13px auto 0;max-width:570px;font-size:.73rem;line-height:1.5;color:#95a6c2}
+@media(max-width:520px){#pg-ios-photo-ai-site .pg-photo-live-demo{padding:15px 9px}#pg-ios-photo-ai-site .pg-photo-phone{width:min(100%,330px)}}
+@media(prefers-reduced-motion:reduce){#pg-ios-photo-ai-site .pg-photo-live-demo *{animation:none!important;transition:none!important}}
+
+/* Match reference recording: centered iPhone, real-app-style controls and browser handoff. */
+#pg-ios-photo-ai-site .pg-photo-live-demo{background:#0b0c16;border-color:transparent;box-shadow:none}
+#pg-ios-photo-ai-site .pg-photo-phone{width:min(100%,360px);aspect-ratio:390/795;border-radius:52px;border:5px solid #393b43;padding:11px;background:#000;box-shadow:0 15px 40px #0009}
+#pg-ios-photo-ai-site .pg-photo-phone-screen{border-radius:39px;background:#101118}
+#pg-ios-photo-ai-site .pg-photo-phone-island{position:absolute;top:0;left:31%;width:38%;height:21px;background:#000;border-radius:0 0 15px 15px;z-index:5}
+#pg-ios-photo-ai-site .pg-photo-phone-tabs{font-size:9px}
+#pg-ios-photo-ai-site .pg-photo-phone-tabs span:first-child{color:#7dd3fc;border-bottom:2px solid #38bdf8;padding-bottom:6px}
+#pg-ios-photo-ai-site .pg-photo-phone-photo{background:#fafbff}
+#pg-ios-photo-ai-site .pg-photo-native-actions{display:flex;justify-content:space-between;gap:5px}
+#pg-ios-photo-ai-site .pg-photo-native-actions span{flex:1;text-align:center;padding:9px 2px;border-radius:6px;background:#262737;color:#d4d5e6;font-size:9px}
+#pg-ios-photo-ai-site .pg-photo-phone-send{border-radius:8px;background:linear-gradient(90deg,#672bad,#2945a0);padding:11px;text-align:center;font-weight:800;font-size:10px;color:white}
+#pg-ios-photo-ai-site .pg-photo-native-actions,#pg-ios-photo-ai-site .pg-photo-phone-send{opacity:0;transition:opacity .35s ease}
+#pg-ios-photo-ai-site .pg-demo-ready .pg-photo-native-actions,#pg-ios-photo-ai-site .pg-demo-ready .pg-photo-phone-send{opacity:1}
+#pg-ios-photo-ai-site .pg-photo-browser{position:absolute;inset:0;background:#1a1b2f;padding:34px 14px 22px;box-sizing:border-box;z-index:4;opacity:0;visibility:hidden;transform:translateX(16px);transition:opacity .42s ease,transform .42s ease,visibility .42s}
+#pg-ios-photo-ai-site .pg-demo-browser .pg-photo-browser{opacity:1;visibility:visible;transform:none}
+#pg-ios-photo-ai-site .pg-photo-browser-bar{display:flex;align-items:center;justify-content:space-between;border:1px solid #414054;border-radius:12px;background:#28283c;padding:12px;color:#a5a6b8;font-size:11px}
+#pg-ios-photo-ai-site .pg-photo-browser-bar span:first-child{font-size:16px}
+#pg-ios-photo-ai-site .pg-photo-browser-brand{display:flex;gap:10px;align-items:center;color:#fff;margin:22px 0 18px;font-size:15px}
+#pg-ios-photo-ai-site .pg-photo-browser-brand strong{background:#10a37f;border-radius:9px;padding:10px 7px;font-size:12px}
+#pg-ios-photo-ai-site .pg-photo-browser-brand small{display:block;font-size:10px;color:#8c8ea3;margin-top:4px}
+#pg-ios-photo-ai-site .pg-photo-browser-user,#pg-ios-photo-ai-site .pg-photo-browser-ai{background:#2c214f;border:1px solid #48317b;border-radius:12px;padding:15px;margin-bottom:12px;font-size:12px;line-height:1.5;color:#ddd7ed}
+#pg-ios-photo-ai-site .pg-photo-browser-ai{background:#222238;border-color:#343451}
+#pg-ios-photo-ai-site .pg-photo-browser-user b{color:#ae76ff}#pg-ios-photo-ai-site .pg-photo-browser-ai b{color:#18bea5}
+#pg-ios-photo-ai-site .pg-photo-browser p{margin:8px 0 0;font-size:11px}
+@media(prefers-reduced-motion:reduce){#pg-ios-photo-ai-site .pg-photo-browser{transform:none;transition:none}}
+
+/* iOS screenshot-referenced animation states */
+#pg-ios-photo-ai-site .pg-ref-screen{position:absolute;inset:0;overflow:hidden;background:#0d1117;color:#e6e9f0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:11px}
+#pg-ios-photo-ai-site .pg-ref-status{height:40px;padding:15px 22px 0;font-weight:750;font-size:13px;display:flex;justify-content:space-between}
+#pg-ios-photo-ai-site .pg-ref-brand{display:flex;align-items:center;gap:9px;padding:14px 12px 10px}
+#pg-ios-photo-ai-site .pg-ref-logo{font-size:20px;background:#1d2839;border-radius:8px}
+#pg-ios-photo-ai-site .pg-ref-brand strong{font-size:12px;white-space:nowrap}
+#pg-ios-photo-ai-site .pg-ref-brand small{display:block;color:#8c98a8;font-size:10px}
+#pg-ios-photo-ai-site .pg-ref-lang{margin-left:auto;background:#20252c;border:1px solid #343b43;border-radius:7px;padding:5px;white-space:nowrap;font-size:10px}
+#pg-ios-photo-ai-site .pg-ref-tabs{display:flex;align-items:center;justify-content:space-between;border-block:1px solid #30343d;background:#181d24;padding:12px 5px;font-size:9px;color:#8c939e}
+#pg-ios-photo-ai-site .pg-ref-tabs b{color:#b388fb}
+#pg-ios-photo-ai-site .pg-ref-main{padding:15px 11px}
+#pg-ios-photo-ai-site .pg-ref-main h3{font-size:23px;color:white;margin:0 0 12px}
+#pg-ios-photo-ai-site .pg-ref-main p{font-size:10px;line-height:1.9;color:#8e99a9;margin:0 0 13px}
+#pg-ios-photo-ai-site .pg-ref-output{background:#20252d;border:1px solid #343c47;border-radius:12px;padding:11px 8px;color:#9ca9b8;font-size:10px;display:flex;align-items:center;gap:9px;justify-content:space-between}
+#pg-ios-photo-ai-site .pg-ref-output strong{padding:10px;border-radius:9px;border:1px solid #ae8cf7;color:white}
+#pg-ios-photo-ai-site .pg-ref-textarea{margin:10px 0;border:2px solid #12c892;border-radius:12px;height:160px;padding:12px;line-height:1.6;color:#aeb0b6;background:#101319;font-size:11px}
+#pg-ios-photo-ai-site .pg-ref-buttons{display:flex;gap:5px}
+#pg-ios-photo-ai-site .pg-ref-buttons span{flex:1;text-align:center;padding:9px 2px;border-radius:9px;background:#20252d;border:1px solid #303944;white-space:nowrap;font-size:10px}
+#pg-ios-photo-ai-site .pg-ref-send{display:flex;justify-content:space-between;align-items:center;padding:10px 0;color:#9ca3af}
+#pg-ios-photo-ai-site .pg-ref-send strong{background:linear-gradient(90deg,#7135d8,#3160ed);color:white;padding:12px 18px;border-radius:10px}
+#pg-ios-photo-ai-site .pg-ref-dimmer{position:absolute;inset:0;background:#000a;z-index:4}
+#pg-ios-photo-ai-site .pg-ref-modal{position:absolute;z-index:5;inset:70px 11px 28px;overflow:hidden;padding:14px;background:#182337;border:1px solid #52627b;border-radius:20px;font-size:10px;line-height:1.48;color:#d1d9e8;box-shadow:0 10px 24px #0009}
+#pg-ios-photo-ai-site .pg-ref-modal h3{display:flex;justify-content:space-between;color:white;font-size:19px;margin:0 0 13px}
+#pg-ios-photo-ai-site .pg-ref-modal h3 span{font-size:20px}
+#pg-ios-photo-ai-site .pg-ref-modal p{font-size:10px;color:#c4ccda;line-height:1.5;margin:0 0 12px}
+#pg-ios-photo-ai-site .pg-ref-modal-button{background:#344258;border:1px solid #72809a;border-radius:9px;padding:10px;text-align:center;margin:8px 0;font-weight:750;color:#f0f3f8}
+#pg-ios-photo-ai-site .pg-ref-modal h4{margin:11px 0 5px;font-size:11px;color:white}
+#pg-ios-photo-ai-site .pg-ref-context{height:70px;border:1px solid #7c8aa4;background:#0e1727;border-radius:10px}
+#pg-ios-photo-ai-site .pg-ref-guidance{padding:9px;margin:11px 0;border:1px solid #5b6984;border-radius:10px;font-size:9px;line-height:1.5}
+#pg-ios-photo-ai-site .pg-ref-provider-select{border:2px solid #13d8a0;border-radius:10px;padding:9px;background:#243149;display:flex;justify-content:space-between;font-size:11px}
+#pg-ios-photo-ai-site .pg-ref-open{padding:11px;text-align:center;border:1px solid #72809a;border-radius:10px;margin:9px 0}
+#pg-ios-photo-ai-site .pg-ref-help{text-align:center;color:#a7f3d0;margin:9px 0}
+#pg-ios-photo-ai-site .pg-ref-provider-menu{position:absolute;top:36%;left:21%;width:58%;background:#0d1521;border:1px solid #31415b;border-radius:17px;padding:12px;z-index:6;box-shadow:0 15px 25px #0009}
+#pg-ios-photo-ai-site .pg-ref-provider-menu div{padding:8px 7px;font-size:11px;color:#f4f5fa}
+#pg-ios-photo-ai-site .pg-ref-share{position:absolute;inset:50px 0 0;background:#171c24;z-index:7;border-radius:22px 22px 0 0;padding:14px 11px;overflow:hidden;font-size:11px}
+#pg-ios-photo-ai-site .pg-ref-handle{width:34px;height:4px;border-radius:5px;background:#343a43;margin:-7px auto 10px}
+#pg-ios-photo-ai-site .pg-ref-share h3{text-align:center;font-size:15px;margin:0 0 14px}
+#pg-ios-photo-ai-site .pg-ref-photo-pill{display:inline-block;padding:10px;border:1px solid #9b75e5;border-radius:10px;color:#e2d7ff;background:#262246;font-weight:700}
+#pg-ios-photo-ai-site .pg-ref-share p{color:#929bab}
+#pg-ios-photo-ai-site .pg-ref-share-mode{display:flex;justify-content:space-between;border-bottom:1px solid #343944;padding:9px 0 12px;font-weight:700}
+#pg-ios-photo-ai-site .pg-ref-share-row{display:flex;align-items:center;gap:11px;padding:7px 9px;background:#20252d;border:1px solid #353d47;border-radius:10px;margin:5px 0}
+#pg-ios-photo-ai-site .pg-ref-share-row>b{min-width:32px;height:32px;display:grid;place-items:center;border-radius:7px;color:white;font-size:10px}
+#pg-ios-photo-ai-site .pg-ref-share-row small{display:block;color:#8f99aa;font-size:9px;margin-top:2px}
+#pg-ios-photo-ai-site .pg-ref-share-guidance{margin:12px 0;padding:10px;border:1px solid #584582;background:#29243e;border-radius:10px;line-height:1.5;color:#e6dff7;font-size:9px}
+#pg-ios-photo-ai-site .pg-ref-cancel{text-align:center;padding:10px;border:1px solid #353d47;border-radius:10px}
+
+/* Reference-aligned phone, photo attachment and natural white click indicator. */
+#pg-ios-photo-ai-site .pg-photo-live-demo{background:transparent!important;border:0!important;box-shadow:none!important}
+#pg-ios-photo-ai-site .pg-photo-phone{background:#030405;border-color:#30313a;box-shadow:0 24px 50px rgba(0,0,0,.23),0 0 90px rgba(88,59,165,.07)}
+#pg-ios-photo-ai-site .pg-photo-phone-screen,#pg-ios-photo-ai-site .pg-ref-screen{background:#0d0f19}
+#pg-ios-photo-ai-site .pg-photo-tap{z-index:12;background:#fff!important;border:2px solid rgba(255,255,255,.95)!important;width:22px;height:22px;box-shadow:0 0 0 5px rgba(255,255,255,.17),0 2px 9px rgba(0,0,0,.5)}
+#pg-ios-photo-ai-site .pg-ref-photo-added{display:none;align-items:center;gap:8px;padding:6px;border:1px solid rgba(86,217,167,.3);border-radius:8px;background:#1c3140;font-size:9px;color:#eaf9fc;margin:8px 0}
+#pg-ios-photo-ai-site .pg-demo-photo-selected .pg-ref-photo-added{display:flex}
+#pg-ios-photo-ai-site .pg-ref-photo-added small{display:block;color:#9ef3d2;margin-top:3px}
+#pg-ios-photo-ai-site .pg-ref-photo-thumb{display:grid;place-items:center;width:35px;height:43px;background:#f9fafb;color:#232e43;border-radius:4px;font-size:15px}
+#pg-ios-photo-ai-site .pg-ref-photo-thumb small{font-size:6px;color:#243246}
+#pg-ios-photo-ai-site .pg-ref-context{padding:8px;color:#f4f7fc;font-size:10px;line-height:1.4;overflow:hidden;white-space:pre-wrap}
+#pg-ios-photo-ai-site .pg-ref-caret{color:#8df0cc;animation:pgCaret .8s steps(1) infinite}
+@keyframes pgCaret{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){#pg-ios-photo-ai-site .pg-ref-caret{animation:none}}
+
+/* Use the real website iPhone product screenshot rather than fabricated Ask Any AI controls. */
+#pg-ios-photo-ai-site .pg-ref-real-screenshot{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:fill;object-position:top center;z-index:1}
+#pg-ios-photo-ai-site .pg-ref-modal,#pg-ios-photo-ai-site .pg-ref-dimmer,#pg-ios-photo-ai-site .pg-ref-provider-menu,#pg-ios-photo-ai-site .pg-ref-share{z-index:5}
+#pg-ios-photo-ai-site .pg-ref-dimmer{z-index:3}
+#pg-ios-photo-ai-site .pg-ref-provider-menu{z-index:7}
+#pg-ios-photo-ai-site .pg-photo-tap{z-index:13}
+#pg-ios-photo-ai-site .pg-photo-phone-home{z-index:8}
+#pg-ios-photo-ai-site .pg-ref-modal{inset:72px 9px 26px;padding:13px}
+
+/* Refine phone proportions: shorten perceived height without stretching the native UI image. */
+#pg-ios-photo-ai-site .pg-photo-phone{aspect-ratio:390/735!important;max-width:360px}
+#pg-ios-photo-ai-site .pg-ref-real-screenshot{object-fit:cover;object-position:top center}
+
+/* Persistent smaller cursor: glide between controls and pulse at tap, without fading away. */
+#pg-ios-photo-ai-site .pg-photo-tap{position:absolute!important;width:11px!important;height:11px!important;border:1px solid rgba(255,255,255,.95)!important;background:#fff!important;border-radius:50%!important;opacity:1!important;transform:translate(-50%,-50%)!important;box-shadow:0 0 0 2px rgba(255,255,255,.17),0 1px 5px #0008!important;transition:left .55s cubic-bezier(.22,.8,.25,1),top .55s cubic-bezier(.22,.8,.25,1),box-shadow .16s ease!important;animation:none!important;pointer-events:none!important;z-index:30!important}
+#pg-ios-photo-ai-site .pg-photo-tap.pg-demo-click{animation:pgPersistentTap .5s ease .55s 1!important}
+@keyframes pgPersistentTap{0%,100%{transform:translate(-50%,-50%) scale(1);box-shadow:0 0 0 2px #ffffff28,0 1px 5px #0008}40%{transform:translate(-50%,-50%) scale(.78);box-shadow:0 0 0 5px #ffffff45,0 1px 5px #0008}}
+@media(prefers-reduced-motion:reduce){#pg-ios-photo-ai-site .pg-photo-tap{transition:none!important;animation:none!important}}
