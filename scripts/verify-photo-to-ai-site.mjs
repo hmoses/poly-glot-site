@@ -60,7 +60,7 @@ for(const [lang,steps] of Object.entries(hRows)){
  assert(steps.every(x=>typeof x==='string'&&x.trim()),'Empty translated handoff field: '+lang);
 }
 assert(!/Poly-Glot copies (?:it|the image) and opens the selected AI/i.test(hRows.EN[0]),'No false photo auto-copy claim');
-assert(hRows.EN[0].includes('does not attach the photo') && hRows.EN[1].includes('does not attach the image'),'OS copy must explain manual attachments');
+assert(hRows.EN[0].includes('does not copy instructions or attach photos') && hRows.EN[1].includes('does not copy instructions or attach photos') && /sign in/i.test(hRows.EN[0]),'OS copy must explain manual provider handoff, image attachments and sign-in');
 
 
 assert(feature.includes('renderMacSteps(handoff,lang,t)'),'Mac numbered steps must use the localized handoff catalog');
