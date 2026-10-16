@@ -19,13 +19,13 @@ const mcpPart2=read('assets/js/mcp-tool-descriptions-2.js');
 const zhTwSite=read('assets/js/zh-tw-page-polish.js');
 
 function count(pattern,source){return [...source.matchAll(pattern)].length;}
-assert.equal(count(/id="pg-ios-photo-ai-site"/g,page),1,'Only one Photo to AI promotion section');
+assert.equal(count(/id="pg-ios-photo-ai-site"/g,page),0,'Obsolete Photo to AI promotional section must be removed');
 assert.equal(count(/id="pgPhotoPrivacyPolicy"/g,privacyPage),1,'Only one Photo to AI privacy section');
 assert(!privacyPage.includes('id="pgPhotoPolicy"'),'Retired redundant privacy warnings must be absent');
 assert(privacyPage.includes('photo-handoff-guide-locales.js?v='),'Privacy page must load the 38-language handoff catalog');
 assert(photoPrivacyRuntime.includes('PGPhotoHandoffGuideLocales'),'Privacy page must use cross-platform localized guidance');
 assert(privacyPage.includes('Poly-Glot does not automatically upload photos'),'English privacy text must not promise automatic image uploads');
-assert.equal(count(/id="pg-photo-demo"/g,page),1,'Only one animated Photo to AI demo');
+assert.equal(count(/id="pg-photo-demo"/g,page),0,'Photo to AI In action demo must remain removed');
 assert(!page.includes('id="pg-ios-photo-soon-badge"'),'Obsolete Coming Soon badge must remain removed');
 assert(!page.includes('id="pg-ios-photo-kicker"'),'Obsolete Photo to AI platform kicker must remain removed');
 assert(page.includes('photo-to-ai-demo.js?v='),'Demo animation script must load');
@@ -65,7 +65,7 @@ assert(hRows.EN[0].includes('does not attach the photo') && hRows.EN[1].includes
 
 assert(feature.includes('renderMacSteps(handoff,lang,t)'),'Mac numbered steps must use the localized handoff catalog');
 
-assert(page.indexOf('id="demo"')<page.indexOf('id="pg-ios-photo-ai-site"'),'Photo to AI must follow workspace demo');
+assert(page.includes('id="demo"'),'Interactive workspace demo must remain present');
 assert(page.indexOf('id="screenshots"')<page.indexOf('id="value"'),'App Preview must sit directly before Value section');
 assert.equal(count(/id="screenshots"/g,page),1,'App Preview cannot be duplicated');
 assert(page.includes('apple-card-parallax.js?v='),'Page must load scroll parallax');
