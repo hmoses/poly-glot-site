@@ -40,13 +40,40 @@ with sync_playwright() as p:
             timeout=12000,
         )
         items = page.locator('#gallery-'+device+' .gallery-item')
-        assert items.count() >= 3, f'{device}: missing gallery cards'
+        assert items.count() >= 4, f'{device}: missing gallery cards'
         action = items.first.locator('[data-pg-photo-native-preview]')
         assert action.count() == 1, f'{device}: expected one native Photo to AI action in Ask Any AI'
         assert 'photo to ai' in action.first.inner_text().lower(), f'{device}: wrong feature label'
         assert page.locator('#gallery-'+device+' .pg-photo-preview-launch').count() == 0, 'Duplicate legacy preview controls'
-        for idx, section in ((0, 'ask'), (1, 'templates'), (2, 'how-to-use')):
-            item = items.nth(idx)
+        # The Photo to AI card is deliberately second, after Ask Any AI.
+        # Do not assign its screenshot to the Templates filename.
+        photo = page.locator('#pg-photo-' + device + '-card')
+        assert photo.count() == 1, f'{device}: missing current Photo to AI panel'
+        assert photo.locator('.pg-photo-picker').count() == 1, 'Photo-picker visual missing'
+        assert photo.locator('.pg-photo-provider-selected').count() == 1, 'AI selector visual missing'
+        assert photo.locator('.pg-photo-open').count() == 1, 'Green handoff visual missing'
+        assert photo.locator('.pg-photo-ui-context-title').count() == 0, 'Old Mac context box leaked into iOS'
+        # Lightbox is the only interactive action for iPhone and iPad previews.
+        fit = photo.evaluate("""card => {
+          const within = (child, parent, margin=2) => {
+            const c=child.getBoundingClientRect(), p=parent.getBoundingClientRect();
+            return c.left>=p.left-margin && c.right<=p.right+margin
+                && c.top>=p.top-margin && c.bottom<=p.bottom+margin;
+          };
+          const screen=card.querySelector('.iphone-screen,.ipad-screen');
+          const sheet=card.querySelector('.pg-photo-sheet');
+          const open=card.querySelector('.pg-photo-open');
+          const selector=card.querySelector('.pg-photo-provider-selected');
+          return {sheet:within(sheet,screen),open:within(open,sheet),selector:within(selector,sheet)};
+        }""")
+        assert all(fit.values()), f'{device}: controls overflow device frame: {fit}'
+        captures = (
+            ('ask', items.nth(0)),
+            ('photo-to-ai', photo),
+            ('templates', items.nth(2)),
+            ('how-to-use', items.nth(3)),
+        )
+        for section, item in captures:
             device_el = item.locator('.iphone-device' if device=='iphone' else '.ipad-device')
             out = DEST / f'photo-to-ai-{device}-{section}-preview.png'
             device_el.screenshot(path=str(out), animations='disabled', timeout=20000)
@@ -71,5 +98,5 @@ with sync_playwright() as p:
     # fail on regressions that explicitly affect this new preview.
     relevant = [e for e in errors if 'ios-photo-preview-buttons.js' in e]
     assert not relevant, relevant
-    print('PASS: six authentic gallery screenshots, one native photo action per iOS/iPad gallery, correct Mac control, and localized captions')
+    print('PASS: eight accurate gallery screenshots (including Photo to AI), photo controls within device frames, unchanged Mac/lightbox and localized captions')
     browser.close()
