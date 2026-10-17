@@ -16,6 +16,11 @@ const actionSource=js.match(/var macActionLocales=(\{[^;]+\});/);
 assert(actionSource,'Mac localized action map is missing');
 const localizedAction=JSON.parse(actionSource[1]);
 assert.deepEqual(Object.keys(localizedAction).sort(),codes,'Mac paste action needs one translated value for every supported language');
+const clearSource=js.match(/var clearPhotoLocales=(\{[^;]+\});/);
+assert(clearSource,'Mac clear-photo localized labels are missing');
+const clearLabels=JSON.parse(clearSource[1]);
+assert.deepEqual(Object.keys(clearLabels).sort(),codes,'Mac Clear Photo must have 39 localized labels');
+for(const [locale,text] of Object.entries(clearLabels))assert(text.trim()&&typeof text==='string','Missing localized Clear Photo label: '+locale);
 for(const [locale,dict] of Object.entries(catalogs)){
   for(const key of ['feature','choose','share','photoPolicy','locked']){
     assert.equal(typeof dict[key],'string',`${locale}.${key} missing`);
