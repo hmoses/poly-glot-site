@@ -37,7 +37,7 @@ assert(actionGroup.indexOf('Paste')<actionGroup.indexOf('Import')&&actionGroup.i
 assert(/grid-template-columns:repeat\(3,minmax\(0,1fr\)\)!important/.test(css),'Mac scaled three-column override missing');
 assert(css.includes('html:not([data-device-ui-lang="EN"])')&&css.includes('html[dir="rtl"]'),'Localized and RTL Mac row scaling missing');
 assert(js.includes("w.addEventListener('pg:languagechange',relabel)")&&js.includes("dialog.dir=/^(AR|HE)(_|$)/.test(lang())"),'Live language switching / RTL missing');
-assert(html.includes('mac-photo-preview.js?v=20261017-image-only-v3')&&html.includes('mac-photo-preview.css?v=20261017-image-only-v3'),'Current Mac demo assets not linked or cache-buster stale');
+assert(html.includes('mac-photo-preview.js?v=20261017-image-only-v4')&&html.includes('mac-photo-preview.css?v=20261017-image-only-v4'),'Current Mac demo assets not linked or cache-buster stale');
 const modal=js.slice(js.indexOf('function init()'));
 for(const needed of ['pgMacDemoComposer','pgMacDemoPreviewBox','pgMacDemoImage','pgMacDemoPlaceholder','pgMacDemoClear','pgMacDemoChoose','pgMacDemoAI','pgMacDemoSend','pgMacDemoStep1','pgMacDemoStep2','pgMacDemoStep3'])assert(modal.includes(needed),'Missing native Mac v3 panel feature: '+needed);
 for(const old of ['pgMacDemoContext','pgMacDemoNotes','pgMacDemoOCR','pgMacDemoInstructions','pgMacDemoCaption'])assert(!js.includes(old),'Retired macOS content still present: '+old);
