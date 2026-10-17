@@ -7,6 +7,7 @@
  w.PGPhotoPreviewActionLabels=macActionLocales;
  if(typeof w.dispatchEvent==='function' && typeof w.Event==='function')w.dispatchEvent(new w.Event('pg:photo-action-locales-ready'));
 
+ var clearPhotoLocales={"EN":"Clear photo","ES":"Borrar foto","FR":"Effacer la photo","DE":"Foto entfernen","IT":"Rimuovi foto","PT":"Remover foto","NL":"Foto verwijderen","RU":"Удалить фото","ZH":"移除照片","ZH_TW":"移除照片","JA":"写真を削除","KO":"사진 지우기","AR":"إزالة الصورة","HI":"फ़ोटो हटाएँ","TR":"Fotoğrafı kaldır","PL":"Usuń zdjęcie","SV":"Ta bort foto","DA":"Fjern foto","NO":"Fjern bilde","FI":"Poista kuva","EL":"Αφαίρεση φωτογραφίας","HE":"הסרת תמונה","TH":"ลบรูปภาพ","VI":"Xóa ảnh","ID":"Hapus foto","MS":"Buang foto","UK":"Видалити фото","RO":"Elimină fotografia","CS":"Odebrat fotografii","HU":"Fotó eltávolítása","SK":"Odstrániť fotografiu","HR":"Ukloni fotografiju","CA":"Elimina la foto","TL":"Alisin ang larawan","BN":"ছবি সরান","SW":"Ondoa picha","AF":"Verwyder foto","AM":"ፎቶን አስወግድ","HA":"Cire hoto"};
  function el(id){return d.getElementById(id);}
  function lang(){return String((w._pgI18n&&w._pgI18n.curLang&&w._pgI18n.curLang())||d.documentElement.lang||'EN').toUpperCase().replace(/-/g,'_');}
  function catalog(){var data=w.PGPhotoAILocales||{},code=lang();return data[code]||data[code.split('_')[0]]||data.EN||{};}
@@ -21,7 +22,7 @@
   set('pgMacDemoPrivacy',copy('photoPolicy','Photos leave your device only when you share them.'));
   set('pgMacDemoChooseLabel',copy('choose','Choose photo'));
   set('pgMacDemoChoose','📁 '+copy('choose','Choose photo'));
-  set('pgMacDemoClear','× '+copy('clearPhoto','Clear photo'));
+  set('pgMacDemoClear','× '+(clearPhotoLocales[lang()]||clearPhotoLocales[lang().split('_')[0]]||clearPhotoLocales.EN));
   set('pgMacDemoProvider',copy('share','Share with AI'));
   set('pgMacDemoSend','📷 '+openAction());
   set('pgMacDemoStep1','• '+copy('choose','Choose photo')+' · '+copy('share','Share with AI')+' · '+openAction());
