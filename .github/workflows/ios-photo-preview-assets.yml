@@ -35,7 +35,7 @@ jobs:
           python -m http.server 8765 --bind 127.0.0.1 >/tmp/pg-photo-previews.log 2>&1 &
           python scripts/capture_photo_to_ai_previews.py
           for device in iphone ipad; do
-            for view in ask templates how-to-use; do
+            for view in ask photo-to-ai templates how-to-use; do
               test -s "assets/img/screenshots/photo-to-ai-${device}-${view}-preview.png"
             done
           done
