@@ -218,7 +218,7 @@
   function style() {
     if (d.getElementById(styleId)) return;
     var el = node('style'); el.id = styleId;
-    el.textContent = \`
+    el.textContent = `
 /* iPhone/iPad static lightbox content: no pointer listeners, no fake controls.
    All content is bounded by the native-screen mask for each aspect ratio. */
 #gallery-iphone .pg-photo-static-card,#gallery-ipad .pg-photo-static-card{min-width:0;max-width:100%;overflow:visible!important;box-shadow:none!important;border:0!important;background:transparent!important}
@@ -284,7 +284,7 @@
  .pg-photo-provider-label,.pg-photo-provider-selected{font-size:9px}
  .pg-photo-notes,.pg-photo-picker-sources{font-size:8px}
 }
-\`;
+`;
     d.head.appendChild(el);
   }
   function init() {
