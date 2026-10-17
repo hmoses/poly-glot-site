@@ -213,6 +213,9 @@
       set(card, '.pg-photo-step-two', isEnglish ? '• Long-press → Paste the photo in the AI chat. Type your instructions and send.' : '• ' + (t.manualPhoto || 'Paste or attach the photo in the selected AI chat.'));
       set(card, '.pg-photo-step-three', '• ' + (t.locked || 'Pro required after your 3-day trial.'));
       set(card, '.pg-photo-label', t.feature || 'Photo to AI');
+      set(card, '.pg-photo-underlay', (t.feature || 'Photo to AI') + ' · v1.1.8 (942)');
+      var frame = card.querySelector(device === 'iphone' ? '.iphone-device' : '.ipad-device');
+      if (frame) frame.setAttribute('aria-label', (t.feature || 'Photo to AI') + ' · ' + (device === 'iphone' ? 'iPhone' : 'iPad'));
     });
   }
   function style() {
