@@ -30,9 +30,8 @@ function render(code,strings){
   var subscriptionPolicy=window._pgSubscriptionFunnel&&window._pgSubscriptionFunnel.policy;
   var p=subscriptionPolicy&&(subscriptionPolicy[code]||subscriptionPolicy.EN);
   if(p){
-    if(key==="freeAnswer")next=p[0]+" "+p[1]+" "+p[2]+" "+p[3];
-    if(key==="templatesFree")next=p[0]+" "+p[1]+" "+p[2];
-    if(key==="templatesPro")next=p[1]+" "+p[2]+" "+p[3];
+    if(["freeAnswer","pricingTrial","termsTrial"].indexOf(key)>=0)next=p[0]+" "+p[1]+" "+p[3];
+    if(["templatesFree","templatesPro","pricingExpired","termsGated"].indexOf(key)>=0)next=p[2]+" "+p[3];
   }
   if(typeof next==="string"&&el.textContent!==next)el.textContent=next;
   if(usable)ok++;
