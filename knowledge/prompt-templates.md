@@ -1,13 +1,13 @@
 ---
-title: "AI Prompt Templates and Free vs Pro Access"
+title: "AI Prompt Templates, Trial and Pro Access"
 canonical: "https://hmoses.github.io/poly-glot-site/prompt-templates.html"
-description: "Understand Poly-Glot's 1,000+ prompt templates, featured free templates, trial, and Pro access."
+description: "Understand Poly-Glot's 1,000+ prompt templates, Apple-authorized introductory trial and continued Pro access."
 product: "Poly-Glot AI Workspace"
 ---
 
-# AI Prompt Templates and Free vs Pro Access
+# AI Prompt Templates, Trial and Pro Access
 
-Understand Poly-Glot's 1,000+ prompt templates, featured free templates, trial, and Pro access.
+Understand Poly-Glot's 1,000+ prompt templates, Apple-authorized introductory trial and continued Pro access.
 
 ## What are Poly-Glot prompt templates?
 
