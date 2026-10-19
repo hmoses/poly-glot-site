@@ -121,9 +121,44 @@ function schedule(){
   requestAnimationFrame(apply);
   pending=setTimeout(function(){pending=0;apply();},240);
 }
+// Another older section-localization pass can write obsolete pricing copy after a
+// language change. Reassert the selected locale's subscription-only claims when
+// those specific elements are mutated, without observing animated UI content.
+function guardSubscriptionPricing(){
+  if(!window.MutationObserver)return;
+  var selectors=["prTier1","prName1","prDesc1","prSub","fq6a","fqFreeA"];
+  var observed=[];
+  selectors.forEach(function(key){
+    document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){
+      observed.push({key:key,el:el});
+    });
+  });
+  if(!observed.length)return;
+  var queued=false;
+  function check(){
+    var code=language(),d=window._pgI18n&&window._pgI18n.dictionary&&window._pgI18n.dictionary[code];
+    if(!policy[code]||!d)return false;
+    return observed.some(function(item){
+      var expected=d[item.key];
+      return typeof expected==="string" && item.el.textContent!==expected;
+    });
+  }
+  var observer=new MutationObserver(function(){
+    if(queued||!check())return;
+    queued=true;
+    requestAnimationFrame(function(){queued=false;if(check())apply();});
+  });
+  observed.forEach(function(item){
+    observer.observe(item.el,{subtree:true,childList:true,characterData:true});
+  });
+}
+function installSubscriptionGuard(){
+  guardSubscriptionPricing();
+  schedule();
+}
 patchDictionary();
 window.addEventListener("pg:languagechange",schedule);
 window.addEventListener("pageshow",schedule);
-if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",schedule,{once:true});else schedule();
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",installSubscriptionGuard,{once:true});else installSubscriptionGuard();
 window._pgSubscriptionFunnel={locales:Object.keys(policy).length,policy:policy,apply:schedule};
 })();

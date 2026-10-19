@@ -33,7 +33,7 @@ const patch={
   crossDeviceH:'一次訂閱，支援所有 Apple 裝置，也可使用 MCP。',
   crossDeviceP:'使用同一 Apple ID，可在 iPhone、iPad 與 Mac 上使用相同的 Poly-Glot 存取權益。支援的 MCP 用戶端可在連結帳戶後使用相同權益，無須另外訂閱 MCP。',
   prEye:'💰 價格',
-  prSub:'完整功能試用 3 天，包含所有範本、比較模式及無限次傳送。試用後，每滾動 24 小時仍提供一次免費單一 AI 傳送。升級 Pro 可繼續享有完整功能。',
+  // Subscription terms are owned by subscription-funnel-locales-2026.js.
   prCTA1:'免費下載',
   prCTA2:'免費下載',
   prCTA3:'免費下載',
