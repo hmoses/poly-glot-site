@@ -60,7 +60,12 @@ function update(el,value){
     var node=Array.prototype.find.call(el.childNodes,function(n){return n.nodeType===3});
     if(node)node.nodeValue=value;
     else el.insertBefore(document.createTextNode(value),el.firstChild);
-  }else if(el.textContent!==value){el.textContent=value;}
+  }else if(el.textContent!==value){
+    // Keep checkmarks and other existing list markers when re-localizing pricing.
+    var check=el.querySelector&&el.querySelector('.ck,.check');
+    if(check){el.textContent=value;el.insertBefore(check,el.firstChild);}
+    else el.textContent=value;
+  }
 }
 function apply(){
   patchDictionary();
