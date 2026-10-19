@@ -41,13 +41,15 @@ function patchChat(){
     var p=policy[code],key=code==='ZH_TW'?'ZH-TW':code;
     var entry=chat.KBL[key]||(chat.KBL[key]={});
     var message='**'+(after[code]||after.EN)+'**\n\n'+p[0]+'\n\n'+p[1]+'\n\n'+p[2]+'\n\n'+p[3];
-    ['trial','after trial','free plan','how much'].forEach(function(topic){entry[topic]=message;});
+    ['trial','after trial','free plan'].forEach(function(topic){entry[topic]=message;});
+    var d=window._pgI18n&&window._pgI18n.dictionary&&window._pgI18n.dictionary[code]||{};
+    entry['how much']=message+'\n\n'+(d.prTier2||'Pro Monthly')+': US$9.99 · '+(d.prTier3||'Pro Annual')+': US$79.99. '+p[1];
     entry.template=p[2];
     entry.download=p[0]+' '+p[1]+' https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285';
     var topics=chat.TOPICS[key];if(topics&&topics._afterTrial)topics._freePlan=topics._afterTrial;
     var responses=chat.CHAT_RESPONSES[key];
     if(responses){
-      if(responses.greeting)responses.greeting=responses.greeting.replace(/9 AI/g,'8 AI').replace(/9 supported AI providers/gi,'8 supported AI providers');
+      if(responses.greeting)responses.greeting=responses.greeting.replace(/\b9\b/g,'8');
       if(responses.thanks&&/24.hour|24-hour|24 horas|24 heures|24 Stunden|24時間|24小时|24 小时|24 小時|24시간|24.?час|24.?ساعة/i.test(responses.thanks))responses.thanks=responses.yesno||p[0];
       if(responses.fallback&&/24.hour|24-hour|24 horas|24 heures|24 Stunden|24時間|24小时|24 小時|24시간|24.?час|24.?ساعة|9 AI|free templates|Free:/i.test(responses.fallback))responses.fallback=p[0]+'\n\n'+p[1]+'\n\n'+p[2]+'\n\n'+p[3];
     }
