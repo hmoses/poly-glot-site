@@ -26,6 +26,14 @@ function render(code,strings){
   if(code!=="EN"&&(key==="mcpIntro"||key==="mcpCount")&&window._pgClaudeGuide){ok++;return;}
   var usable=typeof translation==="string"&&translation.trim().length>0;
   var next=usable?translation:EN[key];
+  // Keep technical access notes synchronized with the selected Apple-trial policy in all 38 languages.
+  var subscriptionPolicy=window._pgSubscriptionFunnel&&window._pgSubscriptionFunnel.policy;
+  var p=subscriptionPolicy&&(subscriptionPolicy[code]||subscriptionPolicy.EN);
+  if(p){
+    if(key==="freeAnswer")next=p[0]+" "+p[1]+" "+p[2]+" "+p[3];
+    if(key==="templatesFree")next=p[0]+" "+p[1]+" "+p[2];
+    if(key==="templatesPro")next=p[1]+" "+p[2]+" "+p[3];
+  }
   if(typeof next==="string"&&el.textContent!==next)el.textContent=next;
   if(usable)ok++;
  });
