@@ -13,17 +13,17 @@ Understand Poly-Glot's 1,000+ prompt templates, featured free templates, trial, 
 
 Poly-Glot provides more than 1,000 reusable prompt templates to help people create structured requests for AI assistants.
 
-## Are templates available without Pro?
+## Are templates included in the Pro trial?
 
-There are 25 designated free templates. Browsing and searching are read-only; restricted Pro template bodies are returned only when the verified account has an active trial or Pro entitlement. After the 3-day trial, free templates remain available but Pro templates and Compare Mode lock.
+All 1,000+ templates are available during an eligible Apple-authorized 3-day Pro introductory trial. After the trial, an active Pro subscription is required for template access.
 
-## What is the free send limit?
+## Is there an ongoing free Send allowance?
 
-After the three-day trial, the free tier offers one single-AI send per rolling 24 hours, shared across eligible free workflows.
+No. After the 3-day introductory trial, continuing to send prompts requires an active Pro subscription. The previous recurring free-Send allowance is discontinued.
 
-## Do I need to subscribe to use Poly-Glot?
+## Do I need Pro after the trial?
 
-No paid subscription is required to browse or use the limited free tier. A verified account is needed to start a trial or use restricted Send actions. Pro unlocks restricted templates, Compare Mode and unlimited sends, plus eligible BYOM and MCP language-processing features.
+Yes. Eligible customers can start a 3-day trial by authorizing an Apple subscription. Unless canceled, Apple automatically bills and renews the chosen plan at the displayed checkout price. Legacy app-managed trials never cause charges without a separate Apple subscription authorization.
 
 ## Further information
 
