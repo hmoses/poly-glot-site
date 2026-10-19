@@ -13,7 +13,7 @@ function scan(){
 if(!document.body)return;
 var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),node;
 while(node=walker.nextNode()){
- if(original.has(node)||!node.parentElement||node.parentElement.closest("script,style,noscript,pre,code,textarea,svg,#mcp-troubleshooting,#pgGlobalLangDD,#pgGlobalLangPicker,[data-i18n],[data-i18n-html],[data-pg-tech]"))continue;
+ if(original.has(node)||!node.parentElement||node.parentElement.closest("script,style,noscript,pre,code,textarea,svg,#mcp-troubleshooting,#pgGlobalLangDD,#pgGlobalLangPicker,[data-i18n],[data-i18n-html],[data-pg-tech],[data-pg-funnel]"))continue;
  var value=norm(node.nodeValue),key=explicit[value]||lookup.get(value);
  if(!key)continue;
  original.set(node,{text:node.nodeValue,key:key});entries.push(node);
@@ -23,7 +23,7 @@ document.querySelectorAll("[aria-label],[title],[placeholder]").forEach(function
 /* Capture all visible translatable copy, including cards, buttons, FAQ and footer.
  * Never replace executable examples, technical identifiers, or user data. */
 var allOrigins=new WeakMap(),allNodes=[],allAttrs=[],attrOrigins=new WeakMap();
-function eligible(n){var p=n.parentElement;if(!p||p.closest("script,style,noscript,pre,code,textarea,svg,#mcp-troubleshooting,#pgGlobalLangDD,#pgGlobalLangPicker,[data-i18n],[data-i18n-html],[data-pg-tech],[contenteditable],[data-no-translate]"))return false; if(/\/mcp-integrations\.html$/.test(location.pathname)&&p.closest("[data-pg-claude-l10n],[data-pg-faq-body]"))return false;return !p.closest(".code-block,.hljs,.language-json")||!!p.closest("button");}
+function eligible(n){var p=n.parentElement;if(!p||p.closest("script,style,noscript,pre,code,textarea,svg,#mcp-troubleshooting,#pgGlobalLangDD,#pgGlobalLangPicker,[data-i18n],[data-i18n-html],[data-pg-tech],[data-pg-funnel],[contenteditable],[data-no-translate]"))return false; if(/\/mcp-integrations\.html$/.test(location.pathname)&&p.closest("[data-pg-claude-l10n],[data-pg-faq-body]"))return false;return !p.closest(".code-block,.hljs,.language-json")||!!p.closest("button");}
 function registerAll(){
  if(!document.body)return;
  var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n;
