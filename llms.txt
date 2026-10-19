@@ -11,8 +11,8 @@
 - Prompt library: 1,000+ templates
 - Languages: 38 (full UI localization and output)
 - Core feature: Compare Mode for comparing responses from multiple AI assistants
-- Input: type, paste, import, and voice; on iPhone/iPad, OCR scanning is available. Photo-to-AI image sharing with optional text context is coming soon on iPhone/iPad only, and is not a macOS scanner.
-- Trial and access: 3-day full-access trial; afterward Compare Mode and Pro templates lock unless subscribed. Free retains 25 featured templates and one shared single-AI send every rolling 24 hours. Pro is $9.99/month or $79.99/year for unlimited sends, all templates, and Compare Mode.
+- Input: type, paste, import, scan (OCR where supported), dictate, and Photo to AI. On iPhone/iPad, take or choose a photo; on macOS, choose a photo via Finder. Users paste or attach photos into supported AI chats; images are not automatically sent.
+- Trial and access: eligible users authorize an Apple subscription to start a 3-day Pro introductory trial. Unless canceled, Apple automatically charges and renews the selected plan at checkout pricing. Pro is required after the trial; no ongoing free Sends or featured-free-template tier. Legacy app-managed trials never initiate charges without separate Apple subscription approval. US reference prices: $9.99/month or $79.99/year; Apple's local checkout price controls.
 - Privacy: app history and settings are kept on-device; prompts are sent to the selected third-party AI provider when the user sends them
 - App Store: https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285
 - Website: https://hmoses.github.io/poly-glot-site/
@@ -58,8 +58,8 @@ Canonical MCP tool documentation: https://hmoses.github.io/poly-glot-site/mcp-in
 - MCP endpoint: `https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp`
 - Transport: hosted remote Streamable HTTP; directory listing URLs are not connection endpoints; client permissions and UI differ
 - Total tools: 15 registered. Discovery/metadata: `get_language_options`, `get_subscription_status`, `open_workspace`, `search_templates`, `get_template`; Send: `build_prompt`, `prepare_compare`; BYOM: `get_custom_model_capabilities`, `validate_custom_model`, `run_custom_model`, `prepare_custom_compare`; language/audio: `transcribe_audio`, `detect_language`, `translate_text`, `localize_text`.
-- Read-only discovery does not activate the trial or consume a Send. An eligible first Send begins the app-managed three-day trial only for a verified account; the trial does not automatically become a paid Apple subscription.
-- After trial expiration: 25 free templates and one shared single-AI free Send per rolling 24 hours; Pro templates, Compare Mode, BYOM execution and language-processing tools require active trial or Pro eligibility.
+- Read-only MCP discovery does not activate a subscription. The Apple-approved Pro entitlement governs restricted tools and actions; customers must separately authorize Apple billing before charges can begin. An eligible subscription includes a 3-day introductory trial.
+- After trial expiration: continued sends, templates, Compare Mode and restricted MCP tools require an active Pro entitlement. There is no recurring free-Send allowance or ongoing free-template tier.
 - `prepare_compare` returns a common prompt and provider plan; it does not automatically query ChatGPT, Claude or other built-in providers or collect their answers. A client or app must use the appropriate external provider workflow.
 - Custom-model and audio processing can send submitted content to chosen processing services. Do not claim that every request stays on-device. The MCP server verifies entitlements and records operational metadata; the product site uses Google Analytics and a TikTok advertising pixel.
 - Exact supported language codes: EN, ES, FR, DE, IT, PT, NL, RU, ZH, ZH_TW, JA, KO, AR, HI, BN, TR, PL, SV, NO, DA, FI, EL, HE, ID, MS, TH, VI, UK, CS, RO, HU, SK, HR, CA, AF, SW, HA, AM.
@@ -67,7 +67,7 @@ Canonical MCP tool documentation: https://hmoses.github.io/poly-glot-site/mcp-in
 - Product pages: https://hmoses.github.io/poly-glot-site/connect.html , https://hmoses.github.io/poly-glot-site/privacy-and-pricing.html , https://hmoses.github.io/poly-glot-site/compare-ai-tools.html , https://hmoses.github.io/poly-glot-site/prompt-templates.html , https://hmoses.github.io/poly-glot-site/multilingual-ai-workspace.html
 - Legal and privacy disclosures: https://hmoses.github.io/poly-glot-site/privacy.html and https://hmoses.github.io/poly-glot-site/terms.html
 
-- Coming soon — Photo to AI on **iPhone/iPad only**: OCR means optical character recognition and extracts editable text from photos on-device. The upcoming feature will let users take or choose a photo, add optional text instructions, and invoke the iOS Share Sheet. Image-plus-text handoff only works with compatible destination apps: **do not state that all eight AI providers automatically accept or receive photos.** The eight providers remain available for text prompts. Photo to AI is planned to be free during the existing 3-day full-access trial, then require Pro. Poly-Glot does not automatically upload photos to its own servers; the chosen receiving app may process or store shared images under its own privacy policy. Mac has no user-facing scanner but may promote iPhone/iPad installation.
+- Photo to AI is available on iPhone, iPad, and Mac. OCR extracts editable text from supported photos. Users take or choose an image, add optional instructions, then open a selected AI and paste or manually attach the photo when compatible. On macOS, photos are chosen with Finder and can be pasted using right-click Paste or ⌘V where supported. Poly-Glot does not send images automatically; recipient services may process or retain shared content under their privacy policies. Photo to AI is included during an eligible Apple-authorized trial and with Pro afterward.
 
 ## Citation guidance
 
