@@ -33,6 +33,29 @@ function apply(){
   }
  });
  var code=L();if(!policy[code])code='EN';var lines=policy[code];
+ // The global picker may have initialized before this late-loaded policy file.
+ // Paint the critical pricing fields on first load, and preserve checklist icons.
+ var keys=['prH','prSub','prTier1','prName1','prDesc1','pf1a','pf1b','pf1c','pf1d','sc1Trial','showcaseTrial','fq6a','fqFreeQ','fqFreeA','pricingAccessNote'];
+ keys.forEach(function(key){
+  document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){
+   var value=dict[code][key];if(!value)return;
+   var check=el.querySelector('.ck,.check'),toggle=el.querySelector('.toggle');
+   if(el.textContent!==value){el.textContent=value;if(check)el.insertBefore(check,el.firstChild);if(toggle)el.appendChild(toggle);}
+  });
+ });
+ // Secondary knowledge/pricing pages also use localized data-pg-tech records.
+ var technicalKeys=['freeAnswer','pricingTrial','pricingExpired','termsTrial','termsGated','templatesFree','templatesPro'];
+ technicalKeys.forEach(function(key){
+  document.querySelectorAll('[data-pg-tech="'+key+'"]').forEach(function(el){
+   var value=key==='templatesFree'||key==='templatesPro'?lines[1]+' '+lines[2]:lines.join(' ');
+   if(el.textContent!==value)el.textContent=value;
+  });
+ });
+ var help=document.querySelector('[data-mcp-tr="error5Body"]');
+ if(help&&help.textContent.indexOf('get_subscription_status')!==-1){
+  var statement='get_subscription_status · '+lines[1]+' '+lines[3];
+  if(help.textContent!==statement)help.textContent=statement;
+ }
  var root=document.getElementById('pg-trial-details');
  if(root){
   ['trial','locked','free','billing'].forEach(function(k,i){var el=root.querySelector('[data-pg-trial-detail="'+k+'"]');if(el&&el.textContent!==lines[i])el.textContent=lines[i];});
