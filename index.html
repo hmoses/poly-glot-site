@@ -5451,7 +5451,7 @@ function _siteDemoStart() {
   });
   if (r1) r1.textContent = '';
   if (r2) r2.textContent = '';
-  /* Use the current locale's strings, but keep the exact English animation sequence/timing. */
+  /* Use the current locale's strings and a measured, readable animation pace. */
   var _animLang=(window._pgI18n&&window._pgI18n.curLang)?window._pgI18n.curLang():'EN';
   var _animS=(window._pgDeviceUI&&window._pgDeviceUI._strings)?window._pgDeviceUI._strings(_animLang):null;
   var prompt=(_animS&&_animS.promptExample)||'Write a polite email to my landlord asking to fix the heater before winter.';
@@ -5464,13 +5464,13 @@ function _siteDemoStart() {
     resp1Text=_demoReplies[0];
     resp2Text=_demoReplies[1];
   }
-  /* Phase 1: Type prompt */
+  /* Phase 1: Type prompt at a readable pace (2 characters every 75 ms). */
   var ci = 0;
   var t0 = setTimeout(function() {
     var iv = setInterval(function() {
       if (!_siteDemoRunning) { clearInterval(iv); return; }
       if (ci < prompt.length) {
-        ta.textContent += prompt.slice(ci,ci+3); ci+=3;
+        ta.textContent += prompt.slice(ci,ci+2); ci+=2;
         ta.style.borderColor = '#7c3aed';
       } else {
         clearInterval(iv);
@@ -5522,40 +5522,42 @@ function _siteDemoStart() {
                           p3.style.display = 'block';
                           var t7b = setTimeout(function() {
                             p3.style.opacity = '1';
-                            /* Type response 1 */
+                            /* Type both illustrative responses completely before the extended reading pause. */
                             var j = 0;
                             var iv1 = setInterval(function() {
                               if (!_siteDemoRunning) { clearInterval(iv1); return; }
-                              if (j < resp1Text.length) { r1.textContent += resp1Text.slice(j,j+4); j+=4; }
+                              if (j < resp1Text.length) { r1.textContent += resp1Text.slice(j,j+2); j+=2; }
                               else {
                                 clearInterval(iv1);
+                                r1.textContent = resp1Text;
                                 /* Type response 2 */
                                 var k = 0;
                                 var iv2 = setInterval(function() {
                                   if (!_siteDemoRunning) { clearInterval(iv2); return; }
-                                  if (k < resp2Text.length) { r2.textContent += resp2Text.slice(k,k+4); k+=4; }
+                                  if (k < resp2Text.length) { r2.textContent += resp2Text.slice(k,k+2); k+=2; }
                                   else {
                                     clearInterval(iv2);
-                                    /* Hold, then loop */
-                                    var t8 = setTimeout(function() { if (_siteDemoRunning) _siteDemoStart(); }, 2500);
+                                    r2.textContent = resp2Text;
+                                    /* Hold the fully completed replies, then loop. */
+                                    var t8 = setTimeout(function() { if (_siteDemoRunning) _siteDemoStart(); }, 12000);
                                     _siteDemoTimers.push(t8);
                                   }
-                                }, 16); _siteDemoTimers.push(iv2);
+                                }, 65); _siteDemoTimers.push(iv2);
                               }
-                            }, 16); _siteDemoTimers.push(iv1);
-                          }, 100); _siteDemoTimers.push(t7b);
-                        }, 400); _siteDemoTimers.push(t7);
+                            }, 65); _siteDemoTimers.push(iv1);
+                          }, 300); _siteDemoTimers.push(t7b);
+                        }, 650); _siteDemoTimers.push(t7);
                       }, 150); _siteDemoTimers.push(t6b);
-                    }, 650); _siteDemoTimers.push(t6);
-                  }, 350); _siteDemoTimers.push(t5);
-                }, 350); _siteDemoTimers.push(t4);
-              }, 350); _siteDemoTimers.push(t3);
-            }, 400); _siteDemoTimers.push(t2);
+                    }, 1100); _siteDemoTimers.push(t6);
+                  }, 900); _siteDemoTimers.push(t5);
+                }, 900); _siteDemoTimers.push(t4);
+              }, 900); _siteDemoTimers.push(t3);
+            }, 800); _siteDemoTimers.push(t2);
           }, 150); _siteDemoTimers.push(t1b);
-        }, 500); _siteDemoTimers.push(t1);
+        }, 1000); _siteDemoTimers.push(t1);
       }
-    }, 16); _siteDemoTimers.push(iv);
-  }, 300); _siteDemoTimers.push(t0);
+    }, 75); _siteDemoTimers.push(iv);
+  }, 550); _siteDemoTimers.push(t0);
 }
 
 /* ===== SMOOTH NAV SCROLL ===== */
@@ -14688,5 +14690,29 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
 <script defer src="assets/js/mcp-home-clients-locales.js?v=20261014-38"></script>
 <script defer src="assets/js/mcp-chatgpt-custom-locales.js?v=20261014-current-mcp"></script>
 <script defer src="assets/js/mcp-client-guides-locales.js?v=20261014-shared38"></script><script defer src="assets/js/mcp-universal-invocation-locales.js?v=20261014-universal38"></script><script defer src="assets/js/mcp-layout-headings-locales.js?v=20261014-layout"></script><script defer src="assets/js/photo-to-ai-demo.js?v=restored20261016"></script>
-<script defer src="assets/js/subscription-funnel-locales-2026.js?v=20261019-apple-renewal-38-v3"></script></body>
+<script defer src="assets/js/subscription-funnel-locales-2026.js?v=20261019-apple-renewal-38-v3"></script>
+<!-- Mac How to Use demo: complete, readable responses without truncation (2026-10-19). -->
+<style id="pg-mac-howto-demo-readability">
+#gallery-mac #macScreen-howtouse #siteDemo-P3 {
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(125,211,252,.3) transparent;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-P3 > div:nth-child(2) > div {
+  overflow:visible!important;
+  height:auto!important;
+}
+#gallery-mac #macScreen-howtouse #siteDemo-Resp1,
+#gallery-mac #macScreen-howtouse #siteDemo-Resp2 {
+  max-height:none!important;
+  height:auto!important;
+  overflow:visible!important;
+  font-size:clamp(7.25px, .65vw, 9px)!important;
+  line-height:1.4!important;
+  white-space:pre-wrap!important;
+  overflow-wrap:anywhere!important;
+}
+</style>
+</body>
 </html>
