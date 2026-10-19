@@ -33,6 +33,27 @@ function patchDictionary(){
     });
   });
 }
+/* Keep answers in the page's 38-language chat synchronized with the pricing funnel. */
+function patchChat(){
+  var chat=window._pgChatI18n;
+  if(!chat||!chat.KBL)return;
+  Object.keys(policy).forEach(function(code){
+    var p=policy[code],key=code==='ZH_TW'?'ZH-TW':code;
+    var entry=chat.KBL[key]||(chat.KBL[key]={});
+    var message='**'+(after[code]||after.EN)+'**\n\n'+p[0]+'\n\n'+p[1]+'\n\n'+p[2]+'\n\n'+p[3];
+    ['trial','after trial','free plan','how much'].forEach(function(topic){entry[topic]=message;});
+    entry.template=p[2];
+    entry.download=p[0]+' '+p[1]+' https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285';
+    var topics=chat.TOPICS[key];if(topics&&topics._afterTrial)topics._freePlan=topics._afterTrial;
+    var responses=chat.CHAT_RESPONSES[key];
+    if(responses){
+      if(responses.greeting)responses.greeting=responses.greeting.replace(/9 AI/g,'8 AI').replace(/9 supported AI providers/gi,'8 supported AI providers');
+      if(responses.thanks&&/24.hour|24-hour|24 horas|24 heures|24 Stunden|24時間|24小时|24 小时|24 小時|24시간|24.?час|24.?ساعة/i.test(responses.thanks))responses.thanks=responses.yesno||p[0];
+      if(responses.fallback&&/24.hour|24-hour|24 horas|24 heures|24 Stunden|24時間|24小时|24 小時|24시간|24.?час|24.?ساعة|9 AI|free templates|Free:/i.test(responses.fallback))responses.fallback=p[0]+'\n\n'+p[1]+'\n\n'+p[2]+'\n\n'+p[3];
+    }
+  });
+  if(chat.KBL['ZH-TW'])chat.KBL.ZH_TW=chat.KBL['ZH-TW'];
+}
 function update(el,value){
   if(!el||!value)return;
   if(el.classList&&el.classList.contains("faq-q")){
@@ -43,6 +64,7 @@ function update(el,value){
 }
 function apply(){
   patchDictionary();
+  patchChat();
   var code=language(),p=policy[code]||policy.EN;
   var d=(window._pgI18n&&window._pgI18n.dictionary||{})[code]||{};
   ["prH","prSub","prTier1","prName1","prDesc1","pf1a","pf1b","pf1c","pf1d","fq6a","fqFreeQ","fqFreeA","showcaseTrial","sc1Trial","pricingAccessNote"].forEach(function(key){
@@ -62,7 +84,7 @@ function apply(){
   var cards=document.querySelectorAll("#pg-plan-cards .pricing-card");
   if(cards.length===3){
     var first=cards[0].querySelector(".pricing-price");
-    if(first)first.setAttribute("aria-label","0 for eligible three-day Apple introductory trials");
+    if(first)first.setAttribute("aria-label",p[0]);
   }
   // Value proposition: replace the retired recurring-free-send claim on the third feature chunk.
   var chunks=document.querySelectorAll(".pg-sc1-chunk p");
@@ -79,6 +101,8 @@ function apply(){
     }[kind];
     update(el,message);
   });
+  var sel=document.getElementById("pgChat-topic");
+  if(sel){var opt=sel.querySelector('option[value="Free plan"]');if(opt)opt.textContent=after[code]||after.EN;}
   var para=document.querySelector('[data-i18n="fq7a"]');
   if(para&&code==="EN")update(para,"Six: type, paste, import, scan, dictate, or use Photo to AI. The UI is available in 38 languages.");
   document.documentElement.setAttribute("data-subscription-funnel-localized",code);
