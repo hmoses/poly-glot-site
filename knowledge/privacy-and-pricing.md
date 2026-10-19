@@ -1,13 +1,13 @@
 ---
 title: "Poly-Glot Privacy, Free Trial and Pricing"
 canonical: "https://hmoses.github.io/poly-glot-site/privacy-and-pricing.html"
-description: "Direct answers about Poly-Glot AI Workspace privacy, third-party providers, free limits and subscriptions."
+description: "Direct answers about Poly-Glot AI Workspace privacy, third-party providers, eligible Apple subscription trials and automatic renewal."
 product: "Poly-Glot AI Workspace"
 ---
 
 # Poly-Glot Privacy, Free Trial and Pricing
 
-Direct answers about Poly-Glot AI Workspace privacy, third-party providers, free limits and subscriptions.
+Direct answers about Poly-Glot AI Workspace privacy, third-party providers, eligible Apple subscription trials and automatic renewal.
 
 ## Does Poly-Glot store my conversations?
 
@@ -15,14 +15,10 @@ App history and settings can remain on-device. Submitted prompts go to the selec
 
 ## How does Photo to AI handle my photos?
 
-Coming soon on iPhone and iPad, Photo to AI will use Optical Character Recognition (OCR) to turn writing from a photo into editable text on the device. The planned feature will let users take or import a photo and add optional text instructions. Poly-Glot does not upload those photos to its own server. Once released, a photo will leave the device only when the user explicitly chooses a destination from Apple's Share Sheet or manually attaches it inside a third-party AI app. Recipients may process or retain photos and instructions under their own policies. Poly-Glot lists eight AI destinations for its text workflow, but supported photo and text attachments vary by app, model and account, and transferring them from Apple’s Share Sheet is not guaranteed. ChatGPT, Claude, Gemini, Grok, Perplexity, and Mistral provide in-app image upload; Duck.ai requires a model that accepts images; HuggingChat is available as HuggingChat Omni at https://huggingface.co/chat/; if Apple’s Share Sheet cannot transfer the image and instructions to it, attach the photo manually within HuggingChat where supported. If a provider does not appear in the Share Sheet, attach the image manually within that provider if its interface allows it. When released, Photo to AI will be included during the existing three-day trial and require Pro afterward.
-
+Photo to AI lets you take or choose a photo and add optional instructions. On iPhone and iPad, open a selected AI and tap Paste or use its attachment control; on Mac, choose photos with Finder and right-click Paste or press ⌘V when supported. The receiving service determines which images and attachments it accepts. Poly-Glot does not automatically send images or upload photos to its own server. Providers may process or retain shared photos under their privacy policies. Photo to AI is available during eligible Apple-authorized Pro introductory trials and with active Pro afterward.
 ## How does iPhone/iPad Photo to AI handle photos and privacy?
 
-OCR (optical character recognition) extracts editable text from a photo on-device. When released on iPhone and iPad, you will be able to take or choose an image, add optional text instructions, and open the system Share Sheet to share with a compatible recipient app. **Poly-Glot does not automatically upload photos to its own servers.** When you choose an app, the image and text may be processed or stored by that app under its privacy policy. Photo-plus-text intake is not guaranteed for all eight AI services. The eight AI providers remain available for text prompts.
-
-When released, Photo to AI will be included in the full-access 3-day trial and require Pro once that trial expires; an app-managed trial does not automatically create a paid subscription.
-
+OCR (optical character recognition) can extract editable text from photos on supported devices. After choosing a photo and adding context, you control when to paste or attach it to a compatible AI chat. **Poly-Glot does not automatically send photos.** Shared images and instructions may be processed or stored by the selected provider, under that provider's privacy policy. Photo to AI is included during an eligible Apple-authorized 3-day Pro introductory trial and requires Pro afterward.
 ## Does optional analytics collect prompts or AI responses?
 
 No. With consent in iOS or macOS Settings, optional PostHog telemetry sends limited usage events but not prompt text or AI responses. Users can disable analytics in Settings. MCP operational metadata logging and website analytics/advertising pixels are separate. See the [Privacy Policy](https://hmoses.github.io/poly-glot-site/privacy.html).
@@ -33,12 +29,10 @@ Voice input can use on-device recognition where supported, with a server-based f
 
 ## How long is the full-access trial?
 
-The app-managed 3-day full-access trial begins with the first eligible Send for a verified account. It does not automatically convert into a paid Apple subscription. Starting the trial and restoring a paid subscription require appropriate account verification.
-
+Eligible customers authorize an Apple subscription to begin a 3-day Pro introductory trial. Unless canceled, Apple charges and automatically renews the selected plan at the price shown during checkout. Previous app-managed trials do not create a paid Apple subscription without separate approval.
 ## What happens when the trial ends?
 
-After trial expiry, 25 free templates remain available, with one single-AI Send shared across free workflows every rolling 24 hours. Pro templates, Compare Mode, BYOM execution and MCP language-processing tools require an active trial or Pro; the trial itself never starts a paid subscription.
-
+An active Pro subscription is required for sends, templates, Compare Mode and other restricted features. The former recurring free-Send and free-template allowance is discontinued. Apple automatically renews authorized subscriptions unless canceled; legacy app-managed trials cannot begin charging without explicit Apple subscription authorization.
 ## Further information
 
 - [Official product site](https://hmoses.github.io/poly-glot-site/)
