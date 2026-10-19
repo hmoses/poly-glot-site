@@ -108,7 +108,7 @@ When reporting a problem, include the client, transport, tool name, HTTP/error c
 
 ### Verified tool behavior and account requirements
 
-- **Discovery is not a Send:** `get_language_options`, `search_templates`, `get_subscription_status`, and `get_custom_model_capabilities` are read-only. They do not start a trial or consume a free Send.
+- **Discovery is not a Send:** `get_language_options`, `search_templates`, `get_subscription_status`, and `get_custom_model_capabilities` are read-only. They do not start a trial or require a subscription.
 - **An MCP connection is not a Pro subscription:** Public tool discovery and browsing can work without a paid subscription; a verified account is required for persisted trial activation and restricted Send actions. Without verified authentication, the server does not silently activate a trial or grant Pro.
 - **Comparison preparation is not model execution:** `prepare_compare` builds one canonical prompt and provider instructions. It does not automatically invoke ChatGPT, Claude, Gemini, or other built-in providers or collect their responses. Client UI support and any subsequent AI execution are separate.
 - **Trial:** Eligible customers authorize an Apple subscription to begin a three-day Pro trial. Unless canceled, the chosen plan renews automatically after the trial at the price displayed by Apple. Continued restricted access requires Pro; earlier app-managed trials never cause charges without separate Apple subscription approval.
