@@ -118,5 +118,5 @@ patchDictionary();
 window.addEventListener("pg:languagechange",schedule);
 window.addEventListener("pageshow",schedule);
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",schedule,{once:true});else schedule();
-window._pgSubscriptionFunnel={locales:Object.keys(policy).length,apply:schedule};
+window._pgSubscriptionFunnel={locales:Object.keys(policy).length,policy:policy,apply:schedule};
 })();
