@@ -21,9 +21,9 @@ Poly-Glot lists ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, HuggingChat,
 
 No. You choose which AI providers to use. In an MCP client, `prepare_compare` generates a comparison plan rather than executing provider requests. Sending, displaying, and comparing actual answers depend on the chosen app or client and each provider.
 
-## Can I compare AI answers for free?
+## Is Compare Mode included in the Pro trial?
 
-Compare Mode is unlocked during the 3-day full-access trial and locks afterward unless you subscribe to Pro. The Free plan retains 25 featured templates and one shared single-AI Send every rolling 24 hours.
+Eligible customers can use Compare Mode during an Apple-authorized 3-day Pro introductory trial. Unless canceled, Apple automatically charges and renews the selected subscription at its displayed checkout price. After the trial, continued access requires Pro; there is no ongoing free-Send tier.
 
 ## Further information
 
