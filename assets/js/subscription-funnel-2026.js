@@ -10,8 +10,12 @@ function apply(){
  var dict=i18n.dictionary;
  Object.keys(policy).forEach(function(code){
   var v=policy[code],d=dict[code]||(dict[code]={});
-  d.prH=v[0];d.prSub=v[3];d.prTier1='Pro';d.prName1='3-Day Pro';d.prDesc1=v[0];
-  d.pf1a=v[0];d.pf1b=v[2];d.pf1c='8 AI';d.pf1d='Photo to AI · OCR';
+  d.prH=v[0];d.prSub=v[3];d.prTier1=d.trustC||'3-Day Pro Trial';d.prName1='Pro';d.prDesc1=v[0];
+  // Use existing locale-specific short feature labels; full billing disclosures belong below the title, not inside checkmark rows.
+  d.pf1a=d.pf2a||'1,000+ Templates';
+  d.pf1b=d.pf2b||'Compare Mode';
+  d.pf1c=d.pf2c||'Unlimited Sends';
+  d.pf1d=d.f5||'38 Languages';
   d.fq6a=v.join(' ');d.fqFreeQ=v[1];d.fqFreeA=v[2]+' '+v[3];
   d.pricingAccessNote=v[1]+' '+v[3];
   d.sc1Trial=v[0]+' '+v[3];
