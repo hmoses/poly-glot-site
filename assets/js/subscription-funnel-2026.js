@@ -43,6 +43,18 @@ function apply(){
  var disclosure=document.querySelector('[data-pg-sub-t="trial"]');if(disclosure)disclosure.textContent=lines[0]+' '+lines[3];
  var answers=document.querySelectorAll('[data-i18n="fqFreeA"],[data-i18n="fq6a"]');
  answers.forEach(function(el){var t=el.getAttribute('data-i18n')==='fq6a'?lines.join(' '):lines[2]+' '+lines[3];if(el.textContent!==t)el.textContent=t;});
+ // Correct search-indexed guide pages in the selected site language after secondary localization.
+ document.querySelectorAll('[data-pg-funnel]').forEach(function(el){
+  var kind=el.getAttribute('data-pg-funnel');
+  var message={
+   trial:lines[0]+' '+lines[3],
+   after:lines[1]+' '+lines[2]+' '+lines[3],
+   compare:lines[0]+' '+lines[1]+' '+lines[3],
+   templates:lines[0]+' '+lines[1]+' '+lines[2],
+   legacy:lines[0]+' '+lines[3]
+  }[kind];
+  if(message&&el.textContent!==message)el.textContent=message;
+ });
  var title=document.querySelector('[data-i18n="fqFreeQ"]');if(title){var toggle=title.querySelector('.toggle');title.textContent=lines[1];if(toggle)title.appendChild(toggle);}
  var pr=document.querySelector('.pricing-card:first-child');
  if(pr){var price=pr.querySelector('.pricing-price');if(price&&price.textContent.trim()!=='3 days'){price.innerHTML='3<span> days</span>';}}
