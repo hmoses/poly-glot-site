@@ -3910,9 +3910,12 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
         <a href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285" data-app-store-target="ios" style="text-decoration:none"><div class="platform-pill"><span class="emoji">📱</span> iPad <span class="coming-dot" style="background:#10b981"></span> <span style="font-size:0.7em;color:#f8ff39;font-weight:800">Download</span></div></a>
         <a href="https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12" data-app-store-target="mac" style="text-decoration:none"><div class="platform-pill"><span class="emoji">💻</span> macOS <span class="coming-dot" style="background:#10b981"></span> <span style="font-size:0.7em;color:#f8ff39;font-weight:800">Download</span></div></a>
       </div>
-      <div class="cross-device-access" style="margin-top:18px;padding:16px 18px;border:1px solid rgba(125,211,252,.18);border-radius:14px;background:linear-gradient(135deg,rgba(125,211,252,.06),rgba(167,139,250,.06));text-align:center">
+      <div id="pg-cross-device-access" class="cross-device-access" style="margin-top:18px;padding:16px 18px;border:1px solid rgba(125,211,252,.18);border-radius:14px;background:linear-gradient(135deg,rgba(125,211,252,.06),rgba(167,139,250,.06));text-align:center;scroll-margin-top:150px">
         <strong data-i18n="crossDeviceH" style="display:block;color:var(--text);font-size:1rem;margin-bottom:5px;">One purchase. All Apple devices. MCP access too.</strong>
         <span data-i18n="crossDeviceP" style="display:block;color:var(--text-muted);font-size:.84rem;line-height:1.6;max-width:840px;margin:0 auto;">One App Store purchase/entitlement covers Poly-Glot on iPhone, iPad, and Mac when you use the same Apple ID; install the app on each device you want to use. In a supported MCP client, link the same Poly-Glot account to use that entitlement there too — no separate MCP subscription. MCP is a connection, not another app download.</span>
+        <a id="pg-cross-device-to-mcp" href="#connect" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;margin-top:14px;padding:10px 18px;border:1px solid rgba(125,211,252,.42);border-radius:11px;background:rgba(125,211,252,.08);color:#9ddfff;font-size:.88rem;font-weight:700;line-height:1.35;text-decoration:none" aria-label="Go to MCP section">
+          <span aria-hidden="true">🔌</span><span>MCP</span><span aria-hidden="true">→</span>
+        </a>
       </div>
 </div>
   </div>
@@ -4917,6 +4920,11 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
     <div class="section-eyebrow" data-i18n="mcpEye">🔌 MCP Integration</div>
     <h2 class="section-title" data-i18n="mcpH">Poly-Glot MCP Ecosystem</h2>
     <p class="section-sub" data-i18n="mcpSub">Connect the same production Poly-Glot MCP server across supported clients and discovery surfaces — with 15 tools, 38 languages, and Compare Mode.</p>
+    <div style="margin:-2px 0 24px">
+      <a id="pg-mcp-back-to-devices" href="#pg-cross-device-access" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:9px 14px;border:1px solid rgba(125,211,252,.28);border-radius:11px;color:#9ddfff;background:rgba(125,211,252,.055);font-size:.84rem;line-height:1.4;text-decoration:none">
+        <span aria-hidden="true">←</span><span data-i18n="crossDeviceH">One purchase. All Apple devices. MCP access too.</span>
+      </a>
+    </div>
 
     <!-- What is MCP — moved here, directly beneath the section intro -->
     <div class="pg-mcp-motion-card" style="background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin-bottom:32px;">
