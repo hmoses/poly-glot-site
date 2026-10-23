@@ -122,3 +122,7 @@ When reporting a problem, include the client, transport, tool name, HTTP/error c
 
 The production MCP endpoint and live server/tool catalog determine runtime behavior. Third-party MCP directories can cache stale listings. This guide does not promise that all 15 tools or embedded GUIs work in every client or subscription plan. A client must support the relevant MCP transport and permissions.
 
+
+## Current pricing contract (verified October 23, 2026)
+
+The hosted MCP integrates with Poly-Glot's verified Apple subscription entitlements. Eligible customers explicitly authorize the 3-day introductory Pro trial in the native iOS/macOS app, followed by paid renewal unless canceled. US reference prices are $9.99 per month and $79.99 per year; the Apple purchase sheet determines storefront price and eligibility. **There is no post-trial recurring free Send, free-template allowance, or MCP-initiated billing.** Read-only discovery may remain available. Premium prompt-building, comparison and language/BYOM execution require verified access. MCP.so/Glama cached listings can display superseded descriptions; this document and the live entitlement response are more authoritative than those caches.
