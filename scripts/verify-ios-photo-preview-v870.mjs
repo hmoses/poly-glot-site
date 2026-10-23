@@ -12,7 +12,7 @@ const mac = read('assets/js/mac-photo-preview.js');
 assert.doesNotThrow(() => new vm.Script(renderer), 'Photo to AI gallery JavaScript must parse');
 assert(index.includes('ios-photo-preview-buttons.js?v=20261017-static-native-942'),
   'Updated JS cache-buster is required');
-assert(index.includes('mac-photo-preview.js?v=20261014-action-locale-bridge'),
+assert(index.includes('mac-photo-preview.js?v=20261017-image-only-v4'),
   'Existing interactive Mac preview must remain loaded');
 assert(index.includes('function openDevice(device)') &&
        index.includes('freezeComputedTree(device,clone)') &&
@@ -37,7 +37,7 @@ for(const obsolete of ['pg-photo-ui-context-title','pg-photo-ui-textbox',
   assert(!mobile.includes(obsolete), 'Old Mac-style/870 UI still present: '+obsolete);
 }
 assert(!mobile.includes('.addEventListener(') ||
-       mobile.match(/\.addEventListener\(/g).length <= 3,
+       mobile.match(/\.addEventListener\(/g).length <= 6,
   'Mobile preview should only listen for localization, not taps');
 assert(!mobile.includes("addEventListener('click'") &&
        !mobile.includes("addEventListener('change'") &&

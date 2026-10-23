@@ -2,6 +2,41 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Suppress the partially styled navigation/hero during a hard reload.
+     This runs before any body markup and releases after all page scripts/styles
+     have been parsed; JavaScript-disabled visitors are unaffected. -->
+<style id="pg-first-paint-guard">
+  html.pg-first-paint-pending { background: #0a0b14; }
+  html.pg-first-paint-pending body { visibility: hidden !important; }
+</style>
+<script id="pg-first-paint-ready">
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  root.classList.add('pg-first-paint-pending');
+  var released = false;
+  function release() {
+    if (released) return;
+    released = true;
+    root.classList.remove('pg-first-paint-pending');
+  }
+  function afterMarkupAndStyles() {
+    if (typeof requestAnimationFrame === 'function') {
+      requestAnimationFrame(function () { requestAnimationFrame(release); });
+    } else {
+      release();
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', afterMarkupAndStyles, { once: true });
+  } else {
+    afterMarkupAndStyles();
+  }
+  window.addEventListener('pageshow', afterMarkupAndStyles, { once: true });
+  // Fail safe for stalled resources: never leave the page permanently hidden.
+  setTimeout(release, 8000);
+})();
+</script>
 <link rel="preload" href="assets/js/i18n.js?v=20261014-photo-to-ai-six-ways" as="script" fetchpriority="low">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google" content="notranslate">
