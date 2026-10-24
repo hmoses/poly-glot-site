@@ -212,6 +212,10 @@ AM|የiPhone Duo እገዛ|አጠቃላይ እይታ|የታጠፈ ማያ|የተ�
 
   function refresh() {
     refreshFaq();
+    // The hero and disclosure use the SAME 38 translated facts as the Duo FAQ.
+    // Do not imply automatic response retrieval or side-by-side cards on narrow screens.
+    var heroCopy = document.querySelector("#iphone-duo .duo-copy");
+    if (heroCopy) heroCopy.textContent = local()[6] + " " + local()[7];
     // Keep the public Duo product explanation in the selected global app language.
     var disclosure = document.getElementById("pg-duo-workflow-note");
     if (disclosure) disclosure.textContent = local()[8] + " " + local()[9];
