@@ -3226,6 +3226,20 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 
 <!-- ===== HERO ===== -->
 <style>.pg-duo-launch{max-width:1180px;margin:18px auto 0;padding:15px 22px;border:1px solid rgba(167,139,250,.42);border-radius:18px;background:linear-gradient(110deg,#1b1434,#101827);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#fff}.pg-duo-launch strong{color:#d9baff}.pg-duo-launch a{color:#fff;background:#6845c5;border-radius:12px;padding:10px 16px;text-decoration:none;font-weight:700}.duo-live .duo-kicker{color:#7ee0b2!important}@media(max-width:650px){.pg-duo-launch{margin:12px 16px 0}}</style>
+<!-- Keep the launch strip clear of the fixed 64px navigation and remove the
+     hero's obsolete nav-offset padding now that the strip comes first. -->
+<style id="pg-home-first-screen-fit">
+.pg-duo-launch { margin-top: calc(64px + 18px); }
+.hero { padding-top: 56px; }
+@media (max-width: 650px) {
+  .pg-duo-launch {
+    margin: calc(64px + 10px) 16px 0;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+  .hero { padding-top: 32px; }
+}
+</style>
 <div class="pg-duo-launch" role="region" aria-label="iPhone Duo launch"><div><strong>📱 <span data-i18n="duoKicker">Available Now</span>:</strong> <span data-i18n="duoTitleA">Poly-Glot</span> <span data-i18n="duoTitleB">on iPhone Duo</span> · 8 AIs · 38 🌍</div><a href="#iphone-duo" aria-label="Explore Poly-Glot on iPhone Duo">↗ iPhone Duo</a></div>
 <section class="hero" id="hero">
   <div class="container">
