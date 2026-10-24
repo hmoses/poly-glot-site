@@ -95,7 +95,9 @@ AM|የiPhone Duo እገዛ|አጠቃላይ እይታ|የታጠፈ ማያ|የተ�
     if (/\b(iphone[ -]?duo|duo)\b/.test(q) && /\b(unfold|open|expanded)\b/.test(q)) return "unfolded";
     if (/\b(iphone[ -]?duo|duo)\b/.test(q) && /\b(compare|select ai|providers?)\b/.test(q)) return "compare";
     if (/\b(iphone[ -]?duo|duo)\b/.test(q) && /\b(responses?|paste|read replies|answers?)\b/.test(q)) return "responses";
-    if (/^iphone[ -]?duo$|^duo$/.test(q)) return "overview";
+    // Other iPhone Duo questions use the same current, localized overview;
+    // do not fall through to older launch copy that may say "coming soon".
+    if (/\biphone[ -]?duo\b/.test(q) || /^duo$/.test(q)) return "overview";
     return null;
   }
   window._pgDuoHelpLookup = function(q) {
