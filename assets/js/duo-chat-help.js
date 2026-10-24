@@ -210,6 +210,9 @@ AM|የiPhone Duo እገዛ|አጠቃላይ እይታ|የታጠፈ ማያ|የተ�
 
   function refresh() {
     refreshFaq();
+    // Keep the public Duo product explanation in the selected global app language.
+    var disclosure = document.getElementById("pg-duo-workflow-note");
+    if (disclosure) disclosure.textContent = local()[8] + " " + local()[9];
     var quick = document.getElementById("pgChat-duo-quick");
     var group = document.getElementById("pgChat-duo-group");
     if (!quick || !group) return;
