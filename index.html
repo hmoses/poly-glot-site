@@ -2,6 +2,58 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- On fresh visits (including LinkedIn's in-app browser), start at the real
+     top rather than accepting a browser-restored scroll offset. Preserve
+     explicit section anchors and back/forward navigation. -->
+<style id="pg-fresh-visit-scroll-style">html.pg-fresh-visit-start { scroll-behavior: auto !important; }</style>
+<script id="pg-fresh-visit-scroll-reset">
+(function () {
+  'use strict';
+  if (location.hash && location.hash !== '#') return;
+  var navigation = null;
+  try {
+    navigation = performance.getEntriesByType('navigation')[0];
+  } catch (error) {}
+  if (navigation && navigation.type === 'back_forward') return;
+
+  try { history.scrollRestoration = 'manual'; } catch (error) {}
+  var root = document.documentElement;
+  var interrupted = false;
+  root.classList.add('pg-fresh-visit-start');
+
+  function stopForInteraction() {
+    interrupted = true;
+    root.classList.remove('pg-fresh-visit-start');
+  }
+  ['touchstart', 'pointerdown', 'wheel', 'keydown'].forEach(function (eventName) {
+    addEventListener(eventName, stopForInteraction, { once: true, passive: true });
+  });
+
+  function resetToTop() {
+    if (interrupted || (location.hash && location.hash !== '#')) return;
+    window.scrollTo(0, 0);
+  }
+  resetToTop();
+  function atReady() {
+    resetToTop();
+    requestAnimationFrame(resetToTop);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', atReady, { once: true });
+  } else {
+    atReady();
+  }
+  addEventListener('pageshow', function (event) {
+    if (!event.persisted) atReady();
+  }, { once: true });
+  addEventListener('load', function () {
+    atReady();
+    requestAnimationFrame(function () {
+      if (!interrupted) root.classList.remove('pg-fresh-visit-start');
+    });
+  }, { once: true });
+})();
+</script>
 <!-- Suppress the partially styled navigation/hero during a hard reload.
      This runs before any body markup and releases after all page scripts/styles
      have been parsed; JavaScript-disabled visitors are unaffected. -->
@@ -3140,17 +3192,17 @@ html[data-device-ui-lang="HE"] #gallery-ipad .ipad-native-output-select strong{
 <body>
 
 <!-- ===== NAV ===== -->
-<nav class="nav">
+<nav class="nav" id="top">
   <div class="nav-inner">
     <div style="display:flex;align-items:center;gap:0;flex-shrink:0">
-      <a href="#" class="nav-brand">
+      <a href="#top" class="nav-brand">
         <img src="assets/img/icon-128.png" alt="Poly-Glot AI">
         <span>Poly-Glot AI Workspace</span>
       </a>
       <div id="pgLangSlot"></div>
     </div>
     <ul class="nav-links" id="pg-mobile-menu" aria-label="Explore Poly-Glot sections">
-      <li><a id="pg-home-menu-link" href="#hero">Home</a></li>
+      <li><a id="pg-home-menu-link" href="#top">Home</a></li>
       <li><a href="#value" data-i18n="showcaseH">✨ Already Using Free AI?</a></li>
       <li><a href="#apps" data-i18n="sc2Tag">🔀 Compare Mode</a></li>
       <li><a href="#why" data-i18n="probH">Why One AI Isn't Enough</a></li>
