@@ -6085,7 +6085,7 @@ function _demoStart() {
 <!-- Chat i18n — loads BEFORE the chat widget so translations are available -->
 <script src="assets/js/photo-to-ai-locales.js?v=20261015-native-handoff-v2"></script>
 <script src="assets/js/photo-upload-locales.js?v=20261015-native-handoff-v2"></script>
-<script src="assets/js/chat-i18n.js?v=2026-10-07-free-v2"></script>
+<script src="assets/js/chat-i18n.js?v=20261024-duo-live-38"></script>
 <script src="assets/js/photo-ocr-chat.js?v=20261015-native-handoff-v2"></script>
 
 <!-- ===== POLY-GLOT MCP CHAT WIDGET v4 — FULLY LOCALIZED ===== -->
@@ -6129,6 +6129,7 @@ function _demoStart() {
       <option value="Output language">Output language</option>
       <option value="Voice input">Voice input</option>
       <option value="Devices">Devices</option>
+      <option value="iPhone Duo">📱 iPhone Duo · Folded &amp; Unfolded</option>
       <option value="All devices + MCP">Apple Devices + MCP Access</option>
       <option value="Privacy">Privacy</option>
       <option value="Photo to AI">📷 Photo to AI · Mac / iPhone / iPad</option>
@@ -6503,6 +6504,7 @@ function _demoStart() {
   };
   var chatTopicGuides = {
     'photo to ai': ['privacy','support'],
+    'iphone duo': ['compare'],
     'what is poly-glot': ['compare', 'templates'],
     'how much': ['pricing'], 'free plan': ['pricing'], trial: ['pricing'],
     'after trial': ['pricing'], cancel: ['pricing', 'support'], payment: ['pricing'],
@@ -6523,6 +6525,11 @@ function _demoStart() {
     var chat = window._pgChatI18n;
     var localized = chat && chat.KBL && chat.KBL[lang] && chat.KBL[lang][topic];
     var answer = localized || KB[topic] || KB['what is poly-glot'];
+    if (topic === 'iphone duo') {
+      var duo = window._pgChatI18n && window._pgChatI18n.DUO;
+      var entry = duo && (duo[lang] || duo[String(lang).replace('-', '_')] || duo.EN);
+      if (entry) answer = '**📱 ' + entry.title + '**\n\n' + entry.answer + '\n\n' + '[iPhone Duo](https://hmoses.github.io/poly-glot-site/#iphone-duo) · [App Store](https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285)';
+    }
     // Localized photo-scanner answer from the product's 39-language copy.
     // Do not imply all eight providers accept automatic image+text sharing.
     if(topic==='photo to ai' && window.PGPhotoAILocales){
@@ -6549,6 +6556,8 @@ function _demoStart() {
     // SECURITY: Sanitize input before processing
     if (typeof q !== 'string') return answerWithGuides('what is poly-glot');
     q = q.toLowerCase().trim().slice(0, 500);
+    // Foldable-device intent must precede generic iPhone/device and Compare Mode matches.
+    if (/iphone[ -]?duo|duo[ -]?iphone|foldable|unfolded|folded|fold.aware|dual.display|two.screen|two.panel/.test(q)) return answerWithGuides('iphone duo');
     // Photo-to-AI queries in any of the supported interface languages.
     var photoLocaleMatch=false,photos=window.PGPhotoAILocales||{};
     for(var photoCode in photos){
