@@ -62,6 +62,46 @@ document.addEventListener("click",function(ev){
 /* Load static per-language copy for ALL secondary page surfaces.
  * The published translation catalogs are generated at build time; no visitor text
  * is sent to a translation service. */
+/* Defensive locale application for cached pages and late-rendered cards.
+ * Uses the existing 38 reviewed locale catalogs, not machine translation.
+ * Never changes URLs, MCP configuration, code blocks or interactive inputs. */
+var pgDirectOriginal=new WeakMap(),pgDirectNodes=new Set(),pgCurrentCatalogs={};
+function pgTrim(v){return String(v||"").replace(/\s+/g," ").trim();}
+function pgApplyCatalogFallback(lang,dict){
+ if(!document.body)return;
+ var noTranslate="script,style,noscript,pre,code,textarea,svg,.code-block,.hljs,.language-json,#pgGlobalLangDD,#pgGlobalLangPicker,#pgChat,[data-no-translate],[data-i18n],[data-i18n-html],[data-pg-tech],[data-pg-funnel],[contenteditable]";
+ var nodes=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),node;
+ while((node=nodes.nextNode())){
+  var parent=node.parentElement;if(!parent||parent.closest(noTranslate))continue;
+  var old=pgDirectOriginal.get(node),english=old?old.key:pgTrim(node.nodeValue);
+  if(!english||!/[A-Za-z]/.test(english)||/^https?:/i.test(english))continue;
+  if(!old&&!(dict&&Object.prototype.hasOwnProperty.call(dict,english)))continue;
+  if(!old){old={raw:node.nodeValue,key:english};pgDirectOriginal.set(node,old);pgDirectNodes.add(node);}
+  var value=lang!=="EN"&&dict&&dict[old.key];
+  if(typeof value!=="string"||!pgTrim(value))value=null;
+  var target=old.raw;
+  if(value){
+    var space=old.raw.match(/^(\s*)([\s\S]*?)(\s*)$/);
+    target=(space?space[1]:"")+value+(space?space[3]:"");
+  }
+  if(node.nodeValue!==target)node.nodeValue=target;
+ }
+ // Include nodes whose current text no longer matches the English source.
+ pgDirectNodes.forEach(function(n){
+  if(!n.isConnected){pgDirectNodes.delete(n);return;}
+  var info=pgDirectOriginal.get(n),parent=n.parentElement;
+  if(!info||!parent||parent.closest(noTranslate))return;
+  var translated=lang!=="EN"&&dict&&dict[info.key];
+  var match=info.raw.match(/^(\s*)([\s\S]*?)(\s*)$/);
+  var next=typeof translated==="string"&&pgTrim(translated)?(match?match[1]:"")+translated+(match?match[3]:""):info.raw;
+  if(n.nodeValue!==next)n.nodeValue=next;
+ });
+}
+function pgApplySecondaryLocale(lang){
+ if(window._pgI18n&&window._pgI18n.curLang()!==lang)return;
+ if(window._pgSecondaryLocalization&&typeof window._pgSecondaryLocalization.apply==="function")window._pgSecondaryLocalization.apply();
+ pgApplyCatalogFallback(lang,pgCurrentCatalogs[lang]||null);
+}
 var pgEnglishSourceReady=fetch(new URL("assets/locales/subpages/en.json",location.href),{cache:"force-cache"})
  .then(function(r){if(!r.ok)throw Error("English catalog unavailable");return r.json();})
  .then(function(source){
@@ -75,9 +115,9 @@ var pgLocaleRequests={};
 function pgLoadSecondaryLocale(){
  var i=window._pgI18n;if(!i)return;
  var lang=i.curLang();
- if(lang==="EN")return;
+ if(lang==="EN"){pgApplySecondaryLocale("EN");return;}
  window._pgSecondaryExact=window._pgSecondaryExact||{};
- if(pgLocaleRequests[lang]){pgLocaleRequests[lang].then(function(){window._pgSecondaryLocalization?.apply();});return;}
+ if(pgLocaleRequests[lang]){pgLocaleRequests[lang].then(function(){pgApplySecondaryLocale(lang);});return;}
  var url=new URL("assets/locales/subpages/"+lang.toLowerCase()+".json",location.href);
  pgLocaleRequests[lang]=fetch(url.toString(),{cache:"no-cache"}).then(function(response){
    if(!response.ok)throw Error("Missing static translations: "+response.status);
@@ -85,10 +125,13 @@ function pgLoadSecondaryLocale(){
  }).then(function(dict){
    if(!dict||typeof dict!=="object"||Array.isArray(dict))throw Error("Invalid locale catalog");
    window._pgSecondaryExact[lang]=Object.assign({},dict,window._pgSecondaryExact[lang]||{}); // Preserve curated translations over generated equivalents
-   window._pgSecondaryLocalization?.apply();
+   pgCurrentCatalogs[lang]=window._pgSecondaryExact[lang];
+   pgApplySecondaryLocale(lang);
  }).catch(function(err){delete pgLocaleRequests[lang];console.warn("Poly-Glot secondary locale:",err.message);});
 }
 window.addEventListener("pg:languagechange",pgLoadSecondaryLocale);
 window.addEventListener("pageshow",pgLoadSecondaryLocale);
+window.addEventListener("pg:secondarycatalogready",function(){pgLoadSecondaryLocale();});
+window.addEventListener("pg:languagechange",function(){var lang=window._pgI18n?.curLang?.()||"EN";setTimeout(function(){pgApplySecondaryLocale(lang);},200);});
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",pgLoadSecondaryLocale,{once:true});else pgLoadSecondaryLocale();
 })();

@@ -201,12 +201,12 @@ window.addEventListener("pageshow",function(){apply();});
 var mutationPending=false;
 if(typeof MutationObserver!=="undefined"&&document.documentElement){
  var observer=new MutationObserver(function(changes){
-  if(!changes.some(function(change){return change.addedNodes&&change.addedNodes.length>0;}))return;
+  if(!changes.some(function(change){return (change.addedNodes&&change.addedNodes.length>0)||(change.type==="characterData"&&change.target&&change.target.parentElement&&!change.target.parentElement.closest("script,style,code,pre,textarea,#pgGlobalLangDD,#pgGlobalLangPicker"));}))return;
   if(mutationPending)return;
   mutationPending=true;
   setTimeout(function(){mutationPending=false;apply();},0);
  });
- observer.observe(document.documentElement,{childList:true,subtree:true});
+ observer.observe(document.documentElement,{childList:true,characterData:true,subtree:true});
 }
 window.addEventListener("DOMContentLoaded",function(){apply();});
 
