@@ -4,7 +4,7 @@
  */
 (function () {
   "use strict";
-  var rows = String.raw\`
+  var rows = String.raw`
 EN|iPhone Duo help|Overview|Folded screen|Unfolded screen|Compare AIs|Responses|When folded, use Ask Any AI in the normal single-screen workspace.|When unfolded, Ask Any AI is on the left and the comparison workspace is on the right.|Type your prompt and tap Send. Enable Compare Mode, select the AI providers, then open each one separately.|The AI apps run separately. Poly-Glot cannot read their replies. Return to the comparison workspace and enter each response in its labeled field.
 ES|Ayuda de iPhone Duo|Vista general|Pantalla plegada|Pantalla desplegada|Comparar IA|Respuestas|Plegado, usa Ask Any AI en la pantalla habitual.|Desplegado, Ask Any AI está a la izquierda y el espacio de comparación a la derecha.|Escribe tu consulta y toca Enviar. Activa Comparar, selecciona las IA y abre cada una por separado.|Las apps de IA funcionan por separado. Poly-Glot no puede leer sus respuestas. Vuelve al espacio de comparación e introduce cada respuesta en su campo.
 FR|Aide iPhone Duo|Présentation|Écran replié|Écran déplié|Comparer les IA|Réponses|Replié, utilisez Ask Any AI dans son interface habituelle.|Déplié, Ask Any AI est à gauche et l’espace de comparaison à droite.|Saisissez votre demande et touchez Envoyer. Activez Comparer, choisissez les IA et ouvrez-les séparément.|Les apps d’IA sont distinctes. Poly-Glot ne peut pas lire leurs réponses. Revenez à l’espace de comparaison et saisissez chaque réponse dans son champ.
@@ -43,7 +43,7 @@ AF|iPhone Duo-hulp|Oorsig|Gevoude skerm|Oopgevoude skerm|Vergelyk KI|Antwoorde|W
 SW|Msaada wa iPhone Duo|Muhtasari|Skrini iliyokunjwa|Skrini iliyofunguliwa|Linganisha AI|Majibu|Ikiwa imekunjwa, tumia Ask Any AI kwenye skrini moja ya kawaida.|Ikifunguliwa, Ask Any AI iko kushoto na eneo la kulinganisha kulia.|Andika swali na uguse Tuma. Washa hali ya kulinganisha, chagua AI na ufungue kila moja kando.|Programu za AI zinafanya kazi kando. Poly-Glot haiwezi kusoma majibu yao. Rudi kwenye ulinganisho na weka kila jibu kwenye sehemu yake.
 HA|Taimakon iPhone Duo|Bayani|Allo a naɗe|Allo a buɗe|Kwatanta AI|Amsoshi|Idan an naɗe, yi amfani da Ask Any AI a allo ɗaya kamar yadda aka saba.|Idan an buɗe, Ask Any AI yana hagu, wurin kwatantawa yana dama.|Rubuta tambaya ka taɓa Aika. Kunna yanayin kwatantawa, zaɓi AI ka buɗe kowannensu daban.|Manhajojin AI suna aiki daban. Poly-Glot ba zai iya karanta amsoshinsu ba. Koma wurin kwatantawa ka saka kowace amsa a filinta.
 AM|የiPhone Duo እገዛ|አጠቃላይ እይታ|የታጠፈ ማያ|የተከፈተ ማያ|AI አወዳድር|ምላሾች|ሲታጠፍ Ask Any AIን በመደበኛው አንድ ማያ ይጠቀሙ።|ሲከፈት Ask Any AI በግራ እና የማወዳደሪያ ክፍል በቀኝ ይታያሉ።|ጥያቄ ጻፉና ላክ ይጫኑ። ማወዳደርን አብሩ፣ AI ይምረጡና እያንዳንዱን በተናጠል ይክፈቱ።|የAI መተግበሪያዎች ለብቻቸው ይሰራሉ። Poly-Glot ምላሾቻቸውን ማንበብ አይችልም። ወደ ማወዳደሪያው ይመለሱና እያንዳንዱን ምላሽ በትክክለኛው መስክ ያስገቡ።
-\`.trim();
+`.trim();
   var translations = Object.create(null);
   rows.split(/\n/).forEach(function (line) {
     var bits = line.split("|");
