@@ -14775,5 +14775,24 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
   overflow-wrap:anywhere!important;
 }
 </style>
+<script id="pg-duo-chat-topic-localization">
+(function(){
+  function syncDuoTopic(){
+    var select=document.getElementById('pgChat-topics-select');
+    var chat=window._pgChatI18n;
+    if(!select||!chat||!chat.DUO)return;
+    var option=Array.prototype.find.call(select.options,function(o){return o.value==='iPhone Duo';});
+    if(!option)return;
+    var lang=(window._pgChatLang||(window._pgI18n&&window._pgI18n.curLang&&window._pgI18n.curLang())||'EN').replace('-','_');
+    var data=chat.DUO[lang]||chat.DUO[lang.replace('_','-')]||chat.DUO.EN;
+    if(data)option.textContent='📱 '+data.title;
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',syncDuoTopic);
+  else syncDuoTopic();
+  document.addEventListener('change',syncDuoTopic,true);
+  document.addEventListener('click',syncDuoTopic,true);
+  if(window.MutationObserver)new MutationObserver(syncDuoTopic).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+})();
+</script>
 </body>
 </html>
