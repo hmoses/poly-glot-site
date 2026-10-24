@@ -135,10 +135,72 @@ AM|የiPhone Duo እገዛ|አጠቃላይ እይታ|የታጠፈ ማያ|የተ�
       });
       select.insertBefore(group,select.options[1] || null);
     }
+    initFaq();
     refresh();
   }
 
+  function initFaq() {
+    var list = document.querySelector('#faq .faq-list');
+    if (!list || document.getElementById('pgFaq-duo')) return;
+    var group = document.createElement('div');
+    group.id = 'pgFaq-duo';
+    var title = document.createElement('h3');
+    title.id = 'pgFaq-duo-title';
+    title.style.cssText = 'font-size:1.05rem;color:#c5beff;margin:22px 0 5px;';
+    group.appendChild(title);
+    kinds.forEach(function(kind) {
+      var item = document.createElement('div');
+      item.className = 'faq-item';
+      item.setAttribute('data-duo-faq',kind);
+      var question = document.createElement('div');
+      question.className = 'faq-q';
+      question.tabIndex = 0;
+      question.setAttribute('role','button');
+      question.setAttribute('aria-expanded','false');
+      var questionText = document.createElement('span');
+      questionText.className = 'pgFaq-duo-question';
+      var toggle = document.createElement('span');
+      toggle.className = 'toggle';
+      toggle.setAttribute('aria-hidden','true');
+      toggle.textContent = '+';
+      question.appendChild(questionText);
+      question.appendChild(toggle);
+      var answer = document.createElement('div');
+      answer.className = 'faq-a';
+      var p = document.createElement('p');
+      p.className = 'pgFaq-duo-answer';
+      answer.appendChild(p);
+      question.addEventListener('click',function() {
+        if (typeof window.toggleFaq === 'function') window.toggleFaq(question);
+        else if (typeof toggleFaq === 'function') toggleFaq(question);
+        question.setAttribute('aria-expanded',String(answer.classList.contains('open')));
+      });
+      question.addEventListener('keydown',function(ev) {
+        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); question.click(); }
+      });
+      item.appendChild(question);
+      item.appendChild(answer);
+      group.appendChild(item);
+    });
+    // Keep the general product FAQs first, with Duo questions prominent below.
+    list.insertBefore(group,list.children[2] || null);
+  }
+
+  function refreshFaq() {
+    var group = document.getElementById('pgFaq-duo');
+    if (!group) return;
+    var l = local();
+    document.getElementById('pgFaq-duo-title').textContent = '📱 ' + l[0];
+    group.querySelectorAll('[data-duo-faq]').forEach(function(item) {
+      var kind = item.getAttribute('data-duo-faq');
+      var index = kinds.indexOf(kind);
+      item.querySelector('.pgFaq-duo-question').textContent = 'iPhone Duo · ' + l[index+1];
+      item.querySelector('.pgFaq-duo-answer').textContent = kind === 'overview' ? l[6] + ' ' + l[7] : l[index+5];
+    });
+  }
+
   function refresh() {
+    refreshFaq();
     var quick = document.getElementById("pgChat-duo-quick");
     var group = document.getElementById("pgChat-duo-group");
     if (!quick || !group) return;
