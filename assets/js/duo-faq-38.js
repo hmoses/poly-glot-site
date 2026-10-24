@@ -23,7 +23,7 @@
         question.setAttribute("aria-expanded", "false");
         question.addEventListener("click", function () {
           if (typeof window.toggleFaq === "function") window.toggleFaq(question);
-          question.setAttribute("aria-expanded", question.parentNode.classList.contains("active") ? "true" : "false");
+          question.setAttribute("aria-expanded", question.parentNode.querySelector(".faq-a").classList.contains("open") ? "true" : "false");
         });
         question.addEventListener("keydown", function (e) {
           if (e.key === "Enter" || e.key === " ") {
