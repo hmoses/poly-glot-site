@@ -6112,7 +6112,7 @@ function _demoStart() {
   </div>
   <div id="pgChat-messages"></div>
   <div id="pgChat-topics-bar">
-    <select id="pgChat-topics-select" onchange="if(this.value){pgChat.ask(this.value);this.selectedIndex=0;}">
+    <select id="pgChat-topics-select" onchange="if(this.value){pgChat.ask(this.value.indexOf('duo:')===0?this.selectedOptions[0].textContent.trim():this.value);this.selectedIndex=0;}">
       <option value="">📋 Browse all topics…</option>
       <option value="What is Poly-Glot?">What is Poly-Glot?</option>
       <option value="How much does it cost?">Pricing</option>
@@ -6556,6 +6556,11 @@ function _demoStart() {
     // SECURITY: Sanitize input before processing
     if (typeof q !== 'string') return answerWithGuides('what is poly-glot');
     q = q.toLowerCase().trim().slice(0, 500);
+    // Specific localized Duo categories take precedence over the general Duo answer.
+    if (window._pgDuoHelpLookup) {
+      var duoAnswer = window._pgDuoHelpLookup(q);
+      if (duoAnswer) return duoAnswer;
+    }
     // Foldable-device intent must precede generic iPhone/device and Compare Mode matches.
     if (/iphone[ -]?duo|duo[ -]?iphone|foldable|unfolded|folded|fold.aware|dual.display|two.screen|two.panel/.test(q)) return answerWithGuides('iphone duo');
     // Photo-to-AI queries in any of the supported interface languages.
@@ -14794,5 +14799,6 @@ html:root #gallery-mac #macScreen-askanyai .mac-ask-body > div:nth-child(7){
   if(window.MutationObserver)new MutationObserver(syncDuoTopic).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
 </script>
+<script defer src="assets/js/duo-chat-help.js?v=20261024-chat-topics38"></script>
 </body>
 </html>
