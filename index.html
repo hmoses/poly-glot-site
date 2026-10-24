@@ -6111,7 +6111,7 @@ function _demoStart() {
 <!-- Chat i18n — loads BEFORE the chat widget so translations are available -->
 <script src="assets/js/photo-to-ai-locales.js?v=20261015-native-handoff-v2"></script>
 <script src="assets/js/photo-upload-locales.js?v=20261015-native-handoff-v2"></script>
-<script src="assets/js/chat-i18n.js?v=20261024-duo-live-38"></script>
+<script src="assets/js/chat-i18n.js?v=20261024-chat-device38-fix1"></script>
 <script src="assets/js/photo-ocr-chat.js?v=20261015-native-handoff-v2"></script>
 
 <!-- ===== POLY-GLOT MCP CHAT WIDGET v4 — FULLY LOCALIZED ===== -->
@@ -6505,8 +6505,8 @@ function _demoStart() {
 
   // Helper: get current chat language
   function _chatLang() {
-    if (window._pgChatLang) return window._pgChatLang;
     if (window._pgI18n) return window._pgI18n.curLang();
+    if (window._pgChatLang) return window._pgChatLang;
     return 'EN';
   }
 
