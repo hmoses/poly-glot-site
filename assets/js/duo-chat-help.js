@@ -69,7 +69,7 @@ AM|የiPhone Duo እገዛ|አጠቃላይ እይታ|የታጠፈ ማያ|የተ�
       var chat = window._pgChatI18n;
       var duo = chat && chat.DUO;
       var data = duo && (duo[lang()] || duo[lang().replace("-","_")] || duo.EN);
-      return "**" + heading("overview") + "**\n\n" + (data ? data.answer : translations.EN[6]) +
+      return "**" + heading("overview") + "**\n\n" + (l[6] + " " + l[7]) +
         "\n\n[iPhone Duo](https://hmoses.github.io/poly-glot-site/#iphone-duo)";
     }
     var ix = kinds.indexOf(kind);
