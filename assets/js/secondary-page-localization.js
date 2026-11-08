@@ -177,7 +177,7 @@ function apply(){
  /* The MCP troubleshooting panel may render collapsed details after its own
     locale pass. Keep the error-429 text synchronized with the same 38-language
     static catalog as the rest of the page (never translate API literals). */
- if(/\\/mcp-integrations\\.html$/.test(location.pathname)){
+ if(/\/mcp-integrations\.html$/.test(location.pathname)){
   var pgError6=document.querySelector('[data-mcp-tr="error6Body"]');
   var pgError6EN="Retry after a short delay and check the client's network, any proxy or firewall, and server status. Avoid repeating a paid or Send action until you have checked whether the previous request completed. Include the time, MCP client and error code in a support request—never include secrets.";
   var pgError6Catalog=window._pgSecondaryExact&&window._pgSecondaryExact[lang];
