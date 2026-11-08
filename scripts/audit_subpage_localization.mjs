@@ -63,9 +63,19 @@ for (const page of pages) {
   const attrs = [...clean.matchAll(/\b(?:aria-label|title|placeholder|alt)\s*=\s*(?:"([^"]*)"|'([^']*)')/gi)]
     .map(match=>compact(decode(match[1]??match[2])))
     .filter(s=>s.length>0&&/[A-Za-z]/.test(s));
-  const visible=[...new Set([...texts,...attrs])];
+  // Inline <code> tags split DOM text nodes. Audit them separately; simply
+  // stripping code tags would merge English fragments into a falsely passing key.
+  // The MCP troubleshooting section is owned by its dedicated locale catalogs.
+  const subscriptionBanner=page==='mcp-integrations.html' ?
+    html.match(/<section\\b[^>]*id="subscribe-connect-mcp"[\\s\\S]*?<\\/section>/i) : null;
+  const inlineFragments=subscriptionBanner ?
+    [...subscriptionBanner[0].replace(/<code\\b[^>]*>[\\s\\S]*?<\\/code>/gi,'<pgcode></pgcode>').matchAll(/>([^<>]+)</g)]
+      .map(match=>compact(decode(match[1])))
+      .filter(s=>s.length>3&&/[A-Za-z]/.test(s)) : [];
+  const visible=[...new Set([...texts,...attrs,...inlineFragments])];
   const drift = visible.filter(s=>!sourceSet.has(s));
   report.pages.push({page,localizationScriptsConnected:scriptsOK,
+    inlineFragmentsReviewed:inlineFragments.length,
     visibleSourceStrings:visible.length,notInEnglishCatalog:drift.length,
     possibleUncoveredText:drift.slice(0,15)});
 }
