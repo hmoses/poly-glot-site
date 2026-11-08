@@ -99,7 +99,7 @@ var pgFinalReviewedCorrections={
 var pgAppStoreNavCopy={"ES":"Ver en App Store","FR":"Voir sur l’App Store","DE":"Im App Store ansehen","IT":"Vedi su App Store","PT":"Ver na App Store","NL":"Bekijk in de App Store","RU":"Открыть в App Store","ZH":"前往 App Store","ZH_TW":"前往 App Store","JA":"App Storeで入手","KO":"App Store에서 보기","AR":"عرض في App Store","HI":"App Store पर देखें","BN":"App Store-এ দেখুন","TR":"App Store’da görüntüle","PL":"Zobacz w App Store","SV":"Visa i App Store","NO":"Se i App Store","DA":"Se i App Store","FI":"Näytä App Storessa","EL":"Προβολή στο App Store","HE":"הצגה ב-App Store","ID":"Lihat di App Store","MS":"Lihat di App Store","TH":"ดูใน App Store","VI":"Xem trên App Store","UK":"Переглянути в App Store","CS":"Zobrazit v App Store","RO":"Vezi în App Store","HU":"Megtekintés az App Store-ban","SK":"Zobraziť v App Store","HR":"Prikaži u App Storeu","CA":"Veure a l’App Store","AF":"Bekyk in die App Store","SW":"Tazama kwenye App Store","HA":"Duba a App Store","AM":"በApp Store ውስጥ ይመልከቱ"};
 function translate(term,lang){
  /* Terms disclaimer: reviewed Japanese legal copy; never translate "Disclaimer" as "解答". */
- if(/\\/terms\\.html$/.test(location.pathname)&&lang==="JA"){
+ if(/\/terms\.html$/.test(location.pathname)&&lang==="JA"){
   if(term==="Disclaimer")return "免責事項";
   if(term==="The App is provided as-is without warranty of any kind. AI-generated responses are produced by third-party services and may contain errors. Poly-Glot is not responsible for AI output. Templates are provided for informational purposes only and do not constitute professional advice (legal, medical, financial, or otherwise).")return "本アプリは現状有姿で提供され、いかなる種類の保証もありません。AIが生成する回答は第三者のサービスによって提供され、誤りを含む場合があります。Poly-GlotはAIの出力内容について責任を負いません。テンプレートは情報提供のみを目的としており、法律、医療、金融その他の専門的な助言を構成するものではありません。";
  }
@@ -126,7 +126,11 @@ function translate(term,lang){
  if(lang==="EN")return term;
  var extra=(window._pgSecondaryExact&&window._pgSecondaryExact[lang]);
  if(lang==="VI"&&(!extra||!Object.prototype.hasOwnProperty.call(extra,term)))extra=exactVI;
- /* Prefer the complete current static catalog for legal copy, without relying on\n    legacy homepage translations that might still contain English. */\n if(/\\/(?:privacy|terms)\\.html$/.test(location.pathname)&&extra&&Object.prototype.hasOwnProperty.call(extra,term)&&pgSafeCatalogValue(term,extra[term]))return extra[term];\n /* Legal headings and shared navigation labels have curated homepage translations. */
+ /* Prioritize the static legal catalog over outdated homepage copy. */
+ if ((location.pathname.endsWith('/privacy.html')||location.pathname.endsWith('/terms.html'))
+   &&extra&&Object.prototype.hasOwnProperty.call(extra,term)
+   &&pgSafeCatalogValue(term,extra[term]))return extra[term];
+ /* Legal headings and shared navigation labels have curated homepage translations. */
  var known=explicit[term];
  if(known){var curated=i.dictionary[lang]&&i.dictionary[lang][known];if(typeof curated==="string"&&curated&&!/[<>]/.test(curated))return curated;}
  var key=lookup.get(term);
