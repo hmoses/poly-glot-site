@@ -126,7 +126,7 @@ function translate(term,lang){
  if(lang==="EN")return term;
  var extra=(window._pgSecondaryExact&&window._pgSecondaryExact[lang]);
  if(lang==="VI"&&(!extra||!Object.prototype.hasOwnProperty.call(extra,term)))extra=exactVI;
- /* Legal headings and shared navigation labels have curated homepage translations. */
+ /* Prefer the complete current static catalog for legal copy, without relying on\n    legacy homepage translations that might still contain English. */\n if(/\\/(?:privacy|terms)\\.html$/.test(location.pathname)&&extra&&Object.prototype.hasOwnProperty.call(extra,term)&&pgSafeCatalogValue(term,extra[term]))return extra[term];\n /* Legal headings and shared navigation labels have curated homepage translations. */
  var known=explicit[term];
  if(known){var curated=i.dictionary[lang]&&i.dictionary[lang][known];if(typeof curated==="string"&&curated&&!/[<>]/.test(curated))return curated;}
  var key=lookup.get(term);
@@ -213,5 +213,5 @@ if(typeof MutationObserver!=="undefined"&&document.documentElement){
 window.addEventListener("DOMContentLoaded",function(){apply();});
 
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",apply,{once:true});else apply();
-window._pgSecondaryLocalization={apply:apply,translatedNodes:function(){return allNodes.length;},coverage:function(){var lang=i.curLang(),translated=0;allNodes.forEach(function(n){var o=allOrigins.get(n);if(o&&translate(o.term,lang))translated++;});return {lang:lang,total:allNodes.length,translated:translated,missing:allNodes.length-translated};}};
+window._pgSecondaryLocalization={apply:apply,ownsNode:function(n){return !!n&&allOrigins.has(n);},translatedNodes:function(){return allNodes.length;},coverage:function(){var lang=i.curLang(),translated=0;allNodes.forEach(function(n){var o=allOrigins.get(n);if(o&&translate(o.term,lang))translated++;});return {lang:lang,total:allNodes.length,translated:translated,missing:allNodes.length-translated};}};
 })();
