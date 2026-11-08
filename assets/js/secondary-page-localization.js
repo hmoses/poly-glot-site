@@ -92,7 +92,7 @@ var pgFinalReviewedCorrections={
  VI:{"3-Day Free Trial":"Dùng thử miễn phí 3 ngày"},
  ZH_TW:{"3-Day Free Trial":"免費試用 3 天"},
  AR:{"3-Day Free Trial":"تجربة مجانية لمدة 3 أيام"},
- HA:{"3-Day Free Trial":"Gwajin kyauta na kwanaki 3","Does Poly-Glot automatically send to every provider?":"Shin Poly-Glot yana aikawa ta atomatik zuwa ga kowane mai samar da AI?"},
+ HA:{"3-Day Free Trial":"Gwajin kyauta na kwanaki 3","Does Poly-Glot automatically send to every provider?":"Shin Poly-Glot yana aikawa ta atomatik zuwa ga kowane mai samar da AI?","Is my data private?":"Shin bayanaina suna da sirri?"},
  AM:{"3-Day Free Trial":"የ3 ቀን ነፃ ሙከራ","Does Poly-Glot automatically send to every provider?":"Poly-Glot ወደ ሁሉም የAI አቅራቢዎች በራስ-ሰር ይልካል?"}
 };
 /* The App Store brand stays intact; translate its navigation action text. */
