@@ -349,7 +349,7 @@
   "Use the same production Poly-Glot MCP server across compatible clients, with 1,000+ prompt templates, 15 tools, 38 languages, and Compare Mode.": "একই উৎপাদন Poly-Glot MCP সার্ভার ব্যবহার করুন সমর্থিত গ্রাহকগুলির মধ্যে, 1,000+ ফ্রম্ট মডেল, 15 টুল, 38 ভাষা এবং तुलना মডেল সঙ্গে।",
   "VS Code supports Streamable HTTP MCP servers. Start the server from the MCP view and enable its tools in Agent mode.": "VS কোড Streamable HTTP MCP সার্ভারগুলি সমর্থন করে. MCP ভিউ থেকে সার্ভারটি শুরু করুন এবং এজেন্ট মডিটে তার সরঞ্জামগুলি সক্রিয় করুন.",
   "Validate a developer-supplied custom model endpoint securely": "উন্নয়নকারী দ্বারা সরবরাহিত একটি নির্দিষ্ট মডেল endpoint নিরাপদভাবে সত্যিই",
-  "Verified + Featured": "+ সত্যি সত্যি সত্যি সত্যি সত্যি সত্যি",
+  "Verified + Featured": "যাচাইকৃত + বিশেষভাবে প্রদর্শিত",
   "Verify Ownership": "মালিকানির সাক্ষাৎ",
   "Verify the connection": "সংযোগ দেখুন",
   "Visual Studio Code / GitHub Copilot Agent Mode": "Visual Studio Code / GitHub Copilot Agent মডেজ",
