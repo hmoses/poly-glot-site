@@ -19,7 +19,10 @@ function translatable(el){
 }
 function collect(){
  root=document.getElementById("mcp-troubleshooting");
- if(!root||items.length)return;
+ if(!root)return;
+ var currentCount=root.querySelectorAll('[data-mcp-tr]').length;
+ if(items.length===currentCount&&items.every(function(item){return item.el.isConnected&&item.nodes.every(function(node){return node.isConnected;});}))return;
+ items=[]; // Re-scan if a client guide or late-rendered FAQ replaced text nodes.
  root.querySelectorAll("[data-mcp-tr]").forEach(function(el){
   var nodes=translatable(el);
   nodes.forEach(function(n){original.set(n,n.nodeValue);});
@@ -59,7 +62,7 @@ function setLanguage(code,dict){
 }
 function load(code){
  if(cache.has(code))return cache.get(code);
- var file="assets/locales/mcp-troubleshooting/"+code.toLowerCase()+".json?v=20261010-2";
+ var file="assets/locales/mcp-troubleshooting/"+code.toLowerCase()+".json?v=20261108-trouble-late-qa";
  var p=fetch(file,{cache:"no-store"}).then(function(resp){
   if(!resp.ok)throw Error("Missing "+code+" locale: HTTP "+resp.status);
   return resp.json();
@@ -82,7 +85,7 @@ function copy(){
  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(value).then(function(){done(true);},function(){done(false);});return;}
  var field=document.createElement("textarea");field.value=value;field.style.position="fixed";field.style.left="-10000px";document.body.appendChild(field);field.select();var success=false;try{success=document.execCommand("copy");}catch(_e){}field.remove();done(success);
 }
-function start(){collect();var btn=document.getElementById("pgMcpTroubleCopy");if(btn&&!btn.__pgBound){btn.addEventListener("click",copy);btn.__pgBound=true;}apply();}
+function start(){collect();var btn=document.getElementById("pgMcpTroubleCopy");if(btn&&!btn.__pgBound){btn.addEventListener("click",copy);btn.__pgBound=true;}apply();setTimeout(apply,300);setTimeout(apply,1200);if(root&&!root.__pgLocaleObserve){root.__pgLocaleObserve=true;root.addEventListener("toggle",function(){setTimeout(apply,0);},true);if(typeof MutationObserver!=="undefined"){new MutationObserver(function(changes){if(changes.some(function(m){return m.addedNodes&&m.addedNodes.length;}))setTimeout(apply,0);}).observe(root,{childList:true,subtree:true});}}}
 window.addEventListener("pg:languagechange",function(){setTimeout(apply,0);setTimeout(apply,180);});
 window.addEventListener("pageshow",apply);
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});else start();
