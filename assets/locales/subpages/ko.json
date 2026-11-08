@@ -651,5 +651,11 @@
   "with an active Pro subscription": "활성 Pro 구독이 있는 경우",
   "With consent in iOS or macOS Settings, Poly-Glot sends limited usage events to PostHog, not prompt text or AI responses. You can disable it in Settings. MCP operational metadata and website Google Analytics/TikTok pixel processing are separate. See the": "iOS 또는 macOS 설정의 동의를 통해 Poly-Glot은 프롬프트 텍스트나 AI 응답이 아닌 제한된 사용 이벤트를 PostHog에 보냅니다. 설정에서 비활성화할 수 있습니다. MCP 운영 메타데이터와 웹사이트 Google Analytics/TikTok 픽셀 처리는 별개입니다. 참조",
   "Wrong language, translation, transcription or audio error": "잘못된 언어, 번역, 전사 또는 오디오 오류",
-  "Yes. Eligible customers can begin a 3-day trial by authorizing an Apple subscription. Unless canceled, Apple bills and renews the chosen plan at the displayed price. Existing app-managed trials do not start billing without separate authorization.": "그렇습니다. 자격을 갖춘 고객은 Apple 구독을 승인하여 3일 평가판을 시작할 수 있습니다. 취소하지 않는 한, Apple은 표시된 가격으로 선택한 요금제를 청구하고 갱신합니다. 기존 앱 관리 체험판은 별도 승인 없이는 청구가 시작되지 않습니다."
+  "Yes. Eligible customers can begin a 3-day trial by authorizing an Apple subscription. Unless canceled, Apple bills and renews the chosen plan at the displayed price. Existing app-managed trials do not start billing without separate authorization.": "그렇습니다. 자격을 갖춘 고객은 Apple 구독을 승인하여 3일 평가판을 시작할 수 있습니다. 취소하지 않는 한, Apple은 표시된 가격으로 선택한 요금제를 청구하고 갱신합니다. 기존 앱 관리 체험판은 별도 승인 없이는 청구가 시작되지 않습니다.",
+  "or the connection guide on this page. Add the production HTTPS endpoint ending in": "또는 이 페이지의 연결 가이드를 참조하세요. 다음으로 끝나는 프로덕션 HTTPS 엔드포인트를 추가하세요.",
+  "and complete the client's authorization prompts. Never enter your Apple ID password or purchase receipt into an MCP client.": "클라이언트의 인증 프롬프트를 완료합니다. Apple ID 비밀번호나 구매 영수증을 MCP 클라이언트에 입력하지 마십시오.",
+  "to confirm tool discovery, then": "도구 검색을 확인한 다음",
+  "to check what your authenticated account can access. Test a Pro-only action only after the server reports the appropriate entitlement.": "인증된 계정이 무엇에 액세스할 수 있는지 확인하세요. 서버가 적절한 자격을 보고한 후에만 Pro 전용 작업을 테스트하십시오.",
+  "Check the Apple subscription in Settings, restore the purchase in Poly-Glot where supported, reconnect the MCP client, and retry": "설정에서 Apple 구독을 확인하고, 지원되는 경우 Poly-Glot에서 구매를 복원하고, MCP 클라이언트를 다시 연결한 후 다시 시도하세요.",
+  ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": ". 앱에 계정 연결 옵션이 표시되지 않는 경우 두 번째 구독을 구매하는 대신 지원팀에 문의하세요."
 }
