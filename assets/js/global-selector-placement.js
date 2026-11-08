@@ -104,7 +104,7 @@ function pgApplySecondaryLocale(lang){
  if(window._pgSecondaryLocalization&&typeof window._pgSecondaryLocalization.apply==="function")window._pgSecondaryLocalization.apply();
  pgApplyCatalogFallback(lang,pgCurrentCatalogs[lang]||null);
 }
-var pgEnglishSourceReady=fetch(new URL("assets/locales/subpages/en.json",location.href),{cache:"force-cache"})
+var pgEnglishSourceReady=fetch(new URL("assets/locales/subpages/en.json?v=20261108-source646",location.href),{cache:"no-cache"})
  .then(function(r){if(!r.ok)throw Error("English catalog unavailable");return r.json();})
  .then(function(source){
    if(!Array.isArray(source))throw Error("Invalid English source catalog");
