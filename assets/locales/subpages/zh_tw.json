@@ -651,5 +651,11 @@
   "With consent in iOS or macOS Settings, Poly-Glot sends limited usage events to PostHog, not prompt text or AI responses. You can disable it in Settings. MCP operational metadata and website Google Analytics/TikTok pixel processing are separate. See the": "經 iOS 或 macOS 設定同意後，Poly-Glot 會向 PostHog 發送有限的使用事件，而不是提示文字或 AI 回應。您可以在“設定”中停用它。 MCP 操作元資料和網站 Google Analytics/TikTok 像素處理是分開的。請參閱",
   "Wrong language, translation, transcription or audio error": "語言、翻譯、轉錄或音訊錯誤",
   "Yes. Eligible customers can begin a 3-day trial by authorizing an Apple subscription. Unless canceled, Apple bills and renews the chosen plan at the displayed price. Existing app-managed trials do not start billing without separate authorization.": "是的。符合資格的客戶可以透過授權 Apple 訂閱開始 3 天的試用。除非取消，否則 Apple 會按照顯示的價格對所選方案進行計費和續訂。未經單獨授權，現有的應用程式管理試用不會開始計費。",
-  "You can browse free MCP tools from a compatible client. Starting the trial and using restricted tools requires a verified Poly-Glot account, and Apple subscription purchase or restoration may require the native app. MCP client support and embedded GUI availability vary.": "您可以從相容的用戶端瀏覽免費的 MCP 工具。開始試用和使用受限工具需要經過驗證的 Poly-Glot 帳戶，並且 Apple 訂閱購買或恢復可能需要本機應用程式。 MCP 用戶端支援和嵌入式 GUI 可用性各不相同。"
+  "You can browse free MCP tools from a compatible client. Starting the trial and using restricted tools requires a verified Poly-Glot account, and Apple subscription purchase or restoration may require the native app. MCP client support and embedded GUI availability vary.": "您可以從相容的用戶端瀏覽免費的 MCP 工具。開始試用和使用受限工具需要經過驗證的 Poly-Glot 帳戶，並且 Apple 訂閱購買或恢復可能需要本機應用程式。 MCP 用戶端支援和嵌入式 GUI 可用性各不相同。",
+  "or the connection guide on this page. Add the production HTTPS endpoint ending in": "或本頁的連結指南。添加以以下结尾的生产 HTTPS 端点",
+  "and complete the client's authorization prompts. Never enter your Apple ID password or purchase receipt into an MCP client.": "并完成客户端的授权提示。切勿在 MCP 用戶端中輸入您的 Apple ID 密碼或購買收據。",
+  "to confirm tool discovery, then": "确认工具发现，然后",
+  "to check what your authenticated account can access. Test a Pro-only action only after the server reports the appropriate entitlement.": "检查您的经过身份验证的帐户可以访问哪些内容。僅在伺服器報告適當的權利後才測試 Pro-only 操作。",
+  "Check the Apple subscription in Settings, restore the purchase in Poly-Glot where supported, reconnect the MCP client, and retry": "在“设置”中检查 Apple 订阅，在支持的 Poly-Glot 中恢复购买，重新连接 MCP 客户端，然后重试",
+  ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": "。如果應用程式沒有可見的帳戶連結選項，請聯絡支援人員，而不是購買第二個訂閱。"
 }
