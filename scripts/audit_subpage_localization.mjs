@@ -7,7 +7,7 @@
  *
  * The default report is informational because the site also uses curated
  * runtime dictionaries for legal/MCP text. --strict fails if there is
- * missing catalog data, obviously malformed machine output, or source drift.
+ * missing catalog data, mangled product names, repeated machine output, or source drift.
  * This does NOT replace in-browser, native-speaker, or legal-text review.
  */
 import { readFileSync, existsSync } from 'node:fs';
@@ -34,6 +34,20 @@ const decode = s => s.replace(/&amp;/g,'&').replace(/&quot;/g,'"')
   .replace(/&#(?:39|x27);/gi,"'").replace(/&nbsp;/g,' ')
   .replace(/&gt;/g,'>').replace(/&lt;/g,'<');
 const sourceSet = new Set(source);
+const brands = ['Poly-Glot','ChatGPT','Claude','Gemini','Grok','Perplexity','Mistral','HuggingChat','DuckDuckGo','Apple','iOS','macOS','MCP','JSON'];
+function hasRepetition(key,value) {
+  // Language names are presented as native autonyms.
+  if (key.startsWith('English ·')) return false;
+  const words = value.toLowerCase().match(/[\p{L}]{2,}/gu) || [];
+  const counts = new Map(); let run = 1, longest = 1;
+  for (let i=0;i<words.length;i++) {
+    counts.set(words[i],(counts.get(words[i])||0)+1);
+    run=i>0&&words[i]===words[i-1]?run+1:1;
+    longest=Math.max(longest,run);
+  }
+  const frequency=Math.max(0,...counts.values());
+  return longest>=6||(words.length>=20&&frequency/words.length>.48&&frequency>=9);
+}
 const report = { date: new Date().toISOString(), pages: [], languages: [], totals: {} };
 
 for (const page of pages) {
@@ -46,9 +60,13 @@ for (const page of pages) {
   const texts = [...clean.matchAll(/>([^<>]+)</g)]
     .map(match=>compact(decode(match[1])))
     .filter(s=>s.length>3 && /[A-Za-z]/.test(s) && !/^https?:/i.test(s));
-  const drift = [...new Set(texts)].filter(s=>!sourceSet.has(s));
+  const attrs = [...clean.matchAll(/\b(?:aria-label|title|placeholder|alt)\s*=\s*(?:"([^"]*)"|'([^']*)')/gi)]
+    .map(match=>compact(decode(match[1]??match[2])))
+    .filter(s=>s.length>0&&/[A-Za-z]/.test(s));
+  const visible=[...new Set([...texts,...attrs])];
+  const drift = visible.filter(s=>!sourceSet.has(s));
   report.pages.push({page,localizationScriptsConnected:scriptsOK,
-    visibleSourceStrings:new Set(texts).size,notInEnglishCatalog:drift.length,
+    visibleSourceStrings:visible.length,notInEnglishCatalog:drift.length,
     possibleUncoveredText:drift.slice(0,15)});
 }
 
@@ -60,9 +78,15 @@ for (const lang of languages) {
   const missing = source.filter(s=>typeof dict[s]!=='string' || !compact(dict[s]));
   const unchanged = source.filter(s=>dict[s]===s);
   const outliers = source.filter(s=>typeof dict[s]==='string' && dict[s].length > Math.max(120,s.length*5));
+  const repeating = source.filter(s=>typeof dict[s]==='string' && hasRepetition(s,dict[s]));
+  const missingBrands = source.filter(s=>typeof dict[s]==='string' && brands.some(b=>s.includes(b)&&!dict[s].includes(b)));
+  const placeholders = source.filter(s=>typeof dict[s]==='string' && /(?:⟦BG\d+|BG\d+⟧)/.test(dict[s]));
   report.languages.push({lang,sourceKeys:source.length,catalogKeys:Object.keys(dict).length,
     missingCount:missing.length,missing:missing.slice(0,15),
     unchangedCount:unchanged.length,possibleCorruptionCount:outliers.length,
+    repetitionCount:repeating.length,repeatExamples:repeating.slice(0,5),
+    missingBrandCount:missingBrands.length,missingBrandExamples:missingBrands.slice(0,5),
+    placeholderCount:placeholders.length,placeholderExamples:placeholders.slice(0,5),
     possibleCorruption:outliers.slice(0,15).map(s=>({source:s,translationLength:dict[s].length}))});
 }
 
@@ -71,9 +95,12 @@ report.totals = {pages:pages.length,languageVariants:languages.length+1,
   pagesWithoutWiring:report.pages.filter(p=>!p.localizationScriptsConnected).length,
   pageSourceDrift:report.pages.reduce((n,p)=>n+(p.notInEnglishCatalog||0),0),
   missingLocaleEntries:report.languages.reduce((n,l)=>n+(l.missingCount||0),0),
-  suspectedCorruptLocaleEntries:report.languages.reduce((n,l)=>n+(l.possibleCorruptionCount||0),0)};
+  suspectedCorruptLocaleEntries:report.languages.reduce((n,l)=>n+(l.possibleCorruptionCount||0),0),
+  repetitionEntries:report.languages.reduce((n,l)=>n+(l.repetitionCount||0),0),
+  lostProductNames:report.languages.reduce((n,l)=>n+(l.missingBrandCount||0),0),
+  unrenderedPlaceholders:report.languages.reduce((n,l)=>n+(l.placeholderCount||0),0)};
 console.log(JSON.stringify(report,null,2));
 if (process.argv.includes('--strict') && (
   report.pages.some(p=>!p.localizationScriptsConnected||p.notInEnglishCatalog>0) ||
-  report.languages.some(l=>l.error||l.missingCount>0||l.possibleCorruptionCount>0)
+  report.languages.some(l=>l.error||l.missingCount>0||l.possibleCorruptionCount>0||l.repetitionCount>0||l.missingBrandCount>0||l.placeholderCount>0)
 )) process.exitCode=1;
