@@ -105,7 +105,7 @@ function pgApplySecondaryLocale(lang){
  if(window._pgSecondaryLocalization&&typeof window._pgSecondaryLocalization.apply==="function")window._pgSecondaryLocalization.apply();
  pgApplyCatalogFallback(lang,pgCurrentCatalogs[lang]||null);
 }
-var pgEnglishSourceReady=fetch(new URL("assets/locales/subpages/en.json?v=20261108-source646",location.href),{cache:"no-cache"})
+var pgEnglishSourceReady=fetch(new URL("assets/locales/subpages/en.json?v=20261108-source652",location.href),{cache:"no-cache"})
  .then(function(r){if(!r.ok)throw Error("English catalog unavailable");return r.json();})
  .then(function(source){
    if(!Array.isArray(source))throw Error("Invalid English source catalog");
@@ -121,7 +121,7 @@ function pgLoadSecondaryLocale(){
  if(lang==="EN"){pgApplySecondaryLocale("EN");return;}
  window._pgSecondaryExact=window._pgSecondaryExact||{};
  if(pgLocaleRequests[lang]){pgLocaleRequests[lang].then(function(){pgApplySecondaryLocale(lang);});return;}
- var url=new URL("assets/locales/subpages/"+lang.toLowerCase()+".json",location.href);
+ var url=new URL("assets/locales/subpages/"+lang.toLowerCase()+".json?v=20261108-source652",location.href);
  pgLocaleRequests[lang]=fetch(url.toString(),{cache:"no-cache"}).then(function(response){
    if(!response.ok)throw Error("Missing static translations: "+response.status);
    return response.json();
