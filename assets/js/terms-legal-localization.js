@@ -5,10 +5,11 @@
 (function(){
 "use strict";
 var source={
+  trialIntro:"Eligible new customers may receive a 3-day introductory Pro trial after explicitly authorizing an Apple subscription in the native app. Unless canceled, the selected subscription renews at the displayed price when the trial ends. During the eligible trial you get full access to:",
   renewal:"There is no recurring free Send or free-template allowance after the trial. Apple manages billing and renewal; cancel in your Apple subscription settings to prevent future renewals. Legacy app-managed trials require separate Apple subscription authorization before any charges.",
   disclaimer:"The App is provided as-is without warranty of any kind. AI-generated responses are produced by third-party services and may contain errors. Poly-Glot is not responsible for AI output. Templates are provided for informational purposes only and do not constitute professional advice (legal, medical, financial, or otherwise)."
 };
-var ids={renewal:"pgTermsRenewalCopy",disclaimer:"pgTermsDisclaimerCopy"};
+var ids={trialIntro:"pgTermsTrialIntro",renewal:"pgTermsRenewalCopy",disclaimer:"pgTermsDisclaimerCopy"};
 var pending={},sequence=0;
 function lang(){
  var code=window._pgI18n&&window._pgI18n.curLang&&window._pgI18n.curLang();
