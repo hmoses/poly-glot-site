@@ -76,7 +76,7 @@ function pgApplyCatalogFallback(lang,dict){
  while((node=nodes.nextNode())){
   var parent=node.parentElement;if(!parent||parent.closest(noTranslate)||window._pgSecondaryLocalization?.ownsNode?.(node))continue;
   var old=pgDirectOriginal.get(node),english=old?old.key:pgTrim(node.nodeValue);
-  if(!english||!/[A-Za-z]/.test(english)||/^https?:/i.test(english))continue;
+  if(!english||!/[A-Za-z]/.test(english)||/^https?:/i.test(english)||english.startsWith("English · Español · Français · Deutsch · Italiano ·"))continue;
   if(!old&&!(dict&&Object.prototype.hasOwnProperty.call(dict,english)))continue;
   if(!old){old={raw:node.nodeValue,key:english};pgDirectOriginal.set(node,old);pgDirectNodes.add(node);}
   var value=lang!=="EN"&&dict&&dict[old.key];
@@ -93,6 +93,7 @@ function pgApplyCatalogFallback(lang,dict){
   if(!n.isConnected){pgDirectNodes.delete(n);return;}
   var info=pgDirectOriginal.get(n),parent=n.parentElement;
   if(!info||!parent||parent.closest(noTranslate)||window._pgSecondaryLocalization?.ownsNode?.(n))return;
+  if(info.key.startsWith("English · Español · Français · Deutsch · Italiano ·")){if(n.nodeValue!==info.raw)n.nodeValue=info.raw;return;}
   var translated=lang!=="EN"&&dict&&dict[info.key];
   var match=info.raw.match(/^(\s*)([\s\S]*?)(\s*)$/);
   var next=pgSafeCatalogValue(info.key,translated)?(match?match[1]:"")+translated+(match?match[3]:""):info.raw;
