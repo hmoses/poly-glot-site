@@ -47,6 +47,15 @@ function setLanguage(code,dict){
    if(node.nodeValue!==value)node.nodeValue=value;
   });
  });
+ // Guard against late-rendered troubleshooting text-node changes.
+ // The 429/network-error paragraph has no inline code or links, so applying
+ // its single catalog string directly is safe and preserves complete meaning.
+ var error6=root.querySelector('[data-mcp-tr="error6Body"]');
+ var error6Strings=dict&&dict.error6Body;
+ if(error6&&code!=="EN"&&Array.isArray(error6Strings)&&error6Strings.every(function(x){return typeof x==="string"&&!!x.trim();})&&!error6.querySelector("code,pre,a,button,input")){
+   var error6Copy=error6Strings.join(" ");
+   if(error6.textContent.trim()!==error6Copy)error6.textContent=error6Copy;
+ }
  root.setAttribute("dir",code==="AR"||code==="HE"?"rtl":"ltr");
  root.setAttribute("data-mcp-translation",code==="EN"?"english":completed===items.length?"complete":"partial");
  root.setAttribute("data-mcp-translation-count",String(completed));
