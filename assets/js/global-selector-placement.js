@@ -67,6 +67,8 @@ document.addEventListener("click",function(ev){
  * Never changes URLs, MCP configuration, code blocks or interactive inputs. */
 var pgDirectOriginal=new WeakMap(),pgDirectNodes=new Set(),pgCurrentCatalogs={};
 function pgTrim(v){return String(v||"").replace(/\s+/g," ").trim();}
+/* Reject implausibly long generated translations; preserve readable source copy instead of broken repetition. */
+function pgSafeCatalogValue(source,value){return typeof value==="string"&&!!pgTrim(value)&&value.length<=Math.max(120,pgTrim(source).length*5);}
 function pgApplyCatalogFallback(lang,dict){
  if(!document.body)return;
  var noTranslate="script,style,noscript,pre,code,textarea,svg,.code-block,.hljs,.language-json,#pgGlobalLangDD,#pgGlobalLangPicker,#pgChat,[data-no-translate],[data-i18n],[data-i18n-html],[data-pg-tech],[data-pg-funnel],[contenteditable]";
@@ -78,7 +80,7 @@ function pgApplyCatalogFallback(lang,dict){
   if(!old&&!(dict&&Object.prototype.hasOwnProperty.call(dict,english)))continue;
   if(!old){old={raw:node.nodeValue,key:english};pgDirectOriginal.set(node,old);pgDirectNodes.add(node);}
   var value=lang!=="EN"&&dict&&dict[old.key];
-  if(typeof value!=="string"||!pgTrim(value))value=null;
+  if(!pgSafeCatalogValue(english,value))value=null;
   var target=old.raw;
   if(value){
     var space=old.raw.match(/^(\s*)([\s\S]*?)(\s*)$/);
@@ -93,7 +95,7 @@ function pgApplyCatalogFallback(lang,dict){
   if(!info||!parent||parent.closest(noTranslate))return;
   var translated=lang!=="EN"&&dict&&dict[info.key];
   var match=info.raw.match(/^(\s*)([\s\S]*?)(\s*)$/);
-  var next=typeof translated==="string"&&pgTrim(translated)?(match?match[1]:"")+translated+(match?match[3]:""):info.raw;
+  var next=pgSafeCatalogValue(info.key,translated)?(match?match[1]:"")+translated+(match?match[3]:""):info.raw;
   if(n.nodeValue!==next)n.nodeValue=next;
  });
 }
