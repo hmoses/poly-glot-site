@@ -44,7 +44,7 @@ function render(code,strings){
 function load(code){
  if(cache[code])return Promise.resolve(cache[code]);
  if(pending[code])return pending[code];
- pending[code]=fetch("assets/locales/mcp-technical/"+code.toLowerCase()+".json?v=20261010-tech-v3",{cache:"no-store"}).then(function(resp){
+ pending[code]=fetch("assets/locales/mcp-technical/"+code.toLowerCase()+".json?v=20261108-tech-rtl-qa1",{cache:"no-store"}).then(function(resp){
   if(!resp.ok)throw Error("Missing technical locale "+code+" "+resp.status);
   return resp.json();
  }).then(function(data){
