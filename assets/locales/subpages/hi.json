@@ -656,6 +656,6 @@
   "and complete the client's authorization prompts. Never enter your Apple ID password or purchase receipt into an MCP client.": "और ग्राहक के प्राधिकरण संकेतों को पूरा करें। MCP क्लाइंट में कभी भी अपना Apple ID पासवर्ड या खरीदारी रसीद दर्ज न करें।",
   "to confirm tool discovery, then": "फिर टूल खोज की पुष्टि करने के लिए",
   "to check what your authenticated account can access. Test a Pro-only action only after the server reports the appropriate entitlement.": "यह जांचने के लिए कि आपका प्रमाणित खाता क्या एक्सेस कर सकता है। सर्वर द्वारा उचित पात्रता की रिपोर्ट करने के बाद ही प्रो-ओनली कार्रवाई का परीक्षण करें।",
-  "Check the Apple subscription in Settings, restore the purchase in Poly-Glot where supported, reconnect the MCP client, and retry": "सेटिंग्स में ऐप्पल सदस्यता की जांच करें, पॉली-ग्लॉट में खरीदारी को पुनर्स्थापित करें जहां समर्थित है, एमसीपी क्लाइंट को दोबारा कनेक्ट करें और पुनः प्रयास करें",
+  "Check the Apple subscription in Settings, restore the purchase in Poly-Glot where supported, reconnect the MCP client, and retry": "सेटिंग्स में Apple सदस्यता की जांच करें, Poly-Glot में खरीदारी को पुनर्स्थापित करें जहां समर्थित है, MCP क्लाइंट को दोबारा कनेक्ट करें और पुनः प्रयास करें",
   ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": ". यदि ऐप में खाता-लिंकिंग का कोई विकल्प नहीं है, तो दूसरी सदस्यता खरीदने के बजाय समर्थन से संपर्क करें।"
 }
