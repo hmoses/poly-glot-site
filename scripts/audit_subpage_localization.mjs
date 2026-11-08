@@ -67,9 +67,9 @@ for (const page of pages) {
   // stripping code tags would merge English fragments into a falsely passing key.
   // The MCP troubleshooting section is owned by its dedicated locale catalogs.
   const subscriptionBanner=page==='mcp-integrations.html' ?
-    html.match(/<section\\b[^>]*id="subscribe-connect-mcp"[\\s\\S]*?<\\/section>/i) : null;
+    html.match(/<section\b[^>]*id="subscribe-connect-mcp"[\s\S]*?<\/section>/i) : null;
   const inlineFragments=subscriptionBanner ?
-    [...subscriptionBanner[0].replace(/<code\\b[^>]*>[\\s\\S]*?<\\/code>/gi,'<pgcode></pgcode>').matchAll(/>([^<>]+)</g)]
+    [...subscriptionBanner[0].replace(/<code\b[^>]*>[\s\S]*?<\/code>/gi,'<pgcode></pgcode>').matchAll(/>([^<>]+)</g)]
       .map(match=>compact(decode(match[1])))
       .filter(s=>s.length>3&&/[A-Za-z]/.test(s)) : [];
   const visible=[...new Set([...texts,...attrs,...inlineFragments])];
