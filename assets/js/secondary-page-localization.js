@@ -9,6 +9,8 @@ var exactVI={"Production MCP endpoint":"Điểm cuối MCP chính thức","Copy"
 function norm(x){return String(x||"").replace(/\s+/g," ").trim();}
 /* Do not display obviously corrupted machine-translated catalog entries. */
 function pgSafeCatalogValue(source,value){return typeof value==="string"&&!!norm(value)&&value.length<=Math.max(120,norm(source).length*5);}
+/* Localize the short imperative preceding a literal MCP tool name. */
+var pgRunActionLocales={"ES":"Ejecute","FR":"Exécutez","DE":"Führen Sie aus","IT":"Esegui","PT":"Execute","NL":"Voer uit","RU":"Запустите","ZH":"运行","ZH_TW":"執行","JA":"実行","KO":"실행","AR":"شغّل","HI":"चलाएँ","BN":"চালান","TR":"Çalıştırın","PL":"Uruchom","SV":"Kör","NO":"Kjør","DA":"Kør","FI":"Suorita","EL":"Εκτελέστε","HE":"הפעל","ID":"Jalankan","MS":"Jalankan","TH":"เรียกใช้","VI":"Chạy","UK":"Виконайте","CS":"Spusťte","RO":"Rulați","HU":"Futtassa","SK":"Spustite","HR":"Pokrenite","CA":"Executa","AF":"Voer uit","SW":"Endesha","HA":"Gudanar","AM":"አስኪድ"};
 Object.keys(i.dictionary.EN).forEach(function(k){var v=i.dictionary.EN[k];if(typeof v==="string"&&v.length>2&&v.length<400&&!/[<>]/.test(v)&&!lookup.has(norm(v)))lookup.set(norm(v),k);});
 var explicit={"Support":"ftSupp","Privacy Policy":"ftPriv","Terms of Use":"ftTerms","Features":"ftFeat","Pricing":"ftPrice","Templates":"ftTpl","FAQ":"ftFAQ","MCP Setup":"ftConnect","Explore related topics":"ftProd","Frequently asked questions":"fqH","Poly-Glot knowledge center":"fqH","App Store":"navCTA"};
 function scan(){
@@ -33,7 +35,7 @@ function registerAll(){
   if(!eligible(n)||allOrigins.has(n))continue;
   var raw=n.nodeValue,term=norm(raw);
   if(!term||!/[A-Za-z]/.test(term)||/^https?:/i.test(term))continue;
-  if(window._pgEnglishSourceSet&&!window._pgEnglishSourceSet.has(term))continue;
+  if(window._pgEnglishSourceSet&&!window._pgEnglishSourceSet.has(term)&&term!=="Run")continue;
   allOrigins.set(n,{raw:raw,term:term});
   allNodes.push(n);
  }
@@ -98,6 +100,7 @@ var pgFinalReviewedCorrections={
 /* The App Store brand stays intact; translate its navigation action text. */
 var pgAppStoreNavCopy={"ES":"Ver en App Store","FR":"Voir sur l’App Store","DE":"Im App Store ansehen","IT":"Vedi su App Store","PT":"Ver na App Store","NL":"Bekijk in de App Store","RU":"Открыть в App Store","ZH":"前往 App Store","ZH_TW":"前往 App Store","JA":"App Storeで入手","KO":"App Store에서 보기","AR":"عرض في App Store","HI":"App Store पर देखें","BN":"App Store-এ দেখুন","TR":"App Store’da görüntüle","PL":"Zobacz w App Store","SV":"Visa i App Store","NO":"Se i App Store","DA":"Se i App Store","FI":"Näytä App Storessa","EL":"Προβολή στο App Store","HE":"הצגה ב-App Store","ID":"Lihat di App Store","MS":"Lihat di App Store","TH":"ดูใน App Store","VI":"Xem trên App Store","UK":"Переглянути в App Store","CS":"Zobrazit v App Store","RO":"Vezi în App Store","HU":"Megtekintés az App Store-ban","SK":"Zobraziť v App Store","HR":"Prikaži u App Storeu","CA":"Veure a l’App Store","AF":"Bekyk in die App Store","SW":"Tazama kwenye App Store","HA":"Duba a App Store","AM":"በApp Store ውስጥ ይመልከቱ"};
 function translate(term,lang){
+ if(term==="Run"&&lang!=="EN"&&pgRunActionLocales[lang])return pgRunActionLocales[lang];
  /* Terms disclaimer: reviewed Japanese legal copy; never translate "Disclaimer" as "解答". */
  if(/\/terms\.html$/.test(location.pathname)&&lang==="JA"){
   if(term==="Disclaimer")return "免責事項";
@@ -145,7 +148,7 @@ function apply(){
  if(document.body)document.body.setAttribute("dir",rtl?"rtl":"ltr");
  allNodes=allNodes.filter(function(n){
   var o=allOrigins.get(n),source=window._pgEnglishSourceSet;
-  if(!n.isConnected||(source&&o&&!source.has(o.term))){allOrigins.delete(n);return false;}
+  if(!n.isConnected||(source&&o&&!source.has(o.term)&&o.term!=="Run")){allOrigins.delete(n);return false;}
   return true;
  });
  allNodes.forEach(function(n){var o=allOrigins.get(n);if(!o)return;
