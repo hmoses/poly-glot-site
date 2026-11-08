@@ -74,7 +74,7 @@ function pgApplyCatalogFallback(lang,dict){
  var noTranslate="script,style,noscript,pre,code,textarea,svg,.code-block,.hljs,.language-json,#pgGlobalLangDD,#pgGlobalLangPicker,#pgChat,[data-no-translate],[data-i18n],[data-i18n-html],[data-pg-tech],[data-pg-funnel],[contenteditable]";
  var nodes=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),node;
  while((node=nodes.nextNode())){
-  var parent=node.parentElement;if(!parent||parent.closest(noTranslate))continue;
+  var parent=node.parentElement;if(!parent||parent.closest(noTranslate)||window._pgSecondaryLocalization?.ownsNode?.(node))continue;
   var old=pgDirectOriginal.get(node),english=old?old.key:pgTrim(node.nodeValue);
   if(!english||!/[A-Za-z]/.test(english)||/^https?:/i.test(english))continue;
   if(!old&&!(dict&&Object.prototype.hasOwnProperty.call(dict,english)))continue;
@@ -92,7 +92,7 @@ function pgApplyCatalogFallback(lang,dict){
  pgDirectNodes.forEach(function(n){
   if(!n.isConnected){pgDirectNodes.delete(n);return;}
   var info=pgDirectOriginal.get(n),parent=n.parentElement;
-  if(!info||!parent||parent.closest(noTranslate))return;
+  if(!info||!parent||parent.closest(noTranslate)||window._pgSecondaryLocalization?.ownsNode?.(n))return;
   var translated=lang!=="EN"&&dict&&dict[info.key];
   var match=info.raw.match(/^(\s*)([\s\S]*?)(\s*)$/);
   var next=pgSafeCatalogValue(info.key,translated)?(match?match[1]:"")+translated+(match?match[3]:""):info.raw;
