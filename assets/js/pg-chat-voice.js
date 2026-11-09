@@ -95,28 +95,51 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
       mic.setAttribute("aria-pressed","false");
     }
   }
+  // The LanceDB voice tour's English voice list and ranking, identically:
+  // all installed "en" voices, sorted by name, then first natural/preferred match.
+  function availableVoices() {
+    var wanted=CODE_LOCALE[currentLang].toLowerCase();
+    var list;
+    if (currentLang==="EN") {
+      list=voices.filter(function(v){return String(v.lang||"").toLowerCase().startsWith("en");});
+    } else {
+      var exact=voices.filter(function(v){return String(v.lang||"").toLowerCase().replace(/_/g,"-")===wanted;});
+      var same=voices.filter(function(v){return String(v.lang||"").toLowerCase().replace(/_/g,"-").split("-")[0]===wanted.split("-")[0];});
+      // Chinese speech requires the selected regional pronunciation/script.
+      list=exact.length?exact:((currentLang==="ZH"||currentLang==="ZH_TW")?[]:same);
+    }
+    return list.sort(function(a,b){return a.name.localeCompare(b.name);});
+  }
   function chooseVoice() {
     if (!synth) return null;
-    var wanted=CODE_LOCALE[currentLang];
-    var exact=voices.filter(function(v){return String(v.lang).toLowerCase().replace(/_/g,"-")===wanted.toLowerCase();});
-    var same=voices.filter(function(v){return String(v.lang).toLowerCase().replace(/_/g,"-").split("-")[0]===wanted.toLowerCase().split("-")[0];});
-    var pool=exact.length?exact:((currentLang==="ZH" || currentLang==="ZH_TW")?[]:same);
-    if(!pool.length)return null;
-    var preference=/samantha|natural|premium|enhanced|ava|aria|jenny|google us english|allison/i;
-    return pool.find(function(v){return preference.test(v.name);}) || pool.find(function(v){return v.default;}) || pool[0];
+    var pool=availableVoices();
+    if (!pool.length) return null;
+    if (currentLang==="EN") {
+      // Keep the preference, alphabetical ordering and US-English fallback
+      // exactly the same as lancedb-lab/assets/voice-tour.js.
+      return pool.find(function(v){return /(samantha|natural|premium|enhanced|ava|aria|jenny|google us english|allison)/i.test(v.name);}) ||
+        pool.find(function(v){return /en[-_]US/i.test(v.lang);}) || pool[0];
+    }
+    return pool.find(function(v){return /(natural|premium|enhanced)/i.test(v.name);}) ||
+      pool.find(function(v){return v.default;}) || pool[0];
   }
   function refreshVoicePicker() {
     if(!select)return;
+    var old=select.value;
     voices=synth ? synth.getVoices() : [];
-    var wanted=CODE_LOCALE[currentLang];
-    var matching=voices.filter(function(v){return String(v.lang).toLowerCase().replace(/_/g,"-").split("-")[0]===wanted.toLowerCase().split("-")[0];});
-    matching.sort(function(a,b){return a.name.localeCompare(b.name);});
+    var matching=availableVoices();
     select.replaceChildren();
     selectedVoice=chooseVoice();
     var saved="";
-    try{saved=localStorage.getItem("pgChatVoice:"+currentLang)||"";}catch(e){}
+    try{
+      saved=localStorage.getItem(currentLang==="EN"?"pg:sharedEnglishVoiceURI":"pgChatVoice:"+currentLang)||"";
+      if(currentLang==="EN"&&!saved)saved=localStorage.getItem("pgChatVoice:EN")||"";
+    }catch(e){}
     var remembered=matching.find(function(v){return v.voiceURI===saved;});
+    // Voice selector value should survive delayed voiceschanged notifications.
+    var previous=matching.find(function(v){return v.voiceURI===old;});
     if(remembered)selectedVoice=remembered;
+    else if(previous)selectedVoice=previous;
     if(!matching.length) {
       var missing=document.createElement("option");
       missing.textContent=localeName()+": voice unavailable";
@@ -135,7 +158,11 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
     enhanceMessages();
   }
   function chunks(text) {
-    var sentences=String(text).replace(/https?:\/\/\S+/g,"")
+    var raw=String(text).trim();
+    // LanceDB's Q&A uses a single utterance. Match its phrasing/cadence for
+    // typical replies instead of splitting each sentence into a new utterance.
+    if(currentLang==="EN" || raw.length<=1200)return raw?[raw]:[];
+    var sentences=raw.replace(/https?:\/\/\S+/g,"")
       .replace(/[\u{1F300}-\u{1FAFF}]/gu,"").replace(/\s+/g," ").trim()
       .split(/(?<=[.!?。！？।؟؛])\s*|(?<=\n)/u).filter(Boolean);
     var out=[], buffer="";
@@ -166,7 +193,7 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
       u.voice=selectedVoice;
       u.lang=selectedVoice.lang || CODE_LOCALE[currentLang];
       // Match the LanceDB voice tour's natural 0.96x delivery.
-      u.rate=0.96;u.pitch=1;u.volume=1;
+      u.rate=0.96;u.pitch=1.0;u.volume=1;
       u.onend=next;
       u.onerror=function(e){
         if(myToken===token && e.error!=="canceled" && e.error!=="interrupted"){
@@ -179,7 +206,12 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
   }
   function spokenText(message) {
     var el=message && message.querySelector(".pgChat-text");
-    return el ? (el.innerText || el.textContent).trim() : "";
+    if (!el) return "";
+    // The replay control is not part of the response to be narrated.
+    var copy=el.cloneNode(true);
+    var controls=copy.querySelectorAll(".pgVoice-replay");
+    for(var i=0;i<controls.length;i++)controls[i].remove();
+    return copy.textContent.trim();
   }
   function enhanceMessages(){
     if(!msgHost)return;
@@ -303,7 +335,12 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
     select=document.createElement("select");select.id="pgVoice-select";select.setAttribute("aria-label","Voice");
     select.addEventListener("change",function(){
       selectedVoice=voices.find(function(v){return v.voiceURI===select.value;})||null;
-      try{if(selectedVoice)localStorage.setItem("pgChatVoice:"+currentLang,selectedVoice.voiceURI);}catch(e){}
+      try{
+        if(selectedVoice){
+          localStorage.setItem("pgChatVoice:"+currentLang,selectedVoice.voiceURI);
+          if(currentLang==="EN")localStorage.setItem("pg:sharedEnglishVoiceURI",selectedVoice.voiceURI);
+        }
+      }catch(e){}
       stopAudio();enhanceMessages();
     });
     autoButton=document.createElement("button");autoButton.type="button";autoButton.id="pgVoice-auto";
