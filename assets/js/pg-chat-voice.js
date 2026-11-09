@@ -100,7 +100,7 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
     var wanted=CODE_LOCALE[currentLang];
     var exact=voices.filter(function(v){return String(v.lang).toLowerCase().replace(/_/g,"-")===wanted.toLowerCase();});
     var same=voices.filter(function(v){return String(v.lang).toLowerCase().replace(/_/g,"-").split("-")[0]===wanted.toLowerCase().split("-")[0];});
-    var pool=exact.length?exact:same;
+    var pool=exact.length?exact:((currentLang==="ZH" || currentLang==="ZH_TW")?[]:same);
     if(!pool.length)return null;
     var preference=/samantha|natural|premium|enhanced|ava|aria|jenny|google us english|allison/i;
     return pool.find(function(v){return preference.test(v.name);}) || pool.find(function(v){return v.default;}) || pool[0];
@@ -164,7 +164,7 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
       if(!units.length){speaking=false;report("");return;}
       var u=new SpeechSynthesisUtterance(units.shift());
       u.voice=selectedVoice;
-      u.lang=CODE_LOCALE[currentLang];
+      u.lang=selectedVoice.lang || CODE_LOCALE[currentLang];
       // Match the LanceDB voice tour's natural 0.96x delivery.
       u.rate=0.96;u.pitch=1;u.volume=1;
       u.onend=next;
@@ -179,7 +179,7 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
   }
   function spokenText(message) {
     var el=message && message.querySelector(".pgChat-text");
-    return el ? el.textContent.trim() : "";
+    return el ? (el.innerText || el.textContent).trim() : "";
   }
   function enhanceMessages(){
     if(!msgHost)return;
