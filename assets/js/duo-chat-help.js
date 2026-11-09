@@ -257,17 +257,3 @@ AM|የiPhone Duo እገዛ|አጠቃላይ እይታ|የታጠፈ ማያ|የተ�
   }
 })();
 
-
-/* Load the 38-language speech extension only where the product chatbot exists. */
-(function () {
-  "use strict";
-  function loadChatVoice() {
-    if (!document.getElementById("pgChat-window") || document.getElementById("pg-chat-voice-script")) return;
-    var script=document.createElement("script");
-    script.id="pg-chat-voice-script";
-    script.src="assets/js/pg-chat-voice.js?v=20261108-safari-voice-fix-4";
-    (document.head || document.documentElement).appendChild(script);
-  }
-  if (document.readyState==="loading") document.addEventListener("DOMContentLoaded",loadChatVoice,{once:true});
-  else loadChatVoice();
-})();
