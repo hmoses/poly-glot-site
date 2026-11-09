@@ -142,7 +142,8 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
     else if(previous)selectedVoice=previous;
     if(!matching.length) {
       var missing=document.createElement("option");
-      missing.textContent=localeName()+": voice unavailable";
+      missing.value="";
+      missing.textContent=currentLang==="EN"?"System voice (automatic)":localeName()+": voice unavailable";
       select.appendChild(missing);
       select.disabled=true;
     }else{
@@ -181,7 +182,11 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
   }
   function speak(text) {
     stopAudio();
-    if(!synth || !selectedVoice){report(localeName()+": matching voice unavailable on this device.");return;}
+    // LanceDB's Q&A does not require getVoices() to enumerate a voice:
+    // Safari can speak using the system voice even when the list is empty.
+    if(!synth || (!selectedVoice && currentLang!=="EN")){
+      report(localeName()+": matching voice unavailable on this device.");return;
+    }
     var units=chunks(text);
     if(!units.length)return;
     var myToken=token;
@@ -190,8 +195,8 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
       if(myToken!==token || !speaking)return;
       if(!units.length){speaking=false;report("");return;}
       var u=new SpeechSynthesisUtterance(units.shift());
-      u.voice=selectedVoice;
-      u.lang=selectedVoice.lang || CODE_LOCALE[currentLang];
+      if(selectedVoice)u.voice=selectedVoice;
+      u.lang=(selectedVoice && selectedVoice.lang) || CODE_LOCALE[currentLang];
       // The embedded LanceDB Q&A reads from the same pace selector.
       // If the user adjusted it there, keep precisely the same speed here.
       var pace=0.96;
@@ -231,7 +236,7 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
       var b=document.createElement("button");
       b.type="button";b.className="pgVoice-replay";b.textContent="🔊";
       b.setAttribute("aria-label",L(2));b.title=L(2);
-      b.disabled=!synth||!selectedVoice;
+      b.disabled=!synth||(!selectedVoice && currentLang!=="EN");
       b.addEventListener("click",function(e){e.stopPropagation();speak(spokenText(message));});
       body.appendChild(b);
       if(pendingVoiceAnswer || autoSpeak) {
@@ -240,7 +245,7 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
       }
     });
     Array.prototype.forEach.call(msgHost.querySelectorAll(".pgVoice-replay"),function(b){
-      b.disabled=!synth||!selectedVoice;b.title=L(2);b.setAttribute("aria-label",L(2));
+      b.disabled=!synth||(!selectedVoice && currentLang!=="EN");b.title=L(2);b.setAttribute("aria-label",L(2));
     });
   }
   function sync() {
@@ -351,6 +356,21 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
       }catch(e){}
       stopAudio();enhanceMessages();
     });
+    // Let visitors hear and compare the exact current voice before asking a question.
+    var preview=document.createElement("button");
+    preview.type="button";preview.id="pgVoice-preview";preview.textContent="▶";
+    preview.setAttribute("aria-label","Preview selected voice");
+    preview.title="Preview selected voice";
+    preview.addEventListener("click",function(){
+      sync();
+      var examples={
+        EN:"Hello! I'm the Poly-Glot AI Assistant. Ask me anything about Poly-Glot AI Workspace.",
+        ES:"Hola, soy el asistente de Poly-Glot. ¿En qué puedo ayudarte?",
+        FR:"Bonjour, je suis l'assistant Poly-Glot. Comment puis-je vous aider ?",
+        DE:"Hallo, ich bin der Poly-Glot-Assistent. Wie kann ich helfen?"
+      };
+      speak(examples[currentLang]||((window._pgI18n&&window._pgI18n.LANGS||[]).find(function(v){return v.code===currentLang;})||{}).name||localeName());
+    });
     autoButton=document.createElement("button");autoButton.type="button";autoButton.id="pgVoice-auto";
     autoButton.textContent="🔈";autoButton.addEventListener("click",function(){
       autoSpeak=!autoSpeak;
@@ -358,7 +378,7 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
       sync();
       if(!autoSpeak)stopAudio();
     });
-    tools.append(mic,select,autoButton);
+    tools.append(mic,select,preview,autoButton);
     status=document.createElement("div");status.id="pgVoice-status";status.setAttribute("role","status");status.setAttribute("aria-live","polite");
     win.insertBefore(tools,inputArea);win.insertBefore(status,inputArea);
     currentLang=code();
