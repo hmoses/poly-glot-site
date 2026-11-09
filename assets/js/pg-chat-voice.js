@@ -192,8 +192,16 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
       var u=new SpeechSynthesisUtterance(units.shift());
       u.voice=selectedVoice;
       u.lang=selectedVoice.lang || CODE_LOCALE[currentLang];
-      // Match the LanceDB voice tour's natural 0.96x delivery.
-      u.rate=0.96;u.pitch=1.0;u.volume=1;
+      // The embedded LanceDB Q&A reads from the same pace selector.
+      // If the user adjusted it there, keep precisely the same speed here.
+      var pace=0.96;
+      if(currentLang==="EN"){
+        try{
+          var custom=Number(localStorage.getItem("pg:sharedEnglishRate"));
+          if([0.85,0.96,1.08,1.2].includes(custom))pace=custom;
+        }catch(e){}
+      }
+      u.rate=pace;u.pitch=1.0;u.volume=1;
       u.onend=next;
       u.onerror=function(e){
         if(myToken===token && e.error!=="canceled" && e.error!=="interrupted"){
@@ -361,6 +369,12 @@ AM|በድምፅ ይጠይቁ|ማዳመጥ አቁም|መልሱን በድምፅ �
       new MutationObserver(sync).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
     }
     window.addEventListener("pg:languagechange",sync);
+    // When LanceDB changes the voice in another same-origin tab, reflect it.
+    window.addEventListener("storage",function(e){
+      if(currentLang==="EN" && e.key==="pg:sharedEnglishVoiceURI") {
+        stopAudio();refreshVoicePicker();
+      }
+    });
     document.addEventListener("change",function(e){
       if(e.target && e.target!==select && e.target.id!=="pgChat-topics-select")Promise.resolve().then(sync);
     },true);
