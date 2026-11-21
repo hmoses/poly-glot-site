@@ -43,13 +43,16 @@
       "Dépannage par le client MCP"
     ],
     "clientChatgpt": [
-      "Utilisez les applications ou la configuration MCP de développeur/personnalisée disponible pour votre compte ou espace de travail. Ajoutez l'URL distante, complétez toute autorisation, analysez les outils et sélectionnez l'application dans votre chat. La disponibilité des applications et des modes développeur varie selon les autorisations du forfait et de l’espace de travail."
+      "Utilisez les applications ou la configuration MCP de développeur/personnalisée disponible pour votre compte ou espace de travail.  Ajoutez l'URL distante, complétez toute autorisation, analysez les outils et sélectionnez l'application dans votre chat.",
+      "La disponibilité des applications et des modes développeur varie selon les autorisations du forfait et de l’espace de travail."
     ],
     "clientDocs": [
       "Aide client officielle ↗"
     ],
     "clientClaude": [
-      "Ajoutez Poly-Glot sous Paramètres → Connecteurs en tant que connecteur distant personnalisé. S'il n'apparaît pas dans le chat, activez-le dans votre menu Outils. Les connecteurs distants ne sont pas configurés à l’aide du fichier JSON stdio local de Claude Desktop."
+      "Customize → Connectors → + Add → Add custom connector.  Autoriser et activer les outils.",
+      "Remplissez n'importe quelle invite de connexion ou d'autorisation, approuvez les autorisations de l'outil, puis actualisez ou analysez à nouveau le serveur dans votre client.  Exécutez d'abord un test en lecture seule.",
+      "Demandez à votre client d'utiliser ou ; puis utilise pour vérifier la disponibilité des versions d'essai et Pro."
     ],
     "clientCursor": [
       "Ouvrez les paramètres de votre serveur MCP, ajoutez un serveur HTTP Streamable distant à l'aide du point de terminaison ci-dessus et activez-le. Si aucun outil n'est répertorié, actualisez les serveurs MCP, approuvez les autorisations et vérifiez que le client prend en charge ce transport."
@@ -77,13 +80,15 @@
       "401 Boucle non autorisée ou d'autorisation"
     ],
     "error2Body": [
-      "Utilisez le flux d'autorisation du compte du client et reconnectez-vous si la session expire. Vérifiez les exigences d'authentification du serveur et les autorisations du client. Ne collez jamais de mots de passe Apple, de jetons API ou de reçus d'abonnement dans des discussions publiques, des captures d'écran ou des rapports de problèmes."
+      "Utilisez le flux d'autorisation du compte du client et reconnectez-vous si la session expire.  Vérifiez les exigences d'authentification du serveur et les autorisations du client.",
+      "Ne collez jamais de mots de passe Apple, de jetons API ou de reçus d'abonnement dans des discussions publiques, des captures d'écran ou des rapports de problèmes."
     ],
     "error3Title": [
       "403 Interdit ou autorisation d'outil refusée"
     ],
     "error3Body": [
-      "Confirmez que le client a accordé à ce connecteur l'autorisation d'utiliser l'outil demandé. Renseignez-vous auprès de l'administrateur de l'espace de travail sur les politiques si nécessaire. Un 403 peut également refléter une restriction d'authentification ou de politique d'origine, pas nécessairement un abonnement expiré."
+      "Confirmez que le client a accordé à ce connecteur l'autorisation d'utiliser l'outil demandé.  Renseignez-vous auprès de l'administrateur de l'espace de travail sur les politiques si nécessaire.",
+      "Un 403 peut également refléter une restriction d'authentification ou de politique d'origine, pas nécessairement un abonnement expiré."
     ],
     "error4Title": [
       "Aucun outil trouvé, ancienne liste d'outils ou outil non reconnu"

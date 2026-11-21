@@ -43,13 +43,16 @@
       "Kutatua matatizo na mteja wa MCP"
     ],
     "clientChatgpt": [
-      "Tumia Programu au usanidi wa MCP wa msanidi/mradi unaopatikana kwa akaunti au nafasi yako ya kazi. Ongeza URL ya mbali, kamilisha uidhinishaji wowote, changanua zana na uchague programu kwenye gumzo lako. Upatikanaji wa programu na hali ya msanidi hutofautiana kulingana na mpango na ruhusa za nafasi ya kazi."
+      "Tumia Programu au usanidi wa MCP wa msanidi/mradi unaopatikana kwa akaunti au nafasi yako ya kazi.  Ongeza URL ya mbali, kamilisha uidhinishaji wowote, changanua zana na uchague programu kwenye gumzo lako.",
+      "Upatikanaji wa programu na hali ya msanidi hutofautiana kulingana na mpango na ruhusa za nafasi ya kazi."
     ],
     "clientDocs": [
       "Usaidizi rasmi wa mteja ↗"
     ],
     "clientClaude": [
-      "Ongeza Poly-Glot chini ya Mipangilio → Viunganishi kama kiunganishi maalum cha mbali. Ikiwa haionekani kwenye gumzo, iwashe kwenye menyu ya zana zako. Viunganishi vya mbali havijasanidiwa kwa kutumia faili ya ndani ya Claude Desktop stdio JSON."
+      "Customize → Connectors → + Add → Add custom connector.  Idhinisha na uwashe zana.",
+      "Kamilisha kidokezo chochote cha kuingia au uidhinishaji, uidhinishe ruhusa za zana, kisha uonyeshe upya au uchague upya seva katika mteja wako.  Fanya jaribio la kusoma pekee kwanza.",
+      "Uliza mteja wako kutumia au ; kisha tumia kuangalia majaribio na upatikanaji wa Pro."
     ],
     "clientCursor": [
       "Fungua mipangilio ya seva yako ya MCP, ongeza seva ya HTTP inayoweza kutiririka ya mbali kwa kutumia ncha iliyo hapo juu, na uiwashe. Ikiwa hakuna zana zilizoorodheshwa, onyesha upya seva za MCP, uidhinishe ruhusa na uthibitishe kuwa mteja anatumia usafiri huu."
@@ -77,7 +80,8 @@
       "401 Kitanzi kisichoidhinishwa au cha uidhinishaji"
     ],
     "error2Body": [
-      "Tumia mtiririko wa uidhinishaji wa akaunti ya mteja na uunganishe tena ikiwa kipindi kitaisha. Angalia mahitaji ya uthibitishaji wa seva na ruhusa za mteja. Usiwahi kubandika manenosiri ya Apple, tokeni za API au stakabadhi za usajili kwenye gumzo za umma, picha za skrini au ripoti za toleo."
+      "Tumia mtiririko wa uidhinishaji wa akaunti ya mteja na uunganishe tena ikiwa kipindi kitaisha.  Angalia mahitaji ya uthibitishaji wa seva na ruhusa za mteja.",
+      "Usiwahi kubandika manenosiri ya Apple, tokeni za API au stakabadhi za usajili kwenye gumzo za umma, picha za skrini au ripoti za toleo."
     ],
     "error3Title": [
       "403 Imekatazwa au ruhusa ya chombo imekataliwa"

@@ -43,13 +43,16 @@
       "Hibaelhárítás MCP kliens által"
     ],
     "clientChatgpt": [
-      "Használja a fiókjában vagy munkaterületén elérhető alkalmazásokat vagy fejlesztői/egyéni MCP-konfigurációt. Adja hozzá a távoli URL-t, hajtsa végre az engedélyezést, a leolvasó eszközöket, és válassza ki az alkalmazást a csevegésben. Az alkalmazások és a fejlesztői módok elérhetősége a tervtől és a munkaterület-engedélyektől függően változik."
+      "Használja a fiókjában vagy munkaterületén elérhető alkalmazásokat vagy fejlesztői/egyéni MCP-konfigurációt.  Adja hozzá a távoli URL-t, hajtsa végre az engedélyezést, a leolvasó eszközöket, és válassza ki az alkalmazást a csevegésben.",
+      "Az alkalmazások és a fejlesztői módok elérhetősége a tervtől és a munkaterület-engedélyektől függően változik."
     ],
     "clientDocs": [
       "Hivatalos ügyfélszolgálat ↗"
     ],
     "clientClaude": [
-      "Adja hozzá a Poly-Glot-ot a Beállítások → Csatlakozók alatt egyéni távoli csatlakozóként. Ha nem jelenik meg a csevegésben, engedélyezze az eszközök menüben. A távoli csatlakozók nem a helyi Claude Desktop stdio JSON-fájl használatával vannak konfigurálva."
+      "Customize → Connectors → + Add → Add custom connector.  Az eszközök engedélyezése és engedélyezése.",
+      "Töltse ki a bejelentkezési vagy engedélyezési kéréseket, hagyja jóvá az eszközengedélyeket, majd frissítse vagy ellenőrizze újra a kiszolgálót az ügyfélben.  Először futtasson egy írásvédett tesztet.",
+      "Kérje meg ügyfelét, hogy használja vagy ; majd használd a próbaverzió és a Pro elérhetőségének ellenőrzéséhez."
     ],
     "clientCursor": [
       "Nyissa meg az MCP-kiszolgáló beállításait, adjon hozzá egy távoli Streamable HTTP-kiszolgálót a fenti végpont segítségével, és engedélyezze azt. Ha nincsenek eszközök a listán, frissítse az MCP-kiszolgálókat, hagyja jóvá az engedélyeket, és ellenőrizze, hogy az ügyfél támogatja-e ezt az átvitelt."
@@ -77,13 +80,15 @@
       "401 Jogosulatlan vagy engedélyezési hurok"
     ],
     "error2Body": [
-      "Használja az ügyfél fiókjának engedélyezési folyamatát, és csatlakozzon újra, ha a munkamenet lejár. Ellenőrizze a kiszolgáló hitelesítési követelményeit és az ügyfélengedélyeket. Soha ne illesszen be Apple jelszavakat, API tokeneket vagy előfizetési nyugtákat nyilvános csevegésbe, képernyőképekbe vagy problémajelentésekbe."
+      "Használja az ügyfél fiókjának engedélyezési folyamatát, és csatlakozzon újra, ha a munkamenet lejár.  Ellenőrizze a kiszolgáló hitelesítési követelményeit és az ügyfélengedélyeket.",
+      "Soha ne illesszen be Apple jelszavakat, API tokeneket vagy előfizetési nyugtákat nyilvános csevegésbe, képernyőképekbe vagy problémajelentésekbe."
     ],
     "error3Title": [
       "403 Tilos vagy szerszámengedély megtagadva"
     ],
     "error3Body": [
-      "Erősítse meg, hogy az ügyfél engedélyezte a csatlakozási szoftvert a kért eszköz használatához. Kérdezze meg a munkaterület adminisztrátorát az irányelvekről, ha szükséges. A 403-as szám hitelesítési vagy eredetszabály-korlátozást is tükrözhet – nem feltétlenül lejárt előfizetést."
+      "Erősítse meg, hogy az ügyfél engedélyezte a csatlakozási szoftvert a kért eszköz használatához.  Kérdezze meg a munkaterület adminisztrátorát az irányelvekről, ha szükséges.",
+      "A 403-as szám hitelesítési vagy eredetszabály-korlátozást is tükrözhet – nem feltétlenül lejárt előfizetést."
     ],
     "error4Title": [
       "Nem található szerszám, régi szerszámlista vagy eszköz nem ismerhető fel"

@@ -43,13 +43,16 @@
       "Resolució de problemes pel client MCP"
     ],
     "clientChatgpt": [
-      "Utilitzeu les aplicacions o la configuració MCP per a desenvolupadors/personalitzada disponible al vostre compte o espai de treball. Afegiu l'URL remot, completeu qualsevol autorització, eines d'escaneig i seleccioneu l'aplicació al vostre xat. La disponibilitat del mode d'aplicació i de desenvolupador varia segons els permisos del pla i de l'espai de treball."
+      "Utilitzeu les aplicacions o la configuració MCP per a desenvolupadors/personalitzada disponible al vostre compte o espai de treball.  Afegiu l'URL remot, completeu qualsevol autorització, eines d'escaneig i seleccioneu l'aplicació al vostre xat.",
+      "La disponibilitat del mode d'aplicació i desenvolupador varia segons els permisos del pla i de l'espai de treball."
     ],
     "clientDocs": [
       "Ajuda oficial al client ↗"
     ],
     "clientClaude": [
-      "Afegiu Poly-Glot a Configuració → Connectors com a connector remot personalitzat. Si no apareix al xat, activeu-lo al menú d'eines. Els connectors remots no es configuren mitjançant el fitxer JSON stdio de Claude Desktop local."
+      "Customize → Connectors → + Add → Add custom connector.  Autoritzar i habilitar eines.",
+      "Completeu qualsevol sol·licitud d'inici de sessió o autorització, aproveu els permisos de l'eina i, a continuació, actualitzeu o torneu a escanejar el servidor del vostre client.  Executeu primer una prova de només lectura.",
+      "Demaneu al vostre client que l'utilitzi o ; després utilitzar per comprovar la disponibilitat de prova i Pro."
     ],
     "clientCursor": [
       "Obriu la configuració del vostre servidor MCP, afegiu un servidor HTTP Streamable remot mitjançant el punt final anterior i activeu-lo. Si no hi ha cap eina a la llista, actualitzeu els servidors MCP, aproveu els permisos i verifiqueu que el client admeti aquest transport."
@@ -77,13 +80,15 @@
       "401 Bucle d'autorització o no autoritzat"
     ],
     "error2Body": [
-      "Utilitzeu el flux d'autorització del compte del client i torneu a connectar-vos si la sessió caduca. Comproveu els requisits d'autenticació del servidor i els permisos del client. No enganxeu mai contrasenyes d'Apple, testimonis API o rebuts de subscripció a xats públics, captures de pantalla o informes d'emissions."
+      "Utilitzeu el flux d'autorització del compte del client i torneu a connectar-vos si la sessió caduca.  Comproveu els requisits d'autenticació del servidor i els permisos del client.",
+      "No enganxeu mai contrasenyes d'Apple, testimonis API o rebuts de subscripció a xats públics, captures de pantalla o informes d'emissions."
     ],
     "error3Title": [
       "403 Prohibit o permís d'eina denegat"
     ],
     "error3Body": [
-      "Confirmeu que el client hagi concedit permís a aquest connector per utilitzar l'eina sol·licitada. Pregunteu a l'administrador de l'espai de treball sobre les polítiques si cal. Un 403 també pot reflectir una restricció d'autenticació o política d'origen, no necessàriament una subscripció caducada."
+      "Confirmeu que el client hagi concedit permís a aquest connector per utilitzar l'eina sol·licitada.  Pregunteu a l'administrador de l'espai de treball sobre les polítiques si cal.",
+      "Un 403 també pot reflectir una restricció d'autenticació o política d'origen, no necessàriament una subscripció caducada."
     ],
     "error4Title": [
       "No s'han trobat eines, llista d'eines antiga o eina no reconeguda"

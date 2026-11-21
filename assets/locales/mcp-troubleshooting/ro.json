@@ -43,13 +43,16 @@
       "Depanare de către clientul MCP"
     ],
     "clientChatgpt": [
-      "Utilizați aplicațiile sau configurația MCP pentru dezvoltator/personalizat disponibilă pentru contul sau spațiul de lucru. Adăugați adresa URL de la distanță, completați orice autorizare, instrumente de scanare și selectați aplicația din chat. Disponibilitatea în modul aplicație și dezvoltator variază în funcție de permisiunile planului și ale spațiului de lucru."
+      "Utilizați aplicațiile sau configurația MCP pentru dezvoltator/personalizat disponibilă pentru contul sau spațiul de lucru.  Adăugați adresa URL de la distanță, completați orice autorizare, instrumente de scanare și selectați aplicația din chat.",
+      "Disponibilitatea în modul aplicație și dezvoltator variază în funcție de permisiunile planului și ale spațiului de lucru."
     ],
     "clientDocs": [
       "Ajutor oficial pentru clienți ↗"
     ],
     "clientClaude": [
-      "Adăugați Poly-Glot sub Setări → Conectori ca conector la distanță personalizat. Dacă nu apare în chat, activează-l în meniul de instrumente. Conectorii de la distanță nu sunt configurați folosind fișierul JSON stdio Claude Desktop local."
+      "Customize → Connectors → + Add → Add custom connector.  Autorizați și activați instrumente.",
+      "Completați orice solicitare de conectare sau autorizare, aprobați permisiunile instrumentului, apoi reîmprospătați sau rescanați serverul din clientul dvs.  Rulați mai întâi un test numai în citire.",
+      "Cereți clientului dvs.  să folosească sau ; apoi folosiți pentru a verifica disponibilitatea de probă și Pro."
     ],
     "clientCursor": [
       "Deschideți setările serverului MCP, adăugați un server HTTP Streamable la distanță folosind punctul final de mai sus și activați-l. Dacă nu sunt listate instrumente, reîmprospătați serverele MCP, aprobați permisiunile și verificați dacă clientul acceptă acest transport."
@@ -77,13 +80,15 @@
       "401 Neautorizat sau bucla de autorizare"
     ],
     "error2Body": [
-      "Utilizați fluxul de autorizare a contului clientului și reconectați-vă dacă sesiunea expiră. Verificați cerințele de autentificare ale serverului și permisiunile clientului. Nu inserați niciodată parole Apple, jetoane API sau chitanțe de abonament în chat-uri publice, capturi de ecran sau rapoarte de probleme."
+      "Utilizați fluxul de autorizare a contului clientului și reconectați-vă dacă sesiunea expiră.  Verificați cerințele de autentificare ale serverului și permisiunile clientului.",
+      "Nu inserați niciodată parole Apple, jetoane API sau chitanțe de abonament în chat-uri publice, capturi de ecran sau rapoarte de probleme."
     ],
     "error3Title": [
       "403 Interzis sau permisiunea instrumentului refuzată"
     ],
     "error3Body": [
-      "Confirmați că clientul a acordat acestui conector permisiunea de a utiliza instrumentul solicitat. Întrebați administratorul spațiului de lucru despre politici dacă este necesar. Un 403 poate reflecta, de asemenea, o restricție de autentificare sau de politică de origine – nu neapărat un abonament expirat."
+      "Confirmați că clientul a acordat acestui conector permisiunea de a utiliza instrumentul solicitat.  Întrebați administratorul spațiului de lucru despre politici dacă este necesar.",
+      "Un 403 poate reflecta, de asemenea, o restricție de autentificare sau de politică de origine – nu neapărat un abonament expirat."
     ],
     "error4Title": [
       "Nu au fost găsite instrumente, vechea listă de instrumente sau instrumente nu au fost recunoscute"

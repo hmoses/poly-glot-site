@@ -43,13 +43,16 @@
       "Rješavanje problema pomoću MCP klijenta"
     ],
     "clientChatgpt": [
-      "Upotrijebite konfiguraciju aplikacija ili programera/prilagođene MCP dostupne za vaš račun ili radni prostor. Dodajte udaljeni URL, dovršite autorizaciju, alate za skeniranje i odaberite aplikaciju u svom chatu. Dostupnost aplikacija i načina rada za razvojne programere ovisi o dopuštenjima plana i radnog prostora."
+      "Upotrijebite konfiguraciju aplikacija ili programera/prilagođene MCP dostupne za vaš račun ili radni prostor.  Dodajte udaljeni URL, dovršite autorizaciju, alate za skeniranje i odaberite aplikaciju u svom chatu.",
+      "Dostupnost aplikacija i načina rada za razvojne programere ovisi o dopuštenjima plana i radnog prostora."
     ],
     "clientDocs": [
       "Službena pomoć klijentima ↗"
     ],
     "clientClaude": [
-      "Dodajte Poly-Glot pod Postavke → Konektori kao prilagođeni daljinski konektor. Ako se ne pojavljuje u chatu, omogućite ga u izborniku alata. Udaljeni priključci nisu konfigurirani pomoću lokalne Claude Desktop stdio JSON datoteke."
+      "Customize → Connectors → + Add → Add custom connector.  Autorizirajte i omogućite alate.",
+      "Dovršite bilo koji upit za prijavu ili autorizaciju, odobrite dozvole alata, zatim osvježite ili ponovno skenirajte poslužitelj u svom klijentu.  Prvo pokrenite test samo za čitanje.",
+      "Zamolite svog klijenta da koristi ili ; zatim koristite za provjeru dostupnosti probne i Pro verzije."
     ],
     "clientCursor": [
       "Otvorite postavke MCP poslužitelja, dodajte udaljeni Streamable HTTP poslužitelj pomoću gornje krajnje točke i omogućite ga. Ako nijedan alat nije naveden, osvježite MCP poslužitelje, odobrite dopuštenja i provjerite podržava li klijent ovaj prijenos."
@@ -77,7 +80,8 @@
       "401 Neovlaštena ili autorizacijska petlja"
     ],
     "error2Body": [
-      "Koristite tijek autorizacije računa klijenta i ponovno se povežite ako sesija istekne. Provjerite zahtjeve poslužitelja za provjeru autentičnosti i dopuštenja klijenta. Nikada nemojte lijepiti Appleove lozinke, API tokene ili potvrde o pretplati u javne razgovore, snimke zaslona ili izvješća o problemima."
+      "Koristite tijek autorizacije računa klijenta i ponovno se povežite ako sesija istekne.  Provjerite zahtjeve poslužitelja za provjeru autentičnosti i dopuštenja klijenta.",
+      "Nikada nemojte lijepiti Appleove lozinke, API tokene ili potvrde o pretplati u javne razgovore, snimke zaslona ili izvješća o problemima."
     ],
     "error3Title": [
       "403 Zabranjeno ili dopuštenje alata odbijeno"

@@ -43,13 +43,16 @@
       "Foutoplossing deur MCP-kliënt"
     ],
     "clientChatgpt": [
-      "Gebruik die programme of ontwikkelaar/pasgemaakte MCP-konfigurasie wat vir jou rekening of werkspasie beskikbaar is. Voeg die afgeleë URL by, voltooi enige magtiging, skandeer gereedskap en kies die toepassing in jou klets. Toepassings- en ontwikkelaarmodus-beskikbaarheid verskil volgens plan en werkspasietoestemmings."
+      "Gebruik die programme of ontwikkelaar/pasgemaakte MCP-konfigurasie wat vir jou rekening of werkspasie beskikbaar is.  Voeg die afgeleë URL by, voltooi enige magtiging, skandeer gereedskap en kies die toepassing in jou klets.",
+      "Toepassings- en ontwikkelaarmodus-beskikbaarheid verskil volgens plan en werkspasietoestemmings."
     ],
     "clientDocs": [
       "Amptelike kliënt hulp ↗"
     ],
     "clientClaude": [
-      "Voeg Poly-Glot onder Instellings → Verbindings by as 'n pasgemaakte afstandverbinding. As dit nie in klets verskyn nie, aktiveer dit in jou gereedskapkieslys. Afgeleë verbindings word nie opgestel deur die plaaslike Claude Desktop stdio JSON-lêer te gebruik nie."
+      "Customize → Connectors → + Add → Add custom connector.  Magtig en aktiveer gereedskap.",
+      "Voltooi enige aanmeld- of magtigingsaanvraag, keur nutsgoedtoestemmings goed, verfris of herskandeer dan die bediener in jou kliënt.  Voer eers 'n leesalleen-toets uit.",
+      "Vra jou kliënt om te gebruik of ; gebruik dan om proeftydperk en Pro beskikbaarheid na te gaan."
     ],
     "clientCursor": [
       "Maak jou MCP-bedienerinstellings oop, voeg 'n afgeleë stroombare HTTP-bediener by deur die eindpunt hierbo te gebruik en aktiveer dit. Indien geen gereedskap gelys is nie, verfris die MCP-bedieners, keur toestemmings goed en verifieer dat die kliënt hierdie vervoer ondersteun."
@@ -77,13 +80,15 @@
       "401 Ongemagtigde of magtigingslus"
     ],
     "error2Body": [
-      "Gebruik die kliënt se rekeningmagtigingsvloei en koppel weer as die sessie verstryk. Gaan die bediener se stawingvereistes en kliënttoestemmings na. Moet nooit Apple-wagwoorde, API-tokens of intekeningkwitansies in publieke kletse, skermkiekies of kwessieverslae plak nie."
+      "Gebruik die kliënt se rekeningmagtigingsvloei en koppel weer as die sessie verstryk.  Gaan die bediener se stawingvereistes en kliënttoestemmings na.",
+      "Moet nooit Apple-wagwoorde, API-tokens of intekeningkwitansies in publieke kletse, skermkiekies of kwessieverslae plak nie."
     ],
     "error3Title": [
       "403 Verbode of gereedskaptoestemming geweier"
     ],
     "error3Body": [
-      "Bevestig dat die kliënt hierdie verbindingstoestemming gegee het om die versoekte nutsding te gebruik. Vra die werkspasie-administrateur oor beleide indien nodig. 'n 403 kan ook 'n verifikasie- of oorsprongbeleidsbeperking weerspieël - nie noodwendig 'n intekening wat verval het nie."
+      "Bevestig dat die kliënt hierdie verbindingstoestemming gegee het om die versoekte nutsding te gebruik.  Vra die werkspasie-administrateur oor beleide indien nodig.",
+      "'n 403 kan ook 'n verifikasie- of oorsprongbeleidsbeperking weerspieël - nie noodwendig 'n intekening wat verval het nie."
     ],
     "error4Title": [
       "Geen gereedskap gevind nie, ou gereedskaplys of instrument word nie herken nie"

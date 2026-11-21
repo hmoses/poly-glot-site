@@ -33,7 +33,11 @@ function setLanguage(code,dict){
  collect();if(!root||code!==current())return;
  var completed=0;
  items.forEach(function(item){
-  var strings=dict&&dict[item.key],usable=Array.isArray(strings)&&strings.length===item.nodes.length&&strings.every(function(t){return typeof t==="string"&&!!t.trim();});
+  var strings=dict&&dict[item.key];
+  // Other localized guides can combine paragraphs into a single text node.
+  // Preserve every translated sentence when that happens.
+  if(Array.isArray(strings)&&item.nodes.length===1&&strings.length>1)strings=[strings.join(" ")];
+  var usable=Array.isArray(strings)&&strings.length===item.nodes.length&&strings.every(function(t){return typeof t==="string"&&!!t.trim();});
   if(usable)completed++;
   // Current Claude setup is rendered by the dedicated 38-language guide.
   // Keep it in coverage accounting but do not overwrite the current UI path.

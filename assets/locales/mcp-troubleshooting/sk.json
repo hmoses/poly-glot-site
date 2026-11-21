@@ -43,13 +43,16 @@
       "Riešenie problémov klientom MCP"
     ],
     "clientChatgpt": [
-      "Použite konfiguráciu aplikácií alebo vývojára/vlastnú konfiguráciu MCP dostupnú pre váš účet alebo pracovný priestor. Pridajte vzdialenú adresu URL, dokončite autorizáciu, skenujte nástroje a vyberte aplikáciu vo svojom rozhovore. Dostupnosť aplikácií a vývojárskeho režimu sa líši podľa plánu a povolení pracovného priestoru."
+      "Použite konfiguráciu aplikácií alebo vývojára/vlastnú konfiguráciu MCP dostupnú pre váš účet alebo pracovný priestor.  Pridajte vzdialenú adresu URL, dokončite autorizáciu, skenujte nástroje a vyberte aplikáciu vo svojom rozhovore.",
+      "Dostupnosť aplikácie a režimu pre vývojárov sa líši podľa plánu a povolení pracovného priestoru."
     ],
     "clientDocs": [
       "Oficiálna pomoc klientovi ↗"
     ],
     "clientClaude": [
-      "Pridajte Poly-Glot v časti Nastavenia → Konektory ako vlastný vzdialený konektor. Ak sa nezobrazí v chate, povoľte ho v ponuke nástrojov. Vzdialené konektory nie sú nakonfigurované pomocou lokálneho súboru JSON Claude Desktop stdio."
+      "Customize → Connectors → + Add → Add custom connector.  Autorizujte a povoľte nástroje.",
+      "Dokončite všetky výzvy na prihlásenie alebo autorizáciu, schváľte povolenia nástroja a potom obnovte alebo znova skontrolujte server vo svojom klientovi.  Najprv spustite test iba na čítanie.",
+      "Požiadajte svojho klienta o použitie alebo ; potom použite overiť dostupnosť skúšobnej verzie a verzie Pro."
     ],
     "clientCursor": [
       "Otvorte nastavenia servera MCP, pridajte vzdialený server HTTP s možnosťou streamovania pomocou vyššie uvedeného koncového bodu a povoľte ho. Ak nie sú uvedené žiadne nástroje, obnovte servery MCP, schváľte povolenia a overte, či klient podporuje tento prenos."
@@ -77,13 +80,15 @@
       "401 Neoprávnená alebo autorizačná slučka"
     ],
     "error2Body": [
-      "Použite postup autorizácie účtu klienta a znova sa pripojte, ak relácia vyprší. Skontrolujte požiadavky na autentifikáciu servera a oprávnenia klienta. Nikdy nevkladajte heslá Apple, tokeny API alebo potvrdenia o predplatnom do verejných rozhovorov, snímok obrazovky alebo správ o problémoch."
+      "Použite postup autorizácie účtu klienta a znova sa pripojte, ak relácia vyprší.  Skontrolujte požiadavky na autentifikáciu servera a oprávnenia klienta.",
+      "Nikdy nevkladajte heslá Apple, tokeny API alebo potvrdenia o predplatnom do verejných rozhovorov, snímok obrazovky alebo správ o problémoch."
     ],
     "error3Title": [
       "403 Zakázané alebo zamietnuté povolenie na používanie nástroja"
     ],
     "error3Body": [
-      "Potvrďte, že klient udelil tomuto konektoru povolenie na používanie požadovaného nástroja. V prípade potreby sa na pravidlá spýtajte správcu pracovného priestoru. 403 môže tiež odrážať obmedzenie autentifikácie alebo politiky pôvodu – nie nevyhnutne vypršanie predplatného."
+      "Potvrďte, že klient udelil tomuto konektoru povolenie na používanie požadovaného nástroja.  V prípade potreby sa na pravidlá spýtajte správcu pracovného priestoru.",
+      "403 môže tiež odrážať obmedzenie autentifikácie alebo politiky pôvodu – nie nevyhnutne vypršanie predplatného."
     ],
     "error4Title": [
       "Nenašli sa žiadne nástroje, starý zoznam nástrojov alebo nástroj nebol rozpoznaný"

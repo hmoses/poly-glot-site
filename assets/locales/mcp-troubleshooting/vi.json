@@ -43,13 +43,16 @@
       "Khắc phục sự cố bằng máy khách MCP"
     ],
     "clientChatgpt": [
-      "Sử dụng Ứng dụng hoặc cấu hình MCP tùy chỉnh/nhà phát triển có sẵn cho tài khoản hoặc không gian làm việc của bạn. Thêm URL từ xa, hoàn thành mọi ủy quyền, công cụ quét và chọn ứng dụng trong cuộc trò chuyện của bạn. Tính khả dụng của ứng dụng và chế độ nhà phát triển thay đổi tùy theo quyền của gói và không gian làm việc."
+      "Sử dụng Ứng dụng hoặc cấu hình MCP tùy chỉnh/nhà phát triển có sẵn cho tài khoản hoặc không gian làm việc của bạn.  Thêm URL từ xa, hoàn thành mọi ủy quyền, công cụ quét và chọn ứng dụng trong cuộc trò chuyện của bạn.",
+      "Tính khả dụng của ứng dụng và chế độ nhà phát triển thay đổi tùy theo quyền của gói và không gian làm việc."
     ],
     "clientDocs": [
       "Trợ giúp khách hàng chính thức ↗"
     ],
     "clientClaude": [
-      "Thêm Poly-Glot trong Cài đặt → Trình kết nối làm trình kết nối từ xa tùy chỉnh. Nếu nó không xuất hiện trong cuộc trò chuyện, hãy bật nó trong menu công cụ của bạn. Trình kết nối từ xa không được định cấu hình bằng tệp JSON stdio Claude Desktop cục bộ."
+      "Customize → Connectors → + Add → Add custom connector.  Cho phép và kích hoạt các công cụ.",
+      "Hoàn thành mọi lời nhắc đăng nhập hoặc ủy quyền, phê duyệt quyền của công cụ, sau đó làm mới hoặc quét lại máy chủ trong ứng dụng khách của bạn.  Trước tiên hãy chạy thử nghiệm chỉ đọc.",
+      "Yêu cầu khách hàng của bạn sử dụng hoặc ; sau đó sử dụng để kiểm tra bản dùng thử và tính khả dụng của bản Pro."
     ],
     "clientCursor": [
       "Mở cài đặt máy chủ MCP của bạn, thêm máy chủ HTTP có thể phát trực tuyến từ xa bằng cách sử dụng điểm cuối ở trên và kích hoạt nó. Nếu không có công cụ nào được liệt kê, hãy làm mới máy chủ MCP, phê duyệt quyền và xác minh máy khách hỗ trợ việc truyền tải này."
@@ -77,7 +80,8 @@
       "401 Vòng lặp trái phép hoặc ủy quyền"
     ],
     "error2Body": [
-      "Sử dụng luồng ủy quyền tài khoản của khách hàng và kết nối lại nếu phiên hết hạn. Kiểm tra các yêu cầu xác thực của máy chủ và quyền của máy khách. Không bao giờ dán mật khẩu Apple, mã thông báo API hoặc biên lai đăng ký vào các cuộc trò chuyện công khai, ảnh chụp màn hình hoặc báo cáo sự cố."
+      "Sử dụng luồng ủy quyền tài khoản của khách hàng và kết nối lại nếu phiên hết hạn.  Kiểm tra các yêu cầu xác thực của máy chủ và quyền của máy khách.",
+      "Không bao giờ dán mật khẩu Apple, mã thông báo API hoặc biên lai đăng ký vào các cuộc trò chuyện công khai, ảnh chụp màn hình hoặc báo cáo sự cố."
     ],
     "error3Title": [
       "403 Bị cấm hoặc quyền công cụ bị từ chối"

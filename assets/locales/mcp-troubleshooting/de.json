@@ -43,13 +43,16 @@
       "Fehlerbehebung durch MCP-Client"
     ],
     "clientChatgpt": [
-      "Verwenden Sie die Apps oder die Entwickler-/benutzerdefinierte MCP-Konfiguration, die für Ihr Konto oder Ihren Arbeitsbereich verfügbar ist. Fügen Sie die Remote-URL hinzu, schließen Sie alle Autorisierungen ab, scannen Sie die Tools und wählen Sie die App in Ihrem Chat aus. Die Verfügbarkeit von Apps und Entwicklermodus variiert je nach Plan und Arbeitsbereichsberechtigungen."
+      "Verwenden Sie die Apps oder die Entwickler-/benutzerdefinierte MCP-Konfiguration, die für Ihr Konto oder Ihren Arbeitsbereich verfügbar ist.  Fügen Sie die Remote-URL hinzu, schließen Sie alle Autorisierungen ab, scannen Sie die Tools und wählen Sie die App in Ihrem Chat aus.",
+      "Die Verfügbarkeit von Apps und Entwicklermodus variiert je nach Plan und Arbeitsbereichsberechtigungen."
     ],
     "clientDocs": [
       "Offizielle Kundenhilfe ↗"
     ],
     "clientClaude": [
-      "Fügen Sie Poly-Glot unter Einstellungen → Konnektoren als benutzerdefinierten Remote-Konnektor hinzu. Wenn es nicht im Chat angezeigt wird, aktivieren Sie es in Ihrem Tools-Menü. Remote-Connectoren werden nicht mit der lokalen Claude Desktop stdio JSON-Datei konfiguriert."
+      "Customize → Connectors → + Add → Add custom connector.  Autorisieren und aktivieren Sie Tools.",
+      "Füllen Sie alle Anmelde- oder Autorisierungsaufforderungen aus, genehmigen Sie die Tool-Berechtigungen und aktualisieren oder scannen Sie dann den Server in Ihrem Client erneut.  Führen Sie zunächst einen schreibgeschützten Test durch.",
+      "Bitten Sie Ihren Kunden, es zu verwenden oder ; dann verwenden um die Test- und Pro-Verfügbarkeit zu prüfen."
     ],
     "clientCursor": [
       "Öffnen Sie Ihre MCP-Servereinstellungen, fügen Sie mithilfe des oben genannten Endpunkts einen Remote-Streamable-HTTP-Server hinzu und aktivieren Sie ihn. Wenn keine Tools aufgeführt sind, aktualisieren Sie die MCP-Server, genehmigen Sie die Berechtigungen und stellen Sie sicher, dass der Client diesen Transport unterstützt."
@@ -61,7 +64,8 @@
       "Fügen Sie in einem MCP-fähigen VS-Code-Setup die URL als HTTP-Remote-MCP-Server und nicht als lokalen stdio-Prozess hinzu. Überprüfen Sie die Vertrauenswürdigkeit des Arbeitsbereichs und die Tool-Genehmigungen, aktualisieren Sie dann den Server und bestätigen Sie die Tool-Erkennung."
     ],
     "clientOther": [
-      "Bestätigen Sie, dass die Version Ihres Clients Remote-Streamable-HTTP-MCP-Server unterstützt. Verwenden Sie die Produktions-URL und aktivieren Sie deren Tools. Wenn Ihr Client nur stdio oder Legacy-SSE unterstützt, konsultieren Sie die aktuelle Remote-MCP-Dokumentation."
+      "Bestätigen Sie, dass die Version Ihres Clients Remote-Streamable-HTTP-MCP-Server unterstützt.  Verwenden Sie die Produktions-URL und aktivieren Sie deren Tools.",
+      "Wenn Ihr Client nur stdio oder Legacy-SSE unterstützt, konsultieren Sie die aktuelle Remote-MCP-Dokumentation."
     ],
     "errorsTitle": [
       "Häufige MCP-Fehler und Korrekturen"
@@ -77,13 +81,15 @@
       "401 Nicht autorisiert oder Autorisierungsschleife"
     ],
     "error2Body": [
-      "Verwenden Sie den Kontoautorisierungsablauf des Kunden und stellen Sie die Verbindung wieder her, wenn die Sitzung abläuft. Überprüfen Sie die Authentifizierungsanforderungen und Clientberechtigungen des Servers. Fügen Sie niemals Apple-Passwörter, API-Tokens oder Abonnementbelege in öffentliche Chats, Screenshots oder Problemberichte ein."
+      "Verwenden Sie den Kontoautorisierungsablauf des Kunden und stellen Sie die Verbindung wieder her, wenn die Sitzung abläuft.  Überprüfen Sie die Authentifizierungsanforderungen und Clientberechtigungen des Servers.",
+      "Fügen Sie niemals Apple-Passwörter, API-Tokens oder Abonnementbelege in öffentliche Chats, Screenshots oder Problemberichte ein."
     ],
     "error3Title": [
       "403 Verboten oder Werkzeugberechtigung verweigert"
     ],
     "error3Body": [
-      "Bestätigen Sie, dass der Client diesem Connector die Berechtigung zur Verwendung des angeforderten Tools erteilt hat. Fragen Sie den Arbeitsbereichsadministrator bei Bedarf nach Richtlinien. Ein 403 kann auch auf eine Authentifizierungs- oder Ursprungsrichtlinienbeschränkung hinweisen – nicht unbedingt auf ein abgelaufenes Abonnement."
+      "Bestätigen Sie, dass der Client diesem Connector die Berechtigung zur Verwendung des angeforderten Tools erteilt hat.  Fragen Sie bei Bedarf den Arbeitsbereichsadministrator nach Richtlinien.",
+      "Ein 403 kann auch auf eine Authentifizierungs- oder Ursprungsrichtlinienbeschränkung hinweisen – nicht unbedingt auf ein abgelaufenes Abonnement."
     ],
     "error4Title": [
       "Keine Werkzeuge gefunden, alte Werkzeugliste oder Werkzeug nicht erkannt"

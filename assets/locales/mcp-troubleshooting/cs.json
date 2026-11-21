@@ -43,13 +43,16 @@
       "Odstraňování problémů klientem MCP"
     ],
     "clientChatgpt": [
-      "Použijte konfiguraci aplikací nebo vývojářskou/vlastní konfiguraci MCP dostupnou pro váš účet nebo pracovní prostor. Přidejte vzdálenou adresu URL, dokončete autorizaci, skenujte nástroje a vyberte aplikaci ve svém chatu. Dostupnost aplikací a vývojářských režimů se liší podle plánu a oprávnění pracovního prostoru."
+      "Použijte konfiguraci aplikací nebo vývojářskou/vlastní konfiguraci MCP dostupnou pro váš účet nebo pracovní prostor.  Přidejte vzdálenou adresu URL, dokončete autorizaci, skenujte nástroje a vyberte aplikaci ve svém chatu.",
+      "Dostupnost aplikací a vývojářských režimů se liší podle plánu a oprávnění pracovního prostoru."
     ],
     "clientDocs": [
       "Oficiální pomoc klientům ↗"
     ],
     "clientClaude": [
-      "Přidejte Poly-Glot v Nastavení → Konektory jako vlastní vzdálený konektor. Pokud se neobjeví v chatu, povolte jej v nabídce nástrojů. Vzdálené konektory nejsou konfigurovány pomocí místního souboru JSON Claude Desktop stdio."
+      "Customize → Connectors → + Add → Add custom connector.  Autorizujte a povolte nástroje.",
+      "Dokončete všechny výzvy k přihlášení nebo autorizaci, schvalte oprávnění nástroje a poté obnovte nebo znovu prohledejte server v klientovi.  Nejprve spusťte test pouze pro čtení.",
+      "Požádejte svého klienta o použití nebo ; pak použijte zkontrolovat dostupnost zkušební verze a verze Pro."
     ],
     "clientCursor": [
       "Otevřete nastavení serveru MCP, přidejte vzdálený streamovatelný server HTTP pomocí výše uvedeného koncového bodu a povolte jej. Pokud nejsou uvedeny žádné nástroje, aktualizujte servery MCP, schvalte oprávnění a ověřte, zda klient podporuje tento přenos."
@@ -77,7 +80,8 @@
       "401 Neoprávněná nebo autorizační smyčka"
     ],
     "error2Body": [
-      "Použijte postup autorizace účtu klienta a znovu se připojte, pokud relace vyprší. Zkontrolujte požadavky na ověření serveru a oprávnění klienta. Nikdy nevkládejte hesla Apple, tokeny API nebo potvrzení o předplatném do veřejných chatů, snímků obrazovky nebo zpráv o problémech."
+      "Použijte postup autorizace účtu klienta a znovu se připojte, pokud relace vyprší.  Zkontrolujte požadavky na ověření serveru a oprávnění klienta.",
+      "Nikdy nevkládejte hesla Apple, tokeny API nebo potvrzení o předplatném do veřejných chatů, snímků obrazovky nebo zpráv o problémech."
     ],
     "error3Title": [
       "403 Zakázáno nebo odepřeno oprávnění k nástroji"

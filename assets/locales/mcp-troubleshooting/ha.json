@@ -43,13 +43,16 @@
       "Shirya matsala ta abokin ciniki na MCP"
     ],
     "clientChatgpt": [
-      "Yi amfani da ƙa'idodi ko ƙa'idodin MCP masu haɓakawa da ke samuwa ga asusunku ko filin aiki. Ƙara URL na nesa, kammala kowane izini, kayan aikin bincika kuma zaɓi ƙa'idar a cikin tattaunawar ku. Samuwar aikace-aikace da yanayin mai haɓakawa ya bambanta ta tsari da izinin sararin aiki."
+      "Yi amfani da ƙa'idodi ko ƙa'idodin MCP masu haɓakawa da ke samuwa ga asusunku ko filin aiki.  Ƙara URL na nesa, kammala kowane izini, kayan aikin bincika kuma zaɓi ƙa'idar a cikin tattaunawar ku.",
+      "Samuwar aikace-aikace da yanayin mai haɓakawa ya bambanta ta tsari da izinin sararin aiki."
     ],
     "clientDocs": [
       "Taimakon abokin ciniki na hukuma ↗"
     ],
     "clientClaude": [
-      "Ƙara Poly-Glot a ƙarƙashin Saituna → Masu haɗawa azaman mai haɗin nesa na al'ada. Idan bai bayyana a cikin taɗi ba, kunna shi a menu na kayan aikin ku. Ba a saita masu haɗin nesa ta amfani da fayil ɗin JSON na gida Claude Desktop stdio."
+      "Customize → Connectors → + Add → Add custom connector.  Yi izini kuma kunna kayan aikin.",
+      "Kammala duk wani sa-hannun shiga ko izini, yarda da izinin kayan aiki, sannan sake sabunta ko sake duba sabar a cikin abokin cinikin ku.  Fara gwajin karantawa kawai.",
+      "Tambayi abokin ciniki don amfani ko ; sannan amfani don duba gwaji da kasancewar Pro."
     ],
     "clientCursor": [
       "Buɗe saitunan uwar garken MCP ɗin ku, ƙara sabar HTTP mai ratsawa mai nisa ta amfani da ƙarshen ƙarshen sama, kuma kunna shi. Idan babu kayan aikin da aka jera, sabunta sabar MCP, yarda da izini kuma tabbatar da abokin ciniki yana goyan bayan wannan jigilar."
@@ -77,7 +80,8 @@
       "401 Mara izini ko izini madauki"
     ],
     "error2Body": [
-      "Yi amfani da kwarara izinin asusun abokin ciniki kuma sake haɗawa idan zaman ya ƙare. Bincika buƙatun tabbatar da uwar garken da izini na abokin ciniki. Kar a taɓa liƙa kalmomin sirri na Apple, alamun API ko rasidun biyan kuɗi cikin taɗi na jama'a, hotunan allo ko fitar da rahotanni."
+      "Yi amfani da kwarara izinin asusun abokin ciniki kuma sake haɗawa idan zaman ya ƙare.  Bincika buƙatun tabbatar da uwar garken da izini na abokin ciniki.",
+      "Kar a taɓa liƙa kalmomin sirri na Apple, alamun API ko rasidun biyan kuɗi cikin taɗi na jama'a, hotunan allo ko fitar da rahotanni."
     ],
     "error3Title": [
       "403 An haramta ko izinin kayan aiki"

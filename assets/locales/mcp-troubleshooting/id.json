@@ -43,13 +43,16 @@
       "Pemecahan masalah oleh klien MCP"
     ],
     "clientChatgpt": [
-      "Gunakan Aplikasi atau konfigurasi MCP pengembang/kustom yang tersedia untuk akun atau ruang kerja Anda. Tambahkan URL jarak jauh, selesaikan otorisasi apa pun, pindai alat, dan pilih aplikasi di obrolan Anda. Ketersediaan aplikasi dan mode pengembang bervariasi berdasarkan izin paket dan ruang kerja."
+      "Gunakan Aplikasi atau konfigurasi MCP pengembang/kustom yang tersedia untuk akun atau ruang kerja Anda.  Tambahkan URL jarak jauh, selesaikan otorisasi apa pun, pindai alat, dan pilih aplikasi di obrolan Anda.",
+      "Ketersediaan aplikasi dan mode pengembang bervariasi berdasarkan izin paket dan ruang kerja."
     ],
     "clientDocs": [
       "Bantuan klien resmi ↗"
     ],
     "clientClaude": [
-      "Tambahkan Poly-Glot di bawah Pengaturan → Konektor sebagai konektor jarak jauh khusus. Jika tidak muncul di obrolan, aktifkan di menu alat Anda. Konektor jarak jauh tidak dikonfigurasi menggunakan file JSON stdio Claude Desktop lokal."
+      "Customize → Connectors → + Add → Add custom connector.  Otorisasi dan aktifkan alat.",
+      "Selesaikan semua perintah masuk atau otorisasi, setujui izin alat, lalu segarkan atau pindai ulang server di klien Anda.  Jalankan tes baca-saja terlebih dahulu.",
+      "Minta klien Anda untuk menggunakan atau ; lalu gunakan untuk memeriksa ketersediaan uji coba dan Pro."
     ],
     "clientCursor": [
       "Buka pengaturan server MCP Anda, tambahkan server HTTP Streamable jarak jauh menggunakan titik akhir di atas, dan aktifkan. Jika tidak ada alat yang terdaftar, segarkan server MCP, setujui izin, dan verifikasi klien mendukung transportasi ini."
@@ -77,13 +80,15 @@
       "401 Lingkaran tidak sah atau otorisasi"
     ],
     "error2Body": [
-      "Gunakan alur otorisasi akun klien dan sambungkan kembali jika sesi berakhir. Periksa persyaratan otentikasi server dan izin klien. Jangan pernah menempelkan kata sandi Apple, token API, atau tanda terima langganan ke dalam obrolan publik, tangkapan layar, atau laporan masalah."
+      "Gunakan alur otorisasi akun klien dan sambungkan kembali jika sesi berakhir.  Periksa persyaratan otentikasi server dan izin klien.",
+      "Jangan pernah menempelkan kata sandi Apple, token API, atau tanda terima langganan ke dalam obrolan publik, tangkapan layar, atau laporan masalah."
     ],
     "error3Title": [
       "403 Dilarang atau izin alat ditolak"
     ],
     "error3Body": [
-      "Konfirmasikan bahwa klien memberikan izin konektor ini untuk menggunakan alat yang diminta. Tanyakan kepada admin ruang kerja tentang kebijakan jika perlu. 403 juga mungkin mencerminkan autentikasi atau pembatasan kebijakan asal—belum tentu merupakan langganan yang sudah habis masa berlakunya."
+      "Konfirmasikan bahwa klien memberikan izin konektor ini untuk menggunakan alat yang diminta.  Tanyakan kepada admin ruang kerja tentang kebijakan jika perlu.",
+      "403 juga mungkin mencerminkan autentikasi atau pembatasan kebijakan asal—belum tentu merupakan langganan yang sudah habis masa berlakunya."
     ],
     "error4Title": [
       "Tidak ada alat yang ditemukan, daftar alat lama atau alat tidak dikenali"

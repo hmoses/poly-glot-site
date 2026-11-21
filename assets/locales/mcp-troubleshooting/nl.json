@@ -43,13 +43,16 @@
       "Problemen per MCP-client oplossen"
     ],
     "clientChatgpt": [
-      "Gebruik de Apps-instellingen of de configuratie voor ontwikkelaars/aangepaste MCP-koppelingen die beschikbaar is voor je account of werkruimte. Voeg de externe URL toe, voltooi eventuele autorisatie, laat de tools zoeken en selecteer de app in je chat. De beschikbaarheid van Apps en de ontwikkelaarsmodus hangt af van je abonnement en werkruimtemachtigingen."
+      "Gebruik de Apps-instellingen of de configuratie voor ontwikkelaars/aangepaste MCP-koppelingen die beschikbaar is voor je account of werkruimte.  Voeg de externe URL toe, voltooi eventuele autorisatie, laat de tools zoeken en selecteer de app in je chat.",
+      "De beschikbaarheid van Apps en de ontwikkelaarsmodus hangt af van je abonnement en werkruimtemachtigingen."
     ],
     "clientDocs": [
       "Officiële hulp voor deze client ↗"
     ],
     "clientClaude": [
-      "Voeg Poly-Glot via Instellingen → Connectors toe als aangepaste externe connector. Verschijnt deze niet in de chat, schakel de connector dan in via het toolmenu. Externe connectors stel je niet in via het lokale stdio-JSON-bestand van Claude Desktop."
+      "Customize → Connectors → + Add → Add custom connector.  Verleen toegang en schakel de tools in.",
+      "Voltooi eventuele aanmeld- of autorisatiestappen, keur de toolmachtigingen goed en vernieuw of scan daarna de server opnieuw in je client.  Test eerst een alleen-lezen-tool.",
+      "Laat je client of gebruiken; gebruik daarna om te controleren of je toegang hebt tot de proefperiode en Pro."
     ],
     "clientCursor": [
       "Open de MCP-serverinstellingen, voeg een externe Streamable HTTP-server toe met de bovenstaande URL en schakel deze in. Zie je geen tools, vernieuw dan de MCP-servers, keur de machtigingen goed en controleer of je client dit transport ondersteunt."
@@ -77,13 +80,15 @@
       "401 Niet geautoriseerd of autorisatie blijft terugkomen"
     ],
     "error2Body": [
-      "Gebruik de autorisatieprocedure van de client en maak opnieuw verbinding als de sessie is verlopen. Controleer de authenticatievereisten van de server en de clientmachtigingen. Plaats nooit Apple-wachtwoorden, API-tokens of abonnementsbewijzen in openbare chats, schermafbeeldingen of foutmeldingen."
+      "Gebruik de autorisatieprocedure van de client en maak opnieuw verbinding als de sessie is verlopen.  Controleer de authenticatievereisten van de server en de clientmachtigingen.",
+      "Plaats nooit Apple-wachtwoorden, API-tokens of abonnementsbewijzen in openbare chats, schermafbeeldingen of foutmeldingen."
     ],
     "error3Title": [
       "403 Verboden of toegang tot tool geweigerd"
     ],
     "error3Body": [
-      "Controleer of de client toestemming heeft gekregen om de gevraagde tool via deze connector te gebruiken. Vraag zo nodig de werkruimtebeheerder naar het beleid. Een 403-fout kan ook worden veroorzaakt door authenticatie- of herkomstbeperkingen, en betekent niet automatisch dat je abonnement is verlopen."
+      "Controleer of de client toestemming heeft gekregen om de gevraagde tool via deze connector te gebruiken.  Vraag zo nodig de werkruimtebeheerder naar het beleid.",
+      "Een 403-fout kan ook worden veroorzaakt door authenticatie- of herkomstbeperkingen, en betekent niet automatisch dat je abonnement is verlopen."
     ],
     "error4Title": [
       "Geen tools gevonden, verouderde toollijst of tool niet herkend"

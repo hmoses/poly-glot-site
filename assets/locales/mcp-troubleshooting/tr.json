@@ -43,13 +43,16 @@
       "MCP istemcisi tarafından sorun giderme"
     ],
     "clientChatgpt": [
-      "Hesabınızda veya çalışma alanınızda kullanılabilen Uygulamaları veya geliştirici/özel MCP yapılandırmasını kullanın. Uzak URL'yi ekleyin, yetkilendirmeyi tamamlayın, araçları tarayın ve sohbetinizde uygulamayı seçin. Uygulama ve geliştirici modunun kullanılabilirliği, plan ve çalışma alanı izinlerine göre değişir."
+      "Hesabınızda veya çalışma alanınızda kullanılabilen Uygulamaları veya geliştirici/özel MCP yapılandırmasını kullanın.  Uzak URL'yi ekleyin, yetkilendirmeyi tamamlayın, araçları tarayın ve sohbetinizde uygulamayı seçin.",
+      "Uygulama ve geliştirici modunun kullanılabilirliği, plan ve çalışma alanı izinlerine göre değişir."
     ],
     "clientDocs": [
       "Resmi müşteri yardımı ↗"
     ],
     "clientClaude": [
-      "Poly-Glot'ı Ayarlar → Konektörler altına özel bir uzaktan bağlayıcı olarak ekleyin. Sohbette görünmüyorsa, araçlar menünüzden etkinleştirin. Uzak bağlayıcılar yerel Claude Desktop stdio JSON dosyası kullanılarak yapılandırılmaz."
+      "Customize → Connectors → + Add → Add custom connector.  Araçları yetkilendirin ve etkinleştirin.",
+      "Herhangi bir oturum açma veya yetkilendirme istemini tamamlayın, araç izinlerini onaylayın ve ardından istemcinizdeki sunucuyu yenileyin veya yeniden tarayın.  Önce salt okunur bir test çalıştırın.",
+      "Müşterinizden kullanmasını isteyin veya ; sonra kullan deneme ve Pro kullanılabilirliğini kontrol etmek için."
     ],
     "clientCursor": [
       "MCP sunucusu ayarlarınızı açın, yukarıdaki uç noktayı kullanarak uzak bir Akış Yapılabilir HTTP sunucusu ekleyin ve etkinleştirin. Hiçbir araç listelenmiyorsa MCP sunucularını yenileyin, izinleri onaylayın ve istemcinin bu aktarımı desteklediğini doğrulayın."
@@ -77,13 +80,15 @@
       "401 Yetkisiz veya yetkilendirme döngüsü"
     ],
     "error2Body": [
-      "Müşterinin hesap yetkilendirme akışını kullanın ve oturumun süresi dolarsa yeniden bağlanın. Sunucunun kimlik doğrulama gereksinimlerini ve istemci izinlerini kontrol edin. Apple parolalarını, API belirteçlerini veya abonelik makbuzlarını asla halka açık sohbetlere, ekran görüntülerine veya sorun raporlarına yapıştırmayın."
+      "Müşterinin hesap yetkilendirme akışını kullanın ve oturumun süresi dolarsa yeniden bağlanın.  Sunucunun kimlik doğrulama gereksinimlerini ve istemci izinlerini kontrol edin.",
+      "Apple parolalarını, API belirteçlerini veya abonelik makbuzlarını asla halka açık sohbetlere, ekran görüntülerine veya sorun raporlarına yapıştırmayın."
     ],
     "error3Title": [
       "403 Yasak veya araç izni reddedildi"
     ],
     "error3Body": [
-      "İstemcinin bu bağlayıcıya istenen aracı kullanması için izin verdiğini doğrulayın. Gerekirse çalışma alanı yöneticisinden politikalar hakkında bilgi isteyin. 403 aynı zamanda bir kimlik doğrulama veya kaynak politikası kısıtlamasını da yansıtabilir; süresi dolmuş bir abonelik olmayabilir."
+      "İstemcinin bu bağlayıcıya istenen aracı kullanması için izin verdiğini doğrulayın.  Gerekirse çalışma alanı yöneticisinden politikalar hakkında bilgi isteyin.",
+      "403 aynı zamanda bir kimlik doğrulama veya kaynak politikası kısıtlamasını da yansıtabilir; süresi dolmuş bir abonelik olmayabilir."
     ],
     "error4Title": [
       "Hiçbir araç bulunamadı, eski araç listesi veya araç tanınmıyor"

@@ -43,13 +43,16 @@
       "Menyelesaikan masalah oleh klien MCP"
     ],
     "clientChatgpt": [
-      "Gunakan Apl atau konfigurasi pembangun/MCP tersuai yang tersedia untuk akaun atau ruang kerja anda. Tambahkan URL jauh, lengkapkan sebarang kebenaran, imbas alatan dan pilih apl dalam sembang anda. Ketersediaan apl dan mod pembangun berbeza mengikut kebenaran pelan dan ruang kerja."
+      "Gunakan Apl atau konfigurasi pembangun/MCP tersuai yang tersedia untuk akaun atau ruang kerja anda.  Tambahkan URL jauh, lengkapkan sebarang kebenaran, imbas alatan dan pilih apl dalam sembang anda.",
+      "Ketersediaan apl dan mod pembangun berbeza mengikut kebenaran pelan dan ruang kerja."
     ],
     "clientDocs": [
       "Bantuan pelanggan rasmi ↗"
     ],
     "clientClaude": [
-      "Tambahkan Poly-Glot di bawah Tetapan → Penyambung sebagai penyambung jauh tersuai. Jika ia tidak muncul dalam sembang, dayakannya dalam menu alatan anda. Penyambung jauh tidak dikonfigurasikan menggunakan fail JSON stdio Desktop Claude setempat."
+      "Customize → Connectors → + Add → Add custom connector.  Benarkan dan dayakan alatan.",
+      "Lengkapkan sebarang log masuk atau gesaan kebenaran, luluskan kebenaran alat, kemudian muat semula atau imbas semula pelayan dalam klien anda.  Jalankan ujian baca sahaja dahulu.",
+      "Minta pelanggan anda untuk menggunakannya atau ; kemudian gunakan untuk menyemak ketersediaan percubaan dan Pro."
     ],
     "clientCursor": [
       "Buka tetapan pelayan MCP anda, tambah pelayan HTTP Boleh Stream jauh menggunakan titik akhir di atas dan dayakannya. Jika tiada alatan disenaraikan, muat semula pelayan MCP, luluskan kebenaran dan sahkan pelanggan menyokong pengangkutan ini."
@@ -77,7 +80,8 @@
       "401 Gelung tanpa kebenaran atau kebenaran"
     ],
     "error2Body": [
-      "Gunakan aliran kebenaran akaun pelanggan dan sambung semula jika sesi tamat tempoh. Semak keperluan pengesahan pelayan dan kebenaran klien. Jangan sekali-kali menampal kata laluan Apple, token API atau resit langganan ke dalam sembang awam, tangkapan skrin atau laporan isu."
+      "Gunakan aliran kebenaran akaun pelanggan dan sambung semula jika sesi tamat tempoh.  Semak keperluan pengesahan pelayan dan kebenaran klien.",
+      "Jangan sekali-kali menampal kata laluan Apple, token API atau resit langganan ke dalam sembang awam, tangkapan skrin atau laporan isu."
     ],
     "error3Title": [
       "403 Dilarang atau kebenaran alat ditolak"

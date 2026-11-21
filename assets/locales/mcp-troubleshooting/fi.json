@@ -43,13 +43,16 @@
       "MCP-asiakasohjelman vianetsintä"
     ],
     "clientChatgpt": [
-      "Käytä tilisi tai työtilan käytettävissä olevia sovelluksia tai kehittäjän/mukautettuja MCP-määrityksiä. Lisää etä-URL-osoite, suorita valtuutus, skannaustyökalut ja valitse sovellus chatissasi. Sovellus- ja kehittäjätilan saatavuus vaihtelee suunnitelman ja työtilan käyttöoikeuksien mukaan."
+      "Käytä tilisi tai työtilan käytettävissä olevia sovelluksia tai kehittäjän/mukautettuja MCP-määrityksiä.  Lisää etä-URL-osoite, suorita valtuutus, skannaustyökalut ja valitse sovellus chatissasi.",
+      "Sovellus- ja kehittäjätilan saatavuus vaihtelee suunnitelman ja työtilan käyttöoikeuksien mukaan."
     ],
     "clientDocs": [
       "Virallinen asiakastuki ↗"
     ],
     "clientClaude": [
-      "Lisää Poly-Glot mukautetuksi etäliittimeksi kohdassa Asetukset → Liittimet. Jos se ei näy chatissa, ota se käyttöön työkaluvalikosta. Etäliittimiä ei ole määritetty käyttämällä paikallista Claude Desktop stdio JSON -tiedostoa."
+      "Customize → Connectors → + Add → Add custom connector.  Valtuuta ja ota työkalut käyttöön.",
+      "Täytä mikä tahansa kirjautumis- tai valtuutuskehote, hyväksy työkalun käyttöoikeudet ja päivitä tai tarkista asiakkaasi palvelin uudelleen.  Suorita ensin vain luku -testi.",
+      "Pyydä asiakasta käyttämään tai ; käytä sitten tarkistaaksesi kokeiluversion ja Pron saatavuuden."
     ],
     "clientCursor": [
       "Avaa MCP-palvelimen asetukset, lisää Streamable HTTP-etäpalvelin käyttämällä yllä olevaa päätepistettä ja ota se käyttöön. Jos luettelossa ei ole työkaluja, päivitä MCP-palvelimet, hyväksy käyttöoikeudet ja varmista, että asiakas tukee tätä siirtoa."
@@ -77,7 +80,8 @@
       "401 Luvaton tai valtuutussilmukka"
     ],
     "error2Body": [
-      "Käytä asiakkaan tilin valtuutuskulkua ja muodosta yhteys uudelleen, jos istunto vanhenee. Tarkista palvelimen todennusvaatimukset ja asiakkaan käyttöoikeudet. Älä koskaan liitä Applen salasanoja, API-tunnuksia tai tilauskuitteja julkisiin keskusteluihin, kuvakaappauksiin tai ongelmaraportteihin."
+      "Käytä asiakkaan tilin valtuutuskulkua ja muodosta yhteys uudelleen, jos istunto vanhenee.  Tarkista palvelimen todennusvaatimukset ja asiakkaan käyttöoikeudet.",
+      "Älä koskaan liitä Applen salasanoja, API-tunnuksia tai tilauskuitteja julkisiin keskusteluihin, kuvakaappauksiin tai ongelmaraportteihin."
     ],
     "error3Title": [
       "403 Kielletty tai työkalun käyttöoikeus evätty"

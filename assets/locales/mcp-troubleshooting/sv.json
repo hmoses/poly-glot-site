@@ -43,13 +43,16 @@
       "Felsökning av MCP-klient"
     ],
     "clientChatgpt": [
-      "Använd appar eller utvecklare/anpassad MCP-konfiguration som är tillgänglig för ditt konto eller arbetsyta. Lägg till fjärr-URL, slutför eventuell auktorisering, skanna verktyg och välj appen i din chatt. Tillgängligheten för appar och utvecklarläge varierar beroende på plan och arbetsytabehörigheter."
+      "Använd appar eller utvecklare/anpassad MCP-konfiguration som är tillgänglig för ditt konto eller arbetsyta.  Lägg till fjärr-URL, slutför eventuell auktorisering, skanna verktyg och välj appen i din chatt.",
+      "Tillgängligheten för appar och utvecklarläge varierar beroende på plan och arbetsytabehörigheter."
     ],
     "clientDocs": [
       "Officiell kundhjälp ↗"
     ],
     "clientClaude": [
-      "Lägg till Poly-Glot under Inställningar → Anslutningar som en anpassad fjärrkontakt. Om det inte visas i chatten, aktivera det i din verktygsmeny. Fjärranslutningar konfigureras inte med den lokala Claude Desktop stdio JSON-filen."
+      "Customize → Connectors → + Add → Add custom connector.  Auktorisera och aktivera verktyg.",
+      "Fyll i valfri inloggnings- eller auktoriseringsuppmaning, godkänn verktygsbehörigheter och uppdatera eller skanna om servern i din klient.  Kör ett skrivskyddat test först.",
+      "Be din klient att använda eller ; använd sedan för att kontrollera testversion och Pro tillgänglighet."
     ],
     "clientCursor": [
       "Öppna dina MCP-serverinställningar, lägg till en fjärrströmbar HTTP-server med hjälp av slutpunkten ovan och aktivera den. Om inga verktyg är listade, uppdatera MCP-servrarna, godkänn behörigheter och verifiera att klienten stöder denna transport."
@@ -77,13 +80,15 @@
       "401 Obehörig eller auktoriseringsslinga"
     ],
     "error2Body": [
-      "Använd klientens kontoauktoriseringsflöde och återanslut om sessionen löper ut. Kontrollera serverns autentiseringskrav och klientbehörigheter. Klistra aldrig in Apple-lösenord, API-tokens eller prenumerationskvitton i offentliga chattar, skärmdumpar eller problemrapporter."
+      "Använd klientens kontoauktoriseringsflöde och återanslut om sessionen löper ut.  Kontrollera serverns autentiseringskrav och klientbehörigheter.",
+      "Klistra aldrig in Apple-lösenord, API-tokens eller prenumerationskvitton i offentliga chattar, skärmdumpar eller problemrapporter."
     ],
     "error3Title": [
       "403 Förbjudet eller verktygstillstånd nekad"
     ],
     "error3Body": [
-      "Bekräfta att klienten gav den här anslutaren behörighet att använda det begärda verktyget. Fråga arbetsplatsadministratören om policyer om det behövs. En 403 kan också återspegla en autentiserings- eller ursprungspolicybegränsning – inte nödvändigtvis ett utgånget abonnemang."
+      "Bekräfta att klienten gav den här anslutaren behörighet att använda det begärda verktyget.  Fråga arbetsplatsadministratören om policyer om det behövs.",
+      "En 403 kan också återspegla en autentiserings- eller ursprungspolicybegränsning – inte nödvändigtvis ett utgånget abonnemang."
     ],
     "error4Title": [
       "Inga verktyg hittades, gammal verktygslista eller verktyg känns inte igen"

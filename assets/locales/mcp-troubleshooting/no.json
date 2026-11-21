@@ -43,13 +43,16 @@
       "Feilsøking av MCP-klient"
     ],
     "clientChatgpt": [
-      "Bruk appene eller utvikler/tilpasset MCP-konfigurasjon som er tilgjengelig for kontoen eller arbeidsområdet. Legg til den eksterne URL-adressen, fullfør eventuell autorisasjon, skanneverktøy og velg appen i chatten din. Tilgjengeligheten av apper og utviklermodus varierer etter plan og arbeidsområdetillatelser."
+      "Bruk appene eller utvikler/tilpasset MCP-konfigurasjon som er tilgjengelig for kontoen eller arbeidsområdet.  Legg til den eksterne URL-adressen, fullfør eventuell autorisasjon, skanneverktøy og velg appen i chatten din.",
+      "Tilgjengeligheten av apper og utviklermodus varierer etter plan og arbeidsområdetillatelser."
     ],
     "clientDocs": [
       "Offisiell kundehjelp ↗"
     ],
     "clientClaude": [
-      "Legg til Poly-Glot under Innstillinger → Koblinger som en egendefinert ekstern kontakt. Hvis det ikke vises i chat, aktiver det i verktøymenyen. Eksterne kontakter er ikke konfigurert med den lokale Claude Desktop stdio JSON-filen."
+      "Customize → Connectors → + Add → Add custom connector.  Autoriser og aktiver verktøy.",
+      "Fullfør enhver påloggings- eller autorisasjonsforespørsel, godkjenn verktøytillatelser, og oppdater eller skann serveren på nytt på klienten din.  Kjør en skrivebeskyttet test først.",
+      "Be klienten din bruke eller ; bruk deretter for å sjekke prøveversjon og Pro tilgjengelighet."
     ],
     "clientCursor": [
       "Åpne MCP-serverinnstillingene, legg til en ekstern streambar HTTP-server ved å bruke endepunktet ovenfor, og aktiver den. Hvis ingen verktøy er oppført, oppdater MCP-serverne, godkjenn tillatelser og kontroller at klienten støtter denne transporten."
@@ -83,7 +86,8 @@
       "403 Forbudt eller verktøytillatelse nektet"
     ],
     "error3Body": [
-      "Bekreft at klienten har gitt denne koblingen tillatelse til å bruke det forespurte verktøyet. Spør arbeidsområdeadministratoren om retningslinjer om nødvendig. En 403 kan også reflektere en autentiserings- eller opprinnelsespolicybegrensning – ikke nødvendigvis et utløpt abonnement."
+      "Bekreft at klienten har gitt denne koblingen tillatelse til å bruke det forespurte verktøyet.  Spør arbeidsområdeadministratoren om retningslinjer om nødvendig.",
+      "En 403 kan også reflektere en autentiserings- eller opprinnelsespolicybegrensning – ikke nødvendigvis et utløpt abonnement."
     ],
     "error4Title": [
       "Ingen verktøy funnet, gammel verktøyliste eller verktøy ikke gjenkjent"

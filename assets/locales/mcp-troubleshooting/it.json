@@ -43,13 +43,16 @@
       "Risoluzione dei problemi tramite client MCP"
     ],
     "clientChatgpt": [
-      "Utilizza le app o la configurazione MCP personalizzata/sviluppatore disponibile per il tuo account o area di lavoro. Aggiungi l'URL remoto, completa qualsiasi autorizzazione, scansiona gli strumenti e seleziona l'app nella tua chat. La disponibilità delle app e della modalità sviluppatore varia in base alle autorizzazioni del piano e dell'area di lavoro."
+      "Utilizza le app o la configurazione MCP personalizzata/sviluppatore disponibile per il tuo account o area di lavoro.  Aggiungi l'URL remoto, completa qualsiasi autorizzazione, scansiona gli strumenti e seleziona l'app nella tua chat.",
+      "La disponibilità delle app e della modalità sviluppatore varia in base alle autorizzazioni del piano e dell'area di lavoro."
     ],
     "clientDocs": [
       "Aiuto cliente ufficiale ↗"
     ],
     "clientClaude": [
-      "Aggiungi Poly-Glot in Impostazioni → Connettori come connettore remoto personalizzato. Se non appare nella chat, abilitalo nel menu Strumenti. I connettori remoti non sono configurati utilizzando il file JSON stdio locale di Claude Desktop."
+      "Customize → Connectors → + Add → Add custom connector.  Autorizzare e abilitare gli strumenti.",
+      "Completa qualsiasi richiesta di accesso o autorizzazione, approva le autorizzazioni dello strumento, quindi aggiorna o esegui nuovamente la scansione del server nel tuo client.  Esegui prima un test di sola lettura.",
+      "Chiedi al tuo cliente di usarlo O ; quindi utilizzare per verificare la disponibilità di prova e Pro."
     ],
     "clientCursor": [
       "Apri le impostazioni del server MCP, aggiungi un server HTTP streaming remoto utilizzando l'endpoint riportato sopra e abilitalo. Se non sono elencati strumenti, aggiorna i server MCP, approva le autorizzazioni e verifica che il client supporti questo trasporto."
@@ -77,13 +80,15 @@
       "401 Loop non autorizzato o di autorizzazione"
     ],
     "error2Body": [
-      "Utilizza il flusso di autorizzazione dell'account del cliente e riconnettiti se la sessione scade. Controlla i requisiti di autenticazione del server e le autorizzazioni del client. Non incollare mai password Apple, token API o ricevute di abbonamento in chat pubbliche, screenshot o rapporti sui problemi."
+      "Utilizza il flusso di autorizzazione dell'account del cliente e riconnettiti se la sessione scade.  Controlla i requisiti di autenticazione del server e le autorizzazioni del client.",
+      "Non incollare mai password Apple, token API o ricevute di abbonamento in chat pubbliche, screenshot o rapporti sui problemi."
     ],
     "error3Title": [
       "403 Vietato o autorizzazione strumento negata"
     ],
     "error3Body": [
-      "Conferma che al client è stata concessa l'autorizzazione al connettore per utilizzare lo strumento richiesto. Se necessario, chiedi all'amministratore dell'area di lavoro informazioni sui criteri. Un 403 può anche riflettere una restrizione relativa all'autenticazione o alla politica di origine, non necessariamente un abbonamento scaduto."
+      "Conferma che al client è stata concessa l'autorizzazione al connettore per utilizzare lo strumento richiesto.  Se necessario, chiedi all'amministratore dell'area di lavoro informazioni sui criteri.",
+      "Un 403 può anche riflettere una restrizione relativa all'autenticazione o alla politica di origine, non necessariamente un abbonamento scaduto."
     ],
     "error4Title": [
       "Nessun utensile trovato, vecchio elenco utensili o utensile non riconosciuto"

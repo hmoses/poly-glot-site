@@ -43,13 +43,16 @@
       "Rozwiązywanie problemów przez klienta MCP"
     ],
     "clientChatgpt": [
-      "Skorzystaj z aplikacji lub konfiguracji programisty/niestandardowej MCP dostępnej dla Twojego konta lub obszaru roboczego. Dodaj zdalny adres URL, dokonaj autoryzacji, przeskanuj narzędzia i wybierz aplikację na czacie. Dostępność aplikacji i trybu programisty różni się w zależności od planu i uprawnień obszaru roboczego."
+      "Skorzystaj z aplikacji lub konfiguracji programisty/niestandardowej MCP dostępnej dla Twojego konta lub obszaru roboczego.  Dodaj zdalny adres URL, dokonaj autoryzacji, przeskanuj narzędzia i wybierz aplikację na czacie.",
+      "Dostępność aplikacji i trybu programisty różni się w zależności od planu i uprawnień obszaru roboczego."
     ],
     "clientDocs": [
       "Oficjalna pomoc klienta ↗"
     ],
     "clientClaude": [
-      "Dodaj Poly-Glot w Ustawieniach → Konektory jako niestandardowe zdalne złącze. Jeśli nie pojawia się na czacie, włącz go w menu narzędzi. Zdalne łączniki nie są konfigurowane przy użyciu lokalnego pliku JSON stdio Claude Desktop."
+      "Customize → Connectors → + Add → Add custom connector.  Autoryzuj i włączaj narzędzia.",
+      "Wypełnij monit dotyczący logowania lub autoryzacji, zatwierdź uprawnienia narzędzia, a następnie odśwież lub ponownie przeskanuj serwer w swoim kliencie.  Najpierw wykonaj test tylko do odczytu.",
+      "Poproś swojego klienta o skorzystanie Lub ; następnie użyj aby sprawdzić dostępność wersji próbnej i Pro."
     ],
     "clientCursor": [
       "Otwórz ustawienia serwera MCP, dodaj zdalny serwer Streamable HTTP, korzystając z powyższego punktu końcowego i włącz go. Jeśli na liście nie ma żadnych narzędzi, odśwież serwery MCP, zatwierdź uprawnienia i sprawdź, czy klient obsługuje ten transport."
@@ -77,13 +80,15 @@
       "401 Nieautoryzowany lub pętla autoryzacyjna"
     ],
     "error2Body": [
-      "Użyj procesu autoryzacji konta klienta i połącz się ponownie, jeśli sesja wygaśnie. Sprawdź wymagania dotyczące uwierzytelniania serwera i uprawnienia klienta. Nigdy nie wklejaj haseł Apple, tokenów API ani potwierdzeń subskrypcji do publicznych czatów, zrzutów ekranu ani raportów."
+      "Użyj procesu autoryzacji konta klienta i połącz się ponownie, jeśli sesja wygaśnie.  Sprawdź wymagania dotyczące uwierzytelniania serwera i uprawnienia klienta.",
+      "Nigdy nie wklejaj haseł Apple, tokenów API ani potwierdzeń subskrypcji do publicznych czatów, zrzutów ekranu ani raportów."
     ],
     "error3Title": [
       "403 Zabronione lub odmowa dostępu do narzędzia"
     ],
     "error3Body": [
-      "Potwierdź, że klient przyznał temu łącznikowi uprawnienia do korzystania z żądanego narzędzia. Jeśli to konieczne, zapytaj administratora obszaru roboczego o zasady. Kod 403 może również odzwierciedlać ograniczenie dotyczące uwierzytelniania lub polityki pochodzenia — niekoniecznie wygasłą subskrypcję."
+      "Potwierdź, że klient przyznał temu łącznikowi uprawnienia do korzystania z żądanego narzędzia.  Jeśli to konieczne, zapytaj administratora obszaru roboczego o zasady.",
+      "Kod 403 może również odzwierciedlać ograniczenie dotyczące uwierzytelniania lub polityki pochodzenia — niekoniecznie wygasłą subskrypcję."
     ],
     "error4Title": [
       "Nie znaleziono żadnych narzędzi, stara lista narzędzi lub narzędzie nie zostało rozpoznane"

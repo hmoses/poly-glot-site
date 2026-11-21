@@ -43,13 +43,16 @@
       "Fejlfinding af MCP-klient"
     ],
     "clientChatgpt": [
-      "Brug apps eller udvikler/tilpasset MCP-konfiguration, der er tilgængelig for din konto eller dit arbejdsområde. Tilføj fjern-URL'en, fuldfør enhver godkendelse, scan værktøjer og vælg appen i din chat. Tilgængeligheden af ​​app og udviklertilstand varierer alt efter plan og arbejdsområdetilladelser."
+      "Brug apps eller udvikler/tilpasset MCP-konfiguration, der er tilgængelig for din konto eller dit arbejdsområde.  Tilføj fjern-URL'en, fuldfør enhver godkendelse, scan værktøjer og vælg appen i din chat.",
+      "Tilgængeligheden af ​​app og udviklertilstand varierer alt efter plan og arbejdsområdetilladelser."
     ],
     "clientDocs": [
       "Officiel kundehjælp ↗"
     ],
     "clientClaude": [
-      "Tilføj Poly-Glot under Indstillinger → Stik som et brugerdefineret fjernstik. Hvis det ikke vises i chat, skal du aktivere det i din værktøjsmenu. Fjernforbindelser er ikke konfigureret ved hjælp af den lokale Claude Desktop stdio JSON-fil."
+      "Customize → Connectors → + Add → Add custom connector.  Godkend og aktivér værktøjer.",
+      "Gennemfør enhver login- eller godkendelsesprompt, godkend værktøjstilladelser, og opdater eller genscan serveren i din klient.  Kør først en skrivebeskyttet test.",
+      "Bed din klient om at bruge eller ; brug derefter for at tjekke prøveversion og Pro tilgængelighed."
     ],
     "clientCursor": [
       "Åbn dine MCP-serverindstillinger, tilføj en fjernstreambar HTTP-server ved hjælp af slutpunktet ovenfor, og aktiver den. Hvis der ikke er nogen værktøjer på listen, skal du opdatere MCP-serverne, godkende tilladelser og kontrollere, at klienten understøtter denne transport."
@@ -77,13 +80,15 @@
       "401 Uautoriseret eller autorisationsløkke"
     ],
     "error2Body": [
-      "Brug klientens kontogodkendelsesflow, og genopret forbindelsen, hvis sessionen udløber. Tjek serverens godkendelseskrav og klienttilladelser. Indsæt aldrig Apple-adgangskoder, API-tokens eller abonnementskvitteringer i offentlige chats, skærmbilleder eller problemrapporter."
+      "Brug klientens kontogodkendelsesflow, og genopret forbindelsen, hvis sessionen udløber.  Tjek serverens godkendelseskrav og klienttilladelser.",
+      "Indsæt aldrig Apple-adgangskoder, API-tokens eller abonnementskvitteringer i offentlige chats, skærmbilleder eller problemrapporter."
     ],
     "error3Title": [
       "403 Forbudt eller værktøjstilladelse nægtet"
     ],
     "error3Body": [
-      "Bekræft, at klienten har givet denne connector tilladelse til at bruge det anmodede værktøj. Spørg arbejdsområdets administrator om politikker, hvis det er nødvendigt. En 403 kan også afspejle en godkendelses- eller oprindelsespolitik-begrænsning - ikke nødvendigvis et udløbet abonnement."
+      "Bekræft, at klienten har givet denne connector tilladelse til at bruge det anmodede værktøj.  Spørg arbejdsområdets administrator om politikker, hvis det er nødvendigt.",
+      "En 403 kan også afspejle en godkendelses- eller oprindelsespolitik-begrænsning - ikke nødvendigvis et udløbet abonnement."
     ],
     "error4Title": [
       "Ingen værktøjer fundet, gammel værktøjsliste eller værktøj ikke genkendt"

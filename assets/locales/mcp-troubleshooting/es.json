@@ -43,13 +43,16 @@
       "Solución de problemas por cliente MCP"
     ],
     "clientChatgpt": [
-      "Utilice las aplicaciones o la configuración de desarrollador/MCP personalizada disponible para su cuenta o espacio de trabajo. Agregue la URL remota, complete cualquier autorización, escanee las herramientas y seleccione la aplicación en su chat. La disponibilidad de la aplicación y del modo desarrollador varía según el plan y los permisos del espacio de trabajo."
+      "Utilice las aplicaciones o la configuración de desarrollador/MCP personalizada disponible para su cuenta o espacio de trabajo.  Agregue la URL remota, complete cualquier autorización, escanee las herramientas y seleccione la aplicación en su chat.",
+      "La disponibilidad de la aplicación y del modo desarrollador varía según el plan y los permisos del espacio de trabajo."
     ],
     "clientDocs": [
       "Ayuda oficial al cliente ↗"
     ],
     "clientClaude": [
-      "Agregue Poly-Glot en Configuración → Conectores como conector remoto personalizado. Si no aparece en el chat, habilítelo en su menú de herramientas. Los conectores remotos no se configuran mediante el archivo JSON stdio local de Claude Desktop."
+      "Customize → Connectors → + Add → Add custom connector.  Autorizar y habilitar herramientas.",
+      "Complete cualquier solicitud de inicio de sesión o autorización, apruebe los permisos de la herramienta y luego actualice o vuelva a escanear el servidor en su cliente.  Primero ejecute una prueba de solo lectura.",
+      "Pídale a su cliente que use o ; entonces usa para verificar la disponibilidad de prueba y Pro."
     ],
     "clientCursor": [
       "Abra la configuración de su servidor MCP, agregue un servidor HTTP Streamable remoto utilizando el punto final anterior y habilítelo. Si no aparece ninguna herramienta, actualice los servidores MCP, apruebe los permisos y verifique que el cliente admita este transporte."
@@ -77,13 +80,15 @@
       "401 Bucle no autorizado o de autorización"
     ],
     "error2Body": [
-      "Utilice el flujo de autorización de la cuenta del cliente y vuelva a conectarse si la sesión caduca. Verifique los requisitos de autenticación del servidor y los permisos del cliente. Nunca pegue contraseñas de Apple, tokens API o recibos de suscripción en chats públicos, capturas de pantalla o informes de problemas."
+      "Utilice el flujo de autorización de la cuenta del cliente y vuelva a conectarse si la sesión caduca.  Verifique los requisitos de autenticación del servidor y los permisos del cliente.",
+      "Nunca pegue contraseñas de Apple, tokens API o recibos de suscripción en chats públicos, capturas de pantalla o informes de problemas."
     ],
     "error3Title": [
       "403 Prohibido o permiso de herramienta denegado"
     ],
     "error3Body": [
-      "Confirme que el cliente otorgó permiso a este conector para usar la herramienta solicitada. Pregúntele al administrador del espacio de trabajo sobre las políticas si es necesario. Un 403 también puede reflejar una restricción de autenticación o de política de origen, no necesariamente una suscripción vencida."
+      "Confirme que el cliente otorgó permiso a este conector para usar la herramienta solicitada.  Pregúntele al administrador del espacio de trabajo sobre las políticas si es necesario.",
+      "Un 403 también puede reflejar una restricción de autenticación o de política de origen, no necesariamente una suscripción vencida."
     ],
     "error4Title": [
       "No se encontraron herramientas, lista de herramientas antigua o herramienta no reconocida"
