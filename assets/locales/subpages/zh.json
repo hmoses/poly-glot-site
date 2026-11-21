@@ -581,7 +581,6 @@
   "Photo to AI and OCR on Apple devices": "Apple 设备上的照片转 AI 和 OCR",
   "Photo to AI is included in an eligible Apple-authorized 3-day Pro introductory trial and requires Pro thereafter.": "Photo to AI 包含在符合条件的 Apple 授权的 3 天 Pro 入门试用中，此后需要 Pro。",
   "Photo to AI lets you take or choose a photo, add instructions, and open a selected AI. On iPhone and iPad, paste or manually attach the image in a compatible chat. On Mac, use Finder and right-click Paste or ⌘V where supported. Poly-Glot does not send images automatically; providers handle shared images under their own privacy policies.": "照片到 AI 可让您拍摄或选择照片、添加说明以及打开选定的 AI。在 iPhone 和 iPad 上，将图像粘贴或手动附加到兼容的聊天中。在 Mac 上，使用 Finder 并右键单击粘贴或 ⌘V（如果支持）。 Poly-Glot 不会自动发送图像；提供商根据自己的隐私政策处理共享图像。",
-  "Photo to AI on Mac, iPhone and iPad (Coming Soon)": "Mac、iPhone 和 iPad 上的照片到 AI（即将推出）",
   "Plan-dependent": "取决于计划",
   "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat.": "Poly-Glot AI Workspace 是一款适用于 iOS 和 macOS 的提示构建和 AI 路由应用程序。您输入或说出一个问题，或者从 1,000 多个专家提示模板中进行选择，然后将其发送到 8 个 AI 应用程序中的任意一个：ChatGPT、Claude、Gemini、Perplexity、Grok、Mistral、DuckDuckGo 或 HuggingChat。",
   "Poly-Glot AI Workspace is listed in the Awesome Remote MCP Servers directory. PR #115 merged September 11, 2026.": "Poly-Glot AI Workspace 列在 Awesome Remote MCP Servers 目录中。 PR #115 于 2026 年 9 月 11 日合并。",
@@ -657,5 +656,6 @@
   "to confirm tool discovery, then": "确认工具发现，然后",
   "to check what your authenticated account can access. Test a Pro-only action only after the server reports the appropriate entitlement.": "检查您的经过身份验证的帐户可以访问哪些内容。仅在服务器报告适当的权利后才测试 Pro-only 操作。",
   "Check the Apple subscription in Settings, restore the purchase in Poly-Glot where supported, reconnect the MCP client, and retry": "在“设置”中检查 Apple 订阅，在支持的 Poly-Glot 中恢复购买，重新连接 MCP 客户端，然后重试",
-  ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": "。如果应用程序没有可见的帐户链接选项，请联系支持人员，而不是购买第二个订阅。"
+  ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": "。如果应用程序没有可见的帐户链接选项，请联系支持人员，而不是购买第二个订阅。",
+  "Photo to AI on Mac, iPhone and iPad": "Mac、iPhone 和 iPad 上的照片到 AI（即将推出）"
 }

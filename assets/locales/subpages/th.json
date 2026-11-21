@@ -581,7 +581,6 @@
   "Photo to AI and OCR on Apple devices": "รูปภาพเป็น AI และ OCR บนอุปกรณ์ Apple",
   "Photo to AI is included in an eligible Apple-authorized 3-day Pro introductory trial and requires Pro thereafter.": "Photo to AI รวมอยู่ในการทดลองใช้ Pro เบื้องต้น 3 วันที่ได้รับอนุญาตจาก Apple และต้องใช้ Pro หลังจากนั้น",
   "Photo to AI lets you take or choose a photo, add instructions, and open a selected AI. On iPhone and iPad, paste or manually attach the image in a compatible chat. On Mac, use Finder and right-click Paste or ⌘V where supported. Poly-Glot does not send images automatically; providers handle shared images under their own privacy policies.": "Photo to AI ให้คุณถ่ายหรือเลือกรูปภาพ เพิ่มคำแนะนำ และเปิด AI ที่เลือก บน iPhone และ iPad ให้วางหรือแนบรูปภาพด้วยตนเองในการแชทที่เข้ากันได้ บน Mac ให้ใช้ Finder แล้วคลิกขวาที่ Paste หรือ ⌘V ในกรณีที่รองรับ Poly-Glot จะไม่ส่งภาพโดยอัตโนมัติ ผู้ให้บริการจัดการภาพที่แชร์ภายใต้นโยบายความเป็นส่วนตัวของตนเอง",
-  "Photo to AI on Mac, iPhone and iPad (Coming Soon)": "Photo to AI บน Mac, iPhone และ iPad (เร็วๆ นี้)",
   "Plan-dependent": "ขึ้นอยู่กับแผน",
   "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat.": "Poly-Glot AI Workspace คือแอปสร้างพรอมต์และกำหนดเส้นทาง AI สำหรับ iOS และ macOS คุณพิมพ์หรือพูดคำถาม หรือเลือกจากเทมเพลตพร้อมท์ผู้เชี่ยวชาญกว่า 1,000 แบบ จากนั้นส่งไปยังแอป AI ใดก็ได้จากทั้งหมด 8 แอป ได้แก่ ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo หรือ HuggingChat",
   "Poly-Glot AI Workspace is listed in the Awesome Remote MCP Servers directory. PR #115 merged September 11, 2026.": "Poly-Glot AI Workspace อยู่ในไดเรกทอรี Awesome Remote MCP Servers PR #115 รวมเข้าด้วยกันเมื่อวันที่ 11 กันยายน 2026",
@@ -657,5 +656,6 @@
   "to confirm tool discovery, then": "เพื่อยืนยันการค้นพบเครื่องมือแล้ว",
   "to check what your authenticated account can access. Test a Pro-only action only after the server reports the appropriate entitlement.": "เพื่อตรวจสอบว่าบัญชีที่ได้รับการรับรองความถูกต้องของคุณสามารถเข้าถึงได้อะไรบ้าง ทดสอบการดำเนินการ Pro-only หลังจากที่เซิร์ฟเวอร์รายงานการให้สิทธิ์ที่เหมาะสมเท่านั้น",
   "Check the Apple subscription in Settings, restore the purchase in Poly-Glot where supported, reconnect the MCP client, and retry": "ตรวจสอบการสมัครสมาชิก Apple ในการตั้งค่า กู้คืนการซื้อใน Poly-Glot ในกรณีที่รองรับ เชื่อมต่อไคลเอนต์ MCP อีกครั้ง แล้วลองอีกครั้ง",
-  ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": ". หากแอปไม่มีตัวเลือกการเชื่อมโยงบัญชีที่มองเห็นได้ โปรดติดต่อฝ่ายสนับสนุนแทนที่จะซื้อการสมัครสมาชิกครั้งที่สอง"
+  ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": ". หากแอปไม่มีตัวเลือกการเชื่อมโยงบัญชีที่มองเห็นได้ โปรดติดต่อฝ่ายสนับสนุนแทนที่จะซื้อการสมัครสมาชิกครั้งที่สอง",
+  "Photo to AI on Mac, iPhone and iPad": "Photo to AI บน Mac, iPhone และ iPad"
 }

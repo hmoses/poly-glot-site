@@ -582,7 +582,6 @@
   "Photo to AI and OCR on Apple devices": "Apple 기기의 AI 및 OCR에 사진 추가",
   "Photo to AI is included in an eligible Apple-authorized 3-day Pro introductory trial and requires Pro thereafter.": "Photo to AI는 Apple이 승인한 적격한 3일 Pro 입문 체험판에 포함되어 있으며 그 이후에는 Pro가 필요합니다.",
   "Photo to AI lets you take or choose a photo, add instructions, and open a selected AI. On iPhone and iPad, paste or manually attach the image in a compatible chat. On Mac, use Finder and right-click Paste or ⌘V where supported. Poly-Glot does not send images automatically; providers handle shared images under their own privacy policies.": "Photo to AI를 사용하면 사진을 찍거나 선택하고, 지침을 추가하고, 선택한 AI를 열 수 있습니다. iPhone 및 iPad의 경우 호환되는 채팅에 이미지를 붙여넣거나 수동으로 첨부하세요. Mac에서는 Finder를 사용하고 지원되는 경우 붙여넣기 또는 ⌘V를 마우스 오른쪽 버튼으로 클릭하세요. Poly-Glot은 이미지를 자동으로 전송하지 않습니다. 제공업체는 자체 개인정보 보호정책에 따라 공유 이미지를 처리합니다.",
-  "Photo to AI on Mac, iPhone and iPad (Coming Soon)": "Mac, iPhone, iPad에서 사진을 AI로(출시 예정)",
   "Plan-dependent": "계획에 따라 다름",
   "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat.": "Poly-Glot AI Workspace는 iOS 및 macOS용 신속한 구축 및 AI 라우팅 앱입니다. 질문을 입력하거나 말하거나 1,000개 이상의 전문가 프롬프트 템플릿 중에서 선택한 다음 ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo 또는 HuggingChat 등 8가지 AI 앱 중 하나로 보낼 수 있습니다.",
   "Poly-Glot AI Workspace is listed in the Awesome Remote MCP Servers directory. PR #115 merged September 11, 2026.": "Poly-Glot AI Workspace는 Awesome Remote MCP Servers 디렉터리에 나열되어 있습니다. PR #115는 2026년 9월 11일에 합병되었습니다.",
@@ -657,5 +656,6 @@
   "to confirm tool discovery, then": "도구 검색을 확인한 다음",
   "to check what your authenticated account can access. Test a Pro-only action only after the server reports the appropriate entitlement.": "인증된 계정이 무엇에 액세스할 수 있는지 확인하세요. 서버가 적절한 자격을 보고한 후에만 Pro 전용 작업을 테스트하십시오.",
   "Check the Apple subscription in Settings, restore the purchase in Poly-Glot where supported, reconnect the MCP client, and retry": "설정에서 Apple 구독을 확인하고, 지원되는 경우 Poly-Glot에서 구매를 복원하고, MCP 클라이언트를 다시 연결한 후 다시 시도하세요.",
-  ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": ". 앱에 계정 연결 옵션이 표시되지 않는 경우 두 번째 구독을 구매하는 대신 지원팀에 문의하세요."
+  ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": ". 앱에 계정 연결 옵션이 표시되지 않는 경우 두 번째 구독을 구매하는 대신 지원팀에 문의하세요.",
+  "Photo to AI on Mac, iPhone and iPad": "Mac, iPhone, iPad에서 사진을 AI로"
 }

@@ -574,7 +574,6 @@
   "Photo to AI and OCR on Apple devices": "تحويل الصور إلى AI وOCR على أجهزة Apple",
   "Photo to AI is included in an eligible Apple-authorized 3-day Pro introductory trial and requires Pro thereafter.": "يتم تضمين Photo to AI في النسخة التجريبية التمهيدية المؤهلة من Apple لمدة 3 أيام لـ Pro، وتتطلب Pro بعد ذلك.",
   "Photo to AI lets you take or choose a photo, add instructions, and open a selected AI. On iPhone and iPad, paste or manually attach the image in a compatible chat. On Mac, use Finder and right-click Paste or ⌘V where supported. Poly-Glot does not send images automatically; providers handle shared images under their own privacy policies.": "يتيح لك Photo to AI التقاط صورة أو اختيارها وإضافة تعليمات وفتح AI محدد. على iPhone وiPad، قم بلصق الصورة أو إرفاقها يدويًا في محادثة متوافقة. على نظام Mac، استخدم Finder وانقر بزر الماوس الأيمن على \"لصق\" أو ⌘V حيثما يكون ذلك مدعومًا. لا يقوم Poly-Glot بإرسال الصور تلقائيًا؛ يتعامل مقدمو الخدمة مع الصور المشتركة بموجب سياسات الخصوصية الخاصة بهم.",
-  "Photo to AI on Mac, iPhone and iPad (Coming Soon)": "تحويل الصور إلى الذكاء الاصطناعي على أجهزة Mac وiPhone وiPad (قريبًا)",
   "Plan-dependent": "تعتمد على الخطة",
   "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat.": "Poly-Glot AI Workspace هو تطبيق سريع للبناء وتوجيه الذكاء الاصطناعي لـ iOS وmacOS. يمكنك كتابة سؤال أو التحدث به - أو الاختيار من بين 1,000+ قوالب مطالبات الخبراء - ثم إرساله إلى أي من تطبيقات الذكاء الاصطناعي 8: ChatGPT، أو Claude، أو Gemini، أو Perplexity، أو Grok، أو Mistral، أو DuckDuckGo، أو HuggingChat.",
   "Poly-Glot AI Workspace is listed in the Awesome Remote MCP Servers directory. PR #115 merged September 11, 2026.": "تم إدراج Poly-Glot AI Workspace في دليل خوادم MCP الرائع البعيد. تم دمج PR #115 في سبتمبر 11، 2026.",
@@ -650,5 +649,6 @@
   "to confirm tool discovery, then": "لتأكيد اكتشاف الأداة، إذن",
   "to check what your authenticated account can access. Test a Pro-only action only after the server reports the appropriate entitlement.": "للتحقق مما يمكن لحسابك المصادق الوصول إليه. اختبر الإجراء الاحترافي فقط بعد أن يبلغ الخادم عن الاستحقاق المناسب.",
   "Check the Apple subscription in Settings, restore the purchase in Poly-Glot where supported, reconnect the MCP client, and retry": "تحقق من اشتراك Apple في الإعدادات، واستعد عملية الشراء في Poly-Glot حيثما كان ذلك مدعومًا، وأعد توصيل عميل MCP، ثم أعد المحاولة",
-  ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": ". إذا لم يكن التطبيق يحتوي على خيار مرئي لربط الحساب، فاتصل بالدعم بدلاً من شراء اشتراك ثانٍ."
+  ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": ". إذا لم يكن التطبيق يحتوي على خيار مرئي لربط الحساب، فاتصل بالدعم بدلاً من شراء اشتراك ثانٍ.",
+  "Photo to AI on Mac, iPhone and iPad": "تحويل الصور إلى الذكاء الاصطناعي على أجهزة Mac وiPhone وiPad"
 }

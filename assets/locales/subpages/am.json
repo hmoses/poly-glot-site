@@ -574,7 +574,6 @@
   "Photo to AI and OCR on Apple devices": "ፎቶ ወደ AI እና OCR በApple መሳሪያዎች ላይ",
   "Photo to AI is included in an eligible Apple-authorized 3-day Pro introductory trial and requires Pro thereafter.": "ፎቶ ለ AI ብቁ በሆነው Apple የተፈቀደ 3-ቀን Pro የማስተዋወቂያ ሙከራ ውስጥ ተካትቷል እና ከዚያ በኋላ Pro ያስፈልገዋል።",
   "Photo to AI lets you take or choose a photo, add instructions, and open a selected AI. On iPhone and iPad, paste or manually attach the image in a compatible chat. On Mac, use Finder and right-click Paste or ⌘V where supported. Poly-Glot does not send images automatically; providers handle shared images under their own privacy policies.": "ፎቶ ወደ AI ፎቶ እንዲያነሱ ወይም እንዲመርጡ፣ መመሪያዎችን እንዲያክሉ እና የተመረጠ AI እንዲከፍቱ ያስችልዎታል። በ iPhone እና iPad ላይ ምስሉን በተመጣጣኝ ውይይት ውስጥ ለጥፍ ወይም በእጅ ያያይዙት። በ Mac ላይ Finderን ይጠቀሙ እና በሚደገፍበት ቦታ ለጥፍ ወይም ⌘V በቀኝ ጠቅ ያድርጉ። Poly-Glot ምስሎችን በራስ-ሰር አይልክም; አቅራቢዎች የተጋሩ ምስሎችን በራሳቸው የግላዊነት ፖሊሲዎች ይይዛሉ።",
-  "Photo to AI on Mac, iPhone and iPad (Coming Soon)": "ፎቶ ወደ AI በ Mac፣ iPhone እና iPad (በቅርብ ጊዜ)",
   "Plan-dependent": "በእቅድ ላይ የተመሰረተ",
   "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat.": "Poly-Glot AI የስራ ቦታ ለiOS እና macOS ፈጣን ግንባታ እና AI-ራውቲንግ መተግበሪያ ነው። ጥያቄ ይተይቡ ወይም ይናገራሉ - ወይም ከ1,000+ የባለሙያ መጠየቂያ አብነቶች ይምረጡ - ከዚያ ወደ ማንኛውም 8 AI መተግበሪያዎች ይላኩት፡: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, ወይም HuggingChat.",
   "Poly-Glot AI Workspace is listed in the Awesome Remote MCP Servers directory. PR #115 merged September 11, 2026.": "Poly-Glot AI Workspace በአስደናቂው የርቀት MCP አገልጋዮች ማውጫ ውስጥ ተዘርዝሯል። PR #115 ሴፕቴምበር 11፣ 2026 ተዋህዷል።",
@@ -650,5 +649,6 @@
   "to confirm tool discovery, then": "የመሣሪያ ግኝትን ለማረጋገጥ፣ ከዚያ",
   "to check what your authenticated account can access. Test a Pro-only action only after the server reports the appropriate entitlement.": "የተረጋገጠው መለያዎ ምን መድረስ እንደሚችል ለማረጋገጥ። የፕሮ-ብቻ እርምጃን አገልጋዩ ተገቢውን መብት ካቀረበ በኋላ ብቻ ይሞክሩት።",
   "Check the Apple subscription in Settings, restore the purchase in Poly-Glot where supported, reconnect the MCP client, and retry": "በቅንብሮች ውስጥ የApple ምዝገባን ያረጋግጡ፣ ግዢውን በPoly-Glot በሚደገፍበት ጊዜ ወደነበረበት ይመልሱ፣ የMCP ደንበኛን እንደገና ያገናኙ እና እንደገና ይሞክሩ።",
-  ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": ". መተግበሪያው ምንም የሚታይ የመለያ ማገናኘት አማራጭ ከሌለው ሁለተኛ ምዝገባ ከመግዛት ይልቅ ድጋፍን ያግኙ።"
+  ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": ". መተግበሪያው ምንም የሚታይ የመለያ ማገናኘት አማራጭ ከሌለው ሁለተኛ ምዝገባ ከመግዛት ይልቅ ድጋፍን ያግኙ።",
+  "Photo to AI on Mac, iPhone and iPad": "ፎቶ ወደ AI በ Mac፣ iPhone እና iPad"
 }

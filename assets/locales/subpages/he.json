@@ -581,7 +581,6 @@
   "Photo to AI and OCR on Apple devices": "תמונה ל-AI ו-OCR במכשירי Apple",
   "Photo to AI is included in an eligible Apple-authorized 3-day Pro introductory trial and requires Pro thereafter.": "תמונה ל-AI כלולה בתקופת ניסיון היכרות של Pro Apple-מוסמכת ל-3 ימים, ודורשת Pro לאחר מכן.",
   "Photo to AI lets you take or choose a photo, add instructions, and open a selected AI. On iPhone and iPad, paste or manually attach the image in a compatible chat. On Mac, use Finder and right-click Paste or ⌘V where supported. Poly-Glot does not send images automatically; providers handle shared images under their own privacy policies.": "Photo to AI מאפשר לך לצלם או לבחור תמונה, להוסיף הוראות ולפתוח AI נבחר. באייפון ובאייפד, הדבק או צרף את התמונה באופן ידני בצ'אט תואם. ב-Mac, השתמש ב-Finder ולחץ באמצעות לחצן העכבר הימני על הדבק או ⌘V היכן שנתמך. Poly-Glot אינו שולח תמונות באופן אוטומטי; ספקים מטפלים בתמונות משותפות במסגרת מדיניות הפרטיות שלהם.",
-  "Photo to AI on Mac, iPhone and iPad (Coming Soon)": "תמונה ל-AI ב-Mac, iPhone ו-iPad (בקרוב)",
   "Plan-dependent": "תלוי בתכנית",
   "Poly-Glot AI Workspace is a prompt-building and AI-routing app for iOS and macOS. You type or speak a question — or choose from 1,000+ expert prompt templates — then send it to any of 8 AI apps: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo, or HuggingChat.": "Poly-Glot AI Workspace היא אפליקציית בנייה מהירה וניתוב בינה מלאכותית עבור iOS ו-macOS. אתה מקליד או מדבר שאלה - או בוחר מתוך 1,000+ תבניות הנחיות מומחים - ואז שולח אותה לכל אחת מ-8 אפליקציות AI: ChatGPT, Claude, Gemini, Perplexity, Grok, Mistral, DuckDuckGo או HuggingChat.",
   "Poly-Glot AI Workspace is listed in the Awesome Remote MCP Servers directory. PR #115 merged September 11, 2026.": "Poly-Glot AI Workspace מופיע בספריית Awesome Remote MCP Servers. PR #115 התמזג ב-11 בספטמבר 2026.",
@@ -657,5 +656,6 @@
   "to confirm tool discovery, then": "אז כדי לאשר את גילוי הכלים",
   "to check what your authenticated account can access. Test a Pro-only action only after the server reports the appropriate entitlement.": "כדי לבדוק למה החשבון המאומת שלך יכול לגשת. בדוק פעולה של Pro-only רק לאחר שהשרת מדווח על הזכאות המתאימה.",
   "Check the Apple subscription in Settings, restore the purchase in Poly-Glot where supported, reconnect the MCP client, and retry": "בדוק את המנוי של Apple בהגדרות, שחזר את הרכישה ב-Poly-Glot היכן שהוא נתמך, חבר מחדש את לקוח MCP ונסה שוב",
-  ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": ". אם לאפליקציה אין אפשרות גלויה לקישור חשבון, פנה לתמיכה במקום לקנות מנוי שני."
+  ". If the app has no visible account-linking option, contact support rather than buying a second subscription.": ". אם לאפליקציה אין אפשרות גלויה לקישור חשבון, פנה לתמיכה במקום לקנות מנוי שני.",
+  "Photo to AI on Mac, iPhone and iPad": "תמונה ל-AI ב-Mac, iPhone ו-iPad"
 }
