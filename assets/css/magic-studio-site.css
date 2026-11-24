@@ -43,3 +43,18 @@
 
 #magic-studio .ms-brand-labels{display:flex;flex-direction:column;align-items:center;gap:9px;margin:0 auto 14px;max-width:100%}
 #magic-studio .ms-brand-labels .ms-tag,#magic-studio .ms-brand-labels .ms-coming-soon-badge{margin:0;max-width:100%;box-sizing:border-box;white-space:normal;text-align:center;overflow-wrap:anywhere;line-height:1.45}
+
+#magic-studio .ms-feature-overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}
+#magic-studio .ms-style-grid,#magic-studio .ms-action-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%;text-align:start}
+#magic-studio .ms-style,#magic-studio .ms-action,#magic-studio .ms-provider-grid>div{display:flex;align-items:center;justify-content:center;text-align:center;gap:6px;min-width:0;min-height:44px;padding:9px 6px;border:1px solid #64748b;border-radius:12px;background:#243247;color:white;overflow-wrap:anywhere;font-size:.85rem}
+#magic-studio .ms-stage .ms-style-picked{background:#433078;border:2px solid #a78bfa;animation:ms-select 2.5s ease-in-out infinite}
+#magic-studio .ms-motion-card{width:100%;min-height:140px;display:grid;place-items:center;gap:8px;padding:14px;border-radius:13px;background:radial-gradient(ellipse at 45% 45%,#594197,#122d4d);color:#fff}
+#magic-studio .ms-motion-card img{animation:ms-fly 3s infinite}
+#magic-studio .ms-provider-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%}
+#magic-studio .ms-library-row{display:flex;gap:12px;align-items:center;margin-top:8px;text-align:start}
+#magic-studio .ms-library-row .ms-icon{width:48px;height:48px}
+#magic-studio .ms-feature-overview .ms-example{margin-top:12px}
+#magic-studio .ms-feature-overview p{color:#c7d0e3;line-height:1.5;overflow-wrap:anywhere}
+#magic-studio .ms-caption{min-height:12em}
+@keyframes ms-select{50%{box-shadow:0 0 18px #a78bfa80}}
+@media(max-width:900px){#magic-studio .ms-feature-overview{grid-template-columns:1fr}#magic-studio .ms-caption{min-height:0}}
