@@ -38,3 +38,5 @@
 @keyframes ms-pointer{0%,100%{transform:translate(18px,12px)}55%{transform:translate(-6px,-10px)}65%{transform:translate(-6px,-10px) scale(.88)}}
 @media(max-width:800px){#magic-studio{padding:48px 0}#magic-studio .ms-grid{grid-template-columns:1fr}#magic-studio .ms-stage{min-height:270px}#magic-studio .ms-caption{min-height:0}}
 @media(prefers-reduced-motion:reduce){#magic-studio *{animation:none!important;scroll-behavior:auto!important}}
+
+#magic-studio .ms-new-badge{display:inline-block;vertical-align:middle;padding:5px 13px;border-radius:999px;background:#b5f5d6;color:#14382b;font-size:.8rem;font-weight:800;line-height:1.4;margin-block-end:12px;box-shadow:0 0 18px #45df9b25;max-width:100%;overflow-wrap:anywhere}
