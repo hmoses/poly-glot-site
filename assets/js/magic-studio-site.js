@@ -11,8 +11,10 @@ function chatLocale(){return locales[lang()];}
 function chatTopic(){return '✨ Magic Studio · '+badgeCopy[lang()][0];}
 function magicAnswer(){const t=chatLocale(),i=t.i;return '**'+i[0]+'**\n\n'+i[1]+'\n\n**'+t.c[0]+'**\n'+Array.from({length:6},(_,n)=>(n+1)+'. **'+i[2+n*2]+'** '+i[3+n*2]).join('\n')+'\n\n**'+i[14]+'** '+i[15]+'\n\n'+badgeCopy[lang()][1]+'\n\n['+t.c[0]+'](https://hmoses.github.io/poly-glot-site/?lang='+encodeURIComponent(lang())+'#magic-studio)';}
 w._pgMagicStudioChatTopic=chatTopic;
+w._pgMagicStudioChatSummary=function(){return '\n\n**'+chatTopic()+'**\n'+chatLocale().i[1]+'\n['+chatLocale().c[0]+'](https://hmoses.github.io/poly-glot-site/?lang='+encodeURIComponent(lang())+'#magic-studio)';};
 w._pgMagicStudioChatLookup=function(question){
  const v=normalized(question);if(!v)return null;
+ if(/^(?:what(?:'s| is) new|new features?|latest features?)\??$/i.test(v)||Object.values(badgeCopy).some(a=>v===normalized(a[0])))return magicAnswer();
  if(/magic[ -]?studio|talking[ -]?photo|motion[ -]?cards?|create (?:an? |ai )?(?:image|video)|generate (?:an? |ai )?(?:image|video)/i.test(v))return magicAnswer();
  for(const t of Object.values(locales)){
   if([t.i[0],t.e[0],t.e[2],t.i[14]].some(x=>{let k=normalized(x).replace(/^✨\s*/,'');return k.length>=3&&v.includes(k);}))return magicAnswer();
