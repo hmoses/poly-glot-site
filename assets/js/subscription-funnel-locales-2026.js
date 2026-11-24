@@ -5,24 +5,30 @@ const policy={"EN":["Eligible customers start a 3-day Pro trial by approving an 
 window._pgSubscriptionPolicy=policy;
 const after={"ES":"Después de la prueba de 3 días:","FR":"Après l’essai de 3 jours :","DE":"Nach der 3-tägigen Testphase:","IT":"Dopo la prova di 3 giorni:","PT":"Após o teste de 3 dias:","NL":"Na de proefperiode van 3 dagen:","RU":"После 3-дневной пробы:","ZH":"3 天试用结束后：","ZH_TW":"3 天試用結束後：","JA":"3 日間の試用後：","KO":"3일 체험 후:","AR":"بعد التجربة لمدة 3 أيام:","HI":"3 दिन के ट्रायल के बाद:","BN":"৩ দিনের ট্রায়ালের পর:","TR":"3 günlük denemeden sonra:","PL":"Po 3-dniowej próbie:","SV":"Efter 3 dagars provperiod:","NO":"Etter 3 dagers prøveperiode:","DA":"Efter 3 dages prøveperiode:","FI":"Kolmen päivän kokeilun jälkeen:","EL":"Μετά τη δοκιμή 3 ημερών:","HE":"לאחר ניסיון של 3 ימים:","ID":"Setelah uji coba 3 hari:","MS":"Selepas percubaan 3 hari:","TH":"หลังทดลองใช้ฟรี 3 วัน:","VI":"Sau 3 ngày dùng thử:","UK":"Після триденної пробної версії:","CS":"Po 3denní zkoušce:","RO":"După testul de 3 zile:","HU":"A 3 napos próba után:","SK":"Po 3-dňovej skúške:","HR":"Nakon 3 dana probe:","CA":"Després de la prova de 3 dies:","AF":"Ná die proeftydperk van 3 dae:","SW":"Baada ya majaribio ya siku 3:","HA":"Bayan gwajin kwanaki 3:","AM":"ከ3 ቀናት ሙከራ በኋላ:","EN":"After the 3-day trial:"};
 const order=["trial","locked","free","billing"];
+const trialPromo={"EN":["Start your 3-day free trial","Apple checkout confirms trial availability and subscription terms."],"ES":["Comienza tu prueba gratuita de 3 días","Apple confirma la disponibilidad de la prueba y las condiciones de suscripción al finalizar la compra."],"FR":["Commencez votre essai gratuit de 3 jours","Apple confirme la disponibilité de l’essai et les conditions d’abonnement lors du paiement."],"DE":["Starte deine 3-tägige kostenlose Testphase","Apple bestätigt beim Kauf die Verfügbarkeit der Testphase und die Abobedingungen."],"IT":["Inizia la tua prova gratuita di 3 giorni","Apple conferma la disponibilità della prova e le condizioni di abbonamento al momento dell’acquisto."],"PT":["Comece seu teste gratuito de 3 dias","A Apple confirma a disponibilidade do teste e as condições da assinatura no pagamento."],"NL":["Start je gratis proefperiode van 3 dagen","Apple bevestigt bij het afrekenen de beschikbaarheid en abonnementsvoorwaarden."],"RU":["Начните бесплатный пробный период на 3 дня","Доступность пробного периода и условия подписки подтверждаются при оформлении в Apple."],"ZH":["开始 3 天免费试用","Apple 结账时确认试用是否可用及订阅条款。"],"ZH_TW":["開始 3 天免費試用","Apple 結帳時確認試用是否可用及訂閱條款。"],"JA":["3日間の無料体験を始める","無料体験の利用可否とサブスクリプション条件はAppleの購入画面で確認できます。"],"KO":["3일 무료 체험 시작하기","Apple 결제 화면에서 체험 가능 여부와 구독 조건을 확인할 수 있습니다."],"AR":["ابدأ تجربتك المجانية لمدة 3 أيام","تؤكد Apple توفر التجربة وشروط الاشتراك عند الدفع."],"HI":["अपना 3 दिन का मुफ़्त ट्रायल शुरू करें","Apple के चेकआउट पर ट्रायल की उपलब्धता और सदस्यता की शर्तें दिखाई जाती हैं।"],"BN":["আপনার ৩ দিনের বিনামূল্যের ট্রায়াল শুরু করুন","Apple চেকআউটে ট্রায়ালের প্রাপ্যতা ও সাবস্ক্রিপশনের শর্ত নিশ্চিত করে।"],"TR":["3 günlük ücretsiz denemenizi başlatın","Apple, ödeme sırasında deneme olanağını ve abonelik koşullarını doğrular."],"PL":["Rozpocznij 3-dniowy bezpłatny okres próbny","Apple potwierdza dostępność okresu próbnego i warunki subskrypcji przy zakupie."],"SV":["Starta din kostnadsfria provperiod på 3 dagar","Apple bekräftar provperiodens tillgänglighet och prenumerationsvillkoren vid köp."],"NO":["Start din gratis prøveperiode på 3 dager","Apple bekrefter tilgjengelighet og abonnementsvilkår ved betaling."],"DA":["Start din gratis prøveperiode på 3 dage","Apple bekræfter tilgængelighed og abonnementsvilkår ved betaling."],"FI":["Aloita 3 päivän maksuton kokeilu","Apple vahvistaa kokeilun saatavuuden ja tilausehdot oston yhteydessä."],"EL":["Ξεκινήστε τη δωρεάν δοκιμή 3 ημερών","Η Apple επιβεβαιώνει τη διαθεσιμότητα της δοκιμής και τους όρους συνδρομής κατά την αγορά."],"HE":["התחילו את תקופת הניסיון החינמית ל־3 ימים","Apple מאשרת את זמינות תקופת הניסיון ואת תנאי המנוי בעת הרכישה."],"ID":["Mulai uji coba gratis 3 hari Anda","Apple mengonfirmasi ketersediaan uji coba dan ketentuan langganan saat pembayaran."],"MS":["Mulakan percubaan percuma 3 hari anda","Apple mengesahkan ketersediaan percubaan dan syarat langganan semasa pembayaran."],"TH":["เริ่มทดลองใช้ฟรี 3 วัน","Apple ยืนยันสิทธิ์ในการทดลองใช้และเงื่อนไขการสมัครสมาชิกในขั้นตอนชำระเงิน"],"VI":["Bắt đầu dùng thử miễn phí 3 ngày","Apple xác nhận khả năng dùng thử và điều khoản đăng ký khi thanh toán."],"UK":["Почніть безкоштовний 3-денний пробний період","Apple підтверджує доступність пробного періоду й умови підписки під час оформлення."],"CS":["Zahajte bezplatné 3denní zkušební období","Apple při nákupu potvrdí dostupnost zkušebního období a podmínky předplatného."],"RO":["Începe perioada de probă gratuită de 3 zile","Apple confirmă disponibilitatea perioadei de probă și condițiile abonamentului la cumpărare."],"HU":["Indítsd el a 3 napos ingyenes próbaidőszakot","Az Apple a vásárláskor erősíti meg a próbaidőszak elérhetőségét és az előfizetési feltételeket."],"SK":["Začnite bezplatné 3-dňové skúšobné obdobie","Apple pri nákupe potvrdí dostupnosť skúšobného obdobia a podmienky predplatného."],"HR":["Započnite besplatno probno razdoblje od 3 dana","Apple pri kupnji potvrđuje dostupnost probnog razdoblja i uvjete pretplate."],"CA":["Comença la teva prova gratuïta de 3 dies","Apple confirma la disponibilitat de la prova i les condicions de subscripció en fer la compra."],"AF":["Begin jou gratis proeftydperk van 3 dae","Apple bevestig die beskikbaarheid en intekeningvoorwaardes by betaling."],"SW":["Anza jaribio lako la bure la siku 3","Apple inathibitisha upatikanaji wa jaribio na masharti ya usajili wakati wa malipo."],"HA":["Fara gwajin kyauta na kwanaki 3","Apple yana tabbatar da samuwar gwaji da sharuɗɗan biyan kuɗi lokacin saye."],"AM":["የ3 ቀን ነፃ ሙከራዎን ይጀምሩ","Apple በግዢ ጊዜ የሙከራውን ተደራሽነት እና የምዝገባ ውሎችን ያረጋግጣል።"]};
+const isProductHome=!!document.getElementById('magic-studio');
+const homePolicy=Object.fromEntries(Object.entries(policy).map(([k,p])=>[k,[trialPromo[k][0]+'. '+trialPromo[k][1],...p.slice(1)]]));
+function activePolicy(code){return (isProductHome?homePolicy:policy)[code]||policy.EN;}
+window._pgTrialPromo=trialPromo;
 function language(){
   return window._pgI18n&&window._pgI18n.curLang?window._pgI18n.curLang():"EN";
 }
 function patchDictionary(){
   var all=window._pgI18n&&window._pgI18n.dictionary;if(!all)return;
   Object.keys(policy).forEach(function(code){
-    var p=policy[code],d=all[code];if(!d)return;
-    var title=d.trustC||all.EN.trustC||"3-Day Pro Trial";
-    d.prH=title+" · Pro";
+    var p=activePolicy(code),d=all[code];if(!d)return;
+    var title=isProductHome?trialPromo[code][0]:(d.trustC||all.EN.trustC||"3-Day Pro Trial");
+    if(isProductHome){d.trustC=title;d.prCTA1=title;}
+    d.prH=isProductHome?title:title+" · Pro";
     d.prTier1=title;
-    d.prName1=title+" · Pro";
+    d.prName1=isProductHome?title:title+" · Pro";
     d.prDesc1=p[0];
     d.prSub=p[0]+" "+p[1];
     d.fq6a=p[0]+" "+p[1]+" "+p[2];
     d.fqFreeQ=after[code]||after.EN;
     d.fqFreeA=p[2]+" "+p[3];
-    d.showcaseTrial=p[0];
-    d.sc1Trial=p[1];
+    d.showcaseTrial=isProductHome?p[0]+" "+p[1]:p[0];
+    d.sc1Trial=isProductHome?trialPromo[code][0]+" · "+p[1]:p[1];
     d.pricingAccessNote=p[3];
     d.pf1a=d.pf2a||all.EN.pf2a;
     d.pf1b=d.pf2b||all.EN.pf2b;
@@ -38,7 +44,7 @@ function patchChat(){
   var chat=window._pgChatI18n;
   if(!chat||!chat.KBL)return;
   Object.keys(policy).forEach(function(code){
-    var p=policy[code],key=code==='ZH_TW'?'ZH-TW':code;
+    var p=activePolicy(code),key=code==='ZH_TW'?'ZH-TW':code;
     var entry=chat.KBL[key]||(chat.KBL[key]={});
     var message='**'+(after[code]||after.EN)+'**\n\n'+p[0]+'\n\n'+p[1]+'\n\n'+p[2]+'\n\n'+p[3];
     ['trial','after trial','free plan'].forEach(function(topic){entry[topic]=message;});
@@ -46,7 +52,7 @@ function patchChat(){
     entry['how much']=message+'\n\n'+(d.prTier2||'Pro Monthly')+': US$9.99 · '+(d.prTier3||'Pro Annual')+': US$79.99. '+p[1];
     entry.template=p[2];
     entry.download=p[0]+' '+p[1]+' https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285';
-    var topics=chat.TOPICS[key];if(topics&&topics._afterTrial)topics._freePlan=topics._afterTrial;
+    var topics=chat.TOPICS[key];if(topics&&topics._afterTrial)topics._freePlan=topics._afterTrial;if(isProductHome&&topics)topics._trial=trialPromo[code][0];
     var responses=chat.CHAT_RESPONSES[key];
     if(responses){
       if(responses.greeting)responses.greeting=responses.greeting.replace(/\b9\b/g,'8');
@@ -72,9 +78,9 @@ function update(el,value){
 function apply(){
   patchDictionary();
   patchChat();
-  var code=language(),p=policy[code]||policy.EN;
+  var code=language(),p=activePolicy(code);
   var d=(window._pgI18n&&window._pgI18n.dictionary||{})[code]||{};
-  ["prH","prSub","prTier1","prName1","prDesc1","pf1a","pf1b","pf1c","pf1d","fq6a","fqFreeQ","fqFreeA","showcaseTrial","sc1Trial","pricingAccessNote"].forEach(function(key){
+  ["prH","prSub","prTier1","prName1","prDesc1","pf1a","pf1b","pf1c","pf1d","fq6a","fqFreeQ","fqFreeA","showcaseTrial","sc1Trial","pricingAccessNote"].concat(isProductHome?["trustC","prCTA1"]:[]).forEach(function(key){
     document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){update(el,d[key]);});
   });
   var root=document.getElementById("pg-trial-details");
@@ -87,7 +93,7 @@ function apply(){
   update(document.getElementById("pg-post-trial-heading"),after[code]||after.EN);
   update(document.getElementById("pg-post-trial-benefits"),p[2]);
   update(document.getElementById("pg-post-trial-note"),p[3]);
-  update(document.querySelector('#pg-mcp-subscribe [data-pg-sub-t="trial"]'),p[0]+" "+p[1]);
+  update(document.querySelector('#pg-mcp-subscribe [data-pg-sub-t="trial"]'),(policy[code]||policy.EN)[0]+" "+(policy[code]||policy.EN)[1]);
   var cards=document.querySelectorAll("#pg-plan-cards .pricing-card");
   if(cards.length===3){
     var first=cards[0].querySelector(".pricing-price");
@@ -95,7 +101,7 @@ function apply(){
   }
   // Value proposition: replace the retired recurring-free-send claim on the third feature chunk.
   var chunks=document.querySelectorAll(".pg-sc1-chunk p");
-  if(chunks.length>=3){update(chunks[2],p[2]);}
+  if(chunks.length>=3){update(chunks[2],isProductHome?p[0]+" "+p[1]:p[2]);}
   // Subpages remain localized by their existing selector; replace only the corrected subscription paragraphs.
   document.querySelectorAll("[data-pg-funnel]").forEach(function(el){
     var kind=el.getAttribute("data-pg-funnel");
@@ -126,7 +132,7 @@ function schedule(){
 // those specific elements are mutated, without observing animated UI content.
 function guardSubscriptionPricing(){
   if(!window.MutationObserver)return;
-  var selectors=["prTier1","prName1","prDesc1","prSub","fq6a","fqFreeA"];
+  var selectors=["prTier1","prName1","prDesc1","prSub","fq6a","fqFreeA"].concat(isProductHome?["prH","trustC","prCTA1","showcaseTrial","sc1Trial"]:[]);
   var observed=[];
   selectors.forEach(function(key){
     document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){
