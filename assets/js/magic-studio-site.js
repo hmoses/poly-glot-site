@@ -10,7 +10,7 @@ const workspaceBranding={"EN":["Coming Soon to Poly-Glot AI Workspace","Pro feat
 function normalized(v){return String(v||'').normalize('NFKC').toLowerCase().trim();}
 function chatLocale(){return locales[lang()];}
 function chatTopic(){return '✨ Magic Studio · '+badgeCopy[lang()][0];}
-function magicTrialCopy(){const c=lang(),original=badgeCopy[c][1],promo=w._pgTrialPromo&&w._pgTrialPromo[c];if(!promo)return original;const first=original.match(/^.*?[.。।።](?:\s|$)/u);return (first?first[0].trim():original)+' '+promo[0]+'. '+promo[1];}
+function magicTrialCopy(){const c=lang(),original=badgeCopy[c][1],promo=w._pgTrialPromo&&w._pgTrialPromo[c];if(!promo)return original;const first=original.match(/^.*?[.。।።]/u);return (first?first[0].trim():original)+' '+promo[0]+'. '+promo[1];}
 function magicAnswer(){const t=chatLocale(),i=t.i;return '**'+i[0]+' · '+workspaceBranding[lang()][0]+'**\n\n'+magicTrialCopy()+'\n\n'+i[1]+'\n\n**'+t.c[0]+'**\n'+Array.from({length:6},(_,n)=>(n+1)+'. **'+i[2+n*2]+'** '+i[3+n*2]).join('\n')+'\n\n**'+i[14]+'** '+i[15]+'\n\n['+t.c[0]+'](https://hmoses.github.io/poly-glot-site/?lang='+encodeURIComponent(lang())+'#magic-studio)';}
 w._pgMagicStudioChatTopic=chatTopic;
 w._pgMagicStudioChatSummary=function(){return '\n\n**'+chatTopic()+'**\n'+workspaceBranding[lang()][0]+'\n'+magicTrialCopy()+'\n'+chatLocale().i[1]+'\n['+chatLocale().c[0]+'](https://hmoses.github.io/poly-glot-site/?lang='+encodeURIComponent(lang())+'#magic-studio)';};
