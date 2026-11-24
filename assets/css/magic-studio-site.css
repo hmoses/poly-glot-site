@@ -40,3 +40,6 @@
 @media(prefers-reduced-motion:reduce){#magic-studio *{animation:none!important;scroll-behavior:auto!important}}
 
 #magic-studio .ms-coming-soon-badge{display:inline-block;vertical-align:middle;padding:5px 13px;border-radius:999px;background:#f9df9d;color:#412c12;font-size:.8rem;font-weight:800;line-height:1.4;margin-block-end:12px;box-shadow:0 0 18px #f2b95025;max-width:100%;overflow-wrap:anywhere}
+
+#magic-studio .ms-brand-labels{display:flex;flex-direction:column;align-items:center;gap:9px;margin:0 auto 14px;max-width:100%}
+#magic-studio .ms-brand-labels .ms-tag,#magic-studio .ms-brand-labels .ms-coming-soon-badge{margin:0;max-width:100%;box-sizing:border-box;white-space:normal;text-align:center;overflow-wrap:anywhere;line-height:1.45}
