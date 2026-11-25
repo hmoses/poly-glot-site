@@ -24,6 +24,10 @@ async def main():
             assert result['actions']==t['actions'][:10],(code,'actions')
             assert result['dir']==('rtl' if code in ['AR','HE'] else 'ltr'),(code,'direction')
             assert all(x[0] in result['chat'] for x in t['steps']),(code,'chat')
+            badge=await page.locator('#ms-available-badge').text_content()
+            assert badge in result['chat'] and 'Poly-Glot AI Workspace' in badge,(code,'availability')
+            assert 'Coming Soon' not in result['chat'],(code,'stale availability')
+            assert await page.locator('#magic-studio [data-ms-scene="3"] [data-ms-sd="3"]').text_content()==t['steps'][3][1],(code,'demo prompt')
             assert not result['overflow'],(code,'overflow',result['overflow'])
             for n in range(8):
                 await page.evaluate('(n)=>document.querySelectorAll("#magic-studio .ms-step")[n].click()',n)

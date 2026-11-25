@@ -39,10 +39,10 @@
 @media(max-width:800px){#magic-studio{padding:48px 0}#magic-studio .ms-grid{grid-template-columns:1fr}#magic-studio .ms-stage{min-height:270px}#magic-studio .ms-caption{min-height:0}}
 @media(prefers-reduced-motion:reduce){#magic-studio *{animation:none!important;scroll-behavior:auto!important}}
 
-#magic-studio .ms-coming-soon-badge{display:inline-block;vertical-align:middle;padding:5px 13px;border-radius:999px;background:#f9df9d;color:#412c12;font-size:.8rem;font-weight:800;line-height:1.4;margin-block-end:12px;box-shadow:0 0 18px #f2b95025;max-width:100%;overflow-wrap:anywhere}
+#magic-studio .ms-available-badge{display:inline-block;vertical-align:middle;padding:5px 13px;border-radius:999px;background:#baf2d0;color:#123b29;font-size:.8rem;font-weight:800;line-height:1.4;margin-block-end:12px;box-shadow:0 0 18px #22c55e25;max-width:100%;overflow-wrap:anywhere}
 
 #magic-studio .ms-brand-labels{display:flex;flex-direction:column;align-items:center;gap:9px;margin:0 auto 14px;max-width:100%}
-#magic-studio .ms-brand-labels .ms-tag,#magic-studio .ms-brand-labels .ms-coming-soon-badge{margin:0;max-width:100%;box-sizing:border-box;white-space:normal;text-align:center;overflow-wrap:anywhere;line-height:1.45}
+#magic-studio .ms-brand-labels .ms-tag,#magic-studio .ms-brand-labels .ms-available-badge{margin:0;max-width:100%;box-sizing:border-box;white-space:normal;text-align:center;overflow-wrap:anywhere;line-height:1.45}
 
 #magic-studio .ms-feature-overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}
 #magic-studio .ms-style-grid,#magic-studio .ms-action-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%;text-align:start}
@@ -58,3 +58,18 @@
 #magic-studio .ms-caption{min-height:12em}
 @keyframes ms-select{50%{box-shadow:0 0 18px #a78bfa80}}
 @media(max-width:900px){#magic-studio .ms-feature-overview{grid-template-columns:1fr}#magic-studio .ms-caption{min-height:0}}
+
+#magic-studio .ms-tool-icon{display:grid;place-items:center;width:58px;height:58px;border-radius:15px;background:linear-gradient(145deg,#7451be,#342958);font-size:30px;box-shadow:0 6px 20px #17102980}
+#magic-studio .ms-card:first-child .ms-tool-icon{animation:ms-reveal 3s infinite}
+#magic-studio .ms-card:nth-child(2) .ms-tool-icon{animation:ms-talk 1.6s infinite}
+#magic-studio .ms-card:nth-child(3) .ms-tool-icon{animation:ms-fly 3.5s infinite}
+#magic-studio .ms-sparkle{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:8px;background:#563aa1}
+#magic-studio .ms-selected-image{position:relative;padding:9px;border:2px solid #a78bfa;border-radius:18px}
+#magic-studio .ms-selected-image img{display:block;width:100px}
+#magic-studio .ms-image-check{position:absolute;inset-inline-end:-7px;bottom:-7px;background:#22c55e;color:#10251b;border-radius:50%;width:26px;height:26px;font-weight:800}
+#magic-studio .ms-city-card{position:relative;overflow:hidden;min-height:155px;background:radial-gradient(ellipse at 50% 5%,#6c4cd2,#152e55 65%,#111827)}
+#magic-studio .ms-cityline{position:absolute;bottom:0;inset-inline:0;height:80%;display:flex;align-items:end;justify-content:space-around;opacity:.8;pointer-events:none}
+#magic-studio .ms-cityline i{display:block;width:12%;height:55%;border:1px solid #a5b4fc55;background:repeating-linear-gradient(0deg,#203254 0 7px,#9ce1f055 8px 10px,#203254 11px 15px)}
+#magic-studio .ms-cityline i:nth-child(2n){height:85%}#magic-studio .ms-cityline i:nth-child(3n){height:40%}
+#magic-studio .ms-city-card img,#magic-studio .ms-city-card strong{position:relative;z-index:1}#magic-studio .ms-city-card strong{background:#111827bf;padding:5px 9px;border-radius:8px}
+#magic-studio .ms-city-card img{animation:ms-fly 3s ease-in-out infinite}
