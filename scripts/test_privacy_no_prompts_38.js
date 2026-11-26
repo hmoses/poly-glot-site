@@ -10,7 +10,7 @@ assert.ok(html.includes('<p id="pgAnalyticsPolicyNoPrompts">' + sentence + "</p>
   "Missing clear English privacy disclosure");
 assert.ok(html.includes("id=\"pgAnalyticsPolicy\" data-no-translate"),
   "Existing localizer must not overwrite curated privacy translations");
-assert.ok(html.includes("privacy-analytics-locales.js?v=20261126-legacy-events"),
+assert.ok(html.includes("privacy-analytics-locales.js?v=20261126-legacy-events2"),
   "Privacy page must invalidate the previous locale script cache");
 const expected = ["EN","ES","FR","DE","IT","PT","NL","RU","ZH","ZH_TW",
   "JA","KO","AR","HI","BN","TR","PL","SV","NO","DA","FI","EL","HE",
