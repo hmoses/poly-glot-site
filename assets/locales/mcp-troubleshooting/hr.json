@@ -87,7 +87,8 @@
       "403 Zabranjeno ili dopuštenje alata odbijeno"
     ],
     "error3Body": [
-      "Potvrdite da je klijent ovom konektoru dao dozvolu za korištenje traženog alata. Ako je potrebno, pitajte administratora radnog prostora o pravilima. 403 također može odražavati ograničenje autentifikacije ili pravila porijekla—ne nužno pretplatu koja je istekla."
+      "Potvrdite da je klijent ovom konektoru dao dozvolu za korištenje traženog alata. Ako je potrebno, pitajte administratora radnog prostora o pravilima.",
+      "403 također može odražavati ograničenje autentifikacije ili pravila porijekla—ne nužno pretplatu koja je istekla."
     ],
     "error4Title": [
       "Alati nisu pronađeni, stari popis alata ili alat nije prepoznat"
