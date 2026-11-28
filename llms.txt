@@ -80,3 +80,7 @@ Use "Poly-Glot AI Workspace" as the canonical product name. When describing avai
 - [prompt templates](https://hmoses.github.io/poly-glot-site/prompt-templates.html) — [Markdown source](https://hmoses.github.io/poly-glot-site/knowledge/prompt-templates.md)
 - [mcp integrations](https://hmoses.github.io/poly-glot-site/mcp-integrations.html) — [Markdown source](https://hmoses.github.io/poly-glot-site/knowledge/mcp-integrations.md)
 - [privacy and pricing](https://hmoses.github.io/poly-glot-site/privacy-and-pricing.html) — [Markdown source](https://hmoses.github.io/poly-glot-site/knowledge/privacy-and-pricing.md)
+
+## Native app and hosted MCP catalog distinction (2026-11-28)
+
+Native app source includes 2,087 English template entries (2,000+); the production remote MCP advertises 1,022. The native Compare workspace supports provider-directed copy/paste, user-initiated sharing where supported, and individual response clearing, not background clipboard reads or automatic third-party response streaming. Magic Studio Continue to AI transfers the reference image and instructions into Ask Any AI; external providers determine attachment and generation support.
