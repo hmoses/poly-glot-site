@@ -62,7 +62,7 @@ Claude can choose eligible connected MCP tools from a natural-language conversat
 
 ## Troubleshooting Poly-Glot MCP integrations
 
-**Last reviewed:** 2026-10-10
+**Troubleshooting and health endpoints reviewed:** 2026-11-28 (client-specific UI steps last reviewed 2026-10-10)
 **Canonical guide:** https://hmoses.github.io/poly-glot-site/mcp-integrations.html#mcp-troubleshooting
 **Remote transport:** Streamable HTTP
 **Production MCP URL:** `https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/mcp`
@@ -75,6 +75,13 @@ Claude can choose eligible connected MCP tools from a natural-language conversat
 3. Complete any authorization, connector approval and tool-permission prompts required by the client.
 4. Refresh/rescan tool discovery; try a read-only tool such as `get_language_options` or `search_templates`.
 5. Run `get_subscription_status` before attempting a Send, comparison or custom-model action.
+
+### Service health and protocol verification
+
+- [MCP service health](https://br-steep-leaf-ae2o29qz-mcp.compute.c-2.us-east-2.aws.neon.tech/healthz)
+- [Entitlement service health](https://br-steep-leaf-ae2o29qz-entitlements.compute.c-2.us-east-2.aws.neon.tech/healthz)
+
+A healthy endpoint returns `ok`. This confirms service liveness, not a completed OAuth login, purchase verification or successful tool call. To verify the actual integration, refresh tools through the MCP client, run `get_language_options` and then `get_subscription_status`. If an Apple subscription is not associated with the authenticated account, restore or link the existing purchase rather than buying again. Native app updates do not automatically add new remote MCP tools.
 
 ### Client-specific troubleshooting
 
