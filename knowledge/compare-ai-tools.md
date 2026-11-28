@@ -30,3 +30,9 @@ Eligible customers can use Compare Mode during an Apple-authorized 3-day Pro int
 - [Official product site](https://hmoses.github.io/poly-glot-site/)
 - [App Store](https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12)
 - [MCP setup](https://hmoses.github.io/poly-glot-site/#connect)
+
+## How do I collect or clear individual AI responses?
+
+In the native workspace, choose the AIs and open Compare responses. Tap a provider to send the prompt. Copy its answer, return to Poly-Glot and select Paste response for that AI; Clear removes only that answer. Where supported, use the provider's share action to return the answer to Poly-Glot, then select the provider to import it. If the share contains only a link, copy and paste the actual answer instead. The app does not automatically read or stream third-party responses. On macOS, use the corresponding click or paste actions. An active Apple-authorized introductory trial or verified Pro subscription is required.
+
+For Magic Studio, an optional reference image and instructions transfer into Ask Any AI on Continue to AI. Paste or attach the reference image and text in the selected AI where supported; the external provider generates the AI media. On-device Motion Cards are a separate local creation flow.
