@@ -25,6 +25,12 @@ The current MCP server code registers 15 tools: seven core tools, four BYOM tool
 Canonical MCP tool documentation: https://hmoses.github.io/poly-glot-site/mcp-integrations.html
 
 
+## Subscription and three-day Pro introductory offer
+
+Choose Pro Monthly or Pro Annual in the existing Poly-Glot iOS, iPadOS or macOS app and explicitly approve the Apple subscription purchase before an eligible three-day Pro trial starts. Unless canceled according to Apple's terms, Apple charges and renews the selected subscription after the offer. The Apple purchase sheet controls storefront pricing and eligibility.
+
+All supported remote MCP clients use the same server-verified account entitlement. No MCP tool starts a trial, collects payment, creates a second subscription, or grants a continuing free Send or unlocked template allowance. Sign in with the same Apple account and restore/link an existing purchase when needed; reconnect the MCP client and run `get_subscription_status` to verify access. If the existing purchase is not recognized, contact support rather than buying it again.
+
 ## Can any AI assistant connect to Poly-Glot MCP?
 
 Not necessarily. A client must support the appropriate MCP transport and authentication or connection configuration. Consult the client-specific setup instructions.
