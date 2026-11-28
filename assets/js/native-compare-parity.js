@@ -4,6 +4,38 @@ const copy={"EN":["Choose AIs, then open Compare responses. Tap a provider to se
 const langs=Object.keys(copy);
 const normalize=x=>String(x||"EN").toUpperCase().replace(/-/g,"_");
 const lang=()=>normalize(w._pgI18n?.curLang?.()||d.documentElement.lang);
+
+// Use actual native catalog size (2,087 entries in www/lang/tpl_en.json).
+// Remote MCP remains a distinct 1,022-template catalog.
+const nativeKeys=["heroSub","showcaseBody","f1","tplH","pf1a","pf2a","fq1a","ftTag","sc1P","saveSub","prSub"];
+function nativeCount(s){return typeof s==="string"?s.replace(/1(?:[,.\u00a0\u202f ]?000)(?!\d)/g,m=>"2"+m.slice(1)):s;}
+const topicKeys={"what is poly-glot":["fq1a"],"which ai":["fq5a"],"private":["fq3a"],"cancel":["fq8a"],"language":["fq7a"],"app language":["fq7a"],"output language":["fq7a"],"mcp":["fq10a"],"mcp setup":["fq10a"],"device":["fq2a"],"how does it work":["fq1a"],"feature":["fq1a"],"differ":["fq1a"],"safe":["fq3a"],"payment":["fq6a"],"download":["fq2a"],"template categories":["tplSub"],"custom":["tplSub"]};
+function refreshFacts(){
+ const i=w._pgI18n,chat=w._pgChatI18n;if(!i?.dictionary||!chat)return;
+ for(const code of langs){
+  const dict=i.dictionary[code],key=code==="ZH_TW"?"ZH-TW":code, entry=chat.KBL[key]||(chat.KBL[key]={}), labels=chat.TOPICS[key]||{}, responses=chat.CHAT_RESPONSES[key];if(!dict)continue;
+  for(const k of nativeKeys)if(typeof dict[k]==="string")dict[k]=nativeCount(dict[k]);
+  for(const [topic,keys] of Object.entries(topicKeys))if(keys.every(k=>typeof dict[k]==="string"&&dict[k].trim()))entry[topic]=keys.map(k=>dict[k]).join("\n\n");
+  entry.template="**"+(labels._templates||dict.f1)+" · 2,000+ (iOS / iPadOS / macOS)**\n\n"+(dict.tplSub||"")+"\n\nMCP: 1,022.\n\n"+(entry["after trial"]||dict.fq6a||"");
+  entry.compare=copy[code].join("\n\n");entry.send=entry.compare;
+  if(responses){
+    // Use already localized welcome and policy instead of stale generated marketing copy.
+    if(dict.chatWel)responses.greeting=nativeCount(dict.chatWel);
+    const facts=[entry["what is poly-glot"],entry["which ai"],entry.compare,entry["after trial"]||dict.fq6a,entry.private].filter(Boolean);
+    if(facts.length)responses.fallback=facts.join("\n\n");
+  }
+  if(code==="ZH_TW"){chat.KBL.ZH_TW=entry;chat.CHAT_RESPONSES.ZH_TW=responses;}
+ }
+ const code=lang(),dict=i.dictionary[code]||i.dictionary.EN;
+ if(d.getElementById("magic-studio")){
+   for(const k of nativeKeys)d.querySelectorAll('[data-i18n="'+k+'"]').forEach(el=>{
+    const val=dict[k];if(typeof val!=="string")return;
+    // Preserve existing icons and child elements.
+    const walker=d.createTreeWalker(el,NodeFilter.SHOW_TEXT);let node;while((node=walker.nextNode())){const t=nativeCount(node.nodeValue);if(t!==node.nodeValue)node.nodeValue=t;}
+   });
+ }
+}
+
 function apply(){
  const c=lang(), v=copy[c]||copy.EN, chat=w._pgChatI18n;
  if(chat){
@@ -14,7 +46,8 @@ function apply(){
    if(code==="ZH_TW")chat.KBL.ZH_TW=entry;
   }
  }
- const panel=d.getElementById("pg-native-compare-help");if(panel)panel.textContent=v.join(" ");
+ refreshFacts();
+ const panel=d.getElementById("pg-native-compare-help");if(panel&&panel.textContent!==v.join(" "))panel.textContent=v.join(" ");
 }
 w._pgNativeCompareCopy=copy;
 w._pgNativeCompareAnswer=()=> (copy[lang()]||copy.EN).join("\n\n");
