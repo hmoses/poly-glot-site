@@ -272,6 +272,15 @@ Object.keys(DUO_CHAT).forEach(function(code){
 });
 DUO_CHAT.ZH_TW=DUO_CHAT["ZH-TW"]||DUO_CHAT.ZH_TW;
 
+/* Hebrew chat coverage and canonical Traditional Chinese alias. */
+TOPICS.HE=Object.assign({},TOPICS.HE||{},{"_browse":"📋 כל הנושאים…","_whatIs":"מהו Poly-Glot?","_pricing":"מחירים","_whichAIs":"אילו שירותי AI?","_howWorks":"איך זה עובד","_freePlan":"גישה לאחר תקופת הניסיון","_trial":"תקופת ניסיון","_afterTrial":"לאחר תקופת הניסיון","_compare":"מצב השוואה","_templates":"תבניות","_categories":"קטגוריות תבניות","_languages":"שפות","_appLang":"שפת האפליקציה","_outputLang":"שפת הפלט","_voice":"קלט קולי","_devices":"מכשירים","_crossDevice":"מכשירי Apple ו-MCP","_privacy":"פרטיות","_download":"הורדה","_cancel":"ביטול","_mcp":"MCP","_mcpSetup":"הגדרת MCP","_features":"כל התכונות","_sending":"שליחת הנחיות","_history":"היסטוריית הנחיות","_custom":"הנחיות מותאמות","_offline":"שימוש ללא חיבור","_web":"גרסת אינטרנט","_whoMade":"מי פיתח?","_children":"בטיחות ילדים","_api":"גישה ל-API","_autoFill":"מילוי אוטומטי","_payment":"תשלום","_promptStudio":"Prompt Studio","_support":"תמיכה","_different":"מה ההבדל?","_disclaimer":"הבהרה"});
+CHAT_RESPONSES.HE={"greeting":"שלום! 🦜 אני העוזר של Poly-Glot. אפשר לשאול אותי על התכונות, המחירים, השפות, התבניות או חיבור MCP.","thanks":"בשמחה! 🦜 אפשר לשאול שאלות נוספות.","yesno":"הבנתי! מה עוד תרצו לדעת על Poly-Glot?","fallback":"לא מצאתי תשובה מדויקת. בחרו נושא מהרשימה לקבלת מידע על Poly-Glot."};
+TITLES.HE={"bubble":"שאלו את Poly-Glot","clear":"נקו את השיחה והתחילו מחדש"};
+TOPICS.ZH_TW=TOPICS["ZH-TW"];
+KBL.ZH_TW=KBL["ZH-TW"];
+CHAT_RESPONSES.ZH_TW=CHAT_RESPONSES["ZH-TW"];
+TITLES.ZH_TW=TITLES["ZH-TW"];
+
 // =============================================
 // EXPOSE TO GLOBAL — the chatbot reads from here
 // =============================================
@@ -290,12 +299,14 @@ window._pgChatI18n = {
 
   /** Get chat response (greeting/thanks/yesno/fallback) */
   getResponse: function(type, lang) {
+    if (lang === 'ZH_TW') lang = 'ZH-TW';
     var r = CHAT_RESPONSES[lang] || CHAT_RESPONSES.EN;
     return r[type] || CHAT_RESPONSES.EN[type];
   },
 
   /** Get titles (bubble/clear) */
   getTitles: function(lang) {
+    if (lang === 'ZH_TW') lang = 'ZH-TW';
     return TITLES[lang] || TITLES.EN;
   }
 };
