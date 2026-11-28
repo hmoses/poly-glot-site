@@ -1,8 +1,8 @@
 {
   "appStoreId": "6804499285",
-  "source": "Apple App Store Connect READY_FOR_SALE (verified per platform)",
+  "source": "Apple public App Store lookup (iOS verified 2026-11-28); macOS retains last independently verified value",
   "ios": {
-    "version": "1.1.16",
+    "version": "1.1.17",
     "url": "https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285",
     "minimumSupportedVersion": "1.1.17"
   },
@@ -11,5 +11,5 @@
     "url": "https://apps.apple.com/us/app/poly-glot-ai-workspace/id6804499285?mt=12",
     "minimumSupportedVersion": "3.13"
   },
-  "lastPublicReleaseSync": "2026-11-24T20:08:55.484Z"
+  "lastPublicReleaseSync": "2026-11-28T08:42:19Z"
 }
